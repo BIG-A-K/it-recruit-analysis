@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  companiesForIndustry,
+  industries,
+} from "../../lib/data";
+---
+
+<BaseLayout title="業界一覧">
+  <section>
+    <p class="breadcrumb"><a href="/">トップ</a><span>/</span>業界一覧</p>
+    <h1>業界一覧</h1>
+    <p class="lead">分類の基準を確かめ、同じ業界に属する企業の公表値を比較できます。</p>
+  </section>
+
+  <section class="industry-rows">
+    {
+      industries.map((industry) => {
+        const related = companiesForIndustry(industry.industry_id);
+        return (
+          <a class="linked-row" href={`/industries/${industry.industry_id}/`}>
+            <div>
+              <h2>{industry.name}</h2>
+              <p>{industry.description || industry.classification_basis}</p>
+            </div>
+            <div class="chips">
+              {related.map((company) => <span>{company.display_name}</span>)}
+            </div>
+          </a>
+        );
+      })
+    }
+  </section>
+</BaseLayout>

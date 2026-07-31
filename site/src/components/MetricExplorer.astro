@@ -1,0 +1,267 @@
+---
+import type { Company, Metric } from "../lib/data";
+import { metricDisplayOrder, metricLabels } from "../lib/format";
+
+interface Props {
+  companies: Company[];
+  metrics: Metric[];
+  explorerId: string;
+}
+
+const { companies, metrics, explorerId } = Astro.props;
+const availableKeySet = new Set(metrics.map((metric) => metric.metric_key));
+const availableKeys = [
+  ...metricDisplayOrder.filter((key) => availableKeySet.has(key)),
+  ...[...availableKeySet].filter((key) => !metricDisplayOrder.includes(key)),
+];
+const initialKey = availableKeys.includes("average_annual_salary")
+  ? "average_annual_salary"
+  : availableKeys[0];
+const years = [...new Set(metrics.map((metric) => metric.fiscal_year))].sort(
+  (a, b) => Number(b) - Number(a),
+);
+// 1社だけのときは平均・中央値を出しても値が同じになるため、統計欄は出さない
+const showStats = companies.length > 1;
+const payload = {
+  companies: companies.map((company) => ({
+    id: company.company_id,
+    name: company.display_name,
+  })),
+  metrics,
+  labels: metricLabels,
+};
+---
+
+<section class="panel" id={explorerId} data-explorer>
+  <div class="section-head">
+    <h2>{showStats ? "指標を切り替えて比較する" : "指標の推移"}</h2>
+  </div>
+
+  <div class="explorer-controls">
+    <label>
+      <span>指標</span>
+      <select data-metric>
+        {
+          availableKeys.map((key) => (
+            <option value={key} selected={key === initialKey}>
+              {metricLabels[key] ?? key}
+            </option>
+          ))
+        }
+      </select>
+    </label>
+    <label>
+      <span>年度</span>
+      <select data-year>
+        {years.map((year, index) => <option value={year} selected={index === 0}>{year}年度</option>)}
+      </select>
+    </label>
+    <fieldset>
+      <legend>表示</legend>
+      <div class="segmented-control">
+        <label><input type="radio" name={`${explorerId}-view`} value="line" checked />推移</label>
+        <label><input type="radio" name={`${explorerId}-view`} value="bar" />比較</label>
+        <label><input type="radio" name={`${explorerId}-view`} value="table" />表</label>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class:list={["explorer-body", { "explorer-body-solo": !showStats }]}>
+    <div class="chart-area" data-chart aria-live="polite"></div>
+    {
+      showStats && (
+        <aside class="stats-card" aria-live="polite">
+          <span data-stats-year></span>
+          <dl>
+            <div><dt>平均値</dt><dd data-mean>—</dd></div>
+            <div><dt>中央値</dt><dd data-median>—</dd></div>
+            <div><dt>最頻値</dt><dd data-mode>—</dd></div>
+          </dl>
+          <p data-coverage></p>
+        </aside>
+      )
+    }
+  </div>
+  <p class="chart-note">同じ年度・単位・対象範囲の公表値だけを比較しています。ネットCFは営業CF・投資CF・財務CFの合計です。</p>
+</section>
+
+<script is:inline define:vars={{ payload, explorerId }}>
+  const root = document.getElementById(explorerId);
+  const colors = ["#2563eb", "#0d9488", "#7c3aed", "#ea8a0b", "#64748b"];
+
+  const formatValue = (value, unit, metricKey, compact = false) => {
+    if (unit === "JPY") {
+      const absolute = Math.abs(value);
+      if (absolute >= 1_000_000_000_000) {
+        return `${(value / 1_000_000_000_000).toFixed(compact ? 1 : 2)}兆円`;
+      }
+      if (absolute >= 100_000_000) {
+        return `${Math.round(value / 100_000_000).toLocaleString("ja-JP")}億円`;
+      }
+      return `${Math.round(value).toLocaleString("ja-JP")}円`;
+    }
+    if (unit === "percent") return `${value.toFixed(1)}%`;
+    if (unit === "years") {
+      return metricKey === "average_age"
+        ? `${value.toFixed(1)}歳`
+        : `${value.toFixed(1)}年`;
+    }
+    return value.toLocaleString("ja-JP");
+  };
+
+  const median = (values) => {
+    const sorted = [...values].sort((a, b) => a - b);
+    const middle = Math.floor(sorted.length / 2);
+    return sorted.length % 2
+      ? sorted[middle]
+      : (sorted[middle - 1] + sorted[middle]) / 2;
+  };
+
+  const mode = (values) => {
+    const counts = new Map();
+    values.forEach((value) => counts.set(value, (counts.get(value) || 0) + 1));
+    const maximum = Math.max(...counts.values());
+    if (maximum === 1) return null;
+    const modes = [...counts.entries()]
+      .filter(([, count]) => count === maximum)
+      .map(([value]) => value);
+    return modes.length === 1 ? modes[0] : null;
+  };
+
+  const escapeHtml = (value) =>
+    String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;");
+
+  function renderLine(rows, metricKey) {
+    const chart = root.querySelector("[data-chart]");
+    const years = [...new Set(rows.map((row) => Number(row.fiscal_year)))].sort();
+    const values = rows.map((row) => Number(row.value));
+    if (!values.length) {
+      chart.innerHTML = '<p class="empty-state">表示できるデータがありません。</p>';
+      return;
+    }
+    const minimum = Math.min(...values);
+    const maximum = Math.max(...values);
+    const range = maximum - minimum || Math.abs(maximum) || 1;
+    const width = 760;
+    const height = 330;
+    const left = 84;
+    const right = 28;
+    const top = 28;
+    const bottom = 54;
+    const x = (year) =>
+      left + ((year - years[0]) / Math.max(years.at(-1) - years[0], 1)) * (width - left - right);
+    const y = (value) =>
+      top + (1 - (value - minimum) / range) * (height - top - bottom);
+
+    const grid = [0, 0.5, 1].map((ratio) => {
+      const yy = top + ratio * (height - top - bottom);
+      const value = maximum - ratio * range;
+      return `<g><line x1="${left}" y1="${yy}" x2="${width - right}" y2="${yy}" stroke="#e4e8ee" stroke-dasharray="3 5"/><text x="${left - 12}" y="${yy + 4}" text-anchor="end">${escapeHtml(formatValue(value, rows[0].unit, metricKey, true))}</text></g>`;
+    }).join("");
+
+    const series = payload.companies.map((company, index) => {
+      const companyRows = rows
+        .filter((row) => row.company_id === company.id)
+        .sort((a, b) => Number(a.fiscal_year) - Number(b.fiscal_year));
+      if (!companyRows.length) return "";
+      const points = companyRows
+        .map((row) => `${x(Number(row.fiscal_year))},${y(Number(row.value))}`)
+        .join(" ");
+      const dots = companyRows.map((row) => `
+        <circle cx="${x(Number(row.fiscal_year))}" cy="${y(Number(row.value))}" r="4.5" fill="${colors[index % colors.length]}">
+          <title>${escapeHtml(company.name)} ${row.fiscal_year}: ${escapeHtml(formatValue(Number(row.value), row.unit, metricKey))}</title>
+        </circle>`).join("");
+      return `<polyline points="${points}" fill="none" stroke="${colors[index % colors.length]}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>${dots}`;
+    }).join("");
+
+    const yearLabels = years.map((year) =>
+      `<text x="${x(year)}" y="${height - 18}" text-anchor="middle">${year}</text>`,
+    ).join("");
+    const legend = payload.companies.length > 1
+      ? payload.companies.map((company, index) =>
+          `<span><i style="background:${colors[index % colors.length]}"></i>${escapeHtml(company.name)}</span>`,
+        ).join("")
+      : "";
+
+    chart.innerHTML = `
+      <div class="chart-title"><strong>${escapeHtml(payload.labels[metricKey] || metricKey)}の推移</strong><div class="chart-legend">${legend}</div></div>
+      <svg class="line-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeHtml(payload.labels[metricKey] || metricKey)}の年度別推移">
+        ${grid}${series}${yearLabels}
+      </svg>`;
+  }
+
+  function renderBar(rows, metricKey, year) {
+    const chart = root.querySelector("[data-chart]");
+    const selected = rows.filter((row) => row.fiscal_year === year);
+    if (!selected.length) {
+      chart.innerHTML = '<p class="empty-state">この年度のデータはありません。</p>';
+      return;
+    }
+    const max = Math.max(...selected.map((row) => Math.abs(Number(row.value)))) || 1;
+    chart.innerHTML = `
+      <div class="chart-title"><strong>${escapeHtml(year)}年度 ${escapeHtml(payload.labels[metricKey] || metricKey)}</strong></div>
+      <div class="bar-chart">
+        ${selected.map((row, index) => {
+          const company = payload.companies.find((item) => item.id === row.company_id);
+          return `<div class="bar-row">
+            <div class="bar-label"><span>${escapeHtml(company?.name || row.company_id)}</span><strong>${escapeHtml(formatValue(Number(row.value), row.unit, metricKey))}</strong></div>
+            <div class="bar-track"><div class="bar-fill" style="width:${Math.max(Math.abs(Number(row.value)) / max * 100, 2)}%;background:${colors[index % colors.length]}"></div></div>
+          </div>`;
+        }).join("")}
+      </div>`;
+  }
+
+  function renderTable(rows, metricKey) {
+    const chart = root.querySelector("[data-chart]");
+    const years = [...new Set(rows.map((row) => row.fiscal_year))].sort((a, b) => Number(b) - Number(a));
+    chart.innerHTML = `
+      <div class="chart-title"><strong>${escapeHtml(payload.labels[metricKey] || metricKey)}の公表値</strong></div>
+      <div class="table-scroll"><table class="data-table"><thead><tr><th>企業</th>${years.map((year) => `<th>${year}</th>`).join("")}</tr></thead>
+      <tbody>${payload.companies.map((company) => `<tr><th>${escapeHtml(company.name)}</th>${years.map((year) => {
+        const row = rows.find((item) => item.company_id === company.id && item.fiscal_year === year);
+        return `<td>${row ? escapeHtml(formatValue(Number(row.value), row.unit, metricKey)) : "—"}</td>`;
+      }).join("")}</tr>`).join("")}</tbody></table></div>`;
+  }
+
+  function updateStats(values, unit, metricKey, year) {
+    const yearLabel = root.querySelector("[data-stats-year]");
+    if (!yearLabel) return;
+    yearLabel.textContent = `${year}年度の集計`;
+    root.querySelector("[data-mean]").textContent = values.length
+      ? formatValue(values.reduce((sum, value) => sum + value, 0) / values.length, unit, metricKey)
+      : "—";
+    root.querySelector("[data-median]").textContent = values.length
+      ? formatValue(median(values), unit, metricKey)
+      : "—";
+    const modeValue = values.length ? mode(values) : null;
+    root.querySelector("[data-mode]").textContent =
+      modeValue === null ? "該当なし" : formatValue(modeValue, unit, metricKey);
+    root.querySelector("[data-coverage]").textContent =
+      `集計対象 ${values.length}社 / 掲載 ${payload.companies.length}社`;
+  }
+
+  function update() {
+    const metricKey = root.querySelector("[data-metric]").value;
+    const year = root.querySelector("[data-year]").value;
+    const view = root.querySelector('input[type="radio"]:checked').value;
+    const rows = payload.metrics.filter((row) => row.metric_key === metricKey);
+    const selected = rows.filter((row) => row.fiscal_year === year);
+    const values = selected.map((row) => Number(row.value));
+    const unit = selected[0]?.unit || rows[0]?.unit || "";
+
+    updateStats(values, unit, metricKey, year);
+
+    if (view === "line") renderLine(rows, metricKey);
+    if (view === "bar") renderBar(rows, metricKey, year);
+    if (view === "table") renderTable(rows, metricKey);
+  }
+
+  root.querySelectorAll("select, input").forEach((input) =>
+    input.addEventListener("change", update),
+  );
+  update();
+</script>

@@ -1,0 +1,240 @@
+# CSVスキーマ定義
+
+## 表記
+
+CSVには物理的な型がないため、本書では各列の論理型を次のように表す。
+
+| 型 | 形式 |
+| --- | --- |
+| `string` | UTF-8の文字列 |
+| `id` | 小文字の英数字とハイフンからなる文字列 |
+| `integer` | 桁区切りのない整数 |
+| `decimal` | 桁区切りのない整数または小数 |
+| `date` | `YYYY-MM-DD` |
+| `year` | 期末年または募集年度を表す4桁の整数 |
+| `boolean` | `true` または `false` |
+| `url` | `https://` から始まるURL |
+| `enum` | 列ごとに定義された値のいずれか |
+
+「必須」はすべての行で値が必要、「条件付き」は行の状態によって必要、「任意」は空欄を許容することを示す。空欄は空文字として保存し、`null`、`N/A`、`-` などの代替文字列は使用しない。
+
+## 共通の列
+
+### `availability`
+
+値の取得状態を表す。
+
+| 値 | 意味 |
+| --- | --- |
+| `reported` | 出典に値が掲載されている |
+| `not_disclosed` | 対象資料では非公表 |
+| `not_applicable` | その企業・年度には該当しない |
+| `unavailable` | 取得または確認できない |
+
+`reported` の場合は、対象となる値、単位、`source_id` を必須とする。それ以外の場合は値を空欄にし、理由が必要なら `note` に記録する。
+
+### `scope`
+
+値の対象範囲を表す。
+
+| 値 | 意味 |
+| --- | --- |
+| `consolidated` | 連結グループ |
+| `non_consolidated` | 提出会社単体 |
+| `<company_id>` | 特定の法人または採用主体 |
+
+## `companies.csv`
+
+企業・法人の基本情報を管理する。
+
+主キー: `company_id`
+
+| 列 | 型 | 必須 | 定義 |
+| --- | --- | --- | --- |
+| `company_id` | `id` | 必須 | サイト内で不変の企業ID。例: `recruit-holdings` |
+| `display_name` | `string` | 必須 | サイトに表示する名称 |
+| `legal_name` | `string` | 必須 | 登記または開示上の正式法人名 |
+| `securities_code` | `string` | 任意 | 日本の証券コード。先頭ゼロを保持できるよう文字列として扱う |
+| `corporate_number` | `string` | 任意 | 国税庁の13桁法人番号 |
+| `website_url` | `url` | 任意 | 企業公式サイト |
+| `edinet_code` | `string` | 任意 | `E` と5桁の数字からなるEDINETコード |
+| `is_active` | `boolean` | 必須 | 現在サイトへ掲載する企業か |
+
+`display_name` や `legal_name` が変わっても、既存の `company_id` は変更しない。
+
+## `industries.csv`
+
+サイトで使用する業界分類を管理する。
+
+主キー: `industry_id`
+
+| 列 | 型 | 必須 | 定義 |
+| --- | --- | --- | --- |
+| `industry_id` | `id` | 必須 | 業界ID。例: `mega-venture` |
+| `name` | `string` | 必須 | 表示用の業界名 |
+| `description` | `string` | 任意 | 業界の概要 |
+| `classification_basis` | `string` | 必須 | この業界に含める判断基準 |
+| `is_active` | `boolean` | 必須 | 現在サイトへ掲載する業界か |
+
+## `company_industries.csv`
+
+企業と業界の多対多関係を管理する。企業が複数業界に属する場合は、業界ごとに行を追加する。
+
+主キー: `company_id, industry_id`
+
+| 列 | 型 | 必須 | 定義 |
+| --- | --- | --- | --- |
+| `company_id` | `id` | 必須 | `companies.csv.company_id` への参照 |
+| `industry_id` | `id` | 必須 | `industries.csv.industry_id` への参照 |
+
+## `company_relations.csv`
+
+持株会社、事業会社、採用主体など、企業間の関係を管理する。
+
+主キー: `from_company_id, to_company_id, relation_type, valid_from`
+
+| 列 | 型 | 必須 | 定義 |
+| --- | --- | --- | --- |
+| `from_company_id` | `id` | 必須 | 関係の起点となる `company_id` |
+| `to_company_id` | `id` | 必須 | 関係の終点となる `company_id` |
+| `relation_type` | `enum` | 必須 | `parent`、`subsidiary`、`affiliate`、`brand`、`other` |
+| `valid_from` | `date` | 必須 | 関係が有効になった日 |
+| `valid_to` | `date` | 任意 | 関係が終了した日。継続中は空欄 |
+| `source_id` | `id` | 必須 | `sources.csv.source_id` への参照 |
+| `note` | `string` | 任意 | 関係の補足 |
+
+関係の向きは `from_company_id` から `to_company_id` とする。例えば子会社から親会社への関係を表す場合は、子会社を `from_company_id`、親会社を `to_company_id`、`relation_type` を `parent` とする。
+
+## `metrics.csv`
+
+給与、人的情報、財務指標を年度別の縦持ち形式で管理する。
+
+主キー: `company_id, metric_key, fiscal_year, scope`
+
+| 列 | 型 | 必須 | 定義 |
+| --- | --- | --- | --- |
+| `company_id` | `id` | 必須 | `companies.csv.company_id` への参照 |
+| `metric_key` | `enum` | 必須 | 指標の種類 |
+| `fiscal_year` | `year` | 必須 | 対象期間の期末年 |
+| `period_end` | `date` | 必須 | 対象会計期間の期末日 |
+| `value` | `decimal` | 条件付き | 指標値。`reported` の場合は必須 |
+| `unit` | `string` | 条件付き | `JPY`、`percent`、`years` など |
+| `scope` | `enum` または `id` | 必須 | `consolidated`、`non_consolidated`、または対象法人ID |
+| `accounting_standard` | `enum` | 任意 | `JGAAP`、`IFRS`、`USGAAP` など |
+| `availability` | `enum` | 必須 | 共通の `availability` に従う |
+| `source_id` | `id` | 条件付き | `sources.csv.source_id` への参照 |
+| `note` | `string` | 任意 | 比較上の注意、XBRL要素ID、コンテキストIDなど |
+
+### 初期の `metric_key`
+
+| 値 | 定義 | 標準単位 | 通常の範囲 |
+| --- | --- | --- | --- |
+| `average_annual_salary` | 提出会社の平均年間給与 | `JPY` | `non_consolidated` |
+| `average_age` | 提出会社従業員の平均年齢 | `years` | `non_consolidated` |
+| `average_tenure` | 提出会社従業員の平均勤続年数 | `years` | `non_consolidated` |
+| `revenue` | 売上高または売上収益 | `JPY` | `consolidated` |
+| `operating_profit` | 営業利益または営業損失 | `JPY` | `consolidated` |
+| `operating_cf` | 営業活動によるキャッシュ・フロー | `JPY` | `consolidated` |
+| `investing_cf` | 投資活動によるキャッシュ・フロー | `JPY` | `consolidated` |
+| `financing_cf` | 財務活動によるキャッシュ・フロー | `JPY` | `consolidated` |
+| `equity_ratio` | 自己資本比率 | `percent` | `consolidated` |
+
+新しい指標は、既存キーの意味を変更せず新しい `metric_key` として追加する。企業固有の類似指標を既存キーへ無理に対応させない。
+
+## `segments.csv`
+
+開示資料上の事業セグメントと年度別実績を管理する。
+
+主キー: `company_id, fiscal_year, segment_id`
+
+| 列 | 型 | 必須 | 定義 |
+| --- | --- | --- | --- |
+| `company_id` | `id` | 必須 | `companies.csv.company_id` への参照 |
+| `fiscal_year` | `year` | 必須 | 対象期間の期末年 |
+| `segment_id` | `id` | 必須 | 同一企業内で安定したセグメントID |
+| `segment_name` | `string` | 必須 | 開示資料上のセグメント名 |
+| `description` | `string` | 任意 | セグメントの事業内容 |
+| `revenue` | `decimal` | 条件付き | 外部顧客売上高。取得できる場合に記録 |
+| `segment_profit` | `decimal` | 条件付き | 開示資料上のセグメント利益 |
+| `profit_measure` | `string` | 条件付き | `segment_profit` の定義。例: `営業利益`、`EBITDA+S` |
+| `currency` | `string` | 条件付き | ISO 4217通貨コード。例: `JPY` |
+| `unit` | `string` | 条件付き | CSVに保存した値の単位。現在は原則 `JPY` |
+| `availability` | `enum` | 必須 | 共通の `availability` に従う |
+| `source_id` | `id` | 条件付き | `sources.csv.source_id` への参照 |
+| `note` | `string` | 任意 | 組替え、名称変更、内部取引などの補足 |
+
+セグメントは企業が開示した区分を保持し、サイト独自の判断で統合しない。`segment_profit` を営業利益と決めつけず、必ず `profit_measure` に資料上の定義を記録する。
+
+## `recruitment.csv`
+
+採用職種、勤務地、初任給、労働条件などを募集年度別の縦持ち形式で管理する。
+
+主キー: `company_id, recruitment_year, fact_key, item_id`
+
+| 列 | 型 | 必須 | 定義 |
+| --- | --- | --- | --- |
+| `company_id` | `id` | 必須 | `companies.csv.company_id` への参照 |
+| `recruitment_year` | `year` | 必須 | 入社または募集の対象年度 |
+| `fact_key` | `string` | 必須 | 採用項目の種類 |
+| `item_id` | `id` | 必須 | 同じ項目に複数値がある場合の識別子 |
+| `value` | `string` または `decimal` | 条件付き | 項目の値。`reported` の場合は必須 |
+| `unit` | `string` | 条件付き | `JPY_per_month`、`hours_per_month`、`percent` など |
+| `scope` | `enum` または `id` | 必須 | 募集全体、職種、勤務地、採用主体などの対象範囲 |
+| `availability` | `enum` | 必須 | 共通の `availability` に従う |
+| `source_id` | `id` | 条件付き | `sources.csv.source_id` への参照 |
+| `note` | `string` | 任意 | 適用条件や補足 |
+
+### 初期の `fact_key`
+
+| 値 | 定義 |
+| --- | --- |
+| `job_title` | 募集職種名 |
+| `job_description` | 職種・業務内容 |
+| `work_location` | 勤務地 |
+| `starting_salary` | 初任給 |
+| `overtime_hours` | 月平均残業時間 |
+| `paid_leave_usage` | 有給休暇取得状況 |
+| `parental_leave_rate` | 育児休業取得率 |
+
+募集年度と財務年度は別の概念として扱い、`recruitment_year` を `metrics.csv.fiscal_year` と直接結合しない。
+
+## `sources.csv`
+
+各データの根拠となる資料を管理する。
+
+主キー: `source_id`
+
+| 列 | 型 | 必須 | 定義 |
+| --- | --- | --- | --- |
+| `source_id` | `id` | 必須 | 出典を一意に識別するID。EDINETでは原則 `edinet-<document_idの小文字>` |
+| `source_type` | `enum` | 必須 | 出典の種類 |
+| `title` | `string` | 必須 | 資料またはページの正式名称 |
+| `url` | `url` | 必須 | 資料を確認できるURL |
+| `document_id` | `string` | 任意 | EDINET書類管理番号など、発行元の文書ID |
+| `published_at` | `date` | 任意 | 資料の公開日 |
+| `retrieved_at` | `date` | 必須 | データを取得または確認した日 |
+| `issuer` | `string` | 必須 | 資料の提出者または発行者 |
+
+### `source_type`
+
+| 値 | 意味 |
+| --- | --- |
+| `statutory_filing` | EDINETなどの法定開示 |
+| `financial_report` | 決算資料、統合報告書、公式IR |
+| `recruitment` | 公式採用ページ、募集要項 |
+| `corporate` | 企業公式サイト |
+| `public_data` | 行政機関などの公開データ |
+| `secondary` | 一次情報以外の参考資料 |
+
+## 参照整合性
+
+CSVを更新するときは、少なくとも次を検証する。
+
+- すべての主キーがファイル内で一意である
+- `company_id` が `companies.csv` に存在する
+- `industry_id` が `industries.csv` に存在する
+- 使用中の `source_id` が `sources.csv` に存在する
+- `reported` の行に値、単位、出典が存在する
+- 数値列を `decimal` として解釈できる
+- `period_end` の年と `fiscal_year` の定義が一致する
+- 同じ主キーで異なる値が検出された場合は自動採用せず停止する

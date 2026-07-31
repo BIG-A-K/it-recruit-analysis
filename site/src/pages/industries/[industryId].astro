@@ -1,0 +1,85 @@
+---
+import type { GetStaticPaths } from "astro";
+import MetricExplorer from "../../components/MetricExplorer.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  companiesForIndustry,
+  industries,
+  metricsForCompanies,
+} from "../../lib/data";
+import { formatValue, latestMetric } from "../../lib/format";
+
+export const getStaticPaths = (() =>
+  industries.map((industry) => ({
+    params: { industryId: industry.industry_id },
+    props: { industry },
+  }))) satisfies GetStaticPaths;
+
+const { industry } = Astro.props;
+const relatedCompanies = companiesForIndustry(industry.industry_id);
+const relatedMetrics = metricsForCompanies(
+  relatedCompanies.map((company) => company.company_id),
+);
+const latestYear = Math.max(
+  ...relatedMetrics.map((metric) => Number(metric.fiscal_year)),
+);
+---
+
+<BaseLayout
+  title={industry.name}
+  description={`${industry.name}の企業比較。給与・財務・キャッシュフローを年度別に確認できます。`}
+>
+  <section>
+    <p class="breadcrumb">
+      <a href="/">トップ</a><span>/</span><a href="/industries/">業界一覧</a><span>/</span>{industry.name}
+    </p>
+    <div class="industry-head">
+      <div>
+        <h1>{industry.name}</h1>
+        {industry.description && <p class="lead">{industry.description}</p>}
+      </div>
+      <dl class="facts">
+        <div><dt>掲載企業</dt><dd>{relatedCompanies.length}社</dd></div>
+        <div><dt>最新データ</dt><dd>{latestYear}年度</dd></div>
+      </dl>
+    </div>
+    <p class="classification">
+      <strong>分類の基準</strong>{industry.classification_basis}。企業は複数の業界に所属する場合があります。
+    </p>
+  </section>
+
+  <MetricExplorer
+    companies={relatedCompanies}
+    metrics={relatedMetrics}
+    explorerId={`explorer-${industry.industry_id}`}
+  />
+
+  <section>
+    <div class="section-head"><h2>この業界の企業</h2></div>
+    <div class="company-list">
+      {
+        relatedCompanies.map((company) => {
+          const companyMetrics = relatedMetrics.filter(
+            (metric) => metric.company_id === company.company_id,
+          );
+          const salary = latestMetric(companyMetrics, "average_annual_salary");
+          const netCashFlow = latestMetric(companyMetrics, "net_cf");
+          const operatingProfit = latestMetric(companyMetrics, "operating_profit");
+          return (
+            <a class="linked-row" href={`/companies/${company.company_id}/`}>
+              <div>
+                <h3>{company.display_name}</h3>
+                <p class="legal-name">{company.legal_name}</p>
+              </div>
+              <dl class="company-stats">
+                <div><dt>平均年間給与</dt><dd>{salary ? formatValue(Number(salary.value), salary.unit) : "—"}</dd></div>
+                <div><dt>ネットCF</dt><dd>{netCashFlow ? formatValue(Number(netCashFlow.value), netCashFlow.unit) : "—"}</dd></div>
+                <div><dt>営業利益</dt><dd>{operatingProfit ? formatValue(Number(operatingProfit.value), operatingProfit.unit) : "—"}</dd></div>
+              </dl>
+            </a>
+          );
+        })
+      }
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  companies,
+  companiesForIndustry,
+  industries,
+  metrics,
+} from "../lib/data";
+
+const industryCards = industries.map((industry) => ({
+  ...industry,
+  companies: companiesForIndustry(industry.industry_id),
+}));
+const reported = metrics.filter((metric) => metric.availability === "reported");
+const latestYear = Math.max(
+  ...reported.map((metric) => Number(metric.fiscal_year)),
+);
+const metricCount = new Set(reported.map((metric) => metric.metric_key)).size;
+---
+
+<BaseLayout>
+  <section class="hero">
+    <h1>IT業界を、数字で比較する。</h1>
+    <p class="lead">
+      給与・財務・事業構成を同じ基準で整理しています。業界を選ぶと、企業を横並びで確認できます。
+    </p>
+    <a class="button button-primary" href="/industries/">業界一覧を見る</a>
+
+    <dl class="facts">
+      <div><dt>掲載企業</dt><dd>{companies.length}社</dd></div>
+      <div><dt>業界</dt><dd>{industries.length}</dd></div>
+      <div><dt>比較指標</dt><dd>{metricCount}項目</dd></div>
+      <div><dt>最新データ</dt><dd>{latestYear}年度</dd></div>
+    </dl>
+  </section>
+
+  <section id="industries">
+    <div class="section-head"><h2>業界から探す</h2></div>
+    <div class="industry-grid">
+      {
+        industryCards.map((industry) => (
+          <a class="card" href={`/industries/${industry.industry_id}/`}>
+            <h3>{industry.name}</h3>
+            <span class="card-count">{industry.companies.length}社</span>
+            <p>{industry.description || industry.classification_basis}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="panel" id="about">
+    <div class="section-head"><h2>使い方</h2></div>
+    <ol class="steps">
+      <li><span>1</span><div><strong>業界を知る</strong><p>分類の基準と、企業ごとの数字の広がりを確認します。</p></div></li>
+      <li><span>2</span><div><strong>企業を比べる</strong><p>指標と年度を切り替えて、同じ条件の公表値だけを並べます。</p></div></li>
+      <li><span>3</span><div><strong>詳しく読む</strong><p>事業セグメントや出典まで辿り、数字の背景を確かめます。</p></div></li>
+    </ol>
+  </section>
+</BaseLayout>

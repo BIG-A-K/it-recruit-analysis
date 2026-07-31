@@ -1,0 +1,27 @@
+[project]
+name = "it-recruit-data"
+version = "0.1.0"
+description = "EDINETから企業データを取得し、サイト用CSVへ変換する"
+requires-python = ">=3.12"
+dependencies = [
+    "requests>=2.32.0",
+]
+
+[project.scripts]
+edinet-fetch = "it_recruit_data.cli:main"
+edinet-normalize = "it_recruit_data.normalize_cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/it_recruit_data"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

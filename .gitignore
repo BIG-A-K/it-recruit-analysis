@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# EDINETから再取得できる原本
+data/raw/
+
+# Astro
+site/node_modules/
+site/dist/
+site/.astro/

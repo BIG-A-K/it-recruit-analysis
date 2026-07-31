@@ -1,0 +1,55 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Career Atlas",
+  description = "IT業界の企業を、給与・財務・事業構成の公表値で比較できる就活向けサイト",
+} = Astro.props;
+const fullTitle = title === "Career Atlas" ? title : `${title} | Career Atlas`;
+const pathname = Astro.url.pathname;
+const isHome = pathname === "/";
+const isIndustry = pathname.startsWith("/industries/") || pathname.startsWith("/companies/");
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{fullTitle}</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="site-sidebar">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true">CA</span>
+          Career Atlas
+        </a>
+
+        <nav class="sidebar-nav" aria-label="メインナビゲーション">
+          <a class:list={{ active: isHome }} href="/">ホーム</a>
+          <a class:list={{ active: isIndustry }} href="/industries/">業界一覧</a>
+          <a href="/#about">使い方</a>
+        </nav>
+
+        <p class="sidebar-meta">データ更新 2026年7月</p>
+      </aside>
+
+      <div class="app-main">
+        <main class="wrap">
+          <slot />
+        </main>
+        <footer class="site-footer wrap">
+          <p>公開資料をもとに作成しています。企業の優劣や、応募・投資の判断を示すものではありません。</p>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

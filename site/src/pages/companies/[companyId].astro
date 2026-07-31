@@ -1,0 +1,182 @@
+---
+import type { GetStaticPaths } from "astro";
+import MetricExplorer from "../../components/MetricExplorer.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  companies,
+  companyIndustries,
+  industries,
+  metrics,
+  segments,
+  sourceById,
+} from "../../lib/data";
+import { formatValue, latestMetric, metricLabels } from "../../lib/format";
+
+export const getStaticPaths = (() =>
+  companies.map((company) => ({
+    params: { companyId: company.company_id },
+    props: { company },
+  }))) satisfies GetStaticPaths;
+
+const { company } = Astro.props;
+const companyMetrics = metrics.filter(
+  (metric) =>
+    metric.company_id === company.company_id &&
+    metric.availability === "reported",
+);
+const companySegments = segments.filter(
+  (segment) => segment.company_id === company.company_id,
+);
+const latestYear =
+  companyMetrics.length > 0
+    ? Math.max(...companyMetrics.map((metric) => Number(metric.fiscal_year)))
+    : undefined;
+const latestSegments =
+  latestYear === undefined
+    ? []
+    : companySegments.filter(
+        (segment) => Number(segment.fiscal_year) === latestYear,
+      );
+const segmentTotal = latestSegments.reduce(
+  (sum, item) => sum + Number(item.revenue || 0),
+  0,
+);
+const relation = companyIndustries.find(
+  (item) => item.company_id === company.company_id,
+);
+const industry = industries.find(
+  (item) => item.industry_id === relation?.industry_id,
+);
+const sourceIds = [...new Set(companyMetrics.map((metric) => metric.source_id))];
+const companySources = sourceIds
+  .map(sourceById)
+  .filter((source) => source !== undefined);
+
+const scopeLabels: Record<string, string> = {
+  consolidated: "連結",
+  non_consolidated: "単体",
+};
+
+const highlights = [
+  "average_annual_salary",
+  "net_cf",
+  "operating_profit",
+  "average_tenure",
+  "average_age",
+  "revenue",
+].map((key) => ({ key, row: latestMetric(companyMetrics, key) }));
+---
+
+<BaseLayout
+  title={company.display_name}
+  description={`${company.display_name}の給与、財務、キャッシュフロー、事業セグメントを公表資料から確認できます。`}
+>
+  <section>
+    <p class="breadcrumb">
+      <a href="/">トップ</a><span>/</span>
+      {industry && <a href={`/industries/${industry.industry_id}/`}>{industry.name}</a>}
+      <span>/</span>{company.display_name}
+    </p>
+    <div class="company-head">
+      <div>
+        <h1>{company.display_name}</h1>
+        <p>{company.legal_name}</p>
+      </div>
+      <a class="button button-outline" href={company.website_url} target="_blank" rel="noreferrer">
+        公式サイト
+      </a>
+    </div>
+    <dl class="facts facts-boxed">
+      <div><dt>証券コード</dt><dd>{company.securities_code || "—"}</dd></div>
+      <div><dt>EDINETコード</dt><dd>{company.edinet_code || "—"}</dd></div>
+      <div><dt>対象年度</dt><dd>{latestYear ? `${latestYear}年3月期` : "データ準備中"}</dd></div>
+      <div><dt>主な業界</dt><dd>{industry?.name || "—"}</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>主な指標</h2>
+      <p>{latestYear ? `${latestYear}年3月期の公表値。ネットCFは営業CF・投資CF・財務CFの合計です。` : "公表値を確認し、順次掲載します。"}</p>
+    </div>
+    <dl class="metric-grid">
+      {
+        highlights.map(({ key, row }) => (
+          <div class="metric-tile">
+            <dt>{metricLabels[key]}</dt>
+            <dd>
+              {row ? formatValue(Number(row.value), row.unit, key) : "—"}
+              {row?.scope && scopeLabels[row.scope] && <small>{scopeLabels[row.scope]}</small>}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  {
+    companyMetrics.length > 0 ? (
+      <MetricExplorer
+        companies={[company]}
+        metrics={companyMetrics}
+        explorerId={`company-explorer-${company.company_id}`}
+      />
+    ) : (
+      <section class="panel empty-panel">
+        <h2>企業データを準備しています</h2>
+        <p>EDINETと公式資料を確認し、年度と対象範囲を揃えたデータから順次掲載します。</p>
+      </section>
+    )
+  }
+
+  {latestSegments.length > 0 && <section class="panel">
+    <div class="section-head">
+      <h2>事業セグメント</h2>
+      <p>{latestYear}年3月期。売上収益と、資料上のセグメント利益を併記します。</p>
+    </div>
+    <div class="segment-list">
+      {
+        latestSegments.map((segment) => {
+          const share = segmentTotal
+            ? (Number(segment.revenue) / segmentTotal) * 100
+            : 0;
+          return (
+            <article class="segment-row">
+              <div>
+                <div class="segment-head">
+                  <h3>{segment.segment_name}</h3>
+                  <span>売上構成比 {share.toFixed(1)}%</span>
+                </div>
+                <div class="segment-bar"><i style={`width:${share}%`}></i></div>
+              </div>
+              <dl>
+                <div><dt>売上収益</dt><dd>{formatValue(Number(segment.revenue), segment.unit)}</dd></div>
+                <div><dt>{segment.profit_measure}</dt><dd>{formatValue(Number(segment.segment_profit), segment.unit)}</dd></div>
+              </dl>
+            </article>
+          );
+        })
+      }
+    </div>
+  </section>}
+
+  {companySources.length > 0 && <section>
+    <div class="section-head"><h2>出典</h2></div>
+    <div class="source-list">
+      {
+        companySources.map((source) => (
+          <a href={source.url} target="_blank" rel="noreferrer">
+            <div>
+              <strong>{source.title}</strong>
+              <span>{source.issuer}</span>
+            </div>
+            <div>
+              <span>公開 {source.published_at}</span>
+              <span>取得 {source.retrieved_at}</span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>}
+</BaseLayout>

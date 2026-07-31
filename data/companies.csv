@@ -1,0 +1,17 @@
+company_id,display_name,legal_name,securities_code,corporate_number,website_url,edinet_code,is_active
+recruit-holdings,リクルート,株式会社リクルートホールディングス,6098,5010001060426,https://recruit-holdings.com/ja,E07801,true
+ly-corporation,LINEヤフー,LINEヤフー株式会社,4689,4010401039979,https://www.lycorp.co.jp/ja/,E05000,true
+mercari,メルカリ,株式会社メルカリ,4385,6010701027558,https://about.mercari.com/,E34064,true
+cyberagent,サイバーエージェント,株式会社サイバーエージェント,4751,4011001034156,https://www.cyberagent.co.jp/,E05072,true
+dena,DeNA,株式会社ディー・エヌ・エー,2432,4011001032721,https://dena.com/jp/,E05460,true
+ntt-data-group,NTTデータ,株式会社NTTデータグループ,9613,9010601021385,https://www.nttdata.com/global/ja/,E04911,true
+scsk,SCSK,SCSK株式会社,9719,8010001074167,https://www.scsk.jp/,E04830,true
+ntt,NTT,NTT株式会社,9432,7010001065142,https://group.ntt/jp/,E04430,true
+softbank,ソフトバンク,ソフトバンク株式会社,9434,9010401052465,https://www.softbank.jp/,E04426,true
+kddi,KDDI,KDDI株式会社,9433,9011101031552,https://www.kddi.com/,E04425,true
+fujitsu,富士通,富士通株式会社,6702,1020001071491,https://global.fujitsu/ja-jp/,E01766,true
+nec,NEC,日本電気株式会社,6701,7010401022916,https://jpn.nec.com/,E01765,true
+hitachi,日立製作所,株式会社日立製作所,6501,7010001008844,https://www.hitachi.co.jp/,E01737,true
+nri,野村総合研究所,株式会社野村総合研究所,4307,4010001054032,https://www.nri.com/jp/,E05062,true
+tis,TIS,TIS株式会社,3626,2010001134133,https://www.tis.co.jp/,E05739,true
+biprogy,BIPROGY,BIPROGY株式会社,8056,2010601029546,https://www.biprogy.com/,E02611,true
