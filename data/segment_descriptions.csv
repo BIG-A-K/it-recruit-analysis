@@ -1,0 +1,30 @@
+company_id,segment_id,description
+recruit-holdings,hr-technology,IndeedやGlassdoorなどの求人マッチング基盤を通じて企業の採用活動と求職者の仕事探しを支援します。
+recruit-holdings,staffing,日本・欧州・米国・豪州で事務職や製造職、専門職などの人材派遣サービスを提供します。
+recruit-holdings,marketing-matching-technologies,国内の人材・住宅・美容・旅行・飲食領域のマッチングサービスとAirビジネスツールズなどの業務支援SaaSを提供します。
+ly-corporation,media,Yahoo! JAPANやLINEを基盤に検索・ディスプレイ広告、ニュース、コンテンツなどを提供します。
+ly-corporation,commerce,ショッピングやオークション、旅行などのECサービスを展開します。
+ly-corporation,strategy,決済・クレジット・銀行などの金融サービスを中心に事業を展開します。
+mercari,japan,フリマアプリ「メルカリ」とメルペイ・メルカードなどのFintechサービスを国内で展開します。
+mercari,us,米国向けマーケットプレイス「Mercari」を運営します。
+cyberagent,media-and-ip,ABEMAやAmeba、周辺のIP・コンテンツサービスを開発・運営します。
+cyberagent,internet-advertising,広告配信・運用、AIを活用した広告制作、企業のDX支援を提供します。
+cyberagent,game,複数の開発子会社を通じてスマートフォン向けゲームを企画・開発・運営します。
+cyberagent,investment-development,スタートアップや成長企業への投資・育成を行います。
+ntt-data-group,japan,官公庁・金融・法人向けにコンサルティング、システム開発、運用サービスを国内で提供します。
+ntt-data-group,overseas,海外市場でコンサルティング、ITインフラ、アプリケーション、データセンターなどを提供します。
+scsk,industrial-it,製造・通信・エネルギー・流通などの企業向けに基幹システムや組み込みソフトウェアを提供します。
+scsk,financial-it,銀行・保険・証券などの金融機関向けシステムを開発・運用します。
+scsk,it-solution,ERPなどの業務パッケージ導入とBPOサービスを提供します。
+scsk,it-platform,ITインフラやセキュリティ、CAD・CAE関連の製品と技術サービスを提供します。
+scsk,it-management,データセンターやクラウドを基盤としたシステム運用・管理サービスを提供します。
+ntt,integrated-ict,携帯電話・光回線などの通信に加えて金融・コンテンツ・法人向けICTを提供します。
+ntt,global-solutions,コンサルティング、ITソリューション、システム開発、データセンターをグローバルに提供します。
+ntt,regional-communications,NTT東日本・西日本を中心に地域向け光サービス、固定電話、法人サービスを提供します。
+ntt,other,不動産やエネルギーなど通信・IT以外の事業を展開します。
+kddi,personal,au・UQ mobile・povoの通信を中心に金融、エネルギー、生活関連サービスを個人向けに提供します。
+kddi,business,法人向けに通信、ネットワーク、クラウド、IoT、データセンターなどを提供します。
+hitachi,digital-systems-services,システムインテグレーション、クラウド、コンサルティング、ストレージなどのデジタルサービスを提供します。
+hitachi,energy,送配電網や原子力を含むエネルギー関連の製品・サービスを提供します。
+hitachi,mobility,鉄道車両・信号・保守などの鉄道システムをグローバルに提供します。
+hitachi,connective-industries,ビル設備、家電、産業機器、計測・分析、産業・流通向けソリューションを提供します。

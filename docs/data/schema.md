@@ -138,6 +138,9 @@ CSVには物理的な型がないため、本書では各列の論理型を次�
 | `investing_cf` | 投資活動によるキャッシュ・フロー | `JPY` | `consolidated` |
 | `financing_cf` | 財務活動によるキャッシュ・フロー | `JPY` | `consolidated` |
 | `equity_ratio` | 自己資本比率 | `percent` | `consolidated` |
+| `current_assets` | 流動資産 | `JPY` | `consolidated` |
+| `current_liabilities` | 流動負債 | `JPY` | `consolidated` |
+| `quick_assets` | 当座資産。構成科目を `note` に記録する | `JPY` | `consolidated` |
 
 新しい指標は、既存キーの意味を変更せず新しい `metric_key` として追加する。企業固有の類似指標を既存キーへ無理に対応させない。
 
@@ -197,6 +200,71 @@ CSVには物理的な型がないため、本書では各列の論理型を次�
 | `parental_leave_rate` | 育児休業取得率 |
 
 募集年度と財務年度は別の概念として扱い、`recruitment_year` を `metrics.csv.fiscal_year` と直接結合しない。
+
+## `company_profiles.csv`
+
+企業詳細ページで使用する会社概要と就活生向けの読み物を管理する。財務数値は重複保存せず `metrics.csv` と `segments.csv` を使う。
+
+主キー: `company_id`
+
+| 列 | 型 | 必須 | 定義 |
+| --- | --- | --- | --- |
+| `company_id` | `id` | 必須 | `companies.csv.company_id` への参照 |
+| `overview` | `string` | 必須 | 企業と主要事業の概要 |
+| `career_url` | `url` | 必須 | 公式の新卒採用情報 |
+| `recruitment_summary` | `string` | 必須 | 募集区分や採用方法の要約 |
+| `job_categories` | `string` | 必須 | 主な職種を `|` 区切りで列挙 |
+| `workplace` | `string` | 必須 | 主な勤務地と配属上の注意 |
+| `compensation` | `string` | 必須 | 公式募集要項で確認した初任給・待遇の要約 |
+| `employment_note` | `string` | 必須 | 開示主体と採用主体など比較上の注意 |
+| `updated_at` | `date` | 必須 | 内容を確認した日 |
+
+## `company_messages.csv`
+
+企業詳細の基本情報に掲載する理念・ミッション・企業メッセージを管理する。
+
+主キー: `company_id`
+
+| 列 | 型 | 必須 | 定義 |
+| --- | --- | --- | --- |
+| `company_id` | `id` | 必須 | `companies.csv.company_id` への参照 |
+| `message` | `string` | 必須 | 企業が掲げる理念・ミッションなどの本文 |
+| `source_label` | `string` | 必須 | `企業理念`、`ミッション`、`企業メッセージ` などの区分 |
+
+## `company_annotations.csv`
+
+企業固有の比較上の注意を、表示対象と結び付けて管理する。取得処理のメモは
+`metrics.csv.note` に残し、読者向けの説明だけをこのファイルに記録する。
+
+主キー: `annotation_id`
+
+| 列 | 型 | 必須 | 定義 |
+| --- | --- | --- | --- |
+| `annotation_id` | `id` | 必須 | 注記を一意に識別するID |
+| `company_id` | `id` | 必須 | `companies.csv.company_id` への参照 |
+| `section_key` | `enum` | 必須 | 表示セクション。現在は `financials` |
+| `target_kind` | `enum` | 必須 | `section`、`metric_group`、`metric` のいずれか |
+| `target_key` | `string` | 条件付き | グループ名または `metric_key`。`section` の場合は空欄 |
+| `fiscal_year` | `year` | 任意 | 特定年度だけに適用する場合の年度。恒常的な注記は空欄 |
+| `text` | `string` | 必須 | 画面に表示する比較上の注意 |
+| `source_id` | `id` | 任意 | 根拠資料がある場合の `sources.csv.source_id` への参照 |
+| `updated_at` | `date` | 必須 | 内容を確認した日 |
+
+初期の `metric_group` は、`net_cf`、`operating_cf`、`investing_cf`、
+`financing_cf` をまとめた `cash_flow` とする。複数の指標に同じ注記を重複して
+登録せず、意味のあるグループを追加して対応する。
+
+## `segment_descriptions.csv`
+
+年度によらず共通して使用できるセグメントの事業説明を管理する。名称・数値・年度は `segments.csv` を正本とする。
+
+主キー: `company_id, segment_id`
+
+| 列 | 型 | 必須 | 定義 |
+| --- | --- | --- | --- |
+| `company_id` | `id` | 必須 | `companies.csv.company_id` への参照 |
+| `segment_id` | `id` | 必須 | `segments.csv` と対応する企業内セグメントID |
+| `description` | `string` | 必須 | 主な製品・サービスを説明する文章 |
 
 ## `sources.csv`
 

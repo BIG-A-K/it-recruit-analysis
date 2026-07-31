@@ -142,3 +142,7 @@ kddi,2024,personal,パーソナル,,4675796000000,,,JPY,JPY,reported,edinet-s100
 kddi,2024,business,ビジネス,,1033486000000,,,JPY,JPY,reported,edinet-s100tn7r,
 kddi,2023,personal,パーソナル,,4730138000000,,,JPY,JPY,reported,edinet-s100tn7r,
 kddi,2023,business,ビジネス,,899141000000,,,JPY,JPY,reported,edinet-s100tn7r,
+ntt,2026,integrated-ict,総合ICT事業,,6146232000000,942062000000,セグメント利益,JPY,JPY,reported,edinet-s100ycp3,
+ntt,2026,global-solutions,グローバル・ソリューション事業,,4754653000000,488211000000,セグメント利益,JPY,JPY,reported,edinet-s100ycp3,
+ntt,2026,regional-communications,地域通信事業,,2555241000000,307402000000,セグメント利益,JPY,JPY,reported,edinet-s100ycp3,
+ntt,2026,other,"その他（不動産、エネルギー等）",,952995000000,-1572000000,セグメント利益,JPY,JPY,reported,edinet-s100ycp3,

@@ -580,3 +580,27 @@ kddi,average_tenure,2024,2024-03-31,16.7,years,non_consolidated,,reported,edinet
 kddi,average_annual_salary,2024,2024-03-31,9869482,JPY,non_consolidated,,reported,edinet-s100tn7r,element_id=jpcrp_cor:AverageAnnualSalaryInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
 kddi,operating_profit,2023,2023-03-31,1077393000000,JPY,consolidated,IFRS,reported,edinet-s100tn7r,element_id=jpigp_cor:OperatingProfitLossIFRS; context_id=Prior1YearDuration
 kddi,operating_profit,2024,2024-03-31,961584000000,JPY,consolidated,IFRS,reported,edinet-s100tn7r,element_id=jpigp_cor:OperatingProfitLossIFRS; context_id=CurrentYearDuration
+mercari,current_assets,2024,2024-06-30,402033000000,JPY,consolidated,IFRS,reported,edinet-s100ueyz,連結財政状態計算書
+mercari,current_liabilities,2024,2024-06-30,302543000000,JPY,consolidated,IFRS,reported,edinet-s100ueyz,連結財政状態計算書
+mercari,quick_assets,2024,2024-06-30,392742000000,JPY,consolidated,IFRS,reported,edinet-s100ueyz,現金同等物・営業債権・預け金・その他の金融資産の合計
+mercari,current_assets,2025,2025-06-30,420241000000,JPY,consolidated,IFRS,reported,edinet-s100wqdw,連結財政状態計算書
+mercari,current_liabilities,2025,2025-06-30,319511000000,JPY,consolidated,IFRS,reported,edinet-s100wqdw,連結財政状態計算書
+mercari,quick_assets,2025,2025-06-30,409321000000,JPY,consolidated,IFRS,reported,edinet-s100wqdw,現金同等物・営業債権・預け金・その他の金融資産の合計
+ntt,current_assets,2025,2025-03-31,8370359000000,JPY,consolidated,IFRS,reported,edinet-s100ycp3,連結財政状態計算書の比較情報
+ntt,current_liabilities,2025,2025-03-31,8865263000000,JPY,consolidated,IFRS,reported,edinet-s100ycp3,連結財政状態計算書の比較情報
+ntt,quick_assets,2025,2025-03-31,6855228000000,JPY,consolidated,IFRS,reported,edinet-s100ycp3,現金同等物・営業債権・その他の金融資産の合計
+ntt,current_assets,2026,2026-03-31,11344700000000,JPY,consolidated,IFRS,reported,edinet-s100ycp3,連結財政状態計算書
+ntt,current_liabilities,2026,2026-03-31,22332886000000,JPY,consolidated,IFRS,reported,edinet-s100ycp3,銀行業の預金を含む
+ntt,quick_assets,2026,2026-03-31,9666377000000,JPY,consolidated,IFRS,reported,edinet-s100ycp3,現金同等物・営業債権・銀行業貸出金・その他の金融資産の合計
+kddi,current_assets,2025,2025-03-31,4706507000000,JPY,consolidated,IFRS,reported,edinet-s100ykg2,連結財政状態計算書の比較情報
+kddi,current_liabilities,2025,2025-03-31,8007348000000,JPY,consolidated,IFRS,reported,edinet-s100ykg2,連結財政状態計算書の比較情報
+kddi,quick_assets,2025,2025-03-31,4410506000000,JPY,consolidated,IFRS,reported,edinet-s100ykg2,現金同等物・営業債権・金融事業貸出金等の合計
+kddi,current_assets,2026,2026-03-31,5578428000000,JPY,consolidated,IFRS,reported,edinet-s100ykg2,連結財政状態計算書
+kddi,current_liabilities,2026,2026-03-31,9937974000000,JPY,consolidated,IFRS,reported,edinet-s100ykg2,金融事業の預金を含む
+kddi,quick_assets,2026,2026-03-31,5243737000000,JPY,consolidated,IFRS,reported,edinet-s100ykg2,現金同等物・営業債権・金融事業貸出金等の合計
+hitachi,current_assets,2025,2025-03-31,6597843000000,JPY,consolidated,IFRS,reported,edinet-s100ygbo,連結財政状態計算書の比較情報
+hitachi,current_liabilities,2025,2025-03-31,5907845000000,JPY,consolidated,IFRS,reported,edinet-s100ygbo,連結財政状態計算書の比較情報
+hitachi,quick_assets,2025,2025-03-31,4681003000000,JPY,consolidated,IFRS,reported,edinet-s100ygbo,現金同等物・売上債権・金融資産の合計
+hitachi,current_assets,2026,2026-03-31,7867239000000,JPY,consolidated,IFRS,reported,edinet-s100ygbo,連結財政状態計算書
+hitachi,current_liabilities,2026,2026-03-31,7167139000000,JPY,consolidated,IFRS,reported,edinet-s100ygbo,契約負債を含む
+hitachi,quick_assets,2026,2026-03-31,5683674000000,JPY,consolidated,IFRS,reported,edinet-s100ygbo,現金同等物・売上債権・金融資産の合計
