@@ -1,0 +1,13 @@
+---
+import FinancialHistory from "./FinancialHistory.astro";
+import MetricTrends from "./MetricTrends.astro";
+
+interface Props {
+  companyId: string;
+}
+
+const { companyId } = Astro.props;
+---
+
+<FinancialHistory companyId={companyId} />
+<MetricTrends companyId={companyId} />

@@ -71,3 +71,11 @@ def test_segment_member() -> None:
         "jpcrp030000-asr_E04830-000ITPlatformReportableSegmentMember",
         "scsk",
     ) == ("it-platform", "ITプラットフォーム")
+    assert segment_member(
+        "Prior1YearDuration_"
+        "jpcrp030000-asr_E07801-000MatchingAndSolutionsReportableSegmentMember",
+        "recruit-holdings",
+    ) == (
+        "marketing-matching-technologies",
+        "マーケティング・マッチング・テクノロジー事業",
+    )

@@ -145,7 +145,12 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 
 /* ---------- company ---------- */
 
+.company-overview .basic-facts { margin-top: 24px; }
+.company-article > section + section { margin-top: 52px; }
+.company-prose { padding: 32px 40px; }
+
 .company-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; }
+.company-message-section .company-message { margin: 0; }
 .company-head p { margin-top: 6px; color: var(--muted); font-size: 14px; }
 .eyebrow { display: block; margin-bottom: 7px; color: var(--blue); font-size: 11px; font-weight: 750; letter-spacing: .14em; }
 .company-message { position: relative; margin: 24px 0 18px; padding: 26px 30px; color: white; background: linear-gradient(125deg, var(--navy), #263f67); border-radius: 12px; overflow: hidden; }

@@ -3,6 +3,13 @@ from decimal import Decimal
 from pathlib import Path
 
 DATA_DIR = Path(__file__).parents[1] / "data"
+COMPANY_PAGE_DIR = (
+    Path(__file__).parents[1]
+    / "site"
+    / "src"
+    / "pages"
+    / "companies"
+)
 
 
 def read_rows(filename: str) -> list[dict[str, str]]:
@@ -183,3 +190,38 @@ def test_initial_companies_have_comparison_data() -> None:
             and row["availability"] == "reported"
         }
         assert len(segment_years) >= 2, company_id
+
+
+def test_active_companies_have_mdx_pages() -> None:
+    active_company_ids = {
+        row["company_id"]
+        for row in read_rows("companies.csv")
+        if row["is_active"] == "true"
+    }
+    page_ids = {path.stem for path in COMPANY_PAGE_DIR.glob("*.mdx")}
+
+    assert page_ids == active_company_ids
+    for company_id in page_ids:
+        page = (COMPANY_PAGE_DIR / f"{company_id}.mdx").read_text(encoding="utf-8")
+        assert f"companyId: {company_id}" in page
+
+
+def test_unlisted_company_pages_omit_unavailable_data_sections() -> None:
+    unlisted_company_ids = {
+        row["company_id"]
+        for row in read_rows("companies.csv")
+        if row["is_active"] == "true" and not row["securities_code"]
+    }
+    unavailable_components = {
+        "EmploymentOverview",
+        "BusinessSegments",
+        "HealthMetrics",
+        "FinancialHistory",
+        "MetricTrends",
+        "FinancialData",
+    }
+
+    for company_id in unlisted_company_ids:
+        page = (COMPANY_PAGE_DIR / f"{company_id}.mdx").read_text(encoding="utf-8")
+        for component in unavailable_components:
+            assert component not in page, (company_id, component)

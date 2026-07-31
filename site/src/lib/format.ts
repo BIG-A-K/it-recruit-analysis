@@ -12,6 +12,8 @@ export const metricLabels: Record<string, string> = {
   current_assets: "流動資産",
   current_liabilities: "流動負債",
   quick_assets: "当座資産",
+  total_funding: "累計資金調達額",
+  employee_count: "従業員数",
 };
 
 export const metricDisplayOrder = Object.keys(metricLabels);
@@ -32,6 +34,7 @@ export function formatValue(
     return `${Math.round(value).toLocaleString("ja-JP")}円`;
   }
   if (unit === "percent") return `${value.toFixed(1)}%`;
+  if (unit === "persons") return `${value.toLocaleString("ja-JP")}名`;
   // 平均年齢と平均勤続年数は同じ unit(years) で入っているため、指標名で単位を分ける
   if (unit === "years") {
     return metricKey === "average_age"

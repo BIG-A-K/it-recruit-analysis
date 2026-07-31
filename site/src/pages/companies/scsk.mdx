@@ -1,0 +1,124 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: scsk
+originalPublishedAt: 2025/04/09
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyMessage from "../../components/company/CompanyMessage.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import RecruitmentInfo from "../../components/company/RecruitmentInfo.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyMessage companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+**お客様のニーズの先を読み、最適な解決策となるITサービスを。**
+
+ビジネスに求められる、すべてのITサービスを、もっと速く、もっと的確に、もっと深くお応えしたい。
+
+あらゆる業界の課題解決に精通するスペシャリストたちが、それぞれの専門知識の結集、連携により、お客様に最適なソリューションをご提案いたします。
+
+## サイト
+- [HP](https://www.scsk.jp/)
+- [有価証券取引報告書](https://www.scsk.jp/ir/library/valuable/)
+- [採用ページ](https://www.scsk.jp/recruit/saiyo/index.html)
+  - [募集要項](https://www.scsk.jp/recruit/saiyo/recruit/recruit-info.html)
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+
+<RecruitmentInfo companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 採用情報の補足
+
+### 初任給
+| 学歴   | 月給         | 業務手当 | 学び手当 | リモートワーク推進手当 | 年収概算       |
+|--------|--------------|----------|----------|------------------------|----------------|
+| 大卒   | 320,000円    | 45,500円 | 5,000円  | 5,000円                | 約4,380,000円  |
+| 院卒   | 340,000円    | 48,300円 | 5,000円  | 5,000円                | 約4,620,000円  |
+
+## 職種
+- **技術職**
+  - アプリケーション、ネットワーク、パッケージソフトなどに関する提案、設計、開発、運用、保守およびそのプロジェクト管理
+  - 情報技術に関する調査、研究、製品開発および情報技術戦略の立案・推進
+- **営業職**
+  - ハードウェアおよびソフトウェアの輸入・販売など
+  - システム・インテグレーション、パッケージ・インテグレーション、エンジニアリング・ソリューション、ネットワーク・ソリューションなどに関する案件の提案営業および新規顧客の開拓
+- **コーポレート職**
+  - 法務・経理・財務・IR・人事 など
+
+</CompanyProse>
+
+<BusinessSegments companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 事業内容
+SCSKは以下のセグメント間で連携し、コンサルティング、システム開発、検証サービス、ITインフラ構築、ITマネジメント、ITハード・ソフト
+販売、BPO等のサービスを提供している。
+### セグメント
+- **産業IT**
+  - 製造、通信、エネルギー、流通、サービス、メディア等の顧客向けに、基幹系システムや生産管理システムなどのITソリューションを提供。自動車業界向けには、組み込みソフトウェア開発やミドルウェア提供をグローバルに展開。
+
+- **金融IT**
+  - 銀行、生損保、証券などの金融機関向けに、高度な金融システムを構築し、経営をサポート。
+
+- **ITソリューション**
+  - ERPパッケージ「ProActive」やSAP、Oracleの導入・保守を支援。BPOサービスも提供。
+
+- **ITプラットフォーム**
+  - ITインフラやCAD、CAE分野で最先端技術を活用し、顧客のビジネスをサポート。
+
+- **ITマネジメント**
+  - データセンター「netXDC」を中心に、アウトソーシングやクラウドインフラ提供を展開。
+
+- **その他**
+  - 幅広い業種でのソフトウェア開発、システム運用、リモート開発を実施。
+### [提供サービス](https://www.scsk.jp/corp/activities/index.html)
+| サービスカテゴリ       | 概要 |
+|----------------------|------|
+| **BPO (Business Process Outsourcing)** | お客様の業務の一部を一括受託し、コンタクトセンターやECフルフィルメントなどを提供。専門スタッフによる長年のノウハウで支援。 |
+| **ITハード・ソフト販売** | セキュリティ、ネットワーク、サーバー・ストレージ、CAD、CAEなどの製品販売・構築・サポートを実施。 |
+| **ITマネジメント** | オンプレミスからクラウドまで、ITシステムの保守運用と継続的な改善を行うITサービスマネジメントを提供。 |
+| **ITインフラ構築** | インフラ最適化のためのアセスメント、設計・構築、運用設計など、安定稼働に向けた支援を実施。 |
+| **コンサルティング** | 経営戦略に沿ったIT戦略の策定から、業務領域ごとのIT企画・実現までをトータルでサポート。 |
+| **システム開発** | SoR（System of Record）からSoE（System of Engagement）まで、幅広い開発ニーズに対応。 |
+| **検証サービス** | 独自の検証理論と最新技術を活用し、テストケースに基づくソフトウェアの評価・検証を実施。 |
+
+</CompanyProse>
+
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 関連企業
+
+
+| セグメント名         | 主な子会社 |
+|----------------------|------------|
+| **産業IT**            | ・㈱ベリサーブ<br />・ＳＣＳＫ九州㈱<br />・ＳＣＳＫ北海道㈱<br />・SCSK USA Inc.<br />・SCSK Europe Ltd.<br />・思誠思凱信息系統(上海)有限公司<br />・SCSK Asia Pacific Pte. Ltd.<br />・PT SCSK Global Indonesia<br />・SCSK Myanmar Ltd.<br />・ＳＣＳＫオートモーティブＨ＆Ｓ㈱ |
+| **金融IT**            | ・ＳＣＳＫ ＲｅｇＴｅｃｈ Ｅｄｇｅ㈱ |
+| **ITソリューション**  | ・ＳＣＳＫサービスウェア㈱<br />・㈱Ｓｋｅｅｄ |
+| **ITプラットフォーム**| ・㈱アライドエンジニアリング<br />・ＳＣＳＫセキュリティ㈱ |
+| **ITマネジメント**    | ・ＳＣＳＫシステムマネジメント㈱<br />・ＳＤＣ㈱ |
+| **その他**            | ・ＳＣＳＫ Ｍｉｎｏｒｉソリューションズ㈱<br />・㈱Ｇｒａｎ Ｍａｎｉｂｕｓ |
+
+</CompanyProse>
+
+<CompanySources companyId={frontmatter.companyId} />

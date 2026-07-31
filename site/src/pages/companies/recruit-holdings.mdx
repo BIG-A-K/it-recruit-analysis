@@ -1,0 +1,157 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: recruit-holdings
+originalPublishedAt: 2025-04-08
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyMessage from "../../components/company/CompanyMessage.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import RecruitmentInfo from "../../components/company/RecruitmentInfo.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyMessage companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+「私たちは、新しい価値の創造を通じ、社会からの期待に応え、一人ひとりが輝く豊かな世界の実現を目指す。」
+
+リクルートグループは、テクノロジーの力で「働く」の進化をリードするグローバルテックカンパニーです。仕事探しがもっとシンプルで、事業経営がもっとスマートで、誰もが輝ける豊かな未来の実現に向けて、社会と共にサステナブルに成長することを目指しています。
+
+### 価値観
+
+- **新しい価値の創造 / Wow the World**
+  世界中があっと驚く未来のあたりまえを創りたい。遊び心を忘れずに、常識を疑うことから始めればいい。良質な失敗から学び、徹底的にこだわり、変わり続けることを楽しもう。
+- **個の尊重 / Bet on Passion**
+  すべては好奇心から始まる。一人ひとりの好奇心が、抑えられない情熱を生み、その違いが価値を創る。すべての偉業は、個人の突拍子もないアイデアと、データや事実が結び付いたときに始まるのだ。私たちは、情熱に投資する。
+- **社会への貢献 / Prioritize Social Value**
+  私たちは、すべての企業活動を通じて、持続可能で豊かな社会に貢献する。一人ひとりが当事者として、社会の不に向き合い、より良い未来に向けて行動しよう。
+
+## 公式サイト・資料
+
+- [企業サイト](https://recruit-holdings.com/ja)
+  - [経営理念](https://www.recruit.co.jp/company/philosophy/)
+- [有価証券報告書](https://recruit-holdings.com/ja/ir/financials/#documents)
+- [事業内容](https://recruit-holdings.com/ja/ir/business-overview/)
+- [新卒採用サイト](https://www.recruit.co.jp/employment/students/)
+  - [募集要項](https://www.recruit.co.jp/employment/students/requirements/)
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 雇用情報を読むときの注意
+
+平均給与・平均勤続年数・平均年齢は提出会社（本社）単体の情報なので、グループ全体や採用先ごとの待遇を示すものではありません。
+
+公式サイトには[雇用状況](https://www.recruit.co.jp/employment/workplace/)が掲載されていますが、給与などの情報はありません。キャリア採用では職種ごとの待遇が掲載されており、記事作成時点のエンジニア求人では年収543万円〜1,378万円でした。[詳細](https://www.recruit.co.jp/employment/mid-career/position/jobs-202/)
+
+</CompanyProse>
+
+<RecruitmentInfo companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 職種
+
+### 新卒
+
+[新卒採用サイトの詳細](https://www.recruit.co.jp/employment/students/)
+
+| 区分 | 対象となる方 | 配属職種例 |
+| --- | --- | --- |
+| ビジネスグロース | 幅広く職種を検討したい方 | マーケター、顧客接点、事業企画、コーポレートスタッフ |
+| プロダクトグロース | IT職種として幅広く活躍したい方 | PdM、エンジニア |
+| エンジニア | エンジニア職として活躍したい方 | ネイティブアプリ、インフラなど |
+| データスペシャリスト | データ職種を志望する方 | データサイエンティスト、データエンジニア |
+| デザイン | デザイナー職種を志望する方 | UI/UXデザイナー、アートディレクター |
+| ファイナンス | ファイナンス職種を志望する方 | 経理、財務、会計、FP&A、投資 |
+
+#### エンジニア詳細
+
+[エンジニア採用の詳細](https://www.recruit.co.jp/employment/students/engineer/)
+
+| 職種 | 内容 |
+| --- | --- |
+| ネイティブアプリエンジニア | iOS/Androidエンジニアとして企画・開発を担当 |
+| Webフロントエンドエンジニア | 専門技術とUXデザインを組み合わせて企画・開発を担当 |
+| バックエンドエンジニア | バックエンドシステムの企画・開発を担当 |
+| インフラエンジニア | インフラ環境のソリューション企画や構築・運用を担当 |
+| セキュリティエンジニア | セキュリティテストや脆弱性管理を通じてプロダクトの安全性向上を担当 |
+
+### キャリア採用
+
+[キャリア採用の詳細](https://www.recruit.co.jp/employment/mid-career/)
+
+| 分類 | 主な職種例 |
+| --- | --- |
+| プロダクト企画職 | プロダクト戦略・企画、マーケティング、PdM、UI/UXデザイナー、編集ディレクター |
+| テクノロジー職 | 開発ディレクション、開発エンジニア、社内ICT・DX推進、データ |
+| ビジネス企画職 | M&A、事業企画・開発、営業企画、業務企画、カスタマーサクセス |
+| 顧客接点職 | 営業、コンサルタント、キャリアアドバイザー、渉外など |
+| コーポレート職 | 経営企画、ファイナンス、リスクマネジメント、人事、総務、広報 |
+
+</CompanyProse>
+
+<BusinessSegments companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 事業内容の補足
+
+### HRテクノロジー事業
+
+IndeedやGlassdoorなどのプラットフォームを通じて就職活動を支援します。
+
+AIを利用したマッチング、成果報酬またはサブスクリプション形式のサービスに加え、候補者のソーシング、スクリーニング、候補者とのやり取り、面接などの採用プロセスを支援しています。
+
+| サービス名 | 説明 |
+| --- | --- |
+| Indeed | オンライン求人マッチングプラットフォーム |
+| Glassdoor | オンライン求人マッチングプラットフォーム |
+
+### マーケティング・マッチング・テクノロジー事業
+
+日本国内で、人材領域や販促領域のマッチングプラットフォームと、Airビジネスツールズを中心としたSaaSを提供しています。
+
+#### 人材領域
+
+| サービス名 | 説明 |
+| --- | --- |
+| リクナビ | 就職活動を行う学生向けオンラインプラットフォーム |
+| リクナビNEXT | 転職活動を行う社会人向けオンラインプラットフォーム |
+| リクルートエージェント | 転職活動を支援する人材紹介サービス |
+| リクルートダイレクトスカウト | 転職活動を支援するスカウト型サービス |
+| タウンワーク | アルバイト・パート向け求人プラットフォームと情報誌 |
+| Air ビジネスツールズ | 幅広い事業者向けのクラウド型業務・経営支援ツール |
+
+#### 販促領域
+
+| サービス名 | 説明 |
+| --- | --- |
+| SUUMO | 住宅の売買、賃貸、リフォームなどを扱うプラットフォーム |
+| Hot Pepper Beauty | 美容サロン向けの予約・集客プラットフォーム |
+| じゃらん | 宿泊、旅行、観光情報を扱うプラットフォーム |
+
+### 人材派遣事業
+
+日本、欧州、米国、豪州で、事務職、製造・軽作業、各種専門職などの人材派遣サービスを提供しています。
+
+</CompanyProse>
+
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
+
+<CompanySources companyId={frontmatter.companyId} />

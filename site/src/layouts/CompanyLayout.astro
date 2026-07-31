@@ -1,0 +1,34 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import { companies } from "../lib/data";
+
+interface Props {
+  frontmatter?: {
+    companyId?: string;
+    title?: string;
+    description?: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+const company = companies.find(
+  (item) => item.company_id === frontmatter?.companyId,
+);
+
+if (!company) {
+  throw new Error(
+    `企業MDXの companyId が不正です: ${frontmatter?.companyId ?? "未指定"}`,
+  );
+}
+
+const title = frontmatter?.title ?? company.display_name;
+const description =
+  frontmatter?.description ??
+  `${company.display_name}の基本情報、事業内容、新卒採用、財務・キャッシュフローを公表資料から確認できます。`;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="company-article">
+    <slot />
+  </article>
+</BaseLayout>

@@ -1,4 +1,6 @@
 industry_id,name,description,classification_basis,is_active
 mega-venture,メガベンチャー,,最先端の技術でIT技術を牽引する新しい大企業,true
+venture,ベンチャー,,メガベンチャーと比べ規模が小さく上場・未上場を問わずAI・ソフトウェア・半導体など先端技術の研究開発を主力とする企業。未上場企業は財務指標の法定開示がないためプロフィール中心の掲載になります,true
 sier,SIer,,顧客の情報システムの企画・開発・運用を主要事業とする企業,true
 telecommunications,通信事業者,,国内で固定・移動通信サービスを主要事業とする企業,true
+consulting,コンサル・シンクタンク,,経営戦略・業務・ITのコンサルティングまたは政策研究を主要事業とする企業,true

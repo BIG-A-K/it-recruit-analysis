@@ -2,7 +2,9 @@
 
 ## 基本方針
 
-サイトで使用する企業・業界データは、`data/` 直下の用途別CSVを正本として管理する。
+企業横断で比較する構造化データは、`data/` 直下の用途別CSVを正本として管理する。
+企業詳細ページの構成と企業固有の自由記述は、`site/src/pages/companies/<company_id>.mdx`で管理する。
+MDXの編集方法は[企業ページの編集](../content/companies.md)を参照する。
 
 企業ごとのCSVには分割せず、各CSVに全企業のデータを格納する。企業は `company_id`、業界は `industry_id`、出典は `source_id` で識別し、CSV間をこれらのIDで関連付ける。
 

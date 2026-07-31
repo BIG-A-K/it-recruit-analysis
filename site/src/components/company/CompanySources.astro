@@ -1,0 +1,37 @@
+---
+import {
+  annotationsForCompany,
+  metrics,
+  segments,
+  sourceById,
+} from "../../lib/data";
+
+interface Props {
+  companyId: string;
+}
+
+const { companyId } = Astro.props;
+const companyMetrics = metrics.filter((metric) => metric.company_id === companyId);
+const companySegments = segments.filter((segment) => segment.company_id === companyId);
+const companyAnnotations = annotationsForCompany(companyId);
+const sourceIds = [
+  ...new Set([
+    ...companyMetrics.map((metric) => metric.source_id),
+    ...companySegments.map((segment) => segment.source_id),
+    ...companyAnnotations.map((annotation) => annotation.source_id),
+  ]),
+].filter(Boolean);
+const companySources = sourceIds
+  .map(sourceById)
+  .filter((source) => source !== undefined);
+---
+
+{companySources.length > 0 && <section>
+  <div class="section-head"><h2>出典</h2><p>数値は法定開示・公式資料をもとにしています。</p></div>
+  <div class="source-list">
+    {companySources.map((source) => <a href={source.url} target="_blank" rel="noreferrer">
+      <div><strong>{source.title}</strong><span>{source.issuer}</span></div>
+      <div><span>公開 {source.published_at}</span><span>取得 {source.retrieved_at}</span></div>
+    </a>)}
+  </div>
+</section>}

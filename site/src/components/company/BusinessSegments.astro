@@ -1,0 +1,67 @@
+---
+import { profileForCompany, segments } from "../../lib/data";
+import { formatValue } from "../../lib/format";
+
+interface Props {
+  companyId: string;
+}
+
+const { companyId } = Astro.props;
+const profile = profileForCompany(companyId);
+const companySegments = segments.filter(
+  (segment) =>
+    segment.company_id === companyId && segment.availability === "reported",
+);
+const latestSegmentYear = companySegments.length
+  ? Math.max(...companySegments.map((segment) => Number(segment.fiscal_year)))
+  : undefined;
+const latestSegments = latestSegmentYear
+  ? companySegments.filter(
+      (segment) => Number(segment.fiscal_year) === latestSegmentYear,
+    )
+  : [];
+const segmentTotal = latestSegments.reduce(
+  (sum, item) => sum + Number(item.revenue || 0),
+  0,
+);
+const descriptiveSegments = segments.filter(
+  (segment) =>
+    segment.company_id === companyId && segment.availability !== "reported",
+);
+const hasFinancialSegments = latestSegments.length > 0;
+const displaySegments = hasFinancialSegments
+  ? latestSegments
+  : descriptiveSegments;
+---
+
+<section>
+  <div class="section-head">
+    <h2>事業内容</h2>
+    <p>{hasFinancialSegments ? `${latestSegmentYear}年度の報告セグメントと売上構成です。` : descriptiveSegments.length ? "事業部門・製品ラインの説明です。非上場企業は財務上のセグメント開示がないため売上構成は掲載しません。" : "事業説明を準備しています。"}</p>
+  </div>
+  {profile?.overview && <p class="business-intro">{profile.overview}</p>}
+  {displaySegments.length > 0 ? <div class="segment-cards">
+    {displaySegments.map((segment, index) => {
+      const hasRevenue = hasFinancialSegments && segment.revenue;
+      const share = hasRevenue && segmentTotal
+        ? (Number(segment.revenue) / segmentTotal) * 100
+        : 0;
+      return <article class="segment-card">
+        <div class="segment-copy">
+          <span class="segment-number">{String(index + 1).padStart(2, "0")}</span>
+          <div>
+            <h3>{segment.segment_name}</h3>
+            <p>{segment.description || "公開資料上の報告区分です。詳しい事業説明は準備中です。"}</p>
+          </div>
+        </div>
+        <div class="segment-visual">
+          {hasRevenue ? <>
+            <div class="segment-value"><strong>{formatValue(Number(segment.revenue), segment.unit)}</strong><span>売上構成比 {share.toFixed(1)}%</span></div>
+            <div class="segment-track" aria-label={`売上構成比 ${share.toFixed(1)}%`}><i style={`width:${share}%`}></i></div>
+            {segment.segment_profit && <p>{segment.profit_measure}: {formatValue(Number(segment.segment_profit), segment.unit)}</p>}
+          </> : <div class="segment-value"><strong>—</strong><span>売上非公開</span></div>}
+        </div>
+      </article>;
+    })}
+  </div> : <div class="empty-inline">セグメント別の説明と売上を準備しています。</div>}
+</section>

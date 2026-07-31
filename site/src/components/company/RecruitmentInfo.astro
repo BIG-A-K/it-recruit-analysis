@@ -1,0 +1,36 @@
+---
+import { profileForCompany } from "../../lib/data";
+
+interface Props {
+  companyId: string;
+}
+
+const { companyId } = Astro.props;
+const profile = profileForCompany(companyId);
+const jobCategories = profile?.job_categories.split("|").filter(Boolean) ?? [];
+---
+
+<section>
+  <div class="section-head">
+    <h2>採用情報</h2>
+    <p>新卒採用のみ掲載しています。募集年度により内容が変わるため公式情報も確認してください。</p>
+  </div>
+  {profile ? <div class="recruit-panel">
+    <article>
+      <span class="eyebrow">NEW GRADUATE</span>
+      <h3>新卒募集要項</h3>
+      <p>{profile.recruitment_summary}</p>
+      <div class="job-chips" aria-label="主な募集職種">
+        {jobCategories.map((job) => <span>{job}</span>)}
+      </div>
+    </article>
+    <dl>
+      <div><dt>勤務地</dt><dd>{profile.workplace}</dd></div>
+      <div><dt>初任給・待遇</dt><dd>{profile.compensation}</dd></div>
+    </dl>
+    <div class="recruit-footer">
+      <p>{profile.employment_note}</p>
+      <a class="button button-primary" href={profile.career_url} target="_blank" rel="noreferrer">公式募集要項を見る</a>
+    </div>
+  </div> : <div class="empty-inline">新卒募集要項を確認中です。</div>}
+</section>

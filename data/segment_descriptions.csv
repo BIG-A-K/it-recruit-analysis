@@ -28,3 +28,15 @@ hitachi,digital-systems-services,システムインテグレーション、ク�
 hitachi,energy,送配電網や原子力を含むエネルギー関連の製品・サービスを提供します。
 hitachi,mobility,鉄道車両・信号・保守などの鉄道システムをグローバルに提供します。
 hitachi,connective-industries,ビル設備、家電、産業機器、計測・分析、産業・流通向けソリューションを提供します。
+sakana-ai,research,"自然界の集合的知性にヒントを得た最先端研究を世界発信。AI Scientist（研究の仮説立案から論文執筆まで自律するマルチエージェント・2026年3月Nature掲載）、Darwin Gödel Machine（SWE-benchでベースライン性能を2倍以上に向上）、ShinkaEvolve、AB-MCTS（NeurIPS 2025 spotlight）など。論文公開やオープンソースで成果を還元します。"
+sakana-ai,applied,"基盤モデルの能力を複雑な現場業務につなげる事業組織。金融（与信・審査・M&A・資金調達・提案書や稟議書の文書業務）、防衛・インテリジェンス（防衛装備庁の委託研究・指揮統制の意思決定支援・サイバー・認知領域への対処）、製造へ展開。複数モデルの適材適所と複雑な推論技術・暗黙知の抽出を用いてソリューションを設計・実装します。三菱UFJ銀行・SMFG・大和証券・防衛装備庁・総務省との取組が公開されています。"
+sakana-ai,product,"Sakana Chat・Sakana Marlin・Sakana Fugu・Sakana Translate などのユーザー向けAIプロダクトと、日本向けLLM「Namazu」の開発・提供を行います。"
+sakana-ai,corporate,finance・legal・HR・operations により事業を支援する管理部門です。
+preferred-networks,chips,"AIに特化したプロセッサー MN-Core シリーズを神戸大学と共同開発。AI向け計算の省電力・高速化を実現する自社半導体事業です。"
+preferred-networks,computing,"AI向け計算基盤を自社で構築・運用し、クラウドサービス PFCP として提供。自社開発のスーパーコンピュータ MN-3 は電力効率を評価する Green500 で世界1位を3度獲得しています。"
+preferred-networks,genai,"国産大規模言語モデル PLaMo と特化型モデルをフルスクラッチで開発。商用フラッグシップ PLaMo Prime、エッジデバイス向け小規模言語モデル（SLM）、日英翻訳特化の PLaMo翻訳、金融特化 PLaMo-Fin-Prime などを提供。経産省・NEDOのGENIAC成果の一部をHugging Faceで公開しています。"
+preferred-networks,solutions,"製造・素材・化学品・ライフサイエンス・エンタメ・小売・流通・金融・公共サービス・インフラ・教育・エンタープライズの各業界向けにAIプロダクト・ソリューションを開発。ファナック（産業用ロボット）・ENEOS（プラント自動化）・中外製薬（実験自動化）・Matlantis（材料探索）などと事業共創します。"
+fixstars,performance,"AI/LLMの学習・推論高速化、GPU利用率改善、ソフトウェア最適化を体系的に追求しビジネス成果に変換する中核事業。100社以上の顧客をリピート率99%以上で支援し、自動車・HPC・金融・鉱業など多様な領域の事例があります。"
+fixstars,ai-products,"GPUサーバーに導入してAI/LLMワークロードのボトルネックを可視化・改善する Fixstars AIBooster、届いてすぐ使えるセキュアなローカルLLM環境 Fixstars AIStation、ソースコードを外部に出さない組込みAI開発環境 Fixstars Vega などを提供します。"
+fixstars,quantum,様々なマシン・ソルバーに対応する量子×最適化プラットフォーム Fixstars Amplify や、量子計算活用支援を提供します。
+fixstars,fpga-flash,"FPGAシステム開発、フラッシュメモリ向けファームウェア開発など、ハードウェアに近い専門領域の受託開発。マルチコアプロセッサ関連事業を起源とし、キオクシア・ルネサスなどが主要取引先です。"

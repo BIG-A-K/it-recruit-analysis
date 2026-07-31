@@ -1,0 +1,54 @@
+---
+import {
+  companies,
+  companyIndustries,
+  industries,
+  metrics,
+} from "../../lib/data";
+import { formatValue, latestMetric } from "../../lib/format";
+
+interface Props {
+  companyId: string;
+}
+
+const { companyId } = Astro.props;
+const company = companies.find((item) => item.company_id === companyId);
+if (!company) throw new Error(`企業が見つかりません: ${companyId}`);
+
+const relation = companyIndustries.find((item) => item.company_id === companyId);
+const industry = industries.find(
+  (item) => item.industry_id === relation?.industry_id,
+);
+const companyMetrics = metrics.filter(
+  (metric) =>
+    metric.company_id === companyId && metric.availability === "reported",
+);
+const totalFunding = latestMetric(companyMetrics, "total_funding");
+const employeeCount = latestMetric(companyMetrics, "employee_count");
+---
+
+<section class="company-overview">
+  <p class="breadcrumb">
+    <a href="/">トップ</a><span>/</span>
+    {industry && <a href={`/industries/${industry.industry_id}/`}>{industry.name}</a>}
+    <span>/</span>{company.display_name}
+  </p>
+  <div class="company-head">
+    <div>
+      <span class="eyebrow">企業研究</span>
+      <h1>{company.display_name}</h1>
+      <p>{company.legal_name}</p>
+    </div>
+    <a class="button button-outline" href={company.website_url} target="_blank" rel="noreferrer">
+      公式サイト
+    </a>
+  </div>
+  <dl class="facts facts-boxed basic-facts">
+    <div><dt>分類</dt><dd>{industry?.name || "—"}</dd></div>
+    <div><dt>正式社名</dt><dd>{company.legal_name}</dd></div>
+    <div><dt>証券コード</dt><dd>{company.securities_code || "—"}</dd></div>
+    <div><dt>EDINETコード</dt><dd>{company.edinet_code || "—"}</dd></div>
+    {employeeCount && <div><dt>従業員数</dt><dd>{formatValue(Number(employeeCount.value), employeeCount.unit, "employee_count")}{employeeCount.note ? <small>{employeeCount.note}</small> : null}</dd></div>}
+    {totalFunding && <div><dt>累計資金調達額</dt><dd>{formatValue(Number(totalFunding.value), totalFunding.unit, "total_funding")}<small>非上場ベンチャーの公式発表値</small></dd></div>}
+  </dl>
+</section>

@@ -20,9 +20,10 @@ const relatedCompanies = companiesForIndustry(industry.industry_id);
 const relatedMetrics = metricsForCompanies(
   relatedCompanies.map((company) => company.company_id),
 );
-const latestYear = Math.max(
-  ...relatedMetrics.map((metric) => Number(metric.fiscal_year)),
+const metricYears = relatedMetrics.map((metric) =>
+  Number(metric.fiscal_year),
 );
+const latestYear = metricYears.length ? Math.max(...metricYears) : undefined;
 ---
 
 <BaseLayout
@@ -40,7 +41,7 @@ const latestYear = Math.max(
       </div>
       <dl class="facts">
         <div><dt>掲載企業</dt><dd>{relatedCompanies.length}社</dd></div>
-        <div><dt>最新データ</dt><dd>{latestYear}年度</dd></div>
+        <div><dt>最新データ</dt><dd>{latestYear ? `${latestYear}年度` : "—"}</dd></div>
       </dl>
     </div>
     <p class="classification">
@@ -48,11 +49,14 @@ const latestYear = Math.max(
     </p>
   </section>
 
-  <MetricExplorer
+  {relatedMetrics.length > 0 ? <MetricExplorer
     companies={relatedCompanies}
     metrics={relatedMetrics}
     explorerId={`explorer-${industry.industry_id}`}
-  />
+  /> : <section>
+    <div class="section-head"><h2>指標を切り替えて比較する</h2></div>
+    <div class="empty-inline">この業界の企業は非上場などにより財務指標の公表がなく、横断比較はできません。各社の採用情報や事業内容は企業詳細ページをご確認ください。</div>
+  </section>}
 
   <section>
     <div class="section-head"><h2>この業界の企業</h2></div>

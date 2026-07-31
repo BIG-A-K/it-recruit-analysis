@@ -103,12 +103,40 @@ METRIC_RULES = (
         Decimal("100"),
     ),
     MetricRule(
+        "current_assets",
+        "jppfs_cor:CurrentAssets",
+        "consolidated",
+        "",
+        "JPY",
+    ),
+    MetricRule(
+        "current_liabilities",
+        "jppfs_cor:CurrentLiabilities",
+        "consolidated",
+        "",
+        "JPY",
+    ),
+    MetricRule(
+        "current_assets",
+        "jpigp_cor:CurrentAssetsIFRS",
+        "consolidated",
+        "IFRS",
+        "JPY",
+    ),
+    MetricRule(
+        "current_liabilities",
+        "jpigp_cor:TotalCurrentLiabilitiesIFRS",
+        "consolidated",
+        "IFRS",
+        "JPY",
+    ),
+    MetricRule(
         "revenue",
         "jpcrp_cor:NetSalesSummaryOfBusinessResults",
         "consolidated",
         "JGAAP",
         "JPY",
-        company_ids=frozenset({"cyberagent", "tis"}),
+        company_ids=frozenset({"cyberagent", "tis", "mixi", "gree", "obic"}),
     ),
     MetricRule(
         "operating_profit",
@@ -116,7 +144,7 @@ METRIC_RULES = (
         "consolidated",
         "JGAAP",
         "JPY",
-        company_ids=frozenset({"cyberagent", "tis"}),
+        company_ids=frozenset({"cyberagent", "tis", "mixi", "gree", "obic"}),
     ),
     MetricRule(
         "operating_cf",
@@ -124,7 +152,7 @@ METRIC_RULES = (
         "consolidated",
         "JGAAP",
         "JPY",
-        company_ids=frozenset({"cyberagent", "tis"}),
+        company_ids=frozenset({"cyberagent", "tis", "mixi", "gree", "obic"}),
     ),
     MetricRule(
         "investing_cf",
@@ -132,7 +160,7 @@ METRIC_RULES = (
         "consolidated",
         "JGAAP",
         "JPY",
-        company_ids=frozenset({"cyberagent", "tis"}),
+        company_ids=frozenset({"cyberagent", "tis", "mixi", "gree", "obic"}),
     ),
     MetricRule(
         "financing_cf",
@@ -140,7 +168,7 @@ METRIC_RULES = (
         "consolidated",
         "JGAAP",
         "JPY",
-        company_ids=frozenset({"cyberagent", "tis"}),
+        company_ids=frozenset({"cyberagent", "tis", "mixi", "gree", "obic"}),
     ),
     MetricRule(
         "equity_ratio",
@@ -149,7 +177,7 @@ METRIC_RULES = (
         "JGAAP",
         "percent",
         Decimal("100"),
-        frozenset({"cyberagent", "tis"}),
+        frozenset({"cyberagent", "tis", "mixi", "gree", "obic"}),
     ),
 )
 
@@ -180,6 +208,10 @@ COMPANY_SEGMENTS = {
                 "人材派遣事業",
             ),
             "MarketingMatchingTechnologiesReportableSegmentMember": (
+                "marketing-matching-technologies",
+                "マーケティング・マッチング・テクノロジー事業",
+            ),
+            "MatchingAndSolutionsReportableSegmentMember": (
                 "marketing-matching-technologies",
                 "マーケティング・マッチング・テクノロジー事業",
             ),

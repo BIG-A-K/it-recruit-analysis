@@ -141,6 +141,8 @@ CSVには物理的な型がないため、本書では各列の論理型を次�
 | `current_assets` | 流動資産 | `JPY` | `consolidated` |
 | `current_liabilities` | 流動負債 | `JPY` | `consolidated` |
 | `quick_assets` | 当座資産。構成科目を `note` に記録する | `JPY` | `consolidated` |
+| `total_funding` | 累計資金調達額。非上場ベンチャーが公式に発表した資金調達の累計。公表値のみ登録し推定値は扱わない | `JPY` | `<company_id>` |
+| `employee_count` | 従業員数。連結・単体の別を `scope` と `note` で明示する | `persons` | `consolidated` または `<company_id>` |
 
 新しい指標は、既存キーの意味を変更せず新しい `metric_key` として追加する。企業固有の類似指標を既存キーへ無理に対応させない。
 
@@ -203,7 +205,8 @@ CSVには物理的な型がないため、本書では各列の論理型を次�
 
 ## `company_profiles.csv`
 
-企業詳細ページで使用する会社概要と就活生向けの読み物を管理する。財務数値は重複保存せず `metrics.csv` と `segments.csv` を使う。
+企業詳細ページの定型セクションで使用する会社概要と採用情報を管理する。
+企業固有の自由記述はMDXへ置き、財務数値は重複保存せず `metrics.csv` と `segments.csv` を使う。
 
 主キー: `company_id`
 

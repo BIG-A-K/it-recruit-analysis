@@ -26,3 +26,13 @@ edinet-s100vzkl,statutory_filing,有価証券報告書－第60期(2024/04/01－2
 edinet-s100w24k,statutory_filing,有価証券報告書－第17期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100W24K,S100W24K,2025-06-23,2026-07-31,ＴＩＳ株式会社
 edinet-s100w2vl,statutory_filing,有価証券報告書－第81期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100W2VL,S100W2VL,2025-06-24,2026-07-31,ＢＩＰＲＯＧＹ株式会社
 edinet-s100tn7r,statutory_filing,有価証券報告書－第40期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TN7R,S100TN7R,2024-06-20,2026-07-31,ＫＤＤＩ株式会社
+sakana-ai-corporate,corporate,Sakana AI 企業情報・採用情報,https://sakana.ai/company-info/,,,2026-07-31,Sakana AI株式会社
+preferred-networks-corporate,corporate,Preferred Networks 企業情報・採用情報,https://www.preferred.jp/ja/company/,,,2026-07-31,株式会社Preferred Networks
+fixstars-corporate,corporate,フィックスターズ 会社概要・新卒採用,https://www.fixstars.com/ja/company/overview,,,2026-07-31,株式会社フィックスターズ
+sakana-ai-series-b,financial_report,Sakana AI Series B 資金調達発表（累計約660億円）,https://sakana.ai/series-b/,,2025-11-17,2026-07-31,Sakana AI株式会社
+sakana-ai-applied-careers,recruitment,Sakana AI Applied Team 採用情報,https://sakana.ai/applied-careers/,,,2026-07-31,Sakana AI株式会社
+edinet-s100xsg3,statutory_filing,有価証券報告書－第35期(2025/01/01－2025/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100XSG3,S100XSG3,2026-03-23,2026-07-31,ＧＭＯインターネットグループ株式会社
+edinet-s100wqwx,statutory_filing,有価証券報告書－第21期(2024/07/01－2025/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100WQWX,S100WQWX,2025-09-26,2026-07-31,グリーホールディングス株式会社
+edinet-s100ye1d,statutory_filing,有価証券報告書－第27期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YE1D,S100YE1D,2026-06-19,2026-07-31,株式会社ＭＩＸＩ
+edinet-s100ybgn,statutory_filing,有価証券報告書－第29期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YBGN,S100YBGN,2026-06-17,2026-07-31,株式会社カカクコム
+edinet-s100ygbs,statutory_filing,有価証券報告書－第59期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YGBS,S100YGBS,2026-06-23,2026-07-31,株式会社オービック

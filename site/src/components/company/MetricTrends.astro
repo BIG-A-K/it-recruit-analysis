@@ -1,0 +1,24 @@
+---
+import MetricExplorer from "../MetricExplorer.astro";
+import { annotationsForCompany, companies } from "../../lib/data";
+import { financialMetricsForCompany } from "../../lib/company-financials";
+
+interface Props {
+  companyId: string;
+}
+
+const { companyId } = Astro.props;
+const company = companies.find((item) => item.company_id === companyId);
+if (!company) throw new Error(`企業が見つかりません: ${companyId}`);
+
+const companyAnnotations = annotationsForCompany(companyId);
+const financialMetrics = financialMetricsForCompany(companyId);
+---
+
+{financialMetrics.length > 0 && <MetricExplorer
+  companies={[company]}
+  metrics={financialMetrics}
+  explorerId={`company-explorer-${companyId}`}
+  initialMetricKey="revenue"
+  annotations={companyAnnotations}
+/>}

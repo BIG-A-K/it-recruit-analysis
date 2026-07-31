@@ -1,0 +1,42 @@
+---
+import { metrics } from "../../lib/data";
+import { formatValue, latestMetric } from "../../lib/format";
+
+interface Props {
+  companyId: string;
+}
+
+const { companyId } = Astro.props;
+const healthKeys = ["current_assets", "current_liabilities", "quick_assets"];
+const healthMetrics = metrics.filter(
+  (metric) =>
+    metric.company_id === companyId &&
+    metric.availability === "reported" &&
+    healthKeys.includes(metric.metric_key),
+);
+const currentAssets = latestMetric(healthMetrics, "current_assets");
+const currentLiabilities = latestMetric(healthMetrics, "current_liabilities");
+const quickAssets = latestMetric(healthMetrics, "quick_assets");
+const healthYear = healthMetrics.length
+  ? Math.max(...healthMetrics.map((metric) => Number(metric.fiscal_year)))
+  : undefined;
+const currentRatio = currentAssets && currentLiabilities
+  ? (Number(currentAssets.value) / Number(currentLiabilities.value)) * 100
+  : undefined;
+const quickRatio = quickAssets && currentLiabilities
+  ? (Number(quickAssets.value) / Number(currentLiabilities.value)) * 100
+  : undefined;
+---
+
+<section>
+  <div class="section-head">
+    <h2>企業健全性指標</h2>
+    <p>{healthYear ? `${healthYear}年度・連結の流動性に関する指標です。` : "流動資産・流動負債を取得できた企業から掲載します。"}</p>
+  </div>
+  {healthMetrics.length > 0 ? <dl class="health-grid">
+    <div><dt>流動資産</dt><dd>{currentAssets ? formatValue(Number(currentAssets.value), currentAssets.unit) : "—"}</dd>{currentRatio !== undefined && <small>流動比率 {currentRatio.toFixed(1)}%</small>}</div>
+    <div><dt>流動負債</dt><dd>{currentLiabilities ? formatValue(Number(currentLiabilities.value), currentLiabilities.unit) : "—"}</dd><small>1年以内に支払期限を迎える負債</small></div>
+    <div><dt>当座資産</dt><dd>{quickAssets ? formatValue(Number(quickAssets.value), quickAssets.unit) : "—"}</dd>{quickRatio !== undefined ? <small>当座比率 {quickRatio.toFixed(1)}%</small> : <small>データがある場合のみ表示</small>}</div>
+  </dl> : <div class="empty-inline">この企業の流動性指標は準備中です。</div>}
+  {healthMetrics.some((metric) => metric.note) && <p class="section-note">金融事業を含む企業など、資産・負債の構成が一般的な事業会社と異なる場合があります。</p>}
+</section>

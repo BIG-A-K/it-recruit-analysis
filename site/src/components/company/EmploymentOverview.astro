@@ -1,0 +1,35 @@
+---
+import { metrics, profileForCompany } from "../../lib/data";
+import { formatValue, latestMetric } from "../../lib/format";
+
+interface Props {
+  companyId: string;
+}
+
+const { companyId } = Astro.props;
+const profile = profileForCompany(companyId);
+const companyMetrics = metrics.filter(
+  (metric) =>
+    metric.company_id === companyId && metric.availability === "reported",
+);
+const salary = latestMetric(companyMetrics, "average_annual_salary");
+const tenure = latestMetric(companyMetrics, "average_tenure");
+const age = latestMetric(companyMetrics, "average_age");
+const employmentYear = [salary, tenure, age]
+  .filter((row) => row !== undefined)
+  .reduce((maximum, row) => Math.max(maximum, Number(row?.fiscal_year)), 0);
+---
+
+<section>
+  <div class="section-head">
+    <h2>IR・雇用情報</h2>
+    <p>{employmentYear ? `${employmentYear}年度の提出会社単体の公表値を中心に掲載しています。` : "公表値を確認し、順次掲載します。"}</p>
+  </div>
+  <dl class="employment-grid">
+    <div class="employment-tile featured"><dt>平均年間給与</dt><dd>{salary ? formatValue(Number(salary.value), salary.unit, salary.metric_key) : "—"}</dd><small>賞与・基準外賃金を含む場合があります</small></div>
+    <div class="employment-tile"><dt>平均勤続年数</dt><dd>{tenure ? formatValue(Number(tenure.value), tenure.unit, tenure.metric_key) : "—"}</dd></div>
+    <div class="employment-tile"><dt>平均年齢</dt><dd>{age ? formatValue(Number(age.value), age.unit, age.metric_key) : "—"}</dd></div>
+    <div class="employment-tile"><dt>主な勤務地</dt><dd class="text-value">{profile?.workplace || "確認中"}</dd></div>
+  </dl>
+  <p class="section-note">平均値はグループ全体や職種別の給与・働き方を示すものではありません。</p>
+</section>
