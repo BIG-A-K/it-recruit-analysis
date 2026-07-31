@@ -11,7 +11,6 @@ layout: ../layouts/MarkdownLayout.astro
 - [魔法のスプレッドシート](https://butter-lamb-af5.notion.site/120a1618c45480e2b96afe16f98d49cd?v=120a1618c4548156879e000c46d1b39b)：理系のインターン情報をまとめたサイト
 
 ## 情報源一覧
-
 ### IR情報
 
 Investor Relations（投資家向け）情報は、主に有価証券報告書（有報）が代表的です。決算の説明、中長期事業計画、事業セグメントごとの動向も掲載されることがあります。
