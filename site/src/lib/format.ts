@@ -9,6 +9,9 @@ export const metricLabels: Record<string, string> = {
   operating_cf: "営業CF",
   investing_cf: "投資CF",
   financing_cf: "財務CF",
+  current_assets: "流動資産",
+  current_liabilities: "流動負債",
+  quick_assets: "当座資産",
 };
 
 export const metricDisplayOrder = Object.keys(metricLabels);

@@ -1,20 +1,30 @@
 ---
-import type { Company, Metric } from "../lib/data";
+import {
+  annotationTargetsMetric,
+  sourceById,
+  type Company,
+  type CompanyAnnotation,
+  type Metric,
+} from "../lib/data";
 import { metricDisplayOrder, metricLabels } from "../lib/format";
 
 interface Props {
   companies: Company[];
   metrics: Metric[];
   explorerId: string;
+  initialMetricKey?: string;
+  annotations?: CompanyAnnotation[];
 }
 
-const { companies, metrics, explorerId } = Astro.props;
+const { companies, metrics, explorerId, initialMetricKey, annotations = [] } = Astro.props;
 const availableKeySet = new Set(metrics.map((metric) => metric.metric_key));
 const availableKeys = [
   ...metricDisplayOrder.filter((key) => availableKeySet.has(key)),
   ...[...availableKeySet].filter((key) => !metricDisplayOrder.includes(key)),
 ];
-const initialKey = availableKeys.includes("average_annual_salary")
+const initialKey = initialMetricKey && availableKeys.includes(initialMetricKey)
+  ? initialMetricKey
+  : availableKeys.includes("average_annual_salary")
   ? "average_annual_salary"
   : availableKeys[0];
 const years = [...new Set(metrics.map((metric) => metric.fiscal_year))].sort(
@@ -29,6 +39,17 @@ const payload = {
   })),
   metrics,
   labels: metricLabels,
+  annotations: annotations
+    .filter((annotation) => annotation.section_key === "financials")
+    .map((annotation) => ({
+      ...annotation,
+      metric_keys: availableKeys.filter((key) =>
+        annotationTargetsMetric(annotation, key),
+      ),
+      source_url: annotation.source_id
+        ? sourceById(annotation.source_id)?.url ?? ""
+        : "",
+    })),
 };
 ---
 
@@ -37,7 +58,7 @@ const payload = {
     <h2>{showStats ? "指標を切り替えて比較する" : "指標の推移"}</h2>
   </div>
 
-  <div class="explorer-controls">
+  <div class:list={["explorer-controls", { "explorer-controls-solo": !showStats }]}>
     <label>
       <span>指標</span>
       <select data-metric>
@@ -50,20 +71,20 @@ const payload = {
         }
       </select>
     </label>
-    <label>
+    {showStats && <label>
       <span>年度</span>
       <select data-year>
         {years.map((year, index) => <option value={year} selected={index === 0}>{year}年度</option>)}
       </select>
-    </label>
-    <fieldset>
+    </label>}
+    {showStats && <fieldset>
       <legend>表示</legend>
       <div class="segmented-control">
         <label><input type="radio" name={`${explorerId}-view`} value="line" checked />推移</label>
         <label><input type="radio" name={`${explorerId}-view`} value="bar" />比較</label>
         <label><input type="radio" name={`${explorerId}-view`} value="table" />表</label>
       </div>
-    </fieldset>
+    </fieldset>}
   </div>
 
   <div class:list={["explorer-body", { "explorer-body-solo": !showStats }]}>
@@ -82,7 +103,12 @@ const payload = {
       )
     }
   </div>
-  <p class="chart-note">同じ年度・単位・対象範囲の公表値だけを比較しています。ネットCFは営業CF・投資CF・財務CFの合計です。</p>
+  <p class="chart-note">
+    {showStats
+      ? "同じ年度・単位・対象範囲の公表値だけを比較しています。ネットCFは営業CF・投資CF・財務CFの合計です。"
+      : "年度ごとの公表値の推移です。ネットCFは営業CF・投資CF・財務CFの合計です。"}
+  </p>
+  <div class="chart-annotations" data-annotations aria-live="polite"></div>
 </section>
 
 <script is:inline define:vars={{ payload, explorerId }}>
@@ -107,6 +133,11 @@ const payload = {
         : `${value.toFixed(1)}年`;
     }
     return value.toLocaleString("ja-JP");
+  };
+
+  const formatExactValue = (value, unit, metricKey) => {
+    if (unit === "JPY") return `${value.toLocaleString("ja-JP")}円`;
+    return formatValue(value, unit, metricKey);
   };
 
   const median = (values) => {
@@ -143,9 +174,10 @@ const payload = {
       chart.innerHTML = '<p class="empty-state">表示できるデータがありません。</p>';
       return;
     }
-    const minimum = Math.min(...values);
-    const maximum = Math.max(...values);
-    const range = maximum - minimum || Math.abs(maximum) || 1;
+    const minimum = Math.min(0, ...values);
+    let maximum = Math.max(0, ...values);
+    if (maximum === minimum) maximum = minimum + 1;
+    const range = maximum - minimum;
     const width = 760;
     const height = 330;
     const left = 84;
@@ -157,11 +189,14 @@ const payload = {
     const y = (value) =>
       top + (1 - (value - minimum) / range) * (height - top - bottom);
 
-    const grid = [0, 0.5, 1].map((ratio) => {
-      const yy = top + ratio * (height - top - bottom);
-      const value = maximum - ratio * range;
+    const tickValues = [maximum, maximum - range / 2, minimum]
+      .filter((value) => Math.abs(value) > range * 1e-9);
+    const grid = tickValues.map((value) => {
+      const yy = y(value);
       return `<g><line x1="${left}" y1="${yy}" x2="${width - right}" y2="${yy}" stroke="#e4e8ee" stroke-dasharray="3 5"/><text x="${left - 12}" y="${yy + 4}" text-anchor="end">${escapeHtml(formatValue(value, rows[0].unit, metricKey, true))}</text></g>`;
     }).join("");
+    const zeroY = y(0);
+    const zeroLine = `<g class="zero-axis"><line x1="${left}" y1="${zeroY}" x2="${width - right}" y2="${zeroY}"/><text x="${left - 12}" y="${zeroY + 4}" text-anchor="end">0</text></g>`;
 
     const series = payload.companies.map((company, index) => {
       const companyRows = rows
@@ -172,7 +207,9 @@ const payload = {
         .map((row) => `${x(Number(row.fiscal_year))},${y(Number(row.value))}`)
         .join(" ");
       const dots = companyRows.map((row) => `
-        <circle cx="${x(Number(row.fiscal_year))}" cy="${y(Number(row.value))}" r="4.5" fill="${colors[index % colors.length]}">
+        <circle class="chart-point" cx="${x(Number(row.fiscal_year))}" cy="${y(Number(row.value))}" r="4.5" fill="${colors[index % colors.length]}" tabindex="0"
+          data-company="${escapeHtml(company.name)}" data-year="${escapeHtml(row.fiscal_year)}" data-value="${escapeHtml(formatExactValue(Number(row.value), row.unit, metricKey))}"
+          aria-label="${escapeHtml(company.name)} ${escapeHtml(row.fiscal_year)}年度 ${escapeHtml(formatExactValue(Number(row.value), row.unit, metricKey))}">
           <title>${escapeHtml(company.name)} ${row.fiscal_year}: ${escapeHtml(formatValue(Number(row.value), row.unit, metricKey))}</title>
         </circle>`).join("");
       return `<polyline points="${points}" fill="none" stroke="${colors[index % colors.length]}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>${dots}`;
@@ -190,8 +227,36 @@ const payload = {
     chart.innerHTML = `
       <div class="chart-title"><strong>${escapeHtml(payload.labels[metricKey] || metricKey)}の推移</strong><div class="chart-legend">${legend}</div></div>
       <svg class="line-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeHtml(payload.labels[metricKey] || metricKey)}の年度別推移">
-        ${grid}${series}${yearLabels}
-      </svg>`;
+        ${grid}${zeroLine}${series}${yearLabels}
+      </svg>
+      <div class="chart-tooltip" data-chart-tooltip role="status"></div>`;
+
+    const tooltip = chart.querySelector("[data-chart-tooltip]");
+    const showTooltip = (point, clientX, clientY) => {
+      const chartRect = chart.getBoundingClientRect();
+      const pointRect = point.getBoundingClientRect();
+      const xPosition = clientX ?? pointRect.left + pointRect.width / 2;
+      const yPosition = clientY ?? pointRect.top;
+      tooltip.innerHTML = `<strong>${escapeHtml(point.dataset.company)}・${escapeHtml(point.dataset.year)}年度</strong><span>${escapeHtml(point.dataset.value)}</span>`;
+      const halfWidth = tooltip.offsetWidth / 2;
+      const relativeX = xPosition - chartRect.left;
+      const clampedX = Math.min(
+        Math.max(relativeX, halfWidth + 4),
+        chartRect.width - halfWidth - 4,
+      );
+      tooltip.style.left = `${clampedX}px`;
+      tooltip.style.top = `${yPosition - chartRect.top}px`;
+      tooltip.classList.add("is-visible");
+    };
+    const hideTooltip = () => tooltip.classList.remove("is-visible");
+
+    chart.querySelectorAll(".chart-point").forEach((point) => {
+      point.addEventListener("mouseenter", (event) => showTooltip(point, event.clientX, event.clientY));
+      point.addEventListener("mousemove", (event) => showTooltip(point, event.clientX, event.clientY));
+      point.addEventListener("mouseleave", hideTooltip);
+      point.addEventListener("focus", () => showTooltip(point));
+      point.addEventListener("blur", hideTooltip);
+    });
   }
 
   function renderBar(rows, metricKey, year) {
@@ -244,16 +309,30 @@ const payload = {
       `集計対象 ${values.length}社 / 掲載 ${payload.companies.length}社`;
   }
 
+  function updateAnnotations(metricKey, rows) {
+    const container = root.querySelector("[data-annotations]");
+    const rowYears = new Set(rows.map((row) => row.fiscal_year));
+    const applicable = payload.annotations.filter(
+      (annotation) =>
+        annotation.metric_keys.includes(metricKey) &&
+        (!annotation.fiscal_year || rowYears.has(annotation.fiscal_year)),
+    );
+    container.innerHTML = applicable.length
+      ? `<ul>${applicable.map((annotation) => `<li>${escapeHtml(annotation.text)}${annotation.source_url ? ` <a href="${escapeHtml(annotation.source_url)}" target="_blank" rel="noreferrer">出典</a>` : ""}</li>`).join("")}</ul>`
+      : "";
+  }
+
   function update() {
     const metricKey = root.querySelector("[data-metric]").value;
-    const year = root.querySelector("[data-year]").value;
-    const view = root.querySelector('input[type="radio"]:checked').value;
+    const year = root.querySelector("[data-year]")?.value || payload.metrics[0]?.fiscal_year || "";
+    const view = root.querySelector('input[type="radio"]:checked')?.value || "line";
     const rows = payload.metrics.filter((row) => row.metric_key === metricKey);
     const selected = rows.filter((row) => row.fiscal_year === year);
     const values = selected.map((row) => Number(row.value));
     const unit = selected[0]?.unit || rows[0]?.unit || "";
 
     updateStats(values, unit, metricKey, year);
+    updateAnnotations(metricKey, rows);
 
     if (view === "line") renderLine(rows, metricKey);
     if (view === "bar") renderBar(rows, metricKey, year);

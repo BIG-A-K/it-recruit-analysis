@@ -69,6 +69,42 @@ export type Recruitment = {
   note: string;
 };
 
+export type CompanyProfile = {
+  company_id: string;
+  overview: string;
+  career_url: string;
+  recruitment_summary: string;
+  job_categories: string;
+  workplace: string;
+  compensation: string;
+  employment_note: string;
+  updated_at: string;
+};
+
+export type CompanyMessage = {
+  company_id: string;
+  message: string;
+  source_label: string;
+};
+
+export type CompanyAnnotation = {
+  annotation_id: string;
+  company_id: string;
+  section_key: string;
+  target_kind: "section" | "metric_group" | "metric";
+  target_key: string;
+  fiscal_year: string;
+  text: string;
+  source_id: string;
+  updated_at: string;
+};
+
+export type SegmentDescription = {
+  company_id: string;
+  segment_id: string;
+  description: string;
+};
+
 export type Source = {
   source_id: string;
   source_type: string;
@@ -161,8 +197,26 @@ export const industries = loadCsv<Industry>("industries.csv").filter(
 export const companyIndustries =
   loadCsv<CompanyIndustry>("company_industries.csv");
 export const metrics = withNetCashFlow(loadCsv<Metric>("metrics.csv"));
-export const segments = loadCsv<Segment>("segments.csv");
+export const segmentDescriptions = loadCsv<SegmentDescription>(
+  "segment_descriptions.csv",
+);
+export const segments = loadCsv<Segment>("segments.csv").map((segment) => ({
+  ...segment,
+  description:
+    segment.description ||
+    segmentDescriptions.find(
+      (item) =>
+        item.company_id === segment.company_id &&
+        item.segment_id === segment.segment_id,
+    )?.description ||
+    "",
+}));
 export const recruitment = loadCsv<Recruitment>("recruitment.csv");
+export const companyProfiles = loadCsv<CompanyProfile>("company_profiles.csv");
+export const companyMessages = loadCsv<CompanyMessage>("company_messages.csv");
+export const companyAnnotations = loadCsv<CompanyAnnotation>(
+  "company_annotations.csv",
+);
 export const sources = loadCsv<Source>("sources.csv");
 
 export function companiesForIndustry(industryId: string): Company[] {
@@ -184,4 +238,37 @@ export function metricsForCompanies(companyIds: string[]): Metric[] {
 
 export function sourceById(sourceId: string): Source | undefined {
   return sources.find((source) => source.source_id === sourceId);
+}
+
+export function profileForCompany(
+  companyId: string,
+): CompanyProfile | undefined {
+  return companyProfiles.find((profile) => profile.company_id === companyId);
+}
+
+export function messageForCompany(
+  companyId: string,
+): CompanyMessage | undefined {
+  return companyMessages.find((message) => message.company_id === companyId);
+}
+
+const metricGroups: Record<string, string[]> = {
+  cash_flow: ["net_cf", "operating_cf", "investing_cf", "financing_cf"],
+};
+
+export function annotationsForCompany(companyId: string): CompanyAnnotation[] {
+  return companyAnnotations.filter(
+    (annotation) => annotation.company_id === companyId,
+  );
+}
+
+export function annotationTargetsMetric(
+  annotation: CompanyAnnotation,
+  metricKey: string,
+): boolean {
+  if (annotation.target_kind === "section") return true;
+  if (annotation.target_kind === "metric") {
+    return annotation.target_key === metricKey;
+  }
+  return metricGroups[annotation.target_key]?.includes(metricKey) ?? false;
 }

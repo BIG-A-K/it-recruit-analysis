@@ -1,0 +1,88 @@
+---
+import {
+  annotationTargetsMetric,
+  sourceById,
+  type CompanyAnnotation,
+  type Metric,
+} from "../lib/data";
+import { formatValue, metricLabels } from "../lib/format";
+
+interface Props {
+  metrics: Metric[];
+  metricKeys: string[];
+  annotations?: CompanyAnnotation[];
+  maxYears?: number;
+}
+
+const { metrics, metricKeys, annotations = [], maxYears = 5 } = Astro.props;
+const availableKeys = metricKeys.filter((key) =>
+  metrics.some((metric) => metric.metric_key === key),
+);
+const years = [...new Set(
+  metrics
+    .filter((metric) => availableKeys.includes(metric.metric_key))
+    .map((metric) => metric.fiscal_year),
+)]
+  .sort((a, b) => Number(b) - Number(a))
+  .slice(0, maxYears);
+const visibleAnnotations = annotations.filter(
+  (annotation) =>
+    annotation.section_key === "financials" &&
+    availableKeys.some((key) => annotationTargetsMetric(annotation, key)) &&
+    (!annotation.fiscal_year || years.includes(annotation.fiscal_year)),
+);
+const annotationNumber = new Map(
+  visibleAnnotations.map((annotation, index) => [annotation.annotation_id, index + 1]),
+);
+const markersFor = (metricKey: string, fiscalYear = "") =>
+  visibleAnnotations.filter(
+    (annotation) =>
+      annotationTargetsMetric(annotation, metricKey) &&
+      (fiscalYear
+        ? annotation.fiscal_year === fiscalYear
+        : !annotation.fiscal_year),
+  );
+---
+
+{availableKeys.length > 0 && <>
+  <div class="table-scroll financial-history">
+    <table class="data-table">
+      <thead>
+        <tr><th>指標</th>{years.map((year) => <th>{year}年度</th>)}</tr>
+      </thead>
+      <tbody>
+        {availableKeys.map((key) => <tr>
+          <th>
+            {metricLabels[key] ?? key}
+            {markersFor(key).map((annotation) =>
+              <sup class="annotation-marker">※{annotationNumber.get(annotation.annotation_id)}</sup>
+            )}
+          </th>
+          {years.map((year) => {
+            const row = metrics.find(
+              (metric) => metric.metric_key === key && metric.fiscal_year === year,
+            );
+            return <td>
+              {row ? formatValue(Number(row.value), row.unit, key) : "—"}
+              {markersFor(key, year).map((annotation) =>
+                <sup class="annotation-marker">※{annotationNumber.get(annotation.annotation_id)}</sup>
+              )}
+            </td>;
+          })}
+        </tr>)}
+      </tbody>
+    </table>
+  </div>
+  {visibleAnnotations.length > 0 && <ol class="annotation-list" aria-label="財務指標の注記">
+    {visibleAnnotations.map((annotation) => {
+      const source = annotation.source_id ? sourceById(annotation.source_id) : undefined;
+      return <li>
+        <span>※{annotationNumber.get(annotation.annotation_id)}</span>
+        <p>
+          {annotation.text}
+          {source && <> <a href={source.url} target="_blank" rel="noreferrer">出典</a></>}
+        </p>
+      </li>;
+    })}
+  </ol>}
+</>}
