@@ -7,10 +7,10 @@ interface Props {
 }
 
 const {
-  title = "Career Atlas",
+  title = "情報系の学生のための企業分析サイト",
   description = "IT業界の企業を、給与・財務・事業構成の公表値で比較できる就活向けサイト",
 } = Astro.props;
-const fullTitle = title === "Career Atlas" ? title : `${title} | Career Atlas`;
+const fullTitle = title === "情報系の学生のための企業分析サイト" ? title : `${title} | 情報系の学生のための企業分析サイト`;
 const pathname = Astro.url.pathname;
 const isHome = pathname === "/";
 const isIndustry = pathname.startsWith("/industries/") || pathname.startsWith("/companies/");
@@ -24,16 +24,16 @@ const isGuide = pathname.startsWith("/guide/");
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
     <title>{fullTitle}</title>
   </head>
   <body>
     <div class="app-shell">
       <aside class="site-sidebar">
         <a class="brand" href="/">
-          <span class="brand-mark" aria-hidden="true">CA</span>
-          Career Atlas
+          <img class="brand-icon" src="/icon.svg"  alt="情報系の学生のための企業分析サイト" />
         </a>
-
         <nav class="sidebar-nav" aria-label="メインナビゲーション">
           <a class:list={{ active: isHome }} href="/">ホーム</a>
           <a class:list={{ active: isIndustry }} href="/industries/">業界一覧</a>
