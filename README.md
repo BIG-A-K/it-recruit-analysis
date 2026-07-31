@@ -241,3 +241,32 @@ uv run edinet-normalize recruit-holdings S100YDHL \
 ```
 
 変換結果は `data/metrics.csv`、`data/segments.csv`、`data/sources.csv` に企業IDと出典IDで関連付けて保存されます。同じ文書を再実行しても同じキーの行が更新され、重複行は作りません。
+
+## R2への同期
+
+`data/*.csv` をCloudflare R2へアップロードします。中身はAWS CLIの `aws s3 sync` で、認証情報はリポジトリ直下の `.env` から読み込みます。AWS CLI v2が必要です。
+
+```dotenv
+R2_ACCESS_KEY_ID=アクセスキーID
+R2_SECRET_ACCESS_KEY=シークレットアクセスキー
+R2_ENDPOINT=https://<ACCOUNT_ID>.r2.cloudflarestorage.com
+R2_BUCKET_NAME=it-recruit
+```
+
+まず何が転送されるかを確認します。
+
+```bash
+./scripts/sync-r2.sh --dry-run
+```
+
+問題なければ同期します。
+
+```bash
+./scripts/sync-r2.sh
+```
+
+- 転送先は既定で `s3://<バケット>/data/`。`R2_PREFIX` 環境変数で変更できます
+- サイズと更新時刻が変わっていないファイルは転送しません（`aws s3 sync` の既定動作）
+- `data/raw/` のEDINET原本は再取得できるため既定では対象外です。含める場合は `--include-raw`
+- ローカルから削除したCSVをR2からも消す場合は `--delete`。先に `--dry-run --delete` で対象を確認してください
+- `--` 以降はそのまま `aws s3 sync` へ渡ります（例: `./scripts/sync-r2.sh -- --exclude "metrics.csv"`）

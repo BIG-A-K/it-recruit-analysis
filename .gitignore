@@ -3,7 +3,7 @@
 __pycache__/
 .pytest_cache/
 *.pyc
-
+gomi/
 # EDINETから再取得できる原本
 data/raw/
 
