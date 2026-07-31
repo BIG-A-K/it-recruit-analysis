@@ -7,7 +7,6 @@ originalPublishedAt: 2026/07/29
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyMessage from "../../components/company/CompanyMessage.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
-import RecruitmentInfo from "../../components/company/RecruitmentInfo.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
@@ -51,8 +50,6 @@ import CompanySources from "../../components/company/CompanySources.astro";
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
-
-<RecruitmentInfo companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
@@ -105,7 +102,9 @@ import CompanySources from "../../components/company/CompanySources.astro";
 <HealthMetrics companyId={frontmatter.companyId} />
 
 <FinancialHistory companyId={frontmatter.companyId} />
-
+:::warn
+単純に営業CFを見ると通年で赤字であるが、これはメルカリがフリマ会社だけでなく、メルカード・後払い・スマートマネーといったものを扱う金融会社でもあるため。 単純に言えば、メルカリは現金を得るのではなく金融資産(債権)を取得している。よって通常のキャッシュ・フローの味方は適当でない。
+:::
 <MetricTrends companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />

@@ -57,7 +57,21 @@ li { list-style: none; }
 .sidebar-nav a { padding: 9px 12px; border-radius: 6px; color: #aebbcd; font-size: 14px; }
 .sidebar-nav a:hover { color: white; background: rgba(255, 255, 255, .07); }
 .sidebar-nav a.active { color: white; background: var(--navy-2); }
-.sidebar-meta { margin-top: auto; padding-inline: 12px; color: #7b8b9f; font-size: 12px; }
+.sidebar-footer { display: grid; gap: 12px; margin-top: auto; }
+.theme-toggle {
+  width: 100%; display: flex; align-items: center; gap: 9px;
+  padding: 8px 10px; color: #aebbcd; background: transparent;
+  border: 1px solid rgba(255, 255, 255, .12); border-radius: 7px;
+  font: inherit; font-size: 12px; cursor: pointer;
+  transition: color .15s ease, background .15s ease, border-color .15s ease;
+}
+.theme-toggle:hover { color: white; background: rgba(255, 255, 255, .07); border-color: rgba(255, 255, 255, .2); }
+.theme-toggle:focus-visible { outline: 2px solid #60a5fa; outline-offset: 2px; }
+.theme-icon { flex: none; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.theme-icon-sun { display: none; }
+[data-theme="dark"] .theme-icon-moon { display: none; }
+[data-theme="dark"] .theme-icon-sun { display: block; }
+.sidebar-meta { padding-inline: 12px; color: #7b8b9f; font-size: 12px; }
 
 .app-main { min-width: 0; display: flex; flex-direction: column; }
 .wrap { width: min(100% - 56px, var(--max)); margin-inline: auto; }
@@ -108,14 +122,14 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .hero .button { margin-top: 22px; }
 .hero .facts { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--line); }
 
-.industry-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.industry-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .industry-grid .card h3 { margin-bottom: 6px; }
 .industry-grid .card p { margin-top: 10px; color: var(--muted); font-size: 14px; }
 .card-count { display: block; color: var(--muted); font-size: 13px; }
 .card-soon { opacity: .7; background: transparent; border-style: dashed; }
 
 .steps { display: grid; gap: 14px; }
-.steps li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; }
+.steps li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; }
 .steps li > span { color: var(--blue); font-size: 13px; font-weight: 700; }
 .steps strong { font-size: 15px; }
 .steps p { margin-top: 3px; color: var(--muted); font-size: 14px; }
@@ -139,7 +153,7 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .company-list .linked-row { grid-template-columns: minmax(200px, 1fr) 1.4fr; }
 .company-list h3 { font-size: 18px; }
 .company-list .legal-name { margin-top: 4px; color: var(--muted); font-size: 12px; }
-.company-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.company-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .company-stats dt { color: var(--muted); font-size: 12px; }
 .company-stats dd { margin-top: 4px; font-size: 14px; font-weight: 650; }
 
@@ -160,7 +174,7 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .company-message p { position: relative; z-index: 1; max-width: 800px; margin-top: 7px; font-size: clamp(19px, 2.4vw, 27px); font-weight: 700; line-height: 1.55; word-break: keep-all; text-wrap: balance; }
 .basic-facts > div:nth-child(2) { flex-grow: 1.6; }
 
-.employment-grid { display: grid; grid-template-columns: 1.25fr repeat(2, 1fr) 1.5fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.employment-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) repeat(2, minmax(0, 1fr)) minmax(0, 1.5fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
 .employment-tile { min-width: 0; padding: 20px; background: white; }
 .employment-tile.featured { background: var(--blue-soft); }
 .employment-tile dt, .health-grid dt { color: var(--muted); font-size: 12px; }
@@ -194,7 +208,7 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .recruit-panel > article { padding: 24px 26px 18px; }
 .recruit-panel > article > p { max-width: 760px; margin-top: 9px; color: var(--muted); line-height: 1.8; }
 .recruit-panel p, .recruit-panel dd { word-break: keep-all; }
-.recruit-panel > dl { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+.recruit-panel > dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); }
 .recruit-panel > dl > div { padding: 18px 26px; border-right: 1px solid var(--line); }
 .recruit-panel > dl > div:last-child { border-right: 0; }
 .recruit-panel dt { color: var(--muted); font-size: 12px; }
@@ -205,7 +219,7 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .job-chips span { background: #f0f4f9; }
 .job-chips span { white-space: nowrap; }
 
-.health-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.health-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .health-grid > div { padding: 22px; background: white; border: 1px solid var(--line); border-radius: 10px; }
 .health-grid > div:first-child { border-top: 3px solid #2563eb; }
 .health-grid > div:nth-child(2) { border-top: 3px solid #f59e0b; }
@@ -216,7 +230,7 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .financial-history .data-table th, .financial-history .data-table td { padding: 13px 15px; }
 .financial-history .data-table tbody th { color: var(--ink); }
 
-.metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.metric-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
 .metric-tile { padding: 18px; background: white; }
 .metric-tile dt { color: var(--muted); font-size: 13px; }
 .metric-tile dd { margin-top: 8px; font-size: 24px; font-weight: 700; letter-spacing: -.02em; }
@@ -227,9 +241,9 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .reading-card h3 { margin: 0 0 10px; font-size: 17px; }
 .reading-card p { margin: 0; line-height: 1.85; color: var(--muted); }
 .reading-lead { font-size: 17px; color: var(--ink) !important; }
-.reading-meta { display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding-top: 16px; margin-top: 16px !important; border-top: 1px solid var(--line); font-size: 14px; }
+.reading-meta { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding-top: 16px; margin-top: 16px !important; border-top: 1px solid var(--line); font-size: 14px; }
 .reading-meta strong { color: var(--ink); }
-.career-layout { display: grid; grid-template-columns: 1.35fr 1fr; gap: 14px; }
+.career-layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 14px; }
 .career-main { display: flex; flex-direction: column; }
 .career-facts { display: grid; gap: 14px; }
 .job-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
@@ -240,14 +254,14 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .caution-box small { color: var(--subtle); }
 
 .segment-list { display: grid; }
-.segment-row { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center; padding: 18px 0; border-top: 1px solid var(--line); }
+.segment-row { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; align-items: center; padding: 18px 0; border-top: 1px solid var(--line); }
 .segment-row:first-child { border-top: 0; padding-top: 0; }
 .segment-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
 .segment-head h3 { font-size: 15px; }
 .segment-head span { color: var(--muted); font-size: 13px; }
 .segment-bar { height: 5px; margin-top: 10px; background: #eef1f5; border-radius: 3px; overflow: hidden; }
 .segment-bar i { display: block; height: 100%; background: var(--blue); }
-.segment-row dl { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.segment-row dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .segment-row dt { color: var(--muted); font-size: 12px; }
 .segment-row dd { margin-top: 4px; font-size: 14px; font-weight: 650; }
 
@@ -266,7 +280,7 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 
 /* ---------- metric explorer ---------- */
 
-.explorer-controls { display: grid; grid-template-columns: 1fr 1fr 1.3fr; gap: 12px; margin-bottom: 18px; }
+.explorer-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(0, 1.3fr); gap: 12px; margin-bottom: 18px; }
 .explorer-controls-solo { grid-template-columns: minmax(220px, 360px); }
 .explorer-controls label > span, .explorer-controls legend { display: block; margin-bottom: 6px; padding: 0; color: var(--muted); font-size: 12px; }
 .explorer-controls select {
@@ -275,7 +289,7 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
   font: inherit; font-size: 14px;
 }
 .explorer-controls fieldset { margin: 0; padding: 0; border: 0; }
-.segmented-control { height: 38px; display: grid; grid-template-columns: repeat(3, 1fr); padding: 3px; background: #eaeef4; border-radius: 6px; }
+.segmented-control { height: 38px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 3px; background: #eaeef4; border-radius: 6px; }
 .segmented-control label { display: grid; place-items: center; border-radius: 4px; cursor: pointer; font-size: 13px; }
 .segmented-control input { position: absolute; opacity: 0; }
 .segmented-control label:has(input:checked) { background: white; box-shadow: 0 1px 3px rgba(16, 24, 40, .12); font-weight: 650; }
@@ -371,20 +385,118 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .prose .caption { margin: 14px 0; padding: 12px 16px; color: var(--muted); background: var(--blue-soft); border: 1px solid #dbe6fb; border-radius: 6px; font-size: 14px; }
 .prose .math-display, .prose .katex-display { margin: 18px 0; overflow-x: auto; overflow-y: hidden; }
 
+/* :::warning などのディレクティブから remark-admonition が組み立てる警告ボックス。
+   背景を半透明にしてあるので、ライト・ダークどちらでも下地に馴染む */
+.admonition { margin: 1.5em 0; padding: 1em 1.2em; border-left: 4px solid; border-radius: 4px; }
+.prose .admonition > :first-child { margin-top: 0; }
+.prose .admonition > :last-child { margin-bottom: 0; }
+
+.admonition-warning { background: rgba(240, 173, 78, .12); border-left-color: #f0ad4e; }
+.admonition-info { background: rgba(91, 192, 222, .12); border-left-color: #5bc0de; }
+.admonition-danger { background: rgba(217, 83, 79, .12); border-left-color: #d9534f; }
+
+/* ---------- dark theme ---------- */
+
+[data-theme="light"] { color-scheme: light; }
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #e8edf5;
+  --navy: #0a1220;
+  --navy-2: #1c2a3e;
+  --blue: #6ba3ff;
+  --blue-soft: #172640;
+  --muted: #a8b3c3;
+  --subtle: #7f8da2;
+  --paper: #0f1722;
+  --line: #293548;
+  --line-dark: #3c4a5f;
+  --surface: #1a2535;
+  --accent: #7dabf8;
+}
+
+[data-theme="dark"] .site-sidebar { color: #c7d2e2; }
+[data-theme="dark"] .sidebar-nav a { color: #9fadc0; }
+[data-theme="dark"] .sidebar-meta { color: #75849a; }
+[data-theme="dark"] .button-primary:hover { background: #4d8df7; }
+[data-theme="dark"] .button-outline {
+  color: var(--ink); background: #1a2535; border-color: var(--line-dark);
+}
+[data-theme="dark"] .button-outline:hover { color: #8eb6ff; border-color: #5674a3; }
+
+[data-theme="dark"] :is(
+  .panel,
+  .card,
+  .facts-boxed,
+  .linked-row,
+  .employment-tile,
+  .segment-card,
+  .recruit-panel,
+  .health-grid > div,
+  .empty-inline,
+  .financial-history,
+  .metric-tile,
+  .reading-card,
+  .chart-area,
+  .doc-toc
+) { background: #172131; }
+
+[data-theme="dark"] a.card:hover,
+[data-theme="dark"] .linked-row:hover {
+  border-color: #486287;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .24);
+}
+[data-theme="dark"] .chips span { color: #c2ccda; background: #202c3d; }
+[data-theme="dark"] .classification {
+  color: #b9c9e2; background: #172640; border-color: #29466f;
+}
+[data-theme="dark"] .classification strong { color: #8eb6ff; }
+[data-theme="dark"] .company-message { background: linear-gradient(125deg, #101d31, #203757); }
+[data-theme="dark"] .employment-tile.featured { background: #172640; }
+[data-theme="dark"] .business-intro { color: #c7d0dc; }
+[data-theme="dark"] .segment-number { color: #77879c; }
+[data-theme="dark"] :is(.segment-track, .segment-bar, .bar-track) { background: #273449; }
+[data-theme="dark"] .recruit-footer { background: #131d2b; }
+[data-theme="dark"] .job-chips span { color: #bcc7d6; background: #202c3d; }
+[data-theme="dark"] .caution-box { background: #2b2417; }
+
+[data-theme="dark"] .explorer-controls select {
+  color: var(--ink); background: #172131; border-color: var(--line-dark);
+}
+[data-theme="dark"] .segmented-control { background: #101a28; }
+[data-theme="dark"] .segmented-control label:has(input:checked) {
+  background: #253247;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+}
+[data-theme="dark"] .line-chart text { fill: var(--muted); }
+[data-theme="dark"] .line-chart g:not(.zero-axis) > line { stroke: var(--line); }
+[data-theme="dark"] .zero-axis line { stroke: #8b9bb0; }
+[data-theme="dark"] .zero-axis text { fill: #c7d2e2; }
+[data-theme="dark"] .stats-card { background: #101a2a; }
+
+[data-theme="dark"] .prose p,
+[data-theme="dark"] .prose :is(ul, ol) { color: #c0cad7; }
+[data-theme="dark"] .prose a:hover { color: #9abfff; }
+[data-theme="dark"] .prose code { background: #253247; }
+[data-theme="dark"] .prose pre { background: #0a1220; border: 1px solid var(--line); }
+[data-theme="dark"] .prose .caption {
+  color: #bdcbe0; background: #172640; border-color: #29466f;
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 1000px) {
   :root { --sidebar: 188px; }
   .wrap { width: min(100% - 40px, var(--max)); }
-  .industry-grid, .metric-grid { grid-template-columns: repeat(2, 1fr); }
-  .linked-row, .company-list .linked-row { grid-template-columns: 1fr; gap: 16px; }
-  .explorer-controls, .explorer-body { grid-template-columns: 1fr; }
-  .doc-layout { grid-template-columns: 1fr; }
+  .industry-grid, .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .linked-row, .company-list .linked-row { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .explorer-controls, .explorer-body { grid-template-columns: minmax(0, 1fr); }
+  .doc-layout { grid-template-columns: minmax(0, 1fr); }
   .doc-toc { position: static; order: -1; max-height: none; }
-  .stats-card dl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 20px; }
-  .segment-row { grid-template-columns: 1fr; gap: 14px; }
-  .employment-grid { grid-template-columns: repeat(2, 1fr); }
-  .segment-card { grid-template-columns: 1fr; gap: 18px; }
+  .stats-card dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 20px; }
+  .segment-row { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .employment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .segment-card { grid-template-columns: minmax(0, 1fr); gap: 18px; }
 }
 
 @media (max-width: 720px) {
@@ -397,14 +509,16 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
   .brand-icon { width: 40px; height: 40px; }
   .sidebar-nav { display: flex; gap: 4px; }
   .sidebar-nav a { padding: 6px 10px; white-space: nowrap; font-size: 13px; }
-  .sidebar-meta { display: none; }
+  .sidebar-footer { display: block; margin: 0 0 0 auto; }
+  .theme-toggle { width: 36px; height: 36px; justify-content: center; padding: 0; }
+  .theme-toggle-label, .sidebar-meta { display: none; }
   .wrap { width: min(100% - 32px, var(--max)); }
   .app-main > main { padding: 30px 0 56px; }
   main > section + section { margin-top: 40px; }
   .section-head { flex-direction: column; gap: 6px; }
   .section-head p { max-width: none; text-align: left; }
-  .industry-grid, .metric-grid, .company-stats { grid-template-columns: 1fr; }
-  .employment-grid, .health-grid, .recruit-panel > dl { grid-template-columns: 1fr; }
+  .industry-grid, .metric-grid, .company-stats { grid-template-columns: minmax(0, 1fr); }
+  .employment-grid, .health-grid, .recruit-panel > dl { grid-template-columns: minmax(0, 1fr); }
   .employment-tile, .health-grid > div { padding: 18px; }
   .segment-card { padding: 18px; }
   .segment-value { align-items: flex-start; flex-direction: column; gap: 2px; }
@@ -412,17 +526,27 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
   .recruit-panel > dl > div:last-child { border-bottom: 0; }
   .recruit-footer { align-items: stretch; flex-direction: column; }
   .recruit-footer .button { justify-content: center; }
-  .career-layout { grid-template-columns: 1fr; }
-  .reading-meta { grid-template-columns: 1fr; gap: 4px; }
+  .career-layout { grid-template-columns: minmax(0, 1fr); }
+  .reading-meta { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .facts-boxed > div { flex-basis: 100%; border-right: 0; border-bottom: 1px solid var(--line); }
   .facts-boxed > div:last-child { border-bottom: 0; }
   .company-stats { gap: 10px; }
+  /* 業界の企業一覧は 1 社 1 行に抑える。給与以外の指標は企業ページで見られる */
+  .company-list .linked-row { gap: 8px; }
+  .company-list .company-stats > div { display: flex; align-items: baseline; gap: 8px; }
+  .company-list .company-stats > div:not(:first-child) { display: none; }
+  .company-list .company-stats dd { margin-top: 0; }
   .panel { padding: 20px 16px; }
-  .doc-layout .prose { padding: 22px 18px; }
-  /* 列の多い表は画面幅で潰さず、カード内で横スクロールさせる */
-  .prose table { display: block; width: max-content; max-width: 100%; overflow-x: auto; }
+  .doc-layout .prose, .company-prose { padding: 22px 18px; }
+  /* 列の多い表はカード内で横スクロールさせる。
+     width: max-content は長文セルまで 1 行に伸ばしてしまうので使わず、
+     セルの min-width で潰れだけを防いで、本文は折り返させる */
+  .prose table { display: block; max-width: 100%; overflow-x: auto; }
+  .prose table :is(th, td) { min-width: 3em; padding: 10px 8px; }
+  /* 先頭列は項目名が入るので、1〜2 文字で折り返さない程度の幅を確保する */
+  .prose table :is(th, td):first-child { min-width: 5em; }
   .chart-area { min-height: 320px; padding: 16px 10px; }
-  .stats-card dl { grid-template-columns: 1fr; }
-  .segment-row dl { grid-template-columns: repeat(2, 1fr); }
+  .stats-card dl { grid-template-columns: minmax(0, 1fr); }
+  .segment-row dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .source-list > a > div:last-child { text-align: left; }
 }

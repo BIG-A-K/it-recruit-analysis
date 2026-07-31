@@ -7,7 +7,6 @@ originalPublishedAt: 2025/05/04
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyMessage from "../../components/company/CompanyMessage.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
-import RecruitmentInfo from "../../components/company/RecruitmentInfo.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
@@ -38,29 +37,21 @@ LINEヤフー株式会社は、2023年10月に、LINE株式会社やヤフー株
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
-<RecruitmentInfo companyId={frontmatter.companyId} />
-
 <CompanyProse>
 
 ## 採用情報
 ### 新卒
-[2025インターン](https://www.lycorp.co.jp/ja/recruit/newgrads/internship/engineer/#all)の応募開始しています。締切は2025/05/11(くらいだったと思う)
 
-#### 職種
-- [エンジニア](https://www.lycorp.co.jp/ja/recruit/newgrads/engineer/)
-- [デザイナー](https://www.lycorp.co.jp/ja/recruit/newgrads/designer/)
-- [ビジネスコンサルタント](https://www.lycorp.co.jp/ja/recruit/newgrads/business-consultant/)
-- [プロダクトプランナー](https://www.lycorp.co.jp/ja/recruit/newgrads/product-planner/)
-- [データアナリスト](https://www.lycorp.co.jp/ja/recruit/newgrads/analyst/)
-
-#### 給与
-| 職種                 | 基準給与（月）                     | 基礎給（月）           | 固定時間外手当（月）       | 標準年収                 | 備考                                                                                     |
-|----------------------|-----------------------------------|-----------------------|-----------------------|-----------------------|------------------------------------------------------------------------------------------|
-| エンジニア            | 336,000 円〜                     | 259,616 円〜          | 76,384 円〜           | 5,040,000 円〜         | ※1 月 35 時間を超過した場合、別途超過時間分の手当を支給<br />※2 年間を通じて標準的な評価だった場合の標準年収<br />※3 賞与は年 2 回を上限に、会社や所属部署の業績を踏まえて支給 |
-| デザイナー            | 320,000 円〜                     | 247,138 円〜          | 72,862 円〜           | 4,800,000 円〜         | ※1 月 35 時間を超過した場合、別途超過時間分の手当を支給<br />※2 年間を通じて標準的な評価だった場合の標準年収<br />※3 賞与は年 2 回を上限に、会社や所属部署の業績を踏まえて支給 |
-| ビジネスコンサルタント | 314,000 円〜                     | 242,459 円〜          | 71,541 円〜           | 4,710,000 円〜         | ※1 月 35 時間を超過した場合、別途超過時間分の手当を支給<br />※2 年間を通じて標準的な評価だった場合の標準年収<br />※3 賞与は年 2 回を上限に、会社や所属部署の業績を踏まえて支給 |
-| プロダクトプランナー   | 336,000 円〜                     | 259,616 円〜          | 76,384 円〜           | 5,040,000 円〜         | ※1 月 35 時間を超過した場合、別途超過時間分の手当を支給<br />※2 年間を通じて標準的な評価だった場合の標準年収<br />※3 賞与は年 2 回を上限に、会社や所属部署の業績を踏まえて支給 |
-| データアナリスト       | 336,000 円〜                     | 259,616 円〜          | 76,384 円〜           | 5,040,000 円〜         | ※1 月 35 時間を超過した場合、別途超過時間分の手当を支給<br />※2 年間を通じて標準的な評価だった場合の標準年収<br />※3 賞与は年 2 回を上限に、会社や所属部署の業績を踏まえて支給 |
+| 職種                 | 基準給与（月）                     | 基礎給（月）           | 固定時間外手当（月）       | 標準年収                 | 
+|----------------------|-----------------------------------|-----------------------|-----------------------|-----------------------|
+| [エンジニア](https://www.lycorp.co.jp/ja/recruit/newgrads/engineer/)            | 336,000 円〜                     | 259,616 円〜          | 76,384 円〜           | 5,040,000 円〜         |  
+| [デザイナー](https://www.lycorp.co.jp/ja/recruit/newgrads/designer/)          | 320,000 円〜                     | 247,138 円〜          | 72,862 円〜           | 4,800,000 円〜         |  
+| [ビジネスコンサルタント](https://www.lycorp.co.jp/ja/recruit/newgrads/business-consultant/) | 314,000 円〜                     | 242,459 円〜          | 71,541 円〜           | 4,710,000 円〜         |  
+| [プロダクトプランナー](https://www.lycorp.co.jp/ja/recruit/newgrads/product-planner/)  | 336,000 円〜                     | 259,616 円〜          | 76,384 円〜           | 5,040,000 円〜         |  
+|  [データアナリスト](https://www.lycorp.co.jp/ja/recruit/newgrads/analyst/)       | 336,000 円〜                     | 259,616 円〜          | 76,384 円〜           | 5,040,000 円〜         |
+:::info
+※1 月 35 時間を超過した場合、別途超過時間分の手当を支給<br />※2 年間を通じて標準的な評価だった場合の標準年収<br />※3 賞与は年 2 回を上限に、会社や所属部署の業績を踏まえて支給
+:::
 
 </CompanyProse>
 
@@ -68,7 +59,7 @@ LINEヤフー株式会社は、2023年10月に、LINE株式会社やヤフー株
 
 <CompanyProse>
 
-## 事業内容
+## 事業内容詳細
 ### メディア事業
 
 | 分類       | 内容                                                                                                                                                                                   |
@@ -98,6 +89,9 @@ LINEヤフー株式会社は、2023年10月に、LINE株式会社やヤフー株
 - (※３) 「ヤフオク!」は、2023年11月１日に「Yahoo!オークション」にサービス名称を変更しました。
 - (※４) 「PayPayフリマ」は、2023年11月１日に「Yahoo!フリマ」にサービス名称を変更しました。
 - (※５) バリューコマース(株)は2024年５月２日に当社の持分法適用関連会社へ移行したことから、以降、バリューコマース(株)のサービスを含みません。
+</CompanyProse>
+<CompanyProse>
+
 
 ## 関連企業
 | 区分  | 名称                | 主な事業内容                                           | 報告セグメント |
