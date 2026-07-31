@@ -14,6 +14,7 @@ const fullTitle = title === "Career Atlas" ? title : `${title} | Career Atlas`;
 const pathname = Astro.url.pathname;
 const isHome = pathname === "/";
 const isIndustry = pathname.startsWith("/industries/") || pathname.startsWith("/companies/");
+const isGuide = pathname.startsWith("/guide/");
 ---
 
 <!doctype html>
@@ -36,7 +37,7 @@ const isIndustry = pathname.startsWith("/industries/") || pathname.startsWith("/
         <nav class="sidebar-nav" aria-label="メインナビゲーション">
           <a class:list={{ active: isHome }} href="/">ホーム</a>
           <a class:list={{ active: isIndustry }} href="/industries/">業界一覧</a>
-          <a href="/#about">使い方</a>
+          <a class:list={{ active: isGuide }} href="/guide/">分析方法</a>
         </nav>
 
         <p class="sidebar-meta">データ更新 2026年7月</p>

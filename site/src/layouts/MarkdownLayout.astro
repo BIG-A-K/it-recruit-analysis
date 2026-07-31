@@ -1,0 +1,52 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import "katex/dist/katex.min.css";
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  frontmatter?: { title?: string; description?: string };
+  headings?: Heading[];
+}
+
+// Markdown ページからは frontmatter / headings がレイアウトの props として渡る
+const { frontmatter, headings = [] } = Astro.props;
+const title = frontmatter?.title ?? "ドキュメント";
+const description = frontmatter?.description;
+const toc = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
+---
+
+<BaseLayout title={title} description={description}>
+  <section>
+    <p class="breadcrumb"><a href="/">トップ</a><span>/</span>{title}</p>
+    <div class="doc-head">
+      <h1>{title}</h1>
+      {description && <p class="lead">{description}</p>}
+    </div>
+  </section>
+
+  <div class="doc-layout">
+    <article class="panel prose">
+      <slot />
+    </article>
+
+    {
+      toc.length > 0 && (
+        <aside class="doc-toc" aria-label="目次">
+          <span>目次</span>
+          <nav>
+            {toc.map((heading) => (
+              <a class={`toc-d${heading.depth}`} href={`#${heading.slug}`}>
+                {heading.text}
+              </a>
+            ))}
+          </nav>
+        </aside>
+      )
+    }
+  </div>
+</BaseLayout>
