@@ -35,8 +35,6 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 - Markdownの表
 
 </CompanyProse>
-
-<RecruitmentInfo companyId={frontmatter.companyId} />
 ```
 
 `CompanyProse`の開始タグ直後と終了タグ直前には空行を入れます。
@@ -49,7 +47,7 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 | `CompanyMessage` | 理念・ミッション・企業メッセージ |
 | `EmploymentOverview` | 給与、勤続年数、年齢、勤務地 |
 | `BusinessSegments` | 事業概要、事業セグメント |
-| `RecruitmentInfo` | 新卒採用情報 |
+| `RecruitmentInfo` | レガシー採用情報（既存ページ互換用。新規記事には追加しない） |
 | `HealthMetrics` | 流動資産・負債など |
 | `FinancialHistory` | 資産状況・IR推移の表 |
 | `MetricTrends` | 指標を切り替える推移グラフ |
@@ -59,6 +57,8 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 
 コンポーネントはMDX内で並べ替えられ、不要なものは外せます。新しい会社を
 `data/companies.csv`へ追加した場合は、同じ`company_id`のMDXも作成します。
+`RecruitmentInfo`はレガシーCSV表示用のため、新しい記事では使わず、
+採用情報を`CompanyProse`内のMarkdown本文へ記述します。
 
 ## データがない企業
 
@@ -74,7 +74,6 @@ Sakana AIとPreferred Networksでは、採用・事業情報をMarkdown本文で
 <CompanyOverview companyId={frontmatter.companyId} />
 <CompanyMessage companyId={frontmatter.companyId} />
 <CompanyProse>Markdownの記事本文</CompanyProse>
-<RecruitmentInfo companyId={frontmatter.companyId} />
 <CompanySources companyId={frontmatter.companyId} />
 ```
 

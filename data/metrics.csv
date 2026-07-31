@@ -62,6 +62,12 @@ ly-corporation,operating_profit,2026,2026-03-31,341322000000,JPY,consolidated,IF
 ly-corporation,operating_profit,2022,2022-03-31,189503000000,JPY,consolidated,IFRS,reported,edinet-s100ybxd,element_id=jpcrp030000-asr_E05000-000:OperatingProfitLossIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
 ly-corporation,operating_profit,2023,2023-03-31,314533000000,JPY,consolidated,IFRS,reported,edinet-s100ybxd,element_id=jpcrp030000-asr_E05000-000:OperatingProfitLossIFRSSummaryOfBusinessResults; context_id=Prior3YearDuration
 ly-corporation,operating_profit,2024,2024-03-31,208191000000,JPY,consolidated,IFRS,reported,edinet-s100ybxd,element_id=jpcrp030000-asr_E05000-000:OperatingProfitLossIFRSSummaryOfBusinessResults; context_id=Prior2YearDuration
+ly-corporation,current_assets,2023,2023-03-31,416841000000,JPY,consolidated,IFRS,reported,edinet-s100tm4a,連結財政状態計算書の比較情報
+ly-corporation,current_liabilities,2023,2023-03-31,443785000000,JPY,consolidated,IFRS,reported,edinet-s100tm4a,連結財政状態計算書の比較情報
+ly-corporation,quick_assets,2023,2023-03-31,372356000000,JPY,consolidated,IFRS,reported,edinet-s100tm4a,現金及び預金・売掛金・前払費用・関係会社短期貸付金の合計
+ly-corporation,current_assets,2024,2024-03-31,688279000000,JPY,consolidated,IFRS,reported,edinet-s100tm4a,連結財政状態計算書
+ly-corporation,current_liabilities,2024,2024-03-31,810592000000,JPY,consolidated,IFRS,reported,edinet-s100tm4a,連結財政状態計算書
+ly-corporation,quick_assets,2024,2024-03-31,513845000000,JPY,consolidated,IFRS,reported,edinet-s100tm4a,現金及び預金・売掛金・前払費用・関係会社短期貸付金の合計
 mercari,revenue,2023,2023-06-30,171967000000,JPY,consolidated,IFRS,reported,edinet-s100wqdw,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior2YearDuration
 mercari,revenue,2024,2024-06-30,187407000000,JPY,consolidated,IFRS,reported,edinet-s100wqdw,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
 mercari,revenue,2025,2025-06-30,192633000000,JPY,consolidated,IFRS,reported,edinet-s100wqdw,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
