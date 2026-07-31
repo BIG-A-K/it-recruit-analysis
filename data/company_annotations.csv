@@ -1,0 +1,2 @@
+annotation_id,company_id,section_key,target_kind,target_key,fiscal_year,text,source_id,updated_at
+mercari-cash-flow,mercari,financials,metric_group,cash_flow,,"金融事業の債権・預り金の増減を含むため、営業CFなどは一般的な事業会社と単純比較できません。",edinet-s100wqdw,2026-07-31
