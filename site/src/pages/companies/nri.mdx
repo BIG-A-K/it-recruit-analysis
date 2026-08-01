@@ -4,7 +4,7 @@ companyId: nri
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
@@ -12,7 +12,23 @@ import FinancialData from "../../components/company/FinancialData.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-<CompanyMessage companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+野村総合研究所（NRI）は、コンサルティングとITソリューションを組み合わせ、企業や公共分野の課題解決を支援するシンクタンク・ITサービス企業です。調査・政策提言からシステムの企画、開発、運用までを一貫して提供しています。
+
+## 公式サイト・IR
+
+- [企業情報](https://www.nri.com/jp/company)
+- [企業理念](https://www.nri.com/jp/company/c_philosophy.html)
+- [株主・投資家情報](https://ir.nri.com/jp/ir.html)
+- [有価証券報告書](https://ir.nri.com/jp/ir/library/securities.html)
+
+## 採用情報
+
+採用主体は株式会社野村総合研究所です。[2028年新卒採用サイト](https://working.nri.co.jp/recruit/2028/)ではイベントやインターンシップを案内しており、コンサルタント、システムエンジニアなどの職種を確認できます。2027年新卒採用の正式応募受付は終了と掲載されています。[キャリア採用](https://career.nri.co.jp/)は随時募集です（2026年8月1日確認）。
+
+</CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 

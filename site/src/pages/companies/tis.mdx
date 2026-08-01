@@ -4,7 +4,7 @@ companyId: tis
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
@@ -12,7 +12,20 @@ import FinancialData from "../../components/company/FinancialData.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-<CompanyMessage companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+TIS株式会社は、金融、製造、流通、サービスなど幅広い業界に、システム開発、IT基盤、業務サービス、コンサルティングを提供するITサービス企業です。
+
+## 公式サイト・採用情報
+
+- [企業サイト](https://www.tis.co.jp/)
+- [IR情報](https://www.tis.co.jp/ir/)
+- [新卒採用](https://www.tis.co.jp/recruit/)
+
+採用主体はTIS株式会社です。営業、システムエンジニア、コンサルタント、研究開発、スタッフなどの職種と募集要項は公式採用ページで確認してください（2026年8月1日確認）。
+
+</CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 

@@ -5,7 +5,6 @@ originalPublishedAt: 2025-04-08
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
@@ -15,8 +14,6 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-
-<CompanyMessage companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
@@ -50,19 +47,17 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 ## 雇用情報を読むときの注意
 
+採用主体は職種・募集会社ごとに異なります。採用情報と募集要項は2026年8月1日に確認しています。
+
 平均給与・平均勤続年数・平均年齢は提出会社（本社）単体の情報なので、グループ全体や採用先ごとの待遇を示すものではありません。
 
 公式サイトには[雇用状況](https://www.recruit.co.jp/employment/workplace/)が掲載されていますが、給与などの情報はありません。キャリア採用では職種ごとの待遇が掲載されており、記事作成時点のエンジニア求人では年収543万円〜1,378万円でした。[詳細](https://www.recruit.co.jp/employment/mid-career/position/jobs-202/)
-
-</CompanyProse>
-
-<CompanyProse>
 
 ## 職種
 
 ### 新卒
 
-[新卒採用サイトの詳細](https://www.recruit.co.jp/employment/students/)
+上記の新卒採用サイトに掲載された職種区分は以下のとおりです。
 
 | 区分 | 対象となる方 | 配属職種例 |
 | --- | --- | --- |
@@ -103,7 +98,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyProse>
 
-## 事業内容の補足
+## 主なサービス例
 
 ### HRテクノロジー事業
 

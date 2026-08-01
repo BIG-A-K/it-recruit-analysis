@@ -1,0 +1,59 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: renesas-electronics
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialData from "../../components/company/FinancialData.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+ルネサスエレクトロニクス株式会社は、自動車、産業・インフラ・IoT分野向けの組み込み半導体ソリューションをグローバルに提供する企業です。マイクロコントローラ、アナログ、パワー、SoC、車載デバイスなどの製品ポートフォリオを持ち、30カ国以上で事業を展開しています。
+
+## 企業理念・ビジョン
+
+Purpose（パーパス）は「To Make Our Lives Easier（人々の暮らしを楽にする）」です。Renesas Cultureとして、Transparent（透明性）、Agile（俊敏性）、Global（グローバル視点）、Innovative（革新性）、Entrepreneurial（起業家精神）の5つの行動指針を掲げています。
+
+## 事業内容
+
+ルネサスは4つの成長分野で半導体ソリューションを提供しています。
+
+- **自動車**: 車載制御、自動運転、EV向けの半導体ソリューションを展開します。
+- **産業**: スマートインダストリを支えるFA・産業機器向け製品を提供します。
+- **インフラ**: 通信インフラやデータセンターなどの堅牢なインフラ向けソリューションを手がけます。
+- **IoT**: ライフスタイル分野のIoT機器向け半導体を提供します。
+
+事業内容は[ルネサスエレクトロニクス公式サイト](https://www.renesas.com/jp/ja)で確認してください。
+
+## 公式サイト・IR
+
+- [ルネサスエレクトロニクス公式サイト](https://www.renesas.com/jp/ja)
+- [投資家向け情報（IR）](https://www.renesas.com/jp/ja/about/investor-relations)
+- [採用情報](https://career.renesas.com/)
+
+## 採用情報
+
+新卒採用はグローバル採用サイトで集約的に行われています。採用主体はルネサスエレクトロニクス株式会社です。募集職種カテゴリは、Engineering、Sales & Marketing、Corporate Roles、Interns & Graduatesに分かれています。
+
+初任給、勤務地、勤務時間、選考プロセスなどの詳細は、採用サイトの公開ページでは確認できませんでした。採用サイトのコミュニティ登録後に案内される募集要項でご確認ください。最新情報は[採用サイト](https://career.renesas.com/)で確認してください。
+
+採用情報は2026年8月1日に確認しました。
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+
+<BusinessSegments companyId={frontmatter.companyId} />
+
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialData companyId={frontmatter.companyId} />
+
+<CompanySources companyId={frontmatter.companyId} />

@@ -5,7 +5,6 @@ originalPublishedAt: 2025/05/05
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
@@ -16,8 +15,6 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
-<CompanyMessage companyId={frontmatter.companyId} />
-
 <CompanyProse>
 
 **すべての人にインターネット**
@@ -25,13 +22,9 @@ import CompanySources from "../../components/company/CompanySources.astro";
 [全文はこちら](https://www.gmo.jp/brand/sv/)
 2. サービスを「すべて自分たちの手で創る」
 
-## サイト
+## 公式サイト・IR
 - [ホームページ](https://www.gmo.jp/)
-  - [有価証券取引報告書](https://ir.gmo.jp/library/securities-report/)
-  - [採用情報](https://recruit.gmo.jp/)
-    - [新卒](https://recruit.gmo.jp/rookies/entry/)
-      - [募集要項](https://recruit.gmo.jp/rookies/)
-    - [募集職種](https://recruit.gmo.jp/jobs/all/)
+  - [有価証券報告書](https://ir.gmo.jp/library/securities-report/)
 
 </CompanyProse>
 
@@ -39,30 +32,32 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyProse>
 
-## 採用情報の補足
+## 採用情報
 
-### 初任給
-新卒710万プログラムというものを実施している。
-最初の2年間は710万円で採用し、その後に適切な報酬体系に合流するというもの。
-給与向上→優秀人材の確保→生産性向上のループを目的としている。
-採用はビジネス職とエンジニア職(博士後期課程からのみ)がある。
+採用主体はＧＭＯインターネットグループ株式会社。新卒は「新卒年収710万プログラム」として、ビジネス職（社長室配属）と研究開発職（グループ研究開発本部配属）の2職種で採用している。対象は28卒以降（27卒も別途募集中）。以下は[公式募集要項](https://recruit.group.gmo/710program/)（2026年8月1日確認）による。
 
+### 新卒年収710万プログラム
 
-その他にもジョブ型No1採用、地域No1採用という方式もある。
+両職種とも年収710万円。内訳は基本給266,000円・見込残業手当（40h）140,875円・調整手当184,800円。昇降給は年4回（1・4・7・10月）。
 
-| 項目           | 新卒年収710万       | ジョブ型No.1       | 地域No.1           |
-|----------------|--------------------|--------------------|--------------------|
-| **年収**       | 710万円            | 570万円            | 390万円（～710万円）|
-| **基本給**     | 266,000円          | 266,000円          | 266,000円〜        |
-| **見込残業手当** | 140,875円 (40h)    | 113,096円 (40h)    | 62,344円〜 (30h)   |
-| **調整手当**   | 184,800円          | 95,905円           | -                  |
-| **勤務地**     | 渋谷               | 東京（渋谷）、福岡（小倉） | 宮崎（宮崎）       |
+| 項目 | ビジネス職 | 研究開発職 |
+| --- | --- | --- |
+| **配属** | 社長室 | グループ研究開発本部 |
+| **勤務地** | 東京（渋谷・セルリアンタワー） | 東京（渋谷）/ 大阪（梅田） |
+| **歓迎スキル** | AI・ロボティクス知見、長期インターン・起業経験、有資格者など | AI知見、大規模サービス開発経験、学会論文・カンファレンス登壇、博士課程後期など |
 
 
-### 既卒
-キャリア採用は[こちら](https://recruit.gmo.jp/jobs/all/)
+年間休日130日・完全週休2日制。
 
-エンジニア職,クリエイティブ職,コーポレート職,ビジネス職,その他の区分がある。
+### 選考フロー（28卒以降）
+
+- ビジネス職：書類（ES）→ 面接（オンライン）→ AI活用ワーク → 面接（対面）→ 最終面接（オンライン）
+- 研究開発職：書類（ES）→ 面接（オンライン）→ 面接（オンライン）→ 技術選考 → 最終面接（対面）
+
+### キャリア・第二新卒
+
+- [キャリア採用](https://recruit.group.gmo/careers/)：エンジニア職・クリエイティブ職・コーポレート職・その他
+- [第二新卒採用](https://recruit.group.gmo/second-career/)
 
 </CompanyProse>
 
@@ -70,7 +65,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyProse>
 
-## 事業内容
+## サービス例
 - **インターネットインフラ事業**
   - ドメイン事業
     - ドメイン発行・卸（ドメインレジストリ）事業：「.shop」、「.tokyo」などのドメインを管理
@@ -124,11 +119,5 @@ import CompanySources from "../../components/company/CompanySources.astro";
 <FinancialHistory companyId={frontmatter.companyId} />
 
 <MetricTrends companyId={frontmatter.companyId} />
-
-<CompanyProse>
-
-## 事業系統図
-
-</CompanyProse>
 
 <CompanySources companyId={frontmatter.companyId} />

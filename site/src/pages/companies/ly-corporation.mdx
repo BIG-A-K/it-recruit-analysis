@@ -5,7 +5,6 @@ originalPublishedAt: 2025/05/04
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
@@ -15,8 +14,6 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-
-<CompanyMessage companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
@@ -42,6 +39,8 @@ LINEヤフー株式会社は、2023年10月に、LINE株式会社やヤフー株
 ## 採用情報
 ### 新卒
 
+採用主体はLINEヤフー株式会社です。以下は公式新卒採用ページを2026年8月1日に確認した内容です。職種ごとの募集要項で、対象年度・勤務地・待遇を確認してください。
+
 | 職種                 | 基準給与（月）                     | 基礎給（月）           | 固定時間外手当（月）       | 標準年収                 | 
 |----------------------|-----------------------------------|-----------------------|-----------------------|-----------------------|
 | [エンジニア](https://www.lycorp.co.jp/ja/recruit/newgrads/engineer/)            | 336,000 円〜                     | 259,616 円〜          | 76,384 円〜           | 5,040,000 円〜         |  
@@ -59,8 +58,8 @@ LINEヤフー株式会社は、2023年10月に、LINE株式会社やヤフー株
 
 <CompanyProse>
 
-## 事業内容詳細
-### メディア事業
+## サービス例
+### メディアの主なサービス
 
 | 分類       | 内容                                                                                                                                                                                   |
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -68,14 +67,14 @@ LINEヤフー株式会社は、2023年10月に、LINE株式会社やヤフー株
 | アカウント広告  | 「LINE公式アカウント」、「LINEプロモーションスタンプ」、「LINE応援」、「LINEチラシ」その他                                                                                                                                |
 | ディスプレイ広告 | **運用型広告**：Yahoo!広告「ディスプレイ広告（運用型）」、「LINE VOOM」、「LINE NEWS」、「トークリスト」、「Talk Head View」、「Talk Head View Custom」、その他<br />**予約型広告**：Yahoo!広告「ディスプレイ広告（予約型）」等<br />**その他LINE広告**：「LINEバイト」、その他 |
 | その他      | 「LINEスタンプ」、「LINE GAME」、「LINE占い」、「LINE MUSIC」、「LINEマンガ」、「LINE Search」、「TVer」、「プレミアム会員」、「ebookjapan」、「不動産関連」、「Yahoo!ロコ（※1）」、「Yahoo!メール」その他                                             |
-### コマース事業
+### コマースの主なサービス
 | 分類             | 内容                                                                                                                                                                                                                                                                                                        |
 | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Yahoo!ショッピング事業 | **ショッピング事業**：「Yahoo!ショッピング」、「LINEショッピング」、「FRIENDS」、「LINEギフト」、「MySmartStore（※2）」、「Yahoo!マート by ASKUL」、「LOHACO」、海外EC、「LINEショッピング海外・タイ」、「GIFSHOP」、「FE STORE」、「QUICK EC」、「MShop」、その他<br />**リユース事業**：「Yahoo!オークション（※3）」、「Yahoo!フリマ（※4）」<br />**サービスEC事業**：「Yahoo!トラベル」、「一休トラベル」、「LINEトラベル（台湾）」、その他<br />**その他**：その他 |
 | ZOZO／アスクル      | **ZOZO**：「ZOZOTOWN」、「ZOZOUSED」、その他<br />**アスクル**：アスクル BtoB事業（「ASKUL」、「SOLOEL ARENA」、「AMRO」、「FEEDレンタル」、その他）、「LOHACO」、「チャーム」、その他                                                                                                                                                                              |
 | その他（※5）        | 「バリューコマース アフィリエイト」、「バリューポイントクラブ」、「ストアーズ・アールエイト」、「ストアマッチ」、「ビースペース」、その他                                                                                                                                                                                                                                     |
 
-### 戦略事業
+### 金融・戦略の主なサービス
 | 分類       | 内容                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------- |
 | PayPay連携 | PayPay、PayPayカード                                                                                  |
@@ -83,16 +82,13 @@ LINEヤフー株式会社は、2023年10月に、LINE株式会社やヤフー株
 | その他金融    | PayPayアセットマネジメント、PayPayほけん、「LINE Pay」、「LINEスマエフ」、「LINEポケットマネー」、「LINE BITMAX」、「LINE FX」、「DOSH」、その他 |
 | その他| その他|
 
-#### 注
+#### 過年度資料に関する注記
+以下は2024年3月期の有価証券報告書に記載された注記です。サービスの現行状況は公式サイトで確認してください。
 - (※１) 「Yahoo!ロコ」は、2024年３月27日にサービスを終了しました。
 - (※２) 「MySmartStore」は、2024年７月31日にサービスを終了予定です。
 - (※３) 「ヤフオク!」は、2023年11月１日に「Yahoo!オークション」にサービス名称を変更しました。
 - (※４) 「PayPayフリマ」は、2023年11月１日に「Yahoo!フリマ」にサービス名称を変更しました。
 - (※５) バリューコマース(株)は2024年５月２日に当社の持分法適用関連会社へ移行したことから、以降、バリューコマース(株)のサービスを含みません。
-</CompanyProse>
-<CompanyProse>
-
-
 ## 関連企業
 | 区分  | 名称                | 主な事業内容                                           | 報告セグメント |
 | --- | ----------------- | ------------------------------------------------ | ------- |

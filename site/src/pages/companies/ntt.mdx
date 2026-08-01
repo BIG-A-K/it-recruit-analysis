@@ -5,7 +5,6 @@ originalPublishedAt: 2026/07/29
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
@@ -15,8 +14,6 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-
-<CompanyMessage companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
@@ -62,6 +59,8 @@ import CompanySources from "../../components/company/CompanySources.astro";
 ## 採用情報の補足
 
 ### 新卒
+以下はNTT株式会社本体の採用情報を公式ページで2026年8月1日に確認した内容です。事業会社の採用主体・条件は各社の募集要項を確認してください。
+
 持株会社であるNTT株式会社の従業員は2,606人で、本体の新卒採用はNTT研究所(NTT R&D)の研究開発職が対象。
 
 - 募集職種：研究開発職(知的財産に関連する業務を含む)。事務職・共通職の採用はない
@@ -89,8 +88,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyProse>
 
-## 事業内容
-報告セグメントは以下の4区分。
+## グループ事業の具体例
 
 | セグメント | 事業内容 | 主な連結子会社 |
 | --- | --- | --- |

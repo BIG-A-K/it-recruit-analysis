@@ -4,7 +4,7 @@ companyId: biprogy
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
@@ -12,7 +12,20 @@ import FinancialData from "../../components/company/FinancialData.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-<CompanyMessage companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+BIPROGY株式会社は、企業や社会の業務を支えるシステムサービス、アウトソーシング、ソフトウェア、ハードウェアを提供するITサービス企業です。
+
+## 公式サイト・採用情報
+
+- [企業サイト](https://www.biprogy.com/)
+- [IR情報](https://www.biprogy.com/ir/)
+- [新卒採用](https://www.biprogy.com/recruit/)
+
+採用主体はBIPROGY株式会社です。技術、営業、スタッフなどの職種と募集要項、勤務地、待遇は公式採用ページで確認してください（2026年8月1日確認）。
+
+</CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 

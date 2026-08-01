@@ -5,7 +5,6 @@ originalPublishedAt: 2026/07/29
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
@@ -15,8 +14,6 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-
-<CompanyMessage companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
@@ -29,7 +26,6 @@ import CompanySources from "../../components/company/CompanySources.astro";
 ***
 
 1910年に久原鉱業所日立鉱山付属の修理工場として発足し、1920年2月に㈱日立製作所として独立。
-連結従業員数287,901人、売上収益10兆5,867億円(2026年3月期)。
 
 ## サイト
 - [HP](https://www.hitachi.co.jp/)
@@ -54,6 +50,8 @@ import CompanySources from "../../components/company/CompanySources.astro";
 <CompanyProse>
 
 ## 採用情報の補足
+
+採用主体は株式会社日立製作所です。以下は公式新卒採用サイトを2026年8月1日に確認した内容です。
 
 ### 新卒
 募集職種は研究開発、設計開発、生産技術、品質保証、システムエンジニア(SE)、営業技術、営業、経理財務、調達、人事総務、生産管理、法務、知的財産マネジメント、事業企画など。
@@ -84,17 +82,15 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyProse>
 
-## 事業内容
+## 主な関係会社
 2026年3月31日現在、当社及び関係会社823社(連結子会社606社、持分法適用会社217社)から成る。
-報告セグメントは以下の4区分＋その他。
-
-| セグメント | 主な製品・サービス | 主要な関係会社 |
-| --- | --- | --- |
-| デジタルシステム＆サービス | デジタルソリューション(システムインテグレーション、クラウドサービス、コンサルティングサービス)、ITプロダクツ(ストレージ、サーバ)、ソフトウェア、ATM | 日立チャネルソリューションズ、日立情報通信エンジニアリング、日立ソリューションズ、日立システムズ、日立ヴァンタラ、GlobalLogic、Hitachi Digital 他 |
-| エナジー | エネルギーソリューション(パワーグリッド、原子力) | 日立GEベルノバニュークリアエナジー、日立プラントコンストラクション、Hitachi Energy |
-| モビリティ | 鉄道システム | Hitachi Rail |
-| コネクティブインダストリーズ | ビルシステム(エレベーター、エスカレーター)、生活・エコシステム(家電、空調)、産業機器・ソリューション、計測分析システム(半導体製造装置、医用分析装置)、産業・流通ソリューション、水・環境ソリューション | 日立ビルシステム、日立グローバルライフソリューションズ、日立ハイテク、日立産機システム、日立インダストリアルプロダクツ 他 |
-| その他 | 不動産の管理・売買・賃貸 | 日立リアルエステートパートナーズ、Hitachi America、Hitachi Asia、日立(中国)、Hitachi Europe、Hitachi India |
+| 事業領域 | 主要な関係会社 |
+| --- | --- |
+| デジタルシステム＆サービス | 日立チャネルソリューションズ、日立情報通信エンジニアリング、日立ソリューションズ、日立システムズ、日立ヴァンタラ、GlobalLogic、Hitachi Digital 他 |
+| エナジー | 日立GEベルノバニュークリアエナジー、日立プラントコンストラクション、Hitachi Energy |
+| モビリティ | Hitachi Rail |
+| コネクティブインダストリーズ | 日立ビルシステム、日立グローバルライフソリューションズ、日立ハイテク、日立産機システム、日立インダストリアルプロダクツ 他 |
+| その他 | 日立リアルエステートパートナーズ、Hitachi America、Hitachi Asia、日立(中国)、Hitachi Europe、Hitachi India |
 
 デジタルイノベーションのエンジンとして「Lumada(ルマーダ)」を展開しており、
 2016年の事業立ち上げ以来、AIとドメインナレッジの活用により進化を重ね、現在はLumada3.0として展開している。

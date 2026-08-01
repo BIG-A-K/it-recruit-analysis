@@ -1,0 +1,59 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: toyota-motor
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialData from "../../components/company/FinancialData.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+トヨタ自動車株式会社は、自動車の生産・販売を主要事業とし、「モビリティカンパニー」へのモデルチェンジを掲げる企業です。コネクティッド、自動化、シェアリング、電動化（CASE）領域や新モビリティサービスも展開しています。
+
+## 企業理念・経営理念
+
+トヨタは「トヨタウェイ2020」に「だれかのために」「誠実に行動する」「好奇心で動く」「ものをよく観る」「技能を磨く」「改善を続ける」「余力を創り出す」「競争を楽しむ」「仲間を信じる」「ありがとうを声に出す」という価値観を定めています。経営理念はトヨタフィロソフィー、基本理念、トヨタウェイ2020、トヨタグローバルビジョンで構成されています。
+
+## 事業内容
+
+- **自動車事業**: 乗用车から商用車まで、ハイブリッド、プラグインハイブリッド、電気自動車、燃料電池車など幅広いラインナップを世界展開します。
+- **金融事業**: ディーラーを通じた自動車ローン、リース、保険などの金融サービスを提供します。
+
+事業内容は[トヨタ自動車公式サイト](https://global.toyota/jp/)で確認してください。
+
+## 公式サイト・IR
+
+- [トヨタ自動車公式サイト](https://global.toyota/jp/)
+- [投資家向け情報（IR）](https://global.toyota/jp/ir/)
+- [トヨタウェイ・企業理念](https://global.toyota/jp/company/vision-and-philosophy/)
+
+## 採用情報
+
+### 採用主体・対象
+
+採用主体はトヨタ自動車株式会社です。総合職（事務職・技術職・業務職）、ソフトウェア職、新卒博士、病院事務などの募集があります。技能職（生産関係職）は別サイトで募集しています。
+
+### 勤務地・待遇・働き方
+
+本社は愛知県豊田市で、東京本社（文京区）、名古屋オフィスなど国内拠点に配属されます。初任給、勤務時間、選考プロセスの詳細は募集要項ページ（JavaScript描画）で確認する必要があります。最新の募集要項は[トヨタ採用サイト](https://www.toyota-recruit.com/)でご確認ください。
+
+採用情報は2026年8月1日に確認しました。募集年度、応募資格、初任給、選考スケジュールは変更される可能性があるため、応募時に最新情報をご確認ください。
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+
+<BusinessSegments companyId={frontmatter.companyId} />
+
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialData companyId={frontmatter.companyId} />
+
+<CompanySources companyId={frontmatter.companyId} />

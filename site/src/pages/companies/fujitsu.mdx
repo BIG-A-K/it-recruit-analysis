@@ -4,7 +4,7 @@ companyId: fujitsu
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
@@ -12,7 +12,20 @@ import FinancialData from "../../components/company/FinancialData.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-<CompanyMessage companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+富士通株式会社は、クラウド、AI、コンピューティング、ネットワークなどのデジタルサービスを通じて、企業や公共分野の変革を支援するグローバルIT企業です。
+
+## 公式サイト・採用情報
+
+- [企業サイト](https://global.fujitsu/ja-jp/)
+- [IR情報](https://global.fujitsu/ja-jp/ir/)
+- [新卒採用](https://fujitsu.recruiting.jp.fujitsu.com/)
+
+採用主体は富士通株式会社です。職種、勤務地、待遇は募集ポジションごとに異なります。最新の新卒・キャリア募集要項を公式採用サイトで確認してください（2026年8月1日確認）。
+
+</CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 

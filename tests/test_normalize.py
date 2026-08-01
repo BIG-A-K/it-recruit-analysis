@@ -79,3 +79,17 @@ def test_segment_member() -> None:
         "marketing-matching-technologies",
         "マーケティング・マッチング・テクノロジー事業",
     )
+    assert segment_member(
+        "CurrentYearDuration_"
+        "jpcrp030000-asr_E05041-000InternetInfrastructureReportableSegmentMember",
+        "gmo-internet",
+    ) == ("internet-infrastructure", "インターネットインフラ事業")
+    assert segment_member(
+        "Prior1YearDuration_"
+        "jpcrp030000-asr_E05041-000IncubationReportableSegmentMember",
+        "gmo-internet",
+    ) == ("incubation", "インキュベーション事業")
+    assert segment_member(
+        "CurrentYearDuration_ReportableSegmentsMember",
+        "gmo-internet",
+    ) is None

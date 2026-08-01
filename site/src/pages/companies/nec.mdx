@@ -4,7 +4,7 @@ companyId: nec
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
@@ -12,7 +12,20 @@ import FinancialData from "../../components/company/FinancialData.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-<CompanyMessage companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+日本電気株式会社（NEC）は、デジタル技術と社会インフラを組み合わせ、公共、通信、企業向けのシステムやサービスを提供する企業です。
+
+## 公式サイト・採用情報
+
+- [企業サイト](https://jpn.nec.com/)
+- [IR情報](https://jpn.nec.com/ir/)
+- [新卒採用](https://jpn.nec.com/recruit/newgraduate/)
+
+採用主体は日本電気株式会社です。研究開発、技術、営業、スタッフなどの職種、応募資格、勤務地、待遇は公式募集要項で確認してください（2026年8月1日確認）。
+
+</CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 

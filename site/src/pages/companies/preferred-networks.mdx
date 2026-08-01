@@ -5,13 +5,11 @@ originalPublishedAt: 2026/07/30
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-
-<CompanyMessage companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
@@ -25,7 +23,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 （[創業者メッセージ](https://www.preferred.jp/ja/company/cofounders)、共同創業者 西川徹・岡野原大輔）
 
-PFN Values（行動規範）は以下の5項目（[企業文化と福利厚生](https://www.preferred.jp/ja/careers/culture/)に掲載）。
+PFN Values（行動規範）は以下の5項目（企業文化と福利厚生ページに掲載）。
 
 - **Learn or Die**（死ぬ気で学ぶ）
 - **Beyond Customer Expectations**（お客さま目線の、その先へ）
@@ -117,6 +115,8 @@ PFN Values（行動規範）は以下の5項目（[企業文化と福利厚生](
 社内では年3回の「PFN Day」（社内学会）、週1回の全社会議（ハイブリッド開催）、ライトニングトーク、テックトーク、論文読み会、ランチタイムトークなどが開かれている（同ページ）。
 
 ### 新卒
+採用主体は株式会社Preferred Networksです。以下は公式採用情報を2026年8月1日に確認した内容です。
+
 2027年入社 新卒採用を実施（[第1期募集のお知らせ](https://www.preferred.jp/ja/news/pr20251104)、[第2期募集のお知らせ](https://www.preferred.jp/ja/news/pr20251201)）。募集職種は以下の2つ。
 
 - [エンジニア・リサーチャー](https://open.talentio.com/r/1/c/preferred/pages/115753)
@@ -127,14 +127,7 @@ PFN Values（行動規範）は以下の5項目（[企業文化と福利厚生](
   - AIチップ
 - [エンジニア・リサーチャー（材料探索）](https://open.talentio.com/r/1/c/preferred/pages/115754)
 
-選考スケジュール（同リリース）。
-
-| 期 | 応募締切 | 内定予定時期 |
-| --- | --- | --- |
-| 第1期 | 2025年11月30日（日）23:59 | 2025年12月〜2026年1月 |
-| 第2期 | 2025年12月21日（日）23:59 | 2026年1月〜2月 |
-| 第3期 | 2026年1月末 | 2026年2月〜3月 |
-| 第4期 | 2026年2月末 | 2026年4月 |
+2027年入社の各募集期の応募期限は終了しています。現在の募集状況と次回募集は公式採用ページで確認してください（2026年8月1日確認）。
 
 選考フロー（同リリース）: 書類選考 → コーディングテスト → 面接（複数回） → 内定。書類選考は最大1か月程度。
 
@@ -156,17 +149,12 @@ PFN Values（行動規範）は以下の5項目（[企業文化と福利厚生](
 
 </CompanyProse>
 
+<BusinessSegments companyId={frontmatter.companyId} />
+
 <CompanyProse>
 
 ## 事業内容
-PFNはAI技術のバリューチェーンを4つのレイヤーで自社開発し、垂直統合していると[事業内容](https://www.preferred.jp/ja/business/)で説明している。
-
-| レイヤー | 内容 |
-| --- | --- |
-| [AI半導体](https://www.preferred.jp/ja/business/chips/) | AIに特化したプロセッサー MN-Core™ シリーズを開発・提供 |
-| [計算基盤](https://www.preferred.jp/ja/business/computing/) | AI向け計算基盤を自社で構築・運用し、クラウドサービス PFCP™ として提供 |
-| [生成AI基盤モデル](https://www.preferred.jp/ja/business/genai/) | 国産大規模言語モデル PLaMo™ と特化型モデルをフルスクラッチで開発・提供 |
-| [AIプロダクト・ソリューション](https://www.preferred.jp/ja/business/solutions/) | 各業界の課題解決に向けたAIプロダクト・ソリューションを開発・提供 |
+PFNはAI技術のバリューチェーンを4つのレイヤーで自社開発し、垂直統合していると公式事業内容で説明している。
 
 [企業情報](https://www.preferred.jp/ja/company/)に記載の技術基盤に関する記述。AI向けプロセッサー MN-Core™ シリーズは神戸大学と共同開発。自社開発のスーパーコンピュータ MN-3 は、スーパーコンピュータの電力効率を評価する Green500 で世界1位を3度獲得しているとしている。
 

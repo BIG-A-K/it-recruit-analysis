@@ -5,7 +5,6 @@ originalPublishedAt: 2025/04/09
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
@@ -15,8 +14,6 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-
-<CompanyMessage companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
@@ -28,7 +25,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 ## サイト
 - [HP](https://www.scsk.jp/)
-- [有価証券取引報告書](https://www.scsk.jp/ir/library/valuable/)
+- [有価証券報告書](https://www.scsk.jp/ir/library/valuable/)
 - [採用ページ](https://www.scsk.jp/recruit/saiyo/index.html)
   - [募集要項](https://www.scsk.jp/recruit/saiyo/recruit/recruit-info.html)
 
@@ -39,6 +36,8 @@ import CompanySources from "../../components/company/CompanySources.astro";
 <CompanyProse>
 
 ## 採用情報の補足
+
+採用主体はSCSK株式会社です。以下は公式採用ページを2026年8月1日に確認した内容です。
 
 ### 初任給
 | 学歴   | 月給         | 業務手当 | 学び手当 | リモートワーク推進手当 | 年収概算       |
@@ -62,10 +61,9 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyProse>
 
-## 事業内容
+## サービスの具体例
 SCSKは以下のセグメント間で連携し、コンサルティング、システム開発、検証サービス、ITインフラ構築、ITマネジメント、ITハード・ソフト
 販売、BPO等のサービスを提供している。
-### セグメント
 - **産業IT**
   - 製造、通信、エネルギー、流通、サービス、メディア等の顧客向けに、基幹系システムや生産管理システムなどのITソリューションを提供。自動車業界向けには、組み込みソフトウェア開発やミドルウェア提供をグローバルに展開。
 

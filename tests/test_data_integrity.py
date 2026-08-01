@@ -1,4 +1,5 @@
 import csv
+import re
 from decimal import Decimal
 from pathlib import Path
 
@@ -206,6 +207,54 @@ def test_active_companies_have_mdx_pages() -> None:
         assert f"companyId: {company_id}" in page
 
 
+def test_company_articles_have_common_content_sections() -> None:
+    active_company_ids = {
+        row["company_id"]
+        for row in read_rows("companies.csv")
+        if row["is_active"] == "true"
+    }
+    recruitment_url = re.compile(
+        r"https?://[^)\s]*(?:recruit|career|careers|jobs|employment)[^)\s]*"
+    )
+    confirmation_date = re.compile(
+        r"20\d{2}年\d{1,2}月\d{1,2}日(?:確認|に確認)"
+    )
+
+    for company_id in active_company_ids:
+        page = (COMPANY_PAGE_DIR / f"{company_id}.mdx").read_text(
+            encoding="utf-8"
+        )
+        assert f"<CompanyOverview companyId={{frontmatter.companyId}} />" in page
+        assert "<CompanyProse>" in page
+        assert f"<CompanySources companyId={{frontmatter.companyId}} />" in page
+        assert "CompanyMessage" not in page
+        assert "RecruitmentInfo" not in page
+        assert recruitment_url.search(page), company_id
+        assert confirmation_date.search(page), company_id
+
+
+def test_new_game_companies_have_operating_profit() -> None:
+    game_company_ids = {
+        "nintendo",
+        "takara-tomy",
+        "bandai-namco",
+        "capcom",
+        "konami",
+        "square-enix",
+        "sega-sammy",
+        "koei-tecmo",
+    }
+    rows = read_rows("metrics.csv")
+
+    for company_id in game_company_ids:
+        assert any(
+            row["company_id"] == company_id
+            and row["metric_key"] == "operating_profit"
+            and row["availability"] == "reported"
+            for row in rows
+        ), company_id
+
+
 def test_unlisted_company_pages_omit_unavailable_data_sections() -> None:
     unlisted_company_ids = {
         row["company_id"]
@@ -214,14 +263,19 @@ def test_unlisted_company_pages_omit_unavailable_data_sections() -> None:
     }
     unavailable_components = {
         "EmploymentOverview",
-        "BusinessSegments",
         "HealthMetrics",
         "FinancialHistory",
         "MetricTrends",
         "FinancialData",
+    }
+    segments_by_company = {
+        row["company_id"]
+        for row in read_rows("segments.csv")
     }
 
     for company_id in unlisted_company_ids:
         page = (COMPANY_PAGE_DIR / f"{company_id}.mdx").read_text(encoding="utf-8")
         for component in unavailable_components:
             assert component not in page, (company_id, component)
+        if company_id not in segments_by_company:
+            assert "BusinessSegments" not in page, company_id

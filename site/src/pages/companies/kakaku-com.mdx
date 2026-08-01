@@ -4,21 +4,28 @@ companyId: kakaku-com
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
-import BusinessSegments from "../../components/company/BusinessSegments.astro";
-import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialData from "../../components/company/FinancialData.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-<CompanyMessage companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+カカクコムは、「価格.com」「食べログ」など、比較・予約・情報提供を通じて生活や購買の意思決定を支援するインターネットサービスを運営しています。
+
+## 公式サイト・採用情報
+
+- [企業サイト](https://corporate.kakaku.com/)
+- [IR情報](https://corporate.kakaku.com/ir/)
+- [採用情報](https://corporate.kakaku.com/recruit/)
+
+採用主体は株式会社カカクコムです。職種、勤務地、待遇は公式採用ページの募集要項を確認してください（2026年8月1日確認）。
+
+</CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
-
-<BusinessSegments companyId={frontmatter.companyId} />
-
-<HealthMetrics companyId={frontmatter.companyId} />
 
 <FinancialData companyId={frontmatter.companyId} />
 

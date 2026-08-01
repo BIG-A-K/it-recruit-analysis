@@ -5,7 +5,6 @@ originalPublishedAt: 2025/05/05
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
@@ -15,8 +14,6 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-
-<CompanyMessage companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
@@ -30,7 +27,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 - [採用ページ](https://www.cyberagent.co.jp/careers/)
   - [募集要項](https://www.cyberagent.co.jp/careers/about/)
 - [主要関連会社](https://www.cyberagent.co.jp/corporate/group/)
-- [有価証券取引報告書](https://www.cyberagent.co.jp/ir/library/securityreport/)
+- [有価証券報告書](https://www.cyberagent.co.jp/ir/library/securityreport/)
 
 </CompanyProse>
 
@@ -39,6 +36,8 @@ import CompanySources from "../../components/company/CompanySources.astro";
 <CompanyProse>
 
 ## 採用情報の補足
+
+採用主体は株式会社サイバーエージェントです。新卒採用はビジネス、エンジニア、クリエイターのコース別で、ゲームなどのグループ会社は別法人採用です。以下は公式募集要項を2026年8月1日に確認した内容です。
 
 ### 新卒
 | コース名             | 給与体系                                                                                     | 家賃補助制度                                                                 |
@@ -77,7 +76,7 @@ Cygamesをはじめ複数の開発会社が所属し、オリジナルや他社I
 小売・行政・医療・エンタメ業界のDXを推進。チラシのデジタル化やオンライン服薬指導、行政手続きのデジタル支援など、社会課題の解決を技術で支援。
 
 ## 事業の内容
-主要関連会社は[こちら](https://www.cyberagent.co.jp/corporate/group/)
+主要関連会社と最新のグループ構成は、上記の公式グループ一覧を参照。
 
 | 事業区分           | 会社名                          | 主な事業内容                                   | 当社との関係       |
 |--------------------|---------------------------------|-----------------------------------------------|--------------------|

@@ -1,0 +1,67 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: taiyo-yuden
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialData from "../../components/company/FinancialData.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+太陽誘電株式会社は、積層セラミックコンデンサ（MLCC）、インダクタ、通信用デバイス、回路モジュールなどの電子部品を開発・製造・販売する企業です。本社は東京都中央区で、群馬県に主要な工場・研究所を置いています。
+
+## 企業理念・パーパス
+
+ミッションは「おもしろ科学で より大きく より社会的に」です。経営理念として従業員の幸福、地域社会への貢献、株主に対する配当責任を掲げ、ビジョンとして「すべてのステークホルダーから信頼され 感動を与えるエクセレントカンパニーへ」を目指しています。
+
+## 事業内容
+
+- **コンデンサ**: 積層セラミックコンデンサ（MLCC）、アルミニウム電解コンデンサなどを開発・製造します。
+- **インダクタ・通信用デバイス**: インダクタ、FBAR/SAWフィルターなどの高周波デバイスを手がけます。
+- **モジュール・センサー**: 回路モジュールやセンサー製品を展開します。
+
+事業内容は[太陽誘電公式サイト](https://www.yuden.co.jp/jp/)で確認してください。
+
+## 公式サイト・IR
+
+- [太陽誘電公式サイト](https://www.yuden.co.jp/jp/)
+- [投資家向け情報（IR）](https://www.yuden.co.jp/jp/ir/)
+- [新卒採用情報](https://www.yuden.co.jp/jp/recruit/newly/)
+
+## 採用情報
+
+### 採用主体・対象
+
+採用主体は太陽誘電株式会社です。2027年4月入社で50名程度の採用を予定しています。
+
+### 職種
+
+技術系（電子部品開発、生産システム開発、モジュール・センサー設計開発、情報系技術、品質保証、技術営業など）と管理系（営業、事業企画、SCM、財務経理、法務、人事など）を募集しています。
+
+### 勤務地・待遇・働き方
+
+技術部門は群馬県内の各工場・研究所（高崎市、玉村町、中之条町）、神奈川県内研究所（川崎市）に配属されます。管理部門は本社（東京・京橋）、高崎グローバルセンター、営業所に配属されます。勤務時間は工場・研究所が8:30〜17:10、本社・営業所が9:00〜17:40です。将来、国内・海外転勤の可能性があります。
+
+初任給（総合職・2026年4月実績）は学士卒276,050円、修士了302,470円、博士了326,550円です。詳細は[新卒採用情報](https://www.yuden.co.jp/jp/recruit/newly/)で確認してください。
+
+### 選考
+
+エントリー → 応募書類提出（履歴書・エントリーシート）・筆記試験 → 個人面接（計3回） → 内々定の流れです。
+
+採用情報は2026年8月1日に確認しました。募集年度、応募資格、初任給は変更される可能性があるため、応募時に最新情報をご確認ください。
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialData companyId={frontmatter.companyId} />
+
+<CompanySources companyId={frontmatter.companyId} />

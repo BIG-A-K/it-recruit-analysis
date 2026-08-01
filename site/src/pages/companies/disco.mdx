@@ -1,0 +1,67 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: disco
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialData from "../../components/company/FinancialData.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+株式会社ディスコは、半導体製造に不可欠な「Kiru（切削）・Kezuru（研削）・Migaku（研磨）」の加工技術を事業とする企業です。ダイシングソー、レーザソー、グラインダ、ポリッシャなどの精密加工装置とダイヤモンド砥石などの加工ツールを開発・製造しています。海外売上比率は8割を超えます。
+
+## 企業理念・パーパス
+
+ミッションは「高度なKiru・Kezuru・Migaku技術によって遠い科学を身近な快適につなぐ」です。モットーとして「Always the best, Always fun（常にべストを尽くすことと、仕事を楽しむこと）」を掲げています。売上・シェア・規模の拡大ではなく、Missionの実現性の向上と価値交換性の向上を「成長」と定義しています。
+
+## 事業内容
+
+- **精密加工装置事業**: ダイシングソー、レーザソー、グラインダ、ポリッシャなどの装置を開発・製造します。
+- **精密加工ツール事業**: ダイシングブレード、グラインディングホイールなどのダイヤモンド砥石を手がけます。
+- **アプリケーション事業**: 加工方法の検証など、加工ソリューションを提供します。
+
+事業内容は[ディスコ公式サイト](https://www.disco.co.jp/)で確認してください。
+
+## 公式サイト・IR
+
+- [ディスコ公式サイト](https://www.disco.co.jp/)
+- [投資家向け情報（IR）](https://www.disco.co.jp/products/advance/ir/)
+- [新卒採用サイト](https://www.disco.co.jp/recruit/)
+
+## 採用情報
+
+### 採用主体・対象
+
+採用主体は株式会社ディスコです。事業所別（東京本社、広島、長野）に採用を実施しています。2027年4月以降に出社勤務できる方が対象です。
+
+### 職種
+
+総合職（技術系・営業系・管理系）と事務職を募集しています。技術系、営業系、管理系の職群があります。
+
+### 勤務地・待遇・働き方
+
+入社当初は東京（大森本社・羽田R&Dセンター）です。総合職は全事業所（東京・広島呉・長野茅野）および国内海外関係会社への異動可能性があります。フレックスタイム制（実働7.75時間、コア10:00〜14:30）が導入されています。
+
+初任給（月給・都市手当・コミット手当含む）は、総合職が博士修了419,610円、修士修了393,420円、大学卒379,900円、事務職が大学卒351,740円です。コミット手当は全力で働くことを約束した正社員に一律10万円が支給されます。詳細は[東京本社新卒募集要項](https://www.disco.co.jp/recruit/information/tokyo/new.html)で確認してください。
+
+### 選考
+
+エントリー → 書類選考（エントリーシート+適性検査） → 面接（複数回）の流れです。選考期間は2026年1月〜2027年1月末日です。
+
+採用情報は2026年8月1日に確認しました。募集年度、応募資格、初任給は変更される可能性があるため、応募時に最新情報をご確認ください。
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialData companyId={frontmatter.companyId} />
+
+<CompanySources companyId={frontmatter.companyId} />

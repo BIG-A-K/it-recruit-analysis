@@ -4,22 +4,25 @@ companyId: fixstars
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
-import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
-import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-<CompanyMessage companyId={frontmatter.companyId} />
 
-<EmploymentOverview companyId={frontmatter.companyId} />
+<CompanyProse>
+
+フィックスターズは、ソフトウェア高速化やAI、量子コンピューティング、FPGA・フラッシュメモリなどの技術領域で、企業の計算処理と製品開発を支援する会社です。
+
+## 公式サイト・採用情報
+
+- [会社概要](https://www.fixstars.com/ja/company/overview)
+- [採用情報](https://www.fixstars.com/ja/recruit/)
+
+採用主体は株式会社フィックスターズです。新卒・キャリアの募集職種、勤務地、待遇は公式募集要項を確認してください（2026年8月1日確認）。
+
+</CompanyProse>
 
 <BusinessSegments companyId={frontmatter.companyId} />
-
-<HealthMetrics companyId={frontmatter.companyId} />
-
-<FinancialData companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />

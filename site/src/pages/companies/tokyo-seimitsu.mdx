@@ -1,0 +1,69 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: tokyo-seimitsu
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialData from "../../components/company/FinancialData.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+株式会社東京精密は、半導体製造装置と精密測定器を事業の二本柱とする企業です。「計測事業を持つ唯一の半導体装置メーカー」を位置づけ、ブランド名ACCRETECHでグローバルに展開しています。社内カンパニー制として半導体社、計測社、業務会社を置いています。
+
+## 企業理念・パーパス
+
+パーパスは「計測で未来を測り、半導体で未来を創る」です。ミッションとして「世界中の優れた技術・知恵・情報を融合して世界No.1の商品を創り出し、皆様と共に大きく成長していく」を掲げています。ブランド名ACCRETECHはAccrete（共生）とTechnologyを組み合わせた造語で、Grow Togetherを意味します。
+
+## 事業内容
+
+- **半導体製造装置**: ダイシングマシン、プロービングマシン、ポリッシュ・グラインダ、CMP装置、研削盤、剥離洗浄機などを開発・製造します。
+- **精密測定器**: 三次元座標測定機、X線CT装置、表面粗さ・輪郭形状測定機、真円度・円筒形状測定機、センサ、ソフトウェアなどを手がけます。
+
+事業内容は[東京精密公式サイト](https://www.accretech.jp/)で確認してください。
+
+## 公式サイト・IR
+
+- [東京精密公式サイト](https://www.accretech.jp/)
+- [投資家向け情報（IR）](https://www.accretech.jp/company/ir/)
+- [新卒採用サイト](https://www.accretech.com/recruit/new-career/)
+
+## 採用情報
+
+### 採用主体・対象
+
+採用主体は株式会社東京精密です。2027年3月に大学院修了・大学卒業・高専卒業見込みの方が対象で、既卒（卒後3年以内・正社員職歴なし）も応募可能です。
+
+### 職種
+
+技術職（機械設計、電気設計、ソフトウェア開発、アプリケーション、ブレード）、フィールドエンジニア職、営業職、管理業務職、機械組立職（半導体製造装置）を募集しています。
+
+### 勤務地・待遇・働き方
+
+技術職（半導体）は八王子・飯能、技術職（精密測定）は土浦に配属されます。フィールドエンジニア職は東京・大阪・熊本・大分など全国各地、営業職は国内（八王子・土浦・名古屋・大阪）および海外拠点です。勤務時間は技術職・フィールドエンジニア職・機械組立職が8:30〜17:00、営業・管理部門が9:00〜17:30です。
+
+初任給（基本給・2026年4月実績）は博士了297,000円、修士了288,000円、学部卒266,000円、高専・本科生242,000円です。別途住宅手当（13,000円または24,000円）、技術職手当（30,000円）があります。詳細は[募集要項](https://www.accretech.com/recruit/new-career/info)で確認してください。
+
+### 選考
+
+エントリー → 会社説明会（動画配信） → エントリーシート提出・書類選考 → 一次面接（総合的資質・適性） → 二次面接（職種別） → 最終面接（役員）の流れです。募集は40名程度です。
+
+採用情報は2026年8月1日に確認しました。募集年度、応募資格、初任給は変更される可能性があるため、応募時に最新情報をご確認ください。
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+
+<BusinessSegments companyId={frontmatter.companyId} />
+
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialData companyId={frontmatter.companyId} />
+
+<CompanySources companyId={frontmatter.companyId} />

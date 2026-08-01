@@ -1,0 +1,66 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: sumco
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialData from "../../components/company/FinancialData.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+株式会社SUMCOは、半導体の基盤素材であるシリコンウェーハの開発・製造を事業とする企業です。単結晶引上からウェーハ加工、エピタキシャルなどの特殊加工まで一貫生産し、世界シェア2位、海外売上比率80%以上を誇ります。
+
+## 企業理念・パーパス
+
+経営理念は「お客様と株主の期待に応え、従業員に幸せを与え、社会に貢献する、常に世界一のシリコンウェーハメーカーを目指す」です。採用サイトでは「文明を進化させる／より完全に・より平らに・より清浄に。私たちは、世界の基盤をつくっています」というメッセージを掲げています。
+
+## 事業内容
+
+- **シリコンウェーハ**: 半導体の根源素材であるシリコンウェーハを単結晶引上から加工まで一貫して製造します。
+- **特殊加工ウェーハ**: エピタキシャルウェーハなどの高付加価値製品を展開します。
+
+事業内容は[SUMCO公式サイト](https://www.sumcosi.com/)で確認してください。
+
+## 公式サイト・IR
+
+- [SUMCO公式サイト](https://www.sumcosi.com/)
+- [投資家向け情報（IR）](https://www.sumcosi.com/ir/)
+- [新卒採用サイト](https://www.sumcosi.com/recruit/)
+
+## 採用情報
+
+### 採用主体・対象
+
+採用主体は株式会社SUMCOです。2027年3月に高専、大学（修士・博士含む）を卒業見込みの方が対象で、既卒者（卒業後3年以内の未就労）も応募可能です。
+
+### 職種
+
+総合職・一般職ともに、技術職（基礎研究、技術開発、生産技術、設備技術、システム開発、データ解析、品質管理、技術営業、知的財産など）と事務職（海外営業、国内営業、法務総務、経理財務、資材、生産管理、人事、広報・IRなど）を募集します。
+
+### 勤務地・待遇・働き方
+
+本社（東京）、営業拠点（東京・大阪・福岡）、製造拠点（九州事業所伊万里・佐賀・長崎、米沢工場[山形]、千歳工場[北海道]、JSQ事業部[秋田]など）に配属されます。本社・営業拠点は9:00〜17:45、開発・製造拠点は8:00〜16:45で、いずれもフレックスタイム制があります。
+
+初任給（基本給・2026年4月実績）は、総合職が高専（本科）卒271,360円、学部卒・高専（専攻科）卒276,500円、修士了321,700円、博士了337,170円、一般職が短大卒195,960円、学部卒204,480円です。詳細は[新卒募集要項](https://www.sumcosi.com/recruit/information/guideline/)で確認してください。
+
+### 選考
+
+エントリー → 書類提出（履歴書・自己申告書、成績証明書、博士は外部発表論文） → 適性検査（SPI） → 面接（総合職3回・一般職2回） → 内々定の流れです。
+
+採用情報は2026年8月1日に確認しました。募集年度、応募資格、初任給は変更される可能性があるため、応募時に最新情報をご確認ください。
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialData companyId={frontmatter.companyId} />
+
+<CompanySources companyId={frontmatter.companyId} />

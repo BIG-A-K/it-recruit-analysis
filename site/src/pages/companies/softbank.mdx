@@ -4,7 +4,7 @@ companyId: softbank
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
@@ -12,7 +12,20 @@ import FinancialData from "../../components/company/FinancialData.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-<CompanyMessage companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+ソフトバンク株式会社は、通信を基盤に、法人向けICT、デジタルサービス、メディア・EC、金融などを展開する企業です。通信サービスと先端技術を組み合わせ、社会や企業のデジタル化を支援しています。
+
+## 公式サイト・採用情報
+
+- [企業サイト](https://www.softbank.jp/corp/)
+- [IR情報](https://www.softbank.jp/corp/ir/)
+- [新卒採用](https://recruit.softbank.jp/graduate/)
+
+採用主体はソフトバンク株式会社です。ビジネス、エンジニア、研究開発、デザイン、コーポレートなどの職種と募集要項は公式採用ページで確認してください（2026年8月1日確認）。
+
+</CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 

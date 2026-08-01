@@ -5,7 +5,6 @@ originalPublishedAt: 2026/07/29
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
@@ -15,8 +14,6 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-
-<CompanyMessage companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
@@ -58,6 +55,8 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 ## 採用情報の補足
 
+採用主体はKDDI株式会社です。以下は公式新卒採用サイトを2026年8月1日に確認した内容です。
+
 ### 新卒
 初期配属領域を確約するコースと確約しないコースに分かれている。
 
@@ -83,10 +82,8 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyProse>
 
-## 事業内容
+## サービスの具体例
 当社、連結子会社193社(国内133社、海外60社)、持分法適用関連会社及び共同支配企業46社(国内36社、海外10社)により構成され、
-「パーソナル事業」「ビジネス事業」を主な事業としている。
-
 - **パーソナル事業**
   日本国内においては、「au」「UQ mobile」「povo」のマルチブランドで提供する5G通信サービスを中心に、金融、エネルギー、LX(ライフトランスフォーメーション)等の各種サービスを連携し拡充している。
   海外においては、モンゴルのお客さま向けに通信サービス、金融サービスおよび映像等のエンタメサービスを提供し、ミャンマーでは現地通信事業者のサポートに取り組んでいる。

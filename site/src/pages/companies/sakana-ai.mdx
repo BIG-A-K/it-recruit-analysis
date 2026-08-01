@@ -5,13 +5,11 @@ originalPublishedAt: 2026/07/30
 ---
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
-import CompanyMessage from "../../components/company/CompanyMessage.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
-
-<CompanyMessage companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
@@ -65,8 +63,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 | 共同創業者・代表取締役CEO | David Ha |
 | 共同創業者・代表取締役社長 | 伊藤錬（Ren Ito） |
 | 共同創業者・CTO | Llion Jones |
-| 社員数 | 約150名（[Applied Team 採用情報](https://sakana.ai/applied-careers/)、伊藤錬メッセージ） |
-| 資金調達 | Series B（2026年1月完了） |
+| 資金調達 | Series B（2025年11月公表） |
 | オフィス最寄駅 | 日比谷線 神谷町駅／南北線 六本木一丁目駅 直結 |
 
 ### 経営陣・創業者
@@ -78,9 +75,13 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 </CompanyProse>
 
+<BusinessSegments companyId={frontmatter.companyId} />
+
 <CompanyProse>
 
 ## 採用状況
+採用主体はSakana AI株式会社です。以下は公式採用情報を2026年8月1日に確認した内容です。
+
 非上場のため有価証券報告書による法定開示がなく、平均給与・平均勤続年数・平均年齢・月残業時間・育休取得率は公表されていない。
 
 
@@ -153,14 +154,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 <CompanyProse>
 
 ## 事業内容
-Research / Applied / Product / Corporate の4つに分かれる。
-
-| 組織 | 内容 |
-| --- | --- |
-| Research | AI Scientist、Darwin Gödel Machine、ShinkaEvolve、AB-MCTS など、自然界の集合的知性にヒントを得た最先端研究を世界に発信。論文公開やオープンソースで成果を還元 |
-| Applied | 基盤モデルの能力を複雑な現場業務につなげる事業組織。金融・防衛・インテリジェンスの最前線で、複数モデルの適材適所、複雑な推論技術、暗黙知の抽出技術を用いてソリューションを設計・実装 |
-| Product | Sakana Chat、Sakana Marlin、Sakana Fugu などのユーザー向けAIプロダクトの開発・提供 |
-| Corporate | finance、legal、HR、operations により事業を支援 |
+上の事業内容セクションでは、公式に整理されたResearch、Applied、Product、Corporateの区分を表示しています。以下では、各区分の具体的な研究・社会実装・プロダクトを補足します。
 
 ### Research
 

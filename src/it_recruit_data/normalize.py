@@ -37,6 +37,35 @@ class MetricRule:
     company_ids: frozenset[str] | None = None
 
 
+JGAAP_COMPANY_IDS = frozenset(
+    {
+        "cyberagent",
+        "tis",
+        "mixi",
+        "gree",
+        "obic",
+        "nintendo",
+        "takara-tomy",
+        "bandai-namco",
+        "capcom",
+        "square-enix",
+        "sega-sammy",
+        "koei-tecmo",
+        "keyence",
+        "rohm",
+        "tokyo-seimitsu",
+        "screen-holdings",
+        "taiyo-yuden",
+        "tokyo-electron",
+        "disco",
+        "lasertec",
+        "shin-etsu-chemical",
+        "sumco",
+        "stella-chemifa",
+    }
+)
+
+
 METRIC_RULES = (
     MetricRule(
         "average_annual_salary",
@@ -58,6 +87,13 @@ METRIC_RULES = (
         "non_consolidated",
         "",
         "years",
+    ),
+    MetricRule(
+        "employee_count",
+        "jpcrp_cor:NumberOfEmployees",
+        "consolidated",
+        "",
+        "persons",
     ),
     MetricRule(
         "revenue",
@@ -136,7 +172,7 @@ METRIC_RULES = (
         "consolidated",
         "JGAAP",
         "JPY",
-        company_ids=frozenset({"cyberagent", "tis", "mixi", "gree", "obic"}),
+        company_ids=JGAAP_COMPANY_IDS,
     ),
     MetricRule(
         "operating_profit",
@@ -144,7 +180,7 @@ METRIC_RULES = (
         "consolidated",
         "JGAAP",
         "JPY",
-        company_ids=frozenset({"cyberagent", "tis", "mixi", "gree", "obic"}),
+        company_ids=JGAAP_COMPANY_IDS,
     ),
     MetricRule(
         "operating_cf",
@@ -152,7 +188,7 @@ METRIC_RULES = (
         "consolidated",
         "JGAAP",
         "JPY",
-        company_ids=frozenset({"cyberagent", "tis", "mixi", "gree", "obic"}),
+        company_ids=JGAAP_COMPANY_IDS,
     ),
     MetricRule(
         "investing_cf",
@@ -160,7 +196,7 @@ METRIC_RULES = (
         "consolidated",
         "JGAAP",
         "JPY",
-        company_ids=frozenset({"cyberagent", "tis", "mixi", "gree", "obic"}),
+        company_ids=JGAAP_COMPANY_IDS,
     ),
     MetricRule(
         "financing_cf",
@@ -168,7 +204,7 @@ METRIC_RULES = (
         "consolidated",
         "JGAAP",
         "JPY",
-        company_ids=frozenset({"cyberagent", "tis", "mixi", "gree", "obic"}),
+        company_ids=JGAAP_COMPANY_IDS,
     ),
     MetricRule(
         "equity_ratio",
@@ -177,7 +213,7 @@ METRIC_RULES = (
         "JGAAP",
         "percent",
         Decimal("100"),
-        frozenset({"cyberagent", "tis", "mixi", "gree", "obic"}),
+        JGAAP_COMPANY_IDS,
     ),
 )
 
@@ -185,11 +221,23 @@ METRIC_LOCAL_NAME_ALIASES = {
     "OperatingProfitLossIFRSSummaryOfBusinessResults": (
         "jpigp_cor:OperatingProfitLossIFRS"
     ),
+    "OperatingProfitLossIFRSKeyFinancialData": (
+        "jpigp_cor:OperatingProfitLossIFRS"
+    ),
     "NetSalesIFRSKeyFinancialData": (
         "jpcrp_cor:RevenueIFRSSummaryOfBusinessResults"
     ),
     "NetSalesIFRSSummaryOfBusinessResults": (
         "jpcrp_cor:RevenueIFRSSummaryOfBusinessResults"
+    ),
+    "SalesAndFinancialServicesRevenueIFRSKeyFinancialData": (
+        "jpcrp_cor:RevenueIFRSSummaryOfBusinessResults"
+    ),
+    "OperatingRevenuesIFRSKeyFinancialData": (
+        "jpcrp_cor:RevenueIFRSSummaryOfBusinessResults"
+    ),
+    "NumberOfEmployeesIFRSSummaryOfBusinessResults": (
+        "jpcrp_cor:NumberOfEmployees"
     ),
 }
 
@@ -412,6 +460,419 @@ COMPANY_SEGMENTS = {
             "OutsourcingReportableSegmentMember": ("outsourcing", "アウトソーシング"),
             "SoftwareReportableSegmentMember": ("software", "ソフトウェア"),
             "HardwareReportableSegmentMember": ("hardware", "ハードウェア"),
+        },
+    },
+    "gmo-internet": {
+        "revenue_element_id": "jpigp_cor:RevenueFromExternalCustomersIFRS",
+        "profit_element_id": "jpcrp030000-asr_E05041-000:SegmentIncomeLossIFRS",
+        "profit_measure": "セグメント損益",
+        "members": {
+            "InternetInfrastructureReportableSegmentMember": (
+                "internet-infrastructure",
+                "インターネットインフラ事業",
+            ),
+            "InternetSecuritiesReportableSegmentMember": (
+                "internet-securities",
+                "インターネット証券事業",
+            ),
+            "OnlineAdvertisingAndMediaReportableSegmentMember": (
+                "online-advertising-and-media",
+                "インターネット広告・メディア事業",
+            ),
+            "InternetFinanceReportableSegmentMember": (
+                "internet-finance",
+                "インターネット金融事業",
+            ),
+            "CryptocurrencyReportableSegmentMember": (
+                "cryptocurrency",
+                "暗号資産事業",
+            ),
+            "IncubationReportableSegmentMember": (
+                "incubation",
+                "インキュベーション事業",
+            ),
+        },
+    },
+    "takara-tomy": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "JapanReportableSegmentsMember": ("japan", "日本"),
+            "AmericaSReportableSegmentsMember": ("americas", "米州"),
+            "EuropeReportableSegmentsMember": ("europe", "欧州"),
+            "OceaniaReportableSegmentsMember": ("oceania", "オセアニア"),
+            "AsiaReportableSegmentsMember": ("asia", "アジア"),
+        },
+    },
+    "bandai-namco": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "ToysAndHobbyBusinessReportableSegmentsMember": (
+                "toys-and-hobby",
+                "トイホビー事業",
+            ),
+            "DigitalBusinessReportableSegmentsMember": (
+                "digital",
+                "デジタル事業",
+            ),
+            "VisualAndMusicBusinessReportableSegmentsMember": (
+                "visual-and-music",
+                "映像音楽事業",
+            ),
+            "AmusementBusinessReportableSegmentsMember": (
+                "amusement",
+                "アミューズメント事業",
+            ),
+        },
+    },
+    "capcom": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "DegitalContentsReportableSegmentMember": (
+                "digital-contents",
+                "デジタルコンテンツ事業",
+            ),
+            "ArcadeOperationsReportableSegmentMember": (
+                "arcade-operations",
+                "アミューズメント施設事業",
+            ),
+            "AmusementEquipmentsReportableSegmentMember": (
+                "amusement-equipments",
+                "アミューズメント機器事業",
+            ),
+        },
+    },
+    "konami": {
+        "revenue_element_id": (
+            "jpcrp030000-asr_E01956-000:"
+            "NetSalesAndOperatingRevenueFromExternalCustomersIFRS"
+        ),
+        "profit_element_id": "jpigp_cor:SegmentProfitLossIFRS",
+        "profit_measure": "セグメント利益",
+        "members": {
+            "DigitalEntertainmentReportableSegmentMember": (
+                "digital-entertainment",
+                "デジタルエンタテインメント事業",
+            ),
+            "ArcadeGameReportableSegmentMember": (
+                "arcade-game",
+                "アミューズメント事業",
+            ),
+            "GamingAndSystemsReportableSegmentMember": (
+                "gaming-and-systems",
+                "ゲーミング＆システム事業",
+            ),
+            "SportsReportableSegmentMember": ("sports", "スポーツ事業"),
+        },
+    },
+    "square-enix": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "DigitalEntertainmentSegmentReportableSegmentsMember": (
+                "digital-entertainment",
+                "デジタルエンタテインメント事業",
+            ),
+            "AmusementSegmentReportableSegmentsMember": (
+                "amusement",
+                "アミューズメント事業",
+            ),
+            "PublicationSegmentReportableSegmentsMember": (
+                "publication",
+                "出版事業",
+            ),
+            "MerchandisingSegmentReportableSegmentsMember": (
+                "merchandising",
+                "ライツ・プロパティ等事業",
+            ),
+        },
+    },
+    "sega-sammy": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OrdinaryIncome",
+        "profit_measure": "経常利益",
+        "members": {
+            "EntertainmentContentsBusinessReportableSegmentsMember": (
+                "entertainment-contents",
+                "エンタテインメントコンテンツ事業",
+            ),
+            "PachislotAndPachinkoMachinesReportableSegmentsMember": (
+                "pachislot-pachinko-machines",
+                "遊技機事業",
+            ),
+            "GamingBusinessReportableSegmentMember": (
+                "gaming",
+                "ゲーミング事業",
+            ),
+        },
+    },
+    "koei-tecmo": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "EntertainmentReportableSegmentMember": (
+                "entertainment",
+                "エンタテインメント事業",
+            ),
+            "AmusementReportableSegmentMember": (
+                "amusement",
+                "アミューズメント事業",
+            ),
+            "RealEstateReportableSegmentMember": (
+                "real-estate",
+                "不動産事業・その他",
+            ),
+        },
+    },
+    "sony-group": {
+        "revenue_element_id": "jpcrp030000-asr_E01777-000:SalesAndFinancialServicesRevenueToCustomersIFRS",
+        "profit_element_id": "jpigp_cor:OperatingProfitLossIFRS",
+        "profit_measure": "営業利益",
+        "members": {
+            "GameAndNetworkServicesReportableSegmentMember": (
+                "game-and-network-services",
+                "ゲーム&ネットワークサービス",
+            ),
+            "MusicReportableSegmentMember": (
+                "music",
+                "ミュージック",
+            ),
+            "PicturesReportableSegmentMember": (
+                "pictures",
+                "ピクチャーズ",
+            ),
+            "EntertainmentTechnologyAndServicesReportableSegmentMember": (
+                "entertainment-technology-and-services",
+                "エンタテインメント・テクノロジー・サービス",
+            ),
+            "ImagingAndSensingSolutionsReportableSegmentMember": (
+                "imaging-and-sensing-solutions",
+                "イメージング&センシング・ソリューションズ",
+            ),
+            "FinancialServicesReportableSegmentMember": (
+                "financial-services",
+                "フィナンシャル・サービス",
+            ),
+        },
+    },
+    "panasonic-holdings": {
+        "revenue_element_id": "jpigp_cor:SalesToExternalCustomersIFRS",
+        "profit_element_id": "jpigp_cor:OperatingProfitLossIFRS",
+        "profit_measure": "営業利益",
+        "members": {
+            "AutomotiveReportableSegmentMember": (
+                "automotive",
+                "オートモーティブ",
+            ),
+            "ConnectReportableSegmentMember": (
+                "connect",
+                "コネクト",
+            ),
+            "EnergyReportableSegmentMember": (
+                "energy",
+                "エナジー",
+            ),
+            "IndustryReportableSegmentMember": (
+                "industry",
+                "インダストリー",
+            ),
+            "LifestyleReportableSegmentMember": (
+                "lifestyle",
+                "ライフスタイル",
+            ),
+        },
+    },
+    "renesas-electronics": {
+        "revenue_element_id": "jpigp_cor:RevenueFromExternalCustomersIFRS",
+        "profit_element_id": "jpigp_cor:OperatingProfitLossIFRS",
+        "profit_measure": "営業利益",
+        "members": {
+            "AutomotiveReportableSegmentMember": (
+                "automotive",
+                "オートモーティブ",
+            ),
+            "IndustrialInfrastructureIoTReportableSegmentMember": (
+                "industrial-infrastructure-iot",
+                "インダストリアル・インフラ・IoT",
+            ),
+        },
+    },
+    "toyota-motor": {
+        "revenue_element_id": "jpcrp030000-asr_E02144-000:OperatingRevenueFromExternalCustomersIFRS",
+        "profit_element_id": "jpigp_cor:OperatingProfitLossIFRS",
+        "profit_measure": "営業利益",
+        "members": {
+            "AutomotiveReportableSegmentMember": (
+                "automotive",
+                "自動車",
+            ),
+            "FinancialServicesReportableSegmentMember": (
+                "financial-services",
+                "金融",
+            ),
+        },
+    },
+    "rohm": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "ICsReportableSegmentMember": (
+                "ics",
+                "IC",
+            ),
+            "DiscreteSemiconductorDevicesReportableSegmentMember": (
+                "discrete-semiconductor-devices",
+                "個別半導体デバイス",
+            ),
+            "ModulesReportableSegmentMember": (
+                "modules",
+                "モジュール",
+            ),
+        },
+    },
+    "tokyo-seimitsu": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "MeasurementEquipmentReportableSegmentsMember": (
+                "measurement-equipment",
+                "精密測定器",
+            ),
+            "SemiconductorManufacturingDeviceReportableSegmentsMember": (
+                "semiconductor-manufacturing-device",
+                "半導体製造装置",
+            ),
+        },
+    },
+    "screen-holdings": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "SpeReportableSegmentsMember": (
+                "spe",
+                "半導体製造装置",
+            ),
+            "FtReportableSegmentsMember": (
+                "ft",
+                "微細加工テクノロジー",
+            ),
+            "GaReportableSegmentsMember": (
+                "ga",
+                "グラフィックアーツ",
+            ),
+            "PeReportableSegmentsMember": (
+                "pe",
+                "生産設備",
+            ),
+        },
+    },
+    "advantest": {
+        "revenue_element_id": "jpigp_cor:SalesToExternalCustomersIFRS",
+        "profit_element_id": "jpigp_cor:SegmentProfitLossIFRS",
+        "profit_measure": "セグメント利益",
+        "members": {
+            "MechatronicsSystemBusinessReportableSegmentMember": (
+                "mechatronics-system",
+                "メカトロニクスシステム事業",
+            ),
+            "SemiconductorAndComponentTestSystemBusinessReportableSegmentMember": (
+                "semiconductor-and-component-test-system",
+                "半導体・部品テストシステム事業",
+            ),
+            "ServicesSupportAndOthersReportableSegmentMember": (
+                "services-support-and-others",
+                "サービス・サポート・その他",
+            ),
+        },
+    },
+    "shin-etsu-chemical": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "ElectronicsMaterialsReportableSegmentsMember": (
+                "electronics-materials",
+                "電子機能材料",
+            ),
+            "FunctionalMaterialsReportableSegmentsMember": (
+                "functional-materials",
+                "機能化学品",
+            ),
+            "InfrastructureMaterialsReportableSegmentsMember": (
+                "infrastructure-materials",
+                "基礎素材",
+            ),
+            "DiversifiedBusinessReportableSegmentsMember": (
+                "diversified-business",
+                "加工・その他",
+            ),
+        },
+    },
+    "stella-chemifa": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "HighPurityChemicalReportableSegmentsMember": (
+                "high-purity-chemical",
+                "高純度化学",
+            ),
+            "TransportationReportableSegmentsMember": (
+                "transportation",
+                "運輸",
+            ),
+        },
+    },
+    "resonac-holdings": {
+        "revenue_element_id": "jpigp_cor:RevenueFromExternalCustomersIFRS",
+        "profit_element_id": "jpigp_cor:SegmentProfitLossIFRS",
+        "profit_measure": "セグメント利益",
+        "members": {
+            "SemiconductorAndElectronicMaterialsReportableSegmentMember": (
+                "semiconductor-and-electronic-materials",
+                "半導体・電子材料",
+            ),
+            "InnovationEnablingMaterialsReportableSegmentMember": (
+                "innovation-enabling-materials",
+                "イノベーション・Enabling Materials",
+            ),
+            "MobilityReportableSegmentMember": (
+                "mobility",
+                "モビリティ",
+            ),
+            "ChemicalsReportableSegmentMember": (
+                "chemicals",
+                "ケミカルズ",
+            ),
+        },
+    },
+    "agc": {
+        "revenue_element_id": "jpigp_cor:SalesToExternalCustomersIFRS",
+        "profit_element_id": "jpigp_cor:OperatingProfitLossIFRS",
+        "profit_measure": "営業利益",
+        "members": {
+            "GlassReportableSegmentMember": (
+                "glass",
+                "ガラス",
+            ),
+            "AutomotiveReportableSegmentMember": (
+                "automotive",
+                "自動車",
+            ),
+            "LifescienceReportableSegmentMember": (
+                "lifescience",
+                "ライフサイエンス",
+            ),
         },
     },
 }
