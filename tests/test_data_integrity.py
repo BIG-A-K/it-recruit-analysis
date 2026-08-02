@@ -1,5 +1,6 @@
 import csv
 import re
+from datetime import date
 from decimal import Decimal
 from pathlib import Path
 
@@ -47,6 +48,41 @@ def test_metric_integrity() -> None:
             Decimal(row["value"])
             assert row["unit"]
             assert row["source_id"] in sources
+
+
+def test_company_identifiers_and_relations() -> None:
+    company_rows = read_rows("companies.csv")
+    companies = {row["company_id"] for row in company_rows}
+    sources = {row["source_id"] for row in read_rows("sources.csv")}
+
+    assert_unique(company_rows, ("company_id",))
+    for row in company_rows:
+        if row["sec_cik"]:
+            assert re.fullmatch(r"\d{10}", row["sec_cik"])
+            assert row["ticker"]
+            assert row["exchange"]
+        if row["country_code"]:
+            assert re.fullmatch(r"[A-Z]{2}", row["country_code"])
+
+    relation_rows = read_rows("company_relations.csv")
+    assert_unique(
+        relation_rows,
+        ("from_company_id", "to_company_id", "relation_type", "valid_from"),
+    )
+    for row in relation_rows:
+        assert row["from_company_id"] in companies
+        assert row["to_company_id"] in companies
+        assert row["relation_type"] in {
+            "parent",
+            "subsidiary",
+            "affiliate",
+            "brand",
+            "other",
+        }
+        assert date.fromisoformat(row["valid_from"])
+        if row["valid_to"]:
+            assert date.fromisoformat(row["valid_to"])
+        assert row["source_id"] in sources
 
 
 def test_segment_integrity() -> None:
@@ -213,8 +249,11 @@ def test_company_articles_have_common_content_sections() -> None:
         for row in read_rows("companies.csv")
         if row["is_active"] == "true"
     }
+    # 住友重機械の /saiyo/ のように、採用サイトのパスが英単語でない企業もある
     recruitment_url = re.compile(
-        r"https?://[^)\s]*(?:recruit|career|careers|jobs|employment)[^)\s]*"
+        r"https?://[^)\s]*"
+        r"(?:recruit|career|careers|jobs|employ|saiyo|shinsotsu)"
+        r"[^)\s]*"
     )
     confirmation_date = re.compile(
         r"20\d{2}年\d{1,2}月\d{1,2}日(?:確認|に確認)"
@@ -226,7 +265,7 @@ def test_company_articles_have_common_content_sections() -> None:
         )
         assert f"<CompanyOverview companyId={{frontmatter.companyId}} />" in page
         assert "<CompanyProse>" in page
-        assert f"<CompanySources companyId={{frontmatter.companyId}} />" in page
+        assert "<CompanySources " in page
         assert "CompanyMessage" not in page
         assert "RecruitmentInfo" not in page
         assert recruitment_url.search(page), company_id
@@ -255,6 +294,31 @@ def test_new_game_companies_have_operating_profit() -> None:
         ), company_id
 
 
+def test_heavy_industry_companies_have_profit_and_quick_assets() -> None:
+    # 重工各社は営業利益を開示する会社と事業利益で開示する会社が混在するため、
+    # 定義の違う値を同じ metric_key へ寄せず、どちらかが揃っていることだけ確認する
+    heavy_industry_company_ids = {
+        row["company_id"]
+        for row in read_rows("company_industries.csv")
+        if row["industry_id"] == "heavy-industry"
+    }
+    assert heavy_industry_company_ids
+    rows = read_rows("metrics.csv")
+
+    for company_id in heavy_industry_company_ids:
+        reported = {
+            row["metric_key"]
+            for row in rows
+            if row["company_id"] == company_id
+            and row["availability"] == "reported"
+        }
+        assert reported & {"operating_profit", "business_profit"}, company_id
+        assert "quick_assets" in reported, company_id
+        assert not (
+            "operating_profit" in reported and "business_profit" in reported
+        ), company_id
+
+
 def test_unlisted_company_pages_omit_unavailable_data_sections() -> None:
     unlisted_company_ids = {
         row["company_id"]
@@ -276,6 +340,22 @@ def test_unlisted_company_pages_omit_unavailable_data_sections() -> None:
     for company_id in unlisted_company_ids:
         page = (COMPANY_PAGE_DIR / f"{company_id}.mdx").read_text(encoding="utf-8")
         for component in unavailable_components:
-            assert component not in page, (company_id, component)
+            assert f"<{component} companyId={{frontmatter.companyId}}" not in page, (
+                company_id,
+                component,
+            )
         if company_id not in segments_by_company:
-            assert "BusinessSegments" not in page, company_id
+            assert (
+                "<BusinessSegments companyId={frontmatter.companyId}" not in page
+            ), company_id
+
+
+def test_aws_page_separates_recruiting_and_disclosure_entities() -> None:
+    page = (COMPANY_PAGE_DIR / "aws-japan.mdx").read_text(encoding="utf-8")
+    assert ":::warn" in page
+    assert '<FinancialHistory companyId="amazon-com" />' in page
+    assert '<MetricTrends companyId="amazon-com" />' in page
+    assert '<BusinessSegments companyId="amazon-com" showShare={false} />' in page
+    assert not any(
+        row["company_id"] == "aws-japan" for row in read_rows("metrics.csv")
+    )

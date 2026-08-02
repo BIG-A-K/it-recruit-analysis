@@ -54,13 +54,17 @@ CSVには物理的な型がないため、本書では各列の論理型を次�
 | `company_id` | `id` | 必須 | サイト内で不変の企業ID。例: `recruit-holdings` |
 | `display_name` | `string` | 必須 | サイトに表示する名称 |
 | `legal_name` | `string` | 必須 | 登記または開示上の正式法人名 |
-| `securities_code` | `string` | 任意 | 日本の証券コード。先頭ゼロを保持できるよう文字列として扱う |
+| `securities_code` | `string` | 任意 | 日本国内の証券コード。先頭ゼロを保持できるよう文字列として扱う |
 | `corporate_number` | `string` | 任意 | 国税庁の13桁法人番号 |
 | `website_url` | `url` | 任意 | 企業公式サイト |
 | `edinet_code` | `string` | 任意 | `E` と5桁の数字からなるEDINETコード |
+| `sec_cik` | `string` | 任意 | SECのCIK。10桁にゼロ埋めした数字 |
+| `ticker` | `string` | 任意 | 上場市場で使用されるティッカーシンボル |
+| `exchange` | `string` | 任意 | ティッカーが上場する取引所 |
+| `country_code` | `string` | 任意 | 法人所在国のISO 3166-1 alpha-2国コード |
 | `is_active` | `boolean` | 必須 | 現在サイトへ掲載する企業か |
 
-`display_name` や `legal_name` が変わっても、既存の `company_id` は変更しない。
+`securities_code` は日本の証券コードだけに使用し、CIK、ティッカーなどの外国識別子を格納しない。`display_name` や `legal_name` が変わっても、既存の `company_id` は変更しない。
 
 ## `industries.csv`
 
@@ -134,6 +138,7 @@ CSVには物理的な型がないため、本書では各列の論理型を次�
 | `average_tenure` | 提出会社従業員の平均勤続年数 | `years` | `non_consolidated` |
 | `revenue` | 売上高または売上収益 | `JPY` | `consolidated` |
 | `operating_profit` | 営業利益または営業損失 | `JPY` | `consolidated` |
+| `business_profit` | 事業利益。IFRS適用会社が営業利益に代えて開示する任意表示利益で、定義が異なるため `operating_profit` と同一視しない | `JPY` | `consolidated` |
 | `operating_cf` | 営業活動によるキャッシュ・フロー | `JPY` | `consolidated` |
 | `investing_cf` | 投資活動によるキャッシュ・フロー | `JPY` | `consolidated` |
 | `financing_cf` | 財務活動によるキャッシュ・フロー | `JPY` | `consolidated` |

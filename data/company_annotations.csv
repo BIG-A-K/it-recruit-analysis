@@ -1,1 +1,11 @@
 annotation_id,company_id,section_key,target_kind,target_key,fiscal_year,text,source_id,updated_at
+dena-segment-reorganization-2026,dena,financials,section,,2026,2026年3月期は「新規事業・その他」に含まれていたスマートシティ事業をスポーツ事業と合算し、「スポーツ・スマートシティ事業」として表示しています。前連結会計年度のセグメント情報も組み替え後の区分で表示されています。,edinet-s100yldv,2026-08-02
+gree-segment-reorganization-2025,gree,financials,section,,2025,2025年6月期は、コマース事業をDX事業へ統合し、アニメ・ライセンス関連事業などをIP事業として新設しました。「ゲーム・アニメ事業」は「ゲーム事業」へ名称変更され、前連結会計年度の数値も変更後の区分に組み替えられています。,edinet-s100wqwx,2026-08-02
+kakaku-com-revenue-breakdown-2026,kakaku-com,financials,section,,2026,2026年3月期はインキュベーション事業のサービス種類の内訳表示を変更し、前連結会計年度も変更後の区分に基づいて表示しています。,edinet-s100ybgn,2026-08-02
+mixi-accounting-reclassification-2023,mixi,financials,section,,2023,2023年3月期の期首から投資事業に関する投資有価証券、収益及び費用の計上区分を変更しており、2022年3月期の主要な連結経営指標は遡及適用後の数値です。,edinet-s100ye1d,2026-08-02
+amazon-com-disclosure-scope,amazon-com,financials,section,,,表示する財務指標はAmazon.com Inc.の連結業績であり、アマゾン ウェブ サービス ジャパン合同会社の単体業績ではありません。通貨は米ドル、会計基準はUS GAAP、会計年度末は12月31日です。,sec-0001018724-26-000004,2026-08-02
+mitsubishi-heavy-industries-business-profit,mitsubishi-heavy-industries,financials,metric,business_profit,,事業利益はIFRSの任意表示利益で、当社は営業利益を開示していません。売上収益から売上原価・販売費及び一般管理費を控除し、持分法による投資損益とその他の収益・費用を加減した金額です。日本基準の営業利益とは範囲が異なります。,edinet-s100yhzg,2026-08-02
+mitsubishi-heavy-industries-discontinued-operations,mitsubishi-heavy-industries,financials,section,,,2026年3月期に三菱ロジスネクスト株式会社（現 株式会社ロジスネクスト）及びその子会社・関連会社に係る事業を非継続事業へ分類しました。売上収益・事業利益は2025年3月期と2026年3月期が継続事業の金額で、2024年3月期以前は非継続事業を含んだ金額のため、その間の増減はそのまま比較できません。,edinet-s100yhzg,2026-08-02
+kawasaki-heavy-industries-business-profit,kawasaki-heavy-industries,financials,metric,business_profit,,事業利益はIFRSの任意表示利益で、当社は営業利益を開示していません。セグメント利益も事業利益で開示されています。日本基準の営業利益とは範囲が異なります。,edinet-s100y99z,2026-08-02
+kawasaki-heavy-industries-ifrs-transition,kawasaki-heavy-industries,financials,section,,,2022年度（2023年3月期）よりIFRSに基づいて連結財務諸表を作成しています。2022年3月期のIFRS数値は有価証券報告書の連結経営指標等に参考として掲載された金額で、同期の日本基準の開示値とは自己資本比率などが一致しません。,edinet-s100y99z,2026-08-02
+ihi-business-transfers-2026,ihi,financials,section,,2026,2026年3月期に、運搬機械事業を2025年7月1日付で株式会社タダノへ、株式会社IHI建材工業の全株式を2025年10月1日付で株式会社ベルテクスコーポレーションへ、新潟トランシス株式会社の全株式を2025年12月30日付で株式会社ジェイ・ケイ・エフへ譲渡しました。社会基盤および産業システム・汎用機械セグメントの推移にはこれらの事業譲渡が影響しています。,edinet-s100yent,2026-08-02

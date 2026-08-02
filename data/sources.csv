@@ -4,7 +4,7 @@ edinet-s100ybxd,statutory_filing,有価証券報告書－第31期(2025/04/01－2
 edinet-s100tm4a,statutory_filing,有価証券報告書－第29期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TM4A,S100TM4A,2024-06-17,2026-07-31,ＬＩＮＥヤフー株式会社
 edinet-s100wqdw,statutory_filing,有価証券報告書－第13期(2024/07/01－2025/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100WQDW,S100WQDW,2025-09-24,2026-07-31,株式会社メルカリ
 edinet-s100xcu9,statutory_filing,有価証券報告書－第28期(2024/10/01－2025/09/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100XCU9,S100XCU9,2025-12-24,2026-07-31,株式会社サイバーエージェント
-edinet-s100yldv,statutory_filing,有価証券報告書－第28期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YLDV,S100YLDV,2026-06-26,2026-07-31,株式会社ディー・エヌ・エー
+edinet-s100yldv,statutory_filing,有価証券報告書－第28期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YLDV,S100YLDV,2026-06-26,2026-08-02,株式会社ディー・エヌ・エー
 edinet-s100vwr9,statutory_filing,有価証券報告書－第37期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VWR9,S100VWR9,2025-06-20,2026-07-31,株式会社ＮＴＴデータグループ
 edinet-s100yhdd,statutory_filing,有価証券報告書－第58期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YHDD,S100YHDD,2026-06-23,2026-07-31,ＳＣＳＫ株式会社
 edinet-s100ueyz,statutory_filing,有価証券報告書－第12期(2023/07/01－2024/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100UEYZ,S100UEYZ,2024-09-25,2026-07-31,株式会社メルカリ
@@ -33,9 +33,9 @@ fixstars-corporate,corporate,フィックスターズ 会社概要・新卒採�
 sakana-ai-series-b,financial_report,Sakana AI Series B 資金調達発表（累計約660億円）,https://sakana.ai/series-b/,,2025-11-17,2026-07-31,Sakana AI株式会社
 sakana-ai-applied-careers,recruitment,Sakana AI Applied Team 採用情報,https://sakana.ai/applied-careers/,,,2026-07-31,Sakana AI株式会社
 edinet-s100xsg3,statutory_filing,有価証券報告書－第35期(2025/01/01－2025/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100XSG3,S100XSG3,2026-03-23,2026-07-31,ＧＭＯインターネットグループ株式会社
-edinet-s100wqwx,statutory_filing,有価証券報告書－第21期(2024/07/01－2025/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100WQWX,S100WQWX,2025-09-26,2026-07-31,グリーホールディングス株式会社
-edinet-s100ye1d,statutory_filing,有価証券報告書－第27期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YE1D,S100YE1D,2026-06-19,2026-07-31,株式会社ＭＩＸＩ
-edinet-s100ybgn,statutory_filing,有価証券報告書－第29期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YBGN,S100YBGN,2026-06-17,2026-07-31,株式会社カカクコム
+edinet-s100wqwx,statutory_filing,有価証券報告書－第21期(2024/07/01－2025/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100WQWX,S100WQWX,2025-09-26,2026-08-02,グリーホールディングス株式会社
+edinet-s100ye1d,statutory_filing,有価証券報告書－第27期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YE1D,S100YE1D,2026-06-19,2026-08-02,株式会社ＭＩＸＩ
+edinet-s100ybgn,statutory_filing,有価証券報告書－第29期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YBGN,S100YBGN,2026-06-17,2026-08-02,株式会社カカクコム
 edinet-s100ygbs,statutory_filing,有価証券報告書－第59期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YGBS,S100YGBS,2026-06-23,2026-07-31,株式会社オービック
 edinet-s100y9nx,statutory_filing,有価証券報告書－第86期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100Y9NX,S100Y9NX,2026-06-25,2026-08-01,任天堂株式会社
 edinet-s100yhl0,statutory_filing,有価証券報告書－第75期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YHL0,S100YHL0,2026-06-24,2026-08-01,株式会社タカラトミー
@@ -64,3 +64,40 @@ edinet-s100vfya,statutory_filing,有価証券報告書－第26期(2024/01/01－2
 edinet-s100vha9,statutory_filing,有価証券報告書－第116期(2024/01/01－2024/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VHA9,S100VHA9,2025-03-26,2026-08-01,株式会社レゾナック・ホールディングス
 edinet-s100vi0l,statutory_filing,有価証券報告書－第100期(2024/01/01－2024/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VI0L,S100VI0L,2025-03-28,2026-08-01,ＡＧＣ株式会社
 edinet-s100wq7f,statutory_filing,有価証券報告書－第63期(2024/07/01－2025/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100WQ7F,S100WQ7F,2025-09-25,2026-08-01,レーザーテック株式会社
+edinet-s100tr2t,statutory_filing,有価証券報告書－第25期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TR2T,S100TR2T,2024-06-27,2026-08-02,株式会社ＭＩＸＩ
+edinet-s100w37z,statutory_filing,有価証券報告書－第26期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100W37Z,S100W37Z,2025-06-27,2026-08-02,株式会社ＭＩＸＩ
+edinet-s100rx1f,statutory_filing,有価証券報告書－第19期(2022/07/01－2023/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100RX1F,S100RX1F,2023-09-28,2026-08-02,グリー株式会社
+edinet-s100ufy3,statutory_filing,有価証券報告書－第20期(2023/07/01－2024/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100UFY3,S100UFY3,2024-09-30,2026-08-02,グリー株式会社
+edinet-s100ydd9,statutory_filing,有価証券報告書－第102期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YDD9,S100YDD9,2026-06-18,2026-08-02,本田技研工業株式会社
+edinet-s100yh2b,statutory_filing,有価証券報告書－第127期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YH2B,S100YH2B,2026-06-22,2026-08-02,日産自動車株式会社
+edinet-s100yfkz,statutory_filing,有価証券報告書－第95期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YFKZ,S100YFKZ,2026-06-22,2026-08-02,株式会社ＳＵＢＡＲＵ
+edinet-s100ycmc,statutory_filing,有価証券報告書,https://api.edinet-fsa.go.jp/api/v2/documents/S100YCMC,S100YCMC,2026-06-16,2026-08-02,三菱自動車工業株式会社
+edinet-s100yfbq,statutory_filing,有価証券報告書－第124期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YFBQ,S100YFBQ,2026-06-23,2026-08-02,いすゞ自動車株式会社
+edinet-s100xrth,statutory_filing,有価証券報告書－第91期(2025/01/01－2025/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100XRTH,S100XRTH,2026-03-23,2026-08-02,ヤマハ発動機株式会社
+edinet-s100vze0,statutory_filing,有価証券報告書－第27期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VZE0,S100VZE0,2025-06-20,2026-08-02,株式会社ディー・エヌ・エー
+edinet-s100vyj6,statutory_filing,有価証券報告書－第28期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VYJ6,S100VYJ6,2025-06-19,2026-08-02,株式会社カカクコム
+mazda-official-financial-data-2026,financial_report,主要財務・業績情報（2022年3月期から2026年3月期）,https://www.mazda.com/content/dam/mazda/corporate/mazda-com/ja/pdf/investors/financial/data/FY160_all_data_download.pdf,FY160_all_data_download,2026-05-21,2026-08-02,マツダ株式会社
+mazda-official-securities-2025,statutory_filing,有価証券報告書－第159期(2024/04/01－2025/03/31),https://contents.xj-storage.jp/xcontents/AS07797a/409f4bfc/2e2c/4da0/9c8d/b4c209b708ea/20251128185026715s.pdf,2025-3-securities-report,2025-06-24,2026-08-02,マツダ株式会社
+mazda-official-securities-2026,statutory_filing,有価証券報告書－第160期(2025/04/01－2026/03/31),https://contents.xj-storage.jp/xcontents/AS07797a/5b841ae0/1d80/49dc/90d9/cea1b6880b35/S100YDZ1.pdf,S100YDZ1,2026-06-23,2026-08-02,マツダ株式会社
+suzuki-official-securities-2024,statutory_filing,有価証券報告書－第158期(2023/04/01－2024/03/31),https://www.suzuki.co.jp/ir/library/valuablesecurities/pdf/2024_3.pdf,2024_3.pdf,2024-06-27,2026-08-02,スズキ株式会社
+suzuki-official-securities-2025,statutory_filing,有価証券報告書－第159期(2024/04/01－2025/03/31),https://www.suzuki.co.jp/ir/library/valuablesecurities/pdf/2025_3.pdf,2025_3.pdf,2025-06-27,2026-08-02,スズキ株式会社
+suzuki-official-securities-2026,statutory_filing,有価証券報告書－第160期(2025/04/01－2026/03/31),https://www.suzuki.co.jp/ir/library/valuablesecurities/pdf/2026_3.pdf,2026_3.pdf,2026-06-23,2026-08-02,スズキ株式会社
+hino-official-securities-2023,statutory_filing,有価証券報告書－第111期(2022/04/01－2023/03/31),https://www.hino.co.jp/corp/for_investors/financial_statements/assets/5b7c81d50daebaedaacf9915c4f4b1a2.pdf,2023-3-securities-report,2023-06-27,2026-08-02,日野自動車株式会社
+hino-official-securities-2024,statutory_filing,有価証券報告書－第112期(2023/04/01－2024/03/31),https://www.hino.co.jp/corp/for_investors/financial_statements/assets/bdd7327cbf1ebf95eeafd079c01811c9.pdf,2024-3-securities-report,2024-06-26,2026-08-02,日野自動車株式会社
+hino-official-securities-2025,statutory_filing,有価証券報告書－第113期(2024/04/01－2025/03/31),https://www.hino.co.jp/corp/for_investors/financial_statements/assets/5350a2c1863b01ca04bd67872054f91b.pdf,2025-3-securities-report,2025-06-24,2026-08-02,日野自動車株式会社
+edinet-s100xaqj,statutory_filing,有価証券報告書－第24期(2024/10/01－2025/09/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100XAQJ,S100XAQJ,2025-12-16,2026-08-02,株式会社フィックスターズ
+edinet-s100uysb,statutory_filing,有価証券報告書－第23期(2023/10/01－2024/09/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100UYSB,S100UYSB,2024-12-18,2026-08-02,株式会社フィックスターズ
+edinet-s100si1e,statutory_filing,有価証券報告書－第22期(2022/10/01－2023/09/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100SI1E,S100SI1E,2023-12-20,2026-08-02,株式会社フィックスターズ
+edinet-s100yhzg,statutory_filing,有価証券報告書,https://api.edinet-fsa.go.jp/api/v2/documents/S100YHZG,S100YHZG,2026-06-24,2026-08-02,三菱重工業株式会社
+sec-0001018724-26-000004,statutory_filing,Form 10-K annual report,https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/0001018724-26-000004-index.html,0001018724-26-000004,2026-02-06,2026-08-02,AMAZON COM INC
+edinet-s100y99z,statutory_filing,有価証券報告書－第203期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100Y99Z,S100Y99Z,2026-06-19,2026-08-02,川崎重工業株式会社
+edinet-s100yent,statutory_filing,有価証券報告書－第209期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YENT,S100YENT,2026-06-22,2026-08-02,株式会社ＩＨＩ
+edinet-s100xt1r,statutory_filing,有価証券報告書－第130期(2025/01/01－2025/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100XT1R,S100XT1R,2026-03-26,2026-08-02,住友重機械工業株式会社
+edinet-s100ykio,statutory_filing,有価証券報告書－第123期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YKIO,S100YKIO,2026-06-25,2026-08-02,株式会社三井Ｅ＆Ｓ
+edinet-s100ygor,statutory_filing,有価証券報告書－第129期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YGOR,S100YGOR,2026-06-22,2026-08-02,カナデビア株式会社
+edinet-s100xr06,statutory_filing,有価証券報告書－第24期(2025/01/01－2025/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100XR06,S100XR06,2026-03-19,2026-08-02,ルネサスエレクトロニクス株式会社
+edinet-s100yf41,statutory_filing,有価証券報告書－第68期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YF41,S100YF41,2026-06-19,2026-08-02,ローム株式会社
+edinet-s100yeop,statutory_filing,有価証券報告書－第103期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YEOP,S100YEOP,2026-06-19,2026-08-02,株式会社東京精密
+edinet-s100yk9n,statutory_filing,有価証券報告書－第85期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YK9N,S100YK9N,2026-06-25,2026-08-02,株式会社ＳＣＲＥＥＮホールディングス
+edinet-s100yj18,statutory_filing,有価証券報告書－第8期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YJ18,S100YJ18,2026-06-24,2026-08-02,キオクシアホールディングス株式会社
+edinet-s100yhu5,statutory_filing,有価証券報告書－第85期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YHU5,S100YHU5,2026-06-23,2026-08-02,太陽誘電株式会社

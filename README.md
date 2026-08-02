@@ -146,7 +146,7 @@ flowchart TD
 
 ## データの取得と出典
 
-企業データはEDINET APIからの取得を基本とします。EDINETで取得できない採用情報や企業情報は、企業の公式IR、公式採用サイト、公式サイトなどの一次情報を基に、AIエージェントまたは人が補完します。一次情報で取得できない場合のみ、二次情報を参考情報として使用します。
+国内上場企業はEDINET API、米国上場企業はSEC EDGARから法定開示を取得します。法定開示で取得できない採用情報や企業情報は、企業の公式IR、公式採用サイト、公式サイトなどの一次情報を基に、AIエージェントまたは人が補完します。一次情報で取得できない場合のみ、二次情報を参考情報として使用します。
 
 各データには、確認や訂正ができるように出典、対象期間、単位を保持します。初版ではAI入力と手入力を厳密に区別せず、誤りを発見した場合に修正します。
 
@@ -176,7 +176,7 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    A["EDINET API"]
+    A["EDINET API・SEC EDGAR"]
     B["公式IR・採用サイト"]
     C["AIエージェント・人による補完"]
     D["用途別CSV"]
@@ -268,6 +268,33 @@ uv run edinet-normalize recruit-holdings S100YDHL \
 ```
 
 変換結果は `data/metrics.csv`、`data/segments.csv`、`data/sources.csv` に企業IDと出典IDで関連付けて保存されます。同じ文書を再実行しても同じキーの行が更新され、重複行は作りません。
+
+## SECデータ取得
+
+SECはAPIキー不要ですが、Fair Access Policyに従い、組織名と監視可能な連絡先を含むUser-Agentを `.env` に設定します。
+
+```dotenv
+SEC_USER_AGENT="it-recruit contact@example.org"
+```
+
+Amazon.comのForm 10-Kを取得し、Amazon連結財務とAWS報告セグメントを正規化する例です。
+
+```bash
+uv run --env-file .env sec-fetch amazon-com \
+  --start 2025-06-28 \
+  --end 2026-08-02 \
+  --form 10-K
+```
+
+原本は `data/raw/sec/<CIK>/<accession-number>/` に保存されます。取得済み原本を再変換する場合はアクセッション番号を指定します。
+
+```bash
+uv run sec-normalize amazon-com 0001018724-26-000004
+```
+
+Amazon連結財務は `amazon-com` の `metrics.csv`、AWSの売上・利益は同じ開示主体の `segments.csv` に保存します。日本の採用主体である `aws-japan` へ親会社の数値を複写しません。SECの通貨・会計基準は原資料どおり保持します。
+
+現行のSEC正規化はForm 10-KのUS GAAPに対応しています。Form 20-Fは提出書類を検索できますが、IFRSなどの正規化ルールが未対応の場合は処理を停止し、CSVへ部分的な値や手入力値を残しません。
 
 ## R2への同期
 

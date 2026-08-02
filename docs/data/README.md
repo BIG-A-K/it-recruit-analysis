@@ -28,8 +28,11 @@ data/
 ├── recruitment.csv
 ├── sources.csv
 └── raw/
-    └── edinet/
-        └── <document_id>/
+    ├── edinet/
+    │   └── <document_id>/
+    └── sec/
+        └── <CIK>/
+            └── <accession-number>/
 ```
 
 `data/*.csv` はGitで管理する。`data/raw/` は外部サービスから再取得できる原本の保存場所とし、Gitでは管理しない。
@@ -80,16 +83,16 @@ data/
 
 指標や採用情報の各行は `source_id` を通じて `sources.csv` の出典に関連付ける。
 
-EDINETから取得したデータでは、以下を保持する。
+EDINETまたはSECの法定開示から取得したデータでは、以下を保持する。
 
-- EDINET書類管理番号
+- EDINET書類管理番号またはSEC accession number
 - 書類名
 - 提出者
 - 公開日
 - 取得日
 - API上の文書URL
 
-EDINETで取得できない項目は、企業の公式IR、公式採用サイト、公式サイトなどの一次情報で補完する。一次情報を確認できない場合に限り、二次情報を参考情報として使用する。
+EDINETやSECの法定開示で取得できない項目は、企業の公式IR、公式採用サイト、公式サイトなどの一次情報で補完する。SEC原本は `data/raw/sec/<CIK>/<accession-number>/` に保存する。一次情報を確認できない場合に限り、二次情報を参考情報として使用する。
 
 ## 更新手順
 
