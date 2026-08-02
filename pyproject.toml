@@ -1,7 +1,7 @@
 [project]
 name = "it-recruit-data"
 version = "0.1.0"
-description = "EDINETから企業データを取得し、サイト用CSVへ変換する"
+description = "EDINET・SECから企業データを取得し、サイト用CSVへ変換する"
 requires-python = ">=3.12"
 dependencies = [
     "requests>=2.32.0",
@@ -10,6 +10,8 @@ dependencies = [
 [project.scripts]
 edinet-fetch = "it_recruit_data.cli:main"
 edinet-normalize = "it_recruit_data.normalize_cli:main"
+sec-fetch = "it_recruit_data.sec_cli:main"
+sec-normalize = "it_recruit_data.sec_normalize_cli:main"
 
 [dependency-groups]
 dev = [

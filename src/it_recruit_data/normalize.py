@@ -37,6 +37,12 @@ class MetricRule:
     company_ids: frozenset[str] | None = None
 
 
+@dataclass(frozen=True)
+class QuickAssetRule:
+    element_ids: tuple[str, ...]
+    accounting_standard: str
+
+
 JGAAP_COMPANY_IDS = frozenset(
     {
         "cyberagent",
@@ -51,6 +57,8 @@ JGAAP_COMPANY_IDS = frozenset(
         "square-enix",
         "sega-sammy",
         "koei-tecmo",
+        "nissan-motor",
+        "mitsubishi-motors",
         "keyence",
         "rohm",
         "tokyo-seimitsu",
@@ -62,6 +70,10 @@ JGAAP_COMPANY_IDS = frozenset(
         "shin-etsu-chemical",
         "sumco",
         "stella-chemifa",
+        "fixstars",
+        "sumitomo-heavy-industries",
+        "mitsui-e-and-s",
+        "kanadevia",
     }
 )
 
@@ -105,6 +117,16 @@ METRIC_RULES = (
     MetricRule(
         "operating_profit",
         "jpigp_cor:OperatingProfitLossIFRS",
+        "consolidated",
+        "IFRS",
+        "JPY",
+    ),
+    # 事業利益はIFRS任意表示利益で、EDINETの共通タクソノミに要素がなく提出会社の
+    # 拡張要素で開示される。要素IDが会社ごとに異なるため、
+    # METRIC_LOCAL_NAME_ALIASESでこの内部IDへ寄せて1つの指標へ集約する。
+    MetricRule(
+        "business_profit",
+        "it_recruit:BusinessProfitLossIFRS",
         "consolidated",
         "IFRS",
         "JPY",
@@ -239,7 +261,151 @@ METRIC_LOCAL_NAME_ALIASES = {
     "NumberOfEmployeesIFRSSummaryOfBusinessResults": (
         "jpcrp_cor:NumberOfEmployees"
     ),
+    "NumberOfEmployeesIFRS": "jpcrp_cor:NumberOfEmployees",
+    "BusinessProfitLossIFRS": "it_recruit:BusinessProfitLossIFRS",
+    "BusinessProfitIFRSKeyFinancialData": (
+        "it_recruit:BusinessProfitLossIFRS"
+    ),
+    "ProfitLossFromBusinessActivitiesIFRS": (
+        "it_recruit:BusinessProfitLossIFRS"
+    ),
+    "ProfitFromBusinessActivitiesSummaryOfBusinessResults": (
+        "it_recruit:BusinessProfitLossIFRS"
+    ),
 }
+
+
+QUICK_ASSET_RULES = {
+    "honda-motor": QuickAssetRule(
+        (
+            "jpigp_cor:CashAndCashEquivalentsIFRS",
+            "jpigp_cor:OtherFinancialAssetsCAIFRS",
+        ),
+        "IFRS",
+    ),
+    "nissan-motor": QuickAssetRule(
+        (
+            "jppfs_cor:CashAndDeposits",
+            "jppfs_cor:NotesAndAccountsReceivableTradeAndContractAssets",
+            "jppfs_cor:ShortTermInvestmentSecurities",
+        ),
+        "JGAAP",
+    ),
+    "subaru": QuickAssetRule(
+        (
+            "jpigp_cor:CashAndCashEquivalentsIFRS",
+            "jpigp_cor:TradeAndOtherReceivablesCAIFRS",
+            "jpigp_cor:OtherFinancialAssetsCAIFRS",
+        ),
+        "IFRS",
+    ),
+    "mitsubishi-motors": QuickAssetRule(
+        (
+            "jppfs_cor:CashAndDeposits",
+            "jppfs_cor:NotesAndAccountsReceivableTradeAndContractAssets",
+        ),
+        "JGAAP",
+    ),
+    "isuzu-motors": QuickAssetRule(
+        (
+            "jpigp_cor:CashAndCashEquivalentsIFRS",
+            "jpigp_cor:TradeAndOtherReceivablesCAIFRS",
+            "jpigp_cor:OtherFinancialAssetsCAIFRS",
+        ),
+        "IFRS",
+    ),
+    "yamaha-motor": QuickAssetRule(
+        (
+            "jpigp_cor:CashAndCashEquivalentsIFRS",
+            "jpigp_cor:TradeAndOtherReceivablesCAIFRS",
+            "jpigp_cor:OtherFinancialAssetsCAIFRS",
+        ),
+        "IFRS",
+    ),
+    "dena": QuickAssetRule(
+        (
+            "jpigp_cor:CashAndCashEquivalentsIFRS",
+            "jpigp_cor:TradeAndOtherReceivables3CAIFRS",
+            "jpigp_cor:OtherFinancialAssetsCAIFRS",
+        ),
+        "IFRS",
+    ),
+    "kakaku-com": QuickAssetRule(
+        (
+            "jpigp_cor:CashAndCashEquivalentsIFRS",
+            "jpigp_cor:TradeAndOtherReceivablesCAIFRS",
+            "jpigp_cor:OtherFinancialAssetsCAIFRS",
+        ),
+        "IFRS",
+    ),
+    "mixi": QuickAssetRule(
+        (
+            "jppfs_cor:CashAndDeposits",
+            "jppfs_cor:NotesAndAccountsReceivableTrade",
+            "jppfs_cor:OperationalInvestmentSecuritiesCA",
+            "jppfs_cor:ShortTermInvestmentSecurities",
+        ),
+        "JGAAP",
+    ),
+    "mitsubishi-heavy-industries": QuickAssetRule(
+        (
+            "jpigp_cor:CashAndCashEquivalentsIFRS",
+            "jpigp_cor:TradeAndOtherReceivablesCAIFRS",
+            "jpigp_cor:OtherFinancialAssetsCAIFRS",
+        ),
+        "IFRS",
+    ),
+    "kawasaki-heavy-industries": QuickAssetRule(
+        (
+            "jpigp_cor:CashAndCashEquivalentsIFRS",
+            "jpigp_cor:TradeAndOtherReceivablesCAIFRS",
+            "jpigp_cor:OtherFinancialAssetsCAIFRS",
+        ),
+        "IFRS",
+    ),
+    "ihi": QuickAssetRule(
+        (
+            "jpigp_cor:CashAndCashEquivalentsIFRS",
+            "jpigp_cor:TradeAndOtherReceivablesCAIFRS",
+            "jpigp_cor:OtherFinancialAssetsCAIFRS",
+        ),
+        "IFRS",
+    ),
+    "sumitomo-heavy-industries": QuickAssetRule(
+        (
+            "jppfs_cor:CashAndDeposits",
+            "jppfs_cor:NotesAndAccountsReceivableTradeAndContractAssets",
+        ),
+        "JGAAP",
+    ),
+    "mitsui-e-and-s": QuickAssetRule(
+        (
+            "jppfs_cor:CashAndDeposits",
+            "jppfs_cor:NotesAndAccountsReceivableTradeAndContractAssets",
+            "jppfs_cor:ElectronicallyRecordedMonetaryClaimsOperatingCA",
+        ),
+        "JGAAP",
+    ),
+    "kanadevia": QuickAssetRule(
+        (
+            "jppfs_cor:CashAndDeposits",
+            "jppfs_cor:NotesAndAccountsReceivableTradeAndContractAssets",
+            "jppfs_cor:ShortTermInvestmentSecurities",
+        ),
+        "JGAAP",
+    ),
+    "gree": QuickAssetRule(
+        (
+            "jppfs_cor:CashAndDeposits",
+            "jppfs_cor:NotesAndAccountsReceivableTradeAndContractAssets",
+            "jppfs_cor:OperationalInvestmentSecuritiesCA",
+            "jppfs_cor:MoneyHeldInTrustCA",
+            "jppfs_cor:ShortTermInvestmentSecurities",
+        ),
+        "JGAAP",
+    ),
+}
+
 
 COMPANY_SEGMENTS = {
     "recruit-holdings": {
@@ -344,6 +510,44 @@ COMPANY_SEGMENTS = {
                 "new-businesses-and-others",
                 "新規事業・その他",
             ),
+        },
+    },
+    "kakaku-com": {
+        "revenue_element_id": "jpigp_cor:RevenueFromExternalCustomersIFRS",
+        "profit_element_id": "jpigp_cor:OperatingProfitLossIFRS",
+        "profit_measure": "セグメント利益",
+        "members": {
+            "KakakuComReportableSegmentsMember": (
+                "kakaku-com",
+                "価格.com事業",
+            ),
+            "TabelogReportableSegmentsMember": ("tabelog", "食べログ事業"),
+            "KyujinBoxReportableSegmentsMember": (
+                "kyujin-box",
+                "求人ボックス事業",
+            ),
+            "IncubationReportableSegmentsMember": (
+                "incubation",
+                "インキュベーション事業",
+            ),
+        },
+    },
+    "gree": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "GameAnimeBusinessReportableSegmentsMember": (
+                "game",
+                "ゲーム事業",
+            ),
+            "MetaverseBusinessReportableSegmentsMember": (
+                "metaverse",
+                "メタバース事業",
+            ),
+            "IPBusinessReportableSegmentsMember": ("ip", "IP事業"),
+            "DXBusinessReportableSegmentsMember": ("dx", "DX事業"),
+            "InvestmentReportableSegmentsMember": ("investment", "投資事業"),
         },
     },
     "ntt-data-group": {
@@ -704,6 +908,150 @@ COMPANY_SEGMENTS = {
             ),
         },
     },
+    "mitsubishi-heavy-industries": {
+        "revenue_element_id": "jpigp_cor:RevenueFromExternalCustomersIFRS",
+        "profit_element_id": (
+            "jpcrp030000-asr_E02126-000:ProfitLossFromBusinessActivitiesIFRS"
+        ),
+        "profit_measure": "事業利益",
+        "members": {
+            "EnergySystemsReportableSegmentMember": (
+                "energy",
+                "エナジー",
+            ),
+            "PlantsAndInfrastructureSystemsReportableSegmentMember": (
+                "plants-and-infrastructure",
+                "プラント・インフラ",
+            ),
+            "LogisticsThermalAndDriveSystemsReportableSegmentMember": (
+                "logistics-thermal-and-drive",
+                "物流・冷熱・ドライブシステム",
+            ),
+            "AircraftDefenseAndSpaceReportableSegmentMember": (
+                "aircraft-defense-and-space",
+                "航空・防衛・宇宙",
+            ),
+        },
+    },
+    "kawasaki-heavy-industries": {
+        "revenue_element_id": "jpigp_cor:RevenueFromExternalCustomersIFRS",
+        "profit_element_id": (
+            "jpcrp030000-asr_E02127-000:BusinessProfitLossIFRS"
+        ),
+        "profit_measure": "事業利益",
+        "members": {
+            "AerospaceSystemsReportableSegmentMember": (
+                "aerospace-systems",
+                "航空宇宙システム",
+            ),
+            "RollingStockReportableSegmentMember": (
+                "rolling-stock",
+                "車両",
+            ),
+            "EnergySolutionAndMarineReportableSegmentMember": (
+                "energy-solution-and-marine",
+                "エネルギーソリューション＆マリン",
+            ),
+            "PrecisionMachineryAndRobotReportableSegmentMember": (
+                "precision-machinery-and-robot",
+                "精密機械・ロボット",
+            ),
+            "PowersportsAndEngineReportableSegmentMember": (
+                "powersports-and-engine",
+                "パワースポーツ＆エンジン",
+            ),
+        },
+    },
+    "ihi": {
+        "revenue_element_id": "jpigp_cor:RevenueFromExternalCustomersIFRS",
+        "profit_element_id": "jpigp_cor:OperatingProfitLossIFRS",
+        "profit_measure": "営業利益",
+        "members": {
+            "ResourcesEnergyAndEnvironmentMember": (
+                "resources-energy-and-environment",
+                "資源・エネルギー・環境",
+            ),
+            "SocialInfrastructureMember": (
+                "social-infrastructure",
+                "社会基盤",
+            ),
+            "IndustrialSystemAndGeneralPurposeMachineryMember": (
+                "industrial-system-and-general-purpose-machinery",
+                "産業システム・汎用機械",
+            ),
+            "AeroEngineSpaceAndDefenseMember": (
+                "aero-engine-space-and-defense",
+                "航空・宇宙・防衛",
+            ),
+        },
+    },
+    "sumitomo-heavy-industries": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "MechatronicsReportableSegmentMember": (
+                "mechatronics",
+                "メカトロニクス",
+            ),
+            "IndustrialMachineryReportableSegmentMember": (
+                "industrial-machinery",
+                "インダストリアル マシナリー",
+            ),
+            "LogisticsAndConstructionReportableSegmentMember": (
+                "logistics-and-construction",
+                "ロジスティックス＆コンストラクション",
+            ),
+            "EnergyAndLifelineReportableSegmentMember": (
+                "energy-and-lifeline",
+                "エネルギー＆ライフライン",
+            ),
+        },
+    },
+    "mitsui-e-and-s": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "NewBusinessDevelopmentReportableSegmentsMember": (
+                "new-business-development",
+                "成長事業推進",
+            ),
+            "MarinePropulsionSystemsReportableSegmentsMember": (
+                "marine-propulsion-systems",
+                "舶用推進システム",
+            ),
+            "LogisticsSystemsReportableSegmentsMember": (
+                "logistics-systems",
+                "物流システム",
+            ),
+            "PeripheralBusinessesReportableSegmentsMember": (
+                "peripheral-businesses",
+                "周辺サービス",
+            ),
+        },
+    },
+    "kanadevia": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "EnvironmentalSystemsReportableSegmentsMember": (
+                "environment",
+                "環境",
+            ),
+            "MachineryReportableSegmentsMember": (
+                "machinery-and-infrastructure",
+                "機械・インフラ",
+            ),
+            # 脱炭素化セグメントの拡張要素名がElementMemberのみで一般名詞と
+            # 衝突しやすいため、提出者プレフィックス付きで一致させる
+            "E02124-000ElementMember": (
+                "decarbonization",
+                "脱炭素化",
+            ),
+        },
+    },
     "toyota-motor": {
         "revenue_element_id": "jpcrp030000-asr_E02144-000:OperatingRevenueFromExternalCustomersIFRS",
         "profit_element_id": "jpigp_cor:OperatingProfitLossIFRS",
@@ -716,6 +1064,116 @@ COMPANY_SEGMENTS = {
             "FinancialServicesReportableSegmentMember": (
                 "financial-services",
                 "金融",
+            ),
+        },
+    },
+    "honda-motor": {
+        "revenue_element_id": "jpigp_cor:RevenueFromExternalCustomersIFRS",
+        "profit_element_id": "jpigp_cor:OperatingProfitLossIFRS",
+        "profit_measure": "営業利益",
+        "members": {
+            "MotorcycleBusinessReportableSegmentMember": (
+                "motorcycle",
+                "二輪事業",
+            ),
+            "AutomobileBusinessReportableSegmentMember": (
+                "automobile",
+                "四輪事業",
+            ),
+            "FinancialServicesBusinessReportableSegmentMember": (
+                "financial-services",
+                "金融サービス事業",
+            ),
+            "PowerProductAndOtherBusinessesReportableSegmentMember": (
+                "power-products-and-other",
+                "パワープロダクツ・その他事業",
+            ),
+        },
+    },
+    "nissan-motor": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "AutomobileReportableSegmentMember": (
+                "automobile",
+                "自動車事業",
+            ),
+            "SalesFinancingReportableSegmentMember": (
+                "sales-financing",
+                "販売金融事業",
+            ),
+        },
+    },
+    "subaru": {
+        "revenue_element_id": "jpigp_cor:RevenueFromExternalCustomersIFRS",
+        "profit_element_id": "jpigp_cor:OperatingProfitLossIFRS",
+        "profit_measure": "営業利益",
+        "members": {
+            "AutomobilesReportableSegmentMember": (
+                "automobiles",
+                "自動車事業",
+            ),
+            "AerospaceReportableSegmentMember": (
+                "aerospace",
+                "航空宇宙事業",
+            ),
+        },
+    },
+    "mitsubishi-motors": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "CarBusinessReportableSegmentsMember": (
+                "car",
+                "自動車事業",
+            ),
+            "FinancialBusinessReportableSegmentsMember": (
+                "financial",
+                "金融事業",
+            ),
+        },
+    },
+    "isuzu-motors": {
+        "revenue_element_id": "jpigp_cor:RevenueFromExternalCustomersIFRS",
+        "profit_element_id": "jpigp_cor:OperatingProfitLossIFRS",
+        "profit_measure": "営業利益",
+        "members": {
+            "AutomobileMember": (
+                "automobile",
+                "自動車事業",
+            ),
+            "FinancialServicesMember": (
+                "financial-services",
+                "金融サービス事業",
+            ),
+        },
+    },
+    "yamaha-motor": {
+        "revenue_element_id": "jpigp_cor:RevenueFromExternalCustomersIFRS",
+        "profit_element_id": "jpigp_cor:SegmentProfitLossIFRS",
+        "profit_measure": "セグメント利益",
+        "members": {
+            "LandmobilityReportableSegmentMember": (
+                "land-mobility",
+                "ランドモビリティ",
+            ),
+            "MarineProductsReportableSegmentsMember": (
+                "marine-products",
+                "マリン",
+            ),
+            "OutdoorLandVehicleReportableSegmentMember": (
+                "outdoor-land-vehicle",
+                "アウトドアランドビークル",
+            ),
+            "RoboticsReportableSegmentMember": (
+                "robotics",
+                "ロボティクス",
+            ),
+            "FinancialServicesReportableSegmentMember": (
+                "financial-services",
+                "金融サービス",
             ),
         },
     },
@@ -986,6 +1444,69 @@ def normalize_metrics(
                 )
             continue
         records[key] = record
+
+    quick_asset_rule = QUICK_ASSET_RULES.get(company_id)
+    if quick_asset_rule is not None:
+        component_values: dict[str, dict[str, Decimal]] = {
+            element_id: {} for element_id in quick_asset_rule.element_ids
+        }
+        for source_row in rows:
+            context_id = source_row["コンテキストID"]
+            if not is_metric_context(context_id, "consolidated"):
+                continue
+
+            element_id = source_row["要素ID"]
+            if element_id not in component_values:
+                continue
+
+            raw_value = source_row["値"]
+            value = (
+                Decimal("0")
+                if raw_value in {"", "－", "-"}
+                else Decimal(raw_value)
+            )
+            existing = component_values[element_id].get(context_id)
+            if existing is not None and existing != value:
+                raise RuntimeError(
+                    "当座資産の算定科目で値が競合しています: "
+                    f"{element_id}, {context_id}: {existing} != {value}"
+                )
+            component_values[element_id][context_id] = value
+
+        contexts = set.intersection(
+            *(set(values) for values in component_values.values())
+        )
+        quick_asset_note = "算定科目=" + "+".join(quick_asset_rule.element_ids)
+        for context_id in sorted(contexts):
+            fiscal_year = fiscal_year_from_context(context_id, latest_year)
+            if fiscal_year is None:
+                continue
+            value = sum(
+                (
+                    component_values[element_id][context_id]
+                    for element_id in quick_asset_rule.element_ids
+                ),
+                Decimal("0"),
+            )
+            record = {
+                "company_id": company_id,
+                "metric_key": "quick_assets",
+                "fiscal_year": str(fiscal_year),
+                "period_end": period_end_for_year(
+                    latest_period_end,
+                    fiscal_year,
+                ),
+                "value": decimal_text(value),
+                "unit": "JPY",
+                "scope": "consolidated",
+                "accounting_standard": quick_asset_rule.accounting_standard,
+                "availability": "reported",
+                "source_id": source_id,
+                "note": quick_asset_note,
+            }
+            records[
+                (company_id, "quick_assets", fiscal_year, "consolidated")
+            ] = record
 
     for record in records.values():
         upsert_row(

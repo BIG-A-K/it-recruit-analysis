@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import csv
+import os
+import tempfile
 from pathlib import Path
 
 COMPANY_FIELDS = (
@@ -11,6 +13,10 @@ COMPANY_FIELDS = (
     "corporate_number",
     "website_url",
     "edinet_code",
+    "sec_cik",
+    "ticker",
+    "exchange",
+    "country_code",
     "is_active",
 )
 
@@ -76,22 +82,51 @@ def upsert_row(
     row: dict[str, str],
     fieldnames: tuple[str, ...],
 ) -> None:
-    rows = read_rows(path) if path.exists() else []
-    target_key = tuple(row[field] for field in key_fields)
-    updated = False
+    upsert_rows(
+        path,
+        key_fields=key_fields,
+        rows=[row],
+        fieldnames=fieldnames,
+    )
 
-    for index, existing in enumerate(rows):
-        existing_key = tuple(existing[field] for field in key_fields)
-        if existing_key == target_key:
-            rows[index] = {**existing, **row}
-            updated = True
-            break
 
-    if not updated:
-        rows.append(row)
+def upsert_rows(
+    path: Path,
+    *,
+    key_fields: tuple[str, ...],
+    rows: list[dict[str, str]],
+    fieldnames: tuple[str, ...],
+) -> None:
+    if not rows:
+        return
+
+    existing_rows = read_rows(path) if path.exists() else []
+    indexes = {
+        tuple(existing[field] for field in key_fields): index
+        for index, existing in enumerate(existing_rows)
+    }
+    for row in rows:
+        target_key = tuple(row[field] for field in key_fields)
+        index = indexes.get(target_key)
+        if index is None:
+            indexes[target_key] = len(existing_rows)
+            existing_rows.append(row)
+        else:
+            existing_rows[index] = {**existing_rows[index], **row}
 
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8", newline="") as file:
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(rows)
+    descriptor, temporary_name = tempfile.mkstemp(
+        prefix=f".{path.name}.",
+        dir=path.parent,
+        text=True,
+    )
+    temporary_path = Path(temporary_name)
+    try:
+        with os.fdopen(descriptor, "w", encoding="utf-8", newline="") as file:
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(existing_rows)
+        os.replace(temporary_path, path)
+    except BaseException:
+        temporary_path.unlink(missing_ok=True)
+        raise
