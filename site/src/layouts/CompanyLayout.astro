@@ -25,10 +25,46 @@ const title = frontmatter?.title ?? company.display_name;
 const description =
   frontmatter?.description ??
   `${company.display_name}の基本情報、事業内容、新卒採用、財務・キャッシュフローを公表資料から確認できます。`;
+
+// 記事は MDX の見出しと Astro コンポーネントの見出しが交互に並ぶため、MDX 側の
+// headings だけでは目次の順序を再現できない。一度描画した HTML から h2 を拾う。
+// id は MDX 側が rehype-slug、コンポーネント側が各自の固定値で持っている。
+const entities: Record<string, string> = {
+  "&amp;": "&",
+  "&lt;": "<",
+  "&gt;": ">",
+  "&quot;": '"',
+  "&#39;": "'",
+};
+const rendered = await Astro.slots.render("default");
+const toc = [
+  ...rendered.matchAll(/<h2\b[^>]*\sid="([^"]+)"[^>]*>([\s\S]*?)<\/h2>/g),
+].map(([, id, inner]) => ({
+  id,
+  text: inner
+    .replace(/<[^>]*>/g, "")
+    .replace(/&(?:amp|lt|gt|quot|#39);/g, (entity) => entities[entity] ?? entity)
+    .trim(),
+}));
 ---
 
 <BaseLayout title={title} description={description}>
-  <article class="company-article">
-    <slot />
-  </article>
+  <div class="company-layout">
+    <article class="company-article">
+      <slot />
+    </article>
+
+    {
+      toc.length > 0 && (
+        <aside class="doc-toc company-toc" aria-label="目次">
+          <span>目次</span>
+          <nav>
+            {toc.map((heading) => (
+              <a href={`#${heading.id}`}>{heading.text}</a>
+            ))}
+          </nav>
+        </aside>
+      )
+    }
+  </div>
 </BaseLayout>

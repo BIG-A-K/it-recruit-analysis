@@ -1,0 +1,66 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: subaru
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+株式会社SUBARUは、自動車と航空宇宙を二つの主要領域とするメーカーです。公式サイトは会社のありたい姿を「笑顔をつくる会社」とし、英語では「Delivering Happiness to All」と表現しています。クルマと航空機という異なる製品を通じて、人の大切な時間や移動を支える会社として捉えると、事業構成を理解しやすくなります。
+
+## 企業理念・事業の特徴
+
+SUBARUが大切にする価値は「安心と愉しさ」です。自動車事業では、水平対向エンジン、シンメトリカルAWD、スバルグローバルプラットフォーム、運転支援システム「アイサイト」などを組み合わせ、安全性と走行性能の両立を追求しています。技術単体ではなく、設計、評価、製造、販売後の安全情報まで含む総合安全の考え方が特徴です。
+
+公式の自動車事業ページでは、商品や市場を強みのある領域へ集中し、米国を重点市場としながらSUVやスポーツモデルを中心に価値を届ける方針も説明されています。また、トヨタ自動車とのアライアンスでは、互いの強みを持ち寄って「もっといいクルマづくり」に取り組んでいます。SUBARU単体の事業と、アライアンスによる協業を分けて確認することが大切です。
+
+航空宇宙事業では、航空機の開発・製造に関わる品質と信頼性が求められます。自動車と航空宇宙は製品や顧客が異なりますが、命を預かる製品で妥協せず、技術を積み上げる姿勢という共通点があります。企業研究では、自動車のブランドイメージだけでなく、二つの事業で技術者や生産・品質部門がどのような役割を担うかを見ると理解が深まります。
+
+## サイト
+
+- [SUBARU公式サイト](https://www.subaru.co.jp/)
+  - [SUBARUのありたい姿](https://www.subaru.co.jp/introduction/)
+  - [自動車事業](https://www.subaru.co.jp/outline/about/business/)
+  - [航空宇宙カンパニー](https://www.subaru.co.jp/outline/about/aerospace/)
+  - [株主・投資家の皆様へ](https://www.subaru.co.jp/ir/)
+    - [IRライブラリー](https://www.subaru.co.jp/ir/library/)
+    - [統合レポート](https://www.subaru.co.jp/ir/library/annual-reports.html)
+  - [採用情報](https://www.subaru.co.jp/recruit/)
+    - [新卒採用](https://www.subaru.co.jp/recruit/guide/)
+    - [航空宇宙カンパニー採用](https://www.subaru.co.jp/recruit/aerospace/)
+
+## 採用情報
+
+### 新卒
+
+採用主体は株式会社SUBARUです。新卒採用では、自動車の設計・研究開発・生産技術・ITなどの技術系と、営業・管理などの事務系を案内しています。自動車の新卒採用と航空宇宙カンパニー採用、販売会社グループ採用は別区分なので、応募する法人と募集要項を取り違えないように確認してください。
+
+採用情報は2026年8月2日に確認しました。採用サイトでは2028年卒向けのイベントや新卒採用情報が案内されています。初任給、職種、勤務地、選考日程は最新の[新卒採用ページ](https://www.subaru.co.jp/recruit/guide/)を確認してください。
+
+## サービス例
+
+| 報告区分 | 製品・サービス例 |
+| --- | --- |
+| 自動車事業 | SUBARU車、アイサイト、電動化・安全技術、販売後サービス |
+| 航空宇宙事業 | 航空機の開発・製造、航空宇宙関連機器 |
+
+セグメントの売上高・営業利益は連結有価証券報告書の報告区分に合わせています。SUBARU車の商品ラインアップ別の販売実績とは定義が異なります。自動車事業の技術紹介と、航空宇宙事業の開発・製造の説明を公式サイトで確認したうえで、年度別の数値は下のIR表示で比較してください。
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+<BusinessSegments companyId={frontmatter.companyId} />
+<HealthMetrics companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+<MetricTrends companyId={frontmatter.companyId} />
+<CompanySources companyId={frontmatter.companyId} />

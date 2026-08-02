@@ -1,0 +1,66 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: mazda-motor
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+マツダ株式会社は、クルマを中心にデザイン、走行性能、電動化技術を組み合わせて商品価値をつくる自動車メーカーです。公式サイトは理念を「『走る歓び』そして、『生きる歓び』の創造」と表現し、人の力と可能性を重視しています。広島をものづくりの基盤としながら、グローバルな商品・販売・サービス網を通じてブランド価値を届けています。
+
+## 企業理念・事業の特徴
+
+マツダの2030 VISIONは「『走る歓び』で移動体験の感動を量産するクルマ好きの会社になる。」です。公式の経営方針では、温暖化抑制、安全・安心な移動、日常の「生きる歓び」を同時に考え、クルマの価値を人の体験へ広げる方向が示されています。
+
+マツダは、車両の開発・製造・販売だけでなく、デザイン、パワートレイン、車両制御、ソフトウェア、販売・サービス網を一体で改善することを重視しています。2030 VISIONでは、地域の電源事情や利用環境に合わせて複数の電動化手段を組み合わせる「マルチソリューション」の考え方が示されています。単に電動車の種類を比べるのではなく、技術、エネルギー、顧客の使い方を一つのシステムとして見るのがマツダを理解するポイントです。
+
+また、公式方針には「人とITの共創による価値創造」や、原価低減とサプライチェーン強靭化も挙げられています。商品を企画して終わりではなく、設計・調達・生産・物流・販売後の体験までをつなぎ、限られた資源から顧客価値を生む仕事が広がっています。
+
+## サイト
+
+- [マツダ企業サイト](https://www.mazda.com/ja/)
+  - [企業理念](https://www.mazda.com/ja/about/philosophy/)
+  - [2030 VISION・2030経営方針](https://www.mazda.com/ja/about/vision/)
+  - [IR情報](https://www.mazda.com/ja/investors/)
+    - [業績・財務情報](https://www.mazda.com/ja/investors/financial/data/)
+    - [有価証券報告書等](https://www.mazda.com/ja/investors/library/s-report/)
+  - [採用情報](https://www.mazda.com/ja/careers/)
+    - [新卒採用 事務職・技術職](https://www.mazda.com/ja/careers/newgraduate-1/)
+    - [新卒採用 生産技能職](https://www.mazda.com/ja/careers/newgraduate-2/)
+
+## 採用情報
+
+### 新卒
+
+採用主体はマツダ株式会社です。新卒採用では事務系、技術・IT系、デザイン系を分けて仕事を紹介し、生産技能職は別の募集区分で案内しています。車両の設計・研究開発に加え、デザイン、生産技術、調達、品質、IT、営業などが一つの商品体験をつくる構成です。募集要項・選考フロー、初任給、インターンシップ情報は[新卒採用の募集要項](https://www.mazda.com/ja/careers/newgraduate-1/recruitment/)で確認してください。
+
+採用情報は2026年8月2日に確認しました。勤務地、募集年度、職種別の応募条件や待遇は更新される可能性があります。
+
+## サービス例
+
+| 領域 | 製品・活動例 |
+| --- | --- |
+| 車両 | 乗用車、SUV、電動化車両 |
+| 技術・ものづくり | パワートレイン、車両制御、デザイン、生産技術 |
+| つながりづくり | コネクテッド、販売・サービスを通じた顧客体験 |
+
+指定期間（2025年6月28日から2026年8月2日）にEDINETのCSV付き有価証券報告書は取得できなかったため、公式IRの財務データPDFと有価証券報告書を根拠に数値を登録しています。本文は事業の解釈、下のコンポーネントは年度別の構造化データという役割分担です。数値の比較では、年度や会計基準の注記もあわせて確認してください。
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+<BusinessSegments companyId={frontmatter.companyId} />
+<HealthMetrics companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+<MetricTrends companyId={frontmatter.companyId} />
+<CompanySources companyId={frontmatter.companyId} />

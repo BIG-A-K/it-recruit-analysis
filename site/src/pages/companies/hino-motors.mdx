@@ -1,0 +1,64 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: hino-motors
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+日野自動車株式会社は、トラック・バスなどの商用車、エンジン、車両の運用を支えるトータルサポートを提供するメーカーです。HINO基本理念の会社の使命は「人、そして物の移動を支え、豊かで住みよい世界と未来に貢献する」。物流と人流を支える商用車を、社会インフラの一部として捉えている会社です。
+
+## 企業理念・事業の特徴
+
+HINOウェイでは、コンプライアンスを徹底して誠実に行動すること、安全・環境、品質・プロフェッショナルへのこだわり、互いの尊重を基本方針として説明しています。商用車は顧客の事業を止めないことが重要なので、製品の性能だけでなく、品質保証、整備、部品供給、運行支援までが信頼に結び付きます。
+
+日野は車両をつくって販売するだけでなく、販売会社、整備、部品、運行データ、物流ソリューションまでを含む商用車のライフサイクルに関わります。トラック、観光・路線バス、エンジン、トータルサポートを分けて見ると、乗用車メーカーとの違いを把握できます。物流の効率化、人手不足、安全、環境負荷といった課題に対し、車両とサービスを組み合わせて提案することが事業の中心です。
+
+企業研究では、日野のブランドや車種を見るだけでなく、顧客が車両をどのように使い、どのデータや保守が稼働を支えているかを確認すると理解が深まります。また、日野自動車本体の採用と、販売会社・関連会社の採用は別の入口です。応募する法人と職種の対象を公式採用ページで確認してください。
+
+## サイト
+
+- [日野自動車公式サイト](https://www.hino.co.jp/)
+  - [企業理念・HINOウェイ](https://www.hino.co.jp/corp/about_us/hino_credo.html)
+  - [商品・技術](https://www.hino.co.jp/products/)
+  - [IR情報](https://www.hino.co.jp/corp/for_investors/)
+    - [有価証券報告書](https://www.hino.co.jp/corp/for_investors/financial_statements.html)
+  - [採用情報](https://www.hino.co.jp/corp/recruit/)
+    - [日野採用サイト](https://www.hino.co.jp/recruit/fresh/index.html)
+
+## 採用情報
+
+### 新卒
+
+採用主体は日野自動車株式会社です。採用サイトでは、トラック・バスの開発、生産、技術、営業・管理などの仕事を、仕事相関図や専攻マトリックス、社員紹介とともに案内しています。商用車では、顧客の業務理解と安全・品質の技術を結び付けることが重要です。募集要項、選考フロー、FAQは[採用情報](https://www.hino.co.jp/recruit/fresh/index.html)から確認できます。
+
+採用情報は2026年8月2日に確認しました。職種別の初任給、勤務地、選考区分は年度ごとに更新されるため、応募時は最新の募集要項を確認してください。
+
+## サービス例
+
+| 領域 | 製品・サービス例 |
+| --- | --- |
+| 商用車 | トラック、観光バス、路線バス、小型バス |
+| パワートレーン | ディーゼルエンジン、電動化・次世代技術 |
+| トータルサポート | 部品、整備、販売後支援、運行・物流ソリューション |
+
+指定期間（2025年6月28日から2026年8月2日）にEDINETのCSV付き有価証券報告書は取得できなかったため、公式サイト掲載の有価証券報告書を根拠に数値を登録しています。本文では商用車の顧客価値と仕事のつながりを説明し、年度別の売上・利益・人的資本指標は下の構造化データで確認できるようにしています。
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+<BusinessSegments companyId={frontmatter.companyId} />
+<HealthMetrics companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+<MetricTrends companyId={frontmatter.companyId} />
+<CompanySources companyId={frontmatter.companyId} />

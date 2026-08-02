@@ -1,0 +1,67 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: suzuki-motor
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+スズキ株式会社は、四輪車、二輪車、船外機などのマリン製品を中心に、生活に密着した移動手段を提供するメーカーです。スズキグループの社是は「価値ある製品を」。お客様の立場に立った製品づくりを起点に、日々の暮らしや地域の移動を支えることを重視しています。
+
+## 企業理念・事業の特徴
+
+スズキの社是は、製品づくり、会社づくり、人間づくりの三つの努力目標で構成されています。行動理念の「現場・現物・現実・原理・原則」は、机上だけで判断せず本質を確かめて問題を解決する姿勢を示します。また「小・少・軽・短・美」は、無駄を省き、効率と品質を高め、お客様に価値を返すものづくりの合言葉です。
+
+事業は四輪車、二輪車、マリン、その他の領域に広がっています。軽・小型モビリティでは、車体や部品を小さく軽くまとめる設計、生産現場の改善、地域ごとの使い方への適応が製品価値に直結します。四輪車だけを見るのではなく、二輪車や船外機、電動車いすなどを含めて「移動を身近にする技術」として見ると、スズキの事業の広がりが分かります。
+
+コーポレートスローガン「By Your Side」には、お客様の立場に立つという創業以来の考え方が込められています。企業研究では、製品のスペックだけでなく、価格、品質、使いやすさ、販売・整備網、地域ごとの生活への適応をどのように結び付けているかを確認すると、スズキらしい価値づくりを捉えやすくなります。
+
+## サイト
+
+- [スズキ公式サイト](https://www.suzuki.co.jp/)
+  - [企業情報](https://www.suzuki.co.jp/corporate/)
+    - [社是・行動理念・コーポレートスローガン](https://www.suzuki.co.jp/corporate/message/mission.html)
+    - [研究開発](https://www.suzuki.co.jp/corporate/research/)
+  - [IR情報](https://www.suzuki.co.jp/ir/)
+    - [IRライブラリー](https://www.suzuki.co.jp/ir/library/)
+    - [有価証券報告書](https://www.suzuki.co.jp/ir/library/valuablesecurities/)
+  - [スズキ新卒採用サイト](https://saiyo.suzuki.co.jp/top-1/)
+    - [新卒採用情報](https://saiyo.suzuki.co.jp/graduate/)
+
+## 採用情報
+
+### 新卒
+
+採用主体はスズキ株式会社です。新卒採用サイトでは、技術系、事務・営業系などの仕事、インターンシップ、募集要項、選考プロセス、福利厚生、人財育成を分けて案内しています。技術系では車両・二輪・パワートレイン・電動化・生産技術など、事務系では営業、調達、管理など、製品をお客様へ届ける一連の仕事を確認できます。初任給や職種別の応募条件は[募集要項](https://saiyo.suzuki.co.jp/graduate/recruit/requirements/index.html)で確認してください。
+
+採用情報は2026年8月2日に確認しました。2027年卒の採用情報と2028年卒向けインターンシップの入口が案内されていますが、募集状況や条件は更新される可能性があります。
+
+## サービス例
+
+| 領域 | 製品・サービス例 |
+| --- | --- |
+| 四輪車 | 軽自動車、小型車、SUV、電動化車両 |
+| 二輪車 | 二輪車、モーターサイクル関連製品 |
+| マリン | 船外機、ボート関連製品 |
+| その他 | 電動車いす、産業機器、モビリティ関連サービス |
+
+指定期間（2025年6月28日から2026年8月2日）にEDINETのCSV付き有価証券報告書は取得できなかったため、公式サイト掲載の有価証券報告書を根拠に数値を登録しています。本文の領域表は製品理解のための例であり、年度別の売上・利益や報告セグメントは下の構造化データで確認してください。
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+<BusinessSegments companyId={frontmatter.companyId} />
+<HealthMetrics companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+<MetricTrends companyId={frontmatter.companyId} />
+<CompanySources companyId={frontmatter.companyId} />

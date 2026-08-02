@@ -1,0 +1,63 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: nissan-motor
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+日産自動車株式会社は、乗用車を中心に、電動化、運転支援、コネクテッド技術を展開する自動車メーカーです。日本語のコーポレートパーパスは「人々の生活を豊かに」。英語では「Enriching People's Lives」と表記され、人を中心としたイノベーションでモビリティの価値を高めることを説明しています。
+
+## 企業理念・事業の特徴
+
+日産のDNAとして公式サイトが掲げる言葉は「他のやらぬことを、やる」です。現在のビジョンでは「モビリティの知能化で、毎日を新たな体験に」を掲げ、AIドライブ技術やAIパートナー技術、商品ポートフォリオ、パートナーシップを組み合わせていく方向を示しています。
+
+日産の事業を見るときは、車両の開発・製造・販売を担う自動車事業と、車両購入を支える販売金融事業を分けて見ることが重要です。電気自動車、e-POWER、ProPILOT、コネクテッドサービスは、車両とソフトウェア・サービスを結び付けるテーマです。一方で、実際の価値は商品企画、電池・駆動系、制御、データ、販売、アフターサービスが連携して初めて顧客へ届きます。
+
+日産を企業研究するときは、技術名を並べるだけでなく、誰のどの移動課題を解決する技術なのかを確認すると理解が深まります。また、ルノー・日産・三菱自動車のアライアンスは、日産自動車単体の報告セグメントとは別の論点です。アライアンスの説明と日産単体のIR数値を分けて読む必要があります。
+
+## サイト
+
+- [日産自動車企業情報サイト](https://www.nissan-global.com/JP/)
+  - [コーポレートパーパス](https://www.nissan-global.com/JP/COMPANY/PURPOSE/)
+  - [ビジョン](https://www.nissan-global.com/JP/COMPANY/PLAN/VISION/)
+  - [会社概要](https://www.nissan-global.com/JP/COMPANY/PROFILE/)
+  - [投資家の皆さまへ](https://www.nissan-global.com/JP/IR/)
+    - [IR資料室・決算資料](https://www.nissan-global.com/JP/IR/LIBRARY/FINANCIAL/)
+  - [日産採用情報](https://www.nissanmotor.jobs/japan/)
+
+## 採用情報
+
+### 新卒
+
+採用主体は日産自動車株式会社です。採用サイトでは、技術開発、車両・パワートレイン、ソフトウェア、データ・デジタル、営業・管理など、モビリティをつくる職種を職種別に案内しています。職種を検討するときは、車両の機械・電気領域、車載ソフトウェア、クラウド・データ、顧客接点のどこに関心があるかを整理すると、募集職種との対応を確認しやすくなります。職種、勤務地、初任給、選考区分は年度ごとの募集ページで確認してください。
+
+採用情報は2026年8月2日に確認しました。日産の採用サイトはJavaScriptで募集情報を表示するため、応募条件や募集状況は応募時に[公式採用サイト](https://www.nissanmotor.jobs/japan/)で確認してください。
+
+## サービス例
+
+| 報告区分 | 製品・サービス例 |
+| --- | --- |
+| 自動車事業 | 電気自動車、e-POWER車、乗用車、運転支援・コネクテッド技術 |
+| 販売金融事業 | 車両購入向けローン、リース、販売金融サービス |
+
+開示セグメントの売上高と営業利益は、日産の法定開示における外部顧客売上高・営業利益を使って表示しています。製品ブランド別の売上構成とは定義が異なる点に注意してください。電動化や知能化の説明は公式の技術・ビジョンページ、年度別の業績はIR資料で確認するというように、情報の役割を分けて読むと追いやすくなります。
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+<BusinessSegments companyId={frontmatter.companyId} />
+<HealthMetrics companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+<MetricTrends companyId={frontmatter.companyId} />
+<CompanySources companyId={frontmatter.companyId} />

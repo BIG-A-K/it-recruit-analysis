@@ -1,6 +1,6 @@
 ---
 import MetricExplorer from "../MetricExplorer.astro";
-import { annotationsForCompany, companies } from "../../lib/data";
+import { allCompanies, annotationsForCompany } from "../../lib/data";
 import { financialMetricsForCompany } from "../../lib/company-financials";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { companyId } = Astro.props;
-const company = companies.find((item) => item.company_id === companyId);
+const company = allCompanies.find((item) => item.company_id === companyId);
 if (!company) throw new Error(`企業が見つかりません: ${companyId}`);
 
 const companyAnnotations = annotationsForCompany(companyId);

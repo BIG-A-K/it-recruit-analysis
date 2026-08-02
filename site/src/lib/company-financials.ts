@@ -3,6 +3,7 @@ import { metrics, type Metric } from "./data";
 export const financialMetricKeys = [
   "revenue",
   "operating_profit",
+  "business_profit",
   "net_cf",
   "operating_cf",
   "investing_cf",

@@ -1,0 +1,95 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: aws-japan
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+AWSは2006年にサービスを開始したクラウドプラットフォームです。公式サイトでは、スタートアップ、企業、非営利団体、政府・自治体などへコンピューティング、ストレージ、データベース、AIなどの基盤を提供すると説明しています。
+
+採用サイトでは「地球上で最もお客様を大切にする企業であること」を理念の一つに挙げ、顧客の課題から逆算する考え方を重視しています。
+
+## サイト
+
+- [AWS公式サイト](https://aws.amazon.com/jp/)
+  - [AWSについて](https://aws.amazon.com/jp/about-aws/)
+  - [AWSグローバルインフラストラクチャ](https://aws.amazon.com/jp/about-aws/global-infrastructure/)
+- [Amazon.com IR](https://ir.aboutamazon.com/)
+  - [Amazon.com Form 10-K（2025年12月期）](https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/0001018724-26-000004-index.html)
+- [AWS採用情報](https://aws.amazon.com/jp/careers/)
+  - [仕事検索・チーム紹介](https://aws.amazon.com/jp/careers/teams/jobsearch/)
+  - [新卒採用](https://aws.amazon.com/jp/careers/newgraduate/)
+  - [福利厚生・制度](https://aws.amazon.com/jp/careers/benefit/)
+
+## 採用情報
+
+### 新卒
+
+採用主体はアマゾン ウェブ サービス ジャパン合同会社です。2026年8月2日に公式新卒採用ページを確認しました。
+
+| 職種 | 確認できた募集状況 |
+| --- | --- |
+| [営業](https://aws.amazon.com/jp/careers/newgraduate/commercialsales/) | 新卒採用ページで応募予定職種として案内 |
+| [サポートエンジニアリング](https://aws.amazon.com/jp/careers/newgraduate/supportengineering/) | クラウドサポートエンジニアの職種情報を掲載 |
+| [ソリューションアーキテクト](https://aws.amazon.com/jp/careers/newgraduate/solutionsarchitect/) | 2027年卒本選考を案内 |
+| [プロフェッショナルサービス](https://aws.amazon.com/jp/careers/newgraduate/Proserve/) | 2028年卒インターンを案内 |
+| [データセンター](https://aws.amazon.com/jp/careers/newgraduate/datacenter/) | 2027年卒向けの施設・ITインフラ職を案内 |
+
+新卒採用ページでは初任給、固定残業、標準年収を確認できなかったため、金額は掲載していません。応募時には各職種のAmazon Jobs募集要項で最新条件を確認する必要があります。
+
+データセンター部門では、電気・機械設備を運用するDCEOと、サーバー・ネットワーク機器を運用するDCOを紹介しています。DCOの主な領域はキャパシティ・インストール、障害対応、機器の廃止です。
+
+### 選考・働き方
+
+[採用プロセス](https://aws.amazon.com/jp/careers/recruiting/)では、多くのポジションについて書類選考、一次面接、最終面接、内定という流れを案内しています。応募から内定までは1〜1.5か月程度が目安で、面接ではAmazonのLeadership Principlesに基づく行動事例が確認されます。
+
+公式採用ページは東京、大阪、名古屋、福岡の募集検索を案内しています。採用担当者の説明では会社都合の転勤はなく、基本は週3日のオフィス出社としつつ、職種やマネージャーとの相談により柔軟な働き方が可能とされています。
+
+[福利厚生ページ](https://aws.amazon.com/jp/careers/benefit/)では、年1回の査定、通勤手当、確定拠出年金、社会保険、初年度最大14日の有給休暇、年間最大5日のパーソナル休暇、対象社員へのAmazonのRSU付与を案内しています。
+
+</CompanyProse>
+
+<BusinessSegments companyId="amazon-com" showShare={false} />
+
+<CompanyProse>
+
+## サービス例
+
+| 分野 | 代表的なサービス |
+| --- | --- |
+| コンピューティング | [Amazon EC2](https://aws.amazon.com/jp/ec2/)、[AWS Lambda](https://aws.amazon.com/jp/lambda/) |
+| ストレージ | [Amazon S3](https://aws.amazon.com/jp/s3/) |
+| データベース | [Amazon RDS](https://aws.amazon.com/jp/rds/)、[Amazon DynamoDB](https://aws.amazon.com/jp/dynamodb/) |
+| コンテナ | [Amazon EKS](https://aws.amazon.com/jp/eks/) |
+| AI・機械学習 | [Amazon SageMaker](https://aws.amazon.com/jp/sagemaker/)、[Amazon Bedrock](https://aws.amazon.com/jp/bedrock/) |
+
+## 関連企業とIRの範囲
+
+AWS公式サイトはAWSをAmazonの一員と説明しています。ただし、日本の採用主体と米国の財務開示主体は異なります。
+
+| 対象 | このページでの扱い |
+| --- | --- |
+| アマゾン ウェブ サービス ジャパン合同会社 | 採用情報と日本での就業情報の対象 |
+| Amazon.com, Inc. | SECへForm 10-Kを提出する連結財務の開示主体 |
+| AWS | Amazon.comのForm 10-Kで開示される報告セグメント |
+
+:::warn
+以下の財務表・グラフはAmazon.com, Inc.の連結業績です。AWS Japan単体の業績ではありません。AWS事業の売上と営業利益は、上の「事業内容」に報告セグメントとして表示しています。金額は円換算せず、原資料どおり米ドル、会計基準はUS GAAP、会計年度末は12月31日です。
+:::
+
+</CompanyProse>
+
+<FinancialHistory companyId="amazon-com" />
+
+<MetricTrends companyId="amazon-com" />
+
+<CompanySources companyId="amazon-com" />

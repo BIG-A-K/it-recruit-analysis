@@ -6,27 +6,121 @@ companyId: kakaku-com
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-カカクコムは、「価格.com」「食べログ」など、比較・予約・情報提供を通じて生活や購買の意思決定を支援するインターネットサービスを運営しています。
+カカクコムは、「価格.com」「食べログ」「求人ボックス」など、比較、口コミ、予約、求人検索を通じて生活や購買、仕事探しの意思決定を支援するインターネットサービスを運営しています。複数のサービスを、データとユーザーの行動をもとに改善し続けることが事業の基盤です。
+
+## ユーザーファーストのサービスづくり
+
+カカクコムは、創業以来の価値観として「ユーザーファースト」を掲げています。ユーザーの声に耳を傾け、身近な「こんなサービスがあったら便利」という発想をサービスにし、試行錯誤を重ねながら生活の中の当たり前へ育てていく考え方です。
+
+比較・口コミ・予約などの機能を提供するだけでなく、アクセスデータやユーザーの実際の行動を分析して、サービスの企画、改善、運用へつなげています。そのため、企画、エンジニアリング、デザイン、マーケティング、営業、カスタマーサービスが一つのサービスに関わります。
+
+## 主なサービス領域
+
+### 比較・情報提供
+
+「価格.com」は商品の価格やスペックなどを比較し、購入前の情報収集を支援するサービスです。ユーザーが条件を比較しやすい情報設計と、掲載情報を継続的に整備する運用が重要になります。
+
+### 飲食・生活情報
+
+「食べログ」は飲食店の情報や口コミ、ネット予約を扱うサービスです。店舗情報、ユーザー投稿、予約導線など複数の要素を組み合わせ、店を探す人と飲食店の接点をつくっています。
+
+### 仕事探し
+
+「求人ボックス」は求人情報を検索できるサービスです。公式採用ページでは、求人ボックスの営業職を例に、採用課題を持つ企業へ有料広告を提案する仕事が紹介されています。
+
+## サービスを育てる仕事
+
+カカクコムのサービスでは、ユーザーが比較・検索・予約・投稿などの行動を行い、その利用状況や声が次の改善につながります。企画段階では市場やユーザー課題を調べ、開発・デザイン・コンテンツ制作で機能を形にし、公開後はアクセスデータや問い合わせを分析して運用を改善します。
+
+この流れはサービスごとに異なります。価格比較なら商品情報や検索条件の分かりやすさ、飲食予約なら店舗情報・口コミ・予約導線、求人検索なら求職者と企業の双方にとって使いやすい検索や広告提案が重要になります。サービス名だけでなく、誰と誰をどの情報でつなぐ仕事なのかを見ると、事業の違いを理解しやすくなります。
+
+## 企業としての価値観
+
+採用サイトでは、「働く楽しさ」と、複数の選択肢から自分に合う就業スタイルを選ぶ「働きやすさ」を両立する会社を目指すと説明しています。人材育成・評価では、グレード要件と組織ミッションの達成を重視し、個人の成長と組織の発展を連動させる考え方が示されています。
 
 ## 公式サイト・採用情報
 
 - [企業サイト](https://corporate.kakaku.com/)
+- [事業・サービス概要](https://corporate.kakaku.com/company/service)
+- [会社概要](https://corporate.kakaku.com/company/profile)
 - [IR情報](https://corporate.kakaku.com/ir/)
-- [採用情報](https://corporate.kakaku.com/recruit/)
+- [新卒採用](https://kakaku.com/info/recruit/job/graduate.html)
+- [職種紹介](https://kakaku.com/info/recruit/occupation/occupation.html)
+- [採用で大切にしていること](https://kakaku.com/info/recruit/philosophy.html)
 
-採用主体は株式会社カカクコムです。職種、勤務地、待遇は公式採用ページの募集要項を確認してください（2026年8月1日確認）。
+採用主体は株式会社カカクコムです。職種、勤務地、待遇は公式採用ページの募集要項を確認してください（2026年8月2日確認）。
 
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<CompanyProse>
+
+## 採用職種
+
+公式の職種紹介では、新卒採用の募集区分をビジネス職、エンジニア職、事業開発職に分けています。サービスを成長させる仕事と、会社全体を支える仕事の両方があります。
+
+### サービスをデータで成長させる仕事
+
+Webアナリストはアクセスログなどを収集・分析し、サービス改善や方向性策定に関わります。マーケターは認知向上や集客施策を進め、機械学習エンジニアは商品・店舗情報や口コミ、ユーザー行動などのデータを使って利便性や運用性を高めます。
+
+### サービスをつくり、発展させる仕事
+
+事業開発職は、ユーザー課題や市場変化を捉え、事業アイデアの創出、検証、立ち上げ、PMIまで関わるポジションです。ビジネス企画、Webディレクター、開発エンジニア、広告営業、デザイナーも、社内外の関係者と協働してサービスを形にします。
+
+### サービスと会社を支える仕事
+
+カスタマーサービスはユーザーの声を受け取り、サービス改善へつなげます。インフラエンジニアはサーバーやネットワークを支え、法務、財務・経理、人事などのコーポレート職は事業と会社全体の運営に関わります。
+
+## 職種を選ぶときの見方
+
+| 関心 | 公式職種紹介に掲載されている職種 | 主な接点 |
+| --- | --- | --- |
+| データから改善したい | Webアナリスト、マーケター、機械学習エンジニア | アクセスログ、広告、商品・店舗情報、ユーザー行動 |
+| サービスを企画したい | 事業開発職、ビジネス企画、Webディレクター | 市場調査、事業計画、コンテンツ企画、進行管理 |
+| プロダクトを実装したい | 開発エンジニア、インフラエンジニア | DB・プログラム設計、サーバー、ネットワーク、運用 |
+| ユーザーや顧客と向き合いたい | カスタマーサービス、広告営業 | 問い合わせ、ユーザーの声、企業の課題、提案 |
+| 会社・事業を支えたい | 法務、財務・経理、人事など | 契約、決算、税務、採用、育成、制度運用 |
+
+新卒採用では、ビジネス職、エンジニア職、事業開発職の募集区分から選考が分かれます。職種紹介ページには、上記の専門職に加えて、サービス横断で複数の関係者と協働する仕事内容が説明されています。
+
+## 働く環境と制度
+
+公式FAQでは、標準労働時間は1日8時間、フレックス勤務制でコアタイムは10:00から15:00と説明されています。職種・業務に応じて在宅勤務を選択でき、チームごとの出社状況は選考時に確認する運用です。
+
+年次有給休暇は入社月に応じて入社日に最大10日付与され、夏季休暇は7月1日から9月30日の間に3日取得できます。服装は自由ですが、営業職などはTPOに応じた服装が必要です。
+
+オフィス環境として、本社と渋谷オフィス、リフレッシュスペース、集中ブース、個人ロッカーなどが採用サイトに紹介されています。働く場所や出社頻度は職種・チームで変わるため、制度名だけで判断せず、選考時に確認してください。
+
+## 募集年度について
+
+2026年8月2日に新卒採用ページを確認したところ、本文には「2025年4月入社」の記載が残っていました。募集コースの説明は参考になりますが、対象年度、エントリー受付状況、最新の待遇は応募時点の公式募集要項で再確認してください。
+
+キャリア採用については、公式FAQに応募から内定までおよそ1か月、直接応募と人材紹介会社などを経由した場合で選考プロセスに差はないと説明されています。新卒採用の情報とキャリア採用の情報を混同せず、希望する入口の募集ページを確認してください。
+
+- [企業制度](https://kakaku.com/info/recruit/environment/system.html)
+- [よくあるご質問](https://kakaku.com/info/recruit/faq.html)
+- [データで見るカカクコム](https://kakaku.com/info/recruit/company/data.html)
+- [オフィス環境](https://kakaku.com/info/recruit/environment/office.html)
+
+</CompanyProse>
+
+<BusinessSegments companyId={frontmatter.companyId} />
+
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />

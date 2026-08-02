@@ -6,24 +6,113 @@ companyId: gree
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-グリーは、ゲーム、メタバース、DX、投資などの領域で、インターネットを活用したサービスを展開する企業グループです。
+グリーは、グリーホールディングスを中心に、ゲーム、メタバース、IP、DX、投資などの領域でインターネットサービスを展開する企業グループです。SNS「GREE」を起点に、現在は複数の事業領域で新しいサービスとコンテンツをつくっています。
+
+## ミッションと価値観
+
+グループのミッションは「インターネットを通じて、世界をより良くする。」、ビジョンは「毎日を楽しく幸せに、社会を自由で効率的に。」です。行動規範として、ロジカル、クリエイティブ、スピードを掛け合わせること、現状に甘んじず高い目標を目指すこと、成功するまで挑戦し続けることなどを掲げています。
+
+## 主な事業領域
+
+### ゲーム
+
+2007年に「釣り★スタ」を公開して以降、ゲーム事業を拡大してきました。現在はグリーとWFSが開発・運営を担い、「ヘブンバーンズレッド」「アナザーエデン 時空を超える猫」などを国内外へ配信しています。エンジニア、ゲームプランナー、デザイナーが協働し、運営と新規開発の両方でユーザー体験を改善します。
+
+### メタバース
+
+スマートフォン向けメタバース「REALITY」のプラットフォーム事業、VTuberをプロデュースするREALITY Studios、ブロックチェーンゲームやWeb3プロジェクトを扱う事業を展開しています。REALITYでは、アバター、ライブ配信、コミュニケーション、ゲーム、ワールドという複数の体験を組み合わせています。
+
+### IP
+
+グリーエンターテインメントでは、アニメ製作、ライセンス、グッズの企画・制作・販売を行っています。DADANではマンガアプリ「DADAN」と、電子書籍の書誌情報・ファイル管理・翻訳などを扱うDXクラウド「DEDEN」を展開し、コンシューマ向けと法人向けの両方でIPに関わります。
+
+### DX
+
+デジタルマーケティング、ソーシャルマーケティング、CRMを軸に、アプリマーケティングSaaS、観光DX、SNS運用SaaS、インフルエンサーマーケティング、DXコンサルティングを提供しています。クライアント企業の事業成長を支援するマーケティングDX、ソーシャルDX、リージョナルDXという整理で説明されています。
+
+### その他
+
+GREE LP Fundによるファンド投資、GREE Ventures、STRIVE、GFR Fundによるスタートアップ投資を行っています。アーリーステージのインターネット関連企業や、海外のデジタルメディア・エンターテインメント領域にも投資対象を広げています。
+
+## グループの構造
+
+グリーホールディングスの公式会社概要では、持株会社の事業内容をグループ会社の経営管理などとしています。実際のサービス開発・運営や採用の主体は、領域ごとのグループ会社になる場合があります。
+
+| 領域 | 主なグループ会社・ブランド | 役割の例 |
+| --- | --- | --- |
+| ゲーム | 株式会社WFS、株式会社グリー | ゲーム企画・開発・運営、GREE Platform |
+| メタバース | REALITY株式会社、REALITY Studios株式会社、BLRD PTE. LTD. | メタバース、VTuber、Web3 |
+| IP | グリーエンターテインメント株式会社、DADAN株式会社 | アニメ、ライセンス、グッズ、電子書籍DX |
+| DX | グリーエックス株式会社、株式会社ExPlay | アプリマーケティング、CRM、カスタマーエクスペリエンス |
+| その他 | グリーベンチャーズ株式会社、STRIVE株式会社など | スタートアップ投資、ファンド投資 |
+
+就職先としてグリーグループを見る場合は、グリーホールディングス単体のIR情報、グループ全体の事業紹介、各募集会社の採用条件を分けて確認する必要があります。
 
 ## 公式サイト・採用情報
 
 - [企業サイト](https://corp.gree.net/jp/ja/)
+- [ミッション・ビジョン](https://corp.gree.net/jp/ja/corporate/mission/)
+- [事業情報](https://corp.gree.net/jp/ja/business/)
 - [IR情報](https://corp.gree.net/jp/ja/ir/)
-- [採用情報](https://corp.gree.net/jp/ja/recruit/)
+- [グループ採用情報](https://corp.gree.net/jp/ja/recruit/)
+- [募集職種・募集要項](https://corp.gree.net/jp/ja/recruit/position/)
 
-採用主体は募集会社ごとに異なります。職種、勤務地、待遇は公式採用ページの募集要項を確認してください（2026年8月1日確認）。
+採用主体は募集会社・配属先ごとに異なります。職種、勤務地、待遇は公式採用ページの募集要項を確認してください（2026年8月2日確認）。
 
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 採用情報の補足
+
+グループ新卒採用では、エンジニア、ビジネス、ゲームプランナー、デザイナーを募集職種として掲載しています。エンジニアにはクライアント、サーバーサイド、データサイエンス、インフラがあり、ビジネスにはマーケティング、セールス、IPプロデューサー、プロダクトマネージャー、データアナリスト、新規事業企画、コーポレートなどがあります。
+
+公式募集要項に記載された対象は2027年3月卒業見込みです。初任給は、エンジニアが学部卒480万円以上・院卒510万円以上、ビジネス、ゲームプランナー、デザイナーが学部卒420万円以上・院卒450万円以上で、いずれも賞与が別途記載されています。交通費は月額上限5万円、給与改定・賞与は年2回、勤務時間は9:30から18:30、勤務地は六本木ヒルズゲートタワーが基本です。
+
+### インターンシップ
+
+「GREE Camp」はエンジニア、デザイナー、ゲームプランナーの混成チームで、新規ゲームの企画からモックアップ開発まで行う2日間のプログラムです。「GREE Jobs」は実際の開発環境で社員や役員と働く長期実践型インターンシップです。
+
+### 働き方と成長支援
+
+福利厚生ページでは、子どもの登園禁止や妊娠中の体調不良時に月2回まで使えるファミリー在宅、家族の病院付き添いなどに使える年5日のファミリー休暇、時短・時差出勤、ベビーシッター補助を紹介しています。ドリンク補助、従業員持株会、企業型確定拠出年金も掲載されています。
+
+成長支援制度には、社内公募の「GREE Open Job Posting」、最低月1回の1on1、半期単位のMBO、次世代幹部の育成を検討する人材開発プログラムがあります。月次・四半期・半期の表彰、10年勤続時の10日間のリフレッシュ休暇、社会貢献プログラムも案内されています。
+
+採用職種の選択では、ゲームを作りたいのか、プロダクトやデータで事業を成長させたいのか、IPやDXの新規事業を推進したいのかを分けて考えると、募集職種との対応を確認しやすくなります。
+
+新卒採用の待遇はグループ会社や職種によって扱いが変わる可能性があるため、応募時は個別の募集要項を優先してください。IR・雇用情報欄の公表値も、グループ新卒採用の待遇を直接示すものではありません。
+
+- [会社概要](https://corp.gree.net/jp/ja/corporate/summary/)
+- [グループ会社](https://corp.gree.net/jp/ja/corporate/group/)
+- [ゲーム事業](https://corp.gree.net/jp/ja/business/games.html)
+- [メタバース事業](https://corp.gree.net/jp/ja/business/metaverse.html)
+- [IP事業](https://corp.gree.net/jp/ja/business/ip.html)
+- [DX事業](https://corp.gree.net/jp/ja/business/digital-transformation.html)
+- [その他・投資](https://corp.gree.net/jp/ja/business/investment.html)
+- [福利厚生制度](https://corp.gree.net/jp/ja/sustainability/social/benefit/)
+- [成長支援制度](https://corp.gree.net/jp/ja/sustainability/social/program/)
+
+</CompanyProse>
+
+<BusinessSegments companyId={frontmatter.companyId} />
+
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />

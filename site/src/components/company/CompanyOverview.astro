@@ -1,7 +1,9 @@
 ---
 import {
+  allCompanies,
   companies,
   companyIndustries,
+  companyRelations,
   industries,
   metrics,
 } from "../../lib/data";
@@ -25,6 +27,15 @@ const companyMetrics = metrics.filter(
 );
 const totalFunding = latestMetric(companyMetrics, "total_funding");
 const employeeCount = latestMetric(companyMetrics, "employee_count");
+const disclosureRelation = companyRelations.find(
+  (item) =>
+    item.from_company_id === companyId &&
+    ["parent", "affiliate"].includes(item.relation_type) &&
+    !item.valid_to,
+);
+const disclosureCompany = allCompanies.find(
+  (item) => item.company_id === disclosureRelation?.to_company_id,
+);
 ---
 
 <section class="company-overview">
@@ -46,9 +57,12 @@ const employeeCount = latestMetric(companyMetrics, "employee_count");
   <dl class="facts facts-boxed basic-facts">
     <div><dt>分類</dt><dd>{industry?.name || "—"}</dd></div>
     <div><dt>正式社名</dt><dd>{company.legal_name}</dd></div>
-    <div><dt>証券コード</dt><dd>{company.securities_code || "—"}</dd></div>
-    <div><dt>EDINETコード</dt><dd>{company.edinet_code || "—"}</dd></div>
-    {employeeCount && <div><dt>従業員数</dt><dd>{formatValue(Number(employeeCount.value), employeeCount.unit, "employee_count")}{employeeCount.note ? <small>{employeeCount.note}</small> : null}</dd></div>}
+    {company.securities_code && <div><dt>証券コード</dt><dd>{company.securities_code}</dd></div>}
+    {company.edinet_code && <div><dt>EDINETコード</dt><dd>{company.edinet_code}</dd></div>}
+    {company.ticker && <div><dt>ティッカー</dt><dd>{company.exchange ? `${company.exchange}: ` : ""}{company.ticker}</dd></div>}
+    {company.sec_cik && <div><dt>SEC CIK</dt><dd>{company.sec_cik}</dd></div>}
+    {disclosureCompany && <div><dt>関連開示主体</dt><dd>{disclosureCompany.display_name}</dd></div>}
+    {employeeCount && <div><dt>従業員数</dt><dd>{formatValue(Number(employeeCount.value), employeeCount.unit, "employee_count")}</dd></div>}
     {totalFunding && <div><dt>累計資金調達額</dt><dd>{formatValue(Number(totalFunding.value), totalFunding.unit, "total_funding")}<small>非上場ベンチャーの公式発表値</small></dd></div>}
   </dl>
 </section>

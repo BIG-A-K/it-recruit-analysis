@@ -27,7 +27,7 @@ const companySources = sourceIds
 ---
 
 {companySources.length > 0 && <section>
-  <div class="section-head"><h2>出典</h2><p>数値は法定開示・公式資料をもとにしています。</p></div>
+  <div class="section-head"><h2 id="sources">出典</h2><p>数値は法定開示・公式資料をもとにしています。</p></div>
   <div class="source-list">
     {companySources.map((source) => <a href={source.url} target="_blank" rel="noreferrer">
       <div><strong>{source.title}</strong><span>{source.issuer}</span></div>

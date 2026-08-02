@@ -6,24 +6,112 @@ companyId: mixi
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-MIXIは、スポーツ、デジタルエンターテインメント、ライフスタイルなどの領域で、コミュニケーションや体験を生み出すサービスを展開しています。
+MIXIは、「豊かなコミュニケーションを広げ、世界を幸せな驚きで包む」をパーパスに掲げ、デジタルエンターテインメント、スポーツ、ライフスタイルの領域でサービスを展開しています。ゲームやSNSだけでなく、リアルイベント、プロスポーツ、家族向けサービスなど、オンラインとオフラインを横断して体験をつくる会社です。
+
+## 企業理念
+
+ミッションは「『心もつながる』場と機会の創造。」です。MIXI WAYとして「ユーザーサプライズファースト」を掲げ、単にユーザーをつなぐだけでなく、幸せな驚きや熱量の高いコミュニケーションを生み出すことを重視しています。
+
+## 主な事業領域
+
+### デジタルエンターテインメント
+
+「モンスターストライク」や「共闘ことばRPG コトダマン」などのスマートフォン向けゲームを展開しています。ゲームアプリだけで完結させず、グッズ、リアルイベント、動画・アニメ、他社IPや異業種とのコラボレーションへ広げるメディアミックスも特徴です。
+
+### ライブエンターテインメント
+
+ゲームやアニメ、音楽、スポーツなどを組み合わせたリアルイベントや、eスポーツ大会を運営しています。デジタル上のコンテンツを、参加者同士が同じ場所で楽しむ体験へ拡張する領域です。
+
+### スポーツ
+
+競輪・PIST6・オートレースを友人と楽しめるTIPSTARを中心としたソーシャルベッティング事業と、観戦事業を展開しています。千葉ジェッツ、FC東京などのプロスポーツチーム経営や、スポーツ観戦店舗を探せるFanstaも公式採用サイトで紹介されています。
+
+### ライフスタイル
+
+SNS「mixi」、家族向け写真・動画共有サービス「家族アルバム みてね」、美容サロン予約アプリ「minimo」、会話AIロボット「Romi」、SNS「mixi2」などを展開しています。家族、友人、趣味、日常のそれぞれに合わせて、コミュニケーションの場を設計する領域です。
+
+## 事業とサービスの組み合わせ
+
+| 領域 | 公式採用サイトで紹介されているサービス・取り組み | つくっている体験 |
+| --- | --- | --- |
+| デジタルエンターテインメント | モンスターストライク、コトダマン、DREAM DAZE | 友人と遊ぶゲーム、イベント、IPのメディアミックス |
+| スポーツ | TIPSTAR、千葉ジェッツ、FC東京、Fansta | 競技への参加、観戦、ファン同士の交流 |
+| ライフスタイル | mixi、みてね、minimo、Romi、mixi2 | 家族・友人・趣味・日常のコミュニケーション |
+
+MIXIでは、アプリを提供して終わりではなく、コンテンツ、イベント、チーム運営、コミュニティを組み合わせてサービスを育てています。ゲームやSNSに関心がある場合でも、企画、マーケティング、データ、開発、デザイン、CSなど、サービスのライフサイクルに応じて複数の職種が関わります。
+
+## サービス開発の進め方
+
+採用FAQでは、サービスやプロジェクトごとにチームを編成し、少数精鋭でスピード感を持って開発すると説明しています。プランナー、マーケター、エンジニア、デザイナーなどが職種の壁を越えて意見を出し合い、ユーザーに驚きと喜びを提供するために必要な仕事を担う考え方です。
+
+また、MIXI GROUPには明確に固定されたキャリアパスはなく、自律的な成長を重視しています。MIXI CAREER CHALLENGE（MCC）という社内公募制度を使い、重点領域や人員を募集しているポジションへ挑戦できます。
 
 ## 公式サイト・採用情報
 
 - [企業サイト](https://mixi.co.jp/)
 - [IR情報](https://mixi.co.jp/ir/)
-- [採用情報](https://mixi.co.jp/recruit/)
+- [MIXI GROUP採用サイト](https://mixigroup-recruit.mixi.co.jp/)
+- [企業理念](https://mixigroup-recruit.mixi.co.jp/about/philosophy/)
+- [募集職種一覧](https://mixigroup-recruit.mixi.co.jp/jobs/)
 
-採用主体は株式会社MIXIです。職種、勤務地、待遇は公式採用ページの募集要項を確認してください（2026年8月1日確認）。
+採用主体は株式会社MIXIです。ただし、MIXI GROUP採用サイトにはグループ会社・事業領域にまたがる求人も掲載されます。職種、配属、勤務地、待遇は各募集要項を確認してください（2026年8月2日確認）。
 
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 採用・働き方
+
+募集職種一覧では、エンジニア、デザイナー・クリエイター、ビジネス、コーポレート・事務／CSの職種区分があり、ゲーム、ライブ・エンタメ、スポーツ、ライフスタイルの事業領域から求人を探せます。募集区分には新卒採用、キャリア採用、インターンシップ、イベント、障がい者採用が用意されています。
+
+新卒採用については、採用FAQに初任給30万円から、通年採用、学歴・年齢不問、既卒・第二新卒も応募可能と記載されています。個別求人や採用時期によって条件が変わる可能性があるため、応募前に最新の募集要項を確認してください。
+
+### 働き方
+
+MIXI GROUP採用サイトでは、オフィスワークとリモートワークを組み合わせる「マーブルワークスタイル」を説明しています。部署の状況に応じてフルリモートや出社回数を選択でき、日本全国での居住を認める制度も掲載されています。フレックスタイム制はフレキシブルタイム5:00から22:00、コアタイムなしです。
+
+### 制度・成長支援
+
+年間24万円分のポイントを利用できるMIXIカフェテリアプラン、新卒入社後3年間の住宅手当、社内公募のMIXI CAREER CHALLENGE（MCC）、社内勉強会、社外カンファレンス登壇支援などが紹介されています。内定者研修、入社時研修、エルダー制度、配属後研修も掲載されています。
+
+### 新卒研修とインターンシップ
+
+採用サイトには、内定者アルバイト、内定者合宿、内定者研修、入社時研修、新卒社員向けのエルダー制度、配属後研修が掲載されています。入社後の職種研修だけでなく、配属先の先輩社員が業務や職場生活を支援するOJTの仕組みもあります。
+
+募集職種一覧では、インターンシップを独立した募集区分として検索できます。ゲーム、ライブ・エンタメ、スポーツ、ライフスタイルのどの事業領域で、どの職種の経験を積める募集かを個別ページで確認してください。
+
+### 応募時に確認すること
+
+新卒採用FAQには、学歴・年齢不問、既卒・第二新卒も応募可能、通年採用と記載されています。一方で、入社時期や希望職種、配属先の確約は個別求人や選考状況に左右されます。初任給30万円からという記載も採用FAQ上の情報であり、応募時点の募集要項と照合してください。
+
+なお、ここで紹介している働き方・制度はMIXI GROUP採用サイトの記載です。IR・雇用情報欄の平均値は株式会社MIXI単体の公表値であり、グループ全体や個別求人の条件を示すものではありません。
+
+- [MIXIの価値観](https://mixigroup-recruit.mixi.co.jp/about/philosophy/)
+- [デジタルエンターテインメント](https://mixigroup-recruit.mixi.co.jp/about/digital_entertainment/)
+- [スポーツ](https://mixigroup-recruit.mixi.co.jp/about/sports/)
+- [ライフスタイル](https://mixigroup-recruit.mixi.co.jp/about/lifestyle/)
+- [働き方・コミュニケーション](https://mixigroup-recruit.mixi.co.jp/life/workstyle/)
+- [福利厚生・制度](https://mixigroup-recruit.mixi.co.jp/life/welfare/)
+- [育成・研修](https://mixigroup-recruit.mixi.co.jp/life/training/)
+- [採用FAQ](https://mixigroup-recruit.mixi.co.jp/faq/?anchor=fresh)
+
+</CompanyProse>
+
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />

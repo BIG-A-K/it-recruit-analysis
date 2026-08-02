@@ -7,29 +7,116 @@ import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-DeNAは、ゲーム、ライブストリーミング、スポーツ、ヘルスケア・メディカルなどの事業を、インターネットサービスと技術を軸に展開しています。
+DeNAは、インターネットやAIを活用し、エンターテインメント領域と社会課題領域の両方でサービスを展開しています。ゲームやライブコミュニティだけでなく、ヘルスケア・メディカル、スポーツ・スマートシティ、新領域にも取り組む点が特徴です。
+
+## ミッションと事業の見方
+
+企業使命は「一人ひとりに想像を超えるDelightを」です。公式の事業展望では、人生を豊かにするエンターテインメント領域と、日々の生活をより快適にする社会課題領域を両軸としています。
+
+事業会社の集合として見るだけでなく、プロダクトの使いやすさや信頼性にこだわり、技術と情熱で新しいサービスに挑戦する会社として見ると、事業間の共通点を捉えやすくなります。
+
+## 主な事業領域
+
+### ゲーム
+
+自社開発・運営タイトル、他社との協業タイトル、開発パートナーによるスマートフォン向けゲームを展開しています。ゲームプラットフォームでは、ゲームやアバター、コミュニティ機能を提供するMobageや、スマートフォン向けゲームをPCで遊べるAndAppなどがあります。
+
+### ライブコミュニティ
+
+ライブ配信アプリのPocochaや、イラスト1枚からキャラクターライブ配信を楽しめるIRIAMを提供しています。配信者と視聴者の双方向コミュニケーションを、プロダクトとコミュニティの両面から設計する領域です。
+
+### ヘルスケア・メディカル
+
+健康増進を支援するkencom、医療関係者間の情報共有を支援するJoin、認知機能検査や医療・介護連携を支える各種システムなどを展開しています。個人向けアプリだけでなく、自治体・医療機関・健康保険組合などの業務にも関わります。
+
+### スポーツ・スマートシティ
+
+横浜DeNAベイスターズ、川崎ブレイブサンダース、SC相模原などのスポーツ事業に加え、スポーツを起点にしたライブビューイングや街づくりにも取り組んでいます。ファン体験、デジタル技術、地域との接点を組み合わせる領域です。
+
+### 新領域・その他
+
+AI関連の研究開発や事業応用、AI導入・ソリューション提供、ベンチャー投資などを行っています。既存サービスの運営だけでなく、技術を別の社会課題へ展開する動きも公式サービス一覧で確認できます。
+
+## 会社の歩みと事業の特徴
+
+DeNAは1999年の創業以来、Eコマース、コミュニティ、ゲーム、スポーツ、スマートシティ、ヘルスケアへと事業領域を広げてきました。採用サイトでは、この変化を「永久ベンチャー」の気概で挑戦し続けてきた歩みとして説明しています。
+
+現在の特徴は、デジタル上のエンターテインメントと、スポーツ・医療・地域など現実の社会課題に接続する事業を同じグループで扱っていることです。サービスの企画、開発、データ活用、運営、パートナー連携まで、事業の段階に応じた仕事があります。
+
+特定のサービス名だけを見るよりも、次のような問いで事業を読むと、職種との接点を整理しやすくなります。
+
+- どのユーザーのどの体験を変えるサービスか
+- 技術やデータは、体験の改善と業務の効率化のどちらに使われているか
+- DeNA単体の事業か、グループ会社・地域・スポーツチームとの協業か
 
 ## 公式サイト・採用情報
 
 - [企業サイト](https://dena.com/jp/)
+- [ミッション・ビジョン・バリュー](https://dena.com/jp/company/policy/)
+- [事業一覧](https://dena.com/jp/services/)
 - [IR情報](https://dena.com/jp/ir/)
-- [採用情報](https://dena.com/jp/recruit/)
+- [キャリア採用](https://dena.com/jp/recruit/)
+- [新卒採用](https://student.dena.com/)
 
-採用主体は募集会社・ポジションごとに異なります。職種、勤務地、待遇は公式募集要項を確認してください（2026年8月1日確認）。
+採用主体は募集会社・ポジションごとに異なります。新卒採用サイトでは、2027年4月・2026年10月入社向けと、2028年4月・2027年10月入社向けの導線が分かれており、AIスペシャリストコースとAIジェネラリストコースが案内されています。職種、入社時期、勤務地、待遇は公式募集要項を確認してください（2026年8月2日確認）。
 
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 採用情報の補足
+
+新卒採用サイトでは、AIスペシャリスト職と、エンジニア・ビジネス・デザイナー職を含むAIジェネラリストコースが分けて案内されています。キャリア採用では、募集職種一覧から事業や職能ごとの求人を確認できます。
+
+### 新卒採用の区分
+
+| 導線 | 対象入社時期 | 公式サイト上の案内 |
+| --- | --- | --- |
+| 2027年卒向け | 2027年4月、2026年10月 | AIスペシャリスト、AIジェネラリスト |
+| 2028年卒向け | 2028年4月、2027年10月 | AIスペシャリスト、AIジェネラリスト |
+
+AIジェネラリストコースにはエンジニア、ビジネス、デザイナー職が含まれます。AIスペシャリストコースは、AI技術を専門性の軸にした職種です。コース名や対象年度だけで判断せず、各エントリー導線の募集要項で応募資格と選考内容を確認してください。
+
+### 働く環境
+
+DeNAの採用サイトでは、オフィス、自宅、フレキシブルオフィスを組み合わせるハイブリッドワークを説明しています。主な拠点として渋谷オフィスと横浜オフィスが掲載され、遠方居住者については、上長の事前承認などを条件に、出社時の交通費を月15万円まで実費支給する制度が案内されています。一部業務は対象外になる場合があります。
+
+副業は事前申請・承認制で、競合禁止などの基準があります。制度があることだけでなく、所属組織や業務上の制約が適用される点を確認する必要があります。
+
+### キャリア形成
+
+公式のキャリア制度には、社内の課題解決プロジェクトを自ら立ち上げるDelight Boards、他部署の業務を兼務できるクロスジョブ制度、本人と異動先事業部長の意思が合致すれば異動できるシェイクハンズ制度、社内ポジションを探せるOpenQuestが掲載されています。Delight Venturesを通じた起業支援や、国際学会派遣、社内勉強会開催支援もあります。
+
+### 福利厚生
+
+株式会社ディー・エヌ・エーの福利厚生ページでは、入社日に最大12日の年次有給休暇、育児・介護・看護に関する休暇、確定拠出年金・確定給付年金、持株会、リモートワーク手当などが案内されています。リモートワーク手当は1勤務日450円、月7,500円が上限です。
+
+ここで紹介した働き方・キャリア制度・福利厚生は、公式ページに掲載された株式会社ディー・エヌ・エーの制度を中心にまとめています。グループ会社採用や個別ポジションへそのまま適用されるとは限らないため、募集要項を優先してください。
+
+- [働くということ](https://dena.com/jp/recruit/works/)
+- [働く環境](https://dena.com/jp/recruit/environment/)
+- [評価・キャリア制度](https://dena.com/jp/recruit/career-system/)
+- [福利厚生](https://dena.com/jp/recruit/welfare/)
+
+</CompanyProse>
+
 <BusinessSegments companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />

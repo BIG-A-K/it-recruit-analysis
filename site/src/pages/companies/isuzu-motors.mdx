@@ -1,0 +1,64 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: isuzu-motors
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+いすゞ自動車株式会社は、トラック・バスなどの商用車、パワートレイン、車両の稼働を支えるソリューションをグローバルに提供するメーカーです。経営理念体系「ISUZU ID」のPURPOSEは「地球の『運ぶ』を創造する」。車両を販売するだけでなく、人と物の移動を支える仕組みそのものをつくる企業として事業を展開しています。
+
+## 企業理念・事業の特徴
+
+ISUZU IDでは、将来像を「『安心×斬新』で世界を進化させるイノベーションリーダー」、コア・バリューを「相互成長」としています。商用車では、車両を導入した後も、運行、整備、部品、ドライバー、安全、環境負荷が顧客の事業に影響します。そのため、車両の性能だけでなく、稼働を止めない仕組みまで含めて価値を考えることが重要です。
+
+事業は、トラック・バスなどのCV、海外のピックアップトラックなどのLCV、産業用・マリン用を含むパワートレイン、運行や保守を支えるソリューションに広がります。商用車では、物流会社、バス事業者、自治体、建設・製造現場など、利用者の業務が異なれば必要な車両・サービスも変わります。エンジニアリング、営業、アフターサービス、データ活用が顧客の課題をつなぐ構成を確認すると、乗用車メーカーとは異なる仕事の面白さが見えてきます。
+
+カーボンニュートラルに対しても、EVだけに限定せず、用途や地域に応じたマルチパスウェイで車両とインフラを考える方針が示されています。企業研究では、環境技術を車両単体の話としてではなく、走行ルート、充電・燃料、運行管理、車両のライフサイクルまで含む課題として読むと、事業の全体像を捉えやすくなります。
+
+## サイト
+
+- [いすゞ公式サイト](https://www.isuzu.co.jp/)
+  - [いすゞ企業情報サイト](https://www.isuzu-global.com/ja/index.html)
+  - [いすゞの事業紹介](https://www.isuzu-global.com/ja/company/business.html)
+  - [経営理念体系 ISUZU ID](https://www.isuzu-global.com/ja/company/vision.html)
+  - [投資家の皆様へ](https://www.isuzu.co.jp/company/investor/)
+    - [有価証券報告書・IRライブラリ](https://www.isuzu.co.jp/company/investor/)
+  - [いすゞ新卒採用サイト](https://www.recruit.isuzu.co.jp/shinsotsu/)
+    - [募集要項](https://www.recruit.isuzu.co.jp/shinsotsu/recruit/info/)
+
+## 採用情報
+
+### 新卒
+
+採用主体はいすゞ自動車株式会社です。新卒採用サイトでは、技術系・事務系などの職種、社員紹介、プロジェクト、福利厚生、募集要項を案内しています。技術系では車両・エンジン・電動化・生産技術・品質、事務系では営業、調達、管理、海外事業など、商用車を使う顧客の現場に近い仕事を確認できます。27卒・28卒のエントリー入口も同サイトから確認できます。
+
+採用情報は2026年8月2日に確認しました。職種別の初任給、応募条件、選考フローは更新される可能性があるため、応募時に[募集要項](https://www.recruit.isuzu.co.jp/shinsotsu/recruit/info/)を確認してください。
+
+## サービス例
+
+| 報告区分 | 製品・サービス例 |
+| --- | --- |
+| 自動車事業 | トラック、バス、ワンボックス、EV、海外向け商用車 |
+| 金融サービス事業 | 車両のリース・販売金融、運行・保有を支えるサービス |
+
+公式の商品・ソリューションには、トラック・バス・エンジンに加えて、運行管理サービス「MIMAMORI」や保守関連サービス「PREISM」などが掲載されています。報告セグメントの金融サービスには、これらの商品サービス全体が含まれるわけではありません。セグメントの売上・利益は法定開示の区分、サービス名は商品・ソリューション紹介の区分として分けて確認してください。
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+<BusinessSegments companyId={frontmatter.companyId} />
+<HealthMetrics companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+<MetricTrends companyId={frontmatter.companyId} />
+<CompanySources companyId={frontmatter.companyId} />

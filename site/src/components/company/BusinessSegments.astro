@@ -4,9 +4,10 @@ import { formatValue } from "../../lib/format";
 
 interface Props {
   companyId: string;
+  showShare?: boolean;
 }
 
-const { companyId } = Astro.props;
+const { companyId, showShare = true } = Astro.props;
 const profile = profileForCompany(companyId);
 const companySegments = segments.filter(
   (segment) =>
@@ -36,8 +37,8 @@ const displaySegments = hasFinancialSegments
 
 <section>
   <div class="section-head">
-    <h2>事業内容</h2>
-    <p>{hasFinancialSegments ? `${latestSegmentYear}年度の報告セグメントと売上構成です。` : descriptiveSegments.length ? "事業部門・製品ラインの説明です。非上場企業は財務上のセグメント開示がないため売上構成は掲載しません。" : "事業説明を準備しています。"}</p>
+    <h2 id="segments">事業内容</h2>
+    <p>{hasFinancialSegments ? `${latestSegmentYear}年度の報告セグメント${showShare ? "と売上構成" : "の売上・利益"}です。` : descriptiveSegments.length ? "事業部門・製品ラインの説明です。非上場企業は財務上のセグメント開示がないため売上構成は掲載しません。" : "事業説明を準備しています。"}</p>
   </div>
   {profile?.overview && <p class="business-intro">{profile.overview}</p>}
   {displaySegments.length > 0 ? <div class="segment-cards">
@@ -56,8 +57,8 @@ const displaySegments = hasFinancialSegments
         </div>
         <div class="segment-visual">
           {hasRevenue ? <>
-            <div class="segment-value"><strong>{formatValue(Number(segment.revenue), segment.unit)}</strong><span>売上構成比 {share.toFixed(1)}%</span></div>
-            <div class="segment-track" aria-label={`売上構成比 ${share.toFixed(1)}%`}><i style={`width:${share}%`}></i></div>
+            <div class="segment-value"><strong>{formatValue(Number(segment.revenue), segment.unit)}</strong><span>{showShare ? `売上構成比 ${share.toFixed(1)}%` : "セグメント売上"}</span></div>
+            {showShare && <div class="segment-track" aria-label={`売上構成比 ${share.toFixed(1)}%`}><i style={`width:${share}%`}></i></div>}
             {segment.segment_profit && <p>{segment.profit_measure}: {formatValue(Number(segment.segment_profit), segment.unit)}</p>}
           </> : <div class="segment-value"><strong>—</strong><span>売上非公開</span></div>}
         </div>

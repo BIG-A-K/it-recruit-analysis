@@ -2,6 +2,7 @@ export const metricLabels: Record<string, string> = {
   average_annual_salary: "平均年間給与",
   net_cf: "ネットCF",
   operating_profit: "営業利益",
+  business_profit: "事業利益",
   average_tenure: "平均勤続年数",
   average_age: "平均年齢",
   revenue: "売上収益",
@@ -11,6 +12,7 @@ export const metricLabels: Record<string, string> = {
   financing_cf: "財務CF",
   current_assets: "流動資産",
   current_liabilities: "流動負債",
+  current_ratio: "流動比率",
   quick_assets: "当座資産",
   total_funding: "累計資金調達額",
   employee_count: "従業員数",
@@ -32,6 +34,21 @@ export function formatValue(
       return `${Math.round(value / 100_000_000).toLocaleString("ja-JP")}億円`;
     }
     return `${Math.round(value).toLocaleString("ja-JP")}円`;
+  }
+  if (unit === "USD") {
+    const absolute = Math.abs(value);
+    const sign = value < 0 ? "-" : "";
+    if (absolute >= 1_000_000_000) {
+      return `${sign}$${(absolute / 1_000_000_000).toLocaleString("en-US", { maximumFractionDigits: 2 })}B`;
+    }
+    if (absolute >= 1_000_000) {
+      return `${sign}$${(absolute / 1_000_000).toLocaleString("en-US", { maximumFractionDigits: 2 })}M`;
+    }
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0,
+    }).format(value);
   }
   if (unit === "percent") return `${value.toFixed(1)}%`;
   if (unit === "persons") return `${value.toLocaleString("ja-JP")}名`;

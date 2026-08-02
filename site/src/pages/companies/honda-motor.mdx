@@ -1,0 +1,66 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: honda-motor
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+本田技研工業株式会社は、二輪車を原点に、四輪車、パワープロダクツ、マリンなどを世界で展開するモビリティ企業です。公式サイトのグローバルブランドスローガンは「The Power of Dreams」。夢を原動力に、技術と人の可能性を組み合わせて移動の価値を広げています。
+
+## 企業理念・事業の特徴
+
+Hondaの企業活動を理解する軸は、[Hondaフィロソフィー](https://global.honda/jp/guide/philosophy/)です。基本理念の「人間尊重」と「三つの喜び（買う喜び・売る喜び・創る喜び）」は、製品開発だけでなく販売、サービス、働き方にもつながる考え方として説明されています。
+
+事業はクルマ、バイク、パワープロダクツ、マリン、その他事業に分かれています。[公式の事業紹介](https://global.honda/jp/businesses/)では、車両そのものだけでなく、発電機や船外機など日常の移動・仕事・レジャーを支える製品も紹介されています。四輪の電動化や知能化だけに注目すると、二輪を含むグローバルな事業基盤を見落としやすいため、領域ごとの顧客と利用場面を分けて確認するのがポイントです。
+
+Hondaで仕事を考えるときは、研究開発や設計だけでなく、デザイン、生産技術、品質、ソフトウェア、データ・DX、営業や販売店との連携までを一つの価値連鎖として見ると、職種の役割がつながります。「創る喜び」を製品に反映し、「売る喜び」と「買う喜び」まで届けるには、技術系と事務系の協働が必要です。
+
+## サイト
+
+- [Honda企業情報サイト](https://global.honda/jp/)
+  - [Hondaの事業](https://global.honda/jp/businesses/)
+  - [Hondaフィロソフィー](https://global.honda/jp/guide/philosophy/)
+  - [投資家向け情報](https://global.honda/jp/investors/)
+    - [IR資料室](https://global.honda/jp/investors/library.html)
+    - [有価証券報告書](https://global.honda/jp/investors/library/report.html)
+  - [Honda新卒採用サイト](https://www.honda-recruit.jp/)
+    - [募集情報](https://www.honda-recruit.jp/information/recruitinginformation/index.html)
+
+## 採用情報
+
+### 新卒
+
+採用主体は本田技研工業株式会社です。新卒採用では技術系・事務系・デザイン系を分けて案内し、研究開発、四輪・二輪・パワーユニット、ソフトウェア、DX、営業・管理などの仕事を紹介しています。高専・大学・大学院などの学歴区分ごとの応募条件と初任給は、年度別の募集要項で確認してください。職種を選ぶときは、完成車の開発だけでなく、二輪・パワープロダクツ・マリンや、製品をつなぐソフトウェアにも目を向けると仕事内容を比較しやすくなります。
+
+採用情報は2026年8月2日に確認しました。2027年卒・2028年卒のイベントや募集状況、初任給、選考日程は更新されるため、応募時は[採用情報](https://www.honda-recruit.jp/information/recruitinginformation/index.html)を確認してください。
+
+## サービス例
+
+| 報告区分 | 製品・サービス例 |
+| --- | --- |
+| 二輪事業 | 二輪車、電動二輪車、二輪車関連サービス |
+| 四輪事業 | 乗用車、電動車、コネクテッド・安全運転支援技術 |
+| 金融サービス事業 | 車両ローン、リース、保険などの金融サービス |
+| パワープロダクツ・その他事業 | 発電機、汎用エンジン、マリン・その他モビリティ |
+
+開示セグメントの売上・利益は、下の事業セグメントとIR推移で確認できます。本文のサービス例は公式の事業紹介に基づく分類で、個別製品の販売地域や提供状況を網羅するものではありません。Hondaの財務を見る際は、製品ブランドの人気や販売台数の印象と、報告セグメントの売上・利益を混同しないことが重要です。
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+<BusinessSegments companyId={frontmatter.companyId} />
+<HealthMetrics companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+<MetricTrends companyId={frontmatter.companyId} />
+<CompanySources companyId={frontmatter.companyId} />

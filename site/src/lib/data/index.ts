@@ -10,6 +10,10 @@ export type Company = {
   corporate_number: string;
   website_url: string;
   edinet_code: string;
+  sec_cik: string;
+  ticker: string;
+  exchange: string;
+  country_code: string;
   is_active: string;
 };
 
@@ -24,6 +28,16 @@ export type Industry = {
 export type CompanyIndustry = {
   company_id: string;
   industry_id: string;
+};
+
+export type CompanyRelation = {
+  from_company_id: string;
+  to_company_id: string;
+  relation_type: "parent" | "subsidiary" | "affiliate" | "brand" | "other";
+  valid_from: string;
+  valid_to: string;
+  source_id: string;
+  note: string;
 };
 
 export type Metric = {
@@ -139,6 +153,7 @@ function withNetCashFlow(rows: Metric[]): Metric[] {
       row.period_end,
       row.unit,
       row.scope,
+      row.accounting_standard,
     ].join("\u0000");
     const group = reportedCashFlows.get(groupKey) ?? new Map<string, Metric>();
     group.set(row.metric_key, row);
@@ -188,7 +203,8 @@ function loadCsv<T>(filename: string): T[] {
   return result.data;
 }
 
-export const companies = loadCsv<Company>("companies.csv").filter(
+export const allCompanies = loadCsv<Company>("companies.csv");
+export const companies = allCompanies.filter(
   (company) => company.is_active === "true",
 );
 export const industries = loadCsv<Industry>("industries.csv").filter(
@@ -196,6 +212,8 @@ export const industries = loadCsv<Industry>("industries.csv").filter(
 );
 export const companyIndustries =
   loadCsv<CompanyIndustry>("company_industries.csv");
+export const companyRelations =
+  loadCsv<CompanyRelation>("company_relations.csv");
 export const metrics = withNetCashFlow(loadCsv<Metric>("metrics.csv"));
 export const segmentDescriptions = loadCsv<SegmentDescription>(
   "segment_descriptions.csv",

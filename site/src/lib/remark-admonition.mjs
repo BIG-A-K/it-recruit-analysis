@@ -26,6 +26,22 @@ const KINDS = {
 export default function remarkAdmonition() {
   return (tree, file) => {
     visit(tree, (node) => {
+      // `remark-directive` treats plain text such as `9:00` as `:00`.
+      // This project supports block and leaf admonitions, not text directives.
+      if (node.type === "textDirective") {
+        if (
+          node.children.length === 0
+          && Object.keys(node.attributes ?? {}).length === 0
+        ) {
+          node.type = "text";
+          node.value = `:${node.name}`;
+          delete node.name;
+          delete node.attributes;
+          delete node.children;
+        }
+        return;
+      }
+
       if (node.type !== "containerDirective" && node.type !== "leafDirective") {
         return;
       }

@@ -1,0 +1,67 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: yamaha-motor
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+ヤマハ発動機株式会社は、二輪車、マリン製品、アウトドアランドビークル、産業用ロボットなどを世界で展開するモビリティ・機械メーカーです。企業目的は「感動創造企業 世界の人々に新たな感動と豊かな生活を提供する」。ブランドスローガン「Revs Your Heart」のもと、知恵と情熱で人の夢を形にすることを目指しています。
+
+## 企業理念・事業の特徴
+
+ヤマハ発動機の経営理念は、顧客の期待を超える価値の創造、仕事をする自分に誇りが持てる企業風土、社会的責任のグローバルな遂行の三つから構成されています。行動指針には「スピード」「挑戦」「やり抜く」があり、製品の性能だけでなく、顧客の感情や体験まで含めた価値づくりを重視しています。
+
+事業は、ランドモビリティ、マリン、アウトドアランドビークル、ロボティクス、金融サービスなどに広がります。二輪車や電動アシスト自転車のような個人向け製品だけでなく、船外機・ボート、ATV・ゴルフカー、サーフェスマウンター・産業用ロボット、無人システムなど法人向けの領域も持つことが特徴です。製品カテゴリと顧客の利用場面を分けて見ると、事業の多軸化が分かります。
+
+開発思想の「人機官能」は、人と機械の関係を感覚・操作性・性能まで含めて考える視点です。技術者、デザイナー、品質、生産、営業、サービスが、機械を使う人の体験を共通の目的として連携します。企業研究では、二輪メーカーという入口から始めても、マリン、ロボティクス、モビリティサービスまで関心を広げると、職種や技術の応用範囲を理解しやすくなります。
+
+## サイト
+
+- [ヤマハ発動機企業サイト](https://global.yamaha-motor.com/jp/)
+  - [企業理念・ブランドスローガン](https://global.yamaha-motor.com/jp/profile/philosophy/)
+  - [事業領域](https://global.yamaha-motor.com/jp/profile/business/)
+  - [株主・投資家情報](https://global.yamaha-motor.com/jp/ir/)
+    - [IR資料](https://global.yamaha-motor.com/jp/ir/library/)
+    - [財務データ](https://global.yamaha-motor.com/jp/ir/data/)
+  - [採用情報](https://global.yamaha-motor.com/jp/recruit/)
+    - [新卒採用・募集要項](https://global.yamaha-motor.com/jp/recruit/graduates/student/guide/)
+
+## 採用情報
+
+### 新卒
+
+採用主体はヤマハ発動機株式会社です。新卒採用では、技術系、事務系、デザイン職、高校生向け製造職、グローバル採用などを区分して案内しています。採用コンセプトは「超える、を創る。」で、製品・技術・事業の変化に挑戦する仕事を紹介しています。二輪やマリンの機械設計だけでなく、制御、電動化、ソフトウェア、ロボティクス、デザイン、海外営業など、製品体験を支える職種を横断して確認できます。
+
+採用情報は2026年8月2日に確認しました。2028年卒向けマイページやインターンシップ情報が案内されていますが、初任給、募集職種、選考日程は[募集要項](https://global.yamaha-motor.com/jp/recruit/graduates/student/guide/)の最新情報を確認してください。
+
+## サービス例
+
+| 報告区分 | 製品・サービス例 |
+| --- | --- |
+| ランドモビリティ | 二輪車、電動アシスト自転車、ATV、モビリティサービス |
+| マリン | 船外機、ボート、マリン関連サービス |
+| アウトドアランドビークル | ATV、レクリエーショナルビークル、ゴルフカー |
+| ロボティクス | 産業用ロボット、無人システム、FA関連機器 |
+| 金融サービス | 製品の販売・利用を支える金融サービス |
+
+ヤマハ発動機の報告セグメントは、製品サイトのカテゴリと完全には一致しません。ここでは有価証券報告書の区分を軸に、公式製品・事業ページの代表例を対応付けています。製品サイトで見つけたサービス名をそのままセグメント売上とみなさず、法定開示の区分と製品・技術の説明を分けて確認してください。
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+<BusinessSegments companyId={frontmatter.companyId} />
+<HealthMetrics companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+<MetricTrends companyId={frontmatter.companyId} />
+<CompanySources companyId={frontmatter.companyId} />

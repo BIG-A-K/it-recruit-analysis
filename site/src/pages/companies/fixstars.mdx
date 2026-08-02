@@ -5,24 +5,133 @@ companyId: fixstars
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-フィックスターズは、ソフトウェア高速化やAI、量子コンピューティング、FPGA・フラッシュメモリなどの技術領域で、企業の計算処理と製品開発を支援する会社です。
+## コンピュータの性能を、極限まで引き出す
 
-## 公式サイト・採用情報
+> ソフトウェアを効率的に動かすことで、できなかった計算をできる計算にする。コンピューティングに必要な消費電力を低減する。
 
-- [会社概要](https://www.fixstars.com/ja/company/overview)
-- [採用情報](https://www.fixstars.com/ja/recruit/)
+これはフィックスターズが掲げるパーパスです。2002年創業のフィックスターズは、ハードウェアを理解したうえでソフトウェアを書き換え、処理速度・応答時間・電力効率・計算コストを改善する「パフォーマンスエンジニアリング」を専門にしています。
 
-採用主体は株式会社フィックスターズです。新卒・キャリアの募集職種、勤務地、待遇は公式募集要項を確認してください（2026年8月1日確認）。
+単なる開発受託ではありません。お客様の既存ソフトウェアのボトルネックを観測し、アルゴリズム、並列化、メモリ、コンパイラ、GPU・CPU・FPGAなどの実行基盤まで掘り下げて改善します。その技術を、AI開発環境やGPU性能分析、量子最適化などの自社製品にも展開しています。
+
+## サイト
+
+- [HP](https://www.fixstars.com/ja/)
+- 企業情報
+  - [会社概要](https://www.fixstars.com/ja/company/overview)
+  - [経営理念](https://www.fixstars.com/ja/company/philosophy)
+  - [沿革](https://www.fixstars.com/ja/company/history)
+  - [グループ会社](https://www.fixstars.com/ja/company/group)
+- 製品・サービス
+  - [パフォーマンスエンジニアリング](https://www.fixstars.com/ja/products-services/performance-engineering)
+  - [フィックスターズの強み](https://www.fixstars.com/ja/products-services/advantages)
+  - [お客様事例](https://www.fixstars.com/ja/cases)
+- IR
+  - [IRトップ](https://www.fixstars.com/ja/ir/)
+  - [財務ハイライト](https://www.fixstars.com/ja/ir/highlight)
+  - [有価証券報告書](https://www.fixstars.com/ja/ir/library/securities)
+- 採用情報
+  - [新卒採用](https://www.fixstars.com/ja/recruit/new-graduates)
+  - [キャリア採用](https://www.fixstars.com/ja/recruit/careers)
+  - [インターンシップ](https://www.fixstars.com/ja/recruit/internship)
+  - [会社紹介資料](https://www.fixstars.com/ja/recruit/brochure)
+  - [採用FAQ](https://www.fixstars.com/ja/recruit/faq)
+- [Tech Blog](https://zenn.dev/p/fixstars)
+
+## 会社概要
+
+| 項目 | 内容 |
+| --- | --- |
+| 社名 | 株式会社フィックスターズ（Fixstars Corporation） |
+| 設立 | 2002年8月8日 |
+| 上場 | 東京証券取引所グロース市場、証券コード3687 |
+| 本社 | 東京都港区芝浦1-1-1 BLUE FRONT SHIBAURA TOWER S 31階 |
+| 代表取締役社長 CEO | 三木 聡 |
+| 連結社員数 | 334名（2025年9月末） |
+
+## 事業の見方
+
+フィックスターズの事業は、技術支援と自社製品の2つを行き来します。
+
+| 役割 | 何を提供するか |
+| --- | --- |
+| パフォーマンスエンジニアリング | お客様のソフトウェアを観測し、ボトルネックを特定して高速化・省電力化する |
+| サービス | 組込みAIモデルの移植・最適化、AI開発環境、FPGA、量子、フラッシュメモリ向けの専門開発 |
+| プロダクト | AI/LLMの性能可視化、ローカルAI環境、量子最適化をプロダクトとして提供 |
+
+20年以上にわたる高速化案件で蓄積した知見を、個別案件だけでなく製品や開発環境へ展開している点が特徴です。公式サイトでは100社を超える顧客、リピート率99%以上、CPU・GPU・FPGAなど多様なプロセッサへの対応を強みとして説明しています。
+
+## 顧客と活用領域
+
+公式会社概要に記載された主要取引先には、キオクシア、ルネサスエレクトロニクス、トヨタグループ、みずほ証券、キヤノンが含まれます。採用向け事業紹介では、次のような課題領域が紹介されています。
+
+| 業界 | 取り組む課題の例 |
+| --- | --- |
+| オートモーティブ | 自動運転・ADAS・車載AI |
+| 半導体 | NANDファームウェア・SoC検証 |
+| ライフサイエンス | 医療画像AI・ゲノム解析 |
+| 金融 | リスク計算・高頻度取引 |
+| 物流・製造 | 配送最適化・検査・シミュレーション |
+| メディア・ロボティクス | 画像処理・動画配信・ビジョン・制御 |
 
 </CompanyProse>
 
+<EmploymentOverview companyId={frontmatter.companyId} />
+
 <BusinessSegments companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## サービス例
+
+| 区分 | 製品・サービス | 役割 |
+| --- | --- | --- |
+| AI開発環境 | [Fixstars Vega](https://www.fixstars.com/ja/products-services/vega) | ソースコードを社外へ出さずにAIを活用する組込みソフトウェア開発環境 |
+| AI最適化 | [組込みAIモデルの移植・高速化](https://www.fixstars.com/ja/products-services/ai-model-optimization) | AIモデルをターゲットハードウェアへ移植し、量子化・性能検証まで行う |
+| GPU・ローカルAI | [Fixstars AIStation](https://www.fixstars.com/ja/ai/ai-station) | ローカルLLMをすぐに使えるGPUワークステーション |
+| GPU性能分析 | [Fixstars AIBooster](https://www.fixstars.com/ja/ai/ai-booster) | AI/LLMワークロードの性能を可視化し、GPU利用効率を改善 |
+| 量子 | [Fixstars Amplify](https://amplify.fixstars.com/ja/) | 量子コンピュータや各種ソルバーを使う最適化プラットフォーム |
+| 専門開発 | [FPGA](https://www.fixstars.com/ja/products-services/fpga)・[フラッシュメモリ](https://www.fixstars.com/ja/products-services/flash-memory) | ハードウェアに近い専門領域のシステム・ファームウェア開発 |
+
+## 採用情報
+
+採用主体は株式会社フィックスターズです。以下は公式採用情報を2026年8月2日に確認した内容です。
+
+### 新卒
+
+新卒はソフトウェアエンジニアを募集しています。待遇の具体的な金額は募集要項で確認する形式のため、このページでは推測値を掲載しません。
+
+| ステップ | 内容 |
+| --- | --- |
+| 1. エントリー | [公式エントリーフォーム](https://herp.careers/v1/fixstars/requisition-groups/f2a22436-68e3-4dc6-8e49-6a073acd6ef1)から応募 |
+| 2. 書類選考 | 応募内容に基づく選考 |
+| 3. 面接・適性検査 | 人事・現場・役職者との面接。研究発表・ライブコーディングを実施し、オンライン適性検査を案内 |
+| 4. 最終面接 | 役員面接 |
+| 5. オファー面談 | 条件提示と入社後の確認 |
+
+:::info
+選考は状況により変更されます。配属先は保有スキル、希望、会社の方針を総合して決定されます。公式FAQでは、原則転勤なし、選考期間は調整を含めて約1か月半、社外活動・資格取得・社内大学などの成長支援を案内しています。
+:::
+
+### 仕事の特徴
+
+- ハードウェアの特性を理解してソフトウェアを最適化するため、低レイヤからアルゴリズムまで扱う。
+- 新卒社員の配属先は、AI・画像処理・数値計算・組込み・量子など、プロジェクトと適性により決まる。
+- 20年以上の顧客案件と自社製品の両方に関われるため、研究成果を実装へ移す力と、実装を性能指標で検証する力が求められる。
+
+</CompanyProse>
+
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />

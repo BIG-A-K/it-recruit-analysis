@@ -153,7 +153,7 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .company-list .linked-row { grid-template-columns: minmax(200px, 1fr) 1.4fr; }
 .company-list h3 { font-size: 18px; }
 .company-list .legal-name { margin-top: 4px; color: var(--muted); font-size: 12px; }
-.company-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.company-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .company-stats dt { color: var(--muted); font-size: 12px; }
 .company-stats dd { margin-top: 4px; font-size: 14px; font-weight: 650; }
 
@@ -162,6 +162,11 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .company-overview .basic-facts { margin-top: 24px; }
 .company-article > section + section { margin-top: 52px; }
 .company-prose { padding: 32px 40px; }
+
+/* 記事 + 追従する目次。見た目は doc-toc をそのまま使う */
+.company-layout { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 14px; align-items: start; }
+.company-article { min-width: 0; }
+.company-article :is(h2, h3) { scroll-margin-top: 20px; }
 
 .company-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; }
 .company-message-section .company-message { margin: 0; }
@@ -492,7 +497,11 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
   .linked-row, .company-list .linked-row { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   .explorer-controls, .explorer-body { grid-template-columns: minmax(0, 1fr); }
   .doc-layout { grid-template-columns: minmax(0, 1fr); }
+  .company-layout { grid-template-columns: minmax(0, 1fr); }
   .doc-toc { position: static; order: -1; max-height: none; }
+  /* 縦並びだと 9 項目が画面を占めるので、記事上部ではチップとして折り返す */
+  .company-toc nav { display: flex; flex-wrap: wrap; gap: 8px; }
+  .company-toc nav a { padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; }
   .stats-card dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 20px; }
   .segment-row { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .employment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

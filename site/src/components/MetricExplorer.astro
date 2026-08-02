@@ -13,10 +13,11 @@ interface Props {
   metrics: Metric[];
   explorerId: string;
   initialMetricKey?: string;
+  initialView?: "line" | "bar" | "table";
   annotations?: CompanyAnnotation[];
 }
 
-const { companies, metrics, explorerId, initialMetricKey, annotations = [] } = Astro.props;
+const { companies, metrics, explorerId, initialMetricKey, initialView = "line", annotations = [] } = Astro.props;
 const availableKeySet = new Set(metrics.map((metric) => metric.metric_key));
 const availableKeys = [
   ...metricDisplayOrder.filter((key) => availableKeySet.has(key)),
@@ -55,7 +56,7 @@ const payload = {
 
 <section class="panel" id={explorerId} data-explorer>
   <div class="section-head">
-    <h2>{showStats ? "指標を切り替えて比較する" : "指標の推移"}</h2>
+    <h2 id={`${explorerId}-heading`}>{showStats ? "指標を切り替えて比較する" : "指標の推移"}</h2>
   </div>
 
   <div class:list={["explorer-controls", { "explorer-controls-solo": !showStats }]}>
@@ -80,9 +81,9 @@ const payload = {
     {showStats && <fieldset>
       <legend>表示</legend>
       <div class="segmented-control">
-        <label><input type="radio" name={`${explorerId}-view`} value="line" checked />推移</label>
-        <label><input type="radio" name={`${explorerId}-view`} value="bar" />比較</label>
-        <label><input type="radio" name={`${explorerId}-view`} value="table" />表</label>
+        <label><input type="radio" name={`${explorerId}-view`} value="bar" checked={initialView === "bar"} />比較</label>
+        <label><input type="radio" name={`${explorerId}-view`} value="line" checked={initialView === "line"} />推移</label>
+        <label><input type="radio" name={`${explorerId}-view`} value="table" checked={initialView === "table"} />表</label>
       </div>
     </fieldset>}
   </div>
@@ -96,7 +97,6 @@ const payload = {
           <dl>
             <div><dt>平均値</dt><dd data-mean>—</dd></div>
             <div><dt>中央値</dt><dd data-median>—</dd></div>
-            <div><dt>最頻値</dt><dd data-mode>—</dd></div>
           </dl>
           <p data-coverage></p>
         </aside>
@@ -126,7 +126,23 @@ const payload = {
       }
       return `${Math.round(value).toLocaleString("ja-JP")}円`;
     }
+    if (unit === "USD") {
+      const absolute = Math.abs(value);
+      const sign = value < 0 ? "-" : "";
+      if (absolute >= 1_000_000_000) {
+        return `${sign}$${(absolute / 1_000_000_000).toLocaleString("en-US", { maximumFractionDigits: compact ? 1 : 2 })}B`;
+      }
+      if (absolute >= 1_000_000) {
+        return `${sign}$${(absolute / 1_000_000).toLocaleString("en-US", { maximumFractionDigits: compact ? 1 : 2 })}M`;
+      }
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0,
+      }).format(value);
+    }
     if (unit === "percent") return `${value.toFixed(1)}%`;
+    if (unit === "persons") return `${value.toLocaleString("ja-JP")}名`;
     if (unit === "years") {
       return metricKey === "average_age"
         ? `${value.toFixed(1)}歳`
@@ -137,6 +153,13 @@ const payload = {
 
   const formatExactValue = (value, unit, metricKey) => {
     if (unit === "JPY") return `${value.toLocaleString("ja-JP")}円`;
+    if (unit === "USD") {
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0,
+      }).format(value);
+    }
     return formatValue(value, unit, metricKey);
   };
 
@@ -146,17 +169,6 @@ const payload = {
     return sorted.length % 2
       ? sorted[middle]
       : (sorted[middle - 1] + sorted[middle]) / 2;
-  };
-
-  const mode = (values) => {
-    const counts = new Map();
-    values.forEach((value) => counts.set(value, (counts.get(value) || 0) + 1));
-    const maximum = Math.max(...counts.values());
-    if (maximum === 1) return null;
-    const modes = [...counts.entries()]
-      .filter(([, count]) => count === maximum)
-      .map(([value]) => value);
-    return modes.length === 1 ? modes[0] : null;
   };
 
   const escapeHtml = (value) =>
@@ -267,10 +279,11 @@ const payload = {
       return;
     }
     const max = Math.max(...selected.map((row) => Math.abs(Number(row.value)))) || 1;
+    const ranked = [...selected].sort((a, b) => Number(b.value) - Number(a.value));
     chart.innerHTML = `
       <div class="chart-title"><strong>${escapeHtml(year)}年度 ${escapeHtml(payload.labels[metricKey] || metricKey)}</strong></div>
       <div class="bar-chart">
-        ${selected.map((row, index) => {
+        ${ranked.map((row, index) => {
           const company = payload.companies.find((item) => item.id === row.company_id);
           return `<div class="bar-row">
             <div class="bar-label"><span>${escapeHtml(company?.name || row.company_id)}</span><strong>${escapeHtml(formatValue(Number(row.value), row.unit, metricKey))}</strong></div>
@@ -302,9 +315,6 @@ const payload = {
     root.querySelector("[data-median]").textContent = values.length
       ? formatValue(median(values), unit, metricKey)
       : "—";
-    const modeValue = values.length ? mode(values) : null;
-    root.querySelector("[data-mode]").textContent =
-      modeValue === null ? "該当なし" : formatValue(modeValue, unit, metricKey);
     root.querySelector("[data-coverage]").textContent =
       `集計対象 ${values.length}社 / 掲載 ${payload.companies.length}社`;
   }
@@ -326,7 +336,21 @@ const payload = {
     const metricKey = root.querySelector("[data-metric]").value;
     const year = root.querySelector("[data-year]")?.value || payload.metrics[0]?.fiscal_year || "";
     const view = root.querySelector('input[type="radio"]:checked')?.value || "line";
-    const rows = payload.metrics.filter((row) => row.metric_key === metricKey);
+    const candidates = payload.metrics.filter((row) => row.metric_key === metricKey);
+    const cohorts = new Map();
+    candidates.forEach((row) => {
+      const key = [row.unit, row.scope, row.accounting_standard].join("\u0000");
+      const cohort = cohorts.get(key) || [];
+      cohort.push(row);
+      cohorts.set(key, cohort);
+    });
+    const rows = [...cohorts.entries()]
+      .sort(([keyA, rowsA], [keyB, rowsB]) => {
+        const currentYearDifference =
+          rowsB.filter((row) => row.fiscal_year === year).length -
+          rowsA.filter((row) => row.fiscal_year === year).length;
+        return currentYearDifference || rowsB.length - rowsA.length || keyA.localeCompare(keyB);
+      })[0]?.[1] || [];
     const selected = rows.filter((row) => row.fiscal_year === year);
     const values = selected.map((row) => Number(row.value));
     const unit = selected[0]?.unit || rows[0]?.unit || "";

@@ -1,0 +1,63 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: mitsubishi-motors
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+三菱自動車工業株式会社は、SUV、四輪車、電動化技術を中心にグローバルで事業を展開する自動車メーカーです。公式サイトのビジョンは「モビリティの可能性を追求し、活力ある社会をつくります」。人の移動を効率化・最適化し、新しい挑戦や経済活動を促すことを目指しています。
+
+## 企業理念・事業の特徴
+
+三菱自動車は、三菱グループの「三綱領」を企業活動の指針とし、ミッション、MMC WAY、グローバル行動規範を理念体系として整理しています。ミッションには、独創的な商品と優れたサービスによる新しい体験、持続可能な発展、誠実な活動、アライアンスの活用が含まれます。商品だけでなく、仕事の進め方や社会との関係も含めて企業理念を確認できる構成です。
+
+事業は、車両の開発・製造・販売を担う自動車事業と、車両購入を支援する金融事業に分けて開示されています。SUV、ピックアップ、PHEVなどの製品特性と、地域ごとの販売・金融体制を分けて調べると、事業の構造を把握しやすくなります。電動化では、車両技術だけでなく、充電や利用環境、地域のエネルギー事情まで含めて顧客体験を考える必要があります。
+
+日産・ルノーとのアライアンスや、他社との協業は、三菱自動車の技術・商品・市場戦略を理解するうえで重要な背景です。ただし、アライアンスのニュースと三菱自動車単体の報告セグメントは別の情報です。企業研究では、協業によって何を補い、三菱自動車自身がどの領域で価値を生むのかを分けて確認してください。
+
+## サイト
+
+- [三菱自動車企業情報サイト](https://www.mitsubishi-motors.com/jp/)
+  - [ビジョン・ミッション](https://www.mitsubishi-motors.com/jp/company/information/philosophy/index.html)
+  - [投資家情報](https://www.mitsubishi-motors.com/jp/investors/)
+    - [IRカレンダー・ライブラリー](https://www.mitsubishi-motors.com/jp/investors/library/index.html)
+    - [有価証券報告書](https://www.mitsubishi-motors.com/jp/investors/library/yuka.html)
+  - [採用情報](https://www.mitsubishi-motors.com/jp/recruit/)
+    - [新卒採用情報](https://www.mitsubishi-motors.com/jp/recruit/newgrads/index.html)
+
+## 採用情報
+
+### 新卒
+
+採用主体は三菱自動車工業株式会社です。新卒採用では、技術系、事務系、デザイン・インターンシップなどの区分を案内しています。車両設計や電動化・制御、生産技術、品質、調達、海外営業・管理など、商品を市場へ届けるまでの役割があります。募集要項、選考フロー、初任給、勤務地は年度別の[新卒採用情報](https://www.mitsubishi-motors.com/jp/recruit/newgrads/index.html)を確認してください。
+
+採用情報は2026年8月2日に確認しました。採用年度や募集職種、応募条件は変更される可能性があります。
+
+## サービス例
+
+| 報告区分 | 製品・サービス例 |
+| --- | --- |
+| 自動車事業 | SUV、PHEV、電気自動車、ピックアップ、海外向け車両 |
+| 金融事業 | 車両購入・利用に関する販売金融サービス |
+
+日産・ルノーとのアライアンスに関する情報は公式会社情報で確認できますが、ここに表示する報告セグメントは三菱自動車単体の法定開示区分です。本文の製品例は公式のブランド・技術紹介をもとにした代表例で、年度別の売上や利益を製品名から推定するものではありません。
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+<BusinessSegments companyId={frontmatter.companyId} />
+<HealthMetrics companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+<MetricTrends companyId={frontmatter.companyId} />
+<CompanySources companyId={frontmatter.companyId} />
