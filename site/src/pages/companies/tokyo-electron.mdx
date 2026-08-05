@@ -7,62 +7,70 @@ import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-東京エレクトロン株式会社は、半導体製造装置とフラットパネルディスプレイ製造装置の開発・製造・販売を事業とする企業です。コーター/現像装置で世界トップシェアを持ち、半導体の技術革新を支える世界大手の装置メーカーです。
+東京エレクトロン株式会社は、半導体製造装置とフラットパネルディスプレイ製造装置の開発・製造・販売を行う企業です。コーター／デベロッパ、成膜、エッチング、洗浄、プローバなどの装置を展開しています。
 
-## 企業理念・パーパス
+基本理念（Mission）は「最先端の技術と確かなサービスで、夢のある社会の発展に貢献します」です。Visionとして「半導体の技術革新に貢献する夢と活力のある会社」を掲げています。理念と会社紹介は[東京エレクトロン公式サイト](https://www.tel.co.jp/)を2026年8月2日に確認しました。
 
-基本理念（Mission）は「最先用端の技術と確かなサービスで、夢のある社会の発展に貢献します」です。Visionとして「半導体の技術革新に貢献する夢と活力のある会社」を掲げ、TEL Valuesとして誇り、チャレンジ、オーナーシップ、チームワーク、自覚を定めています。
-
-## 事業内容
-
-- **コーター/現像装置**: CLEAN TRACK™など、フォトリソグラフィ工程の現像・洗浄装置を開発・製造します。
-- **成膜・熱処理装置**: 熱処理成膜装置、スパッタリング装置、枚葉成膜装置などを手がけます。
-- **エッチング・洗浄装置**: ガスクラスタービーン装置、レーザ剥離装置などを展開します。
-- **プローバ・FPD装置**: デバイスプローバやFPD製造装置を提供します。
-
-事業内容は[東京エレクトロン公式サイト](https://www.tel.co.jp/)で確認してください。
-
-## 公式サイト・IR
+## サイト
 
 - [東京エレクトロン公式サイト](https://www.tel.co.jp/)
-- [投資家向け情報（IR）](https://www.tel.co.jp/about/ir/)
-- [新卒採用サイト](https://tel-special.com/)
-
-## 採用情報
-
-### 採用主体・対象
-
-グループ一括採用で、東京エレクトロン株式会社、東京エレクトロンテクノロジーソリューションズ株式会社、東京エレクトロン宮城株式会社、東京エレクトロン九州株式会社、東京エレクトロンFE株式会社が採用主体です。全学部全学科が応募できます。採用予定は300名です。
-
-### 職種
-
-総合職として、装置開発/設計/要素研究、メカエンジニア、ソフトエンジニア（AI含む）、エレキエンジニア、プロセスエンジニア、フィールドエンジニア、セールスエンジニア（営業）、製造エンジニア、管理・間接系（人事、経理、法務、情報システム、品質保証など）を募集します。応募方法は学校推薦、自己推薦、自由応募があります。
-
-### 勤務地・待遇・働き方
-
-国内拠点は東京（赤坂・府中）、札幌、岩手、宮城、山梨、富山、三重、大阪、広島、大分、熊本などで、海外拠点は米国、欧州、韓国、台湾、中国などです。原則9:00〜17:30（実働7.5時間）で、勤務地により異なります。
-
-基本給（月給・グループ共通）は博士了329,200円、修士了291,000円、学部卒・高専専攻科卒275,800円、短大卒・高専本科卒234,600円です。詳細は[新卒採用サイト](https://tel-special.com/recruit/)で確認してください。
-
-### 選考
-
-エントリー → 説明会・座談会イベント参加（選考条件） → SPI受験 → 応募書類送付 → ジョブマッチング面接（1〜3回、基本オンライン） → 内々定の流れです。
-
-採用情報は2026年8月1日に確認しました。募集年度、応募資格、初任給は変更される可能性があるため、応募時に最新情報をご確認ください。
+  - [企業理念](https://www.tel.co.jp/about/ptc/index.html)
+  - [投資家向け情報（IR）](https://www.tel.co.jp/ir/index.html)
+    - [有価証券報告書等](https://www.tel.co.jp/ir/library/fs/index.html)
+      - [2026年3月期（第63期）有価証券報告書](https://www.tel.co.jp/ir/library/fs/arfnn500000000ni-att/yuho63q4.pdf)
+      - [2025年3月期（第62期）有価証券報告書](https://www.tel.co.jp/ir/library/fs/qmu38m00000000ll-att/yuho62q4.pdf)
+  - [採用情報](https://careers-tel.jp/)
+    - [新卒採用](https://tel-special.com/)
 
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+グループ一括採用で、東京エレクトロン株式会社、東京エレクトロンテクノロジーソリューションズ株式会社、東京エレクトロン宮城株式会社、東京エレクトロン九州株式会社、東京エレクトロンFE株式会社が採用主体です。以下は新卒採用サイトを2026年8月2日に確認した内容です。
+
+| 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
+| --- | --- | --- | --- | --- | --- |
+| [総合職](https://tel-special.com/recruit/) | 東京、札幌、岩手、宮城、山梨、富山、三重、大阪、広島、大分、熊本など | 博士329,200円、修士291,000円、学部・高専専攻科275,800円、短大・高専本科234,600円 | 記載なし | 記載なし | 記載なし |
+
+:::info
+装置開発・設計・研究、メカ・ソフト・エレキ・プロセス・フィールドエンジニア、営業、製造、管理・間接系などを募集しています。原則9:00〜17:30ですが勤務地により異なります。応募方法は学校推薦、自己推薦、自由応募があり、選考はエントリー、説明会・座談会、SPI、応募書類、ジョブマッチング面接を経て内々定となります。
+:::
+
+## サービス例
+
+| 製品領域 | 製品・サービス例 |
+| --- | --- |
+| コーター／デベロッパ | CLEAN TRACK、フォトリソグラフィ工程の塗布・現像装置 |
+| 成膜・熱処理 | 熱処理成膜装置、スパッタリング装置、枚葉成膜装置 |
+| エッチング・洗浄 | エッチング装置、洗浄装置、レーザ剥離装置 |
+| プローバ・FPD | デバイスプローバ、フラットパネルディスプレイ製造装置 |
+
+## 関連企業
+
+| 主な関係会社 | 役割 |
+| --- | --- |
+| 東京エレクトロン テクノロジーソリューションズ株式会社 | 半導体製造装置の開発・製造 |
+| 東京エレクトロン宮城株式会社、東京エレクトロン九州株式会社、東京エレクトロンFE株式会社 | 半導体製造装置の製造・サービス |
+
+</CompanyProse>
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />

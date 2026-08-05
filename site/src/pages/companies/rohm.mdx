@@ -8,65 +8,74 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-ローム株式会社は、個別半導体、IC、モジュールなどの半導体製品の開発・製造・販売を事業とする企業です。車載、産業機器、民生機器を主要市場とし、SiCパワーデバイスやエッジAIマイコンなどで技術優位を持っています。
+ローム株式会社は、個別半導体、IC、モジュールなどの半導体製品を開発・製造・販売する企業です。車載、産業機器、民生機器などを対象に、SiCパワーデバイス、マイコン、センサなどを提供しています。
 
-## 企業理念・パーパス
+企業目的は「われわれは、つねに品質を第一とする。」です。企業目的と会社紹介は[ローム公式サイト](https://www.rohm.co.jp/)を2026年8月2日に確認しました。
 
-企業目的は「われわれは、つねに品質を第一とする。」です。半導体という小さな部品やサービスの価値と品質を高め、企業と世の中を共によりよくすることにチャレンジする姿勢を掲げています。
-
-## 事業内容
-
-- **個別半導体**: パワーデバイス（SiC、GaN、IGBT、パワーMOSFET）、トランジスタ、ダイオードなどを開発・製造します。
-- **IC**: 電源IC、モータ/アクチュエータドライバ、マイコン（エッジAI「Solist-AI」、車載32bit）、センサ/MEMS、ディスプレイドライバなどを手がけます。
-- **モジュール**: 無線LSI/無線モジュールなどを展開します。
-- **その他**: 抵抗器、キャパシタ、光半導体（LED、半導体レーザー）、プリントヘッドなどを提供します。
-
-事業内容は[ローム公式サイト](https://www.rohm.co.jp/)で確認してください。
-
-## 公式サイト・IR
+## サイト
 
 - [ローム公式サイト](https://www.rohm.co.jp/)
-- [投資家向け情報（IR）](https://www.rohm.co.jp/aboutus/ir)
-- [新卒採用サイト](https://micro.rohm.com/jp/employment/)
-
-## 採用情報
-
-### 採用主体・対象
-
-採用主体はローム株式会社です。2027年3月に大学院（博士・修士）修了見込み、大学卒業見込み、工業高等専門学校卒業見込みの方が対象です。
-
-### 職種
-
-- **技術系**: 商品・技術開発、生産技術、品質保証/品質管理、情報システム開発
-- **営業・管理系**: 営業、生産管理、調達・SCM、経理、法務、知的財産、総務、人事
-
-### 勤務地・待遇・働き方
-
-技術系は京都本社、京都駅前、新横浜、滋賀、浜松、岡山、福岡、宮崎などに配属されます。営業・管理系は京都本社、京都駅前、東京、新横浜、名古屋などです。勤務時間は京都本社・国内工場拠点が8:15〜17:15、京都駅前・営業拠点が8:30〜17:30です。年間休日は124日（2025年度実績）、年次有給は入社時10日付与です。
-
-初任給（月給・2025年度実績）は以下のとおりです。技術系は博士了295,700円、修士了280,000円、学士・高専専攻科257,000円、高専本科・短大237,000円。営業・管理系は修士了263,000円、学士・高専専攻科249,000円、高専本科・短大229,000円。営業には別途営業手当があります。詳細は[募集要項](https://micro.rohm.com/jp/employment/recruit_newg.html)で確認してください。
-
-### 選考
-
-WEBエントリー → 書類選考・WEB適性検査 → 一次選考（面接/グループワーク） → 二次選考（面接） → 最終選考（部署面接） → 内々定の流れです。学校推薦枠もあります。
-
-採用情報は2026年8月1日に確認しました。募集年度、応募資格、初任給は変更される可能性があるため、応募時に最新情報をご確認ください。
+  - [企業情報・企業目的](https://www.rohm.co.jp/company)
+  - [投資家向け情報（IR）](https://www.rohm.co.jp/aboutus/ir)
+    - [有価証券報告書等](https://api.edinet-fsa.go.jp/api/v2/documents/S100YF41)
+    - [過年度有価証券報告書等](https://api.edinet-fsa.go.jp/api/v2/documents/S100W2W6)
+  - [採用情報](https://micro.rohm.com/jp/employment/)
+    - [新卒採用・募集要項](https://micro.rohm.com/jp/employment/recruit_newg.html)
 
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+採用主体はローム株式会社です。以下は2027年3月卒業・修了見込み者を対象とする募集要項を2026年8月2日に確認した内容です。
+
+| 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
+| --- | --- | --- | --- | --- | --- |
+| [技術系](https://micro.rohm.com/jp/employment/recruit_newg.html) | 京都、滋賀、神奈川、浜松、岡山、福岡、宮崎など | 博士295,700円、修士280,000円、学士・高専専攻科257,000円、高専本科・短大237,000円 | 記載なし | 記載なし | 記載なし |
+| [営業・管理系](https://micro.rohm.com/jp/employment/recruit_newg.html) | 京都、東京、神奈川、名古屋など | 修士263,000円、学士・高専専攻科249,000円、高専本科・短大229,000円 | 記載なし | 記載なし | 記載なし |
+
+:::info
+勤務時間は拠点により8:15〜17:15または8:30〜17:30です。年間休日は124日（2025年度実績）、年次有給休暇は入社時10日付与です。営業・管理系の営業には別途営業手当があります。選考はWEBエントリー、書類選考・WEB適性検査、複数回の面接を経て内々定となります。
+:::
+
+## サービス例
+
+| 報告セグメント | 製品・サービス例 |
+| --- | --- |
+| IC | 電源IC、モータ・アクチュエータドライバ、マイコン、センサ・MEMS、ディスプレイドライバ |
+| 個別半導体デバイス | SiC、GaN、IGBT、パワーMOSFET、トランジスタ、ダイオード |
+| モジュール | 無線LSI、無線モジュール |
+
+</CompanyProse>
+
 <BusinessSegments companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 関連企業
+
+| 主な関係会社 | 報告セグメント |
+| --- | --- |
+| ROHM Semiconductor GmbH、ROHM Electronics Philippines, Inc. | 全社 |
+
+</CompanyProse>
 
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />

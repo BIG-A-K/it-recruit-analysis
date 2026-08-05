@@ -8,64 +8,81 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-株式会社ＳＣＲＥＥＮホールディングスは、半導体製造装置、ディスプレー製造装置、デジタル印刷機器、細胞・医薬品関連機器などを展開するグループの持株会社です。表面処理、直接描画、画像処理をコア技術とし、エレクトロニクス、メディア・情報、ライフサイエンス、エネルギーの4領域で事業を展開しています。
+株式会社ＳＣＲＥＥＮホールディングスは、半導体製造装置、ディスプレー製造装置、デジタル印刷機器、細胞・医薬品関連機器などを展開するグループの持株会社です。表面処理、直接描画、画像処理をコア技術とし、エレクトロニクス、メディア・情報、ライフサイエンス、エネルギーの領域で事業を展開しています。
 
-## 企業理念・パーパス
+グループメッセージは「INNOVATION FOR A SUSTAINABLE WORLD ― 人と技術をつなぎ、未来をひらく」です。理念と会社紹介は[SCREENホールディングス公式サイト](https://www.screen.co.jp/)を2026年8月2日に確認しました。
 
-グループメッセージは「INNOVATION FOR A SUSTAINABLE WORLD ― 人と技術をつなぎ、未来をひらく」です。経営体系は経営大綱、中期経営計画、年度経営計画の3層で構成され、CSR憲章と行動規範を定めています。
+:::warning
+財務数値の開示主体は株式会社ＳＣＲＥＥＮホールディングスです。採用は同社と事業会社によるグループ共同採用です。
+:::
 
-## 事業内容
-
-- **エレクトロニクス**: 半導体製造装置、ディスプレー製造装置および成膜装置、プリント基板関連機器、半導体パッケージ関連機器を開発・製造します。
-- **メディア・情報**: デジタル印刷機（グラフィックアーツ機器）、ICTソリューションを手がけます。
-- **ライフサイエンス**: 細胞関連、医薬品関連、医療機器関連の製品・サービスを展開します。
-- **エネルギー**: 水素関連、二次電池関連の機器・ソリューションを提供します。
-
-事業内容は[SCREENホールディングス公式サイト](https://www.screen.co.jp/)で確認してください。
-
-## 公式サイト・IR
+## サイト
 
 - [SCREENホールディングス公式サイト](https://www.screen.co.jp/)
-- [投資家向け情報（IR）](https://www.screen.co.jp/about/ir/)
-- [新卒採用サイト](https://www.screen.co.jp/recruit/fresh/)
-
-## 採用情報
-
-### 採用主体・対象
-
-グループ共同採用で、SCREENホールディングスおよび6事業会社（セミコンダクターソリューションズ、グラフィックソリューションズ、ファインテックソリューションズ、PEソリューションズ、アドバンストシステムソリューションズ、IPソリューションズ）が一括募集します。理系は入社希望会社を選択でき、文系はマッチング成立時に決定します。2027卒・2028卒が対象で、既卒（2024年3月〜2026年3月卒了者）も応募可能です。
-
-### 職種
-
-技術系（要素技術開発、製品設計ハード/ソフト、プロセス開発、生産技術、品質管理など）約120人と、営業・管理系（営業、生産管理、購買、事業企画など）約20人を募集します。経理・財務・法務・IT企画は職種別採用です。学科は各社で機械、電気電子、化学材料物理、情報、文系（学科不問）を受け付けています。
-
-### 勤務地・待遇・働き方
-
-本社は京都市で、国内拠点は京都（洛西・久御山・本社）、滋賀（彦根・野洲・多賀）、富山（高岡）、東京（門前仲町）です。海外拠点は米・英・独・蘭・シンガポール・豪・中国・台湾・韓国などにあります。勤務時間は8:30〜17:00または9:00〜17:30（標準7時間30分/日）で、フレックスタイム制度（コアタイム10:30〜14:30）があります。
-
-初任給（基本給）は博士343,350円、修士310,000円、学士・高専専攻科290,000円、高専本科271,000円です。次世代応援手当、首都圏手当（8,000〜17,000円）、通勤手当などの諸手当があります。固定残業代はありません。詳細は[募集要項](https://www.screen.co.jp/recruit/fresh/recruit/guidelines.html)で確認してください。
-
-### 選考
-
-会社説明会 → ES提出・適性検査（WEBテスト） → マッチング面談の流れです。理系・文系・職種別で選考ルートが分かれます。試用期間は3ヶ月です。
-
-採用情報は2026年8月1日に確認しました。募集年度、応募資格、初任給は変更される可能性があるため、応募時に最新情報をご確認ください。
+  - [企業情報・グループ会社](https://www.screen.co.jp/about)
+  - [投資家向け情報（IR）](https://www.screen.co.jp/about/ir/)
+    - [有価証券報告書等](https://api.edinet-fsa.go.jp/api/v2/documents/S100YK9N)
+    - [過年度有価証券報告書等](https://api.edinet-fsa.go.jp/api/v2/documents/S100VZW3)
+  - [採用情報](https://www.screen.co.jp/recruit/fresh/)
+    - [新卒採用・募集要項](https://www.screen.co.jp/recruit/fresh/recruit/guidelines.html)
 
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+採用主体はSCREENホールディングスおよび6事業会社です。以下は2027年卒・2028年卒向け募集要項を2026年8月2日に確認した内容です。
+
+| 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
+| --- | --- | --- | --- | --- | --- |
+| [技術系](https://www.screen.co.jp/recruit/fresh/recruit/guidelines.html) | 京都、滋賀、富山、東京など | 博士343,350円、修士310,000円、学士・高専専攻科290,000円、高専本科271,000円 | 記載なし | 0円（固定残業代なし） | 記載なし |
+| [営業・管理系](https://www.screen.co.jp/recruit/fresh/recruit/guidelines.html) | 京都、滋賀、富山、東京など | 博士343,350円、修士310,000円、学士・高専専攻科290,000円、高専本科271,000円 | 記載なし | 0円（固定残業代なし） | 記載なし |
+
+:::info
+次世代応援手当、首都圏手当（8,000〜17,000円）、通勤手当などがあります。勤務時間は8:30〜17:00または9:00〜17:30で、フレックスタイム制度のコアタイムは10:30〜14:30です。理系・文系・職種別で選考ルートが分かれます。
+:::
+
+## サービス例
+
+| 報告セグメント | 製品・サービス例 |
+| --- | --- |
+| 半導体製造装置 | 洗浄装置、コータ・デベロッパ、熱処理装置、フラットパネルディスプレー製造装置 |
+| グラフィックアーツ | デジタル印刷機、インクジェット印刷関連機器 |
+| 微細加工テクノロジー | プリント基板関連機器、半導体パッケージ関連機器 |
+| 生産設備 | 生産設備、エネルギー関連機器 |
+
+</CompanyProse>
+
 <BusinessSegments companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 関連企業
+
+| 主な関係会社 | 報告セグメント |
+| --- | --- |
+| 株式会社SCREENセミコンダクターソリューションズ | 半導体製造装置 |
+| 株式会社SCREENグラフィックソリューションズ | グラフィックアーツ |
+| 株式会社SCREENファインテックソリューションズ、株式会社SCREEN PEソリューションズ | 微細加工テクノロジー、生産設備 |
+
+</CompanyProse>
 
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />

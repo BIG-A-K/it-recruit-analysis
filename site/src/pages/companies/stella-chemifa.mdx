@@ -8,62 +8,75 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-ステラケミファ株式会社は、フッ素化合物のリーディングカンパニーとして高純度フッ化水素酸など半導体向け素材を開発・製造する企業です。1930年以降一貫してフッ素化学をメインテーマとし、半導体、エネルギー、電子材料など最先端技術分野で高いシェアを持ちます。
+ステラケミファ株式会社は、フッ素化合物の開発・製造を行う企業です。高純度フッ化水素酸などを半導体、エネルギー、電子材料などの用途へ展開しています。
 
-## 企業理念・パーパス
+経営理念は「健全で信頼される企業」「技術の追求」「知恵と創造」「挑戦の精神」です。コーポレートスローガンは「Beyond the Chemical 化学を超えて 化学の向こうへ」です。理念と会社紹介は[ステラケミファ公式サイト](https://www.stella-chemifa.co.jp/)を2026年8月2日に確認しました。
 
-経営理念は「健全で信頼される企業」「技術の追求」「知恵と創造」「挑戦の精神」です。社訓として健康、誠実、勇気、知恵をみがく、責任感を掲げています。コーポレートスローガンは「Beyond the Chemical 化学を超えて 化学の向こうへ」（創業100周年で制定）です。
-
-## 事業内容
-
-- **高純度化学事業**: 超高純度フッ化水素酸をはじめとするフッ素化合物を半導体、エネルギー（電池）、電子材料、光学材料、反応触媒、表面処理などの用途に展開します。
-- **運輸事業**: 高純度薬品事業で培った技術をベースに、危険物・高圧ガスなどの安全輸送・輸出入を手がけます。
-
-事業内容は[ステラケミファ公式サイト](https://www.stella-chemifa.co.jp/)で確認してください。
-
-## 公式サイト・IR
+## サイト
 
 - [ステラケミファ公式サイト](https://www.stella-chemifa.co.jp/)
-- [投資家向け情報（IR）](https://www.stella-chemifa.co.jp/ir/)
-- [新卒採用サイト](https://recruit.stella-chemifa.co.jp/)
-
-## 採用情報
-
-### 採用主体・対象
-
-採用主体はステラケミファ株式会社です。2027年3月卒業予定の大学院生・学部生が対象で、コース別に指定学科が定められています。
-
-### 職種
-
-4つのコースを募集しています。研究開発コース（理系：化学系/物理化学系/生化学系など）、生産技術コース（理系）、営業コース（全学部・全学科）、電気設備技術コース（電気系学科）です。各1〜5名の採用を予定しています。
-
-### 勤務地・待遇・働き方
-
-大阪本社、三宝工場（大阪府堺市）、泉工場、北九州工場、次世代材料研究棟（堺市）、第二営業部（東京）などの拠点があります。勤務時間は研究開発・営業・電気設備技術が9:00〜17:40（フレックスタイム制）、生産技術は交替勤務制（3交替）です。年間休日は研究開発・営業・電気が128日、生産技術は120日です。
-
-初任給は修士了月236,380円、学部卒月222,600円です（新入社員手当17,000円/月は別途）。詳細は[新卒採用募集要項](https://recruit.stella-chemifa.co.jp/new_graduates/)で確認してください。
-
-### 選考
-
-エントリー → 書類選考 → 面接/適性検査 → 内定 → 入社の流れです。
-
-採用情報は2026年8月1日に確認しました。募集年度、応募資格、初任給は変更される可能性があるため、応募時に最新情報をご確認ください。
+  - [経営理念・社訓・コーポレートスローガン](https://www.stella-chemifa.co.jp/company/philosophy.html)
+  - [投資家向け情報（IR）](https://www.stella-chemifa.co.jp/ir/)
+    - [有価証券報告書](https://www.stella-chemifa.co.jp/ir/securities/)
+    - [IRライブラリ](https://www.stella-chemifa.co.jp/ir/library.html)
+  - [採用情報](https://recruit.stella-chemifa.co.jp/)
+    - [新卒採用募集要項](https://recruit.stella-chemifa.co.jp/new_graduates/)
 
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+採用主体はステラケミファ株式会社です。以下は2027年3月卒業予定者を対象とするコース別募集要項を2026年8月2日に確認した内容です。
+
+| 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
+| --- | --- | --- | --- | --- | --- |
+| [研究開発コース](https://recruit.stella-chemifa.co.jp/new_graduates/) | 大阪府堺市など | 修士236,380円、学部222,600円 | 記載なし | 記載なし | 記載なし |
+| [生産技術コース](https://recruit.stella-chemifa.co.jp/new_graduates/) | 大阪府堺市、北九州など | 修士236,380円、学部222,600円 | 記載なし | 記載なし | 記載なし |
+| [営業コース](https://recruit.stella-chemifa.co.jp/new_graduates/) | 大阪、東京など | 修士236,380円、学部222,600円 | 記載なし | 記載なし | 記載なし |
+| [電気設備技術コース](https://recruit.stella-chemifa.co.jp/new_graduates/) | 大阪府堺市など | 修士236,380円、学部222,600円 | 記載なし | 記載なし | 記載なし |
+
+:::info
+新入社員手当17,000円/月は別途支給されます。研究開発・営業・電気設備技術は9:00〜17:40のフレックスタイム制、生産技術は3交替勤務です。選考はエントリー、書類選考、面接・適性検査を経て内定となります。
+:::
+
+## サービス例
+
+| 報告セグメント | 製品・サービス例 |
+| --- | --- |
+| 高純度化学 | 超高純度フッ化水素酸、フッ素化合物、半導体・電池・電子材料・光学材料向け薬品 |
+| 運輸 | 危険物・高圧ガスなどの安全輸送・輸出入 |
+
+</CompanyProse>
+
 <BusinessSegments companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 関連企業
+
+| 主な関係会社 | 役割 |
+| --- | --- |
+| ステラファーマ株式会社 | ホウ素中性子捕捉療法（BNCT）関連の医薬品事業 |
+
+</CompanyProse>
 
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />

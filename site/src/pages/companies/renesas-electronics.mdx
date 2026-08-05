@@ -8,52 +8,66 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-ルネサスエレクトロニクス株式会社は、自動車、産業・インフラ・IoT分野向けの組み込み半導体ソリューションをグローバルに提供する企業です。マイクロコントローラ、アナログ、パワー、SoC、車載デバイスなどの製品ポートフォリオを持ち、30カ国以上で事業を展開しています。
+ルネサスエレクトロニクス株式会社は、自動車、産業・インフラ・IoT分野向けの組み込み半導体ソリューションを提供する企業です。マイクロコントローラ、アナログ、パワー、SoC、車載デバイスなどを扱い、グローバルに事業を展開しています。
 
-## 企業理念・ビジョン
+Purpose（パーパス）は「To Make Our Lives Easier（人々の暮らしを楽にする）」です。Renesas Cultureとして、Transparent、Agile、Global、Innovative、Entrepreneurialの5つの行動指針を掲げています。理念と会社紹介は[ルネサス公式サイト](https://www.renesas.com/jp/ja)を2026年8月2日に確認しました。
 
-Purpose（パーパス）は「To Make Our Lives Easier（人々の暮らしを楽にする）」です。Renesas Cultureとして、Transparent（透明性）、Agile（俊敏性）、Global（グローバル視点）、Innovative（革新性）、Entrepreneurial（起業家精神）の5つの行動指針を掲げています。
-
-## 事業内容
-
-ルネサスは4つの成長分野で半導体ソリューションを提供しています。
-
-- **自動車**: 車載制御、自動運転、EV向けの半導体ソリューションを展開します。
-- **産業**: スマートインダストリを支えるFA・産業機器向け製品を提供します。
-- **インフラ**: 通信インフラやデータセンターなどの堅牢なインフラ向けソリューションを手がけます。
-- **IoT**: ライフスタイル分野のIoT機器向け半導体を提供します。
-
-事業内容は[ルネサスエレクトロニクス公式サイト](https://www.renesas.com/jp/ja)で確認してください。
-
-## 公式サイト・IR
+## サイト
 
 - [ルネサスエレクトロニクス公式サイト](https://www.renesas.com/jp/ja)
-- [投資家向け情報（IR）](https://www.renesas.com/jp/ja/about/investor-relations)
-- [採用情報](https://career.renesas.com/)
-
-## 採用情報
-
-新卒採用はグローバル採用サイトで集約的に行われています。採用主体はルネサスエレクトロニクス株式会社です。募集職種カテゴリは、Engineering、Sales & Marketing、Corporate Roles、Interns & Graduatesに分かれています。
-
-初任給、勤務地、勤務時間、選考プロセスなどの詳細は、採用サイトの公開ページでは確認できませんでした。採用サイトのコミュニティ登録後に案内される募集要項でご確認ください。最新情報は[採用サイト](https://career.renesas.com/)で確認してください。
-
-採用情報は2026年8月1日に確認しました。
+  - [企業情報・理念](https://www.renesas.com/jp/ja/about)
+  - [投資家向け情報（IR）](https://www.renesas.com/jp/ja/about/investor-relations)
+    - [有価証券報告書等](https://api.edinet-fsa.go.jp/api/v2/documents/S100XR06)
+    - [過年度有価証券報告書等](https://api.edinet-fsa.go.jp/api/v2/documents/S100VFR6)
+  - [採用情報](https://career.renesas.com/)
+    - [新卒・卒業生向け情報](https://career.renesas.com/)
 
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+採用主体はルネサスエレクトロニクス株式会社です。グローバル採用サイトではEngineering、Sales & Marketing、Corporate Roles、Interns & Graduatesの区分で募集情報を案内しています。初任給、勤務地、勤務時間、選考プロセスは公開ページで確認できなかったため、職種別の待遇表は作成していません。募集要項は[採用サイト](https://career.renesas.com/)の各職種ページで確認できます。
+
+採用情報は2026年8月2日に確認しました。
+
+## サービス例
+
+| 報告セグメント | 製品・サービス例 |
+| --- | --- |
+| オートモーティブ | 車載マイコン、車載SoC、アナログ・パワー半導体、車載制御ソリューション |
+| インダストリアル・インフラ・IoT | 産業用マイコン、アナログ・パワー製品、通信・インフラ向け半導体、IoTソリューション |
+
+</CompanyProse>
+
 <BusinessSegments companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 関連企業
+
+| 主な関係会社 | 報告セグメント |
+| --- | --- |
+| Renesas Electronics America Inc.、Renesas Electronics Europe GmbH、Renesas Electronics (China) Co., Ltd. | 全社 |
+
+</CompanyProse>
 
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />

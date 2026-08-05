@@ -7,61 +7,68 @@ import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-レーザーテック株式会社は、光応用技術を用いた半導体検査・計測装置を開発・製造する企業です。EUVマスクブランクス欠陥検査装置が業界標準となっており、世界初のEUV光源を用いたACTISシリーズなどを展開しています。共焦点光学系、DUV/EUV光学系、光干渉計をコア技術としています。
+レーザーテック株式会社は、光応用技術を用いた半導体検査・計測装置を開発・製造する企業です。EUV関連の検査装置、フォトマスク・ウェハ検査装置、FPD検査装置などを展開しています。
 
-## 企業理念・パーパス
+経営理念は「世の中にないものをつくり、世の中のためになるものをつくる」です。ビジョンとして「世界中のお客さまから真っ先に声をかけていただける会社」を掲げています。理念と会社紹介は[レーザーテック公式サイト](https://www.lasertec.co.jp/)を2026年8月2日に確認しました。
 
-経営理念は「世の中にないものをつくり、世の中のためになるものをつくる」です。ビジョンとして「世界中のお客さまから真っ先に声をかけていただける会社」を掲げ、ミッションは「光技術の分野で、どこよりも早くソリューションを提供し、お客さまの問題解決に貢献する」です。開発の精神として「毎年一つの新製品を開発しよう、それも世界ではじめてのものを」を掲げています。
-
-## 事業内容
-
-- **半導体検査装置**: マスクブランクス、フォトマスク、ウェハの検査・計測装置を開発・製造します。EUV関連検査装置で強みを持ちます。
-- **FPD検査装置**: FPDフォトマスク欠陥検査装置などを手がけます。
-- **その他**: ハイブリッドレーザーマイクロスコープなどの計測機器を展開します。
-
-事業内容は[レーザーテック公式サイト](https://www.lasertec.co.jp/)で確認してください。
-
-## 公式サイト・IR
+## サイト
 
 - [レーザーテック公式サイト](https://www.lasertec.co.jp/)
-- [投資家向け情報（IR）](https://www.lasertec.co.jp/news-ir/ir/)
-- [新卒採用サイト](https://lasertec-saiyo.jp)
-
-## 採用情報
-
-### 採用主体・対象
-
-採用主体はレーザーテック株式会社です。理工系の大学・大学院を卒業（修了）見込みの方が対象で、文系の応募は不可です。自由応募のみ（学校推薦なし）で、既卒者・留学生・海外大卒も応募可能です。募集人数は20名程度です。
-
-### 職種
-
-技術開発職と技術営業職を募集しています。
-
-### 勤務地・待遇・働き方
-
-新横浜本社、レーザーテックイノベーションパークに配属されます（転勤なし）。勤務時間は8:30〜17:15（標準労働時間7時間45分）で、フレックスタイム制（コア11:00〜14:00）があります。
-
-初任給（月給）は博士了330,000円、修士了305,000円、大学卒275,000円（予定）です。詳細は[新卒募集要項](https://lasertec-saiyo.jp/recruiting/)で確認してください。
-
-### 選考
-
-エントリー → 会社説明会 → 書類提出（ES・研究レジュメ）・適性検査 → 書類選考 → 1次面接（交通費支給） → 最終面接（交通費支給） → 内定の流れです。
-
-採用情報は2026年8月1日に確認しました。募集年度、応募資格、初任給は変更される可能性があるため、応募時に最新情報をご確認ください。
+  - [経営理念](https://www.lasertec.co.jp/company/philosophy.html)
+  - [投資家向け情報（IR）](https://www.lasertec.co.jp/ir/)
+    - [有価証券報告書等](https://www.lasertec.co.jp/ir/data/securities.html)
+      - [2025年6月期有価証券報告書](https://api.edinet-fsa.go.jp/api/v2/documents/S100WQ7F)
+  - [採用情報](https://lasertec-saiyo.jp)
+    - [新卒募集要項](https://lasertec-saiyo.jp/recruiting/)
 
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+採用主体はレーザーテック株式会社です。以下は理工系の大学・大学院卒業・修了見込み者を対象とする新卒募集要項を2026年8月2日に確認した内容です。自由応募のみで、募集人数は20名程度です。
+
+| 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
+| --- | --- | --- | --- | --- | --- |
+| [技術開発職](https://lasertec-saiyo.jp/recruiting/) | 新横浜本社、レーザーテックイノベーションパーク | 博士330,000円、修士305,000円、大学275,000円（予定） | 記載なし | 記載なし | 記載なし |
+| [技術営業職](https://lasertec-saiyo.jp/recruiting/) | 新横浜本社、レーザーテックイノベーションパーク | 博士330,000円、修士305,000円、大学275,000円（予定） | 記載なし | 記載なし | 記載なし |
+
+:::info
+転勤はなく、勤務時間は8:30〜17:15、フレックスタイム制のコアタイムは11:00〜14:00です。選考はエントリー、会社説明会、書類提出・適性検査、書類選考、複数回の面接を経て内定となります。
+:::
+
+## サービス例
+
+| 製品領域 | 製品・サービス例 |
+| --- | --- |
+| 半導体検査装置 | マスクブランクス、フォトマスク、ウェハの検査・計測装置、EUV関連検査装置 |
+| FPD検査装置 | FPDフォトマスク欠陥検査装置 |
+| その他 | ハイブリッドレーザーマイクロスコープなどの計測機器 |
+
+## 関連企業
+
+| 主な関係会社 | 役割 |
+| --- | --- |
+| Lasertec USA, Inc.、Lasertec Korea Corporation | 海外販売・顧客サポート |
+
+</CompanyProse>
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />

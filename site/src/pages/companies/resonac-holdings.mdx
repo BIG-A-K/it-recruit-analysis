@@ -8,64 +8,78 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import BusinessSegments from "../../components/company/BusinessSegments.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-株式会社レゾナック・ホールディングスは、半導体・電子材料、モビリティ、ケミカルズ、イノベーション材料を展開するグループの持株会社です。2023年1月に昭和電工と昭和電工マテリアルズ（旧日立化成）が統合して誕生しました。事業は事業会社の株式会社レゾナックが展開しています。
+株式会社レゾナック・ホールディングスは、半導体・電子材料、モビリティ、ケミカルズ、イノベーション材料を展開するグループの持株会社です。2023年1月に昭和電工と昭和電工マテリアルズ（旧日立化成）が統合して誕生し、事業は株式会社レゾナックが展開しています。
 
-## 企業理念・パーパス
+Purpose（存在意義）は「化学の力で社会を変える ― 先端材料パートナーとして時代が求める機能を創出し、グローバル社会の持続可能な発展に貢献する」です。理念と会社紹介は[レゾナック公式サイト](https://www.resonac.com/)を2026年8月2日に確認しました。
 
-Purpose（存在意義）は「化学の力で社会を変える ― 先端材料パートナーとして時代が求める機能を創出し、グローバル社会の持続可能な発展に貢献する」です。Valuesとして、プロフェッショナルとしての成果へのこだわり、機敏さと柔軟性、枠を超えるオープンマインド、未来への先見性と高い倫理観を掲げています。
+:::warning
+財務数値の開示主体は株式会社レゾナック・ホールディングスです。新卒採用は事業会社の株式会社レゾナックへの入社として案内されています。
+:::
 
-## 事業内容
-
-- **半導体・電子材料**: 半導体前工程材料、後工程材料、ハードディスク、SiCなどを展開します。
-- **モビリティ**: 自動車部品、アルミ機能部材などを手がけます。
-- **ケミカルズ**: 機能性化学品、樹脂材料、コーティング材料、基礎化学品などを製造します。
-- **イノベーション材料**: セラミックス、黒鉛電極、LiB材料などを展開します。
-
-事業内容は[レゾナック公式サイト](https://www.resonac.com/)で確認してください。
-
-## 公式サイト・IR
+## サイト
 
 - [レゾナック公式サイト](https://www.resonac.com/)
-- [投資家向け情報（IR）](https://www.resonac.com/jp/ir/)
-- [新卒採用サイト](https://www.resonac.com/recruit/jp/)
-
-## 採用情報
-
-### 採用主体・対象
-
-グループ採用で、エントリーは一括ページから行います。採用主体は募集要項に明記されていませんでしたが、事業会社の株式会社レゾナックへの入社となります。
-
-### 職種
-
-研究開発、生産技術、知的財産、情報管理などを募集しています。
-
-### 勤務地・待遇・働き方
-
-国内拠点（川崎、富山、徳山など）への配属となります。勤務時間は9:00〜17:45（実働7.75時間/日）で、事業所ごとに始業・終業時間は異なります。
-
-初任給（初任本給・2026年4月更新）は学部卒280,000円、修士了315,000円、博士了354,000円です。詳細は[新卒募集要項](https://www.resonac.com/recruit/jp/info/new/)で確認してください。
-
-### 選考
-
-会社説明会・イベント → 応募書類提出（ES・研究概要・学業成績） → 技術面接 → Web適性検査 → マッチング面接（初任配属候補部署マネージャー） → 最終面接の流れです。
-
-採用情報は2026年8月1日に確認しました。募集年度、応募資格、初任給は変更される可能性があるため、応募時に最新情報をご確認ください。
+  - [パーパス・バリュー](https://www.resonac.com/jp/corporate/philosophy.html)
+  - [投資家向け情報（IR）](https://www.resonac.com/jp/ir/)
+    - [有価証券報告書](https://www.resonac.com/jp/ir/library/financial.html)
+    - [統合報告書](https://www.resonac.com/jp/sustainability/report/report.html)
+  - [採用情報](https://www.resonac.com/recruit/jp/)
+    - [新卒募集要項](https://www.resonac.com/recruit/jp/info/new/)
 
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+採用主体は株式会社レゾナックです。以下は2027年卒向け新卒募集要項を2026年8月2日に確認した内容です。
+
+| 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
+| --- | --- | --- | --- | --- | --- |
+| [研究開発・生産技術・知的財産・情報管理](https://www.resonac.com/recruit/jp/info/new/) | 川崎、富山、徳山など | 学部280,000円、修士315,000円、博士354,000円 | 記載なし | 記載なし | 記載なし |
+
+:::info
+勤務時間は9:00〜17:45（実働7時間45分）ですが、事業所ごとに始業・終業時間が異なります。選考は会社説明会・イベント、応募書類提出、技術面接、Web適性検査、マッチング面接、最終面接を経て内定となります。
+:::
+
+## サービス例
+
+| 報告セグメント | 製品・サービス例 |
+| --- | --- |
+| 半導体・電子材料 | 半導体前工程材料、後工程材料、ハードディスク、SiC |
+| モビリティ | 自動車部品、アルミ機能部材 |
+| イノベーション・Enabling Materials | セラミックス、黒鉛電極、LiB材料 |
+| ケミカルズ | 機能性化学品、樹脂材料、コーティング材料、基礎化学品 |
+
+</CompanyProse>
+
 <BusinessSegments companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 関連企業
+
+| 主な関係会社 | 役割 |
+| --- | --- |
+| 株式会社レゾナック | 半導体・電子材料、モビリティ、ケミカルズ、イノベーション材料の事業会社 |
+
+</CompanyProse>
 
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />

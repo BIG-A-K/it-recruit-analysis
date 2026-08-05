@@ -7,7 +7,8 @@ import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
@@ -16,52 +17,58 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 太陽誘電株式会社は、積層セラミックコンデンサ（MLCC）、インダクタ、通信用デバイス、回路モジュールなどの電子部品を開発・製造・販売する企業です。本社は東京都中央区で、群馬県に主要な工場・研究所を置いています。
 
-## 企業理念・パーパス
+ミッションは「おもしろ科学で より大きく より社会的に」です。ビジョンとして「すべてのステークホルダーから信頼され 感動を与えるエクセレントカンパニーへ」を掲げています。理念と会社紹介は[太陽誘電公式サイト](https://www.yuden.co.jp/jp/)を2026年8月2日に確認しました。
 
-ミッションは「おもしろ科学で より大きく より社会的に」です。経営理念として従業員の幸福、地域社会への貢献、株主に対する配当責任を掲げ、ビジョンとして「すべてのステークホルダーから信頼され 感動を与えるエクセレントカンパニーへ」を目指しています。
-
-## 事業内容
-
-- **コンデンサ**: 積層セラミックコンデンサ（MLCC）、アルミニウム電解コンデンサなどを開発・製造します。
-- **インダクタ・通信用デバイス**: インダクタ、FBAR/SAWフィルターなどの高周波デバイスを手がけます。
-- **モジュール・センサー**: 回路モジュールやセンサー製品を展開します。
-
-事業内容は[太陽誘電公式サイト](https://www.yuden.co.jp/jp/)で確認してください。
-
-## 公式サイト・IR
+## サイト
 
 - [太陽誘電公式サイト](https://www.yuden.co.jp/jp/)
-- [投資家向け情報（IR）](https://www.yuden.co.jp/jp/ir/)
-- [新卒採用情報](https://www.yuden.co.jp/jp/recruit/newly/)
-
-## 採用情報
-
-### 採用主体・対象
-
-採用主体は太陽誘電株式会社です。2027年4月入社で50名程度の採用を予定しています。
-
-### 職種
-
-技術系（電子部品開発、生産システム開発、モジュール・センサー設計開発、情報系技術、品質保証、技術営業など）と管理系（営業、事業企画、SCM、財務経理、法務、人事など）を募集しています。
-
-### 勤務地・待遇・働き方
-
-技術部門は群馬県内の各工場・研究所（高崎市、玉村町、中之条町）、神奈川県内研究所（川崎市）に配属されます。管理部門は本社（東京・京橋）、高崎グローバルセンター、営業所に配属されます。勤務時間は工場・研究所が8:30〜17:10、本社・営業所が9:00〜17:40です。将来、国内・海外転勤の可能性があります。
-
-初任給（総合職・2026年4月実績）は学士卒276,050円、修士了302,470円、博士了326,550円です。詳細は[新卒採用情報](https://www.yuden.co.jp/jp/recruit/newly/)で確認してください。
-
-### 選考
-
-エントリー → 応募書類提出（履歴書・エントリーシート）・筆記試験 → 個人面接（計3回） → 内々定の流れです。
-
-採用情報は2026年8月1日に確認しました。募集年度、応募資格、初任給は変更される可能性があるため、応募時に最新情報をご確認ください。
+  - [企業情報](https://www.yuden.co.jp/jp/company/)
+  - [投資家向け情報（IR）](https://www.yuden.co.jp/jp/ir/)
+    - [有価証券報告書等](https://api.edinet-fsa.go.jp/api/v2/documents/S100YHU5)
+    - [過年度有価証券報告書等](https://api.edinet-fsa.go.jp/api/v2/documents/S100W3IP)
+  - [採用情報](https://www.yuden.co.jp/jp/recruit/)
+    - [新卒採用情報](https://www.yuden.co.jp/jp/recruit/newly/)
 
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+採用主体は太陽誘電株式会社です。以下は2027年4月入社向け募集要項を2026年8月2日に確認した内容です。採用予定は50名程度です。
+
+| 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
+| --- | --- | --- | --- | --- | --- |
+| [技術系](https://www.yuden.co.jp/jp/recruit/newly/) | 群馬、神奈川など | 学士276,050円、修士302,470円、博士326,550円 | 記載なし | 記載なし | 記載なし |
+| [管理系](https://www.yuden.co.jp/jp/recruit/newly/) | 東京、高崎、営業所など | 学士276,050円、修士302,470円、博士326,550円 | 記載なし | 記載なし | 記載なし |
+
+:::info
+勤務時間は工場・研究所が8:30〜17:10、本社・営業所が9:00〜17:40です。将来、国内・海外転勤の可能性があります。選考はエントリー、応募書類提出・筆記試験、個人面接3回を経て内々定となります。
+:::
+
+## サービス例
+
+| 製品領域 | 製品・サービス例 |
+| --- | --- |
+| コンデンサ | 積層セラミックコンデンサ（MLCC）、アルミニウム電解コンデンサ |
+| インダクタ・通信用デバイス | インダクタ、FBARフィルター、SAWフィルター |
+| モジュール・センサー | 回路モジュール、センサー |
+
+## 関連企業
+
+| 主な関係会社 | 役割 |
+| --- | --- |
+| 太陽誘電モバイルテクノロジー株式会社、Taiyo Yuden (U.S.A.) Inc. | 電子部品の開発・製造・販売 |
+
+</CompanyProse>
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />

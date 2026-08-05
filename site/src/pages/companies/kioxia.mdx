@@ -7,60 +7,70 @@ import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-キオクシアホールディングス株式会社は、NAND型フラッシュメモリの開発・製造を事業とするグループの持株会社です。1987年に東芝が世界初のNAND型フラッシュメモリを発明した技術を受け継ぎ、2024年12月に東証プライム市場に上場しました。開示主体はホールディングスで、事業は子会社のキオクシア株式会社が展開しています。
+キオクシアホールディングス株式会社は、NAND型フラッシュメモリの開発・製造を事業とするグループの持株会社です。1987年に東芝が発明したNAND型フラッシュメモリの技術を受け継ぎ、2024年12月に東証プライム市場へ上場しました。事業は子会社のキオクシア株式会社が展開しています。
 
-## 企業理念・パーパス
+Missionは「『記憶』で世界をおもしろくする」です。Visionとして「『記憶』の技術をコアとして、一人ひとりの新たな未来を実現できる製品やサービス、仕組みを提供する」を掲げています。理念と会社紹介は[キオクシア公式サイト](https://www.kioxia.com/ja-jp/top.html)を2026年8月2日に確認しました。
 
-Missionは「『記憶』で世界をおもしろくする」です。Visionとして「『記憶』の技術をコアとして、一人ひとりの新たな未来を実現できる製品やサービス、仕組みを提供する」を掲げています。社名は日本語の「記憶（KIOKU）」とギリシャ語の「価値（AXIA）」に由来します。
+:::warning
+財務数値の開示主体はキオクシアホールディングス株式会社です。新卒採用の主体は事業会社のキオクシア株式会社です。
+:::
 
-## 事業内容
-
-- **NAND型フラッシュメモリ**: 3Dフラッシュ「BiCS FLASH™」を中心に、UFS、e-MMC、車載UFS、XL-FLASH™（SCM）などを開発・製造します。
-- **SSD・ストレージ製品**: エンタープライズ、データセンター、クライアント向けSSD、microSD、SDカード、USBなどを展開します。
-
-事業内容は[キオクシア公式サイト](https://www.kioxia.com/ja-jp/top.html)で確認してください。
-
-## 公式サイト・IR
+## サイト
 
 - [キオクシア株式会社公式サイト](https://www.kioxia.com/ja-jp/top.html)
-- [キオクシアホールディングス（IR）](https://www.kioxia-holdings.com/ja-jp/top.html)
-- [新卒採用サイト](https://graduates-jp.kioxia.com/)
-
-## 採用情報
-
-### 採用主体・対象
-
-新卒採用の主体はキオクシア株式会社（事業会社）で、グループ各社が個別に採用しています。理工系全学部・学科が対象です。
-
-### 職種
-
-技術系総合職として、製品・デバイス技術開発、プロセス・パッケージ技術開発、システム・ソフトウェア・回路設計技術開発、顧客対応技術・評価解析・品質技術開発を募集しています。採用予定は200名程度です。
-
-### 勤務地・待遇・働き方
-
-本社・工場・研究所（国内外を問わず）に配属されます。主な拠点に四日市工場（三重）、北上工場（岩手）があります。フレックスタイム制（標準労働時間7時間45分/日）が導入されています。
-
-初任給（2026年4月実績）は博士了422,100円、修士了364,900円、高専（専攻科）・学部卒333,400円です。詳細は[新卒技術系募集要項](https://graduates-jp.kioxia.com/recruit/)で確認してください。
-
-### 選考
-
-エントリー → 書類選考 → キャリアマッチング面談（1〜2回） → 人事面接 → 内々定の流れです。
-
-採用情報は2026年8月1日に確認しました。募集年度、応募資格、初任給は変更される可能性があるため、応募時に最新情報をご確認ください。
+  - [製品・事業](https://www.kioxia.com/ja-jp/business.html)
+  - [キオクシアホールディングス（IR）](https://www.kioxia-holdings.com/ja-jp/top.html)
+    - [有価証券報告書等](https://api.edinet-fsa.go.jp/api/v2/documents/S100YJ18)
+    - [過年度有価証券報告書等](https://api.edinet-fsa.go.jp/api/v2/documents/S100W440)
+  - [採用情報](https://graduates-jp.kioxia.com/)
+    - [新卒技術系募集要項](https://graduates-jp.kioxia.com/recruit/)
 
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+採用主体はキオクシア株式会社です。以下は2027年卒向けの新卒技術系募集要項を2026年8月2日に確認した内容です。理工系全学部・学科が対象です。
+
+| 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
+| --- | --- | --- | --- | --- | --- |
+| [技術系総合職](https://graduates-jp.kioxia.com/recruit/) | 四日市、北上、本社、研究所など | 博士422,100円、修士364,900円、高専専攻科・学部333,400円 | 記載なし | 記載なし | 記載なし |
+
+:::info
+製品・デバイス技術開発、プロセス・パッケージ技術開発、システム・ソフトウェア・回路設計、顧客対応技術・評価解析・品質技術開発などを募集しています。標準労働時間は7時間45分で、選考はエントリー、書類選考、キャリアマッチング面談、人事面接を経て内々定となります。
+:::
+
+## サービス例
+
+| 製品領域 | 製品・サービス例 |
+| --- | --- |
+| NAND型フラッシュメモリ | BiCS FLASH、UFS、e-MMC、車載UFS、XL-FLASH |
+| SSD・ストレージ | エンタープライズSSD、データセンターSSD、クライアントSSD、microSD、SDカード、USBメモリ |
+
+## 関連企業
+
+| 主な関係会社 | 役割 |
+| --- | --- |
+| キオクシア株式会社 | NAND型フラッシュメモリ、SSD・ストレージ製品の事業会社 |
+
+</CompanyProse>
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
 
 <CompanySources companyId={frontmatter.companyId} />
