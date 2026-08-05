@@ -195,29 +195,6 @@ CSVには物理的な型がないため、本書では各列の論理型を次�
 | `employment_note` | `string` | 必須 | 開示主体と採用主体など比較上の注意 |
 | `updated_at` | `date` | 必須 | 内容を確認した日 |
 
-## `company_annotations.csv`
-
-企業固有の比較上の注意を、表示対象と結び付けて管理する。取得処理のメモは
-`metrics.csv.note` に残し、読者向けの説明だけをこのファイルに記録する。
-
-主キー: `annotation_id`
-
-| 列 | 型 | 必須 | 定義 |
-| --- | --- | --- | --- |
-| `annotation_id` | `id` | 必須 | 注記を一意に識別するID |
-| `company_id` | `id` | 必須 | `companies.csv.company_id` への参照 |
-| `section_key` | `enum` | 必須 | 表示セクション。現在は `financials` |
-| `target_kind` | `enum` | 必須 | `section`、`metric_group`、`metric` のいずれか |
-| `target_key` | `string` | 条件付き | グループ名または `metric_key`。`section` の場合は空欄 |
-| `fiscal_year` | `year` | 任意 | 特定年度だけに適用する場合の年度。恒常的な注記は空欄 |
-| `text` | `string` | 必須 | 画面に表示する比較上の注意 |
-| `source_id` | `id` | 任意 | 根拠資料がある場合の `sources.csv.source_id` への参照 |
-| `updated_at` | `date` | 必須 | 内容を確認した日 |
-
-初期の `metric_group` は、`net_cf`、`operating_cf`、`investing_cf`、
-`financing_cf` をまとめた `cash_flow` とする。複数の指標に同じ注記を重複して
-登録せず、意味のあるグループを追加して対応する。
-
 ## `sources.csv`
 
 各データの根拠となる資料を管理する。

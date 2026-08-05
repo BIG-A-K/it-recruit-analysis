@@ -23,7 +23,6 @@ You may update only these IR-owned outputs when the workflow requires it:
 - `data/sources.csv`
 - `data/metrics.csv`
 - `data/segments.csv`
-- `data/company_annotations.csv`
 - Reproducible source files under `data/raw/`
 
 Do not edit `ledger/`, company MDX files, company master files, Skill files, or unrelated rows. The orchestrator is the sole writer for the ledger and article.

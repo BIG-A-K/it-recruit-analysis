@@ -83,18 +83,6 @@ export type CompanyProfile = {
   updated_at: string;
 };
 
-export type CompanyAnnotation = {
-  annotation_id: string;
-  company_id: string;
-  section_key: string;
-  target_kind: "section" | "metric_group" | "metric";
-  target_key: string;
-  fiscal_year: string;
-  text: string;
-  source_id: string;
-  updated_at: string;
-};
-
 export type Source = {
   source_id: string;
   source_type: string;
@@ -193,9 +181,6 @@ export const companyRelations =
 export const metrics = withNetCashFlow(loadCsv<Metric>("metrics.csv"));
 export const segments = loadCsv<Segment>("segments.csv");
 export const companyProfiles = loadCsv<CompanyProfile>("company_profiles.csv");
-export const companyAnnotations = loadCsv<CompanyAnnotation>(
-  "company_annotations.csv",
-);
 export const sources = loadCsv<Source>("sources.csv");
 
 export function companiesForIndustry(industryId: string): Company[] {
@@ -223,25 +208,4 @@ export function profileForCompany(
   companyId: string,
 ): CompanyProfile | undefined {
   return companyProfiles.find((profile) => profile.company_id === companyId);
-}
-
-const metricGroups: Record<string, string[]> = {
-  cash_flow: ["net_cf", "operating_cf", "investing_cf", "financing_cf"],
-};
-
-export function annotationsForCompany(companyId: string): CompanyAnnotation[] {
-  return companyAnnotations.filter(
-    (annotation) => annotation.company_id === companyId,
-  );
-}
-
-export function annotationTargetsMetric(
-  annotation: CompanyAnnotation,
-  metricKey: string,
-): boolean {
-  if (annotation.target_kind === "section") return true;
-  if (annotation.target_kind === "metric") {
-    return annotation.target_key === metricKey;
-  }
-  return metricGroups[annotation.target_key]?.includes(metricKey) ?? false;
 }

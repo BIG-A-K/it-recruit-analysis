@@ -1,10 +1,5 @@
 ---
-import {
-  annotationsForCompany,
-  metrics,
-  segments,
-  sourceById,
-} from "../../lib/data";
+import { metrics, segments, sourceById } from "../../lib/data";
 
 interface Props {
   companyId: string;
@@ -13,12 +8,10 @@ interface Props {
 const { companyId } = Astro.props;
 const companyMetrics = metrics.filter((metric) => metric.company_id === companyId);
 const companySegments = segments.filter((segment) => segment.company_id === companyId);
-const companyAnnotations = annotationsForCompany(companyId);
 const sourceIds = [
   ...new Set([
     ...companyMetrics.map((metric) => metric.source_id),
     ...companySegments.map((segment) => segment.source_id),
-    ...companyAnnotations.map((annotation) => annotation.source_id),
   ]),
 ].filter(Boolean);
 const companySources = sourceIds

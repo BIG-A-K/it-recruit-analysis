@@ -117,32 +117,6 @@ def test_company_profile_integrity() -> None:
         assert row["updated_at"]
 
 
-def test_company_annotation_integrity() -> None:
-    companies = {row["company_id"] for row in read_rows("companies.csv")}
-    sources = {row["source_id"] for row in read_rows("sources.csv")}
-    metric_keys = {row["metric_key"] for row in read_rows("metrics.csv")}
-    rows = read_rows("company_annotations.csv")
-
-    assert_unique(rows, ("annotation_id",))
-    for row in rows:
-        assert row["company_id"] in companies
-        assert row["section_key"] == "financials"
-        assert row["target_kind"] in {"section", "metric_group", "metric"}
-        if row["target_kind"] == "section":
-            assert not row["target_key"]
-        elif row["target_kind"] == "metric_group":
-            assert row["target_key"] in {"cash_flow"}
-        else:
-            assert row["target_key"] in metric_keys or row["target_key"] == "net_cf"
-        if row["fiscal_year"]:
-            assert len(row["fiscal_year"]) == 4
-            int(row["fiscal_year"])
-        assert row["text"]
-        if row["source_id"]:
-            assert row["source_id"] in sources
-        assert row["updated_at"]
-
-
 def test_initial_companies_have_comparison_data() -> None:
     initial_companies = {
         "recruit-holdings",

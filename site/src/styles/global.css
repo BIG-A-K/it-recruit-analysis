@@ -188,11 +188,6 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .employment-tile dd.text-value { font-size: 15px; line-height: 1.65; letter-spacing: 0; text-wrap: balance; word-break: keep-all; }
 .employment-tile small, .health-grid small { display: block; margin-top: 6px; color: var(--subtle); font-size: 11px; line-height: 1.5; }
 .section-note { margin-top: 10px; color: var(--muted); font-size: 12px; }
-.annotation-marker { margin-left: 3px; color: var(--accent); font-size: 10px; }
-.annotation-list { display: grid; gap: 6px; margin: 10px 0 0; padding: 0; color: var(--muted); font-size: 12px; list-style: none; }
-.annotation-list li { display: flex; gap: 6px; align-items: baseline; }
-.annotation-list p { margin: 0; }
-.annotation-list a, .chart-annotations a { white-space: nowrap; }
 
 .segment-cards { display: grid; gap: 10px; }
 .segment-card { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); gap: 32px; align-items: center; padding: 22px 24px; background: white; border: 1px solid var(--line); border-radius: 10px; }
@@ -327,9 +322,6 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .stats-card dd { margin-top: 5px; font-size: 19px; font-weight: 700; }
 .stats-card p { color: #8b9bb0; font-size: 12px; }
 .chart-note { margin-top: 12px; color: var(--muted); font-size: 12px; }
-.chart-annotations { color: var(--muted); font-size: 12px; }
-.chart-annotations:empty { display: none; }
-.chart-annotations ul { margin: 8px 0 0; padding-left: 1.4em; }
 
 .bar-chart { display: grid; gap: 18px; margin-top: 26px; }
 .bar-label { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 7px; font-size: 13px; }

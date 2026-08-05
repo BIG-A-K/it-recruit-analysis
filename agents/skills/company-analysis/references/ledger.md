@@ -14,8 +14,7 @@
 | IR資料の識別情報 | `sources.csv` |
 | 有報開示の財務・人的資本の数値 | `metrics.csv` |
 | 年度別の報告セグメント | `segments.csv` |
-| IR数値への比較上の注記 | `company_annotations.csv` |
-| 理念・会社紹介・採用情報・サービス・関連企業 | `site/src/pages/companies/<company_id>.mdx` |
+| 理念・会社紹介・採用情報・サービス・関連企業・IR数値への比較上の注記 | `site/src/pages/companies/<company_id>.mdx` |
 | 調査の進行状態・調査途中の事実・取得経路 | `ledger/<company_id>.yaml`（この台帳） |
 
 ## スキーマ
@@ -77,7 +76,7 @@ items:
 - 健全性: 自己資本比率、流動資産、流動負債、当座資産（算定内訳を `note` へ）
 - キャッシュフロー: 営業・投資・財務
 - セグメント: 報告セグメント名、セグメント別売上・利益
-- 注記: 組織再編、会計基準変更、比較上の注記（`company_annotations.csv`）
+- 注記: 組織再編、会計基準変更、比較上の注記（記事MDXの `:::warning` へ書く）
 
 ### recruit（store=mdx）
 

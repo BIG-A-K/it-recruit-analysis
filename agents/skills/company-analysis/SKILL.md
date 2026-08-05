@@ -48,7 +48,7 @@ argument-hint: "企業名 [focus=就活|投資|両方] [fiscal-year=YYYY] [proje
 
 | 出力 | writer |
 | --- | --- |
-| `sources.csv` / `metrics.csv` / `segments.csv` / `company_annotations.csv` | `company-ir-worker` |
+| `sources.csv` / `metrics.csv` / `segments.csv` | `company-ir-worker` |
 | workerの調査結果 | 各workerの最終YAML |
 | `ledger/<company_id>.yaml` | この統括agentだけ |
 | 企業MDX | `company-article`だけ |

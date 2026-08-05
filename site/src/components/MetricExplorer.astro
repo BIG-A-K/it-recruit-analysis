@@ -1,11 +1,5 @@
 ---
-import {
-  annotationTargetsMetric,
-  sourceById,
-  type Company,
-  type CompanyAnnotation,
-  type Metric,
-} from "../lib/data";
+import { type Company, type Metric } from "../lib/data";
 import { metricDisplayOrder, metricLabels } from "../lib/format";
 
 interface Props {
@@ -14,10 +8,9 @@ interface Props {
   explorerId: string;
   initialMetricKey?: string;
   initialView?: "line" | "bar" | "table";
-  annotations?: CompanyAnnotation[];
 }
 
-const { companies, metrics, explorerId, initialMetricKey, initialView = "line", annotations = [] } = Astro.props;
+const { companies, metrics, explorerId, initialMetricKey, initialView = "line" } = Astro.props;
 const availableKeySet = new Set(metrics.map((metric) => metric.metric_key));
 const availableKeys = [
   ...metricDisplayOrder.filter((key) => availableKeySet.has(key)),
@@ -40,17 +33,6 @@ const payload = {
   })),
   metrics,
   labels: metricLabels,
-  annotations: annotations
-    .filter((annotation) => annotation.section_key === "financials")
-    .map((annotation) => ({
-      ...annotation,
-      metric_keys: availableKeys.filter((key) =>
-        annotationTargetsMetric(annotation, key),
-      ),
-      source_url: annotation.source_id
-        ? sourceById(annotation.source_id)?.url ?? ""
-        : "",
-    })),
 };
 ---
 
@@ -108,7 +90,6 @@ const payload = {
       ? "同じ年度・単位・対象範囲の公表値だけを比較しています。ネットCFは営業CF・投資CF・財務CFの合計です。"
       : "年度ごとの公表値の推移です。ネットCFは営業CF・投資CF・財務CFの合計です。"}
   </p>
-  <div class="chart-annotations" data-annotations aria-live="polite"></div>
 </section>
 
 <script is:inline define:vars={{ payload, explorerId }}>
@@ -319,19 +300,6 @@ const payload = {
       `集計対象 ${values.length}社 / 掲載 ${payload.companies.length}社`;
   }
 
-  function updateAnnotations(metricKey, rows) {
-    const container = root.querySelector("[data-annotations]");
-    const rowYears = new Set(rows.map((row) => row.fiscal_year));
-    const applicable = payload.annotations.filter(
-      (annotation) =>
-        annotation.metric_keys.includes(metricKey) &&
-        (!annotation.fiscal_year || rowYears.has(annotation.fiscal_year)),
-    );
-    container.innerHTML = applicable.length
-      ? `<ul>${applicable.map((annotation) => `<li>${escapeHtml(annotation.text)}${annotation.source_url ? ` <a href="${escapeHtml(annotation.source_url)}" target="_blank" rel="noreferrer">出典</a>` : ""}</li>`).join("")}</ul>`
-      : "";
-  }
-
   function update() {
     const metricKey = root.querySelector("[data-metric]").value;
     const year = root.querySelector("[data-year]")?.value || payload.metrics[0]?.fiscal_year || "";
@@ -356,7 +324,6 @@ const payload = {
     const unit = selected[0]?.unit || rows[0]?.unit || "";
 
     updateStats(values, unit, metricKey, year);
-    updateAnnotations(metricKey, rows);
 
     if (view === "line") renderLine(rows, metricKey);
     if (view === "bar") renderBar(rows, metricKey, year);
