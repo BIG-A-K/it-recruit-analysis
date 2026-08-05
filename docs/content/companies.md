@@ -24,9 +24,9 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 ```mdx
 <CompanyProse>
 
-## サービス例
+## 事業内容
 
-セグメントごとの事業内容や具体的なサービスを説明します。
+セグメントごとの事業内容や具体的な製品・サービスを説明します。
 
 - 箇条書き
 - [関連ページへのリンク](https://example.com/)
