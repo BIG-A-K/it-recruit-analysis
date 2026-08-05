@@ -141,3 +141,34 @@ dena-official-ir-library,financial_report,有価証券報告書等（公式IR）
 dena-recruit-fresh,recruitment,新卒採用 募集要項（2027年4月・2028年4月入社）,https://student.dena.com/recruit/,,,2026-08-05,株式会社ディー・エヌ・エー
 dena-recruit-aispecialist,recruitment,新卒採用 AIスペシャリスト職 募集要項,https://student.dena.com/aispecialist/description/,,,2026-08-05,株式会社ディー・エヌ・エー
 dena-recruit-aigeneralist,recruitment,新卒採用 AIジェネラリストコース（エンジニア・ビジネス・デザイナー）募集要項,https://student.dena.com/aigeneralist/description/,,,2026-08-05,株式会社ディー・エヌ・エー
+kakaku-com-corporate,corporate,株式会社カカクコム 企業サイト,https://corporate.kakaku.com/,,,2026-08-05,株式会社カカクコム
+kakaku-com-company-profile,corporate,会社概要,https://corporate.kakaku.com/company/profile,,,2026-08-05,株式会社カカクコム
+kakaku-com-company-history,corporate,沿革,https://corporate.kakaku.com/company/history,,,2026-08-05,株式会社カカクコム
+kakaku-com-services,corporate,事業・サービス概要,https://corporate.kakaku.com/company/service,,,2026-08-05,株式会社カカクコム
+kakaku-com-ir,financial_report,IR情報,https://corporate.kakaku.com/ir/,,,2026-08-05,株式会社カカクコム
+kakaku-com-securities-library,financial_report,有価証券報告書一覧,https://corporate.kakaku.com/ir/library/securities,,,2026-08-05,株式会社カカクコム
+kakaku-com-recruit,recruitment,採用情報,https://kakaku.com/info/recruit/,,,2026-08-05,株式会社カカクコム
+kakaku-com-recruit-graduate,recruitment,新卒採用,https://kakaku.com/info/recruit/job/graduate.html,,,2026-08-05,株式会社カカクコム
+kakaku-com-recruit-bizdev,recruitment,2027年度入社 新卒採用 事業開発職,https://hrmos.co/pages/kakakucom/jobs/100000033,,,2026-08-05,株式会社カカクコム
+kakaku-com-recruit-business,recruitment,2027年度入社 新卒採用 ビジネス職,https://hrmos.co/pages/kakakucom/jobs/100000035,,,2026-08-05,株式会社カカクコム
+kakaku-com-recruit-engineer,recruitment,2027年度入社 新卒採用 エンジニア職,https://hrmos.co/pages/kakakucom/jobs/100000040,,,2026-08-05,株式会社カカクコム
+kakaku-com-recruit-faq,recruitment,採用FAQ,https://kakaku.com/info/recruit/faq.html,,,2026-08-05,株式会社カカクコム
+kakaku-com-insurance-corporate,corporate,会社概要,https://kakakucom-insurance.co.jp/about.html,,,2026-08-05,株式会社カカクコム・インシュアランス
+kakaku-com-timedesign-corporate,corporate,会社概要,https://www.timedesign.co.jp/aboutus/profile/,,,2026-08-05,株式会社タイムデザイン
+kakaku-com-lcl-corporate,corporate,LCLについて,https://www.lclco.com/company/,,,2026-08-05,株式会社LCL
+kakaku-com-liplus-corporate,corporate,LiPLUS運営会社,https://liplus-h.com/company/,,,2026-08-05,株式会社LiPLUSホールディングス
+kakaku-com-engage-corporate,corporate,株式会社エンゲージ,https://corp.en-gage.net/,,,2026-08-05,株式会社エンゲージ
+kakaku-com-digital-garage-corporate,corporate,株式会社デジタルガレージ企業サイト,https://www.garage.co.jp/,,,2026-08-05,株式会社デジタルガレージ
+kakaku-com-kddi-corporate,corporate,KDDI企業サイト,https://www.kddi.com/,,,2026-08-05,KDDI株式会社
+recruit-holdings-official-profile,corporate,会社概要,https://recruit-holdings.com/ja/about/profile/,,,2026-08-05,株式会社リクルートホールディングス
+recruit-holdings-official-history,corporate,価値創造の歴史,https://recruit-holdings.com/ja/about/history/,,,2026-08-05,株式会社リクルートホールディングス
+recruit-holdings-official-vision,corporate,ビジョン・ミッション・バリューズ,https://recruit-holdings.com/ja/about/vision-mission-values/,,,2026-08-05,株式会社リクルートホールディングス
+recruit-holdings-official-business,corporate,ビジネスモデル,https://recruit-holdings.com/ja/about/business/,,,2026-08-05,株式会社リクルートホールディングス
+recruit-holdings-official-group,corporate,グループ企業一覧,https://recruit-holdings.com/ja/about/group/,,,2026-08-05,株式会社リクルートホールディングス
+recruit-holdings-recruitment-2027,recruitment,2027年度新卒採用 募集要項,https://www.recruit.co.jp/employment/students/requirements/,,,2026-08-05,株式会社リクルートホールディングス
+recruit-holdings-recruitment-business-2027,recruitment,2027年度新卒採用 ビジネスグロース,https://www.recruit.co.jp/employment/students/business/,,,2026-08-05,株式会社リクルートホールディングス
+recruit-holdings-recruitment-product-growth-2027,recruitment,2027年度新卒採用 プロダクトグロース,https://www.recruit.co.jp/employment/students/product_growth/,,,2026-08-05,株式会社リクルートホールディングス
+recruit-holdings-recruitment-engineer-2027,recruitment,2027年度新卒採用 エンジニア,https://www.recruit.co.jp/employment/students/engineer/,,,2026-08-05,株式会社リクルートホールディングス
+recruit-holdings-recruitment-data-2027,recruitment,2027年度新卒採用 データスペシャリスト,https://www.recruit.co.jp/employment/students/data_specialist/,,,2026-08-05,株式会社リクルートホールディングス
+recruit-holdings-recruitment-design-2027,recruitment,2027年度新卒採用 デザイン,https://www.recruit.co.jp/employment/students/design/,,,2026-08-05,株式会社リクルートホールディングス
+recruit-holdings-recruitment-workstyle,recruitment,働き方・福利厚生,https://www.recruit.co.jp/employment/students/workstyle/,,,2026-08-05,株式会社リクルートホールディングス

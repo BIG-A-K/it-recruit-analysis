@@ -1,0 +1,98 @@
+company_id: biprogy
+disclosure_company_id: biprogy
+company_boundary:
+  adoption_company_id: biprogy
+  disclosure_company_id: biprogy
+  reporting_segment_company_id: biprogy
+  legal_name: BIPROGY株式会社
+  securities_code: "8056"
+  edinet_code: E02611
+  fiscal_year_end: 3月末日
+  accounting_standard: IFRS
+  currency: JPY
+  reporting_segments: システムサービス, サポートサービス, アウトソーシング, ソフトウェア, ハードウェア
+  company_relations: 大日本印刷株式会社（その他の関係会社）
+  note: 採用主体と開示主体は同一。2026年3月期有報の報告セグメントは製品・サービス別の5区分
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-05
+updated_at: 2026-08-05
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-data
+    phase: ir
+    store: ir_csv
+    topic: 連結財務・人的資本・セグメントの構造化データ
+    status: done
+    value: metrics.csvに売上収益・営業利益・自己資本比率・キャッシュフロー・流動資産・流動負債・人的資本、segments.csvに5報告セグメントの2024〜2026年度データ
+    subject: 連結（人的資本の平均値は提出会社単体）
+    as_of: 2021-03-31〜2026-03-31
+    unit: JPY・percent・years・persons
+    source: edinet-s100yfcp; edinet-s100w2vl
+    via: data/raw/edinet/S100YFCP/XBRL_TO_CSV/jpcrp030000-asr-001_E02611-000_2026-03-31_01_2026-06-22.csv と既存CSVを照合
+    note: quick_assetsは構成科目の算定行がなく推定しない
+  - id: recruit-information
+    phase: recruit
+    store: mdx
+    topic: 新卒採用の主体・募集コース・給与・勤務地・選考
+    status: done
+    value: BIPROGY株式会社、2027年度4コース、学歴別初任給、全国転勤の可能性、MyPage登録→ES・SPI→個人面接3回予定のオンライン選考
+    subject: BIPROGY株式会社
+    as_of: 2027年4月入社・2028年4月入社向け採用情報
+    unit: JPY・拠点
+    source: https://www.biprogy.com/recruit/recruiting/; https://www.biprogy.com/recruit/recruiting/faq.html
+    via: 公式新卒募集要項と採用FAQをwebfetch
+    note: 2027年度のエントリー受付は終了。固定時間外手当・標準年収は公式募集要項に記載なし
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの事業内容・主な関係会社
+    status: done
+    value: システムサービス、サポートサービス、アウトソーシング、ソフトウェア、ハードウェアの5区分。各区分の事業内容と主な関係会社を本文表へ反映
+    subject: 連結報告セグメント
+    as_of: 2026-03-31
+    unit: text
+    source: edinet-s100yfcp; https://www.biprogy.com/invest-j/com/business.html
+    via: 第82期有価証券報告書の事業内容・セグメント情報と公式IR事業内容を照合
+    note: 「その他」は報告セグメント外のためSegmentRevenueの5区分に含めない
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 主な子会社・関係会社の具体名・事業内容・報告セグメント
+    status: done
+    value: ユニアデックス、UEL、トレードビジョン、国際システム、G&Uシステムサービス、USOLベトナム、ケンブリッジ・テクノロジー・パートナーズ、エイファス、エス・アンド・アイ、BIPROGY USA、BIPROGYチャレンジド、UEL Thailand、V-Drive、Nexus System Resources、Mattrz、カタリナマーケティングジャパン、大日本印刷を表へ反映
+    subject: 連結子会社・持分法適用関連会社・その他の関係会社
+    as_of: 2026-03-31
+    unit: text
+    source: edinet-s100yfcp; https://www.biprogy.com/com/group.html
+    via: 第82期有価証券報告書の関係会社の状況と公式グループ会社一覧を照合
+    note: 有報記載の関係会社全社ではなく主な会社を掲載。大日本印刷はその他の関係会社
+  - id: article-company-and-links
+    phase: article
+    store: mdx
+    topic: 理念・会社紹介・公式サイト・IR・採用リンク
+    status: done
+    value: 企業理念、Purpose、設立、規模、HP、公式IR、有報3年度分、採用・新卒リンクを掲載
+    subject: BIPROGY株式会社
+    as_of: 2026年3月期
+    unit: text
+    source: https://www.biprogy.com/com/com.html; https://www.biprogy.com/com/corporate_philosophy.html; https://www.biprogy.com/com/purpose_principles.html; https://www.biprogy.com/invest-j/financial/sr.html
+    via: 公式企業情報・IRライブラリをwebfetch
+    note: 本文に確認日・調査実況・読者案内を記載しない
+  - id: verify-article
+    phase: verify
+    store: mdx
+    topic: MDX構造・セグメント対応・出典直リンク・禁止表現
+    status: done
+    value: CompanyOverview→CompanyProse→EmploymentOverview→採用・事業内容→SegmentRevenue→関連企業→HealthMetrics→FinancialHistory→MetricTrends→CompanySourcesの順序。FinancialData不使用
+    subject: site/src/pages/companies/biprogy.mdx
+    as_of: 2026-08-05
+    unit: structure・text
+    source: edinet-s100yfcp; edinet-s100w2vl; https://www.biprogy.com/recruit/recruiting/; https://www.biprogy.com/recruit/recruiting/faq.html
+    via: MDX静的検証。buildは実行しない
+    note: data/sources.csvは編集していない。公式企業・採用・IRページのsource行は追加候補として報告

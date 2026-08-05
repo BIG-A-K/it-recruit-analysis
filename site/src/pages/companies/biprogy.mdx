@@ -8,30 +8,131 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-BIPROGY株式会社は、企業や社会の業務を支えるシステムサービス、アウトソーシング、ソフトウェア、ハードウェアを提供するITサービス企業です。
+[BIPROGY株式会社](https://www.biprogy.com/com/com.html)は、企業や社会の業務を支えるクラウド、アウトソーシング、コンピュータシステム、ネットワークシステム、ソフトウェア、各種システムサービスを提供するICTサービス企業。1958年3月29日設立、本社は東京都江東区豊洲、2026年3月31日時点の連結従業員数は8,801名、資本金は54億8,317万円。
 
-## 公式サイト・採用情報
+[企業理念](https://www.biprogy.com/com/corporate_philosophy.html)は「すべての人たちとともに、人と環境にやさしい社会づくりに貢献します」「社会の期待と要請に対する感性を磨き、そのためにICTが貢献できることを考え抜く集団になります」。[Purpose](https://www.biprogy.com/com/purpose_principles.html)は「先見性と洞察力でテクノロジーの持つ可能性を引き出し、持続可能な社会を創出します」。
+
+## サイト
 
 - [企業サイト](https://www.biprogy.com/)
-- [IR情報](https://www.biprogy.com/ir/)
-- [新卒採用](https://www.biprogy.com/recruit/)
+  - [会社概要](https://www.biprogy.com/com/com.html)
+  - [企業理念](https://www.biprogy.com/com/corporate_philosophy.html)
+  - [Purpose, Principles](https://www.biprogy.com/com/purpose_principles.html)
+  - [グループ会社](https://www.biprogy.com/com/group.html)
+- [IR情報](https://www.biprogy.com/invest-j/)
+  - [有価証券報告書等](https://www.biprogy.com/invest-j/financial/sr.html)
+    - [第82期（2026年3月期）有価証券報告書](https://www.biprogy.com/invest-j/uploads/82yuho.pdf)
+    - [第81期（2025年3月期）有価証券報告書](https://www.biprogy.com/invest-j/uploads/81yuho.pdf)
+    - [第80期（2024年3月期）有価証券報告書](https://www.biprogy.com/invest-j/uploads/80yuho.pdf)
+- [採用情報](https://www.biprogy.com/recruit/)
+  - [新卒採用・募集要項](https://www.biprogy.com/recruit/recruiting/)
+  - [採用FAQ](https://www.biprogy.com/recruit/recruiting/faq.html)
 
-採用主体はBIPROGY株式会社です。技術、営業、スタッフなどの職種と募集要項、勤務地、待遇は公式採用ページで確認してください（2026年8月1日確認）。
+:::warn
+[第82期（2026年3月期）有価証券報告書](https://www.biprogy.com/invest-j/uploads/82yuho.pdf)に基づく財務・セグメントの数値はIFRSによる連結値で、人的資本の平均値は提出会社単体。金額の通貨は日本円。
+:::
 
 </CompanyProse>
 
-<EmploymentOverview companyId={frontmatter.companyId} />
+<EmploymentOverview
+  companyId={frontmatter.companyId}
+  workplace="本社（東京都江東区豊洲）、支社・支店など（初期配属・業務により異なる。全国転勤の可能性あり）"
+/>
+
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+採用主体はBIPROGY株式会社。2027年度新卒採用のエントリー受付は終了しており、2028年度新卒採用はインターンシップ・イベント情報の公開段階。応募資格は2027年度採用では高校卒業以上（2027年3月高校卒業見込みを含む）かつ1996年4月2日以降生まれで、外国人留学生も対象。
+
+[新卒採用の募集コース](https://www.biprogy.com/recruit/recruiting/#sec1)は次の4区分。
+
+| 募集コース | 主な業務 |
+| --- | --- |
+| [ビジネスプロデュースコース](https://www.biprogy.com/recruit/recruiting/#sec1) | 新事業・新サービスの価値発見、ビジネスモデルの構想・実行、事業・サービスの具体化と市場拡大 |
+| [セールスコース](https://www.biprogy.com/recruit/recruiting/#sec1) | 顧客との関係構築、製品・サービスの提案・販売、新規顧客開拓、課題解決の提案 |
+| [エンジニアコース](https://www.biprogy.com/recruit/recruiting/#sec1) | ITシステムの提案・設計・開発・運用保守、インフラ・アプリケーション開発、運用保守計画の策定 |
+| [コーポレートスタッフコース](https://www.biprogy.com/recruit/recruiting/#sec1) | 中長期戦略の策定・実行支援・管理。経理財務、法務、人事のいずれかを募集 |
+
+勤務地は全コース共通で本社・支社・支店など。初期配属部署・勤務地は事業状況を踏まえて決定し、全国転勤の可能性がある。エンジニアコースは地方支社・支店への配属を確約する場合がある。
+
+2027年度の初任給は全コース共通。
+
+| 学歴 | 初任給（月額） | 適用範囲 |
+| --- | ---: | --- |
+| 高卒 | 252,000 円 | 4コース共通 |
+| 高専・短大・専門学校卒（2年制） | 268,000 円 | 4コース共通 |
+| 高専・短大・専門学校卒（3年制） | 276,000 円 | 4コース共通 |
+| 学部卒（4年制） | 284,000 円 | 4コース共通 |
+| 学部卒（5年制） | 292,000 円 | 4コース共通 |
+| 修士了 | 300,000 円 | 4コース共通 |
+| 博士了 | キャリア採用基準 | 4コース共通 |
+
+2027年度の選考は、MyPage登録→エントリーシート・SPI→個人面接（3回予定）のオンライン選考。インターンシップ参加者の早期選考やスカウト対象者はプロセスが異なる場合がある。賞与は年2回（夏季・冬季）、昇給は年1回（4月）。諸手当は通勤費、住宅手当（標準年齢27歳以下対象）、時間外勤務手当など。
+
+勤務時間は9:00〜17:30、1日の標準労働時間は7時間30分。フレックスタイム制とテレワーク勤務がある。固定時間外手当と標準年収の記載はない。
+
+## 事業内容
+
+[第82期（2026年3月期）有価証券報告書](https://www.biprogy.com/invest-j/uploads/82yuho.pdf)の報告セグメントは、製品・サービス別の「システムサービス」「サポートサービス」「アウトソーシング」「ソフトウェア」「ハードウェア」の5区分。セグメント利益の測定には調整後営業利益を使用する。
+
+| 報告セグメント | 事業内容・提供サービス | 主な関係会社 |
+| --- | --- | --- |
+| システムサービス | ソフトウェアの請負開発、SEサービス、コンサルティング | ユニアデックス、USOLベトナム、国際システム、ケンブリッジ・テクノロジー・パートナーズ、エイファス |
+| サポートサービス | ソフトウェア・ハードウェアの保守サービス、導入支援 | ユニアデックス、エス・アンド・アイ |
+| アウトソーシング | 情報システムの運用受託 | トレードビジョン、G&Uシステムサービス、Nexus System Resources、Mattrz、カタリナマーケティングジャパン |
+| ソフトウェア | 使用許諾契約によるソフトウェアの提供 | UEL、UEL（Thailand）、V-Drive Technologies |
+| ハードウェア | 売買契約・賃貸借契約による機器の提供 | ユニアデックス、エス・アンド・アイ |
+
+:::info
+有報の「その他」は報告セグメント外の事業セグメントで、回線サービス、設備工事、教育訓練事業などを含む。`segments.csv` の5区分には含めていない。
+:::
+
+</CompanyProse>
 
 <SegmentRevenue companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 関連企業
+
+[第82期（2026年3月期）有価証券報告書](https://www.biprogy.com/invest-j/uploads/82yuho.pdf)の関係会社の状況は2026年3月31日現在。連結子会社34社、持分法適用関連会社11社、その他の関係会社1社を記載している。大日本印刷株式会社はその他の関係会社で、BIPROGYに対する議決権の被所有割合は21.45%。主な連結子会社は次のとおり。
+
+| 区分 | 名称 | 主な事業内容 | 報告セグメント |
+| --- | --- | --- | --- |
+| 連結子会社 | [ユニアデックス株式会社](https://www.uniadex.co.jp/) | サポートサービス、ハードウェア等 | サポートサービス／ハードウェア |
+| 連結子会社 | [UEL株式会社](https://www.biprogy-uel.co.jp/) | ソフトウェア | ソフトウェア |
+| 連結子会社 | [株式会社トレードビジョン](http://www.tradevision.co.jp/) | アウトソーシング | アウトソーシング |
+| 連結子会社 | [株式会社国際システム](http://www.isd.co.jp/) | システムサービス | システムサービス |
+| 連結子会社 | [G&Uシステムサービス株式会社](https://www.guss.co.jp/) | アウトソーシング | アウトソーシング |
+| 連結子会社 | [USOLベトナム有限会社](https://www.usol-v.com.vn/jp/) | システムサービス | システムサービス |
+| 連結子会社 | [ケンブリッジ・テクノロジー・パートナーズ株式会社](https://www.ctp.co.jp/) | システムサービス | システムサービス |
+| 連結子会社 | [株式会社エイファス](https://www.afasinc.co.jp/) | システムサービス | システムサービス |
+| 連結子会社 | [エス・アンド・アイ株式会社](https://sandi.jp/) | サポートサービス、ハードウェア等 | サポートサービス／ハードウェア |
+| 連結子会社 | [BIPROGY USA, Inc.](https://www.biprogy-us.com/) | システムサービス | システムサービス |
+| 連結子会社 | [BIPROGYチャレンジド株式会社](https://biprogy-chd.co.jp/) | システムサービス | システムサービス |
+| 連結子会社 | UEL（Thailand） Co., Ltd. | ソフトウェア、システムサービス | ソフトウェア／システムサービス |
+| 連結子会社 | [V-Drive Technologies株式会社](https://www.vdrive-tech.com/) | ソフトウェア | ソフトウェア |
+| 連結子会社 | [Nexus System Resources Co., Ltd.](https://nexus-sr.com/) | アウトソーシング | アウトソーシング |
+| 連結子会社 | [Mattrz株式会社](https://mattrz.co.jp/) | アウトソーシング | アウトソーシング |
+| 連結子会社 | [カタリナマーケティングジャパン株式会社](https://catalinamarketing.co.jp/) | アウトソーシング | アウトソーシング |
+| その他の関係会社 | [大日本印刷株式会社](https://www.dnp.co.jp/) | 情報コミュニケーション | — |
+
+</CompanyProse>
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
 
+<MetricTrends companyId={frontmatter.companyId} />
+
+<CompanySources companyId={frontmatter.companyId} />

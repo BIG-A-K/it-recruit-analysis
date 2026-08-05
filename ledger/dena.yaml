@@ -10,9 +10,9 @@ company_boundary:
   fiscal_year_end: 3月末日
   accounting_standard: IFRS
   currency: JPY
-  reporting_segments: ゲーム, スポーツ, ライブストリーミング, ヘルスケア・メディカル, 新規事業・その他（セグメント再編歴あり）
+  reporting_segments: ゲーム事業（報告セグメント）, ライブストリーミング事業（報告セグメント）, スポーツ・スマートシティ事業（報告セグメント）, ヘルスケア・メディカル事業（報告セグメント）, 新規事業・その他（報告セグメント外、セグメント再編歴あり）
   company_relations: []
-  note: 採用主体と開示主体は同一。セグメント再編が度々行われており比較性に注意
+  note: 採用主体と開示主体は同一。2026年3月期からスマートシティ事業をスポーツ事業と合算。新規事業・その他は報告セグメント外の事業セグメントであり、過年度比較に注意
 fiscal_year: 2026
 focus: 両方
 created_at: 2026-08-05
@@ -238,7 +238,7 @@ items:
     as_of: 2026-08-05
     unit: ""
     source: edinet-s100yldv; dena-official-corporate-overview
-    via: 第28期有価証券報告書の関係会社の状況と会社概式を照合
+    via: 第28期有価証券報告書の関係会社の状況・主要な子会社と公式会社概要を照合
     note: 主要子会社・関連会社を記録し、未確認の持株比率・連結範囲は推定していない
   - id: article-mission
     phase: article
@@ -261,18 +261,54 @@ items:
     subject: 株式会社ディー・エヌ・エー
     as_of: 2026-03-31（規模）・2026-08-05（確認）
     unit: ""
-    source: https://dena.com/jp/company/overview.html; https://dena.com/jp/company/history.html
-    via: 公式会社概要・沿革を確認
-    note: 財務指標の正本はmetrics.csv
+    source: edinet-s100yldv; dena-official-corporate-overview
+    via: 第28期有価証券報告書と公式会社概要を本文へ反映
+    note: 設立時の事業、事業領域、資本金、本社、連結・単体従業員数、決算期を掲載。財務指標の正本はmetrics.csv
   - id: article-links
     phase: article
     store: mdx
     topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
     status: done
-    value: HP https://dena.com/jp/、IR https://dena.com/jp/ir/、IRライブラリー https://dena.com/jp/ir/library/report.html、有報FY2026 S100YLDV・FY2025 S100VZE0・FY2024 S100TQ8O・FY2023 S100R3HZ、採用 https://dena.com/jp/recruit/、新卒 https://student.dena.com/ と https://student.dena.com/recruit/
+    value: HP https://dena.com/jp/、IR https://dena.com/jp/ir/、IRライブラリー https://dena.com/jp/ir/library/report.html、有報FY2026 S100YLDV・FY2025 S100VZE0・FY2024 S100TQ8O、採用 https://dena.com/jp/recruit/、新卒 https://student.dena.com/ と https://student.dena.com/recruit/
     subject: 株式会社ディー・エヌ・エー
     as_of: 2026-08-05
     unit: ""
-    source: https://dena.com/jp/; https://dena.com/jp/ir/library/report.html; https://student.dena.com/
-    via: 公式サイト・IR・採用サイトを確認
-    note: 有報一覧を正本とし、直近4年度のPDFを併記
+    source: dena-official-corporate-overview; dena-official-services; dena-official-ir-library; edinet-s100yldv; edinet-s100vze0; edinet-s100tq8o; dena-official-recruit; dena-recruit-fresh; dena-recruit-aispecialist; dena-recruit-aigeneralist
+    via: 公式HP・IRライブラリー・採用サイトのリンクをMDXへ配置
+    note: 直近3年度の有価証券報告書、採用情報、新卒募集要項を掲載。追加source_id候補のURLは https://dena.com/jp/recruit/
+  - id: article-recruit
+    phase: article
+    store: mdx
+    topic: 採用情報・新卒職種別の仕事内容と待遇
+    status: done
+    value: AIスペシャリスト職、エンジニア職、ビジネス職、デザイナー職を職種別表に掲載。共通勤務地、標準年収、月給、基本給、職務給、固定時間外手当、賞与、給与改定、選考区分を記載
+    subject: 株式会社ディー・エヌ・エー（新卒採用）
+    as_of: 2026-08-05（2027年4月・2028年4月入社）
+    unit: JPY / 時間 / 拠点
+    source: dena-recruit-fresh; dena-recruit-aispecialist; dena-recruit-aigeneralist
+    via: 公式新卒募集要項と職種別募集ページをwebfetchで取得し、MDXへ要約
+    note: 公式記載の給与下限のみを掲載。給与を推定していない。source URLは https://student.dena.com/recruit/・https://student.dena.com/aispecialist/description/・https://student.dena.com/aigeneralist/description/
+  - id: article-segments-and-related
+    phase: article
+    store: mdx
+    topic: 事業内容（法定セグメント表）と関連企業（子会社・関連会社表）
+    status: done
+    value: 4報告セグメントと報告セグメント外の新規事業・その他を、サービス・主な事業主体付きで表に掲載。主要な連結子会社16社と持分法適用関連会社6社を事業内容・議決権所有割合・報告セグメント付きで掲載。親会社なし。GO株式会社の2026年6月16日付除外を注記
+    subject: 株式会社ディー・エヌ・エー連結（FY2026有報）
+    as_of: 2026-03-31（関係会社・セグメント）／2026-06-16（GO株式会社の除外）
+    unit: セグメント名・サービス・法人名・議決権所有割合
+    source: edinet-s100yldv; dena-official-services; dena-official-corporate-overview
+    via: XBRL_TO_CSVのDescriptionOfBusinessTextBlock、OverviewOfAffiliatedEntitiesTextBlock、NotesSegmentInformationConsolidatedFinancialStatementsIFRSTextBlock、NotesSubsidiariesConsolidatedFinancialStatementsIFRSTextBlock、NotesInvestmentsAccountedForUsingEquityMethodConsolidatedFinancialStatementsIFRSTextBlockから抽出
+    note: 「新規事業・その他」は有報の注記上、報告セグメントに含まれない事業セグメント。財務数値・売上表はsegments.csvとSegmentRevenueを正本とし、本文へ複写していない。source URLは https://api.edinet-fsa.go.jp/api/v2/documents/S100YLDV・https://dena.com/jp/services/・https://dena.com/jp/company/overview.html
+  - id: verify-article
+    phase: verify
+    store: mdx
+    topic: MDX構成・出典・禁止表現・セグメント対応の検証
+    status: done
+    value: CompanyOverview→CompanyProse→EmploymentOverview→CompanyProse（採用・事業内容）→SegmentRevenue→CompanyProse（関連企業）→HealthMetrics→FinancialHistory→MetricTrends→CompanySourcesの順序、FinancialData不使用、4報告セグメントと報告セグメント外1区分の対応、関連企業表、採用4職種表、source_id参照、禁止表現の不在をpython/rgで確認
+    subject: site/src/pages/companies/dena.mdx
+    as_of: 2026-08-05
+    unit: 構造・文字列・対応表
+    source: edinet-s100yldv; dena-recruit-fresh; dena-recruit-aispecialist; dena-recruit-aigeneralist; dena-official-services; dena-official-corporate-overview
+    via: python・rgによる静的検証。buildは依頼どおり未実行
+    note: source_idのうち dena-official-recruit は sources.csvへの追加候補。ビルド未実行のため、MDX/Astroの最終コンパイル確認は残課題

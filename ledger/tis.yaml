@@ -1,0 +1,134 @@
+company_id: tis
+disclosure_company_id: tis
+company_boundary:
+  adoption_company_id: tis
+  disclosure_company_id: tis
+  reporting_segment_company_id: tis
+  legal_name: TIS株式会社（2026年7月1日付でTISI株式会社へ商号変更）
+  securities_code: "3626"
+  edinet_code: E05739
+  fiscal_year_end: 3月末日
+  accounting_standard: JGAAP
+  currency: JPY
+  reporting_segments: オファリングサービス, BPM, 金融IT, 産業IT, 広域ITソリューション
+  company_relations: []
+  note: 2026年3月期有報は合併前のTIS株式会社。2026年7月1日に株式会社インテックを吸収合併し、商号をTISI株式会社へ変更。
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-05
+updated_at: 2026-08-05
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-financial-history
+    phase: ir
+    store: ir_csv
+    topic: 売上高・営業利益・キャッシュフロー・自己資本比率
+    status: done
+    value: metrics.csvに連結JGAAPの売上高FY2021-FY2026、営業利益FY2024-FY2026、営業・投資・財務CF FY2021-FY2026、自己資本比率FY2021-FY2026を登録
+    subject: 連結
+    as_of: FY2021-FY2026
+    unit: JPY・percent
+    source: edinet-s100yh5c; edinet-s100w24k
+    via: data/raw/edinet/S100YH5CのXBRL_TO_CSVと既存正規化CSV
+    note: 財務推移は3月末決算。会計基準は日本基準
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csvに連結の流動資産・流動負債・当座資産FY2025-FY2026を登録
+    subject: 連結
+    as_of: 2025-03-31・2026-03-31
+    unit: JPY
+    source: edinet-s100yh5c
+    via: data/raw/edinet/S100YH5Cの連結貸借対照表
+    note: 当座資産は流動資産から商品・仕掛品・原材料及び貯蔵品を控除
+  - id: ir-segments
+    phase: ir
+    store: ir_csv
+    topic: 5報告セグメントの年度別売上・利益
+    status: done
+    value: segments.csvのoffering-services、bpm、financial-it、industrial-it、regional-it-solutionsにFY2024-FY2026を登録
+    subject: 連結報告セグメント
+    as_of: FY2024-FY2026
+    unit: JPY
+    source: edinet-s100yh5c; edinet-s100w24k
+    via: 有価証券報告書のセグメント情報
+    note: 売上は外部顧客への売上高、利益はセグメント利益。segments.csvの名称を有報の報告セグメント名に対応
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数
+    status: done
+    value: metrics.csvの提出会社単体のFY2025-FY2026指標
+    subject: 提出会社単体
+    as_of: 2025-03-31・2026-03-31
+    unit: JPY・years
+    source: edinet-s100yh5c; edinet-s100w24k
+    via: 有価証券報告書の提出会社の状況
+    note: EmploymentOverviewは最新FY2026を表示
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 採用主体・2027年新卒職種・待遇・勤務地・選考
+    status: done
+    value: TISI株式会社の2027年新卒採用。職域はエンジニア・営業、エンジニア内6職種、初任給は修士313900円・学士294600円・高専259100円、スマートワーク手当は月20時間分の固定残業代、勤務地は国内12拠点、選考はWEBエントリーから内定・入社まで5段階
+    subject: TISI株式会社（新卒採用）
+    as_of: 2027年新卒採用
+    unit: JPY・拠点・選考段階
+    source: tis-official-recruit; tis-official-new-graduates
+    via: 公式採用情報と新卒採用ページ
+    note: 標準年収は公式募集ページに記載なし。2026年7月1日の合併後ページはTISI名義
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントの事業内容と公式サービス領域
+    status: done
+    value: オファリングサービス、BPM、金融IT、産業IT、広域ITソリューションの有報定義と、公式IRのシステム・インテグレーション、システム開発、アウトソーシング、コンサルティング、クラウドサービス等を対応付けて本文表に記載
+    subject: 連結報告セグメント
+    as_of: 2026年3月期
+    unit: セグメント名・事業内容
+    source: edinet-s100yh5c; tis-official-ir-business
+    via: 第18期有価証券報告書と公式IRの主な事業内容
+    note: 公式サービス分類は報告セグメントと1対1対応しないため、本文で差異を明記
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 主な子会社の具体名・事業内容・報告セグメント
+    status: done
+    value: インテック、アグレックス、クオリカ、AJS、TISソリューションリンク、TISシステムサービス、日本ICS、MFEC、Synergy Group Ventures、TIBS、ソランピュアを本文表に記載
+    subject: 2026年3月31日時点の連結子会社
+    as_of: 2026-03-31
+    unit: セグメント名・事業内容
+    source: edinet-s100yh5c; tis-official-group-companies; tis-official-history
+    via: 第18期有価証券報告書の事業内容・関係会社の状況、公式グループ会社・沿革
+    note: インテックは2026年7月1日付で吸収合併、TISビジネスサービスは2026年4月1日付でTIBSへ商号変更
+  - id: article-company-and-links
+    phase: article
+    store: mdx
+    topic: 企業紹介・理念・サイトリンク・会計基準
+    status: done
+    value: 現TISIへの商号変更、創業・経営統合・商号変更の沿革、Mission、Group Vision 2032、HP・IR・第18/17期有報PDF・採用・新卒採用を記事へ反映
+    subject: TIS株式会社／TISI株式会社
+    as_of: 2026年3月期・2026年7月1日
+    unit: 人・百万円・日付
+    source: edinet-s100yh5c; tis-official-company; tis-official-philosophy; tis-official-vision; tis-official-ir; tis-official-history
+    via: 有価証券報告書と公式HP・IR
+    note: 本文に確認日・調査実況・伝聞・読者案内を記載していない
+  - id: verify-article
+    phase: verify
+    store: mdx
+    topic: MDX構成・セグメント対応・禁止表現・数値境界
+    status: done
+    value: CompanyOverview→CompanyProse→EmploymentOverview→CompanyProse（採用・事業内容）→SegmentRevenue→CompanyProse（関連企業）→HealthMetrics→FinancialHistory→MetricTrends→CompanySources。FinancialData不使用、セグメント名とsegments.csv対応、当座資産算定、常体・直接リンクを確認
+    subject: site/src/pages/companies/tis.mdx
+    as_of: 2026-08-05
+    unit: 構造・文字列・対応表
+    source: edinet-s100yh5c; tis-official-new-graduates; tis-official-ir-business; tis-official-group-companies
+    via: 静的チェック（MDX構造、禁止表現、差分空白）
+    note: buildは依頼どおり未実行。data/sources.csvは未変更。公式出典行は最終報告へ記載

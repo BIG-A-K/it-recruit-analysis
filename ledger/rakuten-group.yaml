@@ -19,10 +19,10 @@ created_at: 2026-08-05
 updated_at: 2026-08-05
 phases:
   ir: done
-  recruit: in_progress
-  segments: in_progress
-  article: pending
-  verify: pending
+  recruit: done
+  segments: done
+  article: done
+  verify: done
 items:
   - id: ir-human-capital
     phase: ir
@@ -144,13 +144,189 @@ items:
     source: edinet-s100t4x3; edinet-s100vhz5; edinet-s100xtnw
     via: EDINET有価証券報告書・公式IR PDF
     note: IFRS、FY2023セグメント損益の修正再表示、通信設備のセール・アンド・リースバック
-  - {id: recruit-employing-entity, phase: recruit, store: mdx, topic: 採用主体・募集年度・確認日・募集ページURL, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "楽天グループ株式会社が採用の正本"}
-  - {id: recruit-jobs, phase: recruit, store: mdx, topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "エンジニア・ビジネス等多職種"}
-  - {id: recruit-salary, phase: recruit, store: mdx, topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
-  - {id: recruit-conditions, phase: recruit, store: mdx, topic: 転勤・リモート勤務・標準労働時間・応募期限, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
-  - {id: segments-services, phase: segments, store: mdx, topic: 報告セグメントごとの具体的サービス名・ブランド名・提供内容・運営法人, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "楽天市場・楽天カード・楽天モバイル等"}
-  - {id: segments-mapping, phase: segments, store: mdx, topic: 公式サイト事業区分とIR報告セグメントの対応と差異, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
-  - {id: segments-related-companies, phase: segments, store: mdx, topic: 親会社・主な子会社と各社の事業内容, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "楽天銀行・楽天証券・楽天モバイル・楽天ペイメント等の上場子会社"}
-  - {id: article-mission, phase: article, store: mdx, topic: 理念・ミッション・スローガン, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "Empowerment・ブランドメッセージ"}
-  - {id: article-company, phase: article, store: mdx, topic: 会社紹介（設立経緯・規模）, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
-  - {id: article-links, phase: article, store: mdx, topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: |
+      採用主体は楽天グループ株式会社。対象は2026年10月入社・2027年4月入社向けビジネス職と、2027年入社向けエンジニア職。ビジネス職ページには「本選考エントリー受付中」の表示が残るが、締切は2026年4月21日8:59で確認日時点では経過。2027年入社向けエンジニア職は募集終了。2028年入社向け本選考は案内待ち、夏季インターンシップは全件募集終了。
+      ビジネス職はビジネス総合、FinTech、デザイン、マーケティングの4コース。エンジニア職は一般カテゴリ8分類、2027年向けの詳細20組織×職種カード、カード内31サブポジション。楽天モバイル株式会社は別法人のため対象外。
+    subject: 楽天グループ株式会社（楽天銀行・楽天ペイメント等のカードはグループ会社表記）
+    as_of: 2026-08-05
+    unit: 件 / 募集年度
+    source: |
+      https://corp.rakuten.co.jp/careers/graduates/
+      https://corp.rakuten.co.jp/careers/graduates/recruit_business/
+      https://corp.rakuten.co.jp/careers/graduates/recruit_engineer/
+      https://corp.mobile.rakuten.co.jp/recruit/fresh/
+    via: 公式新卒採用トップ、ビジネス職・エンジニア職募集ページ、FAQ、楽天モバイル公式新卒採用ページを確認
+    note: ビジネス職トップの受付中表示と過去の締切日が併存する。楽天モバイル株式会社は募集者名が別法人で、楽天グループ株式会社の職種数・待遇へ混在させない。
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: |
+      ビジネス総合コースは楽天グループの70以上のサービスに関わるコンサルティング営業、企画、マーケティング、クリエイティブ、人事・総務・法務・経理・財務などを対象とし、研修後に適性・希望を考慮して初期配属。FinTechコースは決済・カード・保険領域へ初期配属、デザインコースはデザイン・UX職へ初期配属、マーケティングコースはグループ全体のマーケティング・ブランド・メンバーシップ戦略へ初期配属。応募資格はコースごとに異なるが、国内外の大学・大学院卒業予定、新卒・既卒不問、就業経験3年未満可、ビジネスレベル以上の日本語が共通。ビジネス総合は2026年10月または2027年4月入社、他3コースは2027年4月入社。デザインはポートフォリオ、マーケティングは追加記述式設問が必要。
+      ビジネス職の選考はPersonal Page登録、Application Form、Web Test、履修データ提出、オンライン面接、内定。コースにより選考ステップが異なる場合がある。
+      エンジニア職の2027年向け詳細カードは全件募集終了。ソフトウェアはCommerce & Marketing、Technology Management、Technology Platforms、Rakuten Bank、Rakuten Paymentの5カード、インフラはTechnology Management、Technology PlatformsのCritical Facilities・Infra、Rakuten Bank、Rakuten Paymentの5カード、AI/MLはAI & DataのAI Engineer・Research Scientist、Technology PlatformsのMachine Learning Engineerの3カード、データはAI & DataとRakuten Paymentの2カード、プロダクト／プロジェクトマネージャーはCommerce & Marketing、AI & Data、Technology Management、Technology Platforms、Rakuten Paymentの5カード。初期勤務地は楽天クリムゾンハウス、東京都内オフィス、NBF品川タワー、新潟県長岡市内など。カード別にアプリ・インフラ・データ基盤・AI研究・決済・金融システム・プロダクト管理等の仕事内容と必須スキル、コーディングテスト有無が記載される。
+      エンジニア共通の募集対象は2028年入社が可能で、学士・修士・博士を取得予定または取得済みの人。2028年正社員の具体的職種は未発表。
+    subject: ビジネス4コースおよびエンジニア2027年入社向け20組織×職種カード
+    as_of: 2026-08-05
+    unit: コース / 職種カード
+    source: |
+      https://corp.rakuten.co.jp/careers/graduates/recruit_business/
+      https://corp.rakuten.co.jp/careers/graduates/recruit_business/business.html
+      https://corp.rakuten.co.jp/careers/graduates/recruit_business/fintech.html
+      https://corp.rakuten.co.jp/careers/graduates/recruit_business/creative.html
+      https://corp.rakuten.co.jp/careers/graduates/recruit_business/marketing.html
+      https://corp.rakuten.co.jp/careers/graduates/recruit_engineer/
+      https://corp.rakuten.co.jp/careers/graduates/faq/
+    via: 公式ビジネス職4コースページ、エンジニア職20詳細カード、公式FAQを確認
+    note: エンジニアの2027年向けカードは全件募集終了。公式トップの一般カテゴリ8分類と詳細20カードは一致しない。情報セキュリティ等の独立した現行詳細募集要項は未掲載。
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
+    status: done
+    value: |
+      ビジネス職4コース共通は学部卒月給350,000円、院卒月給360,000円。学部卒の内訳例は基本給265,823円＋40時間分の固定残業代84,177円、40時間超は別途支給。院卒の内訳は非開示。賞与は6月・12月に会社業績・個人業績に基づき支給、昇給は1月・7月。通勤手当は月額上限50,000円。標準年収・想定年収・賞与額は非開示で、月給の単純年換算はしない。
+      エンジニア職は月額370,000円以上。月額370,000円の内訳例は基本給281,013円＋40時間分の固定残業代88,987円、40時間超は別途支給。給与は専門知識・経験・実力により決定し、標準年収・職種別賞与額は非開示。通勤手当は条件・上限あり。企画業務型または専門業務型裁量労働制の対象となる場合がある。
+      楽天銀行・楽天ペイメントのエンジニアカードに親会社共通条件が適用されるか、カードごとの給与差・賞与・標準年収は明記されていない。
+    subject: ビジネス4コース共通およびエンジニア職共通掲載条件
+    as_of: 2026-08-05
+    unit: JPY/月、時間
+    source: |
+      https://corp.rakuten.co.jp/careers/graduates/recruit_business/business.html
+      https://corp.rakuten.co.jp/careers/graduates/recruit_business/fintech.html
+      https://corp.rakuten.co.jp/careers/graduates/recruit_business/creative.html
+      https://corp.rakuten.co.jp/careers/graduates/recruit_business/marketing.html
+      https://corp.rakuten.co.jp/careers/graduates/recruit_engineer/
+      https://corp.rakuten.co.jp/careers/graduates/faq/
+      https://corp.rakuten.co.jp/careers/benefit/
+    via: 各募集要項の賃金・諸手当欄、エンジニア共通募集要項、FAQ、福利厚生ページを確認
+    note: 標準年収、賞与額、院卒およびエンジニアの職種別給与内訳は公式ページに記載なし。楽天モバイル株式会社の別採用条件は混在させない。
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: |
+      ビジネス職は本社（東京都世田谷区玉川1-14-1 楽天クリムゾンハウス）ほか各事業所。全国・海外への配置転換・転勤の可能性があり、一部在宅勤務を認める場合がある。所定労働時間7.5時間、休憩1時間、9:00〜17:30。朝会実施日は8:00〜16:30。フレキシブルタイムは7:00〜11:00・15:00〜20:00、コアタイムは11:00〜15:00。朝会日は7:00〜8:00・12:00〜20:00、コアタイム8:00〜12:00。新卒研修中はフレックス適用なし。2026年10月または2027年4月入社向けの締切は2026年4月21日8:59、2027年10月以降入社向けの締切は未掲載。選考中にTOEIC800未満の場合は受験案内があり、内定者は入社前にTOEIC800点または同等資格が必要。
+      エンジニア職は東京本社、国内・海外支社等で勤務の可能性があり、個別カードの初期勤務地は楽天クリムゾンハウス、東京都内オフィス、NBF品川タワー、新潟県長岡市内。一般的な在宅勤務可否は記載なし。標準勤務時間は9:00〜17:30、所定労働時間7.5時間、休憩1時間。カードにより裁量労働制またはフレックスタイム制、コアタイム11:00〜15:00。2027年入社向けは募集終了、2028年本選考の期限は未掲載。2028年夏季インターンシップも全件募集終了。
+    subject: ビジネス4コースおよびエンジニア職の共通就業・選考条件
+    as_of: 2026-08-05
+    unit: 時間 / 日付 / 制度
+    source: |
+      https://corp.rakuten.co.jp/careers/graduates/
+      https://corp.rakuten.co.jp/careers/graduates/recruit_business/business.html
+      https://corp.rakuten.co.jp/careers/graduates/recruit_business/fintech.html
+      https://corp.rakuten.co.jp/careers/graduates/recruit_business/creative.html
+      https://corp.rakuten.co.jp/careers/graduates/recruit_business/marketing.html
+      https://corp.rakuten.co.jp/careers/graduates/recruit_engineer/
+      https://corp.rakuten.co.jp/careers/graduates/faq/
+      https://corp.rakuten.co.jp/careers/benefit/
+      https://corp.rakuten.co.jp/careers/graduates/event/natsunojin-2028joiners/
+      https://corp.rakuten.co.jp/careers/graduates/event/rakuten-tech-camp-2028joiners/
+    via: 公式募集要項、FAQ、福利厚生、イベントページを確認
+    note: エンジニアの正社員リモート可否、カード別の勤務時間・転勤・面接順序、2028年本選考期限、標準年収は公式ページに記載なし。
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的サービス名・ブランド名・提供内容・運営法人
+    status: done
+    value: |
+      公式サイトのサービス区分は、インターネットサービスセグメント、フィンテックセグメント、モバイルセグメント、グループヘッドクオーター。
+      インターネットサービスは、コマース・マーケティング（楽天市場、Rakuten Fashion、楽天ブックス、Rakuten 24、楽天ラクマ、楽天トラベル、楽天Car、楽天GORA、楽天マガジン、楽天ビューティ、Rakuten TV、Rakuten Music、楽天チケット、楽天マート、楽天スーパーロジスティクス等）、広告・メディア（楽天インサイト、リンクシェア、Rakuten Marketing Platform、楽天データマーケティング、楽天データソリューションズ、楽天レシピ、楽天Infoseek等）、国際・スポーツ（Rakuten Advertising、Rakuten VIKI、Rakuten Viber、楽天Kobo、Rakuten、Rakuten France、Rakuten TV Europe、ヴィッセル神戸、東北楽天ゴールデンイーグルス等）。主な主体は楽天グループ株式会社、楽天インサイト株式会社、リンクシェア・ジャパン株式会社、楽天データマーケティング株式会社、Rakuten Marketing LLC、Viki, Inc.、Viber Media S.a.r.l.、Rakuten Kobo Inc.、楽天ヴィッセル神戸株式会社、株式会社楽天野球団等。
+      フィンテックは、決済・ポイント（楽天ペイ、楽天ポイントカード、楽天Edy、楽天チェック）、金融（楽天カード、楽天銀行、楽天証券、楽天ウォレット、楽天保険の総合窓口、楽天生命、楽天損保、楽天ペット保険等）。主な主体は楽天ペイメント株式会社、楽天Edy株式会社、楽天カード株式会社、楽天銀行株式会社、楽天証券株式会社、楽天ウォレット株式会社、楽天インシュアランスプランニング株式会社、楽天生命保険株式会社、楽天損害保険株式会社等。
+      モバイルは、楽天モバイル株式会社のMNO・MVNO、楽天コミュニケーションズ株式会社の電話・IP通信、Rakuten Symphony Singapore, Pte. Ltd.のOpen RAN・クラウド・自動化等。グループヘッドクオーターは総務・人事・財務・法務等の本社機能、開発、戦略・マーケティング、新サービス開発を担い、楽天ドローン、楽天キャピタル、楽天トータルソリューションズ等を掲載する。
+    subject: 楽天グループ株式会社の公式サービス事業区分と主な事業主体
+    as_of: 2026-08-05
+    unit: ""
+    source: |
+      https://corp.rakuten.co.jp/about/company/
+      https://corp.rakuten.co.jp/about/company/internet_service/
+      https://corp.rakuten.co.jp/about/company/fintech/
+      https://corp.rakuten.co.jp/about/company/mobile/
+      https://corp.rakuten.co.jp/about/company/headquarters/
+    via: 公式コーポレートサイトのサービス一覧・セグメント別サービスページを確認
+    note: ブランド単位の法定報告セグメント帰属は公式開示されていないため独自推定しない。楽天マートと楽天ペット保険はページ間で運営主体の表記差があるため法人帰属を断定しない。
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイト事業区分とIR報告セグメントの対応と差異
+    status: done
+    value: |
+      FY2023〜FY2025の有価証券報告書と現行IRページの法定報告セグメントは「インターネットサービス」「フィンテック」「モバイル」の3区分。公式サイトのインターネットサービス、フィンテック、モバイルはそれぞれ同名の法定報告セグメントへ対応する。
+      公式サイト内のコマース・マーケティング、広告・メディア、国際・スポーツ、決済、ポイント、銀行、証券、保険、携帯、通信プラットフォーム等は社内事業区分であり、法定報告上の独立セグメントではない。グループヘッドクオーターは本社機能・開発・新サービス等のウェブサイトカテゴリで、法定報告セグメントではない。
+      70超のサービスや各ブランドについて、ブランド単位の売上・利益・セグメント帰属は開示されていないため独自配賦しない。2026年10月1日効力発生予定のフィンテック事業再編は確認日現在の将来計画であり、現行の3報告セグメントへ反映しない。
+    subject: 公式ウェブサイトの事業カテゴリとIFRS報告セグメント
+    as_of: 2026-08-05
+    unit: ""
+    source: |
+      edinet-s100xtnw
+      edinet-s100vhz5
+      edinet-s100t4x3
+      https://corp.rakuten.co.jp/investors/financial/segment.html
+      https://corp.rakuten.co.jp/news/press/2026/0520_11.html
+    via: FY2023〜FY2025有価証券報告書、現行IRセグメントページ、再編IRリリースを照合
+    note: セグメント別売上・利益の数値はsegments.csvの正本であり、台帳へ複写しない。
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: |
+      親会社・開示主体・採用主体はいずれも楽天グループ株式会社。主な連結子会社は、楽天モバイル株式会社（携帯）、楽天コミュニケーションズ株式会社（電話・IP通信）、楽天カード株式会社（クレジットカード）、楽天銀行株式会社（インターネット銀行）、楽天証券ホールディングス株式会社・楽天証券株式会社（証券）、楽天生命保険株式会社、楽天インシュアランスプランニング株式会社、楽天損害保険株式会社、楽天少額短期保険株式会社、楽天投信投資顧問株式会社、楽天ペイメント株式会社、楽天Edy株式会社、楽天ウォレット株式会社、株式会社楽天野球団、楽天ヴィッセル神戸株式会社、楽天データマーケティング株式会社、楽天インサイト株式会社、リンクシェア・ジャパン株式会社、楽天ステイ株式会社、楽天トラベルサービス株式会社、競馬モール株式会社、楽天トータルソリューションズ株式会社等。
+      海外の主な連結子会社はEbates Inc.、Rakuten Marketing LLC、Rakuten Symphony Singapore, Pte. Ltd.、Rakuten Kobo Inc.、VIKI, Inc.、Viber Media S.a.r.l.、Rakuten France S.A.S.、Rakuten TV Europe, S.L.U.、Rakuten Europe Bank S.A.、Rakuten Asia Pte. Ltd.、台湾楽天市場股份有限公司、樂天國際商業銀行股份有限公司等。
+      主な持分法適用関連会社は楽天メディカル社（Rakuten Medical Inc.）、株式会社ぐるなび、株式会社LIFULL、楽天ANAトラベルオンライン株式会社、株式会社Award、JP楽天ロジスティクス株式会社等。子会社・関連会社の事業は、親会社の法定報告セグメントと同一法人単位ではない。
+    subject: 楽天グループ株式会社と主な連結子会社・持分法適用関連会社
+    as_of: 2026-06-16（公式グループ会社ページ更新日）
+    unit: ""
+    source: |
+      https://corp.rakuten.co.jp/about/group.html
+      https://rakuten-med.com/jp/
+      https://corporate.gnavi.co.jp/
+      https://lifull.com/
+      https://travel.rakuten.co.jp/corporate/rato/
+      https://award-inc.co.jp/
+      https://jp-rakuten-logistics.co.jp/
+    via: 公式グループ会社一覧と各関係会社の公式事業ページを確認
+    note: 関係会社一覧に掲載された主な法人を記録。全連結範囲や持分比率の数値は本文へ転記しない。
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: ミッション「イノベーションを通じて、人々と社会をエンパワーメントする」、ビジョン「グローバル イノベーション カンパニー」、価値観・行動指針「楽天主義」、ブランドメッセージ「未来はもっとよくできる」
+    subject: 楽天グループ株式会社
+    as_of: 2026-08-05
+    unit: ""
+    source: https://corp.rakuten.co.jp/about/philosophy/; https://corp.rakuten.co.jp/about/
+    via: 公式企業理念ページと企業情報トップを確認
+    note: 公式表記を維持し、独自の就活評価や解釈は加えていない。
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: done
+    value: 1997年2月7日設立、楽天市場は1997年5月1日開始。創業時は従業員6人、サーバー1台、13店舗。2000年の株式店頭公開、楽天エコシステム構想、EC・旅行・デジタルコンテンツ・フィンテック・モバイル・スポーツへの拡大、2021年の楽天グループ株式会社への商号変更を経て、70超のサービスを展開。世界30カ国・地域に展開拠点があり、世界約21億のサービス利用者、国内1億以上の楽天会員を掲げる。
+    subject: 楽天グループ株式会社
+    as_of: 2026-08-05
+    unit: 人 / 台 / 店舗 / サービス / カ国・地域
+    source: https://corp.rakuten.co.jp/about/; https://corp.rakuten.co.jp/about/history.html
+    via: 公式会社概要・歴史ページを確認
+    note: サービス数、展開地域、利用者数は公式企業情報の掲載値。財務数値やIR指標は記事本文へ複写しない。
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
+    status: done
+    value: HP、IR、セグメント別業績、2010〜2025年度の有価証券報告書PDF、採用情報、新卒採用の公式リンクを記事へ掲載
+    subject: 楽天グループ株式会社
+    as_of: 2026-08-05
+    unit: ""
+    source: https://corp.rakuten.co.jp/investors/documents/asr.html; https://corp.rakuten.co.jp/careers/graduates/
+    via: 公式IRの有価証券報告書一覧と公式採用ナビゲーションを確認
+    note: 2026年度有価証券報告書は確認日現在未公表。記事には公式一覧で取得した2010〜2025年度PDFを掲載。

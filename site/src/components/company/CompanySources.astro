@@ -19,12 +19,3 @@ const companySources = sourceIds
   .filter((source) => source !== undefined);
 ---
 
-{companySources.length > 0 && <section>
-  <div class="section-head"><h2 id="sources">出典</h2><p>数値は法定開示・公式資料をもとにしています。</p></div>
-  <div class="source-list">
-    {companySources.map((source) => <a href={source.url} target="_blank" rel="noreferrer">
-      <div><strong>{source.title}</strong><span>{source.issuer}</span></div>
-      <div><span>公開 {source.published_at}</span><span>取得 {source.retrieved_at}</span></div>
-    </a>)}
-  </div>
-</section>}

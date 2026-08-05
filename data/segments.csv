@@ -80,10 +80,10 @@ fujitsu,2026,ubiquitous-solutions,ユビキタスソリューション,,22953300
 fujitsu,2025,service-solutions,サービスソリューション,,2211483000000,,,JPY,JPY,reported,edinet-s100ym3k,
 fujitsu,2025,hardware-solutions,ハードウェアソリューション,,1048735000000,,,JPY,JPY,reported,edinet-s100ym3k,
 fujitsu,2025,ubiquitous-solutions,ユビキタスソリューション,,251515000000,,,JPY,JPY,reported,edinet-s100ym3k,
-nec,2026,it-services,ITサービス,,2508925000000,,,JPY,JPY,reported,edinet-s100ybfv,
-nec,2026,social-infrastructure,社会インフラ,,935302000000,,,JPY,JPY,reported,edinet-s100ybfv,
-nec,2025,it-services,ITサービス,,2459820000000,,,JPY,JPY,reported,edinet-s100ybfv,
-nec,2025,social-infrastructure,社会インフラ,,832102000000,,,JPY,JPY,reported,edinet-s100ybfv,
+nec,2026,it-services,ITサービス事業,,2508925000000,336704000000,セグメント利益（IFRS）,JPY,JPY,reported,edinet-s100ybfv,有報の要素名はセグメント利益（△損失）（IFRS）
+nec,2026,social-infrastructure,社会インフラ事業,,935302000000,74318000000,セグメント利益（IFRS）,JPY,JPY,reported,edinet-s100ybfv,有報の要素名はセグメント利益（△損失）（IFRS）
+nec,2025,it-services,ITサービス事業,,2459820000000,251822000000,セグメント利益（IFRS）,JPY,JPY,reported,edinet-s100ybfv,有報の要素名はセグメント利益（△損失）（IFRS）
+nec,2025,social-infrastructure,社会インフラ事業,,832102000000,60456000000,セグメント利益（IFRS）,JPY,JPY,reported,edinet-s100ybfv,有報の要素名はセグメント利益（△損失）（IFRS）
 hitachi,2026,digital-systems-services,デジタルシステム&サービス,,2756551000000,,,JPY,JPY,reported,edinet-s100ygbo,
 hitachi,2026,energy,エナジー,,3200844000000,,,JPY,JPY,reported,edinet-s100ygbo,
 hitachi,2026,mobility,モビリティ,,1320631000000,,,JPY,JPY,reported,edinet-s100ygbo,
@@ -123,8 +123,8 @@ biprogy,2025,hardware,ハードウェア,,67401000000,,,JPY,JPY,reported,edinet-
 fujitsu,2024,service-solutions,サービスソリューション,,2104841000000,,,JPY,JPY,reported,edinet-s100w1ds,
 fujitsu,2024,hardware-solutions,ハードウェアソリューション,,1066257000000,,,JPY,JPY,reported,edinet-s100w1ds,
 fujitsu,2024,ubiquitous-solutions,ユビキタスソリューション,,269246000000,,,JPY,JPY,reported,edinet-s100w1ds,
-nec,2024,it-services,ITサービス,,1913992000000,,,JPY,JPY,reported,edinet-s100vz85,
-nec,2024,social-infrastructure,社会インフラ,,1077335000000,,,JPY,JPY,reported,edinet-s100vz85,
+nec,2024,it-services,ITサービス事業,,1913992000000,,,JPY,JPY,reported,edinet-s100vz85,
+nec,2024,social-infrastructure,社会インフラ事業,,1077335000000,,,JPY,JPY,reported,edinet-s100vz85,
 nri,2024,consulting,コンサルティング,,51959000000,,,JPY,JPY,reported,edinet-s100vzkl,
 nri,2024,financial-it-solutions,金融ITソリューション,,349872000000,,,JPY,JPY,reported,edinet-s100vzkl,
 nri,2024,industrial-it-solutions,産業ITソリューション,,275923000000,,,JPY,JPY,reported,edinet-s100vzkl,

@@ -8,30 +8,118 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-TIS株式会社は、金融、製造、流通、サービスなど幅広い業界に、システム開発、IT基盤、業務サービス、コンサルティングを提供するITサービス企業です。
+TIS株式会社（現[TISI株式会社](https://www.tis.co.jp/company/information/)）は、金融、製造、流通、サービスなどの業界に、[システム・インテグレーション、システム開発、アウトソーシング、コンサルティング、クラウドサービス](https://www.tis.co.jp/ir/individual/products/)を提供してきたITサービス企業。創業は1971年4月、TIS株式会社と株式会社インテックの共同株式移転によるITホールディングス株式会社の設立は2008年4月、2016年7月にTIS株式会社へ商号変更した。[第18期有価証券報告書](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YH5C.pdf)の2026年3月期末は連結従業員数21,598名、提出会社単体6,066名、資本金10,001百万円、本店は東京都新宿区西新宿八丁目17番1号。
 
-## 公式サイト・採用情報
+[OUR PHILOSOPHY](https://www.tis.co.jp/company/policy/philosophy/)のMissionは「ムーバーとして、未来の景色に鮮やかな彩りを」。[Group Vision 2032](https://www.tis.co.jp/company/vision/)は「社会に、多彩に、グローバルに」をテーマとする。
 
-- [企業サイト](https://www.tis.co.jp/)
+:::warn
+2026年7月1日、TIS株式会社は株式会社インテックを吸収合併し、商号をTISI株式会社へ変更した。財務・セグメント・雇用指標は、合併前のTIS株式会社を提出会社とする第18期有価証券報告書に基づく。
+:::
+
+## サイト
+
+- [HP](https://www.tis.co.jp/)
+  - [企業情報](https://www.tis.co.jp/company/)
+  - [会社概要](https://www.tis.co.jp/company/information/)
+  - [OUR PHILOSOPHY](https://www.tis.co.jp/company/policy/philosophy/)
+  - [事業紹介](https://www.tis.co.jp/company/services/)
 - [IR情報](https://www.tis.co.jp/ir/)
-- [新卒採用](https://www.tis.co.jp/recruit/)
+  - [有価証券報告書](https://www.tis.co.jp/ir/finance/securities_report/)
+    - [第18期（2026年3月期）](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YH5C.pdf)
+    - [第17期（2025年3月期）](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100W24K.pdf)
+  - [主な事業内容](https://www.tis.co.jp/ir/individual/products/)
+- [採用情報](https://www.tis.co.jp/saiyo.html)
+  - [新卒採用](https://www.tis.co.jp/recruit/)
+    - [2027 ENTRY](https://job.axol.jp/bx/s/tis_27/mypage/login)
+    - [2028 ENTRY](https://axol.jp/zw/s/tis_28/mypage/login)
 
-採用主体はTIS株式会社です。営業、システムエンジニア、コンサルタント、研究開発、スタッフなどの職種と募集要項は公式採用ページで確認してください（2026年8月1日確認）。
+会計基準は日本基準（JGAAP）。
 
 </CompanyProse>
 
-<EmploymentOverview companyId={frontmatter.companyId} />
+<EmploymentOverview companyId={frontmatter.companyId} workplace="札幌・仙台・新潟・東京・横浜・富山・名古屋・大阪・岡山・山口・福岡・大分（新卒採用）" />
+
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+2027年新卒採用の採用主体はTISI株式会社。合併前の採用主体はTIS株式会社。応募資格は2027年3月大学院修了、大学・高専卒業見込者、大学院修了・大学・高専卒業者で、既卒者は就業経験3年未満まで対象。募集職域はエンジニアと営業、採用予定人数は420名程度、募集学部・学科は全学部・全学科。
+
+[新卒採用ページ](https://www.tis.co.jp/recruit/)の2027年新卒採用に記載された職種・職務は次のとおり。
+
+| 職種 | 初任給（月） | 固定時間外手当 | 主な職務 |
+| --- | ---: | --- | --- |
+| [ITコンサルタント](https://www.tis.co.jp/recruit/) | 修士了 313,900 円<br />学士卒 294,600 円<br />高専卒 259,100 円 | スマートワーク手当に月20時間分を含む | 経営戦略の実現、企業価値の創造、経営課題の解決に向けた手法・サービスの提案・提供 |
+| [プロジェクトマネージャー](https://www.tis.co.jp/recruit/) | 修士了 313,900 円<br />学士卒 294,600 円<br />高専卒 259,100 円 | 月20時間分を含む | プロジェクトの結果責任、リード・推進・統括 |
+| [ITアーキテクト](https://www.tis.co.jp/recruit/) | 修士了 313,900 円<br />学士卒 294,600 円<br />高専卒 259,100 円 | 月20時間分を含む | プロジェクトのITアーキテクチャにおける技術的なデザイン設計 |
+| [アプリケーションスペシャリスト](https://www.tis.co.jp/recruit/) | 修士了 313,900 円<br />学士卒 294,600 円<br />高専卒 259,100 円 | 月20時間分を含む | 業務知識と専門技術を活用したアプリケーションの設計・構築 |
+| [ITスペシャリスト](https://www.tis.co.jp/recruit/) | 修士了 313,900 円<br />学士卒 294,600 円<br />高専卒 259,100 円 | 月20時間分を含む | ハードウェア・ソフトウェアの専門技術を活用したシステム基盤の設計・構築・活用 |
+| [データサイエンティスト](https://www.tis.co.jp/recruit/) | 修士了 313,900 円<br />学士卒 294,600 円<br />高専卒 259,100 円 | 月20時間分を含む | 顧客課題の定義、データ分析、解決アプローチの設計・実行、解決策の提示 |
+| [営業](https://www.tis.co.jp/recruit/) | 修士了 313,900 円<br />学士卒 294,600 円<br />高専卒 259,100 円 | 月20時間分を含む | 営業活動による顧客と関係各社の接続、顧客の事業拡大支援 |
+
+勤務地は全職種共通で札幌、仙台、新潟、東京、横浜、富山、名古屋、大阪、岡山、山口、福岡、大分。勤務時間は9:00〜17:30（休憩1時間）、契約期間は期間の定めなし、試用期間は3か月。
+
+:::info
+初任給はスマートワーク手当を含む。スマートワーク手当は月20時間分の固定残業代で、月20時間を超える時間外労働は別途支給する。諸手当は住宅手当、通勤手当、時間外勤務手当など。賞与は年2回、昇給は年1回。在宅勤務制度、フレックスタイム制度、退職金制度がある。標準年収の記載はない。
+:::
+
+選考はWEBエントリー、オンライン会社説明会、エントリーシート提出、適性検査・複数回の面談、内定・入社の順。休日は土曜・日曜、祝日、年末年始、休暇は年次有給休暇、リフレッシュ休暇、慶弔休暇など。
+
+## 事業内容
+
+[第18期有価証券報告書](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YH5C.pdf)と[主な事業内容](https://www.tis.co.jp/ir/individual/products/)の報告セグメントは、オファリングサービス、BPM、金融IT、産業IT、広域ITソリューションの5区分。右列は公式サイトのサービス分類であり、報告セグメントとの1対1対応を示すものではない。
+
+| 報告セグメント | 有報での事業内容 | 公式サイトに示す主なサービス・提供領域 |
+| --- | --- | --- |
+| オファリングサービス | グループに蓄積したベストプラクティスを自社投資でサービス化し、知識集約型ITサービスを提供 | クラウドサービス、データセンター、セキュリティ、ITプラットフォーム |
+| BPM | IT技術、業務ノウハウ、人材によるビジネスプロセスの高度化・効率化・アウトソーシング | アウトソーシング、BPO |
+| 金融IT | 金融業界の専門的なビジネス・業務ノウハウを基盤に、事業・IT戦略を共に検討・推進し、事業推進を支援 | 金融・決済・カード・ウォレット |
+| 産業IT | 金融以外の産業各分野の専門的なビジネス・業務ノウハウを基盤に、事業・IT戦略を共に検討・推進し、事業推進を支援 | 業務システム、マーケティング・CRM、医療・製薬・ヘルスケア、ロボティクス・IoT |
+| 広域ITソリューション | 地域や顧客サイトを含む広範なITプロフェッショナルサービスを提供し、ノウハウをソリューションとして蓄積・展開 | システム・インテグレーション、システム開発、コンサルティング、社会基盤 |
+
+</CompanyProse>
 
 <SegmentRevenue companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 関連企業
+
+[第18期有価証券報告書](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YH5C.pdf)の関係会社の状況は、2026年3月31日時点で連結子会社50社、持分法適用会社62社を記載する。[グループ会社](https://www.tis.co.jp/company/list/)の主な企業と、有報の事業内容・報告セグメントの対応は次のとおり。TIS株式会社に親会社の記載はなく、上場事業会社として記載される。
+
+| 区分 | 名称 | 主な事業内容 | 報告セグメント |
+| --- | --- | --- | --- |
+| 主な連結子会社 | [株式会社インテック](https://www.intec.co.jp/) | ソフトウェア、システムインテグレーション、ネットワーク、アウトソーシング、ITコンサルティング | 広域ITソリューション |
+| 主な連結子会社 | [株式会社アグレックス](https://www.agrex.co.jp/) | ビジネスプロセスアウトソーシング、ソフトウェアソリューション、システムインテグレーション | BPM |
+| 主な連結子会社 | [クオリカ株式会社](https://www.qualica.co.jp/) | ソフトウェア開発、運用・サービス、コンピュータ機器販売 | 産業IT |
+| 主な連結子会社 | [AJS株式会社](https://www.ajs.co.jp/) | ソフトウェア開発、運用・サービス、コンピュータ機器販売 | 産業IT |
+| 主な連結子会社 | [TISソリューションリンク株式会社](https://www.tsolweb.co.jp/) | ソフトウェア開発、システムオペレーション | 広域ITソリューション |
+| 主な連結子会社 | [TISシステムサービス株式会社](https://www.tss-j.co.jp/) | システムオペレーション | オファリングサービス |
+| 主な連結子会社 | [日本ICS株式会社](https://www.icsics.co.jp/) | 財務・税務・給与計算システムのパッケージ提供・保守 | オファリングサービス |
+| 主な連結子会社 | [MFEC Public Company Limited](https://www.mfec.co.th/) | ITサービス、システムインテグレーション | オファリングサービス |
+| 主な連結子会社 | Synergy Group Ventures Company Limited | MFECグループの事業拡大に寄与する戦略的投資 | オファリングサービス |
+| 主な連結子会社 | TIBS株式会社（有報上のTISビジネスサービス株式会社） | グループ企業向けDX推進、シェアードサービス | 報告セグメント外（その他） |
+| 主な連結子会社 | ソランピュア株式会社 | 清掃業 | 報告セグメント外（その他） |
+
+:::info
+関係会社表は第18期有価証券報告書の2026年3月31日時点。株式会社インテックは2026年7月1日付でTIS株式会社に吸収合併され、TISビジネスサービス株式会社は2026年4月1日付でTIBS株式会社へ商号変更した。
+:::
+
+</CompanyProse>
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
 
+<MetricTrends companyId={frontmatter.companyId} />
+
+<CompanySources companyId={frontmatter.companyId} />

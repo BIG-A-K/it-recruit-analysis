@@ -699,6 +699,8 @@ tis,current_assets,2025,2025-03-31,319080000000,JPY,consolidated,,reported,edine
 tis,current_assets,2026,2026-03-31,295295000000,JPY,consolidated,,reported,edinet-s100yh5c,element_id=jppfs_cor:CurrentAssets; context_id=CurrentYearInstant
 tis,current_liabilities,2025,2025-03-31,153210000000,JPY,consolidated,,reported,edinet-s100yh5c,element_id=jppfs_cor:CurrentLiabilities; context_id=Prior1YearInstant
 tis,current_liabilities,2026,2026-03-31,164190000000,JPY,consolidated,,reported,edinet-s100yh5c,element_id=jppfs_cor:CurrentLiabilities; context_id=CurrentYearInstant
+tis,quick_assets,2025,2025-03-31,312598000000,JPY,consolidated,,reported,edinet-s100yh5c,流動資産319080百万円から商品5330百万円・仕掛品966百万円・原材料及び貯蔵品186百万円を控除
+tis,quick_assets,2026,2026-03-31,288077000000,JPY,consolidated,,reported,edinet-s100yh5c,流動資産295295百万円から商品5510百万円・仕掛品1542百万円・原材料及び貯蔵品166百万円を控除
 biprogy,current_assets,2025,2025-03-31,196809000000,JPY,consolidated,IFRS,reported,edinet-s100yfcp,element_id=jpigp_cor:CurrentAssetsIFRS; context_id=Prior1YearInstant
 biprogy,current_assets,2026,2026-03-31,178089000000,JPY,consolidated,IFRS,reported,edinet-s100yfcp,element_id=jpigp_cor:CurrentAssetsIFRS; context_id=CurrentYearInstant
 biprogy,current_liabilities,2025,2025-03-31,122649000000,JPY,consolidated,IFRS,reported,edinet-s100yfcp,element_id=jpigp_cor:TotalCurrentLiabilitiesIFRS; context_id=Prior1YearInstant
@@ -2937,3 +2939,20 @@ rakuten-group,quick_assets,2024,2024-12-31,,JPY,consolidated,IFRS,not_disclosed,
 rakuten-group,current_assets,2025,2025-12-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100xtnw,IFRS連結財政状態計算書は流動・非流動区分ではなく性質別表示で、連結の流動資産・流動負債合計を開示していないため算定不可。
 rakuten-group,current_liabilities,2025,2025-12-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100xtnw,IFRS連結財政状態計算書は流動・非流動区分ではなく性質別表示で、連結の流動資産・流動負債合計を開示していないため算定不可。
 rakuten-group,quick_assets,2025,2025-12-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100xtnw,IFRS連結財政状態計算書は流動・非流動区分ではなく性質別表示で、連結の流動資産・流動負債合計を開示していないため算定不可。 当座資産も構成科目からの推定を行わない。
+nec,employee_count,2022,2022-03-31,117418,persons,consolidated,IFRS,reported,edinet-s100ybfv,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior4YearInstant
+nec,employee_count,2023,2023-03-31,118527,persons,consolidated,IFRS,reported,edinet-s100ybfv,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior3YearInstant
+nec,employee_count,2024,2024-03-31,105276,persons,consolidated,IFRS,reported,edinet-s100ybfv,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior2YearInstant
+nec,employee_count,2025,2025-03-31,104194,persons,consolidated,IFRS,reported,edinet-s100ybfv,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior1YearInstant
+nec,employee_count,2026,2026-03-31,101800,persons,consolidated,IFRS,reported,edinet-s100ybfv,element_id=jpcrp_cor:NumberOfEmployees; context_id=CurrentYearInstant
+nec,quick_assets,2025,2025-03-31,1472879000000,JPY,consolidated,IFRS,reported,edinet-s100ybfv,現金及び現金同等物584615000000＋営業債権及びその他の債権878434000000＋その他の金融資産（流動）9830000000。棚卸資産・契約資産・その他の流動資産は含めない。
+nec,quick_assets,2026,2026-03-31,1681561000000,JPY,consolidated,IFRS,reported,edinet-s100ybfv,現金及び現金同等物659034000000＋営業債権及びその他の債権994066000000＋その他の金融資産（流動）28461000000。棚卸資産・契約資産・その他の流動資産は含めない。
+softbank,quick_assets,2025,2025-03-31,4501401000000,JPY,consolidated,IFRS,reported,edinet-s100ye76,算定科目=jpigp_cor:CashAndCashEquivalentsIFRS+jpigp_cor:TradeAndOtherReceivablesCAIFRS+jpigp_cor:OtherFinancialAssetsCAIFRS
+softbank,quick_assets,2026,2026-03-31,4955225000000,JPY,consolidated,IFRS,reported,edinet-s100ye76,算定科目=jpigp_cor:CashAndCashEquivalentsIFRS+jpigp_cor:TradeAndOtherReceivablesCAIFRS+jpigp_cor:OtherFinancialAssetsCAIFRS
+fujitsu,operating_profit,2022,2022-03-31,219201000000,JPY,consolidated,IFRS,reported,edinet-s100ym3k,連結経営指標等の2021年度（2022年3月期）営業利益
+fujitsu,operating_profit,2023,2023-03-31,335614000000,JPY,consolidated,IFRS,reported,edinet-s100ym3k,連結経営指標等の2022年度（2023年3月期）営業利益
+fujitsu,quick_assets,2026,2026-03-31,1738721000000,JPY,consolidated,IFRS,reported,edinet-s100ym3k,算定内訳: 流動資産(jpigp_cor:CurrentAssetsIFRS) 1942811000000 - 棚卸資産(jpigp_cor:InventoriesCAIFRS) 204090000000。契約資産・その他の流動資産を含む
+fujitsu,employee_count,2022,2022-03-31,124216,persons,consolidated,IFRS,reported,edinet-s100ym3k,連結従業員数。2021年度（2022年3月期）。就業人員で、平均臨時雇用人員を含まない
+fujitsu,employee_count,2023,2023-03-31,124055,persons,consolidated,IFRS,reported,edinet-s100ym3k,連結従業員数。2022年度（2023年3月期）。就業人員で、平均臨時雇用人員を含まない
+fujitsu,employee_count,2024,2024-03-31,123527,persons,consolidated,IFRS,reported,edinet-s100ym3k,連結従業員数。2023年度（2024年3月期）。就業人員で、平均臨時雇用人員を含まない
+fujitsu,employee_count,2025,2025-03-31,112743,persons,consolidated,IFRS,reported,edinet-s100ym3k,連結従業員数。2024年度（2025年3月期）。就業人員で、平均臨時雇用人員を含まない
+fujitsu,employee_count,2026,2026-03-31,99203,persons,consolidated,IFRS,reported,edinet-s100ym3k,連結従業員数。2025年度（2026年3月期）。就業人員で、平均臨時雇用人員を含まない
