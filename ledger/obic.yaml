@@ -1,0 +1,38 @@
+company_id: obic
+disclosure_company_id: obic
+company_boundary:
+  adoption_company_id: obic
+  disclosure_company_id: obic
+  reporting_segment_company_id: obic
+  legal_name: 株式会社オービック
+  securities_code: "4684"
+  edinet_code: E05025
+  fiscal_year_end: 3月末日
+  accounting_standard: JGAAP
+  currency: JPY
+  reporting_segments: システムインテグレーション、システムサポート、オフィスオートメーション
+  company_relations: []
+  note: 国内上場法人で採用主体と開示主体は同一。業務用パッケージソフト事業は持分法適用関連会社(オービックビジネスコンサルタント)が担うため報告セグメント外。
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-06
+updated_at: 2026-08-06
+phases: {ir: done, recruit: pending, segments: pending, article: pending, verify: pending}
+items:
+  - {id: ir-human-capital, phase: ir, store: ir_csv, topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上, status: done, value: "metrics.csv 4行(平均年齢/給与/勤続は2026年単体のみ、従業員数は2022-2026連結5期)", subject: 単体/連結, as_of: "2026-03-31", unit: "years・JPY・persons", source: edinet-s100ygbs, via: "edinet-normalize S100YGBS --period-end 2026-03-31", note: "平均年齢/給与/勤続年数はjpcrp_cor:Average* (CurrentYearInstant_NonConsolidatedMember)。3期以上の開示なし"}
+  - {id: ir-revenue, phase: ir, store: ir_csv, topic: 売上高 3期以上, status: done, value: "metrics.csv 5期(2022-2026)", subject: 連結, as_of: "2022-03-31〜2026-03-31", unit: JPY, source: edinet-s100ygbs, via: "edinet-normalize S100YGBS --period-end 2026-03-31", note: ""}
+  - {id: ir-operating-profit, phase: ir, store: ir_csv, topic: 営業利益 3期以上, status: done, value: "metrics.csv 2期(2025-2026)。3期以上は非開示", subject: 連結, as_of: "2025-03-31〜2026-03-31", unit: JPY, source: edinet-s100ygbs, via: "edinet-normalize S100YGBS --period-end 2026-03-31", note: "jppfs_cor:OperatingIncomeの連結損益計算書開示は当期+前期のみ。5年要約に営業利益欄なし"}
+  - {id: ir-health, phase: ir, store: ir_csv, topic: 自己資本比率・流動資産・流動負債・当座資産, status: done, value: "metrics.csv: equity_ratio 5期(2022-2026)/current_assets・current_liabilities 2期(2025-2026)/quick_assets 2期 not_disclosed", subject: 連結, as_of: "2022-03-31〜2026-03-31", unit: "percent・JPY", source: edinet-s100ygbs, via: "edinet-normalize + csv-upsert", note: "JGAAP連結貸借対照表に当座資産の表示なし。構成科目からの推定を行わない"}
+  - {id: ir-cash-flow, phase: ir, store: ir_csv, topic: 営業・投資・財務キャッシュフロー 3期以上, status: done, value: "metrics.csv 5期×3区分(2022-2026)", subject: 連結, as_of: "2022-03-31〜2026-03-31", unit: JPY, source: edinet-s100ygbs, via: "edinet-normalize S100YGBS --period-end 2026-03-31", note: ""}
+  - {id: ir-segments, phase: ir, store: ir_csv, topic: 報告セグメントの年度別売上・利益, status: done, value: "segments.csv 3セグメント×2期=6行", subject: 連結報告セグメント, as_of: "2025-03-31〜2026-03-31", unit: JPY, source: edinet-s100ygbs, via: "csv-upsert segments", note: "システムインテグレーション/システムサポート/オフィスオートメーション。売上と営業利益を登録"}
+  - {id: ir-disclosure-notes, phase: ir, store: ir_csv, topic: 会計基準変更・組織再編・比較上の注記, status: done, value: "特記事項なし", subject: "", as_of: "2026-03-31", unit: "", source: edinet-s100ygbs, via: "edinet-normalize S100YGBS", note: "会計基準はJGAAP継続、組織再編の注記なし"}
+  - {id: recruit-employing-entity, phase: recruit, store: mdx, topic: 採用主体・募集年度・確認日・募集ページURL, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: recruit-jobs, phase: recruit, store: mdx, topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: recruit-salary, phase: recruit, store: mdx, topic: 職種ごとの給与・賞与・手当・標準年収, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: recruit-conditions, phase: recruit, store: mdx, topic: 転勤・リモート勤務・標準労働時間・応募期限, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: segments-services, phase: segments, store: mdx, topic: 報告セグメントごとのサービス・製品・運営法人, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: segments-mapping, phase: segments, store: mdx, topic: 公式事業区分とIR報告セグメントの対応・差異, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: segments-related-companies, phase: segments, store: mdx, topic: 親会社・主な子会社と各社の事業内容, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: article-mission, phase: article, store: mdx, topic: 理念・ミッション・スローガン, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: article-company, phase: article, store: mdx, topic: 会社紹介・設立経緯・規模, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: article-links, phase: article, store: mdx, topic: HP・IR・取得年度の有価証券報告書・採用・新卒採用リンク, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}

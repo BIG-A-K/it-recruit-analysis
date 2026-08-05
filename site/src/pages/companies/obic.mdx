@@ -6,6 +6,10 @@ companyId: obic
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
@@ -69,6 +73,12 @@ import EmploymentOverview from "../../components/company/EmploymentOverview.astr
 | オフィスオートメーション | OA機器一般・コンピュータサプライ用品の仕入・販売、オフィス家具販売、オフィスプランニング・内装工事、ネットワークサポート | 株式会社オービックオフィスオートメーション／報告セグメント |
 | 業務用パッケージソフト | 財務会計等の業務用パッケージソフトの製造・販売 | 株式会社オービックビジネスコンサルタント／報告セグメント外 |
 
+</CompanyProse>
+
+<SegmentRevenue companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
 ## 関連企業
 
 [第59期（2026年3月期）有価証券報告書](https://www.obic.co.jp/ir/pdf/security_report/20260623.pdf)の関係会社の状況に記載された関係会社は、連結子会社1社と持分法適用関連会社2社。親会社の記載はない。公式の[グループ企業一覧](https://www.obic.co.jp/company/group.html)は各社の事業を次のとおり示す。
@@ -80,3 +90,9 @@ import EmploymentOverview from "../../components/company/EmploymentOverview.astr
 | 持分法適用関連会社 | 株式会社オービーシステム | システムインテグレーション、ソフトウェア開発 | 28.4% | システムインテグレーション |
 
 </CompanyProse>
+
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
