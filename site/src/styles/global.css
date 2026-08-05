@@ -194,13 +194,11 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .annotation-list p { margin: 0; }
 .annotation-list a, .chart-annotations a { white-space: nowrap; }
 
-.business-intro { max-width: 800px; margin-bottom: 18px; color: #344054; font-size: 16px; line-height: 1.9; text-wrap: pretty; word-break: keep-all; }
 .segment-cards { display: grid; gap: 10px; }
 .segment-card { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); gap: 32px; align-items: center; padding: 22px 24px; background: white; border: 1px solid var(--line); border-radius: 10px; }
 .segment-copy { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; }
 .segment-number { color: #9caabd; font: 700 12px/1.5 ui-monospace, monospace; }
-.segment-copy h3 { margin-bottom: 7px; }
-.segment-copy p { color: var(--muted); font-size: 13px; line-height: 1.75; text-wrap: pretty; word-break: keep-all; }
+.segment-copy h3 { margin: 0; }
 .segment-value { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 .segment-value strong { font-size: 18px; }
 .segment-value strong { white-space: nowrap; }
@@ -458,7 +456,6 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 [data-theme="dark"] .classification strong { color: #8eb6ff; }
 [data-theme="dark"] .company-message { background: linear-gradient(125deg, #101d31, #203757); }
 [data-theme="dark"] .employment-tile.featured { background: #172640; }
-[data-theme="dark"] .business-intro { color: #c7d0dc; }
 [data-theme="dark"] .segment-number { color: #77879c; }
 [data-theme="dark"] :is(.segment-track, .segment-bar, .bar-track) { background: #273449; }
 [data-theme="dark"] .recruit-footer { background: #131d2b; }
