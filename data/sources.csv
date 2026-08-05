@@ -101,3 +101,12 @@ edinet-s100yeop,statutory_filing,有価証券報告書－第103期(2025/04/01－
 edinet-s100yk9n,statutory_filing,有価証券報告書－第85期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YK9N,S100YK9N,2026-06-25,2026-08-02,株式会社ＳＣＲＥＥＮホールディングス
 edinet-s100yj18,statutory_filing,有価証券報告書－第8期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YJ18,S100YJ18,2026-06-24,2026-08-02,キオクシアホールディングス株式会社
 edinet-s100yhu5,statutory_filing,有価証券報告書－第85期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YHU5,S100YHU5,2026-06-23,2026-08-02,太陽誘電株式会社
+tokyo-electron-official-securities-library,financial_report,有価証券報告書等（公式IR資料室）,https://www.tel.co.jp/ir/library/fs/index.html,,2026-06-19,2026-08-02,東京エレクトロン株式会社
+advantest-official-securities-library,financial_report,有価証券報告書等（公式IRライブラリ）,https://www.advantest.com/ja/investors/ir-library/report/,,2026-08-02,2026-08-02,株式会社アドバンテスト
+disco-official-ir-library,financial_report,IR資料室（公式IR）,https://www.disco.co.jp/ir/,,2026-08-02,2026-08-02,株式会社ディスコ
+lasertec-official-securities-library,financial_report,有価証券報告書等（公式IR資料室）,https://www.lasertec.co.jp/ir/data/securities.html,,2026-08-02,2026-08-02,レーザーテック株式会社
+shin-etsu-official-annual-reports,financial_report,統合報告書・アニュアルレポート（公式IR資料室）,https://www.shinetsu.co.jp/jp/ir/ir-data/ir-annual/,,2026-07-01,2026-08-02,信越化学工業株式会社
+sumco-official-securities-library,financial_report,有価証券報告書（公式IRライブラリ）,https://www.sumcosi.com/ir/library/secreports.html,,2026-08-02,2026-08-02,株式会社ＳＵＭＣＯ
+resonac-official-securities-library,financial_report,有価証券報告書（公式IRライブラリ）,https://www.resonac.com/jp/ir/library/financial.html,,2026-03-25,2026-08-02,株式会社レゾナック・ホールディングス
+agc-official-securities-library,financial_report,有価証券報告書（公式IRライブラリ）,https://www.agc.com/ir/library/yu_report/index.html,,2026-03-27,2026-08-02,ＡＧＣ株式会社
+stella-chemifa-official-securities-library,financial_report,有価証券報告書（公式IRライブラリ）,https://www.stella-chemifa.co.jp/ir/securities/,,2026-06-26,2026-08-02,ステラケミファ株式会社
