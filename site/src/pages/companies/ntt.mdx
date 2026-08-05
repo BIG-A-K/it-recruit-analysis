@@ -82,12 +82,6 @@ import CompanySources from "../../components/company/CompanySources.astro";
 - 休日休暇：完全週休2日制、祝日、GW、夏季・年末年始休暇、有給年次休暇(年間20日)、特別休暇、ライフプラン休暇
 - 福利厚生：カフェテリアプラン(宿泊・アミューズメント・健康増進・財産形成・育児介護・住宅関連等)
 
-</CompanyProse>
-
-<BusinessSegments companyId={frontmatter.companyId} />
-
-<CompanyProse>
-
 ## グループ事業の具体例
 
 | セグメント | 事業内容 | 主な連結子会社 |
@@ -100,6 +94,8 @@ import CompanySources from "../../components/company/CompanySources.astro";
 有報の沿革によると、NTTデータ(エヌ・ティ・ティ・データ通信株式会社)は1995年4月に東京証券取引所へ上場し、2025年9月に上場廃止となっている。
 
 </CompanyProse>
+
+<BusinessSegments companyId={frontmatter.companyId} />
 
 <HealthMetrics companyId={frontmatter.companyId} />
 

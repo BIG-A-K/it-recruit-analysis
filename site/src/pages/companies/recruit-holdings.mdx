@@ -96,12 +96,6 @@ import CompanySources from "../../components/company/CompanySources.astro";
 | 顧客接点職 | 営業、コンサルタント、キャリアアドバイザー、渉外など |
 | コーポレート職 | 経営企画、ファイナンス、リスクマネジメント、人事、総務、広報 |
 
-</CompanyProse>
-
-<BusinessSegments companyId={frontmatter.companyId} />
-
-<CompanyProse>
-
 ## 主なサービス例
 
 ### HRテクノロジー事業
@@ -143,6 +137,8 @@ AIを利用したマッチング、成果報酬またはサブスクリプショ
 日本、欧州、米国、豪州で、事務職、製造・軽作業、各種専門職などの人材派遣サービスを提供しています。
 
 </CompanyProse>
+
+<BusinessSegments companyId={frontmatter.companyId} />
 
 <HealthMetrics companyId={frontmatter.companyId} />
 

@@ -75,12 +75,6 @@ import CompanySources from "../../components/company/CompanySources.astro";
 昇給は年1回、賞与は3月・9月の年2回、試用期間3ヶ月。
 個々のオファー年収はスキルに応じて個別に決まるため、上記は公開されている一例である。
 
-</CompanyProse>
-
-<BusinessSegments companyId={frontmatter.companyId} />
-
-<CompanyProse>
-
 ## サービスの具体例
 
 - **Marketplace**
@@ -96,6 +90,8 @@ import CompanySources from "../../components/company/CompanySources.astro";
 連結財政状態計算書上、資産として認識していない（対応する負債も認識していない）。
 
 </CompanyProse>
+
+<BusinessSegments companyId={frontmatter.companyId} />
 
 <HealthMetrics companyId={frontmatter.companyId} />
 
