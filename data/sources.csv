@@ -227,3 +227,13 @@ edinet-s100tq5c,statutory_filing,有価証券報告書－第124期(2023/04/01－
 edinet-s100tnes,statutory_filing,訂正有価証券報告書－第185期(2022/04/01－2023/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TNES,S100TNES,2024-06-21,2026-08-05,日本電気株式会社
 edinet-s100tnfd,statutory_filing,有価証券報告書－第186期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TNFD,S100TNFD,2024-06-21,2026-08-05,日本電気株式会社
 edinet-s100vxgz,statutory_filing,有価証券報告書－第41期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VXGZ,S100VXGZ,2025-06-13,2026-08-05,ＫＤＤＩ株式会社
+dmm-official-figures,corporate,数字で見るDMM｜DMM Group,https://dmm-corp.com/figures/,,,2026-08-05,合同会社DMM.com
+edinet-s100xstu,statutory_filing,有価証券報告書－第101期(2025/01/01－2025/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100XSTU,S100XSTU,2026-03-24,2026-08-05,ＡＧＣ株式会社
+edinet-s100xrr5,statutory_filing,有価証券報告書－第27期(2025/01/01－2025/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100XRR5,S100XRR5,2026-03-26,2026-08-05,株式会社ＳＵＭＣＯ
+edinet-s100yahe,statutory_filing,有価証券報告書－第57期(2025/03/21－2026/03/20),https://api.edinet-fsa.go.jp/api/v2/documents/S100YAHE,S100YAHE,2026-06-15,2026-08-05,株式会社キーエンス
+edinet-s100y8ny,statutory_filing,有価証券報告書－第122期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100Y8NY,S100Y8NY,2026-06-10,2026-08-05,トヨタ自動車株式会社
+edinet-s100yc6i,statutory_filing,有価証券報告書－第87期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YC6I,S100YC6I,2026-06-16,2026-08-05,株式会社ディスコ
+edinet-s100ye2c,statutory_filing,有価証券報告書－第109期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YE2C,S100YE2C,2026-06-18,2026-08-05,ソニーグループ株式会社
+edinet-s100yeta,statutory_filing,有価証券報告書－第119期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YETA,S100YETA,2026-06-19,2026-08-05,パナソニックホールディングス株式会社
+edinet-s100yeoo,statutory_filing,有価証券報告書－第63期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YEOO,S100YEOO,2026-06-22,2026-08-05,東京エレクトロン株式会社
+edinet-s100ykta,statutory_filing,有価証券報告書－第84期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YKTA,S100YKTA,2026-06-26,2026-08-05,株式会社アドバンテスト
