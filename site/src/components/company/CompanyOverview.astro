@@ -1,7 +1,6 @@
 ---
 import {
   allCompanies,
-  companies,
   companyIndustries,
   companyRelations,
   industries,
@@ -14,7 +13,7 @@ interface Props {
 }
 
 const { companyId } = Astro.props;
-const company = companies.find((item) => item.company_id === companyId);
+const company = allCompanies.find((item) => item.company_id === companyId);
 if (!company) throw new Error(`企業が見つかりません: ${companyId}`);
 
 const relation = companyIndustries.find((item) => item.company_id === companyId);
