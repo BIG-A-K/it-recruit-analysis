@@ -25,7 +25,6 @@ data/
 ├── company_relations.csv
 ├── metrics.csv
 ├── segments.csv
-├── recruitment.csv
 ├── sources.csv
 └── raw/
     ├── edinet/
@@ -50,7 +49,6 @@ data/
 | `company_relations.csv` | 持株会社、事業会社、関連会社などの関係 | `from_company_id, to_company_id, relation_type, valid_from` |
 | `metrics.csv` | 給与、人的情報、財務指標の年度別データ | `company_id, metric_key, fiscal_year, scope` |
 | `segments.csv` | 事業セグメントの年度別実績 | `company_id, fiscal_year, segment_id` |
-| `recruitment.csv` | 採用職種、勤務地、初任給など | `company_id, recruitment_year, fact_key, item_id` |
 | `sources.csv` | EDINET、公式IR、採用サイトなどの出典 | `source_id` |
 
 ## 共通ルール

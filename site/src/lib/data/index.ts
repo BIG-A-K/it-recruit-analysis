@@ -70,19 +70,6 @@ export type Segment = {
   note: string;
 };
 
-export type Recruitment = {
-  company_id: string;
-  recruitment_year: string;
-  fact_key: string;
-  item_id: string;
-  value: string;
-  unit: string;
-  scope: string;
-  availability: string;
-  source_id: string;
-  note: string;
-};
-
 export type CompanyProfile = {
   company_id: string;
   overview: string;
@@ -95,12 +82,6 @@ export type CompanyProfile = {
   updated_at: string;
 };
 
-export type CompanyMessage = {
-  company_id: string;
-  message: string;
-  source_label: string;
-};
-
 export type CompanyAnnotation = {
   annotation_id: string;
   company_id: string;
@@ -111,12 +92,6 @@ export type CompanyAnnotation = {
   text: string;
   source_id: string;
   updated_at: string;
-};
-
-export type SegmentDescription = {
-  company_id: string;
-  segment_id: string;
-  description: string;
 };
 
 export type Source = {
@@ -215,23 +190,8 @@ export const companyIndustries =
 export const companyRelations =
   loadCsv<CompanyRelation>("company_relations.csv");
 export const metrics = withNetCashFlow(loadCsv<Metric>("metrics.csv"));
-export const segmentDescriptions = loadCsv<SegmentDescription>(
-  "segment_descriptions.csv",
-);
-export const segments = loadCsv<Segment>("segments.csv").map((segment) => ({
-  ...segment,
-  description:
-    segment.description ||
-    segmentDescriptions.find(
-      (item) =>
-        item.company_id === segment.company_id &&
-        item.segment_id === segment.segment_id,
-    )?.description ||
-    "",
-}));
-export const recruitment = loadCsv<Recruitment>("recruitment.csv");
+export const segments = loadCsv<Segment>("segments.csv");
 export const companyProfiles = loadCsv<CompanyProfile>("company_profiles.csv");
-export const companyMessages = loadCsv<CompanyMessage>("company_messages.csv");
 export const companyAnnotations = loadCsv<CompanyAnnotation>(
   "company_annotations.csv",
 );
@@ -262,12 +222,6 @@ export function profileForCompany(
   companyId: string,
 ): CompanyProfile | undefined {
   return companyProfiles.find((profile) => profile.company_id === companyId);
-}
-
-export function messageForCompany(
-  companyId: string,
-): CompanyMessage | undefined {
-  return companyMessages.find((message) => message.company_id === companyId);
 }
 
 const metricGroups: Record<string, string[]> = {

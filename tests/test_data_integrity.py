@@ -117,17 +117,6 @@ def test_company_profile_integrity() -> None:
         assert row["updated_at"]
 
 
-def test_company_message_integrity() -> None:
-    companies = {row["company_id"] for row in read_rows("companies.csv")}
-    rows = read_rows("company_messages.csv")
-
-    assert_unique(rows, ("company_id",))
-    for row in rows:
-        assert row["company_id"] in companies
-        assert row["message"]
-        assert row["source_label"]
-
-
 def test_company_annotation_integrity() -> None:
     companies = {row["company_id"] for row in read_rows("companies.csv")}
     sources = {row["source_id"] for row in read_rows("sources.csv")}
@@ -152,21 +141,6 @@ def test_company_annotation_integrity() -> None:
         if row["source_id"]:
             assert row["source_id"] in sources
         assert row["updated_at"]
-
-
-def test_segment_description_integrity() -> None:
-    companies = {row["company_id"] for row in read_rows("companies.csv")}
-    segment_keys = {
-        (row["company_id"], row["segment_id"])
-        for row in read_rows("segments.csv")
-    }
-    rows = read_rows("segment_descriptions.csv")
-
-    assert_unique(rows, ("company_id", "segment_id"))
-    for row in rows:
-        assert row["company_id"] in companies
-        assert (row["company_id"], row["segment_id"]) in segment_keys
-        assert row["description"]
 
 
 def test_initial_companies_have_comparison_data() -> None:
@@ -266,8 +240,6 @@ def test_company_articles_have_common_content_sections() -> None:
         assert f"<CompanyOverview companyId={{frontmatter.companyId}} />" in page
         assert "<CompanyProse>" in page
         assert "<CompanySources " in page
-        assert "CompanyMessage" not in page
-        assert "RecruitmentInfo" not in page
         assert recruitment_url.search(page), company_id
         assert confirmation_date.search(page), company_id
 

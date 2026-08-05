@@ -37,7 +37,7 @@ description: 企業のIR情報を法定開示から収集してCSVへ、理念�
 | IR数値への比較上の注記 | `company_annotations.csv` |
 | 理念・会社紹介・採用情報・サービス・関連企業 | `site/src/pages/companies/<company_id>.mdx` |
 
-`company_profiles.csv` / `company_messages.csv` / `recruitment.csv` / `segment_descriptions.csv` は**レガシー**。読むだけで、行を追加・更新・削除しない。
+`company_profiles.csv` は**レガシー**。読むだけで、行を追加・更新・削除しない。
 
 ### 原則2: 既存CLIを優先し、失敗時だけクロールする
 
@@ -259,7 +259,7 @@ npm --prefix site run build
 - IRの欠損値はスキーマの `availability` で表す。数値列へ説明文字列を入れない。
 - 評価・応募判断・投資判断をCSVへ保存しない。
 - 企業・業界・IR出典を削除しない。削除やID変更が必要ならユーザーへ確認する。
-- 新しいMDXへ `CompanyMessage` / `RecruitmentInfo` / `FinancialData` を追加しない（レガシー互換用）。
+- 新しいMDXへ `FinancialData` を追加しない（レガシー互換用）。`FinancialHistory` と `MetricTrends` を並べる。
 - 既存ページを更新するとき、ユーザーが移行を求めない限りページ全体を機械的に書き換えない。
 - `yukijya_doh/src/content/recruit/` へ同じ記事を同時生成しない。
 

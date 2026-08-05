@@ -175,39 +175,6 @@ CSVには物理的な型がないため、本書では各列の論理型を次�
 
 セグメントは企業が開示した区分を保持し、サイト独自の判断で統合しない。`segment_profit` を営業利益と決めつけず、必ず `profit_measure` に資料上の定義を記録する。
 
-## `recruitment.csv`
-
-採用職種、勤務地、初任給、労働条件などを募集年度別の縦持ち形式で管理する。
-
-主キー: `company_id, recruitment_year, fact_key, item_id`
-
-| 列 | 型 | 必須 | 定義 |
-| --- | --- | --- | --- |
-| `company_id` | `id` | 必須 | `companies.csv.company_id` への参照 |
-| `recruitment_year` | `year` | 必須 | 入社または募集の対象年度 |
-| `fact_key` | `string` | 必須 | 採用項目の種類 |
-| `item_id` | `id` | 必須 | 同じ項目に複数値がある場合の識別子 |
-| `value` | `string` または `decimal` | 条件付き | 項目の値。`reported` の場合は必須 |
-| `unit` | `string` | 条件付き | `JPY_per_month`、`hours_per_month`、`percent` など |
-| `scope` | `enum` または `id` | 必須 | 募集全体、職種、勤務地、採用主体などの対象範囲 |
-| `availability` | `enum` | 必須 | 共通の `availability` に従う |
-| `source_id` | `id` | 条件付き | `sources.csv.source_id` への参照 |
-| `note` | `string` | 任意 | 適用条件や補足 |
-
-### 初期の `fact_key`
-
-| 値 | 定義 |
-| --- | --- |
-| `job_title` | 募集職種名 |
-| `job_description` | 職種・業務内容 |
-| `work_location` | 勤務地 |
-| `starting_salary` | 初任給 |
-| `overtime_hours` | 月平均残業時間 |
-| `paid_leave_usage` | 有給休暇取得状況 |
-| `parental_leave_rate` | 育児休業取得率 |
-
-募集年度と財務年度は別の概念として扱い、`recruitment_year` を `metrics.csv.fiscal_year` と直接結合しない。
-
 ## `company_profiles.csv`
 
 企業詳細ページの定型セクションで使用する会社概要と採用情報を管理する。
@@ -226,18 +193,6 @@ CSVには物理的な型がないため、本書では各列の論理型を次�
 | `compensation` | `string` | 必須 | 公式募集要項で確認した初任給・待遇の要約 |
 | `employment_note` | `string` | 必須 | 開示主体と採用主体など比較上の注意 |
 | `updated_at` | `date` | 必須 | 内容を確認した日 |
-
-## `company_messages.csv`
-
-企業詳細の基本情報に掲載する理念・ミッション・企業メッセージを管理する。
-
-主キー: `company_id`
-
-| 列 | 型 | 必須 | 定義 |
-| --- | --- | --- | --- |
-| `company_id` | `id` | 必須 | `companies.csv.company_id` への参照 |
-| `message` | `string` | 必須 | 企業が掲げる理念・ミッションなどの本文 |
-| `source_label` | `string` | 必須 | `企業理念`、`ミッション`、`企業メッセージ` などの区分 |
 
 ## `company_annotations.csv`
 
@@ -261,18 +216,6 @@ CSVには物理的な型がないため、本書では各列の論理型を次�
 初期の `metric_group` は、`net_cf`、`operating_cf`、`investing_cf`、
 `financing_cf` をまとめた `cash_flow` とする。複数の指標に同じ注記を重複して
 登録せず、意味のあるグループを追加して対応する。
-
-## `segment_descriptions.csv`
-
-年度によらず共通して使用できるセグメントの事業説明を管理する。名称・数値・年度は `segments.csv` を正本とする。
-
-主キー: `company_id, segment_id`
-
-| 列 | 型 | 必須 | 定義 |
-| --- | --- | --- | --- |
-| `company_id` | `id` | 必須 | `companies.csv.company_id` への参照 |
-| `segment_id` | `id` | 必須 | `segments.csv` と対応する企業内セグメントID |
-| `description` | `string` | 必須 | 主な製品・サービスを説明する文章 |
 
 ## `sources.csv`
 
