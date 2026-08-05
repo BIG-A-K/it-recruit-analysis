@@ -150,9 +150,12 @@ const dataDirectory = new URL("../../../../data/", import.meta.url);
 
 function loadCsv<T>(filename: string): T[] {
   const path = fileURLToPath(new URL(filename, dataDirectory));
-  const csv = readFileSync(path, "utf-8");
+  // CRLF と LF が混在すると Papa Parse の改行コード自動判定が外れて行が連結されるため、LF に正規化する
+  const csv = readFileSync(path, "utf-8").replace(/\r\n?/g, "\n");
   const result = Papa.parse<T>(csv, {
     header: true,
+    delimiter: ",",
+    newline: "\n",
     skipEmptyLines: true,
   });
 
