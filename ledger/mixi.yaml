@@ -1,0 +1,153 @@
+company_id: mixi
+disclosure_company_id: mixi
+company_boundary:
+  adoption_company_id: mixi
+  disclosure_company_id: mixi
+  reporting_segment_company_id: mixi
+  legal_name: 株式会社ＭＩＸＩ
+  securities_code: "2121"
+  edinet_code: E05617
+  fiscal_year_end: 3月末日
+  accounting_standard: JGAAP
+  currency: JPY
+  reporting_segments: ライブ配信・スポーツ・ライブコマース等（セグメント再編歴あり）
+  company_relations: []
+  note: 旧株式会社ミクシィ→2014年に持株会社化、2018年に商号変更。採用主体と開示主体は同一
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-05
+updated_at: 2026-08-05
+phases:
+  ir: in_progress
+  recruit: done
+  segments: done
+  article: pending
+  verify: pending
+items:
+  - {id: ir-human-capital, phase: ir, store: ir_csv, topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: ir-revenue, phase: ir, store: ir_csv, topic: 売上高 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-operating-profit, phase: ir, store: ir_csv, topic: 営業利益 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-health, phase: ir, store: ir_csv, topic: 自己資本比率・流動資産・流動負債・当座資産, status: pending, value: "", subject: 連結, as_of: "", unit: percent・JPY, source: "", via: "", note: 当座資産の算定内訳をnoteへ}
+  - {id: ir-cash-flow, phase: ir, store: ir_csv, topic: 営業・投資・財務キャッシュフロー 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-segments, phase: ir, store: ir_csv, topic: 各報告セグメントの年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: "セグメント再編歴あり。workerが直近3期の区分を確定"}
+  - {id: ir-disclosure-notes, phase: ir, store: ir_csv, topic: セグメント再編・比較上の注記, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: 採用主体は株式会社MIXI。現行の新卒掲載は法務スペシャリスト（27卒）で、2026年10月または2027年4月入社可。公式採用 https://mixigroup-recruit.mixi.co.jp/
+    subject: 株式会社MIXI・新卒採用
+    as_of: 2026-08-05
+    unit: ""
+    source: https://mixigroup-recruit.mixi.co.jp/; https://mixigroup-recruit.mixi.co.jp/privacy/
+    via: 公式採用トップ・個人情報ページ・現行求人を確認
+    note: ""
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: 現行掲載は法務スペシャリスト（新卒・27卒）1件。契約法務、M&A・海外投資・AI・個人情報・知財相談、組織横断の法的スキーム構築。学歴不問、既卒・第二新卒・国外留学生可、法科大学院修了・弁護士資格等歓迎。エントリー→ES→複数回面接→内定。勤務地は渋谷本社。配属によりグループ会社支援・出向の可能性あり
+    subject: 法務スペシャリスト（新卒・27卒）
+    as_of: 2026-08-05
+    unit: ""
+    source: https://mixigroup-recruit.mixi.co.jp/recruitment-category/13815/; https://mixigroup-recruit.mixi.co.jp/faq/?anchor=fresh
+    via: 公式職種ページ・FAQを確認
+    note: 「管理系ジェネラリスト」は取消線で現行募集に含めない
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
+    status: done
+    value: 一律初任給ではなくスキル・バリューに応じて個別の月収オファー。月給制で固定残業代40時間分とライフプラン手当を含む。年2回賞与、40時間超・深夜・休日分は追加支給。基礎給、固定時間外手当額、賞与額、標準年収は職種ページ非開示。新卒住宅手当は入社後3年間、渋谷オフィス5km圏内で月30,000円。転居補助、カフェテリア年240,000ポイントあり。FAQの初任給30万円〜は個別オファーと併記
+    subject: 法務スペシャリストおよび新卒共通制度
+    as_of: 2026-08-05
+    unit: JPY/month・year
+    source: https://mixigroup-recruit.mixi.co.jp/recruitment-category/13815/; https://mixigroup-recruit.mixi.co.jp/faq/?anchor=fresh; https://mixigroup-recruit.mixi.co.jp/life/welfare/
+    via: 公式職種ページ・FAQ・福利厚生ページを確認
+    note: ライフプラン手当は資産形成目的
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: 所定労働10:00-19:00、休憩1時間、フレックス（5:00-22:00、コアなし）。完全週休2日・年間休日123日。勤務地は渋谷本社、会社規程に基づきリモート。マーブルワークスタイルでは部署・事業フェーズによりフルリモートや出社回数を選択、日本全国居住可、通勤費月15万円まで。現時点で転勤可能性なし。通年採用で基本締切なし、入社時期は2026年10月/2027年4月
+    subject: 法務スペシャリストおよび新卒共通条件
+    as_of: 2026-08-05
+    unit: ""
+    source: https://mixigroup-recruit.mixi.co.jp/recruitment-category/13815/; https://mixigroup-recruit.mixi.co.jp/faq/?anchor=fresh; https://mixigroup-recruit.mixi.co.jp/life/workstyle/
+    via: 公式職種ページ・FAQ・働き方ページを確認
+    note: リモート可否と出社頻度は部署・事業フェーズに依存
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的サービス名・ブランド名・提供内容・運営法人
+    status: done
+    value: スポーツ（TIPSTAR=株式会社MIXI、チャリロト.com=株式会社チャリ・ロト、netkeiba/netkeirin=ネットドリーマーズ、千葉ジェッツ、FC東京、LaLa arena、PointsBet）。ライフスタイル（mixi/mixi2、みてね、minimo、Romi、OKURU、Lovegraph）。デジタルエンターテインメント（モンスターストライク、コトダマン、モンソニ、ゲーム・イベント・映像・マーチャンダイジング）。投資・その他は公式サイトカテゴリであり現行IRの独立報告セグメントではない
+    subject: 株式会社MIXI連結の現行報告セグメント
+    as_of: 2026-08-05（FY2026）
+    unit: ""
+    source: edinet-s100ye1d; https://mixi.co.jp/ir/individual/plan/; https://mixi.co.jp/business/; https://mixi.co.jp/company/group/
+    via: 公式サービス・グループ・IR・有報を確認
+    note: 財務数値はsegments.csvが正本
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイト事業区分とIR報告セグメントの対応と差異
+    status: done
+    value: 公式ナビはスポーツ／ライフスタイル／デジタルエンターテインメント／投資／その他の5カテゴリ、IRはスポーツ／ライフスタイル／デジタルエンターテインメントの3区分。前3者は名称上おおむね対応するが、公式はサービス分類、IRは事業管理単位で完全1対1ではない。投資・その他を3報告セグメントへ独自配賦しない
+    subject: 公式サイト事業カテゴリと連結IR報告セグメント
+    as_of: 2026-08-05
+    unit: ""
+    source: https://mixi.co.jp/business/; https://mixi.co.jp/company/profile/; https://mixi.co.jp/ir/individual/plan/; https://invest.mixi.co.jp/
+    via: 公式事業・会社概要・投資・IRを横断確認
+    note: セグメント再編と区分差異を保持
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 主なグループ会社はチャリ・ロト（競輪・オートレース）、千葉ジェッツふなばし、ネットドリーマーズ（netkeiba等）、東京フットボールクラブ（FC東京）、TOKYO-BAYアリーナマネジメント、PointsBet Holdings、スフィダンテ（フォトギフト）、ラブグラフ（出張撮影）、picon（対話型AI）、アイ・マーキュリーキャピタル、mixi America、MIXI Global Investments、MIXI EMPOWERMENT。外部親会社は公式一覧で確認できない
+    subject: MIXI GROUPの主なグループ会社
+    as_of: 2026-08-05
+    unit: ""
+    source: https://mixi.co.jp/company/group/; https://mixi.co.jp/ir/individual/plan/
+    via: 公式グループ会社・IRを確認
+    note: 持株比率・連結区分は有報を正本とし、一覧から推定していない
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: タグライン「心もつなごう。」、パーパス「豊かなコミュニケーションを広げ、世界を幸せな驚きで包む。」、ミッション「『心もつながる』場と機会の創造。」、MIXI WAY「ユーザーサプライズファースト」、バリュー「発明」「夢中」「誠実」
+    subject: 株式会社MIXI
+    as_of: 2026-08-05
+    unit: ""
+    source: https://mixi.co.jp/about/; https://mixigroup-recruit.mixi.co.jp/about/philosophy/
+    via: 公式理念・採用価値観ページを確認
+    note: 公式表記を保持
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: done
+    value: 1999年6月3日設立。前身はFind Job!運営の有限会社イー・マーキュリー、2004年SNS mixi開始、2006年株式会社ミクシィへ商号変更・マザーズ上場。2013年モンスターストライク、2019年チャリ・ロト等子会社化、2022年プライム移行、同年10月株式会社MIXIへ商号変更、2024年mixi2、2025年PointsBet子会社化。本社は東京都渋谷区渋谷スクランブルスクエア36階、連結正社員2,116名（2026年3月末）
+    subject: 株式会社MIXI
+    as_of: 2026-03-31（規模）・2026-08-05（確認）
+    unit: ""
+    source: https://mixi.co.jp/company/profile/; https://mixi.co.jp/company/history/; https://mixi.co.jp/ir/individual/history/
+    via: 公式会社概要・沿革・IR沿革を確認
+    note: 財務数値はmetrics.csvが正本
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
+    status: done
+    value: HP https://mixi.co.jp/、IR https://mixi.co.jp/ir/、有報一覧 https://mixi.co.jp/ir/docs/security_reports/、FY2026有報PDF https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YE1D.pdf、採用 https://mixigroup-recruit.mixi.co.jp/、新卒一覧 https://mixigroup-recruit.mixi.co.jp/jobs/?cats=new-graduate
+    subject: 株式会社MIXI
+    as_of: 2026-08-05
+    unit: ""
+    source: https://mixi.co.jp/; https://mixi.co.jp/ir/docs/security_reports/; https://mixigroup-recruit.mixi.co.jp/
+    via: 公式コーポレート・IR・採用サイトを確認
+    note: 有報PDFは公式IR一覧とEDINET提出文書を併記

@@ -1,0 +1,156 @@
+company_id: gmo-internet
+disclosure_company_id: gmo-internet
+company_boundary:
+  adoption_company_id: gmo-internet
+  disclosure_company_id: gmo-internet
+  reporting_segment_company_id: gmo-internet
+  legal_name: ＧＭＯインターネットグループ株式会社
+  securities_code: "9449"
+  edinet_code: E05041
+  fiscal_year_end: 12月末日
+  accounting_standard: JGAAP
+  currency: JPY
+  reporting_segments: インターネットインフラ, インターネットセキュリティ, インターネット広告・メディア, インターネット金融, 暗号資産, インキュベーション
+  company_relations: []
+  note: 採用主体と開示主体は同一。GMOペイパスト・GMOコイン等の金融子会社を多数擁する
+fiscal_year: 2025
+focus: 両方
+created_at: 2026-08-05
+updated_at: 2026-08-05
+phases:
+  ir: in_progress
+  recruit: done
+  segments: done
+  article: pending
+  verify: pending
+items:
+  - {id: ir-human-capital, phase: ir, store: ir_csv, topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: ir-revenue, phase: ir, store: ir_csv, topic: 売上高 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-operating-profit, phase: ir, store: ir_csv, topic: 営業利益 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-health, phase: ir, store: ir_csv, topic: 自己資本比率・流動資産・流動負債・当座資産, status: pending, value: "", subject: 連結, as_of: "", unit: percent・JPY, source: "", via: "", note: 当座資産の算定内訳をnoteへ}
+  - {id: ir-cash-flow, phase: ir, store: ir_csv, topic: 営業・投資・財務キャッシュフロー 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-segment-infrastructure, phase: ir, store: ir_csv, topic: インターネットインフラ事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-segment-advertising-media, phase: ir, store: ir_csv, topic: インターネット広告・メディア事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-segment-finance, phase: ir, store: ir_csv, topic: インターネット金融事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: "金融事業は証券・金融・暗号資産の集計区分"}
+  - {id: ir-segment-incubation, phase: ir, store: ir_csv, topic: インキュベーション事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-disclosure-notes, phase: ir, store: ir_csv, topic: セグメント再編・比較上の注記, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: 採用主体はGMOインターネットグループ株式会社。27卒本選考と28卒以降早期選考を実施する「新卒年収710万プログラム」。入社は4月/9月（既卒は随時）。公式採用 https://recruit.group.gmo/、募集要項 https://recruit.group.gmo/710program/。確認日2026-08-05
+    subject: GMOインターネットグループ株式会社（持株会社本体）
+    as_of: 2026-08-05
+    unit: ""
+    source: https://recruit.group.gmo/; https://recruit.group.gmo/710program/
+    via: 公式新卒採用サイトと募集要項を確認
+    note: 2025年1月1日付で純粋持株会社体制へ移行。子会社別募集は別途存在し得るが本項は持株会社本体
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: ビジネス職（AI/ロボティクス・セキュリティ・採用・新規事業等、社長室配属確約）と研究開発職（グループ研究開発本部でAI等の横断研究、同本部配属確約）。学年・学科・専攻不問、留学生・外国籍も日本語力があれば応募可。ビジネス勤務地は東京渋谷、研究開発は東京渋谷または大阪梅田。28卒以降の選考はES→面接→AI活用ワーク/技術選考→最終面接。
+    subject: ビジネス職／研究開発職
+    as_of: 2026-08-05
+    unit: ""
+    source: https://recruit.group.gmo/710program/; https://recruit.group.gmo/faq/
+    via: 公式募集要項の職種タブとFAQを確認
+    note: グループ各社の個別募集は本項の対象外
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
+    status: done
+    value: ビジネス職・研究開発職共通で標準年収710万円、月給591,675円（基本給266,000円、固定時間外手当40時間相当140,875円、調整手当184,800円）。昇降給年4回、昇格・職務変更年1回。AIブースト支援金月2万円、交通費、書籍・ガジェット補助、持株会、確定給付/拠出年金、GMO施設等。賞与の回数・月数は公式募集要項に記載なし。
+    subject: ビジネス職・研究開発職共通
+    as_of: 2026-08-05
+    unit: JPY
+    source: https://recruit.group.gmo/710program/; https://recruit.group.gmo/welfare/
+    via: 公式募集要項・待遇福利厚生ページを確認
+    note: 賞与はnot_disclosed。年間報酬は月給と年4回の昇降給を中心に開示
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: 転勤は基本的になし、本人希望・キャリア形成でグループ内異動の可能性あり。リモートは育児・介護・病気等の在宅勤務制度（職種・配属先により異なる）、フルリモート常勤ではない。実働8時間、9-18/10-19/11-20から選択。完全週休2日・年間休日130日。応募期限は公式明示なし、マイページで随時受付。ビジネス勤務地は東京渋谷、研究開発は東京渋谷または大阪梅田。
+    subject: ビジネス職・研究開発職共通
+    as_of: 2026-08-05
+    unit: 時間・日
+    source: https://recruit.group.gmo/710program/; https://recruit.group.gmo/welfare/; https://recruit.group.gmo/faq/
+    via: 公式募集要項・待遇・FAQを確認
+    note: 応募期限はnot_disclosed。27卒本選考と28卒以降早期選考を並行
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的サービス名・ブランド名・提供内容・運営法人
+    status: done
+    value: インターネットインフラ（ドメイン、お名前.com、ConoHa、ロリポップ、EC支援、決済、GMOとくとくBB等）。インターネットセキュリティ（SSL、GMOサイン、脆弱性診断、Takumi、Shisho Cloud、ブランドセキュリティ）。広告・メディア（広告代理、アドテク、アフィリエイト、GMOメディア、GMO TECH、ポイントタウン、コエテコ等）。金融（GMOクリック証券、GMO外貨、GMOあおぞらネット銀行等）。暗号資産（GMOコイン、GYEN/ZUSD、Adam byGMO）。インキュベーション（GMO VenturePartners、GMO AI & Crypto）
+    subject: GMOインターネットグループ連結グループ
+    as_of: 2025-12-31有報・2026-08-05公式ページ確認
+    unit: ""
+    source: S100XSG3; https://group.gmo/company-profile/business/; https://group.gmo/service/list/
+    via: 有報の事業内容と公式事業・サービス一覧を突合
+    note: 数値はIR CSVに記録し、この行はサービス・運営法人のみ
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイト事業区分とIR報告セグメントの対応と差異
+    status: done
+    value: 公式サイトはインターネットインフラ／インターネットセキュリティ／インターネット広告・メディア／インターネット金融／暗号資産／その他の6分類。2025年12月期有報の報告セグメントもインターネットインフラ、インターネットセキュリティ、インターネット広告・メディア、インターネット金融、暗号資産、インキュベーションの6区分。前5区分は直接対応するが、公式「その他」とIRのインキュベーションは同義ではなく、有報の報告セグメント外のその他事業もある。セキュリティは2025年度から独立
+    subject: 公式事業分類と2025年12月期法定セグメント
+    as_of: 2025-12-31有報・2026-06戦略ページ・2026-08-05確認
+    unit: ""
+    source: S100XSG3; https://ir.group.gmo/management-policy/strategy/; https://group.gmo/company-profile/business/
+    via: 有報、IR戦略、公式事業分類を照合
+    note: 台帳の境界情報も6報告セグメントへ更新
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 最上位の持株会社はGMOインターネットグループ株式会社。主な会社はGMOインターネット、GMOペイメントゲートウェイ、GMOフィナンシャルゲート、GMOペパボ、GMOグローバルサインHD、GMOサイバーセキュリティ byイエラエ、GMO Flatt Security、GMOブランドセキュリティ、GMOメディア、GMO TECH、GMO NIKKO、GMOリサーチ&AI、GMOフィナンシャルHD、GMOクリック証券、GMO外貨、GMOコイン、GMOアダム、GMO VenturePartners等。GMOあおぞらネット銀行は公式掲載のサービス提供会社として扱い、連結子会社とは断定しない
+    subject: GMOインターネットグループと主な会社
+    as_of: 2025-12-31有報・2026-08-05確認
+    unit: ""
+    source: S100XSG3; https://group.gmo/company-profile/groupinfo/
+    via: 有報関係会社情報と公式グループ一覧を確認
+    note: 法的関係の網羅的CSV登録は統括writerの範囲
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: コーポレートキャッチ「すべての人にインターネット（Internet for Everyone）」。スピリットベンチャー宣言の夢は「インターネットの産業の中で圧倒的一番になる」、フィロソフィーは「インターネットを豊かに楽しくし、新たなインターネットの文化・産業とお客様の笑顔・感動を創造し、社会と人々に貢献する」。セキュリティ領域の使命として「すべての人に安心な未来を」も掲げる
+    subject: GMOインターネットグループ株式会社
+    as_of: 2026-08-05
+    unit: ""
+    source: https://group.gmo/brand/; https://group.gmo/company-profile/top-message/; https://ir.group.gmo/management-policy/strategy/
+    via: 公式ブランド・トップメッセージ・IR戦略を確認
+    note: 公式表記を優先
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: done
+    value: 1991年5月24日設立。1995年接続、1997年ホスティング、1999年ドメイン・メディア、2003年セキュリティ、2005年金融へ拡大。2025年1月に純粋持株会社に近い体制へ移行。公式トップメッセージはグループ153社、上場企業12社、約8,200人のパートナーと説明。本社・東証プライム上場は公式会社概要で確認
+    subject: GMOインターネットグループ株式会社
+    as_of: 2026-03トップメッセージ・2026-08-05確認
+    unit: ""
+    source: https://group.gmo/company-profile/outline/; https://group.gmo/company-profile/history/; https://group.gmo/company-profile/top-message/
+    via: 公式会社概要・沿革・トップメッセージを確認
+    note: 財務数値はmetrics.csvが正本
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
+    status: done
+    value: HP https://group.gmo/、IR https://ir.group.gmo/、有報一覧 https://ir.group.gmo/library/securities-report/、直近有報2025 https://ir.group.gmo/pdf/securities-report/gmo20260323_yuhou.pdf・2024 https://ir.group.gmo/pdf/securities-report/gmo20250324_yuhou.pdf・2023 https://ir.group.gmo/pdf/securities-report/gmo20240213_yuhou.pdf、採用/新卒 https://recruit.group.gmo/ と https://recruit.group.gmo/710program/
+    subject: GMOインターネットグループ株式会社
+    as_of: 2026-08-05
+    unit: URLs
+    source: https://group.gmo/; https://ir.group.gmo/library/securities-report/; https://recruit.group.gmo/
+    via: 公式コーポレート・IR・有報アーカイブ・採用サイトを確認
+    note: ""

@@ -1,0 +1,266 @@
+company_id: mercari
+disclosure_company_id: mercari
+company_boundary:
+  adoption_company_id: mercari
+  disclosure_company_id: mercari
+  reporting_segment_company_id: mercari
+  legal_name: 株式会社メルカリ
+  securities_code: "4385"
+  edinet_code: E34064
+  fiscal_year_end: 6月末日（第13期=2025年6月期）
+  accounting_standard: IFRS（第12期/FY2024から適用）
+  currency: JPY
+  reporting_segments: Japan Region, US
+  company_relations: []
+  note: 採用主体と開示主体は同一の株式会社メルカリ（東証プライム4385）。持株会社制ではなく メルカリ自身が上場事業会社。連結子会社（Mercari Inc./メルペイ/メルコイン/鹿島アントラーズ・エフ・シー/インド開発拠点）は記事へ記録するが、company_relations.csvへは公式資料で有効開始日を確認できた関係だけを登録する規則により今回の確認日スナップショットからは追加していない
+fiscal_year: 2025
+focus: 両方
+created_at: 2026-08-05
+updated_at: 2026-08-05
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csv の average_age・average_tenure・average_annual_salary（2023〜2025年度、各3行）と employee_count（2019〜2025年度、7行）
+    subject: 株式会社メルカリ（連結の従業員数、提出会社単体の平均年齢等）
+    as_of: 2023-06-30〜2025-06-30
+    unit: JPY・years・persons
+    source: edinet-s100wqdw; edinet-s100ueyz; edinet-s100rx8v
+    via: uv run --env-file .env edinet-fetch mercari --start 2025-07-03 --end 2026-08-05 --interval 0.1 および --start 2023-06-01 --end 2023-12-31 --interval 0.1
+    note: 平均年齢・勤続年数・給与は提出会社単体、従業員数は連結。第11期(S100RX8V)でFY2023のhuman capitalとFY2022の連結従業員数を補完
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上収益 3期以上
+    status: done
+    value: metrics.csv の revenue（2023〜2025年度、3行）
+    subject: 連結
+    as_of: 2023-06-30〜2025-06-30
+    unit: JPY
+    source: edinet-s100wqdw
+    via: uv run --env-file .env edinet-fetch mercari --start 2025-07-03 --end 2026-08-05 --interval 0.1
+    note: 第13期の3期比較情報からFY2023〜2025を取得
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csv の operating_profit（2023〜2025年度、3行）
+    subject: 連結
+    as_of: 2023-06-30〜2025-06-30
+    unit: JPY
+    source: edinet-s100wqdw; edinet-s100ueyz
+    via: uv run --env-file .env edinet-fetch mercari --start 2025-07-03 --end 2026-08-05 --interval 0.1
+    note: IFRSの営業利益。第12期・第13期の提出会社拡張要素 jpigp_cor:OperatingProfitLossIFRS
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csv の equity_ratio（2022〜2025年度）・current_assets・current_liabilities（各2022〜2025年度）・quick_assets（2024〜2025年度）
+    subject: 連結
+    as_of: 2022-06-30〜2025-06-30
+    unit: percent・JPY
+    source: edinet-s100wqdw; edinet-s100rx8v
+    via: edinet-fetch（第11期・第13期）。quick_assetsは連結財政状態計算書から現金同等物・営業債権・預け金・その他金融資産の合計として手動で算定
+    note: quick_assetsの算定内訳は現金同等物・営業債権・預け金・その他の金融資産。第11期でFY2022〜2023の流動資産・流動負債を補完
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csv の operating_cf・investing_cf・financing_cf（各2023〜2025年度、3行ずつ）
+    subject: 連結
+    as_of: 2023-06-30〜2025-06-30
+    unit: JPY
+    source: edinet-s100wqdw
+    via: uv run --env-file .env edinet-fetch mercari --start 2025-07-03 --end 2026-08-05 --interval 0.1
+    note: 営業CFは通年マイナス（金融資産取得のため）。company_annotations.csv で読者向け注記あり
+  - id: ir-segment-japan
+    phase: ir
+    store: ir_csv
+    topic: Japan Regionの年度別売上・利益
+    status: done
+    value: segments.csv の japan（2023〜2025年度、各1行）
+    subject: 連結報告セグメント
+    as_of: 2023-06-30〜2025-06-30
+    unit: JPY
+    source: edinet-s100wqdw
+    via: uv run --env-file .env edinet-fetch mercari --start 2025-07-03 --end 2026-08-05 --interval 0.1
+    note: 報告セグメント名は「Japan Region」。セグメント利益の定義は営業利益
+  - id: ir-segment-us
+    phase: ir
+    store: ir_csv
+    topic: USの年度別売上・利益
+    status: done
+    value: segments.csv の us（2023〜2025年度、各1行）
+    subject: 連結報告セグメント
+    as_of: 2023-06-30〜2025-06-30
+    unit: JPY
+    source: edinet-s100wqdw
+    via: uv run --env-file .env edinet-fetch mercari --start 2025-07-03 --end 2026-08-05 --interval 0.1
+    note: 報告セグメント名は「US」。米国事業はMercari, Inc.が運営。FY2024は赤字、FY2025は黒字転換
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 会計基準変更・比較上の注記
+    status: done
+    value: metrics.csvのaccounting_standard列とcompany_annotations.csvの営業CF注記。第12期(FY2024)からIFRSを適用
+    subject: 株式会社メルカリおよび連結グループ
+    as_of: 2024-06-30・2025-06-30
+    unit: ""
+    source: edinet-s100wqdw; edinet-s100ueyz
+    via: 第13期・第12期有価証券報告書の「セグメント情報」「重要な会計基準」
+    note: 第12期からIFRS適用。メルコインの暗号資産は支配権なしで資産・負債いずれも認識せず。営業CFがマイナスとなるのは金融事業の債権取得が主因
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページ
+    status: done
+    value: 株式会社メルカリ。2028年4月以降入社可能な16歳以上の学生を対象とする通年新卒採用。入社時期は4月・10月の年2回。メルペイ・メルコインへの出向も採用はメルカリと締結
+    subject: 株式会社メルカリ
+    as_of: 2026-08-05
+    unit: ""
+    source: https://careers.mercari.com/new-graduates/; https://careers.mercari.com/jp/students/
+    via: 公式新卒採用トップと募集要項を確認
+    note: 通年採用でインターン経由が主ルート。一律オファー額はなく経験・能力に応じて個別決定
+  - id: recruit-engineering
+    phase: recruit
+    store: mdx
+    topic: エンジニアリング職の仕事内容・応募資格・選考区分・勤務地・待遇
+    status: done
+    value: サーバーサイド・フロント・クライアント・データ・機械学習・インフラ・SRE・セキュリティ等のソフトウェアエンジニア職。新卒共通条件を適用。技術課題（コーディングテスト）あり
+    subject: エンジニアリング
+    as_of: 2026-08-05
+    unit: ""
+    source: https://careers.mercari.com/jobs/engineering/; https://careers.mercari.com/new-graduates/
+    via: 公式職種カテゴリと新卒募集要項を確認
+    note: 給与は職種別ではなく新卒共通。技術スタックは engineering.mercari.com/technology-stack/ で公開
+  - id: recruit-product-business
+    phase: recruit
+    store: mdx
+    topic: プロダクト・ビジネス職の仕事内容・応募資格・選考区分・勤務地・待遇
+    status: done
+    value: プロダクトマネージャー、データアナリスト、マーケティング、カスタマーサービス、ビジネスディベロップメント等。新卒共通条件を適用。書類選考→面接
+    subject: プロダクト・ビジネス
+    as_of: 2026-08-05
+    unit: ""
+    source: https://careers.mercari.com/jobs/business/; https://careers.mercari.com/new-graduates/
+    via: 公式職種カテゴリと新卒募集要項を確認
+    note: 給与は職種別ではなく新卒共通
+  - id: recruit-corporate
+    phase: recruit
+    store: mdx
+    topic: コーポレート職の仕事内容・応募資格・選考区分・勤務地・待遇
+    status: done
+    value: 財務・経理・法務・人事・広報・企画・オフィスマネジメント等の管理体制。新卒共通条件を適用。書類選考→面接
+    subject: コーポレート
+    as_of: 2026-08-05
+    unit: ""
+    source: https://careers.mercari.com/jobs/corporate/; https://careers.mercari.com/new-graduates/
+    via: 公式職種カテゴリと新卒募集要項を確認
+    note: 給与は職種別ではなく新卒共通
+  - id: recruit-common-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限・共通手当・初任給
+    status: done
+    value: 月給例300000円/月（基本給221965円+45時間分の固定残業代78035円）。昇給年1回、賞与3月・9月、試用期間3ヶ月。所定労働8時間・休憩1時間でフルフレックス（コアタイムなし）。就業場所は本社（東京都港区六本木6-10-1六本木ヒルズ森タワー）、ハイブリッドワークで週2日以上出社が基本。45時間超の時間外は別途支給。社会保険完備、mercibox・持株会等の福利厚生
+    subject: 新卒採用共通条件
+    as_of: 2026-08-05
+    unit: 円/月・時間
+    source: https://careers.mercari.com/new-graduates/
+    via: 公式新卒募集要項を確認
+    note: 一律オファー額はなく個別決定。再オファー制度（内定後のスキル向上で初任給UPの可能性）。国内拠点は東京・福岡・大阪だが新卒の就業場所は本社明記。海外転勤の明記なし
+  - id: segments-japan
+    phase: segments
+    store: mdx
+    topic: Japan Regionのサービス・ブランド・提供内容・運営法人
+    status: done
+    value: 日本のマーケットプレイス事業とフィンテック事業を含む。Marketplaceはフリマアプリ「メルカリ」（CtoC）と「メルカリShops」（BtoC）。Fintechはスマホ決済「メルペイ」と暗号資産取引「メルコイン」。このほかスポットワーク「メルカリ ハロ」、プロ品質保証リユース「m department」、データ専用eSIM「メルカリモバイル」等。運営は株式会社メルカリ、メルペイは株式会社メルペイ、メルコインは株式会社メルコイン
+    subject: Japan Region
+    as_of: 2026-08-05・2025-06-30
+    unit: ""
+    source: https://careers.mercari.com/services/; https://about.mercari.com/about/company/; edinet-s100wqdw
+    via: 公式サービス一覧・会社概要・第13期有価証券報告書を照合
+    note: 報告セグメント名は「Japan Region」。MarketplaceとFintechは公式の事業区分で、IRでは同一セグメントに含まれる
+  - id: segments-us
+    phase: segments
+    store: mdx
+    topic: USのサービス・ブランド・提供内容・運営法人
+    status: done
+    value: 米国のCtoCマーケットプレイス。運営法人はMercari, Inc.（米国、パロアルト）。2025年4月にミッションを「手軽に売ることができ、魅力的な商品に出会える、頼れるマーケットプレイスを創る」へ改訂
+    subject: US
+    as_of: 2026-08-05・2025-06-30
+    unit: ""
+    source: https://about.mercari.com/; https://www.mercari.com/about/; edinet-s100wqdw
+    via: 公式トップ・会社概要・第13期有価証券報告書を照合
+    note: 報告セグメント名は「US」。FY2024は赤字、FY2025は黒字転換
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式事業区分とIR報告セグメントの対応・差異
+    status: done
+    value: 公式のサービス区分は「Marketplace（日本）」「Fintech（日本）」「US」の3領域。法定開示の報告セグメントは「Japan Region」「US」の2区分。MarketplaceとFintechはIRでは地理区分のJapan Regionにまとめられ、事業種別ではなく地域別の区分として開示されている
+    subject: 株式会社メルカリ連結グループ
+    as_of: 2026-08-05・2025-06-30
+    unit: ""
+    source: https://careers.mercari.com/services/; edinet-s100wqdw
+    via: 公式サービス一覧と第13期有価証券報告書のセグメント情報を照合
+    note: 公式のMarketplace/Fintech区分をJapan Regionへ独自分離せず、対応関係の差異を維持
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 親会社なし（株式会社メルカリが上場事業持ち会社兼本体）。連結子会社は株式会社メルペイ（スマホ決済）、Mercari, Inc.（米国マーケットプレイス）、株式会社メルコイン（暗号資産取引）、株式会社鹿島アントラーズ・エフ・シー（プロサッカークラブ）、Mercari Software Technologies India Private Limited（インド開発拠点）。2025年6月末時点
+    subject: 企業関係
+    as_of: 2026-08-05・2025-06-30
+    unit: ""
+    source: https://about.mercari.com/about/company/; edinet-s100wqdw
+    via: 公式会社概要と第13期有価証券報告書の主要な子会社表を照合
+    note: 企業関係CSVの有効開始日は公式資料で開始日を確認できた関係だけを登録する。確認日をvalid_fromへ流用しない
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: グループミッション「あらゆる価値を循環させ、あらゆる人の可能性を広げる」（創業10周年で制定）。バリューはGo Bold・All for One・Be a Pro・Move Fastの4つ。FoundationsはSustainability・Inclusion & Diversity・Trust & Openness・Customer Perspective
+    subject: 株式会社メルカリ
+    as_of: 2026-08-05
+    unit: ""
+    source: https://careers.mercari.com/culture/; https://about.mercari.com/
+    via: 公式カルチャー・グループ紹介を確認
+    note: ""
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介・設立経緯・規模
+    status: done
+    value: 2013年2月1日設立、代表 山田進太郎、資本金47,349百万円（2024年6月末）。本社は東京都港区六本木の六本木ヒルズ森タワー。創業の契機は山田進太郎の世界一周の旅。マーケットプレイスは月間2,300万人が利用、CtoC削減貢献量は年間約69万トン
+    subject: 株式会社メルカリ
+    as_of: 2026-08-05
+    unit: ""
+    source: https://about.mercari.com/about/company/; https://about.mercari.com/
+    via: 公式会社概要とグループ紹介を確認
+    note: 国内拠点は東京・福岡・大阪、海外はパロアルト・ベンガルール
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・取得年度の有価証券報告書・採用・新卒採用リンク
+    status: done
+    value: HP、IR、第11〜13期（FY2023〜2025）の有価証券報告書PDF、採用情報、新卒採用の公式リンクを記事へ掲載
+    subject: 株式会社メルカリ
+    as_of: 2026-08-05
+    unit: ""
+    source: https://about.mercari.com/; https://about.mercari.com/ir/library/sr/; https://careers.mercari.com/
+    via: 公式サイト各ページを確認
+    note: 有価証券報告書PDFは第13期S100WQDW、第12期S100UEYZ、第11期S100RX8Vを掲載

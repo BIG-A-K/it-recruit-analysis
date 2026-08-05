@@ -1,0 +1,266 @@
+company_id: cyberagent
+disclosure_company_id: cyberagent
+company_boundary:
+  adoption_company_id: cyberagent
+  disclosure_company_id: cyberagent
+  reporting_segment_company_id: cyberagent
+  legal_name: 株式会社サイバーエージェント
+  securities_code: "4751"
+  edinet_code: E05072
+  fiscal_year_end: 9月末日（FY2020が3月決算最終年度、FY2021が9月決算初年度、中間に6ヶ月暫定決算期間）
+  accounting_standard: JGAAP
+  currency: JPY
+  reporting_segments: インターネット広告, ゲーム, メディア&IP（FY2025新設）, 投資育成
+  company_relations: []
+  note: 採用主体と開示主体は同一。FY2025にセグメント再編（旧「その他」を統合しメディア&IP事業を新設、FY2024は組替済）。9月決算移行とセグメント再編のため過年度比較時に注記必要
+fiscal_year: 2025
+focus: 両方
+created_at: 2026-08-05
+updated_at: 2026-08-05
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: pending
+  verify: pending
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csv の average_age/average_tenure/average_annual_salary（FY2023-2025、各3行）と employee_count（FY2019-2025、7行）
+    subject: 提出会社単体（average_*）・連結（employee_count）
+    as_of: 2023-09-30〜2025-09-30
+    unit: years・JPY・persons
+    source: edinet-s100sfq1/S100UXZA/S100XCU9
+    via: edinet-fetch（3書類）。平均年齢等は単体、従業員数は連結
+    note: ""
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高 3期以上
+    status: done
+    value: metrics.csv の revenue（FY2019-2025、7行）。FY2025=874,030M円、FY2024=801,236M円、FY2023=719,451M円
+    subject: 連結
+    as_of: 2019-09-30〜2025-09-30
+    unit: JPY
+    source: edinet-s100sfq1/S100UXZA/S100XCU9
+    via: jpcrp_cor:NetSalesSummaryOfBusinessResults
+    note: FY2019-2020は3月決算最終年度、FY2021以降は9月決算
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csv の operating_profit（FY2022-2025、4行）。FY2025=71,702M円・FY2024=40,083M円（組替後）・FY2023=24,557M円・FY2022=69,114M円
+    subject: 連結
+    as_of: 2022-09-30〜2025-09-30
+    unit: JPY
+    source: edinet-s100sfq1/S100UXZA/S100XCU9
+    via: jppfs_cor:OperatingIncome
+    note: FY2024はS100XCU9で組替後の値、S100UXZA原始値は41,843M円
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csv の equity_ratio（FY2019-2025、7行）・current_assets/current_liabilities/quick_assets（各FY2022-2025、4行）
+    subject: 連結
+    as_of: 2019-09-30〜2025-09-30
+    unit: percent・JPY
+    source: edinet-s100sfq1/S100UXZA/S100XCU9
+    via: 当座資産=流動資産-棚卸資産（商品+仕掛品+その他）
+    note: 棚卸資産FY2022=4,262M・FY2023=8,977M・FY2024=11,594M・FY2025=10,304M円。算定内訳はannotation参照
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csv の operating_cf/investing_cf/financing_cf（各FY2019-2025、7行）
+    subject: 連結
+    as_of: 2019-09-30〜2025-09-30
+    unit: JPY
+    source: edinet-s100sfq1/S100UXZA/S100XCU9
+    via: jpcrp_cor:NetCashProvidedByUsedIn{Operating,Investing,Financing}ActivitiesSummaryOfBusinessResults
+    note: ""
+  - id: ir-segment-internet-advertising
+    phase: ir
+    store: ir_csv
+    topic: インターネット広告事業の年度別売上・利益
+    status: done
+    value: segments.csv の internet-advertising（FY2022-2025、4行）。FY2025売上=438,811M円・利益=17,602M円
+    subject: 連結報告セグメント
+    as_of: 2022-09-30〜2025-09-30
+    unit: JPY
+    source: edinet-s100sfq1/S100UXZA/S100XCU9
+    via: セグメント利益＝営業利益
+    note: FY2024以降はメディア&IP事業を分離した新区分、FY2022-2023は旧区分でABEMA等を含むため売上規模が大きい
+  - id: ir-segment-game
+    phase: ir
+    store: ir_csv
+    topic: ゲーム事業の年度別売上・利益
+    status: done
+    value: segments.csv の game（FY2022-2025、4行）。FY2025売上=216,391M円・利益=60,063M円
+    subject: 連結報告セグメント
+    as_of: 2022-09-30〜2025-09-30
+    unit: JPY
+    source: edinet-s100sfq1/S100UXZA/S100XCU9
+    via: セグメント利益＝営業利益
+    note: Cygames・QualiArts・Colorful Palette等のスマホゲーム
+  - id: ir-segment-media-ip
+    phase: ir
+    store: ir_csv
+    topic: メディア&IP事業の年度別売上・利益
+    status: done
+    value: segments.csv の media-and-ip（FY2024-2025、2行）。FY2025売上=217,164M円・利益=7,291M円（10年ぶり黒字化）
+    subject: 連結報告セグメント
+    as_of: 2024-09-30〜2025-09-30
+    unit: JPY
+    source: edinet-s100xcu9
+    via: FY2025新設、FY2024はS100XCU9で新区分へ組替済
+    note: FY2023以前は「その他」として開示対象外のため、メディア&IP事業としての数値は開示なし（annotation参照）
+  - id: ir-segment-investment
+    phase: ir
+    store: ir_csv
+    topic: 投資育成事業の年度別売上・利益
+    status: done
+    value: segments.csv の investment-development（FY2022-2025、4行）。FY2025売上=1,663M円・損失=▲1,515M円
+    subject: 連結報告セグメント
+    as_of: 2022-09-30〜2025-09-30
+    unit: JPY
+    source: edinet-s100sfq1/S100UXZA/S100XCU9
+    via: セグメント利益＝営業利益
+    note: サイバーエージェント・キャピタル等のCVC・ファンド運営
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 会計基準変更・セグメント再編・比較上の注記
+    status: done
+    value: company_annotations.csv に3注記追加（cyberagent-fiscal-year-change / cyberagent-segment-reorganization-2025 / cyberagent-quick-assets-jgaap）
+    subject: 比較上の注意
+    as_of: 2026-08-05
+    unit: ""
+    source: edinet-s100xcu9
+    via: 第28期有報の注記から作成
+    note: FY2020→FY2021で決算期変更（中間6ヶ月暫定決算期間あり）、FY2025でセグメント再編（メディア&IP事業新設）
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: 採用主体は株式会社サイバーエージェント（4751）。コース別採用（ビジネス／エンジニア／クリエイター）。通年採用、ビジネスは2028年度本選考公開中、エンジニアは2027年度本選考、クリエイターは27/28/29卒通年募集中。確認日2026-08-05。募集ページ https://www.cyberagent.co.jp/careers/about/ ほかコース別
+    subject: 株式会社サイバーエージェント
+    as_of: 2026-08-05（27卒・28卒募集中、クリエイターは29卒も）
+    unit: ""
+    source: https://www.cyberagent.co.jp/careers/about/; biz/tech/designer 各ページ
+    via: webfetchで公式採用トップ・共通募集概要・3コース別ページを取得
+    note: アニメ制作職は子会社（CA Soa・Studio Kurm・サイピク）の各社採用、Cygames等のゲーム子会社は別枠新卒採用
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: コースごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: 3コース制。【ビジネス】営業・プロデューサー・経営トップ支援・本社機能。配属は全事業部（グループ含む）。勤務地は東京本社・大阪・名古屋・福岡。【エンジニア】ソフトウェア（BE/FE/Web/Android/iOS/Flutter）・インフラ・ML/DS・ゲームエンジニア。本社。配属は本人の強み3観点で決定、年間90%以上が第一希望。【クリエイター】5職種（デザイナー総合職・ゲームイラストレーター・3DCG・シナリオライター・アニメ制作）、併願可、子会社CA Soa等は別枠。通年採用
+    subject: ビジネス／エンジニア／クリエイターの3コース別
+    as_of: 2026-08-05
+    unit: ""
+    source: 各コース公式ページ; biz2028; special/students/tech; creators.cyberagent.co.jp/information/
+    via: 公式募集ページを取得し職種別整理
+    note: ""
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: コースごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
+    status: done
+    value: 【ビジネス】月給42万円（年俸制504万円）。【エンジニア】能力別給与（最低年俸504万円〜）、エキスパート認定は最低720万円〜。【クリエイター】42万円〜/月（年俸504万円〜）。共通：家賃補助2駅ルール3万円/月（勤続5年後はどこでもルール5万円/月）、半期目標管理制度、固定残業代制（裁量46h/月給制80h、超過分別途）、退職金、macalon、リフレッシュ休暇、ENERGY。平均年間給与882.2万円（単体2024年9月時点）
+    subject: 3コース別＋共通手当
+    as_of: 2026-08-05（新卒初任給・平均給与は2024年9月時点）
+    unit: JPY
+    source: https://www.cyberagent.co.jp/careers/about/; special/students/tech; creators.cyberagent.co.jp/information/; sustainability/info/detail/id=26074
+    via: webfetchで共通募集・エンジニア本選考・クリエイター選考情報・福利厚生ページを取得
+    note: 基礎給（基本給）と固定時間外手当の按分内訳は公式非開示、月給表示と固定残業代相当時間のみ開示
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: 標準労働時間10:00-19:00（所定8h・休憩60分、職種により裁量制）、平均残業31時間/月。応募期限は全コース通年採用（入社年度毎の締切あり、入社時期は原則4月推奨、エンジニアは個別相談、クリエイターは定員達成で受付終了の場合あり）。転勤は明示記載なし（配属は本人強み3観点で決定、全事業部/グループ含む配属可能性、社内異動制度キャリチャレあり）。リモート勤務の常時可否は明示ポリシーなし（福利厚生ページにテレワーク環境整備・キッズ在宅の記載のみ）
+    subject: 全コース共通／コース別記載なし項目あり
+    as_of: 2026-08-05
+    unit: 時間
+    source: https://www.cyberagent.co.jp/careers/about/; special/students/tech; creators.cyberagent.co.jp/information/; sustainability/info/detail/id=26074
+    via: webfetchで共通募集・エンジニア本選考・クリエイター選考情報・福利厚生を取得
+    note: 転勤・リモートの2項目は公式募集要項上に明示的制度記載がないため公式ページ記載ベースで整理
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的サービス名・ブランド名・提供内容・運営法人
+    status: done
+    value: 【インターネット広告】AIクリエイティブ極予測シリーズ、極AIお台場スタジオ、AI Lab、DX支援、調査（次世代生活研究所等）。子会社：CyberZ・CyberACE・シーエー・アドバンス・AI Shift等。【ゲーム】Cygames（ウマ娘・グラブル・プリコネ）、QualiArts（ホロライブDreams・学マス）、Colorful Palette（プロセカ）、サムザップ（呪術廻戦）、アプリボット（FF7EC）、GOODROID、グレンジ、Litpop。【メディア&IP】ABEMA（AbemaTV）、Ameba/Amebaマンガ、タップル、WINTICKET、新R25、ニトロプラス、ネルケプランニング、CA Soa。【投資育成】サイバーエージェント・キャピタル、CAM、ウエディングパーク、CA Tech Kids、マクアケ（東証G上場）、リアルゲイト、CyberFight、シン・オクタゴン、特例子会社サイバーエージェントウィル
+    subject: 連結報告セグメント4区分
+    as_of: 2026-08-05
+    unit: ""
+    source: https://www.cyberagent.co.jp/corporate/overview/; service/{media,internetad,game}/; corporate/group/
+    via: 公式コーポレート・サービス・主要関連会社ページを直接閲覧
+    note: 公式サイトのサービス区分（メディア&IP／インターネット広告／ゲーム／IPコンテンツ／AI／DX）は表示用、報告セグメントは4区分
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイト事業区分とIR報告セグメントの対応と差異
+    status: done
+    value: 公式サイトは6区分（メディア&IP／インターネット広告／ゲーム／IPコンテンツ／AI／DX）並列掲載、IRは4区分（インターネット広告／ゲーム／メディア&IP／投資育成）。対応：報告「インターネット広告」← 公式「インターネット広告」+「AI」+「DX」大半。報告「ゲーム」← 公式「ゲーム」と1:1。報告「メディア&IP」← 公式「メディア&IP」+「IPコンテンツ」（2024年2月新設メディア&IP事業本部管轄）。報告「投資育成」← 公式「その他」。公式「AI」「DX」は独立表示カテゴリだがIR上はインターネット広告事業の強化領域として帰属
+    subject: 公式サイト事業区分とIR報告セグメントの対応
+    as_of: 2026-08-05
+    unit: ""
+    source: https://www.cyberagent.co.jp/service/; corporate/overview/; ir/superiority/
+    via: 公式サイトとIRページの事業区分を直接比較
+    note: 2024年2月にメディア&IP事業本部を新設、旧来は「メディア事業等」
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 親会社なし（サイバーエージェント自身が上場事業持株会社的位置づけ、東証プライム4751）。主要関連会社は4グループ。【メディア&IP】AbemaTV・WinTicket・タップル・CyberLDH・シロク・AWA・AJA・BABEL LABEL・ネルケプランニング（2023/6参画）・ニトロプラス（2024/7）・CA Soa（2025/1設立）・Studio Kurm・CyberAgent America・サイピク。【広告】CyberZ・CyberACE・シーエー・アドバンス・AI Shift・MG-DX・CASM・CyberOwl・サイバーティカル・CyberE・CCPR・サイバーグリップ・Taiwan Branch・Vietnam。【ゲーム】Cygames（2011/5）・サムザップ・Colorful Palette（2018/6）・QualiArts（2016/10）・アプリボット（2010/7）・GOODROID・グレンジ・Litpop。【その他】サイバーエージェント・キャピタル・CAM・ウエディングパーク・CA Tech Kids・マクアケ（東証G上場2019/12）・リアルゲイト（2021/7）・サイバーエージェントウィル（特例子会社）・ゼルビア（FC町田ゼルビア、2018/10）・CyberFight・シン・オクタゴン
+    subject: サイバーエージェントおよび主な子会社・関連会社
+    as_of: 2026-08-05
+    unit: ""
+    source: https://www.cyberagent.co.jp/corporate/group/; corporate/history/
+    via: 公式主要関連会社・沿革ページを直接閲覧
+    note: マクアケは東証グロース単独上場、FC町田ゼルビアはJリーグクラブ
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: ビジョン「21世紀を代表する会社を創る」。パーパス「新しい力とインターネットで日本の閉塞感を打破する」（6前提：あらゆる産業のデジタルシフト貢献、ABEMAを社会インフラに、テクノロジーとクリエイティブの融合で世界挑戦、年功序列排除で21世紀型日本的経営体現、時代変化に適合しグローバルカンパニー、インターネットで日本を元気に）。Mission Statement 16項目。代表取締役会長 藤田晋・社長 山内隆裕
+    subject: 公式理念体系
+    as_of: 2026-08-05
+    unit: ""
+    source: https://www.cyberagent.co.jp/corporate/vision/; purpose/; message/
+    via: 公式ビジョン・パーパス・トップメッセージページ
+    note: ""
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: done
+    value: 1998年3月18日設立（東京都港区）。本社東京都渋谷区宇田川町40-1 Abema Towers（2019/3移転）。資本金7,654百万円（2025年9月末）。2000年3月東証マザーズ上場→2022年4月プライム移行（4751）。28期連続増収。9月決算（FY2022から）。主な沿革：2004年9月Ameba開始、2011年5月Cygames設立、2015年4月AbemaTV設立（テレビ朝日と共同出資）、2016年4月AbemaTV開局、2018年10月FC町田ゼルビア参画、2019年12月マクアケマザーズ上場、2024年2月メディア&IP事業本部新設、2024年7月ニトロプラス参画、2025年1月CA Soa設立
+    subject: 株式会社サイバーエージェント
+    as_of: 2026-08-05
+    unit: ""
+    source: https://www.cyberagent.co.jp/corporate/overview/; corporate/history/; corporate/message/
+    via: 公式会社概要・沿革・トップメッセージページ
+    note: ""
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
+    status: done
+    value: HP https://www.cyberagent.co.jp/、IR https://www.cyberagent.co.jp/ir/、IRライブラリ ir/library/、有価証券報告書一覧 ir/library/securityreport/、決算発表 ir/library/results/、統合報告レポート ir/library/annual/、5ヵ年業績 ir/library/trend5year/、採用トップ careers/、ビジネス careers/students/biz/、エンジニア careers/students/tech/、クリエイター careers/students/designer/、キャリア採用 hrmos.co/pages/cyberagent-group
+    subject: 株式会社サイバーエージェント
+    as_of: 2026-08-05
+    unit: ""
+    source: https://www.cyberagent.co.jp/
+    via: 公式サイトのグローバルメニューとIRライブラリ
+    note: 有価証券報告書PDFはIRPocket（//irpocket.com/4751/）で動的配信、EDINET文書ID（S100XCU9等）はIR workerがsources.csvへ正本保存

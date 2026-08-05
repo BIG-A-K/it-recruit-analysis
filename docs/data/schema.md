@@ -53,6 +53,7 @@ CSVには物理的な型がないため、本書では各列の論理型を次�
 | --- | --- | --- | --- |
 | `company_id` | `id` | 必須 | サイト内で不変の企業ID。例: `recruit-holdings` |
 | `display_name` | `string` | 必須 | サイトに表示する名称 |
+| `name_kana` | `string` | 必須 | `display_name` の読み。ひらがなで記録し、五十音順の並べ替えに使用する |
 | `legal_name` | `string` | 必須 | 登記または開示上の正式法人名 |
 | `securities_code` | `string` | 任意 | 日本国内の証券コード。先頭ゼロを保持できるよう文字列として扱う |
 | `corporate_number` | `string` | 任意 | 国税庁の13桁法人番号 |

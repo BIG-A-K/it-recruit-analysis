@@ -1,15 +1,15 @@
 source_id,source_type,title,url,document_id,published_at,retrieved_at,issuer
-edinet-s100ydhl,statutory_filing,有価証券報告書－第66期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YDHL,S100YDHL,2026-06-19,2026-07-31,株式会社リクルートホールディングス
+edinet-s100ydhl,statutory_filing,有価証券報告書－第66期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YDHL,S100YDHL,2026-06-19,2026-08-05,株式会社リクルートホールディングス
 edinet-s100ybxd,statutory_filing,有価証券報告書－第31期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YBXD,S100YBXD,2026-06-18,2026-08-05,ＬＩＮＥヤフー株式会社
 edinet-s100tm4a,statutory_filing,有価証券報告書－第29期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TM4A,S100TM4A,2024-06-17,2026-07-31,ＬＩＮＥヤフー株式会社
 edinet-s100wqdw,statutory_filing,有価証券報告書－第13期(2024/07/01－2025/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100WQDW,S100WQDW,2025-09-24,2026-08-05,株式会社メルカリ
-edinet-s100xcu9,statutory_filing,有価証券報告書－第28期(2024/10/01－2025/09/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100XCU9,S100XCU9,2025-12-24,2026-07-31,株式会社サイバーエージェント
+edinet-s100xcu9,statutory_filing,有価証券報告書－第28期(2024/10/01－2025/09/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100XCU9,S100XCU9,2025-12-24,2026-08-05,株式会社サイバーエージェント
 edinet-s100yldv,statutory_filing,有価証券報告書－第28期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YLDV,S100YLDV,2026-06-26,2026-08-02,株式会社ディー・エヌ・エー
 edinet-s100vwr9,statutory_filing,有価証券報告書－第37期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VWR9,S100VWR9,2025-06-20,2026-07-31,株式会社ＮＴＴデータグループ
 edinet-s100yhdd,statutory_filing,有価証券報告書－第58期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YHDD,S100YHDD,2026-06-23,2026-07-31,ＳＣＳＫ株式会社
 edinet-s100ueyz,statutory_filing,有価証券報告書－第12期(2023/07/01－2024/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100UEYZ,S100UEYZ,2024-09-25,2026-07-31,株式会社メルカリ
-edinet-s100uxza,statutory_filing,有価証券報告書－第27期(2023/10/01－2024/09/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100UXZA,S100UXZA,2024-12-13,2026-07-31,株式会社サイバーエージェント
-edinet-s100vzg5,statutory_filing,有価証券報告書－第65期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VZG5,S100VZG5,2025-06-23,2026-07-31,株式会社リクルートホールディングス
+edinet-s100uxza,statutory_filing,有価証券報告書－第27期(2023/10/01－2024/09/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100UXZA,S100UXZA,2024-12-13,2026-08-05,株式会社サイバーエージェント
+edinet-s100vzg5,statutory_filing,有価証券報告書－第65期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VZG5,S100VZG5,2025-06-23,2026-08-05,株式会社リクルートホールディングス
 edinet-s100w3bi,statutory_filing,有価証券報告書－第57期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100W3BI,S100W3BI,2025-06-24,2026-07-31,ＳＣＳＫ株式会社
 edinet-s100ycp3,statutory_filing,有価証券報告書－第41期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YCP3,S100YCP3,2026-06-16,2026-07-31,ＮＴＴ株式会社
 edinet-s100ye76,statutory_filing,有価証券報告書－第40期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YE76,S100YE76,2026-06-19,2026-07-31,ソフトバンク株式会社
@@ -96,7 +96,7 @@ edinet-s100xt1r,statutory_filing,有価証券報告書－第130期(2025/01/01－
 edinet-s100ykio,statutory_filing,有価証券報告書－第123期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YKIO,S100YKIO,2026-06-25,2026-08-02,株式会社三井Ｅ＆Ｓ
 edinet-s100ygor,statutory_filing,有価証券報告書－第129期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YGOR,S100YGOR,2026-06-22,2026-08-02,カナデビア株式会社
 edinet-s100xr06,statutory_filing,有価証券報告書－第24期(2025/01/01－2025/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100XR06,S100XR06,2026-03-19,2026-08-02,ルネサスエレクトロニクス株式会社
-edinet-s100yf41,statutory_filing,有価証券報告書－第68期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YF41,S100YF41,2026-06-19,2026-08-02,ローム株式会社
+edinet-s100yf41,statutory_filing,有価証券報告書－第68期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YF41,S100YF41,2026-06-19,2026-08-05,ローム株式会社
 edinet-s100yeop,statutory_filing,有価証券報告書－第103期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YEOP,S100YEOP,2026-06-19,2026-08-02,株式会社東京精密
 edinet-s100yk9n,statutory_filing,有価証券報告書－第85期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YK9N,S100YK9N,2026-06-25,2026-08-02,株式会社ＳＣＲＥＥＮホールディングス
 edinet-s100yj18,statutory_filing,有価証券報告書－第8期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YJ18,S100YJ18,2026-06-24,2026-08-02,キオクシアホールディングス株式会社
@@ -117,3 +117,6 @@ toshiba-financial-2024,financial_report,2024年度決算,https://www.global.tosh
 toshiba-financial-2023,financial_report,2023年度連結決算,https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2023q4.pdf,,2024-05-16,2026-08-05,株式会社東芝
 toshiba-corporate-profile,corporate,基本データ,https://www.global.toshiba/jp/outline/corporate/profile.html,,,2026-08-05,株式会社東芝
 edinet-s100rx8v,statutory_filing,有価証券報告書－第11期(2022/07/01－2023/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100RX8V,S100RX8V,2023-09-28,2026-08-05,株式会社メルカリ
+edinet-s100tnm6,statutory_filing,有価証券報告書－第64期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TNM6,S100TNM6,2024-06-21,2026-08-05,株式会社リクルートホールディングス
+edinet-s100sfq1,statutory_filing,有価証券報告書－第26期(2022/10/01－2023/09/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100SFQ1,S100SFQ1,2023-12-08,2026-08-05,株式会社サイバーエージェント
+renesas-electronics-official-securities-2025,statutory_filing,第24期 有価証券報告書,https://www.renesas.com/ja/document/rep/annual-securities-report-2025,2025-annual-securities-report-ja,2026-03-19,2026-08-05,ルネサスエレクトロニクス株式会社

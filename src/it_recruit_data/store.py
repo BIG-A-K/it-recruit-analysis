@@ -8,6 +8,7 @@ from pathlib import Path
 COMPANY_FIELDS = (
     "company_id",
     "display_name",
+    "name_kana",
     "legal_name",
     "securities_code",
     "corporate_number",

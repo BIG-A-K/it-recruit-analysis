@@ -1,0 +1,157 @@
+company_id: dena
+disclosure_company_id: dena
+company_boundary:
+  adoption_company_id: dena
+  disclosure_company_id: dena
+  reporting_segment_company_id: dena
+  legal_name: 株式会社ディー・エヌ・エー
+  securities_code: "2432"
+  edinet_code: E05460
+  fiscal_year_end: 3月末日
+  accounting_standard: JGAAP
+  currency: JPY
+  reporting_segments: ゲーム, スポーツ, ライブストリーミング, ヘルスケア・メディカル, 新規事業・その他（セグメント再編歴あり）
+  company_relations: []
+  note: 採用主体と開示主体は同一。セグメント再編が度々行われており比較性に注意
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-05
+updated_at: 2026-08-05
+phases:
+  ir: in_progress
+  recruit: done
+  segments: done
+  article: pending
+  verify: pending
+items:
+  - {id: ir-human-capital, phase: ir, store: ir_csv, topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: ir-revenue, phase: ir, store: ir_csv, topic: 売上高 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-operating-profit, phase: ir, store: ir_csv, topic: 営業利益 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-health, phase: ir, store: ir_csv, topic: 自己資本比率・流動資産・流動負債・当座資産, status: pending, value: "", subject: 連結, as_of: "", unit: percent・JPY, source: "", via: "", note: 当座資産の算定内訳をnoteへ}
+  - {id: ir-cash-flow, phase: ir, store: ir_csv, topic: 営業・投資・財務キャッシュフロー 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-segment-game, phase: ir, store: ir_csv, topic: ゲーム事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-segment-sports, phase: ir, store: ir_csv, topic: スポーツ・スマートシティ事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: "FY2025から追加、それ以前は別区分"}
+  - {id: ir-segment-live-streaming, phase: ir, store: ir_csv, topic: ライブストリーミング事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-segment-healthcare, phase: ir, store: ir_csv, topic: ヘルスケア・メディカル事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-segment-new-businesses, phase: ir, store: ir_csv, topic: 新規事業・その他の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-disclosure-notes, phase: ir, store: ir_csv, topic: セグメント再編・比較上の注記, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "FY2024〜2025でスポーツ・スマートシティ事業が新設、再編歴あり"}
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: 採用主体は株式会社ディー・エヌ・エー（採用主体＝開示主体）。2027年4月/2028年4月入社を募集。新卒採用トップは https://student.dena.com/、募集要項は https://student.dena.com/recruit/。確認日2026-08-05
+    subject: 株式会社ディー・エヌ・エー（正社員・新卒）
+    as_of: 2026-08-05（2027年4月/2028年4月入社）
+    unit: ""
+    source: https://student.dena.com/recruit/
+    via: 公式採用サイトから新卒募集要項を確認
+    note: 2026年3月6日改定でAIスペシャリストコースとAIジェネラリストコースへ再編
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: AIスペシャリスト職（LLM/生成AIを使ったサービス創出、AI Agent・LLMOps、既存事業の変革）、AIジェネラリストのエンジニア職（Web/スマホ・インフラ・セキュリティ・データ・MLOps・ゲーム開発）、ビジネス職（事業推進・戦略・PdM・マーケティング・分析等）、デザイナー職（プロダクト/コミュニケーション/ゲームデザイン）。学歴・卒業年次・就業経験期間は不問。勤務地は渋谷/横浜またはリモート。選考はES/WEBテスト/面接、職種によりポートフォリオ・JOB選考・インターン内定。
+    subject: AIスペシャリスト職／エンジニア職／ビジネス職／デザイナー職
+    as_of: 2026-08-05
+    unit: ""
+    source: https://student.dena.com/recruit/; https://student.dena.com/aispecialist/description/; https://student.dena.com/aigeneralist/description/
+    via: 公式新卒募集要項と職種別ページを確認
+    note: ゲーム・スポーツ等は独立職種ではなく配属先事業ドメイン
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
+    status: done
+    value: AIスペシャリスト職は標準年収700万円〜、月給54万円〜（基本給37.8万円〜、職務給16.2万円〜）。AIジェネラリストのエンジニア/ビジネス/デザイナーは標準年収600万円〜、月給46.5万円〜（基本給32.55万円〜、職務給13.95万円〜）。職務給は45時間相当の固定時間外手当を含み45時間超は別途支給。賞与年2回（6月・12月）。給与改定年2回。諸手当は通勤交通費、リモートワーク手当（1勤務450円、月上限7,500円）、育休復職支援、持株会、確定拠出/給付年金等。
+    subject: 新卒4職種（2026年3月6日改定後）
+    as_of: 2026-08-05
+    unit: JPY
+    source: https://student.dena.com/recruit/; https://student.dena.com/aispecialist/description/; https://student.dena.com/aigeneralist/description/; https://dena.com/jp/recruit/welfare/
+    via: 公式募集要項と福利厚生ページを確認
+    note: 旧制度の給与は参考値。現行の標準年収は選考で決定する下限値
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: 標準労働時間9:30-18:00、休憩45分、フレックスタイム制あり。勤務地は渋谷オフィス、横浜オフィス、または会社が認めたリモート場所。ハイブリッドワーク、遠方居住勤務制度、ワーケーション試行あり。転勤範囲は会社の定める事業場。応募の最終締切日は明示なし、2028年4月入社向け早期選考は9月末まで、本選考は10月以降オープン。募集要項は2025年10月時点で変更可能性あり。
+    subject: 新卒4職種共通
+    as_of: 2026-08-05
+    unit: 時間・日付
+    source: https://student.dena.com/recruit/; https://dena.com/jp/recruit/environment/
+    via: 公式募集要項・働く環境ページを確認
+    note: 応募期限の最終日付は公式非開示
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的サービス名・ブランド名・提供内容・運営法人
+    status: done
+    value: ゲーム（Mobage/Yahoo! Mobage/AndApp、自社・協業タイトル、DeNA Games Tokyo、ポケモンカード・ディー・スタジオ）、ライブストリーミング（Pococha=DeNA、IRIAM=株式会社IRIAM）、ヘルスケア・メディカル（kencom=DeSC、ONSEI Pro等=日本テクトシステムズ、Join/MySOS等=アルム、つな健=ウェルコンパス）、スポーツ・スマートシティ（横浜DeNAベイスターズ、川崎ブレイブサンダース、SC相模原、横浜スタジアム、DeNA SPORTS GROUP）、新領域・その他（DeNA AI/AI Link、デライト・ベンチャーズ、アルプラ）
+    subject: DeNA公式事業カテゴリと主なサービス
+    as_of: 2026-08-05
+    unit: ""
+    source: https://dena.com/jp/services/; https://dena.com/jp/company/overview.html; https://dena.com/jp/news/5102/
+    via: 公式事業ページ・会社概要・各サービス/子会社ページを確認
+    note: 公式サービス分類と法定報告セグメントを同一視せず整理
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイト事業区分とIR報告セグメントの対応と差異
+    status: done
+    value: 公式のゲーム→IRゲーム、ライブコミュニティ→ライブストリーミング、ヘルスケア・メディカル→同名、スポーツ・スマートシティ→同名、新領域・その他→新規事業・その他がおおむね対応。公式はサービス分類、IRは連結会計上の区分で、子会社・協業サービスが完全な1対1ではない。スポーツ・スマートシティはFY2025から独立区分で過年度比較に注意
+    subject: FY2026連結報告セグメントと公式事業カテゴリ
+    as_of: FY2026（2026-03-31）
+    unit: ""
+    source: S100YLDV; https://dena.com/jp/ir/library/report.html; https://dena.com/jp/services/
+    via: FY2026有価証券報告書と公式事業カテゴリを照合
+    note: 財務数値はsegments.csvが正本
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 主な子会社は横浜DeNAベイスターズ（プロ野球）、DeSCヘルスケア（kencom）、DeNA Games Tokyo（ゲーム運営）、横浜スタジアム、DeNA川崎ブレイブサンダース、スポーツクラブ相模原、IRIAM、データホライゾン、日本テクトシステムズ、アルム、ポケモンカード・ディー・スタジオ（DeNA66.6%/ポケモン33.4%）、DeNA AI Link、DeNAビジネスコミュニケーションズ等。関連会社はCygames、PFDeNA、マンガボックス、ウェルコンパス、ニンテンドーシステムズ等。親会社なし
+    subject: DeNAの主要子会社・関連会社
+    as_of: 2026-08-05
+    unit: ""
+    source: https://dena.com/jp/company/overview.html; https://www.cygames.co.jp/corporate/; https://pfdena.com/; https://well-compass.jp/
+    via: 公式会社概要の一覧と各社公式ページを照合
+    note: 主要会社を記録し、未確認の持株比率・連結範囲は推定していない
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: MISSION「一人ひとりに 想像を超えるDelightを」。ありたい姿は「Delight創造エコシステム」、挑戦を最も大切にする「永久ベンチャー」。VALUEは「挑戦を最も大切にする」「動力は志である」「ベロシティにこだわる」等、QUALITYは「ことに向かう」「良質な非常識」「全力コミット」等
+    subject: 株式会社ディー・エヌ・エー
+    as_of: 2026-08-05
+    unit: ""
+    source: https://dena.com/jp/company/policy/; https://dena.com/jp/company/message.html
+    via: 公式理念・代表メッセージを確認
+    note: 公式表記のDelight、永久ベンチャーを保持
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: done
+    value: 1999年3月4日設立、同年オークションサイト「ビッダーズ」開始。2005年東証マザーズ上場、2011年横浜ベイスターズ子会社化、2016年横浜スタジアム子会社化。インターネットサービスからゲーム、ライブ、スポーツ、ヘルスケア、スマートシティ、AIへ拡大。資本金103億97百万円、東証プライム、連結従業員2,483名・単体1,400名（2026年3月末）。本社東京都渋谷区、3月決算
+    subject: 株式会社ディー・エヌ・エー
+    as_of: 2026-03-31（規模）・2026-08-05（確認）
+    unit: ""
+    source: https://dena.com/jp/company/overview.html; https://dena.com/jp/company/history.html
+    via: 公式会社概要・沿革を確認
+    note: 財務指標の正本はmetrics.csv
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
+    status: done
+    value: HP https://dena.com/jp/、IR https://dena.com/jp/ir/、IRライブラリー https://dena.com/jp/ir/library/report.html、有報FY2026 S100YLDV・FY2025 S100VZE0・FY2024 S100TQ8O・FY2023 S100R3HZ、採用 https://dena.com/jp/recruit/、新卒 https://student.dena.com/ と https://student.dena.com/recruit/
+    subject: 株式会社ディー・エヌ・エー
+    as_of: 2026-08-05
+    unit: ""
+    source: https://dena.com/jp/; https://dena.com/jp/ir/library/report.html; https://student.dena.com/
+    via: 公式サイト・IR・採用サイトを確認
+    note: 有報一覧を正本とし、直近4年度のPDFを併記

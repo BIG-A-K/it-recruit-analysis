@@ -1,0 +1,38 @@
+company_id: sumco
+disclosure_company_id: sumco
+company_boundary:
+  adoption_company_id: sumco
+  disclosure_company_id: sumco
+  reporting_segment_company_id: sumco
+  legal_name: 株式会社ＳＵＭＣＯ
+  securities_code: "3436"
+  edinet_code: E02103
+  fiscal_year_end: 12月末日
+  accounting_standard: JGAAP
+  currency: JPY
+  reporting_segments: 半導体用シリコンウェーハの単一事業
+  company_relations: []
+  note: 国内上場法人で採用主体と開示主体は同一。最新有価証券報告書で報告区分と連結範囲を再確認する。
+fiscal_year: 2025
+focus: 両方
+created_at: 2026-08-05
+updated_at: 2026-08-05
+phases: {ir: in_progress, recruit: in_progress, segments: in_progress, article: pending, verify: pending}
+items:
+  - {id: ir-human-capital, phase: ir, store: ir_csv, topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: ir-revenue, phase: ir, store: ir_csv, topic: 売上高または売上収益 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-operating-profit, phase: ir, store: ir_csv, topic: 営業利益または事業利益 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-health, phase: ir, store: ir_csv, topic: 自己資本比率・流動資産・流動負債・当座資産, status: pending, value: "", subject: 連結, as_of: "", unit: percent・JPY, source: "", via: "", note: "当座資産の算定内訳を記録"}
+  - {id: ir-cash-flow, phase: ir, store: ir_csv, topic: 営業・投資・財務キャッシュフロー 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-segments, phase: ir, store: ir_csv, topic: 報告セグメントの年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-disclosure-notes, phase: ir, store: ir_csv, topic: 会計基準変更・組織再編・比較上の注記, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: recruit-employing-entity, phase: recruit, store: mdx, topic: 採用主体・募集年度・確認日・募集ページURL, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: recruit-jobs, phase: recruit, store: mdx, topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: recruit-salary, phase: recruit, store: mdx, topic: 職種ごとの給与・賞与・手当・標準年収, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: recruit-conditions, phase: recruit, store: mdx, topic: 転勤・リモート勤務・標準労働時間・応募期限, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: segments-services, phase: segments, store: mdx, topic: 報告セグメントごとのサービス・製品・運営法人, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: segments-mapping, phase: segments, store: mdx, topic: 公式事業区分とIR報告セグメントの対応・差異, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: segments-related-companies, phase: segments, store: mdx, topic: 親会社・主な子会社と各社の事業内容, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: article-mission, phase: article, store: mdx, topic: 理念・ミッション・スローガン, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: article-company, phase: article, store: mdx, topic: 会社紹介・設立経緯・規模, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: article-links, phase: article, store: mdx, topic: HP・IR・取得年度の有価証券報告書・採用・新卒採用リンク, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}

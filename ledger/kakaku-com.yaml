@@ -1,0 +1,156 @@
+company_id: kakaku-com
+disclosure_company_id: kakaku-com
+company_boundary:
+  adoption_company_id: kakaku-com
+  disclosure_company_id: kakaku-com
+  reporting_segment_company_id: kakaku-com
+  legal_name: 株式会社カカクコム
+  securities_code: "2371"
+  edinet_code: E05350
+  fiscal_year_end: 3月末日
+  accounting_standard: IFRS
+  currency: JPY
+  reporting_segments: 価格.com, 食べログ, 求人ボックス, インキュベーション等
+  company_relations: []
+  note: 採用主体と開示主体は同一
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-05
+updated_at: 2026-08-05
+phases:
+  ir: in_progress
+  recruit: done
+  segments: done
+  article: pending
+  verify: pending
+items:
+  - {id: ir-human-capital, phase: ir, store: ir_csv, topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - {id: ir-revenue, phase: ir, store: ir_csv, topic: 売上高 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-operating-profit, phase: ir, store: ir_csv, topic: 営業利益 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-health, phase: ir, store: ir_csv, topic: 自己資本比率・流動資産・流動負債・当座資産, status: pending, value: "", subject: 連結, as_of: "", unit: percent・JPY, source: "", via: "", note: 当座資産の算定内訳をnoteへ}
+  - {id: ir-cash-flow, phase: ir, store: ir_csv, topic: 営業・投資・財務キャッシュフロー 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-segment-kakaku-com, phase: ir, store: ir_csv, topic: 価格.com事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-segment-tabelog, phase: ir, store: ir_csv, topic: 食べログ事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-segment-kyujin-box, phase: ir, store: ir_csv, topic: 求人ボックス事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-segment-incubation, phase: ir, store: ir_csv, topic: インキュベーション事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
+  - {id: ir-disclosure-notes, phase: ir, store: ir_csv, topic: 比較上の注記, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: 採用主体は株式会社カカクコム。2027年度新卒を通年受付、事業開発・ビジネス・エンジニアの3職種、入社月は4月/10月。公式 https://kakaku.com/info/recruit/ と新卒 https://kakaku.com/info/recruit/job/graduate.html
+    subject: 新卒採用3職種
+    as_of: 2026-08-05
+    unit: ""
+    source: https://kakaku.com/info/recruit/; https://kakaku.com/info/recruit/job/graduate.html
+    via: 公式採用トップ・新卒一覧・各募集要項を確認
+    note: 採用充足時は受付中止の可能性
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: 事業開発は新規事業・組織マネジメント・M&A・事業成長、研修後インキュベーションカンパニー配属。ビジネスは営業・企画・Webディレクター・マーケティング、研修後配属。エンジニアはプロダクト開発・インフラ・生成AI、関連開発経験が必要。学歴/学部不問、既卒可、就業経験3年未満も対象。選考は書類・適性/技術試験・複数面接、勤務地は渋谷オフィス
+    subject: 事業開発・ビジネス・エンジニア
+    as_of: 2026-08-05
+    unit: ""
+    source: https://hrmos.co/pages/kakakucom/jobs/100000033; https://hrmos.co/pages/kakakucom/jobs/100000035; https://hrmos.co/pages/kakakucom/jobs/100000040
+    via: 現行3職種の公式募集要項を個別確認
+    note: ""
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
+    status: done
+    value: 事業開発は年収550万〜650万円、基本給323,880円〜382,780円、固定残業88,620円〜104,720円。ビジネスは450万〜550万円、基本給264,980円〜323,880円、固定残業72,520円〜88,620円。エンジニアは450万〜650万円、基本給264,980円〜382,780円、固定残業72,520円〜104,720円。全職種固定残業35時間相当、超過分別途、賞与年1回。家族手当・在宅勤務環境手当
+    subject: 2027年度新卒3職種
+    as_of: 2026-08-05
+    unit: JPY/year・month
+    source: https://hrmos.co/pages/kakakucom/jobs/100000033; https://hrmos.co/pages/kakakucom/jobs/100000035; https://hrmos.co/pages/kakakucom/jobs/100000040
+    via: 各募集要項の給与・福利厚生欄を確認
+    note: 職種別レンジで単一の標準年収ではない
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: フレックス（コア10:00-15:00）、標準労働8時間/日、土日祝・夏季・年末年始休。職種/業務に応じ在宅勤務可、頻度は選考時に確認。雇入れ直後は渋谷、変更範囲は会社の定める場所。転勤頻度・地域は明示なし。通年採用で固定締切なし、充足時受付停止の場合あり
+    subject: 3職種共通
+    as_of: 2026-08-05
+    unit: hours/day
+    source: https://hrmos.co/pages/kakakucom/jobs/100000033; https://hrmos.co/pages/kakakucom/jobs/100000035; https://hrmos.co/pages/kakakucom/jobs/100000040; https://kakaku.com/info/recruit/faq.html
+    via: 各募集要項・公式採用FAQを確認
+    note: 転勤制度の詳細、職種別在宅頻度、10月入社の別給与は非開示
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的サービス名・ブランド名・提供内容・運営法人
+    status: done
+    value: 価格.com（比較・レビュー）、食べログ（飲食店検索・予約・口コミ）、求人ボックス（求人検索・応募・統計、海外Jobcube）、インキュベーション。公式一覧にはスマイティ、価格.com保険、タイムデザイン、フォートラベル、バス比較なび、キナリノ、LiPLUS、PHOTOHITO、エンゲージ等も掲載
+    subject: 株式会社カカクコムの公式サービスと連結報告セグメント
+    as_of: 2026-08-05（FY2026有報基準2026-03-31）
+    unit: text
+    source: https://corporate.kakaku.com/service; S100YBGN
+    via: 公式サービス一覧とFY2026有報を確認
+    note: 数値はsegments.csvが正本
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイト事業区分とIR報告セグメントの対応と差異
+    status: done
+    value: 価格.com、食べログ、求人ボックスは同名報告セグメントに対応。Jobcubeは求人ボックスの海外展開。スマイティ、保険、旅行・交通、ライフスタイル、LiPLUS、エンゲージ等は個別ブランドで、インキュベーション等への独自配賦はしない。FY2026有報でインキュベーションの表示区分変更と比較年度の組替えあり
+    subject: 公式サービスと法定セグメント
+    as_of: 2026-08-05
+    unit: text
+    source: https://corporate.kakaku.com/service; S100YBGN
+    via: 公式サービス概要と有報を照合
+    note: ウェブサービス分類を報告セグメントに置換しない
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 主な関係会社はカカクコム・インシュアランス（価格.com保険）、タイムデザイン（旅行予約プラットフォーム）、LCL（バス比較・格安移動等）、LiPLUSホールディングス（ホームサービスマッチング）、エンゲージ（求人・採用支援の合弁）。採用/開示/報告主体はいずれも株式会社カカクコム。親会社なし
+    subject: 主な関係会社
+    as_of: 2026-08-05
+    unit: text
+    source: https://corporate.kakaku.com/company/profile; https://kakakucom-insurance.co.jp/about.html; https://www.timedesign.co.jp/aboutus/profile/; https://www.lclco.com/company/; https://liplus-s.com/company/; https://corp.en-gage.net/
+    via: 公式会社概要と各社公式ページを確認
+    note: 法的連結範囲は有報を正本
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: 公式トップのMissionは「ユーザーファーストで、新しい常識を作る」。沿革も生活者視点を第一にサービスを創造してきたと説明。人的資本開示の「AI EXCELLENCE」は取り組み用語でMissionとは区別
+    subject: 株式会社カカクコム
+    as_of: 2026-08-05
+    unit: text
+    source: https://corporate.kakaku.com/; https://corporate.kakaku.com/company/history
+    via: 公式トップ・沿革・有報を確認
+    note: 専用理念ページは動的/CAPTCHAで確認困難だったためトップの表記を採用
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: done
+    value: 価格.comは1997年5月開始、株式会社カカクコムは1997年12月設立。2000年5月株式会社へ組織変更・社名変更、2003年東証マザーズ、2005年東証一部、現在は東証プライム。価格比較、飲食、求人、住まい、旅行、保険等を展開するインターネットメディア企業
+    subject: 株式会社カカクコム
+    as_of: 2026-08-05
+    unit: text
+    source: https://corporate.kakaku.com/company/profile; https://corporate.kakaku.com/company/history; https://corporate.kakaku.com/service
+    via: 公式会社概要・沿革・サービスを確認
+    note: 財務数値はmetrics.csvが正本
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
+    status: done
+    value: HP https://corporate.kakaku.com/、IR https://corporate.kakaku.com/ir、優報一覧 https://corporate.kakaku.com/ir/library/securities、FY2026有報 S100YBGN https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YBGN.pdf、FY2025 S100VYJ6、採用 https://corporate.kakaku.com/recruit、新卒 https://kakaku.com/info/recruit/job/graduate.html
+    subject: 株式会社カカクコム
+    as_of: 2026-08-05
+    unit: URLs
+    source: https://corporate.kakaku.com/; https://corporate.kakaku.com/ir/library/securities; https://kakaku.com/info/recruit/job/graduate.html
+    via: 公式コーポレート・IR・採用サイトとEDINETを確認
+    note: ""

@@ -5,6 +5,7 @@ import Papa from "papaparse";
 export type Company = {
   company_id: string;
   display_name: string;
+  name_kana: string;
   legal_name: string;
   securities_code: string;
   corporate_number: string;

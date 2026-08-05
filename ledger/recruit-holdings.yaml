@@ -1,0 +1,254 @@
+company_id: recruit-holdings
+disclosure_company_id: recruit-holdings
+company_boundary:
+  adoption_company_id: recruit-holdings
+  disclosure_company_id: recruit-holdings
+  reporting_segment_company_id: recruit-holdings
+  legal_name: 株式会社リクルートホールディングス
+  securities_code: "6098"
+  edinet_code: E07801
+  fiscal_year_end: 3月末日
+  accounting_standard: IFRS
+  currency: JPY
+  reporting_segments: HRテクノロジー, マーケティング・マッチング・テクノロジー, 人材派遣（スタッフィング）
+  company_relations: []
+  note: 採用主体と開示主体は同一。持株会社体制でリクルート本体が上場。採用は5コース制（ビジネスグロース/プロダクトグロース/エンジニア/データスペシャリスト/デザイン）。入社後原則グループ各社へ出向
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-05
+updated_at: 2026-08-05
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: pending
+  verify: pending
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csv の average_age・average_tenure・average_annual_salary（各2024〜2026、3行）・employee_count（2020〜2026、7行）
+    subject: 提出会社単体（average_*）・連結（employee_count）
+    as_of: 2024-03-31〜2026-03-31
+    unit: years・JPY・persons
+    source: edinet-s100tnm6/S100VZG5/S100YDHL
+    via: uv run --env-file .env edinet-fetch recruit-holdings --start 2024-04-01 --end 2026-08-05 --all --interval 0.3
+    note: average_* はCurrentYearInstant_NonConsolidatedMember対象のため各書類1年分のみ。3書類で2024〜2026の3期を確保
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上収益 3期以上
+    status: done
+    value: metrics.csv の revenue（2020〜2026、7行）
+    subject: 連結
+    as_of: 2020-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100tnm6/S100VZG5/S100YDHL
+    via: uv run --env-file .env edinet-fetch recruit-holdings --start 2024-04-01 --end 2026-08-05 --all --interval 0.3
+    note: ""
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csv の operating_profit（2023〜2026、4行）
+    subject: 連結
+    as_of: 2023-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100tnm6/S100VZG5/S100YDHL
+    via: uv run --env-file .env edinet-fetch recruit-holdings --start 2024-04-01 --end 2026-08-05 --all --interval 0.3
+    note: IFRS適用。営業利益相当として jpigp_cor:OperatingProfitLossIFRS を採用。事業利益(BusinessProfitLossIFRS)は開示なし。annotation参照
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csv の equity_ratio（2020〜2026、7行）・current_assets（2023〜2026、4行）・current_liabilities（2023〜2026、4行）・quick_assets（2023〜2026 reported 4行 + 2022 unavailable 1行）
+    subject: 連結
+    as_of: 2020-03-31〜2026-03-31
+    unit: percent・JPY
+    source: edinet-s100tnm6/S100VZG5/S100YDHL
+    via: edinet-fetch（3書類）。quick_assetsは流動資産-棚卸資産で算定。リクルートHDはサービス業で棚卸資産なし、当座資産=流動資産
+    note: 当座資産は流動資産から棚卸資産を控除して算定。IFRS貸借対照表に棚卸資産科目なしのため当座資産=流動資産。2022年度は流動資産開示なしでunavailable
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csv の operating_cf・investing_cf・financing_cf（各2020〜2026、7行ずつ）
+    subject: 連結
+    as_of: 2020-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100tnm6/S100VZG5/S100YDHL
+    via: uv run --env-file .env edinet-fetch recruit-holdings --start 2024-04-01 --end 2026-08-05 --all --interval 0.3
+    note: ""
+  - id: ir-segment-hr-technology
+    phase: ir
+    store: ir_csv
+    topic: HRテクノロジー事業の年度別売上・利益
+    status: done
+    value: segments.csv の hr-technology（2023〜2026、4行）。profit_measure=EBITDA+S
+    subject: 連結報告セグメント
+    as_of: 2023-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100tnm6/S100VZG5/S100YDHL
+    via: edinet-fetch（3書類）
+    note: 2025年度値はS100YDHL（FY2026有報）で組替え後。annotation参照
+  - id: ir-segment-mmt
+    phase: ir
+    store: ir_csv
+    topic: マーケティング・マッチング・テクノロジー事業の年度別売上・利益
+    status: done
+    value: segments.csv の marketing-matching-technologies（2023〜2026、4行）。profit_measure=EBITDA+S
+    subject: 連結報告セグメント
+    as_of: 2023-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100tnm6/S100VZG5/S100YDHL
+    via: edinet-fetch（3書類）
+    note: 2025年度値はS100YDHLで組替え後。HRテクノロジー事業へ約2446億円移管。annotation参照
+  - id: ir-segment-staffing
+    phase: ir
+    store: ir_csv
+    topic: 人材派遣事業の年度別売上・利益
+    status: done
+    value: segments.csv の staffing（2023〜2026、4行）。profit_measure=EBITDA+S
+    subject: 連結報告セグメント
+    as_of: 2023-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100tnm6/S100VZG5/S100YDHL
+    via: edinet-fetch（3書類）
+    note: ""
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 組織再編・会計基準変更・比較上の注記
+    status: done
+    value: company_annotations.csv に3注記追加（recruit-holdings-segment-restatement-2026 / recruit-holdings-operating-profit-ifrs / recruit-holdings-quick-assets-ifrs）
+    subject: 連結
+    as_of: 2026-08-05
+    unit: ""
+    source: edinet-s100ydhl
+    via: CSV編集スクリプト
+    note: セグメント組替え（2025年度HR Tech +2446億/MMT -2446億）、IFRS営業利益採用根拠、当座資産算定方法
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: 採用主体は株式会社リクルートホールディングス。2027年度新卒採用（2027年4月入社）。入社後原則リクルートグループ各社へ出向（株式会社リクルート／インディードリクルートパートナーズ／インディードリクルートテクノロジーズ／Indeed Japan株式会社）。エントリー受付は2026/4/1 13:00で終了済み
+    subject: 株式会社リクルートホールディングス
+    as_of: 2027年度新卒（2027年4月入社）、確認日2026-08-05
+    unit: ""
+    source: https://www.recruit.co.jp/employment/students/; https://www.recruit.co.jp/employment/students/requirements/
+    via: 公式新卒採用トップと募集要項ページを直接確認
+    note: 採用ページホストはrecruit.co.jpだが、ページヘッダ・著作権表示はリクルートホールディングス名義
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: コースごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: 2027年度新卒は5コース。（1）ビジネスグロース：全職種（マーケター/顧客接点/事業企画/CS/PdM/エンジニア等）に配分、勤務地全国（海外含む）。（2）プロダクトグロース：PdM・エンジニア等、東京起点。（3）エンジニア：ネイティブ/Web FE/BE/インフラ/セキュリティ、東京起点。（4）データスペシャリスト：DS/DE/ML/ソフトウェアエンジニア等、東京起点。（5）デザイン：UI/UXデザイナー・AD、東京起点。共通条件は2027年4月入社可・入社時30歳以下・卒業見込
+    subject: 2027年度新卒5コース
+    as_of: 2027年度新卒（2027年4月入社）、確認日2026-08-05
+    unit: ""
+    source: https://www.recruit.co.jp/employment/students/requirements/; business/product_growth/engineer/data_specialist/design 各ページ
+    via: 公式新卒採用の全コース個別ページと共通募集要項を確認
+    note: ""
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: コースごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
+    status: done
+    value: 全コース共通（2026年度見込み）。月給=基準給258,065円＋グレード手当75,269円＝333,334円（エンジニア・データスペシャリストは333,334円〜）。基礎給は公式に「基準給」として開示、固定時間外手当は「グレード手当」（月35時間相当分）。賞与年2回（6月・12月、初年度1回のみ、業績連動）。35時間超は別途割増。通勤交通費は出社分実費・1日上限5,000円。標準年収例495万円（エンジニア・DSは495万円〜）
+    subject: 2027年度新卒5コース共通
+    as_of: 2026年度見込み初任給、確認日2026-08-05
+    unit: JPY
+    source: 各コース募集要項ページ; https://www.recruit.co.jp/employment/students/workstyle/
+    via: 公式5コース個別ページと働き方ページを確認
+    note: 公式には「基礎給」「固定時間外手当」の用語を使わず「基準給」「グレード手当」と表記
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: 全コースで将来的に全配属先への配置転換・グループ内外への出向兼務の可能性あり。入社後原則グループ各社へ出向。ビジネスグロース勤務地は全国（海外含む）、他4コースは東京起点で将来的に海外含む。リモートワークは理由・回数を問わず全社導入、出社を前提としない（出社率43%、2025年3月末）。通勤費は出社分実費支給・1日上限5,000円。標準労働時間9:00-18:00・休憩60分（実労8時間）、フレックス制あり。年間休日140日・休み145日、有給消化率60%。応募期限：2026/4/1 13:00でエントリー受付終了済み
+    subject: 2027年度新卒5コース共通
+    as_of: 2027年度新卒、確認日2026-08-05
+    unit: ""
+    source: 各コース募集要項; https://www.recruit.co.jp/employment/students/workstyle/; https://www.recruit.co.jp/employment/students/requirements/
+    via: 公式5コース個別ページ・共通募集要項・働き方ページを確認
+    note: ""
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的サービス名・ブランド名・提供内容・運営法人
+    status: done
+    value: HRテクノロジーSBU（Indeed・Glassdoor・Indeed PLUS・RECRUIT AGENT・リクルートダイレクトスカウト等、Indeed Inc./Glassdoor LLC/インディードリクルートパートナーズ等が運営）。人材派遣SBU（リクルートスタッフィング・スタッフサービス・ホールディングス・Staffmark・Chandler Macleod・RGF Staffing France/Germany/Netherlands等、持株RGF Staffing B.V.）。マーケティング・マッチング・テクノロジーSBU（SUUMO・Hot Pepper Beauty・じゃらん・ホットペッパーグルメ・ゼクシィ・カーセンサー・スタディサプリ等のマッチングプラットフォーム、Air ビジネスツールズのSaaS、運営は株式会社リクルート）。2025年4月に人材領域をリクルートからHR Tech SBUへ移管
+    subject: 3報告セグメント（SBU）ごとのサービス・ブランド・運営法人
+    as_of: 2026-08-05（2026年3月期決算ベース）
+    unit: ""
+    source: https://recruit-holdings.com/ja/about/business/; https://recruit-holdings.com/ja/about/group/
+    via: 公式ビジネスモデル・グループ企業一覧ページ
+    note: 2025年度組織再編：旧マッチング&ソリューションをMMTに改称、人材領域をHR Techへ移管
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイト事業区分とIR報告セグメントの対応と差異
+    status: done
+    value: 公式サイト事業区分とIR報告セグメントは1:1で対応（HRテクノロジー／人材派遣／マーケティング・マッチング・テクノロジー）。表記差のみ（公式は「〜事業」、IRはSBU単位）。2025年4月1日付でセグメント境界を変更、旧マッチング&ソリューション事業の人材領域をHRテクノロジー事業へ移管し同事業をMMTに改称。2025年度以降と2024年度以前は組織再編の影響を含む
+    subject: 公式事業区分とIR報告セグメントの対応・差異
+    as_of: 2026-08-05（FY2025時点）
+    unit: ""
+    source: https://recruit-holdings.com/ja/about/business/; https://file.recruit-holdings.com/files/ja/report_202603Q4_ar_jp.pdf
+    via: 公式ビジネスモデルと有価証券報告書を突合
+    note: 2025年4月セグメント再編のため過年度比較時は注記必要
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 親会社なし（過半数保有の親会社なし）。連結子会社218社・関連会社6社（2026年3月末時点）。グループ従業員45,586名（持株単体130名）。HR Tech持株：RGF OHR USA, Inc.、Indeed Inc.・Glassdoor LLC・インディードリクルートパートナーズ。人材派遣持株：RGF Staffing B.V.、リクルートスタッフィング・スタッフサービスHD・Staffmark・Chandler Macleod等。MMT統括：株式会社リクルート。研究組織：Megagon Labs
+    subject: 親会社・主な子会社
+    as_of: 2026-08-05（2026年3月末時点）
+    unit: 社
+    source: https://recruit-holdings.com/ja/about/group/; https://recruit-holdings.com/ja/about/profile/
+    via: 公式グループ企業一覧・会社概要・歴史ページ
+    note: 上場2014年10月、プライム市場移行2022年4月
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: 基本理念「私たちは、新しい価値の創造を通じ、社会からの期待に応え、一人ひとりが輝く豊かな世界の実現を目指す」。ビジョン「Follow Your Heart」。ミッション「まだ、ここにない、出会い。より速く、シンプルに、もっと近くに。」。バリュー3つ「新しい価値の創造(Wow the World)／個の尊重(Bet on Passion)／社会への貢献(Prioritize Social Value)」。経営戦略3つ「Simplify Hiring／Help Businesses Work Smarter／Prosper Together」
+    subject: 公式ビジョン・ミッション・バリューズ
+    as_of: 2026-08-05
+    unit: ""
+    source: https://recruit-holdings.com/ja/about/vision-mission-values/
+    via: 公式ビジョン・ミッション・バリューズページ
+    note: ""
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: done
+    value: 1960年3月31日「大学新聞広告社」として創業、1963年8月「株式会社日本リクルートセンター」設立、1984年「株式会社リクルート」商号変更、2012年4月持株会社体制移行で「株式会社リクルートホールディングス」へ、2014年10月東証一部上場。資本金400億円。本社東京都千代田区丸の内1-9-2グラントウキョウサウスタワー。従業員45,586名（連結）/130名（持株単体、2026年3月末）。連結子会社218社・関連会社6社。FY2025売上3兆6,973億円・連結営業利益6,305億円。Forbes Global 2000 (2026) 574位。サービス展開国60以上
+    subject: 株式会社リクルートホールディングス
+    as_of: 2026-08-05（2026年3月期決算ベース）
+    unit: ""
+    source: https://recruit-holdings.com/ja/about/profile/; https://recruit-holdings.com/ja/about/history/
+    via: 公式会社概要と価値創造の歴史ページ
+    note: ""
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
+    status: done
+    value: HP https://recruit-holdings.com/ja/、IR https://recruit-holdings.com/ja/ir/financials/、有価証券報告書PDF（FY2023〜2025）report_202403Q4_ar_jp.pdf / report_202503Q4_ar_jp.pdf / report_202603Q4_ar_jp.pdf、採用 https://recruit-holdings.com/ja/about/careers/、新卒採用 https://www.recruit.co.jp/employment/students/
+    subject: 株式会社リクルートホールディングス
+    as_of: 2026-08-05
+    unit: ""
+    source: https://recruit-holdings.com/ja/
+    via: 公式サイト各ページを確認
+    note: 新卒採用ページの運営主体は株式会社リクルート（MMT SBU統括会社）
