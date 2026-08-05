@@ -81,7 +81,7 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 
 ## 棒グラフを埋める指標
 
-`MetricTrends` は `site/src/lib/company-financials.ts` の `financialMetricKeys` を切り替えて描画する。
+`MetricTrends` は `site/src/lib/company-financials.ts` の財務指標と `average_annual_salary` を切り替えて描画する。
 
 | `metric_key` | 期数の目安 |
 | --- | --- |
@@ -94,6 +94,7 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 | `current_assets` | 最新期以上 |
 | `current_liabilities` | 最新期以上 |
 | `quick_assets` | 最新期以上 |
+| `average_annual_salary` | 3期以上 |
 
 `net_cf` はサイトが3区分から算出する派生値なので `metrics.csv` へ保存しない。
 `quick_assets` は算定に含めた科目を `note` に記録する。開示がなく取得できないキーは `availability` で欠損を表し、数値を推定しない。

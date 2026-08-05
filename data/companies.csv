@@ -39,12 +39,12 @@ renesas-electronics,ルネサスエレクトロニクス,るねさすえれく�
 keyence,キーエンス,きーえんす,株式会社キーエンス,6861,,https://www.keyence.co.jp/,E01967,,,,,true
 honda-motor,ホンダ,ほんだ,本田技研工業株式会社,7267,,https://global.honda/jp/,E02166,,,,,true
 nissan-motor,日産自動車,にっさんじどうしゃ,日産自動車株式会社,7201,,https://www.nissan-global.com/JP/,E02142,,,,,true
-mazda-motor,マツダ,まつだ,マツダ株式会社,7261,,https://www.mazda.com/ja/,E02157,,,,,true
-suzuki-motor,スズキ,すずき,スズキ株式会社,7269,,https://www.suzuki.co.jp/,E02137,,,,,true
-subaru,SUBARU,すばる,株式会社SUBARU,7270,,https://www.subaru.co.jp/,E02152,,,,,true
-mitsubishi-motors,三菱自動車,みつびしじどうしゃ,三菱自動車工業株式会社,7211,,https://www.mitsubishi-motors.com/jp/,E02213,,,,,true
-isuzu-motors,いすゞ自動車,いすずじどうしゃ,いすゞ自動車株式会社,7202,,https://www.isuzu.co.jp/,E02143,,,,,true
-hino-motors,日野自動車,ひのじどうしゃ,日野自動車株式会社,7205,,https://www.hino.co.jp/,E02146,,,,,true
+mazda-motor,マツダ,まつだ,マツダ株式会社,7261,,https://www.mazda.com/ja/,E02157,,,,,false
+suzuki-motor,スズキ,すずき,スズキ株式会社,7269,,https://www.suzuki.co.jp/,E02137,,,,,false
+subaru,SUBARU,すばる,株式会社SUBARU,7270,,https://www.subaru.co.jp/,E02152,,,,,false
+mitsubishi-motors,三菱自動車,みつびしじどうしゃ,三菱自動車工業株式会社,7211,,https://www.mitsubishi-motors.com/jp/,E02213,,,,,false
+isuzu-motors,いすゞ自動車,いすずじどうしゃ,いすゞ自動車株式会社,7202,,https://www.isuzu.co.jp/,E02143,,,,,false
+hino-motors,日野自動車,ひのじどうしゃ,日野自動車株式会社,7205,,https://www.hino.co.jp/,E02146,,,,,false
 yamaha-motor,ヤマハ発動機,やまははつどうき,ヤマハ発動機株式会社,7272,,https://global.yamaha-motor.com/jp/,E02168,,,,,true
 toyota-motor,トヨタ自動車,とよたじどうしゃ,トヨタ自動車株式会社,7203,,https://global.toyota/jp/,E02144,,,,,true
 rohm,ローム,ろーむ,ローム株式会社,6963,,https://www.rohm.co.jp/,E01953,,,,,true
@@ -56,19 +56,19 @@ tokyo-electron,東京エレクトロン,とうきょうえれくとろん,東京
 advantest,アドバンテスト,あどばんてすと,株式会社アドバンテスト,6857,,https://www.advantest.com/japan,E01950,,,,,true
 disco,ディスコ,でぃすこ,株式会社ディスコ,6146,,https://www.disco.co.jp/,E01506,,,,,true
 lasertec,レーザーテック,れーざーてっく,レーザーテック株式会社,6920,,https://www.lasertec.co.jp/,E01991,,,,,true
-shin-etsu-chemical,信越化学工業,しんえつかがくこうぎょう,信越化学工業株式会社,4063,,https://www.shinetsu.co.jp/,E00776,,,,,true
+shin-etsu-chemical,信越化学工業,しんえつかがくこうぎょう,信越化学工業株式会社,4063,,https://www.shinetsu.co.jp/,E00776,,,,,false
 sumco,SUMCO,さむこ,株式会社ＳＵＭＣＯ,3436,,https://www.sumcosi.com/,E02103,,,,,true
-resonac-holdings,レゾナックHD,れぞなっくほーるでぃんぐす,株式会社レゾナック・ホールディングス,4004,,https://www.resonac.com/,E00751,,,,,true
+resonac-holdings,レゾナックHD,れぞなっくほーるでぃんぐす,株式会社レゾナック・ホールディングス,4004,,https://www.resonac.com/,E00751,,,,,false
 agc,AGC,えーじーしー,ＡＧＣ株式会社,5201,,https://www.agc.com/jp/,E01122,,,,,true
-stella-chemifa,ステラケミファ,すてらけみふぁ,ステラケミファ株式会社,4109,,https://www.stella-chemifa.co.jp/,E00805,,,,,true
+stella-chemifa,ステラケミファ,すてらけみふぁ,ステラケミファ株式会社,4109,,https://www.stella-chemifa.co.jp/,E00805,,,,,false
 mitsubishi-heavy-industries,三菱重工業,みつびしじゅうこうぎょう,三菱重工業株式会社,7011,8010401050387,https://www.mhi.com/jp/,E02126,,,,,true
 kawasaki-heavy-industries,川崎重工業,かわさきじゅうこうぎょう,川崎重工業株式会社,7012,1140001005719,https://www.khi.co.jp/,E02127,,,,,true
 ihi,IHI,あいえいちあい,株式会社ＩＨＩ,7013,4010601031604,https://www.ihi.co.jp/,E02128,,,,,true
-sumitomo-heavy-industries,住友重機械工業,すみともじゅうきかいこうぎょう,住友重機械工業株式会社,6302,9010701005032,https://www.shi.co.jp/,E01533,,,,,false
+sumitomo-heavy-industries,住友重機械工業,すみともじゅうきかいこうぎょう,住友重機械工業株式会社,6302,9010701005032,https://www.shi.co.jp/,E01533,,,,,true
 mitsui-e-and-s,三井E&S,みついいーあんどえす,株式会社三井Ｅ＆Ｓ,7003,9010001034946,https://www.mes.co.jp/,E02123,,,,,true
 kanadevia,カナデビア,かなでびあ,カナデビア株式会社,7004,3120001031541,https://www.kanadevia.com/,E02124,,,,,true
-aws-japan,AWS,えーだぶりゅーえす,アマゾン ウェブ サービス ジャパン合同会社,,,https://aws.amazon.com/jp/,,,,,JP,false
+aws-japan,AWS,えーだぶりゅーえす,アマゾン ウェブ サービス ジャパン合同会社,,,https://aws.amazon.com/jp/,,,,,JP,true
 amazon-com,Amazon.com,あまぞんどっとこむ,"Amazon.com, Inc.",,,https://www.aboutamazon.com/,,0001018724,AMZN,NASDAQ,US,false
 toto,TOTO,とーとー,TOTO株式会社,5332,1290801002603,https://jp.toto.com/,E01138,,,,,true
 kyocera,京セラ,きょうせら,京セラ株式会社,6971,4130001000049,https://www.kyocera.co.jp/,E01182,,,,,true
-toshiba,東芝,とうしば,株式会社東芝,,,https://www.global.toshiba/jp/,,,,,,true
+toshiba,東芝,とうしば,株式会社東芝,,,https://www.global.toshiba/jp/,,,,,,false

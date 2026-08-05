@@ -330,7 +330,7 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .bar-fill { height: 100%; }
 .table-scroll { overflow-x: auto; margin-top: 14px; }
 .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.data-table th, .data-table td { padding: 11px 12px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.data-table th, .data-table td { padding: 11px 12px; text-align: right; border-bottom: 1px solid var(--line); }
 .data-table thead th { color: var(--muted); font-weight: 600; }
 .data-table th:first-child { text-align: left; }
 .empty-state { display: grid; place-items: center; min-height: 280px; color: var(--muted); font-size: 14px; }
@@ -373,13 +373,13 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .prose pre { margin: 16px 0; padding: 16px; overflow-x: auto; background: var(--navy); border-radius: 8px; }
 .prose pre code { padding: 0; background: none; color: #e6edf6; }
 /* サイト内の .data-table と同じ、罫線を下線だけに絞った見た目に揃える */
-.prose table { width: 100%; margin: 18px 0; border-collapse: collapse; font-size: 13px; }
+.prose table { display: block; width: 100%; max-width: 100%; margin: 18px 0; overflow-x: auto; border-collapse: collapse; font-size: 13px; }
 .prose th, .prose td { padding: 11px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.7; }
 .prose thead th { color: var(--muted); font-weight: 600; }
 .prose tbody th { color: var(--ink); font-weight: 650; }
 .prose .business-table { width: 100%; margin: 18px 0; overflow-x: auto; }
-.prose .business-table table { margin: 0; table-layout: fixed; }
-.prose .business-table :is(th, td) { overflow-wrap: anywhere; }
+.prose .business-table table { display: table; width: max-content; min-width: 100%; margin: 0; table-layout: auto; }
+.prose .business-table :is(th, td) { overflow-wrap: normal; }
 .prose .business-table :is(th, td):first-child { width: 9rem; }
 .prose hr { margin: 32px 0; border: 0; border-top: 1px solid var(--line); }
 .prose .caption { margin: 14px 0; padding: 12px 16px; color: var(--muted); background: var(--blue-soft); border: 1px solid #dbe6fb; border-radius: 6px; font-size: 14px; }
@@ -541,14 +541,13 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
   .company-list .company-stats dd { margin-top: 0; }
   .panel { padding: 20px 16px; }
   .doc-layout .prose, .company-prose { padding: 22px 18px; }
-  /* 列の多い表はカード内で横スクロールさせる。
-     width: max-content は長文セルまで 1 行に伸ばしてしまうので使わず、
-   セルの min-width で潰れだけを防いで、本文は折り返させる */
+   /* 列の多い表はカード内で横スクロールさせ、セル内は 1 行に保つ（モバイルのみ） */
    .prose table { display: block; max-width: 100%; overflow-x: auto; }
-   .prose table :is(th, td) { min-width: 3em; padding: 10px 8px; }
+   .prose table :is(th, td) { min-width: 3em; padding: 10px 8px; white-space: nowrap; }
+   .data-table th, .data-table td { white-space: nowrap; }
    /* 先頭列は項目名が入るので、1〜2 文字で折り返さない程度の幅を確保する */
    .prose table :is(th, td):first-child { min-width: 5em; }
-   .prose .business-table table { display: table; width: 100%; min-width: 560px; max-width: none; overflow: visible; }
+   .prose .business-table table { display: table; width: max-content; min-width: 560px; max-width: none; overflow: visible; }
   .chart-area { min-height: 320px; padding: 16px 10px; }
   .stats-card dl { grid-template-columns: minmax(0, 1fr); }
   .segment-row dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }

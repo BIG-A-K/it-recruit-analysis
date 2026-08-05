@@ -29,11 +29,11 @@ items:
     store: ir_csv
     topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
     status: done
-    value: metrics.csvのaverage_age・average_tenure・average_annual_salary（2026年度、提出会社単体）とemployee_count（2022〜2026年度、連結）
+    value: metrics.csvのaverage_age・average_tenure・average_annual_salary（2024〜2026年度、提出会社単体）とemployee_count（2022〜2026年度、連結）
     subject: 連結従業員数・提出会社単体の平均年齢等
     as_of: 2022-03-31〜2026-03-31
     unit: JPY・years・persons
-    source: edinet-s100ybfv; edinet-s100vz85
+    source: edinet-s100ybfv; edinet-s100vz85; edinet-s100tnfd
     via: ローカルEDINET raw CSVをUTF-16LEからUTF-8へ変換して抽出
     note: 2026年3月期の連結従業員数は101,800人、提出会社単体は21,934人
   - id: ir-revenue

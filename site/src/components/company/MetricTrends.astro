@@ -1,7 +1,7 @@
 ---
 import MetricExplorer from "../MetricExplorer.astro";
 import { allCompanies } from "../../lib/data";
-import { financialMetricsForCompany } from "../../lib/company-financials";
+import { trendMetricsForCompany } from "../../lib/company-financials";
 
 interface Props {
   companyId: string;
@@ -11,12 +11,12 @@ const { companyId } = Astro.props;
 const company = allCompanies.find((item) => item.company_id === companyId);
 if (!company) throw new Error(`企業が見つかりません: ${companyId}`);
 
-const financialMetrics = financialMetricsForCompany(companyId);
+const trendMetrics = trendMetricsForCompany(companyId);
 ---
 
-{financialMetrics.length > 0 && <MetricExplorer
+{trendMetrics.length > 0 && <MetricExplorer
   companies={[company]}
-  metrics={financialMetrics}
+  metrics={trendMetrics}
   explorerId={`company-explorer-${companyId}`}
   initialMetricKey="revenue"
 />}

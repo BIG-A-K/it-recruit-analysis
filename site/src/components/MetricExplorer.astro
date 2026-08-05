@@ -57,7 +57,8 @@ const payload = {
     {showStats && <label>
       <span>年度</span>
       <select data-year>
-        {years.map((year, index) => <option value={year} selected={index === 0}>{year}年度</option>)}
+        <option value="latest" selected>最新年度</option>
+        {years.map((year) => <option value={year}>{year}年度</option>)}
       </select>
     </label>}
     {showStats && <fieldset>
@@ -87,7 +88,7 @@ const payload = {
   </div>
   <p class="chart-note">
     {showStats
-      ? "同じ年度・単位・対象範囲の公表値だけを比較しています。ネットCFは営業CF・投資CF・財務CFの合計です。"
+      ? "年度を指定した場合は同じ年度・単位・対象範囲の公表値を比較します。「最新年度」では企業ごとの最新公表値を比較します。ネットCFは営業CF・投資CF・財務CFの合計です。"
       : "年度ごとの公表値の推移です。ネットCFは営業CF・投資CF・財務CFの合計です。"}
   </p>
 </section>
@@ -252,17 +253,17 @@ const payload = {
     });
   }
 
-  function renderBar(rows, metricKey, year) {
+  function renderBar(selected, metricKey, year) {
     const chart = root.querySelector("[data-chart]");
-    const selected = rows.filter((row) => row.fiscal_year === year);
     if (!selected.length) {
       chart.innerHTML = '<p class="empty-state">この年度のデータはありません。</p>';
       return;
     }
     const max = Math.max(...selected.map((row) => Math.abs(Number(row.value)))) || 1;
     const ranked = [...selected].sort((a, b) => Number(b.value) - Number(a.value));
+    const yearLabel = year === "latest" ? "最新年度" : `${year}年度`;
     chart.innerHTML = `
-      <div class="chart-title"><strong>${escapeHtml(year)}年度 ${escapeHtml(payload.labels[metricKey] || metricKey)}</strong></div>
+      <div class="chart-title"><strong>${escapeHtml(yearLabel)} ${escapeHtml(payload.labels[metricKey] || metricKey)}</strong></div>
       <div class="bar-chart">
         ${ranked.map((row, index) => {
           const company = payload.companies.find((item) => item.id === row.company_id);
@@ -286,10 +287,21 @@ const payload = {
       }).join("")}</tr>`).join("")}</tbody></table></div>`;
   }
 
+  const latestRows = (rows) => {
+    const latestByCompany = new Map();
+    rows.forEach((row) => {
+      const latest = latestByCompany.get(row.company_id);
+      if (!latest || Number(row.fiscal_year) > Number(latest.fiscal_year)) {
+        latestByCompany.set(row.company_id, row);
+      }
+    });
+    return [...latestByCompany.values()];
+  };
+
   function updateStats(values, unit, metricKey, year) {
     const yearLabel = root.querySelector("[data-stats-year]");
     if (!yearLabel) return;
-    yearLabel.textContent = `${year}年度の集計`;
+    yearLabel.textContent = year === "latest" ? "最新年度の集計" : `${year}年度の集計`;
     root.querySelector("[data-mean]").textContent = values.length
       ? formatValue(values.reduce((sum, value) => sum + value, 0) / values.length, unit, metricKey)
       : "—";
@@ -302,7 +314,7 @@ const payload = {
 
   function update() {
     const metricKey = root.querySelector("[data-metric]").value;
-    const year = root.querySelector("[data-year]")?.value || payload.metrics[0]?.fiscal_year || "";
+    const year = root.querySelector("[data-year]")?.value || "latest";
     const view = root.querySelector('input[type="radio"]:checked')?.value || "line";
     const candidates = payload.metrics.filter((row) => row.metric_key === metricKey);
     const cohorts = new Map();
@@ -314,19 +326,22 @@ const payload = {
     });
     const rows = [...cohorts.entries()]
       .sort(([keyA, rowsA], [keyB, rowsB]) => {
-        const currentYearDifference =
-          rowsB.filter((row) => row.fiscal_year === year).length -
-          rowsA.filter((row) => row.fiscal_year === year).length;
+        const currentYearDifference = year === "latest"
+          ? latestRows(rowsB).length - latestRows(rowsA).length
+          : rowsB.filter((row) => row.fiscal_year === year).length -
+            rowsA.filter((row) => row.fiscal_year === year).length;
         return currentYearDifference || rowsB.length - rowsA.length || keyA.localeCompare(keyB);
       })[0]?.[1] || [];
-    const selected = rows.filter((row) => row.fiscal_year === year);
+    const selected = year === "latest"
+      ? latestRows(rows)
+      : rows.filter((row) => row.fiscal_year === year);
     const values = selected.map((row) => Number(row.value));
     const unit = selected[0]?.unit || rows[0]?.unit || "";
 
     updateStats(values, unit, metricKey, year);
 
     if (view === "line") renderLine(rows, metricKey);
-    if (view === "bar") renderBar(rows, metricKey, year);
+    if (view === "bar") renderBar(selected, metricKey, year);
     if (view === "table") renderTable(rows, metricKey);
   }
 

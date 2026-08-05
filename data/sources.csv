@@ -223,3 +223,7 @@ tis-official-group-companies,corporate,グループ会社,https://www.tis.co.jp/
 tis-official-history,corporate,沿革,https://www.tis.co.jp/company/history/,,,2026-08-05,TISI株式会社
 tis-official-recruit,recruitment,採用情報,https://www.tis.co.jp/saiyo.html,,,2026-08-05,TISI株式会社
 tis-official-new-graduates,recruitment,TISI新卒採用サイト,https://www.tis.co.jp/recruit/,,,2026-08-05,TISI株式会社
+edinet-s100tq5c,statutory_filing,有価証券報告書－第124期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TQ5C,S100TQ5C,2024-06-24,2026-08-05,富士通株式会社
+edinet-s100tnes,statutory_filing,訂正有価証券報告書－第185期(2022/04/01－2023/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TNES,S100TNES,2024-06-21,2026-08-05,日本電気株式会社
+edinet-s100tnfd,statutory_filing,有価証券報告書－第186期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TNFD,S100TNFD,2024-06-21,2026-08-05,日本電気株式会社
+edinet-s100vxgz,statutory_filing,有価証券報告書－第41期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VXGZ,S100VXGZ,2025-06-13,2026-08-05,ＫＤＤＩ株式会社

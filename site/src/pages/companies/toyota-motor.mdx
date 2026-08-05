@@ -8,24 +8,23 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
-
-トヨタ自動車株式会社は、自動車の生産・販売を主要事業とし、「モビリティカンパニー」へのモデルチェンジを掲げる企業です。コネクティッド、自動化、シェアリング、電動化（CASE）領域や新モビリティサービスも展開しています。
+トヨタ自動車株式会社は、自動車の生産・販売を主要事業とし、「モビリティカンパニー」へのモデルチェンジを掲げる企業。コネクティッド、自動化、シェアリング、電動化（CASE）領域や新モビリティサービスも展開する。
 
 ## 企業理念・経営理念
 
-トヨタは「トヨタウェイ2020」に「だれかのために」「誠実に行動する」「好奇心で動く」「ものをよく観る」「技能を磨く」「改善を続ける」「余力を創り出す」「競争を楽しむ」「仲間を信じる」「ありがとうを声に出す」という価値観を定めています。経営理念はトヨタフィロソフィー、基本理念、トヨタウェイ2020、トヨタグローバルビジョンで構成されています。
+トヨタは「トヨタウェイ2020」に「だれかのために」「誠実に行動する」「好奇心で動く」「ものをよく観る」「技能を磨く」「改善を続ける」「余力を創り出す」「競争を楽しむ」「仲間を信じる」「ありがとうを声に出す」という価値観を定める。経営理念はトヨタフィロソフィー、基本理念、トヨタウェイ2020、トヨタグローバルビジョンで構成される。
 
-## 事業内容
 
-- **自動車事業**: 乗用车から商用車まで、ハイブリッド、プラグインハイブリッド、電気自動車、燃料電池車など幅広いラインナップを世界展開します。
-- **金融事業**: ディーラーを通じた自動車ローン、リース、保険などの金融サービスを提供します。
-
-事業内容は[トヨタ自動車公式サイト](https://global.toyota/jp/)で確認してください。
+:::info
+トヨタは情報系の学生にとってはあまり馴染みのない選択肢かも知れないが、例えば[Woven](https://woven.toyota/jp/)ではVision Languageモデルを用いた自動運転の開発といった最先端AI技術の活用を進めている。
+十分魅力的な選択肢になるだろう。
+:::
 
 ## 公式サイト・IR
 
@@ -35,15 +34,21 @@ import FinancialData from "../../components/company/FinancialData.astro";
 
 ## 採用情報
 
-### 採用主体・対象
+### 新卒
 
-採用主体はトヨタ自動車株式会社です。総合職（事務職・技術職・業務職）、ソフトウェア職、新卒博士、病院事務などの募集があります。技能職（生産関係職）は別サイトで募集しています。
+採用主体はトヨタ自動車株式会社。総合職（事務職・技術職・業務職）、ソフトウェア職、新卒博士、病院事務などを募集する。技能職（生産関係職）は別サイトで募集する。
 
-### 勤務地・待遇・働き方
+本社は愛知県豊田市。東京本社（文京区）、名古屋オフィスなど国内拠点を置く。初任給、勤務時間、選考プロセスは[トヨタ採用サイト](https://www.toyota-recruit.com/)の募集要項に記載する。
 
-本社は愛知県豊田市で、東京本社（文京区）、名古屋オフィスなど国内拠点に配属されます。初任給、勤務時間、選考プロセスの詳細は募集要項ページ（JavaScript描画）で確認する必要があります。最新の募集要項は[トヨタ採用サイト](https://www.toyota-recruit.com/)でご確認ください。
+## 事業内容
 
-採用情報は2026年8月1日に確認しました。募集年度、応募資格、初任給、選考スケジュールは変更される可能性があるため、応募時に最新情報をご確認ください。
+| 報告セグメント | 事業内容・製品例 |
+| --- | --- |
+| 自動車 | セダン、ミニバン、コンパクト、SUV、トラック、関連部品・用品の設計・製造・販売 |
+| 金融 | 自動車ローン、リース、保険などの販売金融サービス |
+| その他 | 情報通信事業、モビリティの新技術・事業開発 |
+
+[第121期有価証券報告書](https://api.edinet-fsa.go.jp/api/v2/documents/S100VWVY)の報告セグメントは自動車、金融、その他。
 
 </CompanyProse>
 
@@ -51,6 +56,25 @@ import FinancialData from "../../components/company/FinancialData.astro";
 
 <SegmentRevenue companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 関連企業
+
+[第121期有価証券報告書](https://api.edinet-fsa.go.jp/api/v2/documents/S100VWVY)は、子会社585社、関連会社および共同支配企業165社を記載する。親会社の記載はない。
+
+| 区分 | 名称 | 主な事業内容 | 報告セグメント |
+| --- | --- | --- | --- |
+| 主な子会社 | 日野自動車株式会社、ダイハツ工業株式会社 | 自動車・同部品の製造・販売 | 自動車 |
+| 主な子会社 | トヨタ車体株式会社、トヨタ自動車九州株式会社、トヨタ自動車東日本株式会社 | 車体・自動車部品の製造 | 自動車 |
+| 主な子会社 | ウーブン・バイ・トヨタ株式会社 | モビリティの新技術・事業開発 | 自動車 |
+| 主な子会社 | トヨタファイナンシャルサービス株式会社、トヨタファイナンス株式会社 | 販売金融、リース、保険 | 金融 |
+| 主な子会社 | トヨタ モーター ノースアメリカ株式会社、米国トヨタ自動車販売株式会社 | 北米の事業統括・自動車販売 | 自動車 |
+| 主な子会社 | トヨタ モーターマニュファクチャリング ケンタッキー株式会社 | 自動車製造 | 自動車 |
+
+</CompanyProse>
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />

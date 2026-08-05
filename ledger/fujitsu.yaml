@@ -31,12 +31,12 @@ items:
     store: ir_csv
     topic: 平均年間給与・平均年齢・平均勤続年数・従業員数
     status: done
-    value: metrics.csvの平均年間給与・平均年齢・平均勤続年数は2025〜2026年度、連結従業員数は2022〜2026年度
+    value: metrics.csvの平均年間給与・平均年齢・平均勤続年数は2024〜2026年度、連結従業員数は2022〜2026年度
     subject: 平均値は提出会社単体、従業員数は連結
     as_of: 2022-03-31〜2026-03-31
     unit: JPY・years・persons
-    source: edinet-s100ym3k; edinet-s100w1ds
-    via: data/raw/edinet/S100YM3KのXBRL_TO_CSVと既存のS100W1DS正規化行
+    source: edinet-s100ym3k; edinet-s100w1ds; edinet-s100tq5c
+    via: data/raw/edinet/S100YM3K・S100W1DS・S100TQ5CのXBRL_TO_CSV
     note: 連結従業員数は就業人員で平均臨時雇用人員を含まない。平均年間給与は時間外勤務手当等・賞与その他の臨時給与を含む。
   - id: ir-revenue
     phase: ir

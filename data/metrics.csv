@@ -333,6 +333,7 @@ kddi,financing_cf,2026,2026-03-31,-553130000000,JPY,consolidated,IFRS,reported,e
 kddi,average_age,2026,2026-03-31,42.3,years,non_consolidated,,reported,edinet-s100ykg2,element_id=jpcrp_cor:AverageAgeYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
 kddi,average_tenure,2026,2026-03-31,16.4,years,non_consolidated,,reported,edinet-s100ykg2,element_id=jpcrp_cor:AverageLengthOfServiceYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
 kddi,average_annual_salary,2026,2026-03-31,10510939,JPY,non_consolidated,,reported,edinet-s100ykg2,element_id=jpcrp_cor:AverageAnnualSalaryInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+kddi,average_annual_salary,2025,2025-03-31,10183458,JPY,non_consolidated,,reported,edinet-s100vxgz,element_id=jpcrp_cor:AverageAnnualSalaryInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
 kddi,operating_profit,2025,2025-03-31,1087468000000,JPY,consolidated,IFRS,reported,edinet-s100ykg2,element_id=jpigp_cor:OperatingProfitLossIFRS; context_id=Prior1YearDuration
 kddi,operating_profit,2026,2026-03-31,1099125000000,JPY,consolidated,IFRS,reported,edinet-s100ykg2,element_id=jpigp_cor:OperatingProfitLossIFRS; context_id=CurrentYearDuration
 fujitsu,revenue,2022,2022-03-31,3586839000000,JPY,consolidated,IFRS,reported,edinet-s100ym3k,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
@@ -363,6 +364,7 @@ fujitsu,financing_cf,2026,2026-03-31,-379748000000,JPY,consolidated,IFRS,reporte
 fujitsu,average_age,2026,2026-03-31,42.7,years,non_consolidated,,reported,edinet-s100ym3k,element_id=jpcrp_cor:AverageAgeYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
 fujitsu,average_tenure,2026,2026-03-31,17.6,years,non_consolidated,,reported,edinet-s100ym3k,element_id=jpcrp_cor:AverageLengthOfServiceYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
 fujitsu,average_annual_salary,2026,2026-03-31,10122665,JPY,non_consolidated,,reported,edinet-s100ym3k,element_id=jpcrp_cor:AverageAnnualSalaryInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+fujitsu,average_annual_salary,2024,2024-03-31,9654460,JPY,non_consolidated,,reported,edinet-s100tq5c,element_id=jpcrp_cor:AverageAnnualSalaryInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
 fujitsu,operating_profit,2025,2025-03-31,265089000000,JPY,consolidated,IFRS,reported,edinet-s100ym3k,element_id=jpigp_cor:OperatingProfitLossIFRS; context_id=Prior1YearDuration
 fujitsu,operating_profit,2026,2026-03-31,348329000000,JPY,consolidated,IFRS,reported,edinet-s100ym3k,element_id=jpigp_cor:OperatingProfitLossIFRS; context_id=CurrentYearDuration
 nec,revenue,2022,2022-03-31,3014095000000,JPY,consolidated,IFRS,reported,edinet-s100ybfv,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
@@ -393,6 +395,7 @@ nec,financing_cf,2026,2026-03-31,-417950000000,JPY,consolidated,IFRS,reported,ed
 nec,average_age,2026,2026-03-31,43.1,years,non_consolidated,,reported,edinet-s100ybfv,element_id=jpcrp_cor:AverageAgeYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
 nec,average_tenure,2026,2026-03-31,17.3,years,non_consolidated,,reported,edinet-s100ybfv,element_id=jpcrp_cor:AverageLengthOfServiceYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
 nec,average_annual_salary,2026,2026-03-31,9939349,JPY,non_consolidated,,reported,edinet-s100ybfv,element_id=jpcrp_cor:AverageAnnualSalaryInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+nec,average_annual_salary,2024,2024-03-31,8804235,JPY,non_consolidated,,reported,edinet-s100tnfd,element_id=jpcrp_cor:AverageAnnualSalaryInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
 nec,operating_profit,2025,2025-03-31,256497000000,JPY,consolidated,IFRS,reported,edinet-s100ybfv,element_id=jpigp_cor:OperatingProfitLossIFRS; context_id=Prior1YearDuration
 nec,operating_profit,2026,2026-03-31,359913000000,JPY,consolidated,IFRS,reported,edinet-s100ybfv,element_id=jpigp_cor:OperatingProfitLossIFRS; context_id=CurrentYearDuration
 hitachi,revenue,2022,2022-03-31,10264602000000,JPY,consolidated,IFRS,reported,edinet-s100ygbo,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
@@ -2805,11 +2808,11 @@ ly-corporation,current_liabilities,2025,2025-03-31,4369654000000,JPY,consolidate
 ly-corporation,current_liabilities,2026,2026-03-31,6021748000000,JPY,consolidated,IFRS,reported,edinet-s100ybxd,連結財政状態計算書の12ヶ月以内負債合計（流動・非流動の区分）
 ly-corporation,quick_assets,2025,2025-03-31,2867871000000,JPY,consolidated,IFRS,reported,edinet-s100ybxd,12ヶ月以内資産合計から棚卸資産を除外（2900307000000 - 32436000000）
 ly-corporation,quick_assets,2026,2026-03-31,3407166000000,JPY,consolidated,IFRS,reported,edinet-s100ybxd,12ヶ月以内資産合計から棚卸資産を除外（3439501000000 - 32335000000）
-mercari,employee_count,2022,2022-06-30,2209,persons,consolidated,,reported,edinet-s100rx8v,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior1YearInstant
-mercari,employee_count,2023,2023-06-30,2101,persons,consolidated,,reported,edinet-s100rx8v,element_id=jpcrp_cor:NumberOfEmployees; context_id=CurrentYearInstant
+mercari,employee_count,2022,2022-06-30,2209,persons,consolidated,,reported,edinet-s100wqdw,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior3YearInstant
+mercari,employee_count,2023,2023-06-30,2101,persons,consolidated,,reported,edinet-s100wqdw,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior2YearInstant
 mercari,employee_count,2024,2024-06-30,2080,persons,consolidated,,reported,edinet-s100wqdw,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior1YearInstant
 mercari,employee_count,2025,2025-06-30,2159,persons,consolidated,,reported,edinet-s100wqdw,element_id=jpcrp_cor:NumberOfEmployees; context_id=CurrentYearInstant
-mercari,employee_count,2021,2021-06-30,1752,persons,consolidated,,reported,edinet-s100rx8v,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior2YearInstant
+mercari,employee_count,2021,2021-06-30,1752,persons,consolidated,,reported,edinet-s100wqdw,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior4YearInstant
 mercari,employee_count,2019,2019-06-30,1826,persons,consolidated,,reported,edinet-s100rx8v,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior4YearInstant
 mercari,employee_count,2020,2020-06-30,1792,persons,consolidated,,reported,edinet-s100rx8v,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior3YearInstant
 mercari,average_age,2023,2023-06-30,35.6,years,non_consolidated,,reported,edinet-s100rx8v,element_id=jpcrp_cor:AverageAgeYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
