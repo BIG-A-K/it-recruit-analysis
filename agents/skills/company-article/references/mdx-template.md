@@ -19,7 +19,6 @@ import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialHistory from "../../components/company/FinancialHistory.astro";
 import MetricTrends from "../../components/company/MetricTrends.astro";
-import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
@@ -78,8 +77,6 @@ import CompanySources from "../../components/company/CompanySources.astro";
 | 健全性指標 | `HealthMetrics` | `current_assets`、`current_liabilities`、`quick_assets` を最新期以上 |
 | 資産状況 | `FinancialHistory` | 売上・利益・CF・自己資本比率を3期以上 |
 | 棒グラフ | `MetricTrends` | 下記の全キーを登録し、切り替え時に空のグラフが出ないようにする |
-| 出典 | `CompanySources` | — |
-
 `FinancialData` は互換用。新規記事では `FinancialHistory` と `MetricTrends` を分けて置く。
 
 ## 棒グラフを埋める指標

@@ -50,7 +50,6 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 | `FinancialHistory` | 資産状況・IR推移の表 |
 | `MetricTrends` | 指標を切り替える推移グラフ |
 | `FinancialData` | 上記2つを続けて表示する互換用コンポーネント |
-| `CompanySources` | CSVデータが参照する出典 |
 | `CompanyProse` | Markdownで書く自由記述 |
 
 コンポーネントはMDX内で並べ替えられ、不要なものは外せます。新しい会社を
@@ -71,14 +70,13 @@ Sakana AIとPreferred Networksでは、採用・事業情報をMarkdown本文で
 ```mdx
 <CompanyOverview companyId={frontmatter.companyId} />
 <CompanyProse>Markdownの記事本文</CompanyProse>
-<CompanySources companyId={frontmatter.companyId} />
 ```
 
 ## 外資系企業と海外開示主体
 
 日本の採用主体と海外の財務開示主体が異なる場合は、両者を別の `company_id` として `companies.csv` へ登録し、`company_relations.csv` で関係を管理します。親会社の財務を日本法人の `company_id` へ複写しません。
 
-日本法人ページで海外開示主体のデータを表示するときは、`SegmentRevenue`、`FinancialHistory`、`MetricTrends`、`CompanySources` に開示主体の `company_id` を渡します。直前の `CompanyProse` で、開示主体、連結範囲、原通貨、会計基準、会計年度末と、日本法人単体の数値ではないことを `:::warn` ディレクティブに入れて明記してください。報告セグメントの一部だけを表示するときは、`SegmentRevenue` の `showShare={false}` を指定し、不完全な構成比を表示しません。
+日本法人ページで海外開示主体のデータを表示するときは、`SegmentRevenue`、`FinancialHistory`、`MetricTrends` に開示主体の `company_id` を渡します。直前の `CompanyProse` で、開示主体、連結範囲、原通貨、会計基準、会計年度末と、日本法人単体の数値ではないことを `:::warn` ディレクティブに入れて明記してください。報告セグメントの一部だけを表示するときは、`SegmentRevenue` の `showShare={false}` を指定し、不完全な構成比を表示しません。
 
 ## 確認
 

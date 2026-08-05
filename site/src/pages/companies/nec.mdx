@@ -8,30 +8,113 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
-import CompanySources from "../../components/company/CompanySources.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-日本電気株式会社（NEC）は、デジタル技術と社会インフラを組み合わせ、公共、通信、企業向けのシステムやサービスを提供する企業です。
+日本電気株式会社（NEC）は、1899年7月17日に設立された。ITサービス事業と社会インフラ事業を主たる事業とし、2026年3月31日時点で連結従業員101,800名、連結子会社252社、資本金4,278億円を有する。
 
-## 公式サイト・採用情報
+[NEC WayのPurpose](https://jpn.nec.com/profile/corp/necway.html)は「NECは、安全・安心・公平・効率という社会価値を創造し、誰もが人間性を十分に発揮できる持続可能な社会の実現を目指します。」。Principlesは創業の精神「ベタープロダクツ・ベターサービス」、インテグリティと人権の尊重、あくなきイノベーションの追求で構成される。
 
-- [企業サイト](https://jpn.nec.com/)
-- [IR情報](https://jpn.nec.com/ir/)
-- [新卒採用](https://jpn.nec.com/recruit/newgraduate/)
+## サイト
 
-採用主体は日本電気株式会社です。研究開発、技術、営業、スタッフなどの職種、応募資格、勤務地、待遇は公式募集要項で確認してください（2026年8月1日確認）。
+- [HP](https://jpn.nec.com/)
+- [NEC Way](https://jpn.nec.com/profile/corp/necway.html)
+- [IR](https://jpn.nec.com/ir/)
+  - [有価証券報告書](https://jpn.nec.com/ir/library/securities.html)
+    - [2025年度（第188期、2026年3月期）](https://jpn.nec.com/assets/global/ja/about/ir/library/securities/pdf/2025/2025188-04.pdf)
+    - [2024年度（第187期、2025年3月期）](https://jpn.nec.com/assets/global/ja/about/ir/library/securities/pdf/2024/2024187-04.pdf)
+    - [2023年度（第186期、2024年3月期）](https://jpn.nec.com/assets/global/ja/about/ir/library/securities/pdf/2023/2023186-04.pdf)
+- [採用情報](https://jpn.nec.com/recruit/)
+  - [新卒採用](https://jpn.nec.com/recruit/newgraduate/)
+    - [募集要項](https://jpn.nec.com/recruit/newgraduate/recruitinfo.html)
+    - [ジョブマッチング採用](https://jpn.nec.com/recruit/newgraduate/matching/)
+
+会計基準はIFRS。財務指標は連結、平均年齢・平均勤続年数・平均年間給与は提出会社単体の値。
 
 </CompanyProse>
 
-<EmploymentOverview companyId={frontmatter.companyId} />
+<EmploymentOverview companyId={frontmatter.companyId} workplace="本社（田町）、玉川・府中・相模原・我孫子の事業場、研究所、支社・支店など国内外の各拠点" />
+
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+採用主体は日本電気株式会社。募集対象は4年制大学の学部課程、大学院の修士課程・博士課程、高等専門学校の卒業・修了見込み、および既卒者。2027新卒採用は、エントリー時に挑戦したい領域・部門・職種を選ぶジョブマッチング採用。
+
+勤務地は全職種共通で、本社（田町）、事業場（玉川、府中、相模原、我孫子）、研究所（玉川）、支社・支店など国内外の各拠点。テレワークを行う場所を含む。標準所定労働時間は7時間45分、コアタイムなしのフレックスタイム制。
+
+| 職種 | 勤務地 | 基準給与（月）※1 | 基礎給（月） | 固定時間外手当（月）※2 | 標準年収※3 |
+| --- | --- | --- | --- | --- | --- |
+| [研究職](https://jpn.nec.com/recruit/newgraduate/matching/job/001/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+| [技術開発職](https://jpn.nec.com/recruit/newgraduate/matching/job/002/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+| [システムエンジニア職](https://jpn.nec.com/recruit/newgraduate/matching/job/003/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+| [サービスエンジニア職](https://jpn.nec.com/recruit/newgraduate/matching/job/004/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+| [コンサルタント職](https://jpn.nec.com/recruit/newgraduate/matching/job/005/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+| [サプライチェーン関連職](https://jpn.nec.com/recruit/newgraduate/matching/job/006/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+| [品質エンジニア職](https://jpn.nec.com/recruit/newgraduate/matching/job/007/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+| [経営システム職](https://jpn.nec.com/recruit/newgraduate/matching/job/008/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+| [知的財産職＜技術＞](https://jpn.nec.com/recruit/newgraduate/matching/job/009/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+| [法務・コンプライアンス職](https://jpn.nec.com/recruit/newgraduate/matching/job/010/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+| [FP&A職](https://jpn.nec.com/recruit/newgraduate/matching/job/011/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+| [人事職](https://jpn.nec.com/recruit/newgraduate/matching/job/012/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+| [知的財産職＜渉外＞](https://jpn.nec.com/recruit/newgraduate/matching/job/013/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+| [サプライチェーン戦略職](https://jpn.nec.com/recruit/newgraduate/matching/job/014/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+| [営業・ビジネスデザイン職](https://jpn.nec.com/recruit/newgraduate/matching/job/015/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+| [スタッフ職](https://jpn.nec.com/recruit/newgraduate/matching/job/016/) | 共通※4 | 個別設定 | 記載なし | 記載なし | 記載なし |
+
+:::info
+※1 職務の役割の大きさと本人のスキルレベルに応じて個別設定。参考月給は博士了379,400円、修士了320,800円、学部卒300,000円、高専卒279,500円（2026年4月実績）。<br />※2 固定時間外手当の額・時間は募集要項に記載なし。所定労働時間外の勤務には時間外勤務手当を支給。<br />※3 標準年収は募集要項に記載なし。賞与は年2回（6月、12月）。<br />※4 募集要項の全職種共通勤務地。
+:::
+
+選考は職種×部門別採用と部門フリー採用の2区分。前者は職種・部門、後者は職種を内定時に確約し、部門フリー採用の部門は入社後に決定する。
+
+## 事業内容
+
+[第188期有価証券報告書](https://jpn.nec.com/assets/global/ja/about/ir/library/securities/pdf/2025/2025188-04.pdf)の報告セグメントはITサービス事業と社会インフラ事業の2区分。システム機器の開発・製造・販売などは「その他」として表示される。
+
+| 報告セグメント | 事業内容・提供サービス | 主な関係会社 |
+| --- | --- | --- |
+| ITサービス事業 | システム・インテグレーション（システム構築、コンサルティング）、サポート（保守）、アウトソーシング・クラウドサービス、システム機器、ソフトウェア・サービス | NECプラットフォームズ、NECフィールディング、NECソリューションイノベータ、アビームコンサルティング、日本電気通信システム、NESICホールディングス |
+| 社会インフラ事業 | ネットワークインフラ（コアネットワーク、携帯電話基地局、光伝送システム）、通信事業者向けソフトウェア・サービス（OSS・BSS）、航空宇宙・防衛・海洋システムの機器、システム・インテグレーション、サポート | Netcracker Technology Corporation |
+
+:::warn
+2025年4月1日付の組織体制変更で、NECネッツエスアイは社会インフラ事業からITサービス事業へ変更された。2025年3月期のセグメント情報も変更後の区分へ組替表示されているため、変更前の区分との単純比較には注意が必要。
+:::
+
+</CompanyProse>
 
 <SegmentRevenue companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 関連企業
+
+親会社等はない。NECグループの連結子会社は2026年3月31日時点で252社。
+
+| 区分 | 名称 | 主な事業内容 | 報告セグメント |
+| --- | --- | --- | --- |
+| 主な子会社 | NECプラットフォームズ | 情報通信システム機器等の開発、製造、販売、保守、システム・インテグレーション | ITサービス事業 |
+| 主な子会社 | NECフィールディング | コンピュータ・ネットワークシステムの据付・保守 | ITサービス事業 |
+| 主な子会社 | NECソリューションイノベータ | システム・インテグレーション、ソフトウェア開発 | ITサービス事業 |
+| 主な子会社 | アビームコンサルティング | ビジネスコンサルティング | ITサービス事業 |
+| 主な子会社 | 日本電気通信システム | ネットワーク関連ソフトウェアの開発・設計 | ITサービス事業 |
+| 主な子会社 | NESICホールディングス | 純粋持株会社。傘下にNECネッツエスアイ、NECネクサソリューションズ | ITサービス事業 |
+| 主な子会社 | Netcracker Technology Corporation | 通信事業者向けソフトウェアの開発・販売 | 社会インフラ事業 |
+| 主な子会社 | NECファシリティーズ | 建物等の設計、施工管理、施設管理 | その他 |
+| 主な子会社 | NECビジネスインテリジェンス | 共通業務に関するシェアードサービス | その他 |
+| 主な子会社 | NEC Corporation of America | 地域統括、コンピュータ・通信機器の販売、システム・インテグレーション | その他 |
+| 主な子会社 | NEC Europe Ltd. | 地域統括 | その他 |
+| 主な子会社 | NEC Asia Pacific Pte. Ltd. | 地域統括、コンピュータ・通信機器の販売、システム・インテグレーション | その他 |
+
+</CompanyProse>
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
 
+<MetricTrends companyId={frontmatter.companyId} />

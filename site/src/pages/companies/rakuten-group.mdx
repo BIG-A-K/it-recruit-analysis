@@ -9,7 +9,6 @@ import EmploymentOverview from "../../components/company/EmploymentOverview.astr
 import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import FinancialHistory from "../../components/company/FinancialHistory.astro";
 import MetricTrends from "../../components/company/MetricTrends.astro";
-import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
@@ -40,16 +39,6 @@ import CompanySources from "../../components/company/CompanySources.astro";
     - [第26期（2022年12月期）](https://corp.rakuten.co.jp/investors/assets/doc/documents/dai26_yuho.pdf)
     - [第25期（2021年12月期）](https://corp.rakuten.co.jp/investors/assets/doc/documents/dai25_yuho.pdf)
     - [第24期（2020年12月期）](https://corp.rakuten.co.jp/investors/assets/doc/documents/dai24_yuho.pdf)
-    - [第23期（2019年12月期）](https://corp.rakuten.co.jp/investors/assets/doc/documents/dai23_yuho.pdf)
-    - [第22期（2018年12月期）](https://corp.rakuten.co.jp/investors/assets/doc/documents/dai22_yuho.pdf)
-    - [第21期（2017年12月期）](https://corp.rakuten.co.jp/investors/assets/doc/documents/dai21_yuho.pdf)
-    - [第20期（2016年12月期）](https://corp.rakuten.co.jp/investors/assets/doc/documents/dai20_yuho.pdf)
-    - [第19期（2015年12月期）](https://corp.rakuten.co.jp/investors/assets/doc/documents/dai19_yuho.pdf)
-    - [第18期（2014年12月期）](https://corp.rakuten.co.jp/investors/assets/doc/documents/dai18_yuho.pdf)
-    - [第17期（2013年12月期）](https://corp.rakuten.co.jp/investors/assets/doc/documents/dai17_yuho.pdf)
-    - [第16期（2012年12月期）](https://corp.rakuten.co.jp/investors/assets/doc/documents/dai16_yuho.pdf)
-    - [第15期（2011年12月期）](https://corp.rakuten.co.jp/investors/assets/doc/documents/dai15_yuho.pdf)
-    - [第14期（2010年12月期）](https://corp.rakuten.co.jp/investors/assets/doc/documents/dai14_yuho.pdf)
 - [採用情報](https://corp.rakuten.co.jp/careers/)
   - [福利厚生](https://corp.rakuten.co.jp/careers/benefit/)
   - [新卒採用](https://corp.rakuten.co.jp/careers/graduates/)
@@ -105,9 +94,6 @@ import CompanySources from "../../components/company/CompanySources.astro";
 | フィンテック | 楽天ペイ、楽天ポイントカード、楽天Edy、楽天チェック、楽天カード、楽天銀行、楽天証券、楽天ウォレット、楽天保険の総合窓口、楽天生命、楽天損保 | 楽天ペイメント、楽天Edy、楽天カード、楽天銀行、楽天証券、楽天ウォレット、楽天インシュアランスプランニング、楽天生命保険、楽天損害保険等が、決済、ポイント、銀行、証券、暗号資産、生命保険、損害保険を提供する。 |
 | モバイル | 楽天モバイル、楽天コミュニケーションズ、Rakuten Symphony | 楽天モバイル株式会社がMNO・MVNO、楽天コミュニケーションズ株式会社が電話・IP通信、Rakuten Symphony Singapore, Pte. Ltd.がOpen RAN、クラウド、自動化等の通信プラットフォームを担う。 |
 
-:::warning
-セグメント損益はモバイルエコシステム貢献を考慮したNon-GAAP営業利益ベース。FY2023のセグメント損益は、モバイル関連投資の管理方法変更とモバイルエコシステム貢献の反映により修正再表示されている。2026年10月1日効力発生予定のフィンテック事業再編は現行の3報告セグメントへ反映していない。
-:::
 
 </CompanyProse>
 
@@ -140,13 +126,14 @@ import CompanySources from "../../components/company/CompanySources.astro";
 | 持分法適用関連会社 | 株式会社ぐるなび／株式会社LIFULL | 飲食店情報・支援、住宅・不動産等の情報サービス | — |
 | 持分法適用関連会社 | 楽天ANAトラベルオンライン株式会社／JP楽天ロジスティクス株式会社 | 旅行予約・手配、物流受託・物流DX | インターネットサービス |
 
-:::warning
-IFRSの連結財政状態計算書は性質別表示で、流動資産・流動負債の合計を開示していない。当座資産も構成科目から推定していないため、流動性指標のコンポーネントは置いていない。
-:::
 
 </CompanyProse>
+:::warning
+公開されているIFRS(国際財務報告基準)の連結財政状態計算書は性質別表示で、流動資産・流動負債の合計を開示していない。当座資産も構成科目から推定していないため、流動性指標のコンポーネントは置いていない。
+
+ただし、ここ数年で総資産額や営業CFが減少傾向にあることやモバイルセグメントでの売上が赤字傾向にあることから近年は劣勢に立たされているようだ。
+:::
 
 <FinancialHistory companyId={frontmatter.companyId} />
 
 <MetricTrends companyId={frontmatter.companyId} />
-

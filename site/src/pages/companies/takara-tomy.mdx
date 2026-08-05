@@ -8,71 +8,88 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
-import CompanySources from "../../components/company/CompanySources.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-株式会社タカラトミーは、「トミカ」「プラレール」「リカちゃん」「ベイブレード」などの玩具を企画・製造・販売する企業です。カードゲーム、カプセルトイ、アミューズメント、キャラクター商品などにも事業を広げています。
+株式会社タカラトミーは、「トミカ」「プラレール」「リカちゃん」「ベイブレード」などの玩具を企画・製造・販売する企業。カードゲーム、カプセルトイ、アミューズメント、キャラクター商品にも事業を広げている。
 
-## 企業理念・事業の特徴
+[タカラトミーグループ理念](https://www.takaratomy.co.jp/company/philosophy/)は「おもちゃ会社」から「アソビ会社」への転換を掲げ、Purposeとして「アソビへ懸ける品質は、世界を健やかに、賑やかにできる。」を定めている。世界130以上の国と地域へ展開し、国内8社・海外28社の拠点を持つ。
 
-タカラトミーグループは、理念ページで「おもちゃ会社」から「アソビ会社」へ変わっていく考え方を示しています。Purposeとして「アソビへ懸ける品質は、世界を健やかに、賑やかにできる。」を掲げ、商品そのものだけでなく、遊びを通じた体験の品質を重視しています。
+## サイト
 
-創業100周年を迎えた後の事業方針として、Kidultsを含む年齢軸と海外展開の地域軸を広げ、「グローバル・アソビカンパニー」を目指すと採用サイトで説明しています。グループの事業紹介では、世界130以上の国と地域への展開、国内8社・海外28社の拠点が案内されています。
-
-理念は[タカラトミーグループ理念](https://www.takaratomy.co.jp/company/philosophy/)で確認できます。
-
-## 事業内容
-
-採用サイトでは、新卒採用を行う5社の役割を次のように説明しています。
-
-- **タカラトミー**: 玩具の企画開発、マーケティング・プロモーション、海外ビジネス、技術開発・設計、生産、コーポレート。
-- **タカラトミーアーツ**: ガチャ、アミューズメント筐体、玩具菓子、雑貨、ぬいぐるみ、アパレルの企画・製造と、マーケティング、営業、品質管理など。
-- **トミーテック**: 鉄道模型などの企画・製造を行う国内工場を持ち、営業、海外ビジネス、企画、生産技術、設計などを担当します。
-- **タカラトミーマーケティング**: タカラトミー商品を中心とした国内営業、物流管理・企画。
-- **キデイランド**: キャラクター・グッズ、玩具などを扱う店舗の運営、販売、コーポレート業務。
-
-商品企画だけでなく、市場分析、広告制作、営業、生産、物流、品質管理、店舗運営まで、遊びを届ける一連の仕事があります。詳細は[グループの事業](https://www.takaratomy.co.jp/company/recruit/business/)と[グループの仕事](https://www.takaratomy.co.jp/company/recruit/work/)を確認してください。
-
-## 公式サイト・IR
-
-- [会社情報](https://www.takaratomy.co.jp/company/)
+- [HP](https://www.takaratomy.co.jp/)
 - [企業理念](https://www.takaratomy.co.jp/company/philosophy/)
-- [投資家情報](https://www.takaratomy.co.jp/ir/)
-- [財務・業績情報](https://www.takaratomy.co.jp/ir/highlight/)
-
-## 採用情報
-
-### 対象・職種
-
-採用主体は募集会社ごとに異なります。新卒採用では、タカラトミー、タカラトミーアーツ、トミーテック、タカラトミーマーケティング、キデイランドの5社で、合計6職種を募集すると案内されています。募集職種はセールス&マーケティング、コーポレート、技術、企画開発、店舗運営などです。
-
-募集要項に記載された対象学歴は会社・職種によって異なりますが、短大、専門、高専、大学、大学院などが含まれます。技術職を含め、応募時に必須資格は特にないとFAQに記載されています。既卒者や外国籍の応募、オンラインと対面を組み合わせた面接についてもFAQで案内されています。
-
-### 勤務地・待遇・働き方
-
-募集要項に掲載された2026年卒実績では、タカラトミー、タカラトミーアーツ、タカラトミーマーケティングの初任給は博士卒330,000円、修士卒315,000円、4年制大学卒・専門卒・高専専攻科卒305,000円などです。トミーテックは修士卒310,877円、4年制大学卒・高専専攻科卒300,857円など、キデイランドは大学卒総合職286,005円、短大・専門卒一般職256,780円です。いずれも募集要項に記載された実績値で、会社ごとに条件が異なります。
-
-タカラトミーは東京・葛飾区の本社などが主な勤務地で、将来は他事業所や海外現地法人勤務の可能性があります。トミーテックは栃木本社工場または東京オフィス、タカラトミーマーケティングは東京本社が初年度の勤務地です。キデイランドは店舗配属で、職種により転居を伴う異動の可能性があります。
-
-タカラトミー、タカラトミーアーツ、タカラトミーマーケティングでは9時から17時30分を基本とし、定時勤務またはスーパーフレックスタイム勤務を案内しています。グループ合同の新入社員導入研修、バリューチェーン研修、フォローアップ研修があります。会社によって在宅勤務、休日、勤務時間、配属条件が異なるため、応募会社の募集要項を確認してください。
-
-### 選考
-
-標準的な選考フローはエントリーシート、適性検査、一次面接、二次面接、最終面接です。キデイランドは別フローと記載されています。採用サイトでは2027年・2028年向けの合同マイページを案内しています。
-
-採用情報は2026年8月1日に確認しました。掲載条件には「年によって変更となる可能性がある」と明記されています。最新の募集会社、職種、勤務地、初任給、応募期間は[タカラトミーグループ採用情報](https://www.takaratomy.co.jp/company/recruit/index_select.html)と[募集要項](https://www.takaratomy.co.jp/company/recruit/recruitment/)で確認してください。キャリア採用とジョブリターンも同じ採用案内から確認できます。
+- [IR](https://www.takaratomy.co.jp/ir/)
+  - [第75期（2026年3月期）有価証券報告書](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YHL0.pdf)
+- [グループ採用情報](https://www.takaratomy.co.jp/company/recruit/index_select.html)
+  - [募集要項](https://www.takaratomy.co.jp/company/recruit/recruitment/)
 
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+採用主体はタカラトミー、タカラトミーアーツ、トミーテック、タカラトミーマーケティング、キデイランドの5社。新卒採用の募集職種はセールス&マーケティング、コーポレート、技術、企画開発、店舗運営など計6職種。募集会社ごとの条件は次のとおり。
+
+| 募集会社・職種区分 | 勤務地 | 初任給（月） | 固定時間外手当（月） |
+| --- | --- | ---: | --- |
+| [タカラトミー](https://www.takaratomy.co.jp/company/recruit/recruitment/)（セールス&マーケティング、コーポレート、技術、企画開発） | 東京・葛飾区の本社など | 博士卒330,000円、修士卒315,000円、4年制大学卒・専門卒・高専専攻科卒305,000円 | 募集要項に記載なし |
+| [タカラトミーアーツ](https://www.takaratomy.co.jp/company/recruit/recruitment/) | 東京都葛飾区 | 博士卒330,000円、修士卒315,000円、4年制大学卒・専門卒・高専専攻科卒305,000円 | 募集要項に記載なし |
+| [トミーテック](https://www.takaratomy.co.jp/company/recruit/recruitment/)（技術・企画開発など） | 栃木本社工場または東京オフィス | 修士卒310,877円、4年制大学卒・高専専攻科卒300,857円 | 募集要項に記載なし |
+| [タカラトミーマーケティング](https://www.takaratomy.co.jp/company/recruit/recruitment/)（セールス&マーケティング） | 東京本社 | 博士卒330,000円、修士卒315,000円、4年制大学卒・専門卒・高専専攻科卒305,000円 | 募集要項に記載なし |
+| [キデイランド](https://www.takaratomy.co.jp/company/recruit/recruitment/)（店舗運営） | 店舗配属 | 大学卒総合職286,005円、短大・専門卒一般職256,780円 | 募集要項に記載なし |
+
+募集要項の対象学歴は会社・職種により異なり、短大、専門、高専、大学、大学院などを含む。技術職を含め、応募時の必須資格はない。既卒者や外国籍の応募、オンラインと対面を組み合わせた面接も対象とする。
+
+タカラトミー、タカラトミーアーツ、タカラトミーマーケティングは9時から17時30分を基本とし、定時勤務またはスーパーフレックスタイム勤務を採用する。グループ合同の新入社員導入研修、バリューチェーン研修、フォローアップ研修がある。標準的な選考フローはエントリーシート、適性検査、一次面接、二次面接、最終面接。キデイランドは別フロー。
+
+## 事業内容
+
+[第75期有価証券報告書](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YHL0.pdf)の報告セグメントは、日本、アメリカズ、欧州、オセアニア、アジアの5区分。玩具（ベビー事業を含む）と玩具周辺事業（カプセル玩具、アミューズメント機器、玩具菓子など）を国内外で展開する。
+
+| 報告セグメント | 事業内容・提供サービス | 主な関係会社 |
+| --- | --- | --- |
+| 日本 | 玩具・玩具周辺商品の企画、製造、販売等。国内販売、物流、ショップ・イベント運営、不動産賃貸を含む | 株式会社タカラトミー、株式会社トミーテック、株式会社タカラトミーアーツ、株式会社タカラトミーマーケティング、株式会社キデイランド、株式会社タカラトミーフィールドテック、株式会社ペニイ、株式会社タカラトミーアイビス、株式会社タツノコプロ |
+| アメリカズ | 乳幼児製品・玩具等の企画、製造、販売、IPライセンシング、販売 | TOMY Corporation、TOMY Holdings, Inc.、TOMY International, Inc.、Learning Curve International, Inc.、Fat Brain Holdings, LLC、T-Licensing Inc.、TOMY Canada Limited、TOMY Shop, Inc. |
+| 欧州 | 乳幼児製品・玩具等の企画、製造、販売 | TOMY Europe (Holdings) Limited、TOMY UK Co., Ltd.、TOMY France SARL.、TOMY Deutschland GmbH |
+| オセアニア | 乳幼児製品・玩具等の販売 | TOMY Australia Pty Ltd. |
+| アジア | 玩具等の開発、設計、生産、販売 | TOMY (Hong Kong) Ltd.、TOMY (Shenzhen) Ltd.、TOMY (Thailand) Ltd.、TOMY (Vietnam) Co., Ltd.、TOMY (Shanghai) Ltd.、T-ARTS Korea Co., Ltd.、RC2 (Asia) Limited、TOMY Asia Limited、TOMY SOUTHEAST ASIA PTE. LTD. |
+
+</CompanyProse>
+
 <SegmentRevenue companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 関連企業
+
+[第75期有価証券報告書](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YHL0.pdf)では、親会社等はなく、連結子会社34社、関連会社3社を記載している。
+
+| 区分 | 名称 | 主な事業内容 | 報告セグメント |
+| --- | --- | --- | --- |
+| 主な子会社 | 株式会社トミーテック | 鉄道模型等の企画・製造・販売 | 日本 |
+| 主な子会社 | 株式会社タカラトミーアーツ | カプセル玩具、玩具雑貨、アミューズメント機器、アパレル等の企画・製造・販売 | 日本 |
+| 主な子会社 | 株式会社タカラトミーマーケティング | 玩具等の卸販売・ロジスティクス | 日本 |
+| 主な子会社 | 株式会社キデイランド | 玩具・雑貨等の販売 | 日本 |
+| 主な子会社 | 株式会社タカラトミーアイビス | 管理業務、アフターサービス、情報システム開発・運用、不動産賃貸・管理 | 日本 |
+| 主な子会社 | TOMY Corporation | 乳幼児製品・玩具等の企画・製造・販売 | アメリカズ |
+| 主な子会社 | TOMY Holdings, Inc. | 乳幼児製品・玩具等の企画・製造・販売 | アメリカズ |
+| 主な子会社 | TOMY International, Inc. | 乳幼児製品・玩具等の企画・製造・販売 | アメリカズ |
+| 主な子会社 | TOMY (Hong Kong) Ltd. | 乳幼児製品・玩具等の製造 | アジア |
+| 持分法適用関連会社 | 株式会社タツノコプロ | アニメーション等のIP事業 | 日本 |
+
+</CompanyProse>
 
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
 
+<MetricTrends companyId={frontmatter.companyId} />

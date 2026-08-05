@@ -11,25 +11,20 @@ import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialHistory from "../../components/company/FinancialHistory.astro";
 import MetricTrends from "../../components/company/MetricTrends.astro";
-import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-***
-> ・NTTグループは、中長期的な成長と安定した財務基盤の両立を図るため、2023年5月に公表した中期経営戦略『New value creation & Sustainability 2027 powered by IOWN』について、事業環境の変化を踏まえて戦略を一部見直し、「中期的な利益成長に向けた取り組み『New value creation & Sustainability 2030 powered by AIOWN』」を2026年5月に公表しました。
->
-> ・これまでの成長分野を「バリュー分野」へ変更し、更なるビジネス拡大が期待できるAIを軸に、利益を大きく伸長させるとともに、既存分野を「コネクティビティ分野」と改め、AIネイティブなインフラへの転換を進めることで、2030年度にEBITDA4兆円の達成をめざします。
->
-> ・あわせて、資本効率の向上と一定の財務健全性の確保の両立に向け、ROIC（金融事業除き）5.5％の達成及び有利子負債/EBITDA倍率（金融事業除き）3.5倍程度までの低下をめざします。
-***
+[中期経営戦略](https://group.ntt/jp/ir/mgt/managementstrategy/)は、2023年5月公表の『New value creation & Sustainability 2027 powered by IOWN』を事業環境の変化に合わせて見直し、2026年5月に『中期的な利益成長に向けた取り組み New value creation & Sustainability 2030 powered by AIOWN』を公表した。成長分野を「バリュー分野」、既存分野を「コネクティビティ分野」と位置づけ、AIを軸とした事業拡大とAIネイティブなインフラへの転換を進める。2030年度のEBITDA4兆円、ROIC（金融事業除き）5.5％、有利子負債/EBITDA倍率（金融事業除き）3.5倍程度を目標とする。
 
 1985年に日本電信電話公社が民営化されて設立された持株会社。現在の商号はNTT株式会社。
 子会社1,026社・関連会社161社(2026年3月31日現在)で構成される。
 
 ## サイト
 - [HP](https://group.ntt/jp/)
+  - [グループ事業](https://group.ntt/jp/business/)
+  - [グループ企業一覧](https://group.ntt/jp/group/gnavi/)
   - [IR](https://group.ntt/jp/ir/)
     - [有価証券報告書 第41期(2026年3月期)](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YCP3.pdf)
 - [採用情報](https://group.ntt/jp/careers/)
@@ -37,29 +32,16 @@ import CompanySources from "../../components/company/CompanySources.astro";
   - [NTT研究所 採用](https://www.rd.ntt/dtl/recruitment/)
     - [募集要項](https://www.ntt-labs.jp/saiyo/recruit/recruit02.html)
 
-## 関連企業
-- 総合ICT事業：株式会社NTTドコモ、NTTドコモビジネス株式会社、NTTドコモソリューションズ株式会社、株式会社ドコモ・ファイナンス、住信SBIネット銀行株式会社 他149社
-- グローバル・ソリューション事業：株式会社NTTデータグループ、株式会社NTTデータ、NTT DATA, Inc.、NTT Ltd.、DIMENSION DATA HOLDINGS 他589社
-- 地域通信事業：NTT東日本株式会社、NTT西日本株式会社 他58社
-- その他：NTTアーバンソリューションズ株式会社、NTT都市開発株式会社、株式会社NTTファシリティーズ、NTTアノードエナジー株式会社、NTTファイナンス株式会社 他197社
-
-グループ内の個別企業については以下も参照。
-
-- [NTTデータ](/companies/ntt-data-group/)
-- NTTデータMSE
-- NTTデータ先端技術
-- NTTデータアイ
-
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-## 採用情報の補足
+## 採用情報
 
 ### 新卒
-以下はNTT株式会社本体の採用情報を公式ページで2026年8月1日に確認した内容です。事業会社の採用主体・条件は各社の募集要項を確認してください。
+NTT株式会社本体の新卒採用はNTT研究所（NTT R&D）の研究開発職が対象であり、事業会社（NTTドコモ、NTT東日本・西日本、NTTデータなど）は法人ごとに採用を行う。採用主体と条件は各社の募集要項で異なる。
 
 持株会社であるNTT株式会社の従業員は2,606人で、本体の新卒採用はNTT研究所(NTT R&D)の研究開発職が対象。
 
@@ -82,24 +64,40 @@ import CompanySources from "../../components/company/CompanySources.astro";
 - 休日休暇：完全週休2日制、祝日、GW、夏季・年末年始休暇、有給年次休暇(年間20日)、特別休暇、ライフプラン休暇
 - 福利厚生：カフェテリアプラン(宿泊・アミューズメント・健康増進・財産形成・育児介護・住宅関連等)
 
-## グループ事業の具体例
+## 事業内容
 
-| セグメント | 事業内容 | 主な連結子会社 |
-| --- | --- | --- |
-| 総合ICT事業 | コンシューマ通信(携帯電話、光ブロードバンド)、スマートライフ(金融、コンテンツ)、法人事業 | NTTドコモ、NTTドコモビジネス、NTTドコモソリューションズ、住信SBIネット銀行 他149社 |
-| グローバル・ソリューション事業 | コンサルティング、ITソリューション、システム・ソフトウェア開発、メンテナンス・サポート、データセンター | NTTデータグループ、NTTデータ、NTT DATA, Inc.、NTT Ltd.、DIMENSION DATA HOLDINGS 他589社 |
-| 地域通信事業 | 光サービス、法人事業、固定電話 | NTT東日本、NTT西日本 他58社 |
-| その他(不動産、エネルギー等) | 不動産、エネルギー | NTTアーバンソリューションズ、NTT都市開発、NTTファシリティーズ、NTTアノードエナジー、NTTファイナンス 他197社 |
+[NTTグループの事業案内](https://group.ntt/jp/business/)は4事業で構成される。[第41期有価証券報告書](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YCP3.pdf)の2026年3月期報告セグメントも同じ4区分で、主な事業内容と運営会社は次のとおり。
 
-有報の沿革によると、NTTデータ(エヌ・ティ・ティ・データ通信株式会社)は1995年4月に東京証券取引所へ上場し、2025年9月に上場廃止となっている。
+| 公式グループ事業 | IR報告セグメント | 事業内容 | 主な運営会社 |
+| --- | --- | --- | --- |
+| [総合ICT事業](https://group.ntt/jp/business/integrated_ict.html) | 総合ICT事業 | コンシューマ通信（携帯電話サービス、光ブロードバンドサービス等）、スマートライフ（金融サービス、コンテンツ・ライフスタイルサービス等）、法人向け通信・ソリューション・システム開発 | 株式会社NTTドコモ、NTTドコモビジネス株式会社、NTTドコモソリューションズ株式会社、株式会社ドコモ・ファイナンス、住信SBIネット銀行株式会社 |
+| [グローバル・ソリューション事業](https://group.ntt/jp/business/global_solutions.html) | グローバル・ソリューション事業 | コンサルティング、ITソリューション、システム・ソフトウェア開発、メンテナンス・サポート、データセンター | 株式会社NTTデータグループ、株式会社NTTデータ、NTT DATA, Inc.、NTT Ltd.、DIMENSION DATA HOLDINGS |
+| [地域通信事業](https://group.ntt/jp/business/regional_communications.html) | 地域通信事業 | 光サービス、法人事業、固定電話 | NTT東日本株式会社、NTT西日本株式会社 |
+| [その他（不動産、エネルギー等）](https://group.ntt/jp/business/others.html) | その他（不動産、エネルギー等） | 不動産事業、エネルギー事業 | NTTアーバンソリューションズ株式会社、NTT都市開発株式会社、株式会社NTTファシリティーズ、NTTアノードエナジー株式会社、NTTファイナンス株式会社 |
 
 </CompanyProse>
 
 <SegmentRevenue companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 関連企業
+
+NTT株式会社は持株会社で、2026年3月31日現在、子会社1,026社・関連会社161社で構成される。主な関連企業は次のとおり。
+
+| 事業 | 主な関連企業 |
+| --- | --- |
+| 総合ICT事業 | 株式会社NTTドコモ、NTTドコモビジネス株式会社、NTTドコモソリューションズ株式会社、株式会社ドコモ・ファイナンス、住信SBIネット銀行株式会社 他149社 |
+| グローバル・ソリューション事業 | 株式会社NTTデータグループ、株式会社NTTデータ、NTT DATA, Inc.、NTT Ltd.、DIMENSION DATA HOLDINGS 他589社 |
+| 地域通信事業 | NTT東日本株式会社、NTT西日本株式会社 他58社 |
+| その他 | NTTアーバンソリューションズ株式会社、NTT都市開発株式会社、株式会社NTTファシリティーズ、NTTアノードエナジー株式会社、NTTファイナンス株式会社 他197社 |
+
+グループ内の個別企業として、[NTTデータ](/companies/ntt-data-group/)、NTTデータMSE、NTTデータ先端技術、NTTデータアイがある。[第41期有価証券報告書](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YCP3.pdf)の沿革では、NTTデータ（エヌ・ティ・ティ・データ通信株式会社）は1995年4月に東京証券取引所へ上場し、2025年9月に上場廃止となった。
+
+</CompanyProse>
 
 <HealthMetrics companyId={frontmatter.companyId} />
 
 <FinancialHistory companyId={frontmatter.companyId} />
 
 <MetricTrends companyId={frontmatter.companyId} />
-

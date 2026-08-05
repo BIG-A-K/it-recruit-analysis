@@ -1,0 +1,230 @@
+company_id: nec
+disclosure_company_id: nec
+company_boundary:
+  adoption_company_id: nec
+  disclosure_company_id: nec
+  reporting_segment_company_id: nec
+  legal_name: 日本電気株式会社
+  securities_code: "6701"
+  edinet_code: E01765
+  fiscal_year_end: 3月末日
+  accounting_standard: IFRS
+  currency: JPY
+  reporting_segments: ITサービス事業, 社会インフラ事業
+  company_relations: []
+  note: 採用主体と開示主体は同一。2025年4月1日付の組織体制変更でNECネッツエスアイを社会インフラ事業からITサービス事業へ変更し、前期数値も組替表示している。連結子会社は2026年3月31日時点で252社
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-05
+updated_at: 2026-08-05
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csvのaverage_age・average_tenure・average_annual_salary（2026年度、提出会社単体）とemployee_count（2022〜2026年度、連結）
+    subject: 連結従業員数・提出会社単体の平均年齢等
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY・years・persons
+    source: edinet-s100ybfv; edinet-s100vz85
+    via: ローカルEDINET raw CSVをUTF-16LEからUTF-8へ変換して抽出
+    note: 2026年3月期の連結従業員数は101,800人、提出会社単体は21,934人
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上収益 3期以上
+    status: done
+    value: metrics.csvのrevenue（2022〜2026年度、5行）
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ybfv
+    via: ローカルEDINET raw CSVをUTF-16LEからUTF-8へ変換して抽出
+    note: IFRSの売上収益
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csvのoperating_profit（2024〜2026年度、3行）
+    subject: 連結
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ybfv; edinet-s100vz85
+    via: ローカルEDINET raw CSVをUTF-16LEからUTF-8へ変換して抽出
+    note: IFRSの営業利益は原本の要素名から取得
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csvのequity_ratio（2022〜2026年度）、current_assets・current_liabilities（2025〜2026年度）、quick_assets（2025〜2026年度）
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: percent・JPY
+    source: edinet-s100ybfv
+    via: ローカルEDINET raw CSVをUTF-16LEからUTF-8へ変換して抽出し、quick_assetsを算定
+    note: quick_assetsは現金及び現金同等物、営業債権及びその他の債権、その他の金融資産（流動）の合計。棚卸資産・契約資産・その他の流動資産は含めない
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csvのoperating_cf・investing_cf・financing_cf（2022〜2026年度、各5行）
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ybfv; edinet-s100vz85
+    via: ローカルEDINET raw CSVをUTF-16LEからUTF-8へ変換して抽出
+    note: 2026年度の営業CF・投資CF・財務CFはそれぞれ438,463百万円、33,686百万円、△417,950百万円
+  - id: ir-segments
+    phase: ir
+    store: ir_csv
+    topic: ITサービス事業・社会インフラ事業の年度別売上・利益
+    status: done
+    value: segments.csvの2セグメント（2024〜2026年度、各3行）
+    subject: 連結報告セグメント
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ybfv; edinet-s100vz85
+    via: ローカルEDINET raw CSVをUTF-16LEからUTF-8へ変換して抽出し、csv-upsertで更新
+    note: 2026年3月期の利益列は有報のセグメント利益（△損失）（IFRS）。2024年3月期は売上のみを保存し利益は推測しない
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメント変更と比較上の注記
+    status: done
+    value: 2025年4月1日付でNECネッツエスアイを社会インフラ事業からITサービス事業へ変更
+    subject: NECグループ連結
+    as_of: 2025-04-01・2026-03-31
+    unit: ""
+    source: edinet-s100ybfv
+    via: 第188期有価証券報告書の事業セグメント注記
+    note: 前連結会計年度のセグメント情報も変更後の区分へ組替表示
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・募集ページURL
+    status: done
+    value: 日本電気株式会社・2027新卒採用・ジョブマッチング採用
+    subject: 日本電気株式会社
+    as_of: 2027年度新卒採用
+    unit: ""
+    source: "https://jpn.nec.com/recruit/newgraduate/recruitinfo.html; https://jpn.nec.com/recruit/newgraduate/matching/"
+    via: 公式新卒採用募集要項とマッチングガイド
+    note: 募集対象は大学学部・修士・博士、高等専門学校の卒業・修了見込みおよび既卒者
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・選考区分・勤務地
+    status: done
+    value: 研究職、技術開発職、システムエンジニア職、コンサルタント職、サービスエンジニア職、サプライチェーン関連職、品質エンジニア職、経営システム職、知的財産職（技術・渉外）、法務・コンプライアンス職、FP&A職、人事職、サプライチェーン戦略職、営業・ビジネスデザイン職、スタッフ職
+    subject: 2027新卒採用
+    as_of: 2027年度
+    unit: ""
+    source: "https://jpn.nec.com/recruit/newgraduate/matching/; https://jpn.nec.com/recruit/newgraduate/matching/course_flow/"
+    via: 公式マッチングガイドと選考コース・選考フロー
+    note: 職種×部門別採用は職種・部門を確約。部門フリー採用は職種を確約し部門は入社後に決定
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・標準年収
+    status: done
+    value: 職務の役割の大きさと本人のスキルレベルに応じて報酬を個別設定。参考月給は博士379,400円、修士320,800円、学部300,000円、高専279,500円（2026年4月実績）
+    subject: 2027新卒採用
+    as_of: 2027年度・2026年4月実績
+    unit: JPY
+    source: "https://jpn.nec.com/recruit/newgraduate/recruitinfo.html"
+    via: 公式新卒採用募集要項
+    note: 固定時間外手当の記載なし。所定労働時間外は時間外勤務手当を支給。標準年収は公式記載なし。賞与は年2回（6月、12月）
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・テレワーク・標準労働時間・応募資格
+    status: done
+    value: 本社（田町）、玉川・府中・相模原・我孫子の事業場、研究所、支社・支店など国内外の各拠点。標準所定労働時間7時間45分、コアタイムなしのフレックスタイム制
+    subject: 2027新卒採用
+    as_of: 2027年度
+    unit: ""
+    source: "https://jpn.nec.com/recruit/newgraduate/recruitinfo.html"
+    via: 公式新卒採用募集要項
+    note: 勤務地変更の範囲は同上。テレワークを行う場所を含む。完全週休2日制、年間休日126日（2025年度）
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的サービスと事業内容
+    status: done
+    value: ITサービス事業はシステム・インテグレーション、サポート、アウトソーシング・クラウドサービス、システム機器、ソフトウェア・サービス。社会インフラ事業はネットワークインフラ、通信事業者向けOSS・BSS、航空宇宙・防衛・海洋システムの機器・SI・保守
+    subject: 連結報告セグメント
+    as_of: 2026-03-31
+    unit: ""
+    source: edinet-s100ybfv
+    via: 第188期有価証券報告書の事業の内容・事業セグメント注記
+    note: 主要サービスをセグメント別表に記載
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイトの事業区分とIR報告セグメントの対応
+    status: done
+    value: 公式会社プロフィールの主要事業と有報の報告セグメントはいずれもITサービス事業・社会インフラ事業の2区分
+    subject: NECグループ連結
+    as_of: 2026-03-31
+    unit: ""
+    source: "https://jpn.nec.com/profile/corp/profile.html; edinet-s100ybfv"
+    via: 公式会社プロフィールと第188期有価証券報告書
+    note: 2025年4月1日付のNECネッツエスアイの区分変更は本文のwarnに記載
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 親会社なし。主な子会社はNECプラットフォームズ、NECフィールディング、NECソリューションイノベータ、アビームコンサルティング、日本電気通信システム、NESICホールディングス、Netcracker Technology Corporation、NECファシリティーズ、NECビジネスインテリジェンス、NEC Corporation of America、NEC Europe Ltd.、NEC Asia Pacific Pte. Ltd.など
+    subject: 連結子会社
+    as_of: 2026-03-31
+    unit: ""
+    source: edinet-s100ybfv
+    via: 第188期有価証券報告書の事業の内容・関係会社の状況
+    note: 連結子会社252社。本文では主要会社を事業内容と報告セグメント付きで掲載
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: Purpose「NECは、安全・安心・公平・効率という社会価値を創造し、誰もが人間性を十分に発揮できる持続可能な社会の実現を目指します。」。Principlesは創業の精神「ベタープロダクツ・ベターサービス」、インテグリティと人権の尊重、イノベーションの追求
+    subject: NECグループ
+    as_of: ""
+    unit: ""
+    source: "https://jpn.nec.com/profile/corp/necway.html"
+    via: 公式NEC Wayページ
+    note: 公式表記を引用して本文へ記載
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介・設立経緯・規模
+    status: done
+    value: 1899年7月17日に日本電気株式会社を設立。2026年3月31日時点で連結従業員101,800名、単体21,934名、連結子会社252社、資本金4,278億円
+    subject: 日本電気株式会社・NECグループ
+    as_of: 1899-07-17・2026-03-31
+    unit: JPY・persons・companies
+    source: "https://jpn.nec.com/profile/corp/profile.html; https://jpn.nec.com/profile/corp/history.html"
+    via: 公式プロフィールとNECの歩み
+    note: 設立経緯と会社規模を本文へ記載。年度推移のIR数値はコンポーネントで表示
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・取得年度の有価証券報告書・採用・新卒採用リンク
+    status: done
+    value: HP、IR、2025〜2023年度の有価証券報告書PDF、採用情報、新卒採用、ジョブマッチングガイドを掲載
+    subject: 日本電気株式会社
+    as_of: 2023年度〜2025年度
+    unit: ""
+    source: "https://jpn.nec.com/; https://jpn.nec.com/ir/; https://jpn.nec.com/ir/library/securities.html; https://jpn.nec.com/recruit/newgraduate/"
+    via: 公式サイトのIR・採用ページ
+    note: 有価証券報告書PDFは第188期S100YBFV、第187期S100VZ85、第186期S100UXZAを公式PDFへ直接リンク

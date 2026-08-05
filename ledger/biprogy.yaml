@@ -94,5 +94,5 @@ items:
     as_of: 2026-08-05
     unit: structure・text
     source: edinet-s100yfcp; edinet-s100w2vl; https://www.biprogy.com/recruit/recruiting/; https://www.biprogy.com/recruit/recruiting/faq.html
-    via: MDX静的検証。buildは実行しない
+    via: MDX静的検証とnpm --prefix site run check。buildは実行しない
     note: data/sources.csvは編集していない。公式企業・採用・IRページのsource行は追加候補として報告

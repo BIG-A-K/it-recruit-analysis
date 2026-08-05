@@ -2956,3 +2956,16 @@ fujitsu,employee_count,2023,2023-03-31,124055,persons,consolidated,IFRS,reported
 fujitsu,employee_count,2024,2024-03-31,123527,persons,consolidated,IFRS,reported,edinet-s100ym3k,連結従業員数。2023年度（2024年3月期）。就業人員で、平均臨時雇用人員を含まない
 fujitsu,employee_count,2025,2025-03-31,112743,persons,consolidated,IFRS,reported,edinet-s100ym3k,連結従業員数。2024年度（2025年3月期）。就業人員で、平均臨時雇用人員を含まない
 fujitsu,employee_count,2026,2026-03-31,99203,persons,consolidated,IFRS,reported,edinet-s100ym3k,連結従業員数。2025年度（2026年3月期）。就業人員で、平均臨時雇用人員を含まない
+softbank,employee_count,2024,2024-03-31,55400,persons,consolidated,IFRS,reported,edinet-s100ye76,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior2YearInstant
+softbank,employee_count,2025,2025-03-31,55070,persons,consolidated,IFRS,reported,edinet-s100ye76,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior1YearInstant
+softbank,employee_count,2026,2026-03-31,58432,persons,consolidated,IFRS,reported,edinet-s100ye76,element_id=jpcrp_cor:NumberOfEmployees; context_id=CurrentYearInstant
+hitachi,employee_count,2022,2022-03-31,368247,persons,consolidated,,reported,edinet-s100ygbo,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior4YearInstant
+hitachi,employee_count,2023,2023-03-31,322525,persons,consolidated,,reported,edinet-s100ygbo,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior3YearInstant
+hitachi,employee_count,2024,2024-03-31,268655,persons,consolidated,,reported,edinet-s100ygbo,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior2YearInstant
+hitachi,employee_count,2025,2025-03-31,282743,persons,consolidated,,reported,edinet-s100ygbo,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior1YearInstant
+hitachi,employee_count,2026,2026-03-31,287901,persons,consolidated,,reported,edinet-s100ygbo,element_id=jpcrp_cor:NumberOfEmployees; context_id=CurrentYearInstant
+hitachi,operating_profit,2022,2022-03-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100ygbo,IFRS連結損益計算書に営業利益の行がなく開示していないため。主要な利益指標はAdjusted EBITA。
+hitachi,operating_profit,2023,2023-03-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100ygbo,IFRS連結損益計算書に営業利益の行がなく開示していないため。主要な利益指標はAdjusted EBITA。
+hitachi,operating_profit,2024,2024-03-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100ygbo,IFRS連結損益計算書に営業利益の行がなく開示していないため。主要な利益指標はAdjusted EBITA。
+hitachi,operating_profit,2025,2025-03-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100ygbo,IFRS連結損益計算書に営業利益の行がなく開示していないため。主要な利益指標はAdjusted EBITA。
+hitachi,operating_profit,2026,2026-03-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100ygbo,IFRS連結損益計算書に営業利益の行がなく開示していないため。主要な利益指標はAdjusted EBITA。

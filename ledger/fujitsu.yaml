@@ -1,0 +1,232 @@
+company_id: fujitsu
+disclosure_company_id: fujitsu
+company_boundary:
+  adoption_company_id: fujitsu
+  disclosure_company_id: fujitsu
+  reporting_segment_company_id: fujitsu
+  legal_name: 富士通株式会社
+  securities_code: "6702"
+  edinet_code: E01766
+  fiscal_year_end: 3月31日
+  accounting_standard: IFRS
+  currency: JPY
+  reporting_segments: サービスソリューション, ハードウェアソリューション, ユビキタスソリューション
+  company_relations:
+    - 親会社なし
+    - 主な連結子会社は富士通Japan、富士通ネットワークソリューションズ、富士通ディフェンス＆ナショナルセキュリティ、Ridgelinez、トランストロン、エフサステクノロジーズ、富士通フロンテック、1FINITY、富士通パーソナルズ
+  note: 採用主体と開示主体は同一。連結子会社224社。2024年度からデバイスソリューションを非継続事業へ分類し、2025年7月1日にネットワークプロダクト事業を1FINITYへ会社分割した。2025年12月22日にブレインパッドを86.30%取得した。
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-05
+updated_at: 2026-08-05
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数
+    status: done
+    value: metrics.csvの平均年間給与・平均年齢・平均勤続年数は2025〜2026年度、連結従業員数は2022〜2026年度
+    subject: 平均値は提出会社単体、従業員数は連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY・years・persons
+    source: edinet-s100ym3k; edinet-s100w1ds
+    via: data/raw/edinet/S100YM3KのXBRL_TO_CSVと既存のS100W1DS正規化行
+    note: 連結従業員数は就業人員で平均臨時雇用人員を含まない。平均年間給与は時間外勤務手当等・賞与その他の臨時給与を含む。
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上収益 3期以上
+    status: done
+    value: metrics.csvのrevenue（2022〜2026年度、5行）
+    subject: 連結・継続事業
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ym3k
+    via: 2026年3月期有価証券報告書の連結経営指標等
+    note: 2024年度にデバイスソリューションを非継続事業へ分類したため、2023〜2025年度の売上収益は継続事業ベース。
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csvのoperating_profit（2022〜2026年度、5行）
+    subject: 連結・継続事業
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ym3k; edinet-s100w1ds
+    via: 2026年3月期有価証券報告書の連結経営指標等と既存正規化行
+    note: 営業利益と報告セグメントの調整後営業利益を混同しない。
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csvの自己資本比率は2022〜2026年度、流動資産・流動負債は2025〜2026年度、当座資産は2026年度
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: percent・JPY
+    source: edinet-s100ym3k
+    via: 連結経営指標等と連結財政状態計算書・棚卸資産注記
+    note: 2026年度の当座資産は流動資産1,942,811百万円から棚卸資産204,090百万円を控除。契約資産・その他の流動資産を含む。
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csvのoperating_cf・investing_cf・financing_cf（2022〜2026年度、各5行）
+    subject: 連結・IFRS
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ym3k; edinet-s100w1ds
+    via: 2026年3月期有価証券報告書の連結経営指標等
+    note: 営業CF・投資CF・財務CFの合計はサイトでnet_cfとして算出する。
+  - id: ir-segments
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメント別売上・利益
+    status: done
+    value: segments.csvの3セグメント（2024〜2026年度売上、2025〜2026年度調整後営業利益）
+    subject: 連結報告セグメント
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ym3k; edinet-s100w1ds
+    via: 有価証券報告書のセグメント情報
+    note: セグメント利益の指標は調整後営業利益。売上は外部収益。
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 組織再編・非継続事業・比較上の注記
+    status: done
+    value: 2024年度からデバイスソリューションを非継続事業に分類、2025年7月1日に1FINITYを新設分割、2025年12月22日にブレインパッドを86.30%取得
+    subject: 富士通連結グループ
+    as_of: 2024-03-31〜2026-03-31
+    unit: ""
+    source: edinet-s100ym3k
+    via: 連結財務諸表注記「企業結合等」「非継続事業」
+    note: 2026年4月1日付の富士通Japanとの吸収分割は後発事象であり、2026年3月期数値には反映しない。
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・募集ページURL
+    status: done
+    value: 富士通株式会社・2027年新卒採用
+    subject: 富士通株式会社
+    as_of: 2027年新卒
+    unit: ""
+    source: https://fujitsu.recruiting.jp.fujitsu.com/recruit/
+    via: 公式新卒採用「2027年新卒 募集要項」
+    note: 富士通Japan等の採用出向会社を含むグループ採用の仕組みを別途注記する。
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種・応募資格・選考区分・勤務地
+    status: done
+    value: ソリューションエンジニア、セールス、マーケティング、コンサルタント、デザイナー、データサイエンティスト、施工管理、研究開発、コーポレート。研究所コースは修士・博士等が対象。
+    subject: 富士通株式会社
+    as_of: 2027年新卒
+    unit: ""
+    source: https://fujitsu.recruiting.jp.fujitsu.com/recruit/; https://fujitsu.recruiting.jp.fujitsu.com/recruit/flow/; https://fujitsu.recruiting.jp.fujitsu.com/about/job/
+    via: 公式募集要項・応募コース・職種紹介
+    note: JOBマッチングコースは内定時に配属先職場・職種を約束。研究所コースは研究所・職種を約束。
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 月額給与・基礎給・固定時間外手当・賞与・標準年収
+    status: done
+    value: 職責に応じ月額315,000円または294,000円（諸手当除く、2026年4月時点予定）を基本区分とし、高度なスキル等は個別設定
+    subject: 富士通株式会社・2027年新卒
+    as_of: 2027年新卒
+    unit: JPY
+    source: https://fujitsu.recruiting.jp.fujitsu.com/recruit/
+    via: 公式「2027年新卒 募集要項」給与・賞与・手当欄
+    note: 基礎給、固定時間外手当、標準年収の金額は募集要項に記載なし。時間外勤務手当は別途支給、賞与は年2回。
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 勤務地・勤務時間・休日・福利厚生・選考
+    status: done
+    value: 川崎・東京・大阪・研究所等の国内外全事業所、標準労働時間7時間45分、コアタイムなしフレックス、年間休日126日（2025年度）
+    subject: 富士通株式会社
+    as_of: 2027年新卒
+    unit: ""
+    source: https://fujitsu.recruiting.jp.fujitsu.com/recruit/; https://fujitsu.recruiting.jp.fujitsu.com/recruit/flow/
+    via: 公式募集要項・選考フロー
+    note: ハイブリッドワークを推進。応募受付はターム制で、2027年卒採用は第7タームで終了予定。
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとのサービス・製品・提供内容
+    status: done
+    value: サービスソリューションはUvance、コンサルティング、クラウド、SI、ソフトウェア、BPO、IT・マネージドサービス。ハードウェアソリューションはサーバ・ストレージ、ネットワークプロダクト、保守。ユビキタスソリューションはパソコン。
+    subject: 連結報告セグメント
+    as_of: 2026-03-31
+    unit: ""
+    source: https://global.fujitsu/ja-jp/about/our-business; edinet-s100ym3k
+    via: 公式事業内容ページと第126期有価証券報告書セグメント情報
+    note: 研究開発は全社共通の先進的先行研究開発としてセグメント外にも配分される。
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイト事業区分とIR報告セグメントの対応
+    status: done
+    value: 公式事業内容のサービスソリューション、ハードウェアソリューション、ユビキタスソリューションはIRの3報告セグメントと対応する
+    subject: 富士通連結グループ
+    as_of: 2026-03-31
+    unit: ""
+    source: https://global.fujitsu/ja-jp/about/our-business; edinet-s100ym3k
+    via: 公式事業内容ページとセグメント情報の対応確認
+    note: 公式ページの研究開発は3セグメントとは別の横断機能として記載する。
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 親会社なし。主な子会社は富士通Japan、富士通ネットワークソリューションズ、富士通ディフェンス＆ナショナルセキュリティ、Ridgelinez、トランストロン、エフサステクノロジーズ、富士通フロンテック、1FINITY、富士通パーソナルズ、ブレインパッド
+    subject: 連結グループ
+    as_of: 2026-03-31
+    unit: ""
+    source: edinet-s100ym3k; https://global.fujitsu/ja-jp/about/corporate/subsidiaries
+    via: 第126期有価証券報告書の主な連結子会社、公式国内グループ会社一覧、企業結合注記
+    note: ブレインパッドは2025年12月22日に86.30%取得。その他の主な子会社の所有割合は有報の関係会社表に従う。
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: パーパス・会社紹介
+    status: done
+    value: パーパス、設立、本店、資本金、報告セグメントを本文へ記載
+    subject: 富士通株式会社
+    as_of: 2026-03-31
+    unit: ""
+    source: https://global.fujitsu/ja-jp/about#anc03; https://global.fujitsu/ja-jp/about/corporate/facts
+    via: 公式パーパス・プロフィール
+    note: ""
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
+    status: done
+    value: HP、会社概要、プロフィール、事業内容、IR、第123〜126期有価証券報告書PDF、採用、新卒、募集要項、選考フローを本文へ掲載
+    subject: 富士通株式会社
+    as_of: 2026-08-05
+    unit: ""
+    source: https://global.fujitsu/ja-jp/ir/library/secreport; https://fujitsu.recruiting.jp.fujitsu.com/recruit/
+    via: 公式サイトの企業情報、IR、採用ページ
+    note: ""
+  - id: article-content
+    phase: article
+    store: mdx
+    topic: 採用情報・事業内容・関連企業の本文
+    status: done
+    value: 2027年新卒の職種・勤務地・給与、3セグメントの事業説明、再編注記、主な連結子会社を本文へ記載
+    subject: 富士通株式会社
+    as_of: 2026-08-05
+    unit: ""
+    source: edinet-s100ym3k; https://global.fujitsu/ja-jp/about/our-business; https://fujitsu.recruiting.jp.fujitsu.com/recruit/
+    via: 調査済み台帳・CSV・公式資料
+    note: FinancialHistory・MetricTrends・HealthMetrics・CompanySourcesをテンプレート順に配置。基礎給、固定時間外手当、標準年収は公式募集要項に金額記載がないため推定していない。

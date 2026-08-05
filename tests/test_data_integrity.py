@@ -209,7 +209,6 @@ def test_company_articles_have_common_content_sections() -> None:
         )
         assert f"<CompanyOverview companyId={{frontmatter.companyId}} />" in page
         assert "<CompanyProse>" in page
-        assert "<CompanySources " in page
         assert recruitment_url.search(page), company_id
 
 
@@ -237,7 +236,10 @@ def test_new_game_companies_have_operating_profit() -> None:
 
 def test_heavy_industry_companies_have_profit_and_quick_assets() -> None:
     # 重工各社は営業利益を開示する会社と事業利益で開示する会社が混在するため、
-    # 定義の違う値を同じ metric_key へ寄せず、どちらかが揃っていることだけ確認する
+    # 定義の違う値を同じ metric_key へ寄せず、どちらかが揃っていることだけ確認する。
+    # 連結の営業利益・事業利益をいずれも開示しない企業
+    # （例: IFRSで営業利益の行を置かずAdjusted EBITAを主要指標とする日立）は、
+    # 該当キーを not_disclosed で理由を添えて記録し、それを許容する。
     heavy_industry_company_ids = {
         row["company_id"]
         for row in read_rows("company_industries.csv")
@@ -247,17 +249,32 @@ def test_heavy_industry_companies_have_profit_and_quick_assets() -> None:
     rows = read_rows("metrics.csv")
 
     for company_id in heavy_industry_company_ids:
+        company_rows = [
+            row for row in rows if row["company_id"] == company_id
+        ]
         reported = {
             row["metric_key"]
-            for row in rows
-            if row["company_id"] == company_id
-            and row["availability"] == "reported"
+            for row in company_rows
+            if row["availability"] == "reported"
         }
-        assert reported & {"operating_profit", "business_profit"}, company_id
         assert "quick_assets" in reported, company_id
-        assert not (
-            "operating_profit" in reported and "business_profit" in reported
-        ), company_id
+        disclosed_profit = reported & {"operating_profit", "business_profit"}
+        if disclosed_profit:
+            assert not (
+                "operating_profit" in reported
+                and "business_profit" in reported
+            ), company_id
+        else:
+            profit_rows = [
+                row
+                for row in company_rows
+                if row["metric_key"] in ("operating_profit", "business_profit")
+            ]
+            assert profit_rows, company_id
+            assert all(
+                row["availability"] == "not_disclosed"
+                for row in profit_rows
+            ), company_id
 
 
 def test_unlisted_company_pages_omit_unavailable_data_sections() -> None:

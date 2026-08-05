@@ -8,30 +8,109 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
-import CompanySources from "../../components/company/CompanySources.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-ソフトバンク株式会社は、通信を基盤に、法人向けICT、デジタルサービス、メディア・EC、金融などを展開する企業です。通信サービスと先端技術を組み合わせ、社会や企業のデジタル化を支援しています。
+[経営理念](https://www.softbank.jp/corp/aboutus/philosophy/)は「情報革命で人々を幸せに」、ビジョンは「世界に最も必要とされる会社」を目指す。バリューは「No.1」「挑戦」「逆算」「スピード」「執念」。
 
-## 公式サイト・採用情報
+ソフトバンク株式会社は1986年12月9日設立。移動通信、携帯端末販売、固定通信、インターネット接続を事業基盤とし、法人向けICT、メディア・EC、金融へ事業領域を広げる。資本金は244,355百万円、本社は東京都港区海岸、連結従業員は58,432人（2026年3月31日現在）。
 
-- [企業サイト](https://www.softbank.jp/corp/)
+## サイト
+
+- [HP](https://www.softbank.jp/corp/)
 - [IR情報](https://www.softbank.jp/corp/ir/)
-- [新卒採用](https://recruit.softbank.jp/graduate/)
-
-採用主体はソフトバンク株式会社です。ビジネス、エンジニア、研究開発、デザイン、コーポレートなどの職種と募集要項は公式採用ページで確認してください（2026年8月1日確認）。
+  - [事業セグメント情報](https://www.softbank.jp/corp/ir/financials/segments/)
+  - [第40期（2026年3月期）有価証券報告書](https://www.softbank.jp/corp/set/data/ir/documents/security_reports/pdf/sbkk_fy2025_security_reports.pdf)
+  - [第39期（2025年3月期）有価証券報告書](https://www.softbank.jp/corp/set/data/ir/documents/security_reports/pdf/sbkk_fy2024_security_reports.pdf)
+  - [第38期（2024年3月期）有価証券報告書](https://www.softbank.jp/corp/set/data/ir/documents/security_reports/pdf/sbkk_fy2023_security_reports.pdf)
+- [採用情報](https://www.softbank.jp/corp/careers/)
+  - [新卒採用](https://recruit.softbank.jp/graduate/)
+    - [募集要項](https://recruit.softbank.jp/graduate/recruit/guideline/)
+    - [募集職種・選考フロー](https://recruit.softbank.jp/graduate/recruit/flow/)
 
 </CompanyProse>
 
-<EmploymentOverview companyId={frontmatter.companyId} />
+<EmploymentOverview companyId={frontmatter.companyId} workplace="本社（東京都港区海岸一丁目7番1号）・全国各地の事業所（全国・海外転勤あり）" />
+
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+2027年3月末までに国内外の大学院、大学、高等専門学校を卒業・修了見込みの人を対象とする新卒採用。採用企業はソフトバンク株式会社、雇用形態は正社員、契約期間の定めはなく、試用期間は3カ月。総合職の総合コース・エンジニアコースを軸に、募集職種ページではJOB-MATCHコースを含む職種別の選考区分を示す。
+
+勤務地は全職種共通で本社（東京）または札幌・仙台・名古屋・大阪・広島・福岡などの各事業所。全国・海外転勤がある。
+
+| 職種 | 主な業務 | 勤務地 | 月給※1 | 固定時間外手当※2 | 標準年収※2 |
+| --- | --- | --- | --- | --- | --- |
+| [コンシューマ営業](https://recruit.softbank.jp/graduate/recruit/flow/#jobmap1) | 販売代理店の営業・販売に関するコンサルティング | 共通 | 共通 | 記載なし | 記載なし |
+| [企画・マーケティング](https://recruit.softbank.jp/graduate/recruit/flow/#jobmap2) | 事業戦略、KPI・予算管理、サービス企画、販売促進企画 | 共通 | 共通 | 記載なし | 記載なし |
+| [カスタマーサポート](https://recruit.softbank.jp/graduate/recruit/flow/#jobmap3) | 顧客への提案サポート、回線開通のオーダー処理、アフターフォロー | 共通 | 共通 | 記載なし | 記載なし |
+| [法人ソリューション営業](https://recruit.softbank.jp/graduate/recruit/flow/#jobmap4) | 法人の課題解決・DX推進に向けたモバイル、ネットワーク、クラウド、AI等の提案 | 共通 | 共通 | 記載なし | 記載なし |
+| [ソリューションエンジニア](https://recruit.softbank.jp/graduate/recruit/flow/#jobmap5) | ICT環境・ビジネス課題の解決に向けたソリューションの企画、設計、構築、運用 | 共通 | 共通 | 記載なし | 記載なし |
+| [ネットワークエンジニア](https://recruit.softbank.jp/graduate/recruit/flow/#jobmap6) | ネットワークの企画、設計、開発、監視、保全、5G・IoT戦略 | 共通 | 共通 | 記載なし | 記載なし |
+| [セキュリティエンジニア](https://recruit.softbank.jp/graduate/recruit/flow/#jobmap8) | セキュリティガバナンス、コンサルティング、通信ネットワーク監視 | 共通 | 共通 | 記載なし | 記載なし |
+| [プロダクト・サービス開発](https://recruit.softbank.jp/graduate/recruit/flow/#jobmap9) | IoT・5Gプロダクトやサービスの企画、開発、検証 | 共通 | 共通 | 記載なし | 記載なし |
+| [システムエンジニア](https://recruit.softbank.jp/graduate/recruit/flow/#jobmap10) | 社内・商用システムの企画、設計、開発、保守・運用 | 共通 | 共通 | 記載なし | 記載なし |
+| [データサイエンティスト](https://recruit.softbank.jp/graduate/recruit/flow/#jobmap11) | データからの価値創出、AIソリューションの企画、開発、実装、コンサルティング | 共通 | 共通 | 記載なし | 記載なし |
+| [研究開発](https://recruit.softbank.jp/graduate/recruit/flow/#jobmap12) | 最先端技術の情報収集・研究開発・ビジネス創出・実用化 | 共通 | 共通 | 記載なし | 記載なし |
+
+:::info
+※1 月給は全職種共通で、高専本科300,000円～、大卒・高専専攻科306,000円～、修士了327,900円～、博士了338,800円～。2026年度見込みで、営業職のインセンティブは含まない。<br />※2 固定時間外手当と標準年収は募集要項に記載なし。時間外勤務手当・深夜勤務手当・休日勤務手当は別途支給する。
+:::
+
+昇給は年1回（原則）、賞与は年2回で年間標準賞与4.5カ月に業績に応じた特別加算賞与を加える。標準労働時間は原則9時から17時45分までの実働7時間45分、休憩1時間。スーパーフレックスタイム制（コアタイムなし）を採用し、一部部署は所定労働・シフト・交替制勤務となる。
+
+選考はプレエントリー、エントリーシート・履歴書情報登録・適性検査など、複数回の面接、内定の順。諸手当は時間外勤務手当、深夜勤務手当、休日勤務手当、通勤手当、新卒住宅補助など。
+
+## 事業内容
+
+[2026年3月期有価証券報告書](https://www.softbank.jp/corp/set/data/ir/documents/security_reports/pdf/sbkk_fy2025_security_reports.pdf)の報告セグメントは、コンシューマ、エンタープライズ、ディストリビューション、メディア・EC、ファイナンスの5区分。
+
+| 報告セグメント | 事業内容・具体的なサービス | 主な運営法人・サービス |
+| --- | --- | --- |
+| コンシューマ | 国内個人向けのモバイル、ブロードバンド、「おうちでんき」などの電力サービス、携帯端末の販売 | ソフトバンク株式会社、Wireless City Planning株式会社、SBパワー株式会社 |
+| エンタープライズ | 法人向けモバイル・固定通信、データセンター、クラウド、セキュリティ、グローバル、AI、IoT、デジタルマーケティングなどのソリューション | ソフトバンク株式会社、株式会社IDCフロンティア、サイバートラスト株式会社、Cubic³ |
+| ディストリビューション | 法人向けクラウド・AIを含む先進テクノロジー商材、個人向けソフトウェア、モバイルアクセサリー、IoTプロダクト | [SB C&S株式会社](https://cas.softbank.jp/) |
+| メディア・EC | 「Yahoo! JAPAN」「LINE」の広告関連サービス、「Yahoo!ショッピング」「ZOZOTOWN」のオンラインショッピング、「Yahoo!オークション」のリユース、FinTech | [LINEヤフー株式会社](https://www.lycorp.co.jp/ja/) |
+| ファイナンス | QRコード決済、クレジットカード、加盟店向けマーケティング、銀行・資産運用、決済代行 | [PayPay株式会社](https://about.paypay.ne.jp/)、[PayPay銀行株式会社](https://www.paypay-bank.co.jp/)、[SBペイメントサービス株式会社](https://www.sbpayment.co.jp/) |
+
+:::warning
+2025年4月11日付でPayPay銀行株式会社をメディア・EC事業からファイナンス事業へ移管し、2025年3月期のセグメント情報を遡及修正している。
+:::
+
+</CompanyProse>
 
 <SegmentRevenue companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 関連企業
+
+2026年3月期有価証券報告書の「関係会社の状況」は、[ソフトバンクグループ株式会社](https://group.softbank/)（被所有40.1%）とソフトバンクグループジャパン株式会社（被所有40.1%）を持株会社として記載する。「提出会社の親会社等の情報」は「当社には、金融商品取引法第24条の7第1項に規定する親会社等はありません」と記載する。[グループ企業](https://www.softbank.jp/corp/aboutus/business/group/)ページは主要な連結子会社および関連会社などを示す。
+
+| 区分 | 名称 | 主な事業内容 | 関係・報告セグメント |
+| --- | --- | --- | --- |
+| 関係会社（持株会社） | [ソフトバンクグループ株式会社](https://group.softbank/) | 持株会社 | 被所有40.1% |
+| 関係会社（持株会社） | ソフトバンクグループジャパン株式会社 | 持株会社 | 被所有40.1% |
+| 主な連結子会社 | [Wireless City Planning株式会社](https://www.wirelesscity.jp/) | 電気通信事業 | コンシューマ・エンタープライズ |
+| 主な連結子会社 | [SBパワー株式会社](https://www.sbpower.co.jp/) | 電力の売買および売買の仲介 | コンシューマ |
+| 主な連結子会社 | [SB C&S株式会社](https://cas.softbank.jp/) | IT関連製品の製造・流通・販売、IT関連サービス | ディストリビューション |
+| 主な連結子会社 | [LINEヤフー株式会社](https://www.lycorp.co.jp/ja/) | グループ会社の経営管理、メディア・コマース関連サービス | メディア・EC |
+| 主な連結子会社 | [PayPay株式会社](https://about.paypay.ne.jp/) | モバイルペイメントなど電子決済サービス | ファイナンス |
+| 主な連結子会社 | [PayPay銀行株式会社](https://www.paypay-bank.co.jp/) | インターネット銀行 | ファイナンス |
+| 主な連結子会社 | [SBペイメントサービス株式会社](https://www.sbpayment.co.jp/) | 決済代行・コンサルティング | ファイナンス |
+| 主なグループ会社 | Aホールディングス株式会社 | LINEヤフー株式会社の株式を保有する戦略的持株会社 | メディア・EC |
+| 主なグループ会社 | Bホールディングス株式会社 | PayPay株式会社の株式を保有する持株会社 | ファイナンス |
+
+</CompanyProse>
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
 
+<MetricTrends companyId={frontmatter.companyId} />

@@ -1,0 +1,266 @@
+company_id: softbank
+disclosure_company_id: softbank
+company_boundary:
+  adoption_company_id: softbank
+  disclosure_company_id: softbank
+  reporting_segment_company_id: softbank
+  legal_name: ソフトバンク株式会社
+  securities_code: "9434"
+  edinet_code: E04426
+  fiscal_year_end: 3月31日
+  accounting_standard: IFRS
+  currency: JPY
+  reporting_segments: コンシューマ, エンタープライズ, ディストリビューション, メディア・EC, ファイナンス
+  company_relations: []
+  note: 採用主体・開示主体・報告主体はソフトバンク株式会社で一致。2026年3月期有価証券報告書の関係会社の状況はソフトバンクグループ株式会社とソフトバンクグループジャパン株式会社を被所有40.1%の持株会社として記載する一方、提出会社の親会社等の情報は金融商品取引法第24条の7第1項に規定する親会社等がないと記載する。2025年4月11日付でPayPay銀行株式会社をメディア・ECからファイナンスへ移管し、前期セグメント情報を遡及修正
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-05
+updated_at: 2026-08-05
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数
+    status: done
+    value: metrics.csvのaverage_annual_salary・average_age・average_tenure（2026年度、各1行）とemployee_count（2024〜2026年度、3行）
+    subject: 提出会社単体（平均指標）・連結（従業員数）
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY・years・persons
+    source: edinet-s100ye76
+    via: edinet-normalizeで取得済みのS100YE76 raw CSVを確認
+    note: 平均指標は提出会社単体。連結従業員数は2024年度55,400人、2025年度55,070人、2026年度58,432人
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上収益 3期以上
+    status: done
+    value: metrics.csvのrevenue（2022〜2026年度、5行）
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ye76
+    via: edinet-normalizeで取得済みのS100YE76 raw CSVを確認
+    note: IFRS。要素名はNetSalesIFRSSummaryOfBusinessResults
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csvのoperating_profit（2022〜2026年度、5行）
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ye76
+    via: edinet-normalizeで取得済みのS100YE76 raw CSVを確認
+    note: IFRS。セグメント利益の測定指標も営業利益
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csvのequity_ratio（2022〜2026年度、5行）・current_assets/current_liabilities（2025〜2026年度、各2行）・quick_assets（2025〜2026年度、各2行）
+    subject: 連結
+    as_of: 2025-03-31〜2026-03-31
+    unit: percent・JPY
+    source: edinet-s100ye76
+    via: S100YE76 raw CSVの連結財政状態計算書を確認し、csv-upsert metricsで補完
+    note: quick_assetsはCashAndCashEquivalentsIFRS＋TradeAndOtherReceivablesCAIFRS＋OtherFinancialAssetsCAIFRS。棚卸資産・その他の流動資産は含めない
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csvのoperating_cf・investing_cf・financing_cf（2022〜2026年度、各5行）
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ye76
+    via: edinet-normalizeで取得済みのS100YE76 raw CSVを確認
+    note: IFRS。net_cfはCSVへ保存せずサイト側で算出
+  - id: ir-segments
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメントの年度別売上・利益
+    status: done
+    value: segments.csvの5区分（2025・2026年度、各10行）。売上と営業利益を登録
+    subject: 連結報告セグメント
+    as_of: 2025-03-31・2026-03-31
+    unit: JPY
+    source: edinet-s100ye76
+    via: S100YE76 raw CSVのNotesSegmentInformationConsolidatedFinancialStatementsIFRSTextBlockを確認し、csv-upsert segmentsで補完
+    note: 2025年度は2026年3月期有報の遡及修正後。2026年度メディア・ECのセグメント利益にはLINE MAN CORPORATION PTE. LTD.子会社化に伴う段階取得差益44,377百万円を含む
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: セグメント再編・会計基準・比較上の注記
+    status: done
+    value: metrics.csv・segments.csvのnoteと本台帳のcompany_boundary.noteへ記録
+    subject: ソフトバンク株式会社および連結グループ
+    as_of: 2025-04-11・2026-03-31
+    unit: text
+    source: edinet-s100ye76
+    via: 2026年3月期有価証券報告書のセグメント情報・関連当事者・親会社等の情報を確認
+    note: PayPay銀行株式会社のセグメント移管、前期遡及修正、親会社等なしを記録
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: 採用企業はソフトバンク株式会社。2027年3月末までの卒業・修了見込みを対象とする新卒採用
+    subject: ソフトバンク株式会社
+    as_of: 2026-08-05
+    unit: text
+    source: https://recruit.softbank.jp/graduate/recruit/guideline/
+    via: 公式新卒採用の募集要項を直接確認
+    note: 正社員、契約期間の定めなし、試用期間3カ月
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: コンシューマ営業、企画・マーケティング、カスタマーサポート、法人ソリューション営業、ソリューションエンジニア、ネットワークエンジニア、セキュリティエンジニア、プロダクト・サービス開発、システムエンジニア、データサイエンティスト、研究開発。総合コース・エンジニアコース・JOB-MATCHコースを職種ごとに設定
+    subject: 2027年3月末までの卒業・修了見込み者
+    as_of: 2026-08-05
+    unit: text
+    source: https://recruit.softbank.jp/graduate/recruit/flow/; https://recruit.softbank.jp/graduate/recruit/guideline/
+    via: 公式募集職種・選考フローと募集要項を直接確認
+    note: 勤務予定地は東京の本社および札幌・仙台・名古屋・大阪・広島・福岡などの各事業所。全国・海外転勤あり
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
+    status: done
+    value: 全職種共通の月給は高専本科300000円、大卒・高専専攻科306000円、修士327900円、博士338800円。賞与年2回、年間標準賞与4.5カ月＋業績に応じた特別加算賞与
+    subject: 総合職（総合コース・エンジニアコース）
+    as_of: 2026年度見込み・2026-08-05
+    unit: JPY・months
+    source: https://recruit.softbank.jp/graduate/recruit/guideline/
+    via: 公式募集要項の給与・賞与・手当欄を直接確認
+    note: 固定時間外手当と標準年収の記載なし。時間外勤務手当・深夜勤務手当・休日勤務手当は諸手当として記載。営業職のインセンティブは月給の対象外
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: 原則9時〜17時45分、実働7時間45分・休憩1時間。スーパーフレックスタイム制（コアタイムなし）。全国・海外転勤あり。選考はプレエントリー、エントリーシート・履歴書情報登録・適性検査など、複数回面接、内定
+    subject: 総合職
+    as_of: 2026-08-05
+    unit: hours・text
+    source: https://recruit.softbank.jp/graduate/recruit/guideline/; https://recruit.softbank.jp/graduate/recruit/flow/
+    via: 公式募集要項と募集職種・選考フローを直接確認
+    note: 一部の例外部署は所定労働・シフト・交替制勤務。応募期限の具体的な最終日は募集要項に記載なし
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的なサービス名・ブランド名・提供内容・運営法人
+    status: done
+    value: コンシューマ（モバイル・ブロードバンド・おうちでんき・端末販売）、エンタープライズ（法人モバイル・固定通信・データセンター・クラウド・セキュリティ・AI・IoT等）、ディストリビューション（クラウド・AI商材・ソフトウェア・アクセサリー・IoT）、メディア・EC（Yahoo! JAPAN・LINE・Yahoo!ショッピング・ZOZOTOWN・Yahoo!オークション）、ファイナンス（PayPay・クレジットカード・銀行・決済代行）
+    subject: 2026年3月期の5報告セグメント
+    as_of: 2026-03-31・2026-08-05
+    unit: text
+    source: https://www.softbank.jp/corp/aboutus/business/; edinet-s100ye76
+    via: 公式事業紹介と2026年3月期有価証券報告書のセグメント情報を確認
+    note: 公式事業紹介の主な会社と法定報告セグメントの対応を整理。財務数値はsegments.csvが正本
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイト事業区分とIR報告セグメントの対応と差異
+    status: done
+    value: 公式事業紹介のコンシューマ、エンタープライズ、ディストリビューション、メディア・EC、ファイナンスが法定報告セグメントと同名で対応。その他は法定報告セグメント外
+    subject: 2026年3月期連結報告セグメント
+    as_of: 2026-03-31
+    unit: text
+    source: https://www.softbank.jp/corp/aboutus/business/; https://www.softbank.jp/corp/ir/financials/segments/; edinet-s100ye76
+    via: 公式事業紹介・IRセグメント情報・有価証券報告書を突合
+    note: PayPay銀行株式会社の移管に伴い2025年度比較値は修正再表示
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 関係会社の状況に記載された持株会社はソフトバンクグループ株式会社（被所有40.1%）とソフトバンクグループジャパン株式会社（被所有40.1%）。主な子会社はWireless City Planning株式会社、SBパワー株式会社、SB C&S株式会社、LINEヤフー株式会社、PayPay株式会社、PayPay銀行株式会社、SBペイメントサービス株式会社など
+    subject: 主要な連結子会社・関連会社など
+    as_of: 2026-03-31・2026-08-05
+    unit: text
+    source: https://www.softbank.jp/corp/aboutus/business/group/; https://www.softbank.jp/corp/aboutus/business/; edinet-s100ye76
+    via: 公式グループ企業一覧・事業紹介と有価証券報告書の関係会社情報を確認
+    note: company_relations.csvへは外部会社のcompany_id未登録のため追加せず、記事には有報の被所有割合を記載。記事の子会社表は主な法人に限定
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: 経営理念「情報革命で人々を幸せに」。ビジョン「世界に最も必要とされる会社」を目指す。バリューは「No.1」「挑戦」「逆算」「スピード」「執念」
+    subject: ソフトバンク株式会社
+    as_of: 2026-08-05
+    unit: text
+    source: https://www.softbank.jp/corp/aboutus/philosophy/
+    via: 公式理念・ビジョン・戦略ページを直接確認
+    note: 公式表記を維持
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: done
+    value: 1986年12月9日設立。移動通信、携帯端末販売、固定通信、インターネット接続を展開。本社は東京都港区海岸、資本金244355百万円、連結従業員58432人・単体19150人（2026年3月31日現在）
+    subject: ソフトバンク株式会社
+    as_of: 2026-03-31・2026-08-05
+    unit: text・JPY・persons
+    source: https://www.softbank.jp/corp/aboutus/profile/; https://www.softbank.jp/corp/aboutus/profile/history/
+    via: 公式会社概要・沿革と2026年3月期有価証券報告書を確認
+    note: 財務推移の数値はmetrics.csvが正本
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
+    status: done
+    value: HP、IR、事業セグメント情報、2026・2025・2024年3月期の公式有価証券報告書PDF、採用情報、新卒採用、募集要項、募集職種・選考フローを記事へ配置
+    subject: ソフトバンク株式会社
+    as_of: 2026-08-05
+    unit: URLs
+    source: https://www.softbank.jp/corp/; https://www.softbank.jp/corp/ir/; https://recruit.softbank.jp/graduate/
+    via: 公式コーポレート・IR・採用サイトを直接確認
+    note: 有価証券報告書PDFは公式IRサイトのsecurity_reports配下にある3年度分を掲載
+  - id: article-structure
+    phase: article
+    store: mdx
+    topic: セクション順・セグメント説明・関連企業・出典コンポーネント
+    status: done
+    value: CompanyOverview→CompanyProse（理念・サイト）→EmploymentOverview→CompanyProse（採用・事業内容）→SegmentRevenue→CompanyProse（関連企業）→HealthMetrics→FinancialHistory→MetricTrends→CompanySourcesの順に配置。FinancialDataは不使用
+    subject: softbank.mdx
+    as_of: 2026-08-05
+    unit: structure
+    source: https://www.softbank.jp/corp/aboutus/business/; https://www.softbank.jp/corp/aboutus/business/group/
+    via: company-articleテンプレート・チェックリストと公式資料を突合
+    note: IR数値は構造化コンポーネントへ委譲し、本文には年度別財務数値を複写しない
+  - id: verify-article
+    phase: verify
+    store: mdx
+    topic: 本文の文体・禁止表現・採用表・見出し順の検証
+    status: done
+    value: 常体、確認日・調査実況・伝聞・読者案内なし。11職種の業務・共通勤務地・月給・未開示待遇表、選考・賞与・手当、5セグメント表、持株会社と子会社を含む関連企業表を確認
+    subject: site/src/pages/companies/softbank.mdx
+    as_of: 2026-08-05
+    unit: structure・text
+    source: https://recruit.softbank.jp/graduate/recruit/guideline/; https://recruit.softbank.jp/graduate/recruit/flow/
+    via: 静的な見出し・禁止語・コンポーネント順の確認。buildはユーザー指定により未実行
+    note: 固定時間外手当と標準年収は公式募集要項に記載がないため、推測せず未開示とした
+  - id: verify-data
+    phase: verify
+    store: ir_csv
+    topic: セグメント・出典ID・構造化データの対応確認
+    status: done
+    value: metrics.csvはIFRS連結の5期財務指標、2026年度提出会社単体の人的指標、2024〜2026年度連結従業員数、2025〜2026年度の健全性指標。segments.csvは2025・2026年度の5報告セグメント各10行
+    subject: 連結報告セグメント・連結財務・提出会社単体人的指標
+    as_of: 2026-03-31
+    unit: JPY・percent・years・persons
+    source: edinet-s100ye76
+    via: S100YE76 raw CSV、metrics.csv、segments.csv、sources.csvを確認
+    note: quick_assetsは2025年度4,501,401,000,000円、2026年度4,955,225,000,000円。2026年度流動比率は5,405,531,000,000 / 8,525,235,000,000 × 100 = 63.38%。セグメント利益は有報テキストブロックと一致

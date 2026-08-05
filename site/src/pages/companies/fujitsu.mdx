@@ -8,30 +8,110 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
-import CompanySources from "../../components/company/CompanySources.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-富士通株式会社は、クラウド、AI、コンピューティング、ネットワークなどのデジタルサービスを通じて、企業や公共分野の変革を支援するグローバルIT企業です。
+[パーパス](https://global.fujitsu/ja-jp/about#anc03)は「イノベーションによって社会に信頼をもたらし、世界をより持続可能にしていくこと」。富士通株式会社は1935年6月20日に設立され、クラウド、AI、コンピューティング、ネットワークなどのテクノロジー・サービス、ソリューション、製品を世界各地域で提供するDXパートナーである。
 
-## 公式サイト・採用情報
+[富士通のプロフィール](https://global.fujitsu/ja-jp/about/corporate/facts)に記載された本店は神奈川県川崎市中原区上小田中4-1-1、資本金は3,256億円（2026年3月31日現在）。報告セグメントはサービスソリューション、ハードウェアソリューション、ユビキタスソリューションの3区分。
 
-- [企業サイト](https://global.fujitsu/ja-jp/)
-- [IR情報](https://global.fujitsu/ja-jp/ir/)
-- [新卒採用](https://fujitsu.recruiting.jp.fujitsu.com/)
+## サイト
 
-採用主体は富士通株式会社です。職種、勤務地、待遇は募集ポジションごとに異なります。最新の新卒・キャリア募集要項を公式採用サイトで確認してください（2026年8月1日確認）。
+- [HP](https://global.fujitsu/ja-jp/)
+  - [会社概要](https://global.fujitsu/ja-jp/about/corporate)
+  - [プロフィール](https://global.fujitsu/ja-jp/about/corporate/facts)
+  - [事業内容](https://global.fujitsu/ja-jp/about/our-business)
+- [IR](https://global.fujitsu/ja-jp/ir/)
+  - [第126期（2026年3月期）有価証券報告書](https://global.fujitsu/-/media/Project/Fujitsu/Fujitsu-HQ/ir/documents/secreport/126/126_Securities_Report.pdf)
+  - [第125期（2025年3月期）有価証券報告書](https://global.fujitsu/-/media/Project/Fujitsu/Fujitsu-HQ/ir/documents/secreport/125/125-Securities-Report-ja.pdf)
+  - [第124期（2024年3月期）有価証券報告書](https://global.fujitsu/-/media/Project/Fujitsu/Fujitsu-HQ/ir/documents/secreport/124/124-Securities-Report-ja.pdf)
+  - [第123期（2023年3月期）有価証券報告書](https://global.fujitsu/-/media/Project/Fujitsu/Fujitsu-HQ/ir/documents/secreport/123/123-Securities-Report-ja.pdf)
+- [採用情報](https://fujitsu.recruiting.jp.fujitsu.com/)
+  - [新卒採用](https://fujitsu.recruiting.jp.fujitsu.com/recruit/)
+    - [募集要項](https://fujitsu.recruiting.jp.fujitsu.com/recruit/)
+    - [応募コース・選考フロー](https://fujitsu.recruiting.jp.fujitsu.com/recruit/flow/)
+
 
 </CompanyProse>
 
-<EmploymentOverview companyId={frontmatter.companyId} />
+<EmploymentOverview companyId={frontmatter.companyId} workplace="川崎・東京・大阪・研究所（川崎、厚木など）ほか国内外全事業所" />
+
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+[2027年新卒募集要項](https://fujitsu.recruiting.jp.fujitsu.com/recruit/)の採用主体は富士通株式会社。高等専門学校・大学・大学院を2027年3月までに卒業または修了見込みの者、または既卒者を募集対象とし、全学部全学科を対象とする。
+
+募集職種は、ソリューションエンジニア、セールス、マーケティング、コンサルタント、デザイナー、データサイエンティスト、施工管理、研究開発（ソフトウェア開発・ハードウェア開発・研究）、コーポレート（法務・知的財産、財務・経理、サプライチェーンマネジメント、総務・人事）。
+
+| 職種 | 勤務地 | 月額給与※1 |
+| --- | --- | ---: |
+| [セールス・マーケティング・コンサルタント・デザイナー](https://fujitsu.recruiting.jp.fujitsu.com/about/job/) | 川崎・東京・大阪・研究所など、国内外全事業所 | 294,000円または315,000円 |
+| [ソリューションエンジニア・データサイエンティスト・施工管理](https://fujitsu.recruiting.jp.fujitsu.com/about/job/) | 川崎・東京・大阪・研究所など、国内外全事業所 | 294,000円または315,000円 |
+| [研究開発（ソフトウェア開発・ハードウェア開発・研究）](https://fujitsu.recruiting.jp.fujitsu.com/about/job/) | 研究所（川崎、厚木など）ほか国内外全事業所 | 294,000円または315,000円 |
+| [コーポレート（法務・知的財産、財務・経理、サプライチェーンマネジメント、総務・人事）](https://fujitsu.recruiting.jp.fujitsu.com/about/job/) | 川崎・東京・大阪など国内外全事業所 | 294,000円または315,000円 |
+
+:::info
+※1 月額給与は2026年4月時点の予定額で、諸手当を除く。自律的な業務遂行が求められる職務は315,000円、習熟のため一定期間の育成が必要な職務は294,000円。高度なスキルや専門性により、さらに高い金額を個別に設定する。基礎給、固定時間外手当、標準年収の金額は募集要項に記載されていない。給与改定は年1回、賞与は年2回（6月・12月）、所定労働時間外の勤務には時間外勤務手当を別途支給する。
+:::
+
+[応募コース・選考フロー](https://fujitsu.recruiting.jp.fujitsu.com/recruit/flow/)はJOBマッチングコース（研究所以外）とJOBマッチングコース（研究所コース）の2区分。研究所以外は求人情報の確認、応募、適性検査、書類審査、一次面接、二次面接、最終面接、入社意思確認、内定の順で、研究所コースは研究概要資料を提出し、書類審査、マッチング面接、人事面接、入社意思確認、内定へ進む。
+
+標準労働時間は8時45分から17時30分までの7時間45分で、コアタイムなしのフレックス勤務制度がある。年間休日は126日（2025年度）。ハイブリッドワークを推進し、通勤手当、家族手当、住宅支援制度、福利厚生ポイント制度、持株会、財形貯蓄、資格取得支援制度、年金・退職金制度などを設ける。
+
+:::warn
+採用出向会社に応募して内定した場合は富士通株式会社へ入社した後に各会社へ配属（出向）となる。グループ合同採用参画会社に応募して内定した場合は、内定した各会社への入社となる。
+:::
+
+## 事業内容
+
+[公式の事業内容](https://global.fujitsu/ja-jp/about/our-business)と[第126期（2026年3月期）有価証券報告書](https://global.fujitsu/-/media/Project/Fujitsu/Fujitsu-HQ/ir/documents/secreport/126/126_Securities_Report.pdf)の報告セグメントは、サービスソリューション、ハードウェアソリューション、ユビキタスソリューションの3区分。
+
+| 報告セグメント | 事業内容・具体的な製品・サービス | 主な会社・ブランド |
+| --- | --- | --- |
+| サービスソリューション | Uvanceを中心とするビジネス・テクノロジーコンサルティング、IaaS・PaaS・SaaSなどのクラウド、システムインテグレーション、モダナイゼーション、業務アプリケーション・ミドルウェア、ソフトウェアサポート、BPO、データセンター・ネットワーク・セキュリティ・車載情報システム、システム運用・アプリケーション運用・サービスデスクなどのマネージドサービス | 富士通株式会社、富士通Japan、Ridgelinez、ブレインパッド、Uvance、Uvance Wayfinders |
+| ハードウェアソリューション | UNIXサーバ、基幹IAサーバ、PCサーバ、OS、ストレージ、メインフレームなどのシステムプロダクト、モバイルシステム・フォトニクスシステム・IPネットワーク機器などのネットワークプロダクト、ハードウェア・システムサポート | 富士通株式会社、エフサステクノロジーズ、富士通フロンテック、1FINITY |
+| ユビキタスソリューション | パソコンなどのクライアントコンピューティングデバイス | 富士通株式会社、富士通パーソナルズ |
+
+富士通研究所などの先進的先行研究開発、グローバルグループベースの社内DX投資、共用資産はセグメントに属さない全社共通の機能として「消去・全社」に含まれる。
+
+:::warn
+2024年度に主に新光電気工業株式会社とFDK株式会社で構成されるデバイスソリューションを非継続事業へ分類したため、有価証券報告書の2023〜2025年度の売上収益・営業利益は継続事業ベースである。2025年7月1日にはネットワークプロダクト事業を1FINITY株式会社へ会社分割し、2025年12月22日には株式会社ブレインパッドを公開買付けにより連結子会社化した。
+:::
+
+</CompanyProse>
 
 <SegmentRevenue companyId={frontmatter.companyId} />
 
+<CompanyProse>
+
+## 関連企業
+
+富士通株式会社に親会社の記載はない。[第126期（2026年3月期）有価証券報告書](https://global.fujitsu/-/media/Project/Fujitsu/Fujitsu-HQ/ir/documents/secreport/126/126_Securities_Report.pdf)の主な連結子会社と、[国内グループ会社一覧](https://global.fujitsu/ja-jp/about/corporate/subsidiaries)に掲載された会社を示す。連結子会社は224社。
+
+| 区分 | 名称 | 主な事業内容 | 議決権所有割合 | 報告セグメント |
+| --- | --- | --- | ---: | --- |
+| 主な子会社 | [富士通Japan株式会社](https://global.fujitsu/ja-jp/subsidiaries/fjj) | 自治体、医療・教育機関、産業・流通分野のソリューション・SI、パッケージ開発から運用までのサービス | 100.00% | サービスソリューション |
+| 主な子会社 | [富士通ネットワークソリューションズ株式会社](https://global.fujitsu/ja-jp/subsidiaries/fnets) | ネットワークソリューション | 100.00% | サービスソリューション |
+| 主な子会社 | [富士通ディフェンス＆ナショナルセキュリティ株式会社](https://global.fujitsu/ja-jp/subsidiaries/fdns) | 防衛・安全保障分野のソリューション | 100.00% | サービスソリューション |
+| 主な子会社 | [Ridgelinez株式会社](https://www.ridgelinez.com/) | コンサルティング、デジタルトランスフォーメーション支援 | 100.00% | サービスソリューション |
+| 主な子会社 | [株式会社トランストロン](https://www.transtron.com/) | 自動車・産業機械などの移動体向けエレクトロニクス製品 | 51.00% | サービスソリューション |
+| 主な子会社 | [エフサステクノロジーズ株式会社](https://www.fsastech.com/ja-jp/) | サーバ・ストレージなどのシステムプロダクト | 100.00% | ハードウェアソリューション |
+| 主な子会社 | [富士通フロンテック株式会社](https://global.fujitsu/ja-jp/subsidiaries/frontech) | ハードウェア製品・サービス | 100.00% | ハードウェアソリューション |
+| 主な子会社 | [1FINITY株式会社](https://1finity.co.jp/) | 通信機器・装置・システムの研究、開発、設計、製造、販売、保守・修理サポート | 100.00% | ハードウェアソリューション |
+| 主な子会社 | [株式会社富士通パーソナルズ](https://global.fujitsu/ja-jp/subsidiaries/personal) | パソコン関連事業 | 100.00% | ユビキタスソリューション |
+| 主な子会社 | [株式会社ブレインパッド](https://www.brainpad.co.jp/) | データ活用による経営改善を支援するプロフェッショナルサービス、プロダクトサービス | 86.30% | サービスソリューション |
+| 主な子会社 | Fujitsu Europe Holding B.V. | 欧州地域のグループ事業統括 | 100.00% | サービスソリューション |
+
+</CompanyProse>
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
 
+<MetricTrends companyId={frontmatter.companyId} />

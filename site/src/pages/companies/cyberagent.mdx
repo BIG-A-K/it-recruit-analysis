@@ -11,7 +11,6 @@ import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialHistory from "../../components/company/FinancialHistory.astro";
 import MetricTrends from "../../components/company/MetricTrends.astro";
-import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
@@ -21,13 +20,19 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 **21世紀を代表する会社を創る**
 
+株式会社サイバーエージェントは1998年3月18日に設立され、インターネット広告、ゲーム、メディア・IP、投資育成を展開する上場企業。2025年9月期の連結従業員数は有価証券報告書の関係会社の状況に記載された連結子会社を含むグループ範囲で86社。
+
 ## サイト
 - [ホームページ](https://www.cyberagent.co.jp/)
   - [サービス](https://www.cyberagent.co.jp/service/)
-- [採用ページ](https://www.cyberagent.co.jp/careers/)
-  - [募集要項](https://www.cyberagent.co.jp/careers/about/)
+- [IR](https://www.cyberagent.co.jp/ir/)
+  - [有価証券報告書一覧](https://www.cyberagent.co.jp/ir/library/securityreport/)
+    - [第26期（2023年9月期）](https://api.edinet-fsa.go.jp/api/v2/documents/S100SFQ1)
+    - [第27期（2024年9月期）](https://api.edinet-fsa.go.jp/api/v2/documents/S100UXZA)
+    - [第28期（2025年9月期）](https://api.edinet-fsa.go.jp/api/v2/documents/S100XCU9)
+- [採用情報](https://www.cyberagent.co.jp/careers/)
+  - [新卒募集要項](https://www.cyberagent.co.jp/careers/about/)
 - [主要関連会社](https://www.cyberagent.co.jp/corporate/group/)
-- [有価証券報告書](https://www.cyberagent.co.jp/ir/library/securityreport/)
 
 </CompanyProse>
 
@@ -35,39 +40,35 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyProse>
 
-## 採用情報の補足
-
-採用主体は株式会社サイバーエージェントです。新卒採用はビジネス、エンジニア、クリエイターのコース別で、ゲームなどのグループ会社は別法人採用です。以下は公式募集要項を2026年8月1日に確認した内容です。
+## 採用情報
 
 ### 新卒
-| コース名             | 給与体系                                                                                     | 家賃補助制度                                                                 |
-|----------------------|---------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
-| **ビジネスコース**   | 42万円/月（年俸制504万円）                                                                   | 「2駅ルール」3万円/月<br />※勤続年数満5年経過後は「どこでもルール」5万円/月     |
-| **エンジニアコース** | 1. 能力別給与体系（最低年俸504万円～/個々人の能力別に当社独自の基準で評価）<br />2. エキスパート認定（最低年俸720万円～/高度な技術や実績、成果をお持ちの方が対象）<br />※エキスパート認定は技術的スキルや実績、AI等の要素技術研究成果、執筆した論文、当社での就業経験（インターン、アルバイト）を総合的に査定し評価。 | 「2駅ルール」3万円/月<br />※勤続年数満5年経過後は「どこでもルール」5万円/月     |
-| **クリエイターコース** | 42万円/月（年俸制504万円）                                                                   | 「2駅ルール」3万円/月<br />※勤続年数満5年経過後は「どこでもルール」5万円/月     |
+
+採用主体は株式会社サイバーエージェント。新卒採用はビジネス、エンジニア、クリエイターのコース別で、ゲームなどのグループ会社は別法人採用。
+
+| コース名 | 勤務地 | 給与体系 | 家賃補助制度 |
+| --- | --- | --- | --- |
+| [ビジネスコース](https://www.cyberagent.co.jp/careers/students/biz/) | 東京・大阪・名古屋・福岡 | 42万円/月（年俸制504万円） | 「2駅ルール」3万円/月。勤続年数満5年経過後は「どこでもルール」5万円/月 |
+| [エンジニアコース](https://www.cyberagent.co.jp/careers/students/tech/) | 東京本社 | 能力別給与体系（最低年俸504万円〜）。エキスパート認定は最低年俸720万円〜 | 「2駅ルール」3万円/月。勤続年数満5年経過後は「どこでもルール」5万円/月 |
+| [クリエイターコース](https://www.cyberagent.co.jp/careers/students/designer/) | 東京本社・グループ各社（職種別） | 42万円/月（年俸制504万円） | 「2駅ルール」3万円/月。勤続年数満5年経過後は「どこでもルール」5万円/月 |
 
 - 2駅ルール：オフィスの最寄駅から各線2駅圏内に住んでいる正社員に対して、月3万円を家賃補助として支給
 
+固定残業代制で、超過分は別途支給。基礎給と固定時間外手当の内訳、賞与の回数・月数はコース別募集要項に記載されていない。エンジニアのエキスパート認定は技術的スキル、実績、AI等の研究成果、論文、就業経験を総合して評価する。
+
 ## 事業内容
-- [メディア&IP](https://www.cyberagent.co.jp/service/media/)：主力事業
-「ABEMA」や「Amebaブログ」、「タップル」「N organic」など多様なサービスを展開。新しいメディア体験を提供。
+[第28期有価証券報告書](https://api.edinet-fsa.go.jp/api/v2/documents/S100XCU9)の報告セグメントは4区分。公式サービスサイトのIPコンテンツはメディア&IP、AI・DXはインターネット広告に対応する。
 
-- [インターネット広告](https://www.cyberagent.co.jp/service/internetad/)：主力事業
-  - [広告に関する事例や紹介](https://www.cyberagent-adagency.com/)
-1998年から展開。広告効果最大化に強みがあり、AIや3DCGなど先端技術を活用。現在はDX事業にも注力し、業界大手との連携も進行。
+| 報告セグメント | 主な事業・製品・サービス |
+| --- | --- |
+| メディア&IP | [ABEMA](https://www.cyberagent.co.jp/service/media/)、Amebaブログ、タップル、N organic、WINTICKET、IPコンテンツ、映画・舞台・アニメ。 |
+| インターネット広告 | [広告事業](https://www.cyberagent.co.jp/service/internetad/)、AI Lab、AIを活用した広告制作・3DCG、DX支援。 |
+| ゲーム | [ゲーム事業](https://www.cyberagent.co.jp/service/game/)、Cygames・Colorful Palette・QualiArts・サムザップ・アプリボットによるスマートフォンゲーム。 |
+| 投資育成 | サイバーエージェント・キャピタルによるファンド設立・運営、投資先支援。 |
 
-- [Game](https://www.cyberagent.co.jp/service/game/)：主力事業
-Cygamesをはじめ複数の開発会社が所属し、オリジナルや他社IPのスマホゲームを多数リリース。多くのヒットタイトルを生み出している。
-
-- [IP&Content](https://www.cyberagent.co.jp/service/ipcontents/)：強化分野
-「ABEMA」などのノウハウを活かし、IPビジネスを推進。BABEL LABEL、ネルケプランニング、ニトロプラスなどが参画し、映画・舞台・アニメなどを展開。グローバル対応も強化。
-
-
-- [AI](https://www.cyberagent.co.jp/service/ai/)：強化分野
-2016年にAI Labを設立し、国際学会で多数の論文を発表。研究と実装を両立し、広告制作やCGなどでAIを活用。実用化を通じてビジネス成果を創出。
-
-- [DX](https://www.cyberagent.co.jp/service/dx/)：強化分野
-小売・行政・医療・エンタメ業界のDXを推進。チラシのデジタル化やオンライン服薬指導、行政手続きのデジタル支援など、社会課題の解決を技術で支援。
+:::warn
+連結財務数値は日本基準。2020年3月期から2021年9月期への決算期変更に伴い、両期間の間に2020年4月から9月までの6ヶ月暫定決算期間がある。2025年9月期からメディア&IP事業を含む4区分へ変更し、2024年9月期のセグメント情報も組替後の区分で表示されている。
+:::
 
 </CompanyProse>
 
@@ -75,25 +76,20 @@ Cygamesをはじめ複数の開発会社が所属し、オリジナルや他社I
 
 <CompanyProse>
 
-## 事業の内容
-主要関連会社と最新のグループ構成は、上記の公式グループ一覧を参照。
+## 関連企業
 
-| 事業区分           | 会社名                          | 主な事業内容                                   | 当社との関係       |
-|--------------------|---------------------------------|-----------------------------------------------|--------------------|
-| メディア事業       | ㈱サイバーエージェント          | 「Ameba」の運営等                              | ―                  |
-|                   | ㈱AbemaTV                      | 新しい未来のテレビ「ABEMA」の運営              | 連結子会社         |
-|                   | ㈱WinTicket                    | 公営競技のインターネット投票サービス「WINTICKET」の運営 | 連結子会社         |
-| インターネット広告事業 | ㈱サイバーエージェント          | 広告事業、AI事業等                             | ―                  |
-| ゲーム事業         | ㈱Cygames                      | ゲーム事業                                     | 連結子会社         |
-|                   | ㈱Colorful Palette             | ゲーム事業                                     | 連結子会社         |
-|                   | ㈱QualiArts                    | ゲーム事業                                     | 連結子会社         |
-|                   | ㈱サムザップ                   | ゲーム事業                                     | 連結子会社         |
-|                   | ㈱アプリボット                 | ゲーム事業                                     | 連結子会社         |
-| 投資育成事業       | ㈱サイバーエージェント          | コーポレートベンチャーキャピタル事業           | ―                  |
-|                   | ㈱サイバーエージェント・キャピタル | ファンド設立及び運営                           | 連結子会社         |
-|その他事業           | ㈱マクアケ                     | クラウドファンディング「Makuake」の運営         | 連結子会社         |
-|                   | ㈱リアルゲイト                 | クリエイティブオフィスの企画・運営             | 連結子会社         |
-|                   | ㈱ゼルビア                     | プロサッカーチームの運営等                     | 連結子会社         |
+[第28期有価証券報告書](https://api.edinet-fsa.go.jp/api/v2/documents/S100XCU9)の関係会社の状況は、連結子会社86社、持分法適用関連会社9社。親会社はなく、株式会社サイバーエージェントが上場会社としてグループを統括する。
+
+| 区分 | 名称 | 主な事業内容 | 報告セグメント |
+| --- | --- | --- | --- |
+| 連結子会社 | 株式会社AbemaTV | 「ABEMA」の運営 | メディア&IP |
+| 連結子会社 | 株式会社CyberZ | スマートフォン広告に特化した広告代理事業 | インターネット広告 |
+| 連結子会社 | 株式会社Cygames | ゲーム事業 | ゲーム |
+| 連結子会社 | 株式会社Colorful Palette | ゲーム事業 | ゲーム |
+| 連結子会社 | 株式会社WinTicket | 公営競技のインターネット投票サービス「WINTICKET」の運営 | メディア&IP |
+| 連結子会社 | 株式会社ニトロプラス | ゲーム・アニメ・小説・イラスト等のコンテンツ制作 | メディア&IP |
+| 連結子会社 | 株式会社CyberACE | 広告代理事業 | インターネット広告 |
+| 持分法適用関連会社 | 株式会社AbemaNews | ニュースコンテンツの企画・制作等 | メディア&IP |
 
 </CompanyProse>
 
@@ -102,4 +98,3 @@ Cygamesをはじめ複数の開発会社が所属し、オリジナルや他社I
 <FinancialHistory companyId={frontmatter.companyId} />
 
 <MetricTrends companyId={frontmatter.companyId} />
-
