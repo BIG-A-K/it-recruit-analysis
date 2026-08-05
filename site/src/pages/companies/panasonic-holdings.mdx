@@ -6,7 +6,7 @@ companyId: panasonic-holdings
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
-import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialData from "../../components/company/FinancialData.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
@@ -65,7 +65,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
-<BusinessSegments companyId={frontmatter.companyId} />
+<SegmentRevenue companyId={frontmatter.companyId} />
 
 <HealthMetrics companyId={frontmatter.companyId} />
 

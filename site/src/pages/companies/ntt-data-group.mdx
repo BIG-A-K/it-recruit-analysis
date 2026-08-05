@@ -7,7 +7,7 @@ originalPublishedAt: 2025/04/05
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
-import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialHistory from "../../components/company/FinancialHistory.astro";
 import MetricTrends from "../../components/company/MetricTrends.astro";
@@ -143,7 +143,7 @@ NTT本社がNTTデータの完全子会社化に注力しています。今後IR
 
 </CompanyProse>
 
-<BusinessSegments companyId={frontmatter.companyId} />
+<SegmentRevenue companyId={frontmatter.companyId} />
 
 <HealthMetrics companyId={frontmatter.companyId} />
 

@@ -318,7 +318,7 @@ def test_unlisted_company_pages_omit_unavailable_data_sections() -> None:
             )
         if company_id not in segments_by_company:
             assert (
-                "<BusinessSegments companyId={frontmatter.companyId}" not in page
+                "<SegmentRevenue companyId={frontmatter.companyId}" not in page
             ), company_id
 
 
@@ -327,7 +327,7 @@ def test_aws_page_separates_recruiting_and_disclosure_entities() -> None:
     assert ":::warn" in page
     assert '<FinancialHistory companyId="amazon-com" />' in page
     assert '<MetricTrends companyId="amazon-com" />' in page
-    assert '<BusinessSegments companyId="amazon-com" showShare={false} />' in page
+    assert '<SegmentRevenue companyId="amazon-com" showShare={false} />' in page
     assert not any(
         row["company_id"] == "aws-japan" for row in read_rows("metrics.csv")
     )

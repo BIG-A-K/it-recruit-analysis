@@ -6,7 +6,7 @@ companyId: isuzu-motors
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
-import BusinessSegments from "../../components/company/BusinessSegments.astro";
+import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialHistory from "../../components/company/FinancialHistory.astro";
 import MetricTrends from "../../components/company/MetricTrends.astro";
@@ -57,7 +57,7 @@ ISUZU IDでは、将来像を「『安心×斬新』で世界を進化させる�
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
-<BusinessSegments companyId={frontmatter.companyId} />
+<SegmentRevenue companyId={frontmatter.companyId} />
 <HealthMetrics companyId={frontmatter.companyId} />
 <FinancialHistory companyId={frontmatter.companyId} />
 <MetricTrends companyId={frontmatter.companyId} />
