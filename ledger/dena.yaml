@@ -8,7 +8,7 @@ company_boundary:
   securities_code: "2432"
   edinet_code: E05460
   fiscal_year_end: 3月末日
-  accounting_standard: JGAAP
+  accounting_standard: IFRS
   currency: JPY
   reporting_segments: ゲーム, スポーツ, ライブストリーミング, ヘルスケア・メディカル, 新規事業・その他（セグメント再編歴あり）
   company_relations: []
@@ -18,23 +18,144 @@ focus: 両方
 created_at: 2026-08-05
 updated_at: 2026-08-05
 phases:
-  ir: in_progress
+  ir: done
   recruit: done
   segments: done
-  article: pending
-  verify: pending
+  article: done
+  verify: done
 items:
-  - {id: ir-human-capital, phase: ir, store: ir_csv, topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
-  - {id: ir-revenue, phase: ir, store: ir_csv, topic: 売上高 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-operating-profit, phase: ir, store: ir_csv, topic: 営業利益 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-health, phase: ir, store: ir_csv, topic: 自己資本比率・流動資産・流動負債・当座資産, status: pending, value: "", subject: 連結, as_of: "", unit: percent・JPY, source: "", via: "", note: 当座資産の算定内訳をnoteへ}
-  - {id: ir-cash-flow, phase: ir, store: ir_csv, topic: 営業・投資・財務キャッシュフロー 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segment-game, phase: ir, store: ir_csv, topic: ゲーム事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segment-sports, phase: ir, store: ir_csv, topic: スポーツ・スマートシティ事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: "FY2025から追加、それ以前は別区分"}
-  - {id: ir-segment-live-streaming, phase: ir, store: ir_csv, topic: ライブストリーミング事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segment-healthcare, phase: ir, store: ir_csv, topic: ヘルスケア・メディカル事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segment-new-businesses, phase: ir, store: ir_csv, topic: 新規事業・その他の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-disclosure-notes, phase: ir, store: ir_csv, topic: セグメント再編・比較上の注記, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "FY2024〜2025でスポーツ・スマートシティ事業が新設、再編歴あり"}
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csvのaverage_annual_salary・average_age・average_tenure各FY2024-FY2026、employee_count FY2024-FY2026
+    subject: 提出会社単体（人的資本）・連結（従業員数）
+    as_of: FY2024-FY2026
+    unit: JPY / years / persons
+    source: edinet-s100tq8o; edinet-s100vze0; edinet-s100yldv
+    via: edinet-fetch・edinet-normalize
+    note: 各指標3期以上
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高 3期以上
+    status: done
+    value: metrics.csvのrevenue FY2024-FY2026 3行
+    subject: 連結
+    as_of: FY2024-FY2026
+    unit: JPY
+    source: edinet-s100yldv
+    via: edinet-normalize dena S100YLDV --period-end 2026-03-31
+    note: IFRS
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csvのoperating_profit FY2024-FY2026 3行
+    subject: 連結
+    as_of: FY2024-FY2026
+    unit: JPY
+    source: edinet-s100yldv
+    via: edinet-normalize
+    note: IFRS
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csvのequity_ratio・current_assets・current_liabilities・quick_assets各FY2024-FY2026
+    subject: 連結
+    as_of: FY2024-FY2026
+    unit: percent / JPY
+    source: edinet-s100vze0; edinet-s100yldv
+    via: edinet-fetch・edinet-normalize
+    note: quick_assets=流動資産−棚卸資産。FY2025 140930000000、FY2026 142654000000。FY2023-FY2024は棚卸資産科目なしのため報告流動資産と同額
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csvのoperating_cf・investing_cf・financing_cf各FY2024-FY2026
+    subject: 連結
+    as_of: FY2024-FY2026
+    unit: JPY
+    source: edinet-s100yldv
+    via: edinet-normalize
+    note: IFRS
+  - id: ir-segment-game
+    phase: ir
+    store: ir_csv
+    topic: ゲーム事業の年度別売上・利益
+    status: done
+    value: segments.csvのgame FY2024-FY2026 3行（FY2023も収録）
+    subject: 連結報告セグメント
+    as_of: FY2024-FY2026
+    unit: JPY
+    source: edinet-s100tq8o; edinet-s100vze0; edinet-s100yldv
+    via: edinet-normalize
+    note: 売上は外部顧客、利益はセグメント利益
+  - id: ir-segment-sports
+    phase: ir
+    store: ir_csv
+    topic: スポーツ・スマートシティ事業の年度別売上・利益
+    status: done
+    value: segments.csvのsports-smart-city FY2024-FY2026 3行（FY2023も収録）
+    subject: 連結報告セグメント
+    as_of: FY2024-FY2026
+    unit: JPY
+    source: edinet-s100tq8o; edinet-s100yldv
+    via: edinet-normalize
+    note: FY2023-FY2024は「スポーツ」、FY2025-FY2026は「スポーツ・スマートシティ」
+  - id: ir-segment-live-streaming
+    phase: ir
+    store: ir_csv
+    topic: ライブストリーミング事業の年度別売上・利益
+    status: done
+    value: segments.csvのlive-streaming FY2024-FY2026 3行（FY2023も収録）
+    subject: 連結報告セグメント
+    as_of: FY2024-FY2026
+    unit: JPY
+    source: edinet-s100tq8o; edinet-s100vze0; edinet-s100yldv
+    via: edinet-normalize
+    note: 売上は外部顧客、利益はセグメント利益
+  - id: ir-segment-healthcare
+    phase: ir
+    store: ir_csv
+    topic: ヘルスケア・メディカル事業の年度別売上・利益
+    status: done
+    value: segments.csvのhealthcare-medical FY2024-FY2026 3行（FY2023も収録）
+    subject: 連結報告セグメント
+    as_of: FY2024-FY2026
+    unit: JPY
+    source: edinet-s100tq8o; edinet-s100vze0; edinet-s100yldv
+    via: edinet-normalize
+    note: 売上は外部顧客、利益はセグメント利益
+  - id: ir-segment-new-businesses
+    phase: ir
+    store: ir_csv
+    topic: 新規事業・その他の年度別売上・利益
+    status: done
+    value: segments.csvのnew-businesses-and-others FY2024-FY2026 3行（FY2023も収録）
+    subject: 連結報告セグメント
+    as_of: FY2024-FY2026
+    unit: JPY
+    source: edinet-s100tq8o; edinet-s100vze0; edinet-s100yldv
+    via: edinet-normalize
+    note: FY2025はFY2026有報の組替え後比較値
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: セグメント再編・比較上の注記
+    status: done
+    value: company_annotations.csvのDeNA注記3行（既存更新1、新規2）
+    subject: 連結財務諸表・報告セグメント
+    as_of: FY2026
+    unit: ""
+    source: edinet-s100tq8o; edinet-s100vze0; edinet-s100yldv
+    via: FY2024-FY2026有価証券報告書
+    note: IFRS適用、スポーツ・スマートシティ再編、quick_assets算定根拠
   - id: recruit-employing-entity
     phase: recruit
     store: mdx
@@ -44,8 +165,8 @@ items:
     subject: 株式会社ディー・エヌ・エー（正社員・新卒）
     as_of: 2026-08-05（2027年4月/2028年4月入社）
     unit: ""
-    source: https://student.dena.com/recruit/
-    via: 公式採用サイトから新卒募集要項を確認
+    source: dena-recruit-fresh; dena-recruit-aispecialist; dena-recruit-aigeneralist
+    via: 公式新卒サイトの募集要項と職種別ページを確認
     note: 2026年3月6日改定でAIスペシャリストコースとAIジェネラリストコースへ再編
   - id: recruit-jobs
     phase: recruit
@@ -56,7 +177,7 @@ items:
     subject: AIスペシャリスト職／エンジニア職／ビジネス職／デザイナー職
     as_of: 2026-08-05
     unit: ""
-    source: https://student.dena.com/recruit/; https://student.dena.com/aispecialist/description/; https://student.dena.com/aigeneralist/description/
+    source: dena-recruit-fresh; dena-recruit-aispecialist; dena-recruit-aigeneralist
     via: 公式新卒募集要項と職種別ページを確認
     note: ゲーム・スポーツ等は独立職種ではなく配属先事業ドメイン
   - id: recruit-salary
@@ -68,7 +189,7 @@ items:
     subject: 新卒4職種（2026年3月6日改定後）
     as_of: 2026-08-05
     unit: JPY
-    source: https://student.dena.com/recruit/; https://student.dena.com/aispecialist/description/; https://student.dena.com/aigeneralist/description/; https://dena.com/jp/recruit/welfare/
+    source: dena-recruit-fresh; dena-recruit-aispecialist; dena-recruit-aigeneralist; dena-official-corporate-overview
     via: 公式募集要項と福利厚生ページを確認
     note: 旧制度の給与は参考値。現行の標準年収は選考で決定する下限値
   - id: recruit-conditions
@@ -80,8 +201,8 @@ items:
     subject: 新卒4職種共通
     as_of: 2026-08-05
     unit: 時間・日付
-    source: https://student.dena.com/recruit/; https://dena.com/jp/recruit/environment/
-    via: 公式募集要項・働く環境ページを確認
+    source: dena-recruit-fresh
+    via: 公式募集要項を確認
     note: 応募期限の最終日付は公式非開示
   - id: segments-services
     phase: segments
@@ -92,9 +213,9 @@ items:
     subject: DeNA公式事業カテゴリと主なサービス
     as_of: 2026-08-05
     unit: ""
-    source: https://dena.com/jp/services/; https://dena.com/jp/company/overview.html; https://dena.com/jp/news/5102/
-    via: 公式事業ページ・会社概要・各サービス/子会社ページを確認
-    note: 公式サービス分類と法定報告セグメントを同一視せず整理
+    source: dena-official-services; dena-official-corporate-overview; edinet-s100yldv
+    via: 公式事業ページ・会社概要・第28期有価証券報告書を確認
+    note: 公式サービス分類と法定報告セグメントを整理。法定開示の事業主体一覧を正とする
   - id: segments-mapping
     phase: segments
     store: mdx
@@ -104,8 +225,8 @@ items:
     subject: FY2026連結報告セグメントと公式事業カテゴリ
     as_of: FY2026（2026-03-31）
     unit: ""
-    source: S100YLDV; https://dena.com/jp/ir/library/report.html; https://dena.com/jp/services/
-    via: FY2026有価証券報告書と公式事業カテゴリを照合
+    source: edinet-s100yldv; dena-official-ir-library; dena-official-services
+    via: 第28期有価証券報告書と公式事業カテゴリを照合
     note: 財務数値はsegments.csvが正本
   - id: segments-related-companies
     phase: segments
@@ -116,9 +237,9 @@ items:
     subject: DeNAの主要子会社・関連会社
     as_of: 2026-08-05
     unit: ""
-    source: https://dena.com/jp/company/overview.html; https://www.cygames.co.jp/corporate/; https://pfdena.com/; https://well-compass.jp/
-    via: 公式会社概要の一覧と各社公式ページを照合
-    note: 主要会社を記録し、未確認の持株比率・連結範囲は推定していない
+    source: edinet-s100yldv; dena-official-corporate-overview
+    via: 第28期有価証券報告書の関係会社の状況と会社概式を照合
+    note: 主要子会社・関連会社を記録し、未確認の持株比率・連結範囲は推定していない
   - id: article-mission
     phase: article
     store: mdx
@@ -128,7 +249,7 @@ items:
     subject: 株式会社ディー・エヌ・エー
     as_of: 2026-08-05
     unit: ""
-    source: https://dena.com/jp/company/policy/; https://dena.com/jp/company/message.html
+    source: dena-official-corporate-policy
     via: 公式理念・代表メッセージを確認
     note: 公式表記のDelight、永久ベンチャーを保持
   - id: article-company

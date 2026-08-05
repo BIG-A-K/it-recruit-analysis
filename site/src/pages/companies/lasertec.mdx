@@ -6,6 +6,7 @@ companyId: lasertec
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialHistory from "../../components/company/FinancialHistory.astro";
 import MetricTrends from "../../components/company/MetricTrends.astro";
@@ -15,9 +16,9 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyProse>
 
-レーザーテック株式会社は、光応用技術を用いた半導体検査・計測装置を開発・製造する企業です。EUV関連の検査装置、フォトマスク・ウェハ検査装置、FPD検査装置などを展開しています。
+[レーザーテック株式会社](https://www.lasertec.co.jp/)は、光応用技術を用いた半導体検査・計測装置を開発・製造する企業である。EUV関連の検査装置、フォトマスク・ウェハ検査装置、FPD検査装置などを展開する。
 
-経営理念は「世の中にないものをつくり、世の中のためになるものをつくる」です。ビジョンとして「世界中のお客さまから真っ先に声をかけていただける会社」を掲げています。理念と会社紹介は[レーザーテック公式サイト](https://www.lasertec.co.jp/)を2026年8月2日に確認しました。
+経営理念は「世の中にないものをつくり、世の中のためになるものをつくる」。ビジョンとして「世界中のお客さまから真っ先に声をかけていただける会社」を掲げる。
 
 ## サイト
 
@@ -38,7 +39,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 ## 採用情報
 ### 新卒
 
-採用主体はレーザーテック株式会社です。以下は理工系の大学・大学院卒業・修了見込み者を対象とする新卒募集要項を2026年8月2日に確認した内容です。自由応募のみで、募集人数は20名程度です。
+採用主体はレーザーテック株式会社。対象は理工系の大学・大学院卒業・修了見込み者向けの新卒募集要項。自由応募のみで、募集人数は20名程度。
 
 | 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
 | --- | --- | --- | --- | --- | --- |
@@ -46,7 +47,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 | [技術営業職](https://lasertec-saiyo.jp/recruiting/) | 新横浜本社、レーザーテックイノベーションパーク | 博士330,000円、修士305,000円、大学275,000円（予定） | 記載なし | 記載なし | 記載なし |
 
 :::info
-転勤はなく、勤務時間は8:30〜17:15、フレックスタイム制のコアタイムは11:00〜14:00です。選考はエントリー、会社説明会、書類提出・適性検査、書類選考、複数回の面接を経て内定となります。
+転勤はなく、勤務時間は8:30〜17:15、フレックスタイム制のコアタイムは11:00〜14:00。選考はエントリー、会社説明会、書類提出・適性検査、書類選考、複数回の面接を経て内定となる。
 :::
 
 ## 事業内容
@@ -65,10 +66,11 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 </CompanyProse>
 
+<SegmentRevenue companyId={frontmatter.companyId} />
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
 <FinancialHistory companyId={frontmatter.companyId} />
 
 <MetricTrends companyId={frontmatter.companyId} />
 
-<CompanySources companyId={frontmatter.companyId} />

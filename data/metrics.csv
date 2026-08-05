@@ -92,35 +92,35 @@ mercari,operating_profit,2025,2025-06-30,27840000000,JPY,consolidated,IFRS,repor
 cyberagent,average_age,2025,2025-09-30,33.8,years,non_consolidated,,reported,edinet-s100xcu9,element_id=jpcrp_cor:AverageAgeYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
 cyberagent,average_tenure,2025,2025-09-30,6.5,years,non_consolidated,,reported,edinet-s100xcu9,element_id=jpcrp_cor:AverageLengthOfServiceYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
 cyberagent,average_annual_salary,2025,2025-09-30,9138000,JPY,non_consolidated,,reported,edinet-s100xcu9,element_id=jpcrp_cor:AverageAnnualSalaryInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
-dena,revenue,2022,2022-03-31,130868000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior3YearDuration
-dena,revenue,2023,2023-03-31,134914000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior2YearDuration
-dena,revenue,2024,2024-03-31,136733000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
-dena,revenue,2025,2025-03-31,163997000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
+dena,revenue,2022,2022-03-31,130868000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
+dena,revenue,2023,2023-03-31,134914000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior3YearDuration
+dena,revenue,2024,2024-03-31,136733000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior2YearDuration
+dena,revenue,2025,2025-03-31,163997000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
 dena,revenue,2026,2026-03-31,147700000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
-dena,operating_profit,2022,2022-03-31,11462000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp030000-asr_E05460-000:OperatingProfitLossIFRSSummaryOfBusinessResults; context_id=Prior3YearDuration
-dena,operating_profit,2023,2023-03-31,4202000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp030000-asr_E05460-000:OperatingProfitLossIFRSSummaryOfBusinessResults; context_id=Prior2YearDuration
-dena,operating_profit,2024,2024-03-31,-28270000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp030000-asr_E05460-000:OperatingProfitLossIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
-dena,operating_profit,2025,2025-03-31,28973000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp030000-asr_E05460-000:OperatingProfitLossIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
+dena,operating_profit,2022,2022-03-31,11462000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp030000-asr_E05460-000:OperatingProfitLossIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
+dena,operating_profit,2023,2023-03-31,4202000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp030000-asr_E05460-000:OperatingProfitLossIFRSSummaryOfBusinessResults; context_id=Prior3YearDuration
+dena,operating_profit,2024,2024-03-31,-28270000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp030000-asr_E05460-000:OperatingProfitLossIFRSSummaryOfBusinessResults; context_id=Prior2YearDuration
+dena,operating_profit,2025,2025-03-31,28973000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp030000-asr_E05460-000:OperatingProfitLossIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
 dena,operating_profit,2026,2026-03-31,18694000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp030000-asr_E05460-000:OperatingProfitLossIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
-dena,equity_ratio,2022,2022-03-31,70.7,percent,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=Prior3YearInstant
-dena,equity_ratio,2023,2023-03-31,63.5,percent,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=Prior2YearInstant
-dena,equity_ratio,2024,2024-03-31,62.3,percent,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=Prior1YearInstant
-dena,equity_ratio,2025,2025-03-31,61.3,percent,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=CurrentYearInstant
+dena,equity_ratio,2022,2022-03-31,70.7,percent,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=Prior4YearInstant
+dena,equity_ratio,2023,2023-03-31,63.5,percent,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=Prior3YearInstant
+dena,equity_ratio,2024,2024-03-31,62.3,percent,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=Prior2YearInstant
+dena,equity_ratio,2025,2025-03-31,61.3,percent,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=Prior1YearInstant
 dena,equity_ratio,2026,2026-03-31,69.8,percent,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=CurrentYearInstant
-dena,operating_cf,2022,2022-03-31,18375000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior3YearDuration
-dena,operating_cf,2023,2023-03-31,10808000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior2YearDuration
-dena,operating_cf,2024,2024-03-31,-10839000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
-dena,operating_cf,2025,2025-03-31,38999000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
+dena,operating_cf,2022,2022-03-31,18375000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
+dena,operating_cf,2023,2023-03-31,10808000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior3YearDuration
+dena,operating_cf,2024,2024-03-31,-10839000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior2YearDuration
+dena,operating_cf,2025,2025-03-31,38999000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
 dena,operating_cf,2026,2026-03-31,33431000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
-dena,investing_cf,2022,2022-03-31,-19924000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:CashFlowsFromUsedInInvestingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior3YearDuration
-dena,investing_cf,2023,2023-03-31,12451000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:CashFlowsFromUsedInInvestingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior2YearDuration
-dena,investing_cf,2024,2024-03-31,-12629000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:CashFlowsFromUsedInInvestingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
-dena,investing_cf,2025,2025-03-31,-12280000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:CashFlowsFromUsedInInvestingActivitiesIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
+dena,investing_cf,2022,2022-03-31,-19924000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:CashFlowsFromUsedInInvestingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
+dena,investing_cf,2023,2023-03-31,12451000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:CashFlowsFromUsedInInvestingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior3YearDuration
+dena,investing_cf,2024,2024-03-31,-12629000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:CashFlowsFromUsedInInvestingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior2YearDuration
+dena,investing_cf,2025,2025-03-31,-12280000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:CashFlowsFromUsedInInvestingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
 dena,investing_cf,2026,2026-03-31,34820000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:CashFlowsFromUsedInInvestingActivitiesIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
-dena,financing_cf,2022,2022-03-31,-18549000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:CashFlowsFromUsedInFinancingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior3YearDuration
-dena,financing_cf,2023,2023-03-31,-4930000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:CashFlowsFromUsedInFinancingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior2YearDuration
-dena,financing_cf,2024,2024-03-31,-4102000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:CashFlowsFromUsedInFinancingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
-dena,financing_cf,2025,2025-03-31,-5445000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpcrp_cor:CashFlowsFromUsedInFinancingActivitiesIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
+dena,financing_cf,2022,2022-03-31,-18549000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:CashFlowsFromUsedInFinancingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
+dena,financing_cf,2023,2023-03-31,-4930000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:CashFlowsFromUsedInFinancingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior3YearDuration
+dena,financing_cf,2024,2024-03-31,-4102000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:CashFlowsFromUsedInFinancingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior2YearDuration
+dena,financing_cf,2025,2025-03-31,-5445000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:CashFlowsFromUsedInFinancingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
 dena,financing_cf,2026,2026-03-31,-58079000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpcrp_cor:CashFlowsFromUsedInFinancingActivitiesIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
 dena,average_age,2026,2026-03-31,38.6,years,non_consolidated,,reported,edinet-s100yldv,element_id=jpcrp_cor:AverageAgeYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
 dena,average_tenure,2026,2026-03-31,7,years,non_consolidated,,reported,edinet-s100yldv,element_id=jpcrp_cor:AverageLengthOfServiceYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
@@ -614,7 +614,7 @@ hitachi,current_liabilities,2026,2026-03-31,7167139000000,JPY,consolidated,IFRS,
 hitachi,quick_assets,2026,2026-03-31,5683674000000,JPY,consolidated,IFRS,reported,edinet-s100ygbo,現金同等物・売上債権・金融資産の合計
 gmo-internet,revenue,2024,2024-12-31,276046000000,JPY,consolidated,IFRS,reported,edinet-s100xsg3,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
 gmo-internet,revenue,2025,2025-12-31,285261000000,JPY,consolidated,IFRS,reported,edinet-s100xsg3,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
-gmo-internet,equity_ratio,2023,2023-12-31,5.1,percent,consolidated,IFRS,reported,edinet-s100xsg3,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=Prior2YearInstant
+gmo-internet,equity_ratio,2023,2023-12-31,4.7,percent,consolidated,JGAAP,reported,edinet-s100t3h4,element_id=jpcrp_cor:EquityToAssetRatioSummaryOfBusinessResults; context_id=CurrentYearInstant
 gmo-internet,equity_ratio,2024,2024-12-31,4.9,percent,consolidated,IFRS,reported,edinet-s100xsg3,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=Prior1YearInstant
 gmo-internet,equity_ratio,2025,2025-12-31,5.5,percent,consolidated,IFRS,reported,edinet-s100xsg3,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=CurrentYearInstant
 gmo-internet,operating_cf,2024,2024-12-31,86656000000,JPY,consolidated,IFRS,reported,edinet-s100xsg3,element_id=jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
@@ -715,15 +715,15 @@ recruit-holdings,quick_assets,2023,2023-03-31,1465342000000,JPY,consolidated,IFR
 recruit-holdings,quick_assets,2024,2024-03-31,1762744000000,JPY,consolidated,IFRS,reported,edinet-s100vzg5,算定内訳: 流動資産(jpigp_cor:CurrentAssetsIFRS) - 棚卸資産0(リクルートホールディングスはサービス業のためIFRS貸借対照表に棚卸資産科目なし) = 流動資産と同額
 recruit-holdings,quick_assets,2025,2025-03-31,1470378000000,JPY,consolidated,IFRS,reported,edinet-s100ydhl,算定内訳: 流動資産(jpigp_cor:CurrentAssetsIFRS) - 棚卸資産0(リクルートホールディングスはサービス業のためIFRS貸借対照表に棚卸資産科目なし) = 流動資産と同額
 recruit-holdings,quick_assets,2026,2026-03-31,1555172000000,JPY,consolidated,IFRS,reported,edinet-s100ydhl,算定内訳: 流動資産(jpigp_cor:CurrentAssetsIFRS) - 棚卸資産0(リクルートホールディングスはサービス業のためIFRS貸借対照表に棚卸資産科目なし) = 流動資産と同額
-gmo-internet,employee_count,2023,2023-12-31,6253,persons,consolidated,,reported,edinet-s100xsg3,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior2YearInstant
+gmo-internet,employee_count,2023,2023-12-31,6253,persons,consolidated,,reported,edinet-s100t3h4,element_id=jpcrp_cor:NumberOfEmployees; context_id=CurrentYearInstant
 gmo-internet,employee_count,2024,2024-12-31,6333,persons,consolidated,,reported,edinet-s100xsg3,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior1YearInstant
 gmo-internet,employee_count,2025,2025-12-31,6484,persons,consolidated,,reported,edinet-s100xsg3,element_id=jpcrp_cor:NumberOfEmployees; context_id=CurrentYearInstant
-gmo-internet,employee_count,2021,2021-12-31,5758,persons,consolidated,,reported,edinet-s100xsg3,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior4YearInstant
-gmo-internet,employee_count,2022,2022-12-31,6159,persons,consolidated,,reported,edinet-s100xsg3,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior3YearInstant
-gmo-internet,current_assets,2023,2023-12-31,1517902000000,JPY,consolidated,IFRS,reported,edinet-s100xsg3,element_id=jpigp_cor:CurrentAssetsIFRS; context_id=Prior2YearInstant
+gmo-internet,employee_count,2021,2021-12-31,5758,persons,consolidated,,reported,edinet-s100t3h4,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior2YearInstant
+gmo-internet,employee_count,2022,2022-12-31,6159,persons,consolidated,,reported,edinet-s100t3h4,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior1YearInstant
+gmo-internet,current_assets,2023,2023-12-31,1614257000000,JPY,consolidated,JGAAP,reported,edinet-s100t3h4,element_id=jppfs_cor:CurrentAssets; context_id=CurrentYearInstant
 gmo-internet,current_assets,2024,2024-12-31,1619728000000,JPY,consolidated,IFRS,reported,edinet-s100xsg3,element_id=jpigp_cor:CurrentAssetsIFRS; context_id=Prior1YearInstant
 gmo-internet,current_assets,2025,2025-12-31,1751433000000,JPY,consolidated,IFRS,reported,edinet-s100xsg3,element_id=jpigp_cor:CurrentAssetsIFRS; context_id=CurrentYearInstant
-gmo-internet,current_liabilities,2023,2023-12-31,1190305000000,JPY,consolidated,IFRS,reported,edinet-s100xsg3,element_id=jpigp_cor:TotalCurrentLiabilitiesIFRS; context_id=Prior2YearInstant
+gmo-internet,current_liabilities,2023,2023-12-31,1307015000000,JPY,consolidated,JGAAP,reported,edinet-s100t3h4,element_id=jppfs_cor:CurrentLiabilities; context_id=CurrentYearInstant
 gmo-internet,current_liabilities,2024,2024-12-31,1267233000000,JPY,consolidated,IFRS,reported,edinet-s100xsg3,element_id=jpigp_cor:TotalCurrentLiabilitiesIFRS; context_id=Prior1YearInstant
 gmo-internet,current_liabilities,2025,2025-12-31,1414705000000,JPY,consolidated,IFRS,reported,edinet-s100xsg3,element_id=jpigp_cor:TotalCurrentLiabilitiesIFRS; context_id=CurrentYearInstant
 nintendo,revenue,2022,2022-03-31,1695344000000,JPY,consolidated,JGAAP,reported,edinet-s100y9nx,element_id=jpcrp_cor:NetSalesSummaryOfBusinessResults; context_id=Prior4YearDuration
@@ -1885,14 +1885,14 @@ gree,employee_count,2025,2025-06-30,1489,persons,consolidated,,reported,edinet-s
 gree,current_assets,2025,2025-06-30,117419000000,JPY,consolidated,,reported,edinet-s100wqwx,element_id=jppfs_cor:CurrentAssets; context_id=CurrentYearInstant
 gree,current_liabilities,2025,2025-06-30,21602000000,JPY,consolidated,,reported,edinet-s100wqwx,element_id=jppfs_cor:CurrentLiabilities; context_id=CurrentYearInstant
 gree,operating_profit,2025,2025-06-30,4860000000,JPY,consolidated,JGAAP,reported,edinet-s100wqwx,element_id=jppfs_cor:OperatingIncome; context_id=CurrentYearDuration
-dena,employee_count,2022,2022-03-31,2194,persons,consolidated,,reported,edinet-s100vze0,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior3YearInstant
-dena,employee_count,2023,2023-03-31,2951,persons,consolidated,,reported,edinet-s100vze0,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior2YearInstant
-dena,employee_count,2024,2024-03-31,2897,persons,consolidated,,reported,edinet-s100vze0,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior1YearInstant
-dena,employee_count,2025,2025-03-31,2572,persons,consolidated,,reported,edinet-s100vze0,element_id=jpcrp_cor:NumberOfEmployees; context_id=CurrentYearInstant
+dena,employee_count,2022,2022-03-31,2194,persons,consolidated,,reported,edinet-s100yldv,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior4YearInstant
+dena,employee_count,2023,2023-03-31,2951,persons,consolidated,,reported,edinet-s100yldv,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior3YearInstant
+dena,employee_count,2024,2024-03-31,2897,persons,consolidated,,reported,edinet-s100yldv,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior2YearInstant
+dena,employee_count,2025,2025-03-31,2572,persons,consolidated,,reported,edinet-s100yldv,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior1YearInstant
 dena,employee_count,2026,2026-03-31,2483,persons,consolidated,,reported,edinet-s100yldv,element_id=jpcrp_cor:NumberOfEmployees; context_id=CurrentYearInstant
-dena,current_assets,2025,2025-03-31,142688000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpigp_cor:CurrentAssetsIFRS; context_id=CurrentYearInstant
+dena,current_assets,2025,2025-03-31,142688000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpigp_cor:CurrentAssetsIFRS; context_id=Prior1YearInstant
 dena,current_assets,2026,2026-03-31,144677000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpigp_cor:CurrentAssetsIFRS; context_id=CurrentYearInstant
-dena,current_liabilities,2025,2025-03-31,88795000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpigp_cor:TotalCurrentLiabilitiesIFRS; context_id=CurrentYearInstant
+dena,current_liabilities,2025,2025-03-31,88795000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpigp_cor:TotalCurrentLiabilitiesIFRS; context_id=Prior1YearInstant
 dena,current_liabilities,2026,2026-03-31,64359000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,element_id=jpigp_cor:TotalCurrentLiabilitiesIFRS; context_id=CurrentYearInstant
 kakaku-com,employee_count,2022,2022-03-31,1238,persons,consolidated,,reported,edinet-s100vyj6,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior3YearInstant
 kakaku-com,employee_count,2023,2023-03-31,1361,persons,consolidated,,reported,edinet-s100vyj6,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior2YearInstant
@@ -2041,8 +2041,8 @@ gree,quick_assets,2024,2024-06-30,106804000000,JPY,consolidated,JGAAP,reported,e
 gree,quick_assets,2025,2025-06-30,111755000000,JPY,consolidated,JGAAP,reported,edinet-s100wqwx,算定科目=jppfs_cor:CashAndDeposits+jppfs_cor:NotesAndAccountsReceivableTradeAndContractAssets+jppfs_cor:OperationalInvestmentSecuritiesCA+jppfs_cor:MoneyHeldInTrustCA+jppfs_cor:ShortTermInvestmentSecurities
 kakaku-com,quick_assets,2025,2025-03-31,64466000000,JPY,consolidated,IFRS,reported,edinet-s100vyj6,算定科目=jpigp_cor:CashAndCashEquivalentsIFRS+jpigp_cor:TradeAndOtherReceivablesCAIFRS+jpigp_cor:OtherFinancialAssetsCAIFRS
 kakaku-com,quick_assets,2026,2026-03-31,65229000000,JPY,consolidated,IFRS,reported,edinet-s100ybgn,算定科目=jpigp_cor:CashAndCashEquivalentsIFRS+jpigp_cor:TradeAndOtherReceivablesCAIFRS+jpigp_cor:OtherFinancialAssetsCAIFRS
-dena,quick_assets,2025,2025-03-31,137633000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,算定科目=jpigp_cor:CashAndCashEquivalentsIFRS+jpigp_cor:TradeAndOtherReceivables3CAIFRS+jpigp_cor:OtherFinancialAssetsCAIFRS
-dena,quick_assets,2026,2026-03-31,135294000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,算定科目=jpigp_cor:CashAndCashEquivalentsIFRS+jpigp_cor:TradeAndOtherReceivables3CAIFRS+jpigp_cor:OtherFinancialAssetsCAIFRS
+dena,quick_assets,2025,2025-03-31,140930000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,算定内訳: 流動資産142688000000 - 棚卸資産(商品1123000000+仕掛品635000000=1758000000) = 140930000000
+dena,quick_assets,2026,2026-03-31,142654000000,JPY,consolidated,IFRS,reported,edinet-s100yldv,算定内訳: 流動資産144677000000 - 棚卸資産(商品1444000000+仕掛品579000000=2023000000) = 142654000000
 yamaha-motor,revenue,2023,2023-12-31,2414759000000,JPY,consolidated,IFRS,reported,edinet-s100xrth,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior2YearDuration
 yamaha-motor,revenue,2024,2024-12-31,2576179000000,JPY,consolidated,IFRS,reported,edinet-s100xrth,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
 yamaha-motor,revenue,2025,2025-12-31,2534203000000,JPY,consolidated,IFRS,reported,edinet-s100xrth,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
@@ -2090,7 +2090,7 @@ dena,average_tenure,2025,2025-03-31,6,years,non_consolidated,,reported,edinet-s1
 dena,average_annual_salary,2025,2025-03-31,8829000,JPY,non_consolidated,,reported,edinet-s100vze0,element_id=jpcrp_cor:AverageAnnualSalaryInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
 dena,current_assets,2024,2024-03-31,114060000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpigp_cor:CurrentAssetsIFRS; context_id=Prior1YearInstant
 dena,current_liabilities,2024,2024-03-31,49213000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,element_id=jpigp_cor:TotalCurrentLiabilitiesIFRS; context_id=Prior1YearInstant
-dena,quick_assets,2024,2024-03-31,101875000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,算定科目=jpigp_cor:CashAndCashEquivalentsIFRS+jpigp_cor:TradeAndOtherReceivables3CAIFRS+jpigp_cor:OtherFinancialAssetsCAIFRS
+dena,quick_assets,2024,2024-03-31,114060000000,JPY,consolidated,IFRS,reported,edinet-s100vze0,算定内訳: 流動資産114060000000 - 棚卸資産0(注記16に商品・仕掛品の記載なし) = 114060000000
 kakaku-com,revenue,2021,2021-03-31,51077000000,JPY,consolidated,IFRS,reported,edinet-s100vyj6,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
 kakaku-com,equity_ratio,2021,2021-03-31,66.1,percent,consolidated,IFRS,reported,edinet-s100vyj6,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=Prior4YearInstant
 kakaku-com,operating_cf,2021,2021-03-31,17288000000,JPY,consolidated,IFRS,reported,edinet-s100vyj6,element_id=jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
@@ -2865,3 +2865,75 @@ renesas-electronics,quick_assets,2025,2025-12-31,537656000000,JPY,consolidated,I
 rohm,quick_assets,2024,2024-03-31,340367000000,JPY,consolidated,JGAAP,reported,edinet-s100w2w6,算定科目=jppfs_cor:CashAndDeposits+jppfs_cor:NotesAndAccountsReceivableTrade+jppfs_cor:ElectronicallyRecordedMonetaryClaimsOperatingCA+jppfs_cor:ShortTermInvestmentSecurities
 rohm,quick_assets,2025,2025-03-31,329231000000,JPY,consolidated,JGAAP,reported,edinet-s100yf41,算定科目=jppfs_cor:CashAndDeposits+jppfs_cor:NotesAndAccountsReceivableTrade+jppfs_cor:ElectronicallyRecordedMonetaryClaimsOperatingCA+jppfs_cor:ShortTermInvestmentSecurities
 rohm,quick_assets,2026,2026-03-31,519091000000,JPY,consolidated,JGAAP,reported,edinet-s100yf41,算定科目=jppfs_cor:CashAndDeposits+jppfs_cor:NotesAndAccountsReceivableTrade+jppfs_cor:ElectronicallyRecordedMonetaryClaimsOperatingCA+jppfs_cor:ShortTermInvestmentSecurities
+dena,revenue,2020,2020-03-31,121387000000,JPY,consolidated,IFRS,reported,edinet-s100tq8o,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
+dena,operating_profit,2020,2020-03-31,-45676000000,JPY,consolidated,IFRS,reported,edinet-s100tq8o,element_id=jpcrp030000-asr_E05460-000:OperatingProfitLossIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
+dena,equity_ratio,2020,2020-03-31,70.6,percent,consolidated,IFRS,reported,edinet-s100tq8o,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=Prior4YearInstant
+dena,operating_cf,2020,2020-03-31,12946000000,JPY,consolidated,IFRS,reported,edinet-s100tq8o,element_id=jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
+dena,investing_cf,2020,2020-03-31,-8706000000,JPY,consolidated,IFRS,reported,edinet-s100tq8o,element_id=jpcrp_cor:CashFlowsFromUsedInInvestingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
+dena,financing_cf,2020,2020-03-31,-32154000000,JPY,consolidated,IFRS,reported,edinet-s100tq8o,element_id=jpcrp_cor:CashFlowsFromUsedInFinancingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior4YearDuration
+dena,employee_count,2020,2020-03-31,2558,persons,consolidated,,reported,edinet-s100tq8o,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior4YearInstant
+dena,average_age,2024,2024-03-31,37.6,years,non_consolidated,,reported,edinet-s100tq8o,element_id=jpcrp_cor:AverageAgeYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+dena,average_tenure,2024,2024-03-31,5,years,non_consolidated,,reported,edinet-s100tq8o,element_id=jpcrp_cor:AverageLengthOfServiceYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+dena,average_annual_salary,2024,2024-03-31,8540000,JPY,non_consolidated,,reported,edinet-s100tq8o,element_id=jpcrp_cor:AverageAnnualSalaryInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+dena,current_assets,2023,2023-03-31,133341000000,JPY,consolidated,IFRS,reported,edinet-s100tq8o,element_id=jpigp_cor:CurrentAssetsIFRS; context_id=Prior1YearInstant
+dena,current_liabilities,2023,2023-03-31,50648000000,JPY,consolidated,IFRS,reported,edinet-s100tq8o,element_id=jpigp_cor:TotalCurrentLiabilitiesIFRS; context_id=Prior1YearInstant
+dena,quick_assets,2023,2023-03-31,133341000000,JPY,consolidated,IFRS,reported,edinet-s100tq8o,算定内訳: 流動資産133341000000 - 棚卸資産0(注記16に商品・仕掛品の記載なし) = 133341000000
+gmo-internet,employee_count,2020,2020-12-31,5225,persons,consolidated,,reported,edinet-s100t3h4,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior3YearInstant
+gmo-internet,average_age,2024,2024-12-31,37.9,years,non_consolidated,,reported,edinet-s100vg8d,element_id=jpcrp_cor:AverageAgeYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+gmo-internet,average_tenure,2024,2024-12-31,8.2,years,non_consolidated,,reported,edinet-s100vg8d,element_id=jpcrp_cor:AverageLengthOfServiceYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+gmo-internet,average_annual_salary,2024,2024-12-31,6935000,JPY,non_consolidated,,reported,edinet-s100vg8d,element_id=jpcrp_cor:AverageAnnualSalaryInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+gmo-internet,employee_count,2019,2019-12-31,5238,persons,consolidated,,reported,edinet-s100t3h4,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior4YearInstant
+gmo-internet,average_age,2023,2023-12-31,36.1,years,non_consolidated,,reported,edinet-s100t3h4,element_id=jpcrp_cor:AverageAgeYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+gmo-internet,average_tenure,2023,2023-12-31,6.4,years,non_consolidated,,reported,edinet-s100t3h4,element_id=jpcrp_cor:AverageLengthOfServiceYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+gmo-internet,average_annual_salary,2023,2023-12-31,6771000,JPY,non_consolidated,,reported,edinet-s100t3h4,element_id=jpcrp_cor:AverageAnnualSalaryInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+gmo-internet,current_assets,2022,2022-12-31,1408015000000,JPY,consolidated,,reported,edinet-s100t3h4,element_id=jppfs_cor:CurrentAssets; context_id=Prior1YearInstant
+gmo-internet,current_liabilities,2022,2022-12-31,1207649000000,JPY,consolidated,,reported,edinet-s100t3h4,element_id=jppfs_cor:CurrentLiabilities; context_id=Prior1YearInstant
+gmo-internet,revenue,2023,2023-12-31,258643000000,JPY,consolidated,JGAAP,reported,edinet-s100t3h4,element_id=jpcrp_cor:NetSalesSummaryOfBusinessResults; context_id=CurrentYearDuration
+gmo-internet,operating_profit,2023,2023-12-31,42471000000,JPY,consolidated,JGAAP,reported,edinet-s100t3h4,element_id=jppfs_cor:OperatingIncome; context_id=CurrentYearDuration
+gmo-internet,operating_cf,2023,2023-12-31,14914000000,JPY,consolidated,JGAAP,reported,edinet-s100t3h4,element_id=jpcrp_cor:NetCashProvidedByUsedInOperatingActivitiesSummaryOfBusinessResults; context_id=CurrentYearDuration
+gmo-internet,investing_cf,2023,2023-12-31,-16363000000,JPY,consolidated,JGAAP,reported,edinet-s100t3h4,element_id=jpcrp_cor:NetCashProvidedByUsedInInvestingActivitiesSummaryOfBusinessResults; context_id=CurrentYearDuration
+gmo-internet,financing_cf,2023,2023-12-31,64975000000,JPY,consolidated,JGAAP,reported,edinet-s100t3h4,element_id=jpcrp_cor:NetCashProvidedByUsedInFinancingActivitiesSummaryOfBusinessResults; context_id=CurrentYearDuration
+gmo-internet,quick_assets,2023,2023-12-31,1593548000000,JPY,consolidated,JGAAP,reported,edinet-s100t3h4,算定内訳: 流動資産1614257000000 - 棚卸資産20709000000 = 1593548000000
+gmo-internet,quick_assets,2024,2024-12-31,1559518000000,JPY,consolidated,IFRS,reported,edinet-s100xsg3,算定内訳: jpigp_cor:CurrentAssetsIFRS 1619728000000 - jpigp_cor:InventoriesCAIFRS 60210000000 = 1559518000000
+gmo-internet,quick_assets,2025,2025-12-31,1690148000000,JPY,consolidated,IFRS,reported,edinet-s100xsg3,算定内訳: jpigp_cor:CurrentAssetsIFRS 1751433000000 - jpigp_cor:InventoriesCAIFRS 61285000000 = 1690148000000
+dmm,revenue,2026,2026-02-28,428700000000,JPY,consolidated,,reported,dmm-official-corporate-profile-2026,"会社紹介資料p3「売上 4,287億円」を円換算。注記は「DMM.com、DMM.com 証券、DMM.com BASE、他連結（2026年2月期）」。非上場のため法定開示・監査済連結財務諸表による裏付けはない"
+dmm,employee_count,2025,2025-02-28,2730,persons,dmm,,reported,dmm-official-corporate-profile-2026,"合同会社DMM.com単体の従業員数。会社紹介資料p19会社概要の「2,730名※」で※は2025年2月時点。公式サイトの会社概要ページにも同数"
+rakuten-group,revenue,2023,2023-12-31,2071315000000,JPY,consolidated,IFRS,reported,edinet-s100t4x3,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
+rakuten-group,revenue,2024,2024-12-31,2279233000000,JPY,consolidated,IFRS,reported,edinet-s100xtnw,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
+rakuten-group,revenue,2025,2025-12-31,2496575000000,JPY,consolidated,IFRS,reported,edinet-s100xtnw,element_id=jpcrp_cor:RevenueIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
+rakuten-group,equity_ratio,2023,2023-12-31,3.7,percent,consolidated,IFRS,reported,edinet-s100t4x3,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=CurrentYearInstant
+rakuten-group,equity_ratio,2024,2024-12-31,3.5,percent,consolidated,IFRS,reported,edinet-s100xtnw,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=Prior1YearInstant
+rakuten-group,equity_ratio,2025,2025-12-31,3.4,percent,consolidated,IFRS,reported,edinet-s100xtnw,element_id=jpcrp_cor:RatioOfOwnersEquityToGrossAssetsIFRSSummaryOfBusinessResults; context_id=CurrentYearInstant
+rakuten-group,operating_cf,2023,2023-12-31,724192000000,JPY,consolidated,IFRS,reported,edinet-s100t4x3,element_id=jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
+rakuten-group,operating_cf,2024,2024-12-31,1190882000000,JPY,consolidated,IFRS,reported,edinet-s100xtnw,element_id=jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
+rakuten-group,operating_cf,2025,2025-12-31,424093000000,JPY,consolidated,IFRS,reported,edinet-s100xtnw,element_id=jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
+rakuten-group,investing_cf,2023,2023-12-31,-597416000000,JPY,consolidated,IFRS,reported,edinet-s100t4x3,element_id=jpcrp_cor:CashFlowsFromUsedInInvestingActivitiesIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
+rakuten-group,investing_cf,2024,2024-12-31,-921724000000,JPY,consolidated,IFRS,reported,edinet-s100xtnw,element_id=jpcrp_cor:CashFlowsFromUsedInInvestingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
+rakuten-group,investing_cf,2025,2025-12-31,-779809000000,JPY,consolidated,IFRS,reported,edinet-s100xtnw,element_id=jpcrp_cor:CashFlowsFromUsedInInvestingActivitiesIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
+rakuten-group,financing_cf,2023,2023-12-31,291956000000,JPY,consolidated,IFRS,reported,edinet-s100t4x3,element_id=jpcrp_cor:CashFlowsFromUsedInFinancingActivitiesIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
+rakuten-group,financing_cf,2024,2024-12-31,757469000000,JPY,consolidated,IFRS,reported,edinet-s100xtnw,element_id=jpcrp_cor:CashFlowsFromUsedInFinancingActivitiesIFRSSummaryOfBusinessResults; context_id=Prior1YearDuration
+rakuten-group,financing_cf,2025,2025-12-31,14134000000,JPY,consolidated,IFRS,reported,edinet-s100xtnw,element_id=jpcrp_cor:CashFlowsFromUsedInFinancingActivitiesIFRSSummaryOfBusinessResults; context_id=CurrentYearDuration
+rakuten-group,employee_count,2023,2023-12-31,30830,persons,consolidated,,reported,edinet-s100t4x3,element_id=jpcrp_cor:NumberOfEmployees; context_id=CurrentYearInstant
+rakuten-group,employee_count,2024,2024-12-31,29334,persons,consolidated,,reported,edinet-s100xtnw,element_id=jpcrp_cor:NumberOfEmployees; context_id=Prior1YearInstant
+rakuten-group,employee_count,2025,2025-12-31,29419,persons,consolidated,,reported,edinet-s100xtnw,element_id=jpcrp_cor:NumberOfEmployees; context_id=CurrentYearInstant
+rakuten-group,average_age,2025,2025-12-31,36,years,non_consolidated,,reported,edinet-s100xtnw,element_id=jpcrp_cor:AverageAgeYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+rakuten-group,average_tenure,2025,2025-12-31,6.3,years,non_consolidated,,reported,edinet-s100xtnw,element_id=jpcrp_cor:AverageLengthOfServiceYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+rakuten-group,average_annual_salary,2025,2025-12-31,8508495,JPY,non_consolidated,,reported,edinet-s100xtnw,element_id=jpcrp_cor:AverageAnnualSalaryInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+rakuten-group,operating_profit,2024,2024-12-31,52975000000,JPY,consolidated,IFRS,reported,edinet-s100xtnw,element_id=jpigp_cor:OperatingProfitLossIFRS; context_id=Prior1YearDuration
+rakuten-group,operating_profit,2025,2025-12-31,14382000000,JPY,consolidated,IFRS,reported,edinet-s100xtnw,element_id=jpigp_cor:OperatingProfitLossIFRS; context_id=CurrentYearDuration
+rakuten-group,average_age,2024,2024-12-31,35.3,years,non_consolidated,,reported,edinet-s100vhz5,element_id=jpcrp_cor:AverageAgeYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+rakuten-group,average_tenure,2024,2024-12-31,5.8,years,non_consolidated,,reported,edinet-s100vhz5,element_id=jpcrp_cor:AverageLengthOfServiceYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+rakuten-group,average_annual_salary,2024,2024-12-31,8208366,JPY,non_consolidated,,reported,edinet-s100vhz5,element_id=jpcrp_cor:AverageAnnualSalaryInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+rakuten-group,operating_profit,2023,2023-12-31,-212857000000,JPY,consolidated,IFRS,reported,edinet-s100t4x3,element_id=jpigp_cor:OperatingProfitLossIFRS; context_id=CurrentYearDuration
+rakuten-group,average_age,2023,2023-12-31,34.4,years,non_consolidated,,reported,edinet-s100t4x3,element_id=jpcrp_cor:AverageAgeYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+rakuten-group,average_tenure,2023,2023-12-31,5.1,years,non_consolidated,,reported,edinet-s100t4x3,element_id=jpcrp_cor:AverageLengthOfServiceYearsInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+rakuten-group,average_annual_salary,2023,2023-12-31,7946376,JPY,non_consolidated,,reported,edinet-s100t4x3,element_id=jpcrp_cor:AverageAnnualSalaryInformationAboutReportingCompanyInformationAboutEmployees; context_id=CurrentYearInstant_NonConsolidatedMember
+rakuten-group,current_assets,2023,2023-12-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100vhz5,IFRS連結財政状態計算書は流動・非流動区分ではなく性質別表示で、連結の流動資産・流動負債合計を開示していないため算定不可。
+rakuten-group,current_liabilities,2023,2023-12-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100vhz5,IFRS連結財政状態計算書は流動・非流動区分ではなく性質別表示で、連結の流動資産・流動負債合計を開示していないため算定不可。
+rakuten-group,quick_assets,2023,2023-12-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100vhz5,IFRS連結財政状態計算書は流動・非流動区分ではなく性質別表示で、連結の流動資産・流動負債合計を開示していないため算定不可。 当座資産も構成科目からの推定を行わない。
+rakuten-group,current_assets,2024,2024-12-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100xtnw,IFRS連結財政状態計算書は流動・非流動区分ではなく性質別表示で、連結の流動資産・流動負債合計を開示していないため算定不可。
+rakuten-group,current_liabilities,2024,2024-12-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100xtnw,IFRS連結財政状態計算書は流動・非流動区分ではなく性質別表示で、連結の流動資産・流動負債合計を開示していないため算定不可。
+rakuten-group,quick_assets,2024,2024-12-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100xtnw,IFRS連結財政状態計算書は流動・非流動区分ではなく性質別表示で、連結の流動資産・流動負債合計を開示していないため算定不可。 当座資産も構成科目からの推定を行わない。
+rakuten-group,current_assets,2025,2025-12-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100xtnw,IFRS連結財政状態計算書は流動・非流動区分ではなく性質別表示で、連結の流動資産・流動負債合計を開示していないため算定不可。
+rakuten-group,current_liabilities,2025,2025-12-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100xtnw,IFRS連結財政状態計算書は流動・非流動区分ではなく性質別表示で、連結の流動資産・流動負債合計を開示していないため算定不可。
+rakuten-group,quick_assets,2025,2025-12-31,,JPY,consolidated,IFRS,not_disclosed,edinet-s100xtnw,IFRS連結財政状態計算書は流動・非流動区分ではなく性質別表示で、連結の流動資産・流動負債合計を開示していないため算定不可。 当座資産も構成科目からの推定を行わない。

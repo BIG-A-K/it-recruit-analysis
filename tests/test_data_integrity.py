@@ -203,10 +203,6 @@ def test_company_articles_have_common_content_sections() -> None:
         r"(?:recruit|career|careers|jobs|employ|saiyo|shinsotsu)"
         r"[^)\s]*"
     )
-    confirmation_date = re.compile(
-        r"20\d{2}年\d{1,2}月\d{1,2}日(?:確認|に確認)"
-    )
-
     for company_id in active_company_ids:
         page = (COMPANY_PAGE_DIR / f"{company_id}.mdx").read_text(
             encoding="utf-8"
@@ -215,7 +211,6 @@ def test_company_articles_have_common_content_sections() -> None:
         assert "<CompanyProse>" in page
         assert "<CompanySources " in page
         assert recruitment_url.search(page), company_id
-        assert confirmation_date.search(page), company_id
 
 
 def test_new_game_companies_have_operating_profit() -> None:

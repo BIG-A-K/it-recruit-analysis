@@ -8,34 +8,120 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
 import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
-import FinancialData from "../../components/company/FinancialData.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-野村総合研究所（NRI）は、コンサルティングとITソリューションを組み合わせ、企業や公共分野の課題解決を支援するシンクタンク・ITサービス企業です。調査・政策提言からシステムの企画、開発、運用までを一貫して提供しています。
+株式会社野村総合研究所（NRI）は、リサーチと経営コンサルティング、システムコンサルティングからシステム開発・運用までを一貫して提供するシンクタンク・ITサービス企業。[第61期有価証券報告書](https://api.edinet-fsa.go.jp/api/v2/documents/S100YBM8)による2026年3月期末の連結従業員数は16,894名、単体従業員数は7,982名、単体資本金は25,655百万円。
 
-## 公式サイト・IR
+> NRIグループは、「使命」「創発する社会」「私たちの価値観」を柱とした普遍的な企業理念を掲げています。 ([企業理念](https://www.nri.com/jp/company/c_philosophy.html))
 
-- [企業情報](https://www.nri.com/jp/company)
+
+## サイト
+
+- [HP](https://www.nri.com/jp/)
 - [企業理念](https://www.nri.com/jp/company/c_philosophy.html)
-- [株主・投資家情報](https://ir.nri.com/jp/ir.html)
-- [有価証券報告書](https://ir.nri.com/jp/ir/library/securities.html)
+- [IR](https://ir.nri.com/jp/)
+  - [有価証券報告書](https://ir.nri.com/jp/ir.html)
+    - [第61期（2026年3月期）](https://data.swcms.net/file/nri-ir/dam/jcr:f076fdc6-dd40-450e-82a0-870ae62ccbbd/S100YBM8.pdf)
+    - [第60期（2025年3月期）](https://data.swcms.net/file/nri-ir/dam/jcr:5c15a6a5-cfdb-41ed-b19b-a2eafca64c1e/S100VZKL.pdf)
+- [採用情報](https://working.nri.co.jp/)
+  - [2028年度新卒採用](https://working.nri.co.jp/recruit/2028/): 現時点(2026/08/05)ではインターン情報のみ
+  - [2027年度新卒採用 募集要項](https://working.nri.co.jp/recruit/2027/contents/recruiting/application.html)
+  - [キャリア採用](https://career.nri.co.jp/)
 
-## 採用情報
-
-採用主体は株式会社野村総合研究所です。[2028年新卒採用サイト](https://working.nri.co.jp/recruit/2028/)ではイベントやインターンシップを案内しており、コンサルタント、システムエンジニアなどの職種を確認できます。2027年新卒採用の正式応募受付は終了と掲載されています。[キャリア採用](https://career.nri.co.jp/)は随時募集です（2026年8月1日確認）。
+会計基準はIFRS。
 
 </CompanyProse>
 
 <EmploymentOverview companyId={frontmatter.companyId} />
 
+:::info
+勤務地は"国内事業所、海外拠点"とだけある。
+:::
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+採用主体は株式会社野村総合研究所。2028年度新卒採用は[新卒採用サイト](https://working.nri.co.jp/recruit/2028/)でインターンシップやイベントを案内している（2027年度新卒の正式応募受付は終了）。キャリア採用は[キャリア採用サイト](https://career.nri.co.jp/)で随時募集している。
+
+職種と待遇の内訳は[2027年度新卒採用の募集要項](https://working.nri.co.jp/recruit/2027/contents/recruiting/application.html)に基づく。総合職とエリア総合職の2コース制で、いずれも応募資格は「2027年3月末までに国内外の四年制大学卒業見込、または大学院修了見込（全学部・全学科、国籍不問。卒業後3年以内も応募可能）」。
+
+総合職の募集職種は次の5つ。
+
+| 職種 | 仕事内容 |
+| --- | --- |
+| 経営コンサルタント | あらゆる業界の顧客の課題に対峙するコンサルティング（企業の戦略策定、業務改革、官公庁の政策提言など） |
+| アプリケーションエンジニア | 金融・流通・産業など顧客業務の課題解決や新たな付加価値・ビジネス創造を目的としたシステムの企画・設計・開発 |
+| テクニカルエンジニア | クラウド・オンプレミスを活用したIT基盤の設計・構築・運用、開発生産性を向上させるフレームワークや手法の開発 |
+| セキュリティスペシャリスト | セキュリティコンサルティング、診断、監視、ソリューション開発などセキュリティの専門業務 |
+| 経理スペシャリスト | 本社部門・各事業部門における企業会計全般（法務スペシャリストの募集はなし） |
+
+エリア総合職は「エリア職システムエンジニア（札幌・福岡）」。札幌（NRI札幌開発センター）は大規模システムの設計・開発やクラウドネイティブ・データアナリティクスを活用したシステム構築、福岡（NRI福岡開発センター）は金融向けDXシステム、産業・流通向けクラウドネイティブシステム、AI/IoTソリューション開発、先端技術のR&Dを担う。
+
+初任給（2027年度採用予定、月額・住宅手当込み）。
+
+| コース | 学歴 | 初任給（月） | うち住宅手当※1 |
+| --- | --- | ---: | ---: |
+| [総合職](https://working.nri.co.jp/recruit/2027/contents/recruiting/application.html) | 修士了 | 364,500 円 | 60,000 円 |
+| [総合職](https://working.nri.co.jp/recruit/2027/contents/recruiting/application.html) | 大学卒 | 336,500 円 | 60,000 円 |
+| [エリア総合職](https://working.nri.co.jp/recruit/2027/contents/recruiting/application_area.html) | 修士了 | 326,500 円 | 40,000 円 |
+| [エリア総合職](https://working.nri.co.jp/recruit/2027/contents/recruiting/application_area.html) | 大学卒 | 316,500 円 | 40,000 円 |
+
+:::info
+※1 住宅手当は全員に一律支給。昇給は年1回、賞与は年2回。総合職の勤務地は国内事業所・海外拠点（転勤あり）、エリア総合職はエントリー時に札幌または福岡を選択。勤務形態はアソシエイト職昇格前にフレックスタイム制、昇格後に裁量労働制。
+:::
+
+## 事業内容
+
+[第61期有価証券報告書](https://api.edinet-fsa.go.jp/api/v2/documents/S100YBM8)の報告セグメントは、主たるサービスの性質と顧客・マーケットを総合的に勘案して次の4区分としている。各セグメントの金額は2026年3月期。
+
+| 報告セグメント | 事業内容・提供サービス | 主な関係会社 |
+| --- | --- | --- |
+| コンサルティング | 政策提言、戦略コンサルティング、業務改革を支援する業務コンサルティング、ITマネジメント全般のシステムコンサルティング | — |
+| 金融ITソリューション | 証券業・保険業・銀行業など金融業向けのシステムコンサルティング、システム開発・運用、共同利用型システム、BPOサービス | NRIプロセスイノベーション、だいこう証券ビジネス、DSB情報システム、日本証券テクノロジー、Australian Investment Exchange |
+| 産業ITソリューション | 流通業・製造業・サービス業・公共向けのシステムコンサルティング、システム開発・運用のITソリューション | NRIネットコム、NRIシステムテクノ、NRI Australia、Convergence Technologies |
+| IT基盤サービス | データセンター運営管理、IT基盤・ネットワーク構築、情報セキュリティサービス、新事業・新商品の開発、先端情報技術の調査・研究 | NRIセキュアテクノロジーズ、NRIデータｉテック |
+
+グループ全体のサービスは、コンサルティングサービス、開発・製品販売、運用サービス、商品販売の4種類に整理されている。主要な外部顧客は親会社の野村ホールディングス（金融ITソリューション、2026年3月期 86,693百万円）。
+
+:::warn
+2026年3月期は産業ITソリューションが97,060百万円の減損損失を計上し、同事業の営業利益が△74,616百万円となった。これにより連結営業利益は前期の134,907百万円から58,273百万円へ半減している。前年との単純比較には注意。
+:::
+
+</CompanyProse>
+
 <SegmentRevenue companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 関連企業
+
+[第61期有価証券報告書](https://api.edinet-fsa.go.jp/api/v2/documents/S100YBM8)の関係会社の状況による。NRIは野村ホールディングスが議決権の23.1%を所有する持分法適用外の子会社（その他の関係会社）で、持株会社は野村ホールディングス。連結子会社は64社以上。
+
+| 区分 | 名称 | 主な事業内容 | 報告セグメント |
+| --- | --- | --- | --- |
+| 親会社（その他の関係会社） | 野村ホールディングス | 持株会社 | — |
+| 主な子会社 | NRIネットコム | 情報システムの開発・運用 | 産業ITソリューション |
+| 主な子会社 | NRIセキュアテクノロジーズ | 情報セキュリティのアウトソーシング・コンサルティング | IT基盤サービス |
+| 主な子会社 | NRIデータｉテック | 情報システムの運用・維持管理 | IT基盤サービス |
+| 主な子会社 | NRIプロセスイノベーション | BPOサービス | 金融ITソリューション |
+| 主な子会社 | NRIシステムテクノ | 情報システムの開発・運用 | 産業ITソリューション |
+| 主な子会社 | だいこう証券ビジネス | BPOサービス | 金融ITソリューション |
+| 主な子会社 | 日本証券テクノロジー | 情報システムの開発・運用 | 金融ITソリューション |
+| 主な子会社 | Nomura Research Institute Holdings America | 北米事業会社の統括 | — |
+| 主な子会社 | NRI Australia Holdings | 豪州事業会社の統括 | — |
+
+</CompanyProse>
 
 <HealthMetrics companyId={frontmatter.companyId} />
 
-<FinancialData companyId={frontmatter.companyId} />
+<FinancialHistory companyId={frontmatter.companyId} />
 
-<CompanySources companyId={frontmatter.companyId} />
+<MetricTrends companyId={frontmatter.companyId} />
+

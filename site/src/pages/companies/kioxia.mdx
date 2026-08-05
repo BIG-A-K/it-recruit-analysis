@@ -6,6 +6,7 @@ companyId: kioxia
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialHistory from "../../components/company/FinancialHistory.astro";
 import MetricTrends from "../../components/company/MetricTrends.astro";
@@ -15,12 +16,12 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyProse>
 
-キオクシアホールディングス株式会社は、NAND型フラッシュメモリの開発・製造を事業とするグループの持株会社です。1987年に東芝が発明したNAND型フラッシュメモリの技術を受け継ぎ、2024年12月に東証プライム市場へ上場しました。事業は子会社のキオクシア株式会社が展開しています。
+[キオクシアホールディングス株式会社](https://www.kioxia.com/ja-jp/top.html)は、NAND型フラッシュメモリの開発・製造を事業とするグループの持株会社である。1987年に東芝が発明したNAND型フラッシュメモリの技術を受け継ぎ、2024年12月に東証プライム市場へ上場した。事業は子会社のキオクシア株式会社が展開する。
 
-Missionは「『記憶』で世界をおもしろくする」です。Visionとして「『記憶』の技術をコアとして、一人ひとりの新たな未来を実現できる製品やサービス、仕組みを提供する」を掲げています。理念と会社紹介は[キオクシア公式サイト](https://www.kioxia.com/ja-jp/top.html)を2026年8月2日に確認しました。
+Missionは「『記憶』で世界をおもしろくする」。Visionとして「『記憶』の技術をコアとして、一人ひとりの新たな未来を実現できる製品やサービス、仕組みを提供する」を掲げる。
 
 :::warning
-財務数値の開示主体はキオクシアホールディングス株式会社です。新卒採用の主体は事業会社のキオクシア株式会社です。
+財務数値の開示主体はキオクシアホールディングス株式会社。新卒採用の主体は事業会社のキオクシア株式会社。
 :::
 
 ## サイト
@@ -42,14 +43,14 @@ Missionは「『記憶』で世界をおもしろくする」です。Visionと�
 ## 採用情報
 ### 新卒
 
-採用主体はキオクシア株式会社です。以下は2027年卒向けの新卒技術系募集要項を2026年8月2日に確認した内容です。理工系全学部・学科が対象です。
+採用主体はキオクシア株式会社。対象は2027年卒向けの新卒技術系募集要項で、理工系全学部・学科を対象とする。
 
 | 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
 | --- | --- | --- | --- | --- | --- |
 | [技術系総合職](https://graduates-jp.kioxia.com/recruit/) | 四日市、北上、本社、研究所など | 博士422,100円、修士364,900円、高専専攻科・学部333,400円 | 記載なし | 記載なし | 記載なし |
 
 :::info
-製品・デバイス技術開発、プロセス・パッケージ技術開発、システム・ソフトウェア・回路設計、顧客対応技術・評価解析・品質技術開発などを募集しています。標準労働時間は7時間45分で、選考はエントリー、書類選考、キャリアマッチング面談、人事面接を経て内々定となります。
+製品・デバイス技術開発、プロセス・パッケージ技術開発、システム・ソフトウェア・回路設計、顧客対応技術・評価解析・品質技術開発などを募集する。標準労働時間は7時間45分で、選考はエントリー、書類選考、キャリアマッチング面談、人事面接を経て内々定となる。
 :::
 
 ## 事業内容
@@ -67,10 +68,11 @@ Missionは「『記憶』で世界をおもしろくする」です。Visionと�
 
 </CompanyProse>
 
+<SegmentRevenue companyId={frontmatter.companyId} />
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
 <FinancialHistory companyId={frontmatter.companyId} />
 
 <MetricTrends companyId={frontmatter.companyId} />
 
-<CompanySources companyId={frontmatter.companyId} />

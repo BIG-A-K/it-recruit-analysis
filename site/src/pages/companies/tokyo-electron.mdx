@@ -6,6 +6,7 @@ companyId: tokyo-electron
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialHistory from "../../components/company/FinancialHistory.astro";
 import MetricTrends from "../../components/company/MetricTrends.astro";
@@ -15,9 +16,9 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyProse>
 
-東京エレクトロン株式会社は、半導体製造装置とフラットパネルディスプレイ製造装置の開発・製造・販売を行う企業です。コーター／デベロッパ、成膜、エッチング、洗浄、プローバなどの装置を展開しています。
+[東京エレクトロン株式会社](https://www.tel.co.jp/)は、半導体製造装置とフラットパネルディスプレイ製造装置の開発・製造・販売を行う企業である。コーター／デベロッパ、成膜、エッチング、洗浄、プローバなどの装置を展開する。
 
-基本理念（Mission）は「最先端の技術と確かなサービスで、夢のある社会の発展に貢献します」です。Visionとして「半導体の技術革新に貢献する夢と活力のある会社」を掲げています。理念と会社紹介は[東京エレクトロン公式サイト](https://www.tel.co.jp/)を2026年8月2日に確認しました。
+基本理念（Mission）は「最先端の技術と確かなサービスで、夢のある社会の発展に貢献します」。Visionとして「半導体の技術革新に貢献する夢と活力のある会社」を掲げる。
 
 ## サイト
 
@@ -27,6 +28,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
     - [有価証券報告書等](https://www.tel.co.jp/ir/library/fs/index.html)
       - [2026年3月期（第63期）有価証券報告書](https://www.tel.co.jp/ir/library/fs/arfnn500000000ni-att/yuho63q4.pdf)
       - [2025年3月期（第62期）有価証券報告書](https://www.tel.co.jp/ir/library/fs/qmu38m00000000ll-att/yuho62q4.pdf)
+      - [第62期有価証券報告書（EDINET）](https://api.edinet-fsa.go.jp/api/v2/documents/S100VX9R)
   - [採用情報](https://careers-tel.jp/)
     - [新卒採用](https://tel-special.com/)
 
@@ -39,14 +41,14 @@ import CompanySources from "../../components/company/CompanySources.astro";
 ## 採用情報
 ### 新卒
 
-グループ一括採用で、東京エレクトロン株式会社、東京エレクトロンテクノロジーソリューションズ株式会社、東京エレクトロン宮城株式会社、東京エレクトロン九州株式会社、東京エレクトロンFE株式会社が採用主体です。以下は新卒採用サイトを2026年8月2日に確認した内容です。
+グループ一括採用で、東京エレクトロン株式会社、東京エレクトロンテクノロジーソリューションズ株式会社、東京エレクトロン宮城株式会社、東京エレクトロン九州株式会社、東京エレクトロンFE株式会社が採用主体。対象は新卒採用サイトの募集要項。
 
 | 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
 | --- | --- | --- | --- | --- | --- |
 | [総合職](https://tel-special.com/recruit/) | 東京、札幌、岩手、宮城、山梨、富山、三重、大阪、広島、大分、熊本など | 博士329,200円、修士291,000円、学部・高専専攻科275,800円、短大・高専本科234,600円 | 記載なし | 記載なし | 記載なし |
 
 :::info
-装置開発・設計・研究、メカ・ソフト・エレキ・プロセス・フィールドエンジニア、営業、製造、管理・間接系などを募集しています。原則9:00〜17:30ですが勤務地により異なります。応募方法は学校推薦、自己推薦、自由応募があり、選考はエントリー、説明会・座談会、SPI、応募書類、ジョブマッチング面接を経て内々定となります。
+装置開発・設計・研究、メカ・ソフト・エレキ・プロセス・フィールドエンジニア、営業、製造、管理・間接系などを募集する。原則9:00〜17:30だが勤務地により異なる。応募方法は学校推薦、自己推薦、自由応募。選考はエントリー、説明会・座談会、SPI、応募書類、ジョブマッチング面接を経て内々定となる。
 :::
 
 ## 事業内容
@@ -67,10 +69,11 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 </CompanyProse>
 
+<SegmentRevenue companyId={frontmatter.companyId} />
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
 <FinancialHistory companyId={frontmatter.companyId} />
 
 <MetricTrends companyId={frontmatter.companyId} />
 
-<CompanySources companyId={frontmatter.companyId} />

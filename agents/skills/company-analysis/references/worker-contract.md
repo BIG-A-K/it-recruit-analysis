@@ -66,6 +66,8 @@ warnings: []
 
 workerは台帳の `phases` や `updated_at` を変更しない。read-only workerはプロジェクトファイルを一切変更しない。
 
+CSVへの書き込みは、正規化CLI（`edinet-normalize` / `sec-normalize`）と `uv run csv-upsert <table>` だけを使う。CSVをテキストとして直接編集しない。`csv-upsert` が報告する `N added, N updated` を `artifacts` の `added_rows` / `updated_rows` へそのまま記載する。
+
 ## 親agentの受入検査
 
 親agentはworker結果をそのまま信用せず、次を確認してから台帳へ統合する。

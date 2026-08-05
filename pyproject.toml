@@ -8,6 +8,7 @@ dependencies = [
 ]
 
 [project.scripts]
+csv-upsert = "it_recruit_data.store_cli:main"
 edinet-fetch = "it_recruit_data.cli:main"
 edinet-normalize = "it_recruit_data.normalize_cli:main"
 sec-fetch = "it_recruit_data.sec_cli:main"

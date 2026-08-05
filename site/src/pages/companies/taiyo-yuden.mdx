@@ -6,6 +6,7 @@ companyId: taiyo-yuden
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialHistory from "../../components/company/FinancialHistory.astro";
 import MetricTrends from "../../components/company/MetricTrends.astro";
@@ -15,9 +16,9 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyProse>
 
-太陽誘電株式会社は、積層セラミックコンデンサ（MLCC）、インダクタ、通信用デバイス、回路モジュールなどの電子部品を開発・製造・販売する企業です。本社は東京都中央区で、群馬県に主要な工場・研究所を置いています。
+[太陽誘電株式会社](https://www.yuden.co.jp/jp/)は、積層セラミックコンデンサ（MLCC）、インダクタ、通信用デバイス、回路モジュールなどの電子部品を開発・製造・販売する企業である。本社は東京都中央区で、群馬県に主要な工場・研究所を置く。
 
-ミッションは「おもしろ科学で より大きく より社会的に」です。ビジョンとして「すべてのステークホルダーから信頼され 感動を与えるエクセレントカンパニーへ」を掲げています。理念と会社紹介は[太陽誘電公式サイト](https://www.yuden.co.jp/jp/)を2026年8月2日に確認しました。
+ミッションは「おもしろ科学で より大きく より社会的に」。ビジョンとして「すべてのステークホルダーから信頼され 感動を与えるエクセレントカンパニーへ」を掲げる。
 
 ## サイト
 
@@ -38,7 +39,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 ## 採用情報
 ### 新卒
 
-採用主体は太陽誘電株式会社です。以下は2027年4月入社向け募集要項を2026年8月2日に確認した内容です。採用予定は50名程度です。
+採用主体は太陽誘電株式会社。対象は2027年4月入社向け募集要項で、採用予定は50名程度。
 
 | 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
 | --- | --- | --- | --- | --- | --- |
@@ -46,7 +47,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 | [管理系](https://www.yuden.co.jp/jp/recruit/newly/) | 東京、高崎、営業所など | 学士276,050円、修士302,470円、博士326,550円 | 記載なし | 記載なし | 記載なし |
 
 :::info
-勤務時間は工場・研究所が8:30〜17:10、本社・営業所が9:00〜17:40です。将来、国内・海外転勤の可能性があります。選考はエントリー、応募書類提出・筆記試験、個人面接3回を経て内々定となります。
+勤務時間は工場・研究所が8:30〜17:10、本社・営業所が9:00〜17:40。将来、国内・海外転勤の可能性がある。選考はエントリー、応募書類提出・筆記試験、個人面接3回を経て内々定となる。
 :::
 
 ## 事業内容
@@ -65,10 +66,11 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 </CompanyProse>
 
+<SegmentRevenue companyId={frontmatter.companyId} />
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
 <FinancialHistory companyId={frontmatter.companyId} />
 
 <MetricTrends companyId={frontmatter.companyId} />
 
-<CompanySources companyId={frontmatter.companyId} />

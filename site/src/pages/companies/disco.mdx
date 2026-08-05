@@ -6,6 +6,7 @@ companyId: disco
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialHistory from "../../components/company/FinancialHistory.astro";
 import MetricTrends from "../../components/company/MetricTrends.astro";
@@ -15,9 +16,9 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyProse>
 
-株式会社ディスコは、半導体製造に不可欠な「Kiru（切削）・Kezuru（研削）・Migaku（研磨）」の加工技術を事業とする企業です。精密加工装置、加工ツール、アプリケーションを展開しています。
+[株式会社ディスコ](https://www.disco.co.jp/)は、半導体製造に不可欠な「Kiru（切削）・Kezuru（研削）・Migaku（研磨）」の加工技術を事業とする企業である。精密加工装置、加工ツール、アプリケーションを展開する。
 
-ミッションは「高度なKiru・Kezuru・Migaku技術によって遠い科学を身近な快適につなぐ」です。モットーとして「Always the best, Always fun」を掲げています。理念と会社紹介は[ディスコ公式サイト](https://www.disco.co.jp/)を2026年8月2日に確認しました。
+ミッションは「高度なKiru・Kezuru・Migaku技術によって遠い科学を身近な快適につなぐ」。モットーとして「Always the best, Always fun」を掲げる。
 
 ## サイト
 
@@ -25,6 +26,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
   - [製品・事業](https://www.disco.co.jp/products/)
   - [投資家向け情報（IR）](https://www.disco.co.jp/ir/)
     - [有価証券報告書等](https://www.disco.co.jp/ir/)
+      - [第86期有価証券報告書](https://api.edinet-fsa.go.jp/api/v2/documents/S100W0JY)
   - [採用情報](https://www.disco.co.jp/recruit/)
     - [新卒採用・東京本社募集要項](https://www.disco.co.jp/recruit/information/tokyo/new.html)
 
@@ -37,7 +39,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 ## 採用情報
 ### 新卒
 
-採用主体は株式会社ディスコです。以下は2027年4月以降に出社勤務できる人を対象とする新卒募集要項を2026年8月2日に確認した内容です。
+採用主体は株式会社ディスコ。対象は2027年4月以降に出社勤務できる人向けの新卒募集要項。
 
 | 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
 | --- | --- | --- | --- | --- | --- |
@@ -45,7 +47,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 | [事務職](https://www.disco.co.jp/recruit/information/tokyo/new.html) | 東京 | 大学351,740円 | 記載なし | 記載なし | 記載なし |
 
 :::info
-金額は都市手当・コミット手当を含みます。コミット手当は正社員に一律100,000円を支給すると募集要項に記載されています。実働7時間45分、フレックスタイム制のコアタイムは10:00〜14:30です。選考はエントリー、書類選考、複数回の面接を経て内定となります。
+金額は都市手当・コミット手当を含む。コミット手当は正社員に一律100,000円を支給する。実働7時間45分、フレックスタイム制のコアタイムは10:00〜14:30。選考はエントリー、書類選考、複数回の面接を経て内定となる。
 :::
 
 ## 事業内容
@@ -64,10 +66,11 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 </CompanyProse>
 
+<SegmentRevenue companyId={frontmatter.companyId} />
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
 <FinancialHistory companyId={frontmatter.companyId} />
 
 <MetricTrends companyId={frontmatter.companyId} />
 
-<CompanySources companyId={frontmatter.companyId} />

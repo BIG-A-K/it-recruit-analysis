@@ -67,7 +67,18 @@ CLIが失敗するか対象書類が見つからないときは、期間を勝�
 法定開示にない公式IR資料とクロールで取得した一次資料だけを、現行スキーマの主キーで補完する。
 CLIが正常に書いた指標・セグメントを上書きしない。対象外の行、未知の列、既存の並びを壊さない。
 
-**完了条件**: 追加した行すべてに `sources.csv` の `source_id` が対応している。
+**補完の書き込みは必ず `uv run csv-upsert <table>` を使う**（使い方は `docs/data/README.md`）。CSVをEdit・Writeツールやシェルのリダイレクトで直接編集しない。出典→指標の順で登録する（`csv-upsert` は未登録の `source_id` への参照をエラーにする）。
+
+```bash
+uv run csv-upsert sources <<'EOF'
+{"source_id": "...", "source_type": "...", "title": "...", "url": "...", "published_at": "...", "retrieved_at": "...", "issuer": "..."}
+EOF
+uv run csv-upsert metrics <<'EOF'
+{"company_id": "...", "metric_key": "...", "fiscal_year": "...", "scope": "...", "value": "...", "unit": "...", "availability": "reported", "source_id": "..."}
+EOF
+```
+
+**完了条件**: 追加した行すべてに `sources.csv` の `source_id` が対応している。追加・更新はすべて `csv-upsert` の実行結果（`N added, N updated`）で確認済み。
 
 ### 5. 指標の充足を確認する
 
@@ -89,6 +100,7 @@ CLIが正常に書いた指標・セグメントを上書きしない。対象�
 - 検索結果のスニペット、IRまとめサイト、第三者サイトを根拠にしない。
 - 推定値、前年度の流用、他社の値、親会社の値で欠損を埋めない。欠損はスキーマの `availability` で表し、数値列へ説明文字列を入れない。
 - 企業ごとの一回限りの取得・変換コードを書かない。
+- `data/*.csv` をEdit・Writeツールやリダイレクトで直接編集しない。書き込みは既存CLI（`edinet-normalize` / `sec-normalize`）と `csv-upsert` だけを使う。
 - `net_cf` などサイトが算出する派生値をCSVへ保存しない。
 - 評価・応募判断・投資判断をCSVへ保存しない。
 

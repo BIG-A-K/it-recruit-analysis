@@ -6,6 +6,7 @@ companyId: sumco
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialHistory from "../../components/company/FinancialHistory.astro";
 import MetricTrends from "../../components/company/MetricTrends.astro";
@@ -15,9 +16,9 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <CompanyProse>
 
-株式会社SUMCOは、半導体の基盤素材であるシリコンウェーハの開発・製造を事業とする企業です。単結晶引上からウェーハ加工、エピタキシャルなどの特殊加工まで一貫生産しています。
+[株式会社SUMCO](https://www.sumcosi.com/)は、半導体の基盤素材であるシリコンウェーハの開発・製造を事業とする企業である。単結晶引上からウェーハ加工、エピタキシャルなどの特殊加工まで一貫生産する。
 
-経営理念は「お客様と株主の期待に応え、従業員に幸せを与え、社会に貢献する、常に世界一のシリコンウェーハメーカーを目指す」です。理念と会社紹介は[SUMCO公式サイト](https://www.sumcosi.com/)を2026年8月2日に確認しました。
+経営理念は「お客様と株主の期待に応え、従業員に幸せを与え、社会に貢献する、常に世界一のシリコンウェーハメーカーを目指す」。
 
 ## サイト
 
@@ -25,6 +26,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
   - [企業情報・経営理念](https://www.sumcosi.com/corporate/strategy.html)
   - [投資家向け情報（IR）](https://www.sumcosi.com/ir/)
     - [有価証券報告書](https://www.sumcosi.com/ir/library/secreports.html)
+      - [第26期有価証券報告書](https://api.edinet-fsa.go.jp/api/v2/documents/S100VFYA)
     - [IRライブラリ](https://www.sumcosi.com/ir/library/)
   - [採用情報](https://www.sumcosi.com/recruit/)
     - [新卒募集要項](https://www.sumcosi.com/recruit/information/guideline/)
@@ -38,7 +40,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 ## 採用情報
 ### 新卒
 
-採用主体は株式会社SUMCOです。以下は2027年3月卒業見込み者と既卒者を対象とする募集要項を2026年8月2日に確認した内容です。
+採用主体は株式会社SUMCO。対象は2027年3月卒業見込み者と既卒者。
 
 | 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
 | --- | --- | --- | --- | --- | --- |
@@ -46,7 +48,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 | [一般職](https://www.sumcosi.com/recruit/information/guideline/) | 東京、製造拠点など | 短大195,960円、学部204,480円 | 記載なし | 記載なし | 記載なし |
 
 :::info
-技術職は研究、技術開発、生産技術、設備技術、システム開発、データ解析、品質管理、技術営業、知的財産など、事務職は営業、法務総務、経理財務、資材、生産管理、人事、広報・IRなどです。本社・営業拠点は9:00〜17:45、開発・製造拠点は8:00〜16:45で、いずれもフレックスタイム制があります。選考は書類提出、SPI、面接を経て内々定となります。
+技術職は研究、技術開発、生産技術、設備技術、システム開発、データ解析、品質管理、技術営業、知的財産など、事務職は営業、法務総務、経理財務、資材、生産管理、人事、広報・IRなど。本社・営業拠点は9:00〜17:45、開発・製造拠点は8:00〜16:45で、いずれもフレックスタイム制。選考は書類提出、SPI、面接を経て内々定となる。
 :::
 
 ## 事業内容
@@ -64,10 +66,11 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 </CompanyProse>
 
+<SegmentRevenue companyId={frontmatter.companyId} />
+
 <HealthMetrics companyId={frontmatter.companyId} />
 
 <FinancialHistory companyId={frontmatter.companyId} />
 
 <MetricTrends companyId={frontmatter.companyId} />
 
-<CompanySources companyId={frontmatter.companyId} />

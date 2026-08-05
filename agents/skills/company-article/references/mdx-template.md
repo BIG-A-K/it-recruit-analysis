@@ -28,7 +28,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 <!-- 企業理念と会社紹介（本文） -->
 
 ## サイト
-<!-- 公式リンクのツリー -->
+<!-- 公式リンクのツリー (公式HP、新卒URL、IR情報(EDINETのAPIではなく、公式サイトのHPのURLを貼る)-->
 
 </CompanyProse>
 
@@ -60,7 +60,6 @@ import CompanySources from "../../components/company/CompanySources.astro";
 
 <MetricTrends companyId={frontmatter.companyId} />
 
-<CompanySources companyId={frontmatter.companyId} />
 ```
 
 このセクション順以外の見出しを足さない。

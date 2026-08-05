@@ -4,40 +4,409 @@ company_boundary:
   adoption_company_id: dmm
   disclosure_company_id: ""
   reporting_segment_company_id: ""
-  legal_name: DMM.com 合同会社（採用主体） / DMM Holdings 合同会社（持株）
+  legal_name: 合同会社DMM.com（採用主体・公式表記） / 合同会社DMMホールディングス（持株・公式表記）
   securities_code: ""
   edinet_code: ""
-  fiscal_year_end: ""
+  fiscal_year_end: 2月末（決算月2月）
   accounting_standard: ""
   currency: JPY
-  reporting_segments: ""
+  reporting_segments: なし（非上場のため法定報告セグメントが存在しない）
   company_relations: []
-  note: 非上場のためEDINET提出義務なし。IR数値は全て not_disclosed。採用主体は DMM.com 合同会社（HDはDMM Holdings合同会社）。事業は多角化しており、公式サイトの事業区分と運営法人が複雑
-fiscal_year: ""
+  note: |
+    非上場で法定開示が存在しない。EDINETコード一覧（2026-08-05時点11,374件）を全件検索し、DMM / ＤＭＭ / ディーエムエム のいずれの表記でも該当0件であることを確認したため、開示主体は「未確定」ではなく「不在」と確定した。disclosure_company_id は空のままが正しい。
+    公式表記は「合同会社DMM.com」「合同会社DMMホールディングス」。台帳・companies.csv の旧表記「DMM.com 合同会社 / DMM Holdings 合同会社」は誤りだったため 2026-08-05 に訂正した。あわせて companies.csv の website_url が空で edinet_code に https://dmm-corp.com/ が誤って入っていた不整合を修正した。
+    合同会社DMMホールディングスが合同会社DMM.comの親会社であることを明示する公式一次情報は見つからなかった（グループ会社一覧に「株式又は持分の保有を通じた投資先の経営管理等」と記載されるのみ）。根拠不足のため company_relations.csv に parent 行を作らない。
+    資本関係で確定できたのは、株式会社DMM.com証券の議決権100%を株式会社DMM FXホールディングスが保有する点のみ（2026年3月期 業務及び財産の状況に関する説明書）。同社と DMMドリームクラブ株式会社 は公式グループ会社一覧に掲載がない。
+    新卒採用は募集ページごとに主体表記が異なる（DMMグループ / EXNOA / DMMホールディングス）。合同会社EXNOA は別法人だが companies.csv には未登録で、本調査では company_id を新設していない。
+fiscal_year: 2026
 focus: 両方
 created_at: 2026-08-05
 updated_at: 2026-08-05
 phases:
-  ir: in_progress
-  recruit: in_progress
-  segments: in_progress
-  article: pending
-  verify: pending
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
 items:
-  - {id: ir-human-capital, phase: ir, store: ir_csv, topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "非上場のため法定開示なし。workerがnot_disclosedへ"}
-  - {id: ir-revenue, phase: ir, store: ir_csv, topic: 売上高 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: "非上場のため法定開示なし"}
-  - {id: ir-operating-profit, phase: ir, store: ir_csv, topic: 営業利益 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: "非上場のため法定開示なし"}
-  - {id: ir-health, phase: ir, store: ir_csv, topic: 自己資本比率・流動資産・流動負債・当座資産, status: pending, value: "", subject: 連結, as_of: "", unit: percent・JPY, source: "", via: "", note: "非上場のため法定開示なし"}
-  - {id: ir-cash-flow, phase: ir, store: ir_csv, topic: 営業・投資・財務キャッシュフロー 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: "非上場のため法定開示なし"}
-  - {id: ir-segments, phase: ir, store: ir_csv, topic: 報告セグメント別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: "非上場のため法定開示なし"}
-  - {id: ir-disclosure-notes, phase: ir, store: ir_csv, topic: 比較上の注記, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "非上場、比較対象外"}
-  - {id: recruit-employing-entity, phase: recruit, store: mdx, topic: 採用主体・募集年度・確認日・募集ページURL, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "DMM.com合同会社が採用の正本"}
-  - {id: recruit-jobs, phase: recruit, store: mdx, topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "エンジニア・ビジネス等多職種"}
-  - {id: recruit-salary, phase: recruit, store: mdx, topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
-  - {id: recruit-conditions, phase: recruit, store: mdx, topic: 転勤・リモート勤務・標準労働時間・応募期限, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
-  - {id: segments-services, phase: segments, store: mdx, topic: 事業区分ごとのサービス名・ブランド名・提供内容・運営法人, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "FX・ゲーム・動画・太陽光・物流等多岐"}
-  - {id: segments-mapping, phase: segments, store: mdx, topic: 公式事業区分と運営法人の対応, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "法定報告セグメントなし"}
-  - {id: segments-related-companies, phase: segments, store: mdx, topic: グループ会社と各社の事業内容, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "DMM.com・DMM Holdings・DMM FX証券・DMM GAMES等"}
-  - {id: article-mission, phase: article, store: mdx, topic: 理念・ミッション・スローガン, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
-  - {id: article-company, phase: article, store: mdx, topic: 会社紹介（設立経緯・規模）, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
-  - {id: article-links, phase: article, store: mdx, topic: HP・採用・新卒採用リンク, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "法定開示PDFなし"}
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csv の employee_count（2025年度・1行、2,730名）。average_annual_salary / average_age / average_tenure は開示がなく行を作成していない
+    subject: 合同会社DMM.com単体（scope=dmm）
+    as_of: 2025-02-28
+    unit: persons
+    source: dmm-official-corporate-profile-2026
+    via: EDINETコード一覧に該当なしのためCLI不実行。公式サイト https://dmm-corp.com/presskit/ の会社紹介資料PDF、および /company/about/ をクロール
+    note: |
+      会社紹介資料p19「会社概要（合同会社DMM.com）」の従業員数2,730名（※2025年2月時点）。/company/about/ にも同数。
+      平均年間給与・平均年齢・平均勤続年数は法定開示がなく、公式サイト（/company/about/、/figures/）と会社紹介資料v7.4全23ページにも記載がないため未取得。/figures/ の「平均勤続年数5.5年」は対象法人・基準日の注記が特定できず、推定を避けて未登録。グループ従業員5,184名も基準日が確定できないため未登録。
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高 3期以上
+    status: done
+    value: metrics.csv の revenue（2026年度・1行、428,700,000,000 JPY）
+    subject: 連結（DMM.com、DMM.com 証券、DMM.com BASE、他連結）
+    as_of: 2026-02-28
+    unit: JPY
+    source: dmm-official-corporate-profile-2026
+    via: 公式サイト /presskit/ の会社紹介資料（DMM CORPORATE PROFILE v7.4）p3「数字で見るDMMグループ」
+    note: |
+      「売上 4,287億円※1」、※1は「DMM.com、DMM.com 証券、DMM.com BASE、他連結（2026年2月期）」。
+      非上場のため監査済連結財務諸表による裏付けはなく、上場企業の売上高と同列に比較できない。同ページの棒グラフは13年度分あるが数値ラベルが最新期にしか付かず、2025年2月期以前の正確な値は取得不能。台帳の「3期以上」は開示が存在しないため満たせない（MetricTrendsの棒グラフは1本になる）。
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: not_disclosed
+    value: ""
+    subject: 連結
+    as_of: 2026-08-05
+    unit: JPY
+    source: ""
+    via: EDINETコード一覧全件検索（提出者名・英字名・ヨミを対象、11,374件）で該当0件。公式サイト全ページ（/、/company/、/company/about/、/company/group/、/company/history/、/company/officer/、/figures/、/presskit/、/business/）と会社紹介資料v7.4全23ページを確認
+    note: |
+      損益計算書・営業利益の公表は一切なし。EDINET書類検索の前提となるEDINETコードが「DMM」「ＤＭＭ」「ディーエムエム」いずれの表記でも登録されておらず（公式EDINETコード一覧 https://disclosure2dl.edinet-fsa.go.jp/searchdocument/codelist/Edinetcode.zip を2026-08-05に全件検索、大文字小文字無視で0件）、有価証券報告書・有価証券届出書・大量保有報告書を含むあらゆるEDINET提出書類が存在しない。DMMグループには公式にIR・投資家情報ページ自体が存在しない。
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: not_disclosed
+    value: ""
+    subject: 連結
+    as_of: 2026-08-05
+    unit: percent・JPY
+    source: ""
+    via: 同上（EDINETコード一覧0件 + 公式サイト・会社紹介資料v7.4のクロール）
+    note: 自己資本比率・流動資産・流動負債・当座資産のいずれも公表なし。貸借対照表そのものが公開されていない。会社紹介資料に載る財務関連数値は資本金1億1円（p19）と売上4,287億円（p3）のみ。
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: not_disclosed
+    value: ""
+    subject: 連結
+    as_of: 2026-08-05
+    unit: JPY
+    source: ""
+    via: 同上（EDINETコード一覧0件 + 公式サイト・会社紹介資料v7.4のクロール）
+    note: 営業・投資・財務キャッシュ・フローの公表なし。キャッシュ・フロー計算書は公開されていない。
+  - id: ir-segments
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメント別売上・利益
+    status: not_disclosed
+    value: ""
+    subject: 連結報告セグメント
+    as_of: 2026-08-05
+    unit: JPY
+    source: ""
+    via: 同上（EDINETコード一覧0件 + 公式サイト・会社紹介資料v7.4のクロール）
+    note: 法定の報告セグメント情報は存在せず、segments.csv へは1行も追加していない。会社紹介資料p4に「17の領域で60以上の事業」の事業領域図があるが、領域別の売上・利益は非公表。事業区分と運営法人の対応は segments フェーズ（store=mdx）が担当。
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 比較上の注記
+    status: done
+    value: |
+      DMMグループは非上場で法定開示（有価証券報告書・四半期報告書等）が存在しない。metrics.csv の revenue は公式の会社紹介資料に載る自社公表値で、連結範囲は「DMM.com、DMM.com 証券、DMM.com BASE、他」、監査済連結財務諸表に基づく数値ではない。決算月は2月のため他社の3月期・12月期と年度がずれる。営業利益・健全性指標・キャッシュフロー・セグメント別実績は公表がないため掲載できない。
+    subject: DMMグループ
+    as_of: 2026-08-05
+    unit: ""
+    source: dmm-official-corporate-profile-2026 / dmm-official-company-about
+    via: 会社紹介資料v7.4 p3・p19、公式サイト /company/about/・/company/group/
+    note: |
+      記事MDXの :::warning へ転記する。会計基準の記載も一切なく metrics.csv の accounting_standard は空欄。
+      組織再編は沿革に「成人向け事業を株式会社デジタルコマースに事業譲渡（DMM.R18はFANZAとなり合同会社DMM.comから完全分離）」等の記載があるが、年度別数値への影響は非公表のため定量化できない。
+      出典URL https://image.dmm-corp.com/gmz0efytw757m0vlm76cnp7yl56a は不透明IDで改版時にリンク切れの可能性がある。恒久的な入口は https://dmm-corp.com/presskit/ 。published_at 2026-05-29 はPDFメタデータのCreationDateで、公式に明記された公表日ではない。
+      公式サイト /figures/ は同じ売上4,287億円・会員数6,012万人を「2025年2月時点」「創業29年目」と注記する一方、会社紹介資料v7.4は「2026年2月期」「創業28年目」と注記しており、両者が矛盾する。年度は注記が明示的なPDF側（2026年2月期）を採用した。
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: |
+      新卒採用の正本は「DMMグループ 新卒採用」サイト https://dmm.snar.jp/ 。募集年度は2027年卒（入社2027年4月1日）。2026-08-05時点で公開中の新卒本選考は3本。
+      (1)【2027年卒】ビジネス職 https://dmm.snar.jp/jobboard/detail.aspx?id=dDCLZUQ7f4rmxqbEtCOXGg （受付中）
+      (2)【2027年卒】エンジニア職 https://dmm.snar.jp/jobboard/detail.aspx?id=0qPiIIKHPZpa15nK6Mkbog （随時受付。一部職種は受付終了）
+      (3)【2027年卒】ゲームプラットフォームエンジニア職 https://dmm.snar.jp/jobboard/detail.aspx?id=nggw9vYVqxYss6PYby5oJw （随時受付。募集会社表記は「EXNOA」）
+      サイト上の職種カテゴリは「ビジネス職／エンジニア職／財務経理職／インターンシップ／アニメイベント」の5つ。財務経理職は2027年卒の公開ページが確認できず、到達できた最新は【2026年卒】財務経理職（所属会社「DMMホールディングス」、締切2025年9月7日、受付終了） https://dmm.snar.jp/jobboard/detail.aspx?id=FwstrynAvnC_xGhBHskwDg 。
+      募集主体の表記はページによって異なる（サイト全体は「DMMグループ」、ゲームプラットフォームエンジニア職は「EXNOA」、財務経理職は「DMMホールディングス」）。「合同会社DMM.com」の社名は、確認できた2027年卒ページの本文には出現しなかった。
+    subject: "DMMグループ新卒採用（ページ別表記: DMMグループ / EXNOA / DMMホールディングス）"
+    as_of: 募集年度 2027年卒（入社2027年4月1日）／確認日 2026-08-05
+    unit: ""
+    source: https://dmm.snar.jp/ , https://dmm.snar.jp/index.aspx , 上記4本の jobboard/detail.aspx（いずれも2026-08-05確認）
+    via: 公式新卒採用サイト https://dmm.snar.jp/ を起点に jobboard/detail.aspx の各職種ページを確認
+    note: 採用worker側ではコーポレートサイト https://dmm-corp.com/ が既定User-AgentでHTTP 404を返し裏取りできなかったが、profile workerがブラウザ相当UAで /recruit/ 配下の到達性を確認済み。
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: |
+      ■【2027年卒】ビジネス職（勤務地: 東京）
+      5コース制。コンテンツコース=アニメ・映画・IPビジネス等の企画・営業・製作・プロデュース（DMM Pictures等）／ゲームコース=DMM GAMESをはじめとするゲーム・IP関連事業、新規IP創出とプラットフォーム成長／マーケティングコース=60以上の事業の成長をマーケティングで牽引／グローバルコース=グローバル視点での事業推進／総合コース=アニメ関連・ゲーム・マーケティングを除く幅広い事業。
+      応募資格: 「2027年4月1日に入社可能な方。第二新卒の方もご応募いただけます。高校在学中の方はエントリーをせずにメールでお問い合わせください」。
+      選考: エントリーシート→適性検査→グループディスカッション→面接（複数回）。基本オンライン、最終面接のみオフライン（交通費支給）。
+      配属: ページ上に記載なし（コース選択制）。
+
+      ■【2027年卒】エンジニア職（正社員／入社2027年4月1日）
+      募集職種と受付状況: データエンジニア（アナリスト）=受付中（各事業部と連携し分析・施策立案・効果検証。SQL、Python、時系列分析、統計的因果推論、ベイズ統計）／インフラエンジニア=受付中（サーバー・ネットワークインフラの構築運用、動画配信インフラのオンプレミス中心の構築運用保守）／アプリエンジニア=受付終了／Webエンジニア（フロントエンド・サーバーサイド）=受付終了／データプラットフォームエンジニア=受付終了／SRE=受付終了。
+      勤務地: 「東京本社 ※石川勤務も可能。希望する場合は勤務地選択で石川をご選択ください。」
+      選考: 書類選考（スキルチェックシート）→一次面接（現場エンジニア）→二次面接（マネージャー・エンジニア）→人事面談→最終面接（VPoE）。
+      応募資格: ページ上に「応募資格」欄の記載なし。
+      備考: 「※DMM GAMESでもデータアナリストの求人があります」との導線あり。
+
+      ■【2027年卒】ゲームプラットフォームエンジニア職（募集会社: EXNOA／正社員）
+      仕事内容: DMM GAMESプラットフォームの開発・運用。スマートフォンアプリ・SDKまたはWindowsアプリの要件定義・設計・開発・運用。
+      募集職種: Webエンジニア（フロントエンド）／アプリエンジニア／Webエンジニア（バックエンド）／インフラエンジニア=受付終了。
+      応募資格: 「プログラム実装、開発経験（言語不問）」「サーバ構築経験」「対面及び文字ベースのチャットなどで、相手を尊重しつつ円滑なコミュニケーション」「5W1Hで簡潔に言語化し人を巻き込み動かす能力」。
+      勤務地: 「東京本社（研修後は基本的に出社勤務となります）」。
+      選考: 書類選考→一次面接（オンライン）→二次面接（オンライン）→就業インターンシップ→最終面接（オフライン、オンライン相談可）。
+
+      ■財務経理職: 2027年卒の募集ページは公開範囲で確認できず。2026年卒ページ（所属会社「DMMホールディングス」、勤務地 東京本社、応募資格「簿記・会計の基礎知識を有し、入社時には日商簿記2級程度の知識が前提」、選考=エントリーシート・Web適性検査・面接（複数回））は受付終了。
+    subject: 2027年卒 ビジネス職（5コース）／エンジニア職（6職種）／ゲームプラットフォームエンジニア職（4職種）。財務経理職は2027年卒未確認
+    as_of: 2027年卒（入社2027年4月1日）／確認日 2026-08-05
+    unit: ""
+    source: https://dmm.snar.jp/jobboard/detail.aspx?id=dDCLZUQ7f4rmxqbEtCOXGg , https://dmm.snar.jp/jobboard/detail.aspx?id=0qPiIIKHPZpa15nK6Mkbog , https://dmm.snar.jp/jobboard/detail.aspx?id=nggw9vYVqxYss6PYby5oJw , https://dmm.snar.jp/jobboard/detail.aspx?id=FwstrynAvnC_xGhBHskwDg （いずれも2026-08-05確認）
+    via: 公式新卒採用サイトの職種別募集ページを個別に確認
+    note: 旧「通年採用 ビジネス職」ページ2本は現在ジョブボード一覧へリダイレクトし本文が存在しない。エンジニア向けインターン系ページは「現在こちらのページはご利用になれません。」表示。
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
+    status: done
+    value: |
+      ■【2027年卒】エンジニア職
+      給与: 「480万円～上限なし ※固定残業代45時間分含む」（年俸表記、基礎給と固定残業代の内訳金額は非開示）。昇給年1回。
+      諸手当: 通勤手当（月上限5万円まで・日額の上限あり）、残業手当（月45時間超過分）。賞与・退職金の記載なし。
+      福利厚生: カンファレンス支援、コミュニティ支援、AWS/GCP/Azureの実弾演習場、資格取得支援、社会保険完備、産休育休制度、リファラル制度、部活動補助 ほか。
+
+      ■【2027年卒】ゲームプラットフォームエンジニア職（EXNOA）
+      給与: 「480万円～上限なし ※固定残業代45時間分含む」。昇給年1回。
+      諸手当: 通勤手当（月上限5万円まで・日額の上限あり）、残業手当（月45時間超過分）。賞与の記載なし。
+      福利厚生: AWS/GCP学習費、社会保険完備、介護・育休制度、資格取得補助、リファラル制度 ほか。
+
+      ■【2027年卒】ビジネス職
+      公開されている募集ページ本文に「給与」「年俸」「万円」「手当」「昇給」「賞与」「福利厚生」の記載が一切なく、待遇はエントリー・ログイン後にしか確認できない（公開ページ上は非開示）。
+
+      ■参考（2026年卒・受付終了）財務経理職: 「408万円～（固定残業代45時間分含む）」、通勤手当（月上限5万円まで・日額の上限あり）、残業手当（月45時間超過分）。2027年卒の金額は未公開。
+    subject: 職種別（エンジニア職／ゲームプラットフォームエンジニア職＝開示、ビジネス職＝公開ページ上は非開示）
+    as_of: 2027年卒／確認日 2026-08-05
+    unit: JPY（年俸）
+    source: 上記4本の jobboard/detail.aspx（いずれも2026-08-05確認）
+    via: 職種別募集ページの給与・諸手当・待遇欄を確認
+    note: ビジネス職の給与は https://dmm.snar.jp/jobboard/detail.aspx?id=dDCLZUQ7f4rmxqbEtCOXGg を2026-08-05に確認したが記載なし（not_disclosed相当）。第三者求人サイトに「ビジネス職 408万円～」の記述があるが現存する公式ページで確認できないため採用しない。基礎給と固定残業代の内訳金額は全職種で非開示。
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: |
+      ■転勤・勤務地変更
+      エンジニア職／ゲームプラットフォームエンジニア職: 「※業務の都合上、会社が定める就業場所への変更を命じる場合があります」。ビジネス職: 勤務地「東京」の記載のみで転勤に関する記載なし。
+
+      ■リモート勤務
+      エンジニア職: 「リモートと出社のハイブリッド勤務となります。出社頻度は職種や部署によって異なるため、面談・面接を通じてご確認ください。」
+      ゲームプラットフォームエンジニア職: 「東京本社（研修後は基本的に出社勤務となります）」。
+      ビジネス職: 記載なし。
+
+      ■標準労働時間
+      エンジニア職: フレックスタイム制（コアタイム11:00～17:00・詳細は部署による）。
+      ゲームプラットフォームエンジニア職: 同上、ただし一部部署は適用外。
+      所定労働時間（1日◯時間）の明示はいずれのページにもなし。ビジネス職は勤務時間の記載なし。
+
+      ■休日休暇（エンジニア職／ゲームプラットフォームエンジニア職）
+      完全週休2日制（土・日）、祝日、夏季休暇、年末年始休暇、年次有給休暇、慶弔休暇（年間休日120日以上）。
+
+      ■応募期限
+      ビジネス職: エントリーシート締切日 2026年8月16日（日）、2026年8月23日（日）。「締切日は順次追加いたしますが、採用人数が総定数に到達した場合など事前の予告なく早期に選考を終了する可能性がございます。」（2026-08-05時点で受付中）
+      エンジニア職: 随時。
+      ゲームプラットフォームエンジニア職: 随時／採用人数に達すると募集終了。
+      財務経理職（2026年卒）: 2025年9月7日（日）で受付終了。2027年卒は未公開。
+    subject: 職種別（ビジネス職／エンジニア職／ゲームプラットフォームエンジニア職）
+    as_of: 2027年卒／確認日 2026-08-05
+    unit: ""
+    source: 上記4本の jobboard/detail.aspx（いずれも2026-08-05確認）
+    via: 職種別募集ページの勤務地・勤務時間・休日休暇・締切欄を確認
+    note: ビジネス職の転勤・リモート・勤務時間・休日休暇は公式ページに記載がなく not_disclosed 相当（確認URL https://dmm.snar.jp/jobboard/detail.aspx?id=dDCLZUQ7f4rmxqbEtCOXGg 、2026-08-05）。
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 事業区分ごとのサービス名・ブランド名・提供内容・運営法人
+    status: done
+    value: |
+      公式「事業情報」は17領域・60事業以上として提示され、法定報告セグメントではない。領域は エンターテインメント／ゲーム／コミュニティ／Eコマース／ビジネスソリューション／ヘルスケア／教育／金融／ミュージアム・テーマパーク／ハードウェア・プロダクト／スポーツ／地方創生／AI／インフラ／農業／アミューズメント／ライフスタイル の17。
+      [エンターテインメント] DMM TV（アニメ・エンタメの総合サブスク動画配信、2022年12月ローンチ、アニメ5,600作品・エンタメ19万本）／DMMブックス（電子書籍）／DMM pictures（アニメーション製作・ライセンス、2017年設立、年間10〜15作品・累計約80作品）／DMM FILMS（実写映像の企画・製作・出資）／DMM music（音楽レーベル／アーティストマネジメント）／DMM AKB48グループ（動画配信）／DMM Factory（キャラクターグッズ・フィギュアの企画開発／販売）／デジタルコミック事業。
+      [ゲーム] DMM GAMES（国内最大級のPCゲームプラットフォーム。登録ユーザー4,000万人超、自社・提携含む約260本を配信、買い切り型DL販売15,000本超、定額制「GAME 遊び放題」）／Studio KUMASAN（ソーシャルゲームの企画・開発・運営・パブリッシング）。
+      [アミューズメント] DMMオンクレ（オンラインクレーンゲーム、筐体約500台）／DMMスクラッチ／DMMくじ／DMM競輪／DMMぱちタウン／Waitinglist・poker.dmm.com（アミューズメントポーカーのポータル／店舗管理システム／動画）／DMMマイカ（トレカ管理・相場確認・EC購入、POS「DMMマイカポス」）。
+      [Eコマース／ライフスタイル] DMM通販／DMM宅配レンタル（DVD・Blu-ray・CD・コミック）／DMMポイントクラブ。
+      [コミュニティ] DMMオンラインサロン。
+      [ビジネスソリューション] DMMチャットブースト（LINE公式アカウントのCRMプラットフォーム）／STAR BOOST（月額制インフルエンサーPRマッチング）／DMMバーチャルオフィス（月額660円〜のビジネス住所）。
+      [教育] DMM英会話／42 Tokyo（学費無料・学歴不問のエンジニア養成機関、新宿キャンパスに約600名。DMMはFounding Sponsor）／ハッシャダイソーシャル（若年層向けキャリア教育）。
+      [ヘルスケア] DMMオンラインクリニック（オンライン診療から処方薬配送までワンストップ、診療件数55万件突破）。
+      [金融] DMM FX／DMM CFD（株価指数8銘柄・商品14銘柄）／DMM 株（日本株・米国株）／TOSSY（6アセットを差金決済で扱う投資アプリ）／DMMバヌーシー（競走用馬ファンド）／DMM JCBカード（2025年9月11日にクレディセゾンと提携しリニューアル）／DMMサクッとマネー（ローン、2026年1月13日にGeNiE株式会社と提携し提供開始）／DMM住宅ローンスピード診断。
+      [ミュージアム・テーマパーク] チームラボプラネッツ TOKYO DMM（豊洲、年間250万人来館、単一アート・グループとして最多来館美術館のギネス世界記録）／DMMかりゆし水族館（沖縄県豊見城市）。
+      [スポーツ] STVV＝シント=トロイデンVV（ベルギー1部リーグのサッカークラブ経営、2017年11月に経営権取得）。
+      [AI] Algoage（広告×AIプロダクト、AIソリューション・研修）／Algomatic（生成AIに特化したスタートアップスタジオ。法人向け「シゴラクAI」等）。
+      [ハードウェア・プロダクト] DMM.make 3Dプリント（国内最大規模の3Dプリントプラットフォーム、クリエイターズマーケット）／DMM.make PRODUCTS（4K大型ディスプレイ・海外輸入家電のPB／セレクト販売）。
+      [インフラ] DMMエナジー／DMM.make solar（住宅用太陽光発電・蓄電システム）／DMM EV ON（EV充電器の設置・運営、旧DMM EV CHARGE、サービス開始約3か月で2,500口受注）。
+      [農業] DMM農業（ジビエ流通・農業DX）。
+      [地方創生] DMM 地方創生。
+      公式が「特に注力している4つのフォーカス」として掲げるのは エンターテインメント／技術革新／生活インフラ／社会課題 の4分野（/business/focus/）。
+    subject: DMMグループ（採用主体=合同会社DMM.com）
+    as_of: 2026-08-05（確認日）／サービス数値は各公式ページ記載時点
+    unit: ""
+    source: https://dmm-corp.com/business/ ・配下の各事業ページ・ https://dmm-corp.com/business/focus/
+    via: dmm-corp.com/sitemap.xml から /business/ 配下の全URLを列挙し、各ページの本文・「関連するURL」・「関連するプレスリリース」の発行法人欄を確認
+    note: 金融系（DMM FX／DMM CFD／DMM 株／TOSSY／DMMバヌーシー）は外部ドメインへ直接遷移するため DMM 金融グループ公式サイトで確認した。物流事業（株式会社DMM.com Base）は事業一覧に単独ページを持たない。
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式事業区分と運営法人の対応
+    status: done
+    value: |
+      【法定報告セグメント】存在しない。合同会社DMM.comおよび合同会社DMMホールディングスは非上場で、コーポレートサイトにIR・財務諸表のセクションが一切なく（sitemap.xml上のトップ階層は /company/ /business/ /press/ /recruit/ /figures/ /technology/ /social/ /presskit/ /privacy/ /declaration/ /language/ のみ）、有価証券報告書・決算短信・セグメント情報の開示はない。「公式事業区分＝法定報告セグメント」という対応関係は成立しない。
+      【公式の事業区分】(1) 17領域×60事業以上、(2) フォーカス4分野。どちらも会計上の区分ではなく、売上・利益の内訳は開示されていない。
+      【公式事業区分 → 運営法人】
+      - 合同会社DMM.com（自社運営）: DMM TV／DMMブックス／DMM pictures／DMM FILMS／DMM music／DMM AKB48グループ／DMM Factory／DMMオンクレ／DMMスクラッチ／DMMくじ／DMM競輪／DMMぱちタウン／DMM通販／DMM宅配レンタル／DMMポイントクラブ／DMMオンラインサロン／STAR BOOST／DMMバーチャルオフィス／DMM英会話／DMMオンラインクリニック／DMMかりゆし水族館／DMM 地方創生／DMM.make 3Dプリント／DMM.make PRODUCTS／DMMエナジー／DMM EV ON／DMMサクッとマネー／DMM JCBカード（各事業ページの「関連するプレスリリース」の発行法人が合同会社DMM.com）。会社概要の事業内容は「DMMサービス事業を統括」。
+      - 合同会社EXNOA: DMM GAMES（プラットフォーム開発・運営、ゲームタイトルの開発・運営・配信）
+      - 株式会社DMM.com証券: DMM FX／DMM CFD／DMM 株／TOSSY／DMMバヌーシー（サービス運営本体）
+      - 株式会社DMM FinTech: 上記金融全サービスのシステム開発・デザイン・マーケティング
+      - DMMドリームクラブ株式会社: DMMバヌーシーの共同馬主クラブ法人運営
+      - 株式会社DMM Boost: DMMチャットブースト
+      - 株式会社CLLENN: デジタルコミック事業
+      - 株式会社CUE: アニメーション作品の企画・プロデュース・制作（DMM picturesの制作機能）
+      - 株式会社Myca: DMMマイカ／DMMマイカポス
+      - 株式会社Waitinglist: Waitinglist／poker.dmm.com
+      - 株式会社Studio KUMASAN: Studio KUMASAN（ソーシャルゲーム）
+      - 株式会社ZIZAI: アミューズメント業界特化の総合メディア運営（DMMぱちタウン領域）
+      - 株式会社Algoage: Algoage（AIソリューション・研修）
+      - 株式会社Algomatic／株式会社Algomatic Dynamics: Algomatic（生成AI）／ロボティクス・フィジカルAI
+      - 株式会社KOWRO: 生成AI活用のエンタメ関連サービス（翻訳・音声合成）
+      - 株式会社DMM Agri Innovation: DMM農業
+      - 株式会社DMM.com Base: 物流（在庫保管・梱包発送・入荷・返品検品仕分け）
+      - 株式会社PLANETS: チームラボプラネッツ TOKYO DMMの施設運営・管理および飲食店経営
+      - DMMローン診断株式会社: DMM住宅ローンスピード診断
+      - 一般社団法人DMM.make TOKYO: TIB FAB等のハードウェア開発支援・インキュベーション
+      - 一般社団法人ハッシャダイソーシャル: 若者向けキャリア教育
+      - KONINKLIJKE SINT-TRUIDENSE VOETBALVERENIGING NV: STVV
+      - 株式会社DMM.make: 半導体製品の研究開発・デザイン・製造・卸売・販売・輸出入（ブランド名「DMM.make」を冠する3Dプリント／PRODUCTS事業とは別）
+      - 合同会社DMMホールディングス: 株式又は持分の保有を通じた投資先の経営管理等
+      【差異・注意】(a) 42 Tokyoは「非営利型一般社団法人42 Tokyo」でDMMはFounding Sponsorとして支援する位置づけであり、公式グループ会社一覧には掲載されていない。(b) DMM.com証券の100%株主「株式会社DMM FXホールディングス」はグループ会社一覧に載っていない。(c) 2025年10月に社内カンパニー制（PFカンパニー／イノベーションカンパニー／トレーディングカンパニー）へ移行しているが、組織単位であり事業区分・会計区分としては公表されていない。
+    subject: 公式事業区分と運営法人／法定報告セグメントの不在
+    as_of: 2026-08-05（確認日）／会社概要は2025年2月時点
+    unit: ""
+    source: https://dmm-corp.com/business/ ・ https://dmm-corp.com/company/group/ ・ https://dmm-corp.com/company/about/ ・ https://dmmfx-holdings.com/about ・ https://securities.dmm.com/_pdf/finance-results/financeResults_202607.pdf
+    via: sitemap.xml全URL走査でIR系ページの不在を確認。運営法人は各事業ページのプレスリリース発行法人欄とグループ会社一覧の事業内容記述を突合
+    note: DMMチャットブーストは2022年12月のリリース発行法人が株式会社Algoageだが、現行のグループ会社一覧では株式会社DMM Boostの事業と記載されるため現行運営法人はDMM Boostとした。DMMぱちタウンはリリース発行法人が合同会社DMM.comで株式会社ZIZAIの記述と重なり、役割分担は公式ページから確定できない。
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: グループ会社と各社の事業内容
+    status: done
+    value: |
+      公式「グループ会社」ページの掲載は合同会社DMM.comを含め24社（「数字で見るDMM」のグループ会社数24社と一致）。
+      ■中核: 合同会社DMM.com — DMMサービス事業を統括
+      ■その他グループ会社（公式表記と事業内容）
+      1. 合同会社DMMホールディングス — 株式又は持分の保有を通じた投資先の経営管理等
+      2. 株式会社DMM Agri Innovation — 農業・環境・医療関連機器の研修、開発、製造、販売
+      3. 株式会社DMM.com 証券 — FX・CFD・株・競走用馬ファンドの提供と運営
+      4. 株式会社DMM.com Base — 在庫保管、全国への梱包発送業務・入荷・返品の検品仕分け等の物流サービス事業
+      5. 株式会社DMM Boost — LINE公式アカウントを用いたCRMツール「DMMチャットブースト」などの開発・提供
+      6. 株式会社DMM FinTech — 金融サービス全般の開発・コンサルティング
+      7. 株式会社DMM.make — 半導体製品の研究開発、デザイン、製造、卸売、販売および輸出入
+      8. 一般社団法人DMM.make TOKYO — ハードウェア・ソフトウェア開発支援やコミュニティ形成・インキュベーションプログラムの企画・運営
+      9. 一般社団法人ハッシャダイソーシャル — 若者向けキャリア教育事業
+      10. 株式会社Algoage — AIを活用したソリューション、研修を提供
+      11. 株式会社Algomatic — 大規模言語モデル等生成AI技術を活用したサービスの開発・提供
+      12. 株式会社Algomatic Dynamics — ロボティクス・フィジカルAI領域におけるサービスの開発・提供
+      13. 株式会社Waitinglist — アミューズメントポーカーに特化したポータルサイト及び店舗管理システムの提供と運営、動画コンテンツ事業
+      14. 株式会社CUE — TVシリーズ・映画・短編等アニメーション作品の企画、プロデュースおよび制作
+      15. 株式会社KOWRO — 大規模言語モデル等生成AI技術を活用したエンタメ関連サービスの開発・提供（翻訳、音声合成等）
+      16. 株式会社CLLENN — 国内トップクラスのコンテンツ保有数を誇るデジタルコミック出版社
+      17. 株式会社ZIZAI — アミューズメント業界に特化したアプリ、ポータルサイトなど総合メディアの運営
+      18. 株式会社Studio KUMASAN — ソーシャルゲームの企画・開発・運営・プロデュース、ゲーム開発・販売
+      19. 株式会社PLANETS — teamLab Planets TOKYOの施設運営・管理および飲食店の経営・管理
+      20. 株式会社Myca — トレカ管理アプリ、トレカショップ向けPOSシステムの運営開発、プロプレイヤー向けスポンサーシッププログラム運営
+      21. 合同会社EXNOA — DMM GAMESプラットフォームの開発、運営やゲームタイトルの開発、運営、配信（資本金1億1円、設立2017年12月13日、最高経営責任者 東條寛。2018年3月に合同会社DMM GAMESとして分社化、2020年4月にEXNOAへ社名変更）
+      22. DMMローン診断株式会社 — 住宅ローンの借入可能性を判定するサービス（2026年3月25日に旧「住宅ローン診断カンパニー株式会社」から社名およびサービス名を変更）
+      23. KONINKLIJKE SINT-TRUIDENSE VOETBALVERENIGING NV — サッカークラブ「シント=トロイデンVV」の経営
+      ■資本関係で確認できたもの（法定開示）
+      株式会社DMM.com証券（設立2006年12月6日、資本金98億円＋資本準備金73.9億円、代表取締役 谷川龍二、関東財務局長(金商)第1629号）の株主は「株式会社DMM FXホールディングス」1名で議決権100.00%（2026年3月31日現在）。同社は合同会社DMMホールディングスから21,300百万円、株式会社DMM FXホールディングスから5,400百万円を借り入れている（2026年3月31日現在）。
+      ■公式グループ会社一覧に載らないがグループ運営として公表されている法人
+      株式会社DMM FXホールディングス（DMM.com証券の100%株主）／DMMドリームクラブ株式会社（DMMバヌーシーの共同馬主クラブ法人。DMM 金融グループ3社の一角）
+      ■現況
+      - DMM Bitcoin: 公式グループ会社一覧に掲載がなく、旧公式ドメイン bitcoin.dmm.com はDNS解決不能。SBIホールディングスの公式ニュースリリース（2024年12月25日）で口座・預かり資産のSBI VCトレードへの移管が案内されている。
+      - FANZA（旧DMM.R18）: 2018年3月に成人向け事業を株式会社デジタルコマースへ事業譲渡し、合同会社DMM.comから完全分離済み（公式沿革に明記）。
+      - 株式会社インフラトップ（DMM WEBCAMP、2018年11月買収）: 公式グループ会社一覧に掲載がなく、採用ページのリンク先 infratop.jp もDNS解決不能。現況は公式一次情報で確認できず。
+    subject: DMMグループの関連法人
+    as_of: 2026-08-05（確認日）／株主構成は2026-03-31現在
+    unit: ""
+    source: https://dmm-corp.com/company/group/ ・ https://securities.dmm.com/_pdf/finance-results/financeResults_202607.pdf ・ https://dmmfx-holdings.com/about ・ https://dmmgames.co.jp/company/ ・ https://securities.dmm.com/company/ ・ https://www.sbigroup.co.jp/news/2024/1225_15139.html
+    via: グループ会社ページの全24社を転記し、DMM.com証券の法定開示（業務及び財産の状況に関する説明書 2026年3月期）で株主・借入先を突合。廃止・分離事業は公式沿革とドメイン解決可否で確認
+    note: 合同会社DMMホールディングスが合同会社DMM.comの親会社であることは公式サイト上で明示されていないため、company_relations.csv に parent 行を作る根拠としては不足する。DMM Bitcoin の現況はDMM側の一次情報が現存せず、記事で触れる場合はSBI側の公式リリースを出典とする。
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: |
+      【コーポレートメッセージ】「誰もが見たくなる未来。」
+      本文（公式表記）: 「人がみな失敗を恐れず、挑戦できる世界をつくる。そのために、私たちは存在したい。／年齢も、肩書きも、領域をも超えて、変化を恐れず、ひたむきに挑戦し続ける。／それが、誰も想像できない未来を、誰もが見たくなる未来に変えていくと信じて。」
+      補足（公式）: 「コーポレートメッセージは、この創業以来変わらない私たちの個性を、これからもそうあり続けるという、未来への宣言です。DMM.（ドット）の先にある未来に向けて、これからも新しい領域への挑戦を続けていきます。」
+      【組織風土＝DMM.ESSENCE】"DMMらしさ"を言語化した5つのエッセンス。(1)本気の失敗を肯定する。(2)テクノロジーとともに。(3)誠実であれ。(4)ちゃんと稼ぐこと。(5)好奇心を忘れない。
+      【なぜ「なんでもやっている」のか（公式説明）】「DMMが『なんでもやっている』のは企業としての生存戦略。」立ち上げた事業のうち成功するのはわずか一握りで、社会や時代とともに事業も変化しなければ生き残り続けることは難しい、という説明が公式企業情報トップに掲げられている。
+      【技術方針】「DMMのテックカンパニー化」というミッションのもと「DMM Tech Vision」を公開（/technology/）。
+      【グループ会社の理念（参考）】合同会社EXNOA:「心と時代に残る、興奮を生みだす。」
+    subject: 合同会社DMM.com／DMMグループ
+    as_of: 2026-08-05（確認日）
+    unit: ""
+    source: https://dmm-corp.com/company/ ・ https://dmm-corp.com/recruit/workplace/philosophy/ ・ https://dmm-corp.com/technology/ ・ https://dmmgames.co.jp/company/
+    via: コーポレートサイト企業情報トップおよび採用サイト「組織風土・カルチャー（DMM.ESSENCE）」ページの本文を原文で確認
+    note: ミッション／ビジョン／バリューという名称の体系は公表されておらず、公式に置かれているのは「コーポレートメッセージ」と「DMM.ESSENCE」の2つ。
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: done
+    value: |
+      【正式社名】合同会社DMM.com（英文表記は公式会社概要に記載なし）。持株会社は合同会社DMMホールディングス。
+      【会社概要（公式・2025年2月時点）】設立 1999/11/17、資本金 1億1円、決算月 2月、従業員数 2,730名、会長 亀山敬司、事業内容「DMMサービス事業を統括」。
+      本社: 〒106-6224 東京都港区六本木三丁目2番1号 住友不動産六本木グランドタワー24階。加賀事業所: 〒922-0551 石川県加賀市美岬町メ1-1。金沢事業所: 〒921-8044 石川県金沢市米泉町10丁目1-152。
+      【設立経緯】石川県加賀市でレンタルビデオ店を5店舗展開していた亀山敬司が、国内外の競合と同じ土俵では勝てないと考え、黎明期のインターネットビジネスへ参入。1998年にビデオ通販・動画配信サイト（現・DMM TV）を立ち上げ、1999年に株式会社デジタルメディアマート（現・DMM.com）を設立した。亀山は1961年石川県生まれ、19歳でアクセサリー販売の露天商から起業家人生を開始している。
+      【主な沿革】2003年 DMMレンタル／2009年 DMM FXリリース・株式会社DMM.com証券設立／2009年 AKB48 LIVE!! ON DEMAND／2011年 オンラインゲーム事業（現DMM GAMES）開始／2012年 ソーラー（エナジー）事業開始／2013年 DMM.make 3D PRINT・DMM英会話／2014年 DMM.make、DMM.make AKIBA、DMM.make ROBOTS／2016年 DMMオンラインサロン／2017年 グループ総売上2,000億円突破・STVV経営権取得・DMM BANUSY／2018年 会員数3,000万人突破、成人向け事業を株式会社デジタルコマースへ事業譲渡しDMM.R18はFANZAとして完全分離、チームラボ プラネッツ TOKYO開業、DMM VENTURES設立、株式会社インフラトップ買収／2019年 株式会社ベルリング買収、石川県内4事業所を移転統合、株式会社ファーマリー買収、42 Tokyo設立／2020年 DMMかりゆし水族館オープン、AlgoAgeと資本業務提携、DMMオンライン展示会／2021年 DMMブックスへ改称、アビスパ福岡の一部株式取得、DMMオンクレ設立（現在は合同会社DMM.comに吸収合併）、DMMオンラインクリニック／2022年 メタバース「Mid Mega City」始動、DMM TV・DMMプレミアム開始／2023年 株式会社Algomatic設立、DMM EV CHARGE（現DMM EV ON）開始、グループ総売上3,000億円突破。
+      【規模（公式「数字で見るDMM」）】売上 4,287億円（DMM.com、DMM.com証券、DMM.com BASE、他連結／2月期）、会員数 6,012万人、事業数 60事業以上、グループ会社数 24社、従業員数 5,184名（グループ）。
+      【人・働く環境（同上、主にDMM.comおよびEXNOA・2024年3月〜2025年2月）】男女比 女性36.9%／男性63.1%、社員国籍数27の国と地域・外国籍社員152名（2024年11月時点）、障がい者職場定着率85.6%、有給取得率74.0%（全国平均65.3%）、平均残業時間8.34時間、平均勤続年数5.5年、男性育休取得率88%、女性育休後復職率93%。
+      【経営体制】会長 亀山敬司。2025年10月にカンパニー制へ移行し、PFカンパニーCEO 村中悠介、イノベーションカンパニーCEO 緒方悠、トレーディングカンパニーCEO 新藤大介。CTO 渡辺繁幸、CFO 粕谷佳宏、CCO兼CHRO 坂之上洋子、特別顧問 安藤隆春。
+      【その他】マルチステークホルダー方針を2025年10月28日付で公表（合同会社DMM.com 会長 亀山敬司名義）。
+    subject: 合同会社DMM.com（規模の一部はDMMグループ）
+    as_of: 会社概要・数字で見るDMMは2025年2月時点／確認日2026-08-05
+    unit: 円・人・%・年
+    source: https://dmm-corp.com/company/about/ ・ https://dmm-corp.com/company/history/ ・ https://dmm-corp.com/figures/ ・ https://dmm-corp.com/company/officer/ ・ https://dmm-corp.com/company/multi-stakeholder-policy/
+    via: コーポレートサイトの会社概要・沿革・数字で見るDMM・役員・マルチステークホルダー方針の各ページ本文と注記を確認
+    note: |
+      売上4,287億円・会員数6,012万人・従業員5,184名はいずれも公式サイトの自主公表値であり、法定開示に基づく監査済みの連結数値ではない。連結範囲の注記も「DMM.com、DMM.com証券、DMM.com BASE、他連結（2月期）」のみで対象法人の全容は開示されていない。
+      会社概要の従業員数2,730名は合同会社DMM.com単体、figuresの5,184名はDMMグループ。記事で混在させないこと。
+      /figures/ と会社紹介資料v7.4で基準時点の注記が矛盾する（ir-disclosure-notes 参照）。
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・採用・新卒採用リンク
+    status: done
+    value: |
+      【コーポレート】コーポレートサイト https://dmm-corp.com/ ／企業情報 https://dmm-corp.com/company/ ／会社概要 https://dmm-corp.com/company/about/ ／沿革 https://dmm-corp.com/company/history/ ／役員 https://dmm-corp.com/company/officer/ ／グループ会社 https://dmm-corp.com/company/group/ ／数字で見るDMM https://dmm-corp.com/figures/ ／事業情報 https://dmm-corp.com/business/ ／フォーカス https://dmm-corp.com/business/focus/ ／DMMの技術（DMM Tech Vision） https://dmm-corp.com/technology/ ／SDGsへの取り組み https://dmm-corp.com/social/ ／プレスリリース https://dmm-corp.com/press/ ／プレスキット https://dmm-corp.com/presskit/ ／マルチステークホルダー方針 https://dmm-corp.com/company/multi-stakeholder-policy/
+      【サービス】公式サービスサイト https://www.dmm.com/
+      【採用】採用情報トップ https://dmm-corp.com/recruit/ ／新卒採用（動画で見る職種紹介） https://dmm-corp.com/recruit/new-graduate/introduction/ ／新卒エントリー（第二新卒含む） https://dmm.snar.jp/ ／インターン https://dmm-corp.com/recruit/intern/ ／職種別（エンジニア https://dmm-corp.com/recruit/engineer/ ／デザイナー https://dmm-corp.com/recruit/designer/ ／ビジネス職 https://dmm-corp.com/recruit/business/ ／バックオフィス https://dmm-corp.com/recruit/backoffice/ ／その他 https://dmm-corp.com/recruit/other/）／求人検索 https://dmm-corp.com/recruit/search/ ／よくある質問 https://dmm-corp.com/recruit/faq/ ／組織風土・カルチャー（DMM.ESSENCE） https://dmm-corp.com/recruit/workplace/philosophy/ ／福利厚生 https://dmm-corp.com/recruit/workplace/benefits/ ／評価制度 https://dmm-corp.com/recruit/work/evaluation-system/
+      【グループ会社単体の採用】DMM 金融グループ https://dmmfx-holdings.com/ ／株式会社Algomatic https://jobs.algomatic.jp/
+      【オウンドメディア】DMM inside https://inside.dmm.com/ ／DMM Developers Blog https://developersblog.dmm.com/
+      【IR・法定開示】合同会社DMM.comおよび合同会社DMMホールディングスにはIRページ・有価証券報告書ともに存在しない（非上場）。グループ内で唯一の定期的な法定開示は株式会社DMM.com証券の「財務状況等」 https://securities.dmm.com/finance-results/ （業務及び財産の状況に関する説明書、年次開示資料＜商品先物取引業＞、自己資本規制比率）。
+    subject: 合同会社DMM.com
+    as_of: 2026-08-05（確認日）
+    unit: ""
+    source: https://dmm-corp.com/sitemap.xml ・ https://dmm-corp.com/ ・ https://dmm-corp.com/recruit/workplace/philosophy/ ・ https://securities.dmm.com/finance-results/
+    via: sitemap.xml の全URLを列挙のうえ各リンクへHTTPアクセスし200応答を確認
+    note: 採用サイトの「グループ会社単体の採用情報」に掲載されている 株式会社インフラトップ（infratop.jp）と 株式会社DMM.com Base（www.kcint.co.jp）のリンクはDNS解決不能・接続タイムアウトで到達できず、記事のリンク集には採用しない。dmm-corp.com は既定User-Agentからのアクセスに404を返すため、再調査時はブラウザ相当のUser-Agentが必要。

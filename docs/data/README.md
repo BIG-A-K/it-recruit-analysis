@@ -119,6 +119,38 @@ flowchart LR
 
 取得・変換処理は同じ文書を再実行できるようにし、同じ主キーのデータは追加ではなく更新する。同じ主キーに異なる値が見つかった場合は、自動的に一方を採用せず処理を停止して確認する。
 
+## CSVの書き込みは csv-upsert を使う
+
+`data/` 配下のCSVをエディタやAIエージェントがテキストとして直接編集すると、改行コード混在・列ズレ・クォート漏れによるパースエラーが起きる（過去に CRLF/LF 混在でサイトのビルドが停止した）。**手動での行追加・更新はすべて `csv-upsert` CLI を経由する。** EDINET・SECの正規化は従来どおり `edinet-normalize` / `sec-normalize` が同じ書き込み経路を使う。
+
+```bash
+# JSON Lines（1行1オブジェクト）を標準入力で渡す
+uv run csv-upsert sources <<'EOF'
+{"source_id": "edinet-s100xxxx", "source_type": "edinet", "title": "有価証券報告書", "url": "https://...", "document_id": "S100XXXX", "published_at": "2026-06-30", "retrieved_at": "2026-08-05", "issuer": "株式会社Example"}
+EOF
+
+uv run csv-upsert metrics <<'EOF'
+{"company_id": "example", "metric_key": "revenue", "fiscal_year": "2026", "period_end": "2026-03-31", "value": "1000000000", "unit": "JPY", "scope": "consolidated", "accounting_standard": "IFRS", "availability": "reported", "source_id": "edinet-s100xxxx"}
+EOF
+```
+
+対象テーブル: `companies` / `industries` / `company_industries` / `company_relations` / `metrics` / `segments` / `sources` / `company_annotations`（`company_profiles` はレガシーのため対象外）。
+
+CLIの挙動:
+
+- 主キー（[schema.md](schema.md) と同一定義）が一致する既存行は、渡したフィールドだけを更新する（部分更新可）。一致しなければ追加する
+- 書き込み前に検証し、1件でもエラーがあれば**何も書き込まずに**終了する
+  - 未知のフィールド名（列名のtypo）
+  - 主キーフィールドの欠落・空値
+  - `companies.csv` に存在しない `company_id` への参照
+  - `sources.csv` に存在しない `source_id` への参照（出典を先に登録する）
+  - 入力内の主キー重複
+- 改行コードLF・最小クォートで全体を書き直すため、表記が常に一定に保たれる
+- 実行結果として `N added, N updated, N unchanged` を報告する（worker結果契約の `artifacts` にそのまま使える）
+- JSON配列（`[{...}, {...}]`）の入力も受け付ける
+
+値の妥当性（`availability` の値域、単位、桁など）はCLIでは検証しない。`uv run pytest tests/test_data_integrity.py` で確認する。
+
 ## 企業別分割を検討する条件
 
 当面は全結合CSVを維持する。次の問題が実際に発生した場合に、`data/companies/<company_id>/` への分割やデータベースへの移行を検討する。

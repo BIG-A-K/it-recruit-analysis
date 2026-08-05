@@ -4,7 +4,7 @@ edinet-s100ybxd,statutory_filing,有価証券報告書－第31期(2025/04/01－2
 edinet-s100tm4a,statutory_filing,有価証券報告書－第29期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TM4A,S100TM4A,2024-06-17,2026-07-31,ＬＩＮＥヤフー株式会社
 edinet-s100wqdw,statutory_filing,有価証券報告書－第13期(2024/07/01－2025/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100WQDW,S100WQDW,2025-09-24,2026-08-05,株式会社メルカリ
 edinet-s100xcu9,statutory_filing,有価証券報告書－第28期(2024/10/01－2025/09/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100XCU9,S100XCU9,2025-12-24,2026-08-05,株式会社サイバーエージェント
-edinet-s100yldv,statutory_filing,有価証券報告書－第28期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YLDV,S100YLDV,2026-06-26,2026-08-02,株式会社ディー・エヌ・エー
+edinet-s100yldv,statutory_filing,有価証券報告書－第28期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YLDV,S100YLDV,2026-06-26,2026-08-05,株式会社ディー・エヌ・エー
 edinet-s100vwr9,statutory_filing,有価証券報告書－第37期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VWR9,S100VWR9,2025-06-20,2026-07-31,株式会社ＮＴＴデータグループ
 edinet-s100yhdd,statutory_filing,有価証券報告書－第58期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YHDD,S100YHDD,2026-06-23,2026-07-31,ＳＣＳＫ株式会社
 edinet-s100ueyz,statutory_filing,有価証券報告書－第12期(2023/07/01－2024/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100UEYZ,S100UEYZ,2024-09-25,2026-07-31,株式会社メルカリ
@@ -32,9 +32,9 @@ preferred-networks-corporate,corporate,Preferred Networks 企業情報・採用�
 fixstars-corporate,corporate,フィックスターズ 会社概要・新卒採用,https://www.fixstars.com/ja/company/overview,,,2026-07-31,株式会社フィックスターズ
 sakana-ai-series-b,financial_report,Sakana AI Series B 資金調達発表（累計約660億円）,https://sakana.ai/series-b/,,2025-11-17,2026-07-31,Sakana AI株式会社
 sakana-ai-applied-careers,recruitment,Sakana AI Applied Team 採用情報,https://sakana.ai/applied-careers/,,,2026-07-31,Sakana AI株式会社
-edinet-s100xsg3,statutory_filing,有価証券報告書－第35期(2025/01/01－2025/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100XSG3,S100XSG3,2026-03-23,2026-07-31,ＧＭＯインターネットグループ株式会社
+edinet-s100xsg3,statutory_filing,有価証券報告書－第35期(2025/01/01－2025/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100XSG3,S100XSG3,2026-03-23,2026-08-05,ＧＭＯインターネットグループ株式会社
 edinet-s100wqwx,statutory_filing,有価証券報告書－第21期(2024/07/01－2025/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100WQWX,S100WQWX,2025-09-26,2026-08-02,グリーホールディングス株式会社
-edinet-s100ye1d,statutory_filing,有価証券報告書－第27期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YE1D,S100YE1D,2026-06-19,2026-08-02,株式会社ＭＩＸＩ
+edinet-s100ye1d,statutory_filing,有価証券報告書－第27期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YE1D,S100YE1D,2026-06-19,2026-08-05,株式会社ＭＩＸＩ
 edinet-s100ybgn,statutory_filing,有価証券報告書－第29期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YBGN,S100YBGN,2026-06-17,2026-08-02,株式会社カカクコム
 edinet-s100ygbs,statutory_filing,有価証券報告書－第59期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YGBS,S100YGBS,2026-06-23,2026-07-31,株式会社オービック
 edinet-s100y9nx,statutory_filing,有価証券報告書－第86期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100Y9NX,S100Y9NX,2026-06-25,2026-08-01,任天堂株式会社
@@ -74,7 +74,7 @@ edinet-s100yfkz,statutory_filing,有価証券報告書－第95期(2025/04/01－2
 edinet-s100ycmc,statutory_filing,有価証券報告書,https://api.edinet-fsa.go.jp/api/v2/documents/S100YCMC,S100YCMC,2026-06-16,2026-08-02,三菱自動車工業株式会社
 edinet-s100yfbq,statutory_filing,有価証券報告書－第124期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YFBQ,S100YFBQ,2026-06-23,2026-08-02,いすゞ自動車株式会社
 edinet-s100xrth,statutory_filing,有価証券報告書－第91期(2025/01/01－2025/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100XRTH,S100XRTH,2026-03-23,2026-08-02,ヤマハ発動機株式会社
-edinet-s100vze0,statutory_filing,有価証券報告書－第27期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VZE0,S100VZE0,2025-06-20,2026-08-02,株式会社ディー・エヌ・エー
+edinet-s100vze0,statutory_filing,有価証券報告書－第27期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VZE0,S100VZE0,2025-06-20,2026-08-05,株式会社ディー・エヌ・エー
 edinet-s100vyj6,statutory_filing,有価証券報告書－第28期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VYJ6,S100VYJ6,2025-06-19,2026-08-02,株式会社カカクコム
 mazda-official-financial-data-2026,financial_report,主要財務・業績情報（2022年3月期から2026年3月期）,https://www.mazda.com/content/dam/mazda/corporate/mazda-com/ja/pdf/investors/financial/data/FY160_all_data_download.pdf,FY160_all_data_download,2026-05-21,2026-08-02,マツダ株式会社
 mazda-official-securities-2025,statutory_filing,有価証券報告書－第159期(2024/04/01－2025/03/31),https://contents.xj-storage.jp/xcontents/AS07797a/409f4bfc/2e2c/4da0/9c8d/b4c209b708ea/20251128185026715s.pdf,2025-3-securities-report,2025-06-24,2026-08-02,マツダ株式会社
@@ -120,3 +120,24 @@ edinet-s100rx8v,statutory_filing,有価証券報告書－第11期(2022/07/01－2
 edinet-s100tnm6,statutory_filing,有価証券報告書－第64期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TNM6,S100TNM6,2024-06-21,2026-08-05,株式会社リクルートホールディングス
 edinet-s100sfq1,statutory_filing,有価証券報告書－第26期(2022/10/01－2023/09/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100SFQ1,S100SFQ1,2023-12-08,2026-08-05,株式会社サイバーエージェント
 renesas-electronics-official-securities-2025,statutory_filing,第24期 有価証券報告書,https://www.renesas.com/ja/document/rep/annual-securities-report-2025,2025-annual-securities-report-ja,2026-03-19,2026-08-05,ルネサスエレクトロニクス株式会社
+edinet-s100tq8o,statutory_filing,有価証券報告書－第26期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TQ8O,S100TQ8O,2024-06-24,2026-08-05,株式会社ディー・エヌ・エー
+edinet-s100vg8d,statutory_filing,有価証券報告書－第34期(2024/01/01－2024/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VG8D,S100VG8D,2025-03-24,2026-08-05,ＧＭＯインターネットグループ株式会社
+edinet-s100t3h4,statutory_filing,有価証券報告書－第33期(2023/01/01－2023/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100T3H4,S100T3H4,2024-03-22,2026-08-05,ＧＭＯインターネットグループ株式会社
+nri-recruit-2027,recruitment,NRI 2027年度新卒採用 募集要項（総合職・エリア総合職）,https://working.nri.co.jp/recruit/2027/contents/recruiting/application.html,,,2026-08-05,株式会社野村総合研究所
+mixi-recruit-corporate,recruitment,MIXI GROUP採用サイト,https://mixigroup-recruit.mixi.co.jp/,,,2026-08-05,株式会社ＭＩＸＩ
+mixi-recruit-fresh-faq,recruitment,採用FAQ（新卒）,https://mixigroup-recruit.mixi.co.jp/faq/?anchor=fresh,,,2026-08-05,株式会社ＭＩＸＩ
+mixi-recruit-job-housi-27,recruitment,新卒採用 法務スペシャリスト（27卒）募集要項,https://mixigroup-recruit.mixi.co.jp/recruitment-category/13815/,,,2026-08-05,株式会社ＭＩＸＩ
+mixi-official-corporate-about,corporate,MIXIについて（企業理念・パーパス・ミッション）,https://mixi.co.jp/about/,,,2026-08-05,株式会社ＭＩＸＩ
+mixi-official-ir-securities,financial_report,有価証券報告書等（公式IR）,https://mixi.co.jp/ir/docs/security_reports/,,,2026-08-05,株式会社ＭＩＸＩ
+dmm-official-corporate-profile-2026,financial_report,会社紹介資料 DMM CORPORATE PROFILE v7.4（プレスキット掲載、2026年2月期実績）,https://image.dmm-corp.com/gmz0efytw757m0vlm76cnp7yl56a,dmm_corporate_profile v7.4.pdf,2026-05-29,2026-08-05,合同会社DMM.com
+dmm-official-company-about,corporate,会社概要（合同会社DMM.com）｜企業情報｜DMM Group,https://dmm-corp.com/company/about/,,,2026-08-05,合同会社DMM.com
+edinet-s100xtnw,statutory_filing,有価証券報告書－第29期(2025/01/01－2025/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100XTNW,S100XTNW,2026-03-26,2026-08-05,楽天グループ株式会社
+edinet-s100vhz5,statutory_filing,有価証券報告書－第28期(2024/01/01－2024/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VHZ5,S100VHZ5,2025-03-28,2026-08-05,楽天グループ株式会社
+edinet-s100t4x3,statutory_filing,有価証券報告書－第27期(2023/01/01－2023/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100T4X3,S100T4X3,2024-03-28,2026-08-05,楽天グループ株式会社
+dena-official-corporate-policy,corporate,ミッション・ビジョン・バリュー,https://dena.com/jp/company/policy/,,,2026-08-05,株式会社ディー・エヌ・エー
+dena-official-corporate-overview,corporate,会社概要,https://dena.com/jp/company/overview.html,,,2026-08-05,株式会社ディー・エヌ・エー
+dena-official-services,corporate,事業一覧,https://dena.com/jp/services/,,,2026-08-05,株式会社ディー・エヌ・エー
+dena-official-ir-library,financial_report,有価証券報告書等（公式IR）,https://dena.com/jp/ir/library/report.html,,,2026-08-05,株式会社ディー・エヌ・エー
+dena-recruit-fresh,recruitment,新卒採用 募集要項（2027年4月・2028年4月入社）,https://student.dena.com/recruit/,,,2026-08-05,株式会社ディー・エヌ・エー
+dena-recruit-aispecialist,recruitment,新卒採用 AIスペシャリスト職 募集要項,https://student.dena.com/aispecialist/description/,,,2026-08-05,株式会社ディー・エヌ・エー
+dena-recruit-aigeneralist,recruitment,新卒採用 AIジェネラリストコース（エンジニア・ビジネス・デザイナー）募集要項,https://student.dena.com/aigeneralist/description/,,,2026-08-05,株式会社ディー・エヌ・エー

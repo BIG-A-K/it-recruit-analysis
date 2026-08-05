@@ -8,7 +8,7 @@ company_boundary:
   securities_code: "9449"
   edinet_code: E05041
   fiscal_year_end: 12月末日
-  accounting_standard: JGAAP
+  accounting_standard: IFRS（FY2024〜、FY2023はJGAAP）
   currency: JPY
   reporting_segments: インターネットインフラ, インターネットセキュリティ, インターネット広告・メディア, インターネット金融, 暗号資産, インキュベーション
   company_relations: []
@@ -24,16 +24,150 @@ phases:
   article: pending
   verify: pending
 items:
-  - {id: ir-human-capital, phase: ir, store: ir_csv, topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
-  - {id: ir-revenue, phase: ir, store: ir_csv, topic: 売上高 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-operating-profit, phase: ir, store: ir_csv, topic: 営業利益 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-health, phase: ir, store: ir_csv, topic: 自己資本比率・流動資産・流動負債・当座資産, status: pending, value: "", subject: 連結, as_of: "", unit: percent・JPY, source: "", via: "", note: 当座資産の算定内訳をnoteへ}
-  - {id: ir-cash-flow, phase: ir, store: ir_csv, topic: 営業・投資・財務キャッシュフロー 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segment-infrastructure, phase: ir, store: ir_csv, topic: インターネットインフラ事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segment-advertising-media, phase: ir, store: ir_csv, topic: インターネット広告・メディア事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segment-finance, phase: ir, store: ir_csv, topic: インターネット金融事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: "金融事業は証券・金融・暗号資産の集計区分"}
-  - {id: ir-segment-incubation, phase: ir, store: ir_csv, topic: インキュベーション事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-disclosure-notes, phase: ir, store: ir_csv, topic: セグメント再編・比較上の注記, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csvの平均年間給与・平均年齢・平均勤続年数・従業員数をFY2023〜FY2025各3行、計12行
+    subject: 提出会社単体（平均指標）・連結（従業員数）
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY・years・persons
+    source: edinet-s100t3h4; edinet-s100vg8d; edinet-s100xsg3
+    via: EDINET CLIで3期取得・正規化
+    note: ""
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高 3期以上
+    status: done
+    value: metrics.csvのrevenue FY2023〜FY2025 3行
+    subject: 連結
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t3h4; edinet-s100xsg3
+    via: EDINET CLIで取得・正規化
+    note: FY2023はJGAAP、FY2024〜FY2025はIFRS
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csvのoperating_profit FY2023〜FY2025 3行
+    subject: 連結
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t3h4; edinet-s100xsg3
+    via: EDINET CLIで取得・正規化
+    note: FY2023はJGAAP、FY2024〜FY2025はIFRS
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csvのequity_ratio・current_assets・current_liabilities・quick_assetsをFY2023〜FY2025各3行
+    subject: 連結
+    as_of: 2023-12-31〜2025-12-31
+    unit: percent・JPY
+    source: edinet-s100t3h4; edinet-s100xsg3
+    via: EDINET CLIで取得・正規化、当座資産を算定
+    note: quick_assets=流動資産−棚卸資産。FY2023 1593548000000、FY2024 1559518000000、FY2025 1690148000000
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csvのoperating_cf・investing_cf・financing_cf FY2023〜FY2025各3行
+    subject: 連結
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t3h4; edinet-s100xsg3
+    via: EDINET CLIで取得・正規化
+    note: FY2023はJGAAP、FY2024〜FY2025はIFRS
+  - id: ir-segment-infrastructure
+    phase: ir
+    store: ir_csv
+    topic: インターネットインフラ事業の年度別売上・利益
+    status: done
+    value: segments.csvのinternet-infrastructure FY2023〜FY2025 3行
+    subject: 連結報告セグメント
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t3h4; edinet-s100xsg3
+    via: EDINET CLIでセグメント情報を正規化
+    note: FY2023は旧5区分、FY2024〜FY2025は6区分
+  - id: ir-segment-advertising-media
+    phase: ir
+    store: ir_csv
+    topic: インターネット広告・メディア事業の年度別売上・利益
+    status: done
+    value: segments.csvのonline-advertising-and-media FY2023〜FY2025 3行
+    subject: 連結報告セグメント
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t3h4; edinet-s100xsg3
+    via: EDINET CLIでセグメント情報を正規化
+    note: ""
+  - id: ir-segment-finance
+    phase: ir
+    store: ir_csv
+    topic: インターネット金融事業の年度別売上・利益
+    status: done
+    value: segments.csvのinternet-finance FY2023〜FY2025 3行
+    subject: 連結報告セグメント
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t3h4; edinet-s100xsg3
+    via: EDINET CLIでセグメント情報を正規化
+    note: 暗号資産事業は別セグメント
+  - id: ir-segment-incubation
+    phase: ir
+    store: ir_csv
+    topic: インキュベーション事業の年度別売上・利益
+    status: done
+    value: segments.csvのincubation FY2023〜FY2025 3行、FY2025外部顧客売上は非開示
+    subject: 連結報告セグメント
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t3h4; edinet-s100xsg3
+    via: EDINET CLIでセグメント情報を正規化
+    note: FY2025売上は有報の「－」で非開示
+  - id: ir-segment-security
+    phase: ir
+    store: ir_csv
+    topic: インターネットセキュリティ事業の年度別売上・利益
+    status: done
+    value: segments.csvのinternet-securities FY2024-FY2025 2行（FY2024売上19310000000・利益1853000000、FY2025売上21360000000・利益1353000000）
+    subject: 連結報告セグメント
+    as_of: 2024-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100xsg3
+    via: S100T3H4/S100VG8D/S100XSG3原本とsegments.csvを照合
+    note: 現行名称はインターネットセキュリティ事業。FY2023は独立開示されずインターネットインフラに含まれる
+  - id: ir-segment-cryptocurrency
+    phase: ir
+    store: ir_csv
+    topic: 暗号資産事業の年度別売上・利益
+    status: done
+    value: segments.csvのcryptocurrency FY2023-FY2025 3行（FY2023売上4554000000・損失1271000000、FY2024売上9567000000・利益3848000000、FY2025売上8315000000・利益2396000000）
+    subject: 連結報告セグメント
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t3h4; edinet-s100xsg3
+    via: S100T3H4/S100VG8D/S100XSG3原本とsegments.csvを照合
+    note: FY2024はS100XSG3のIFRS組替後値
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: セグメント再編・比較上の注記
+    status: done
+    value: company_annotations.csvに会計基準移行・セグメント再編・当座資産算定の3注記
+    subject: 連結財務諸表・報告セグメント
+    as_of: FY2023〜FY2025
+    unit: ""
+    source: edinet-s100t3h4; edinet-s100xsg3
+    via: 有価証券報告書の会計方針・セグメント注記
+    note: FY2023 JGAAP、FY2024〜FY2025 IFRS。FY2023は旧5区分
   - id: recruit-employing-entity
     phase: recruit
     store: mdx

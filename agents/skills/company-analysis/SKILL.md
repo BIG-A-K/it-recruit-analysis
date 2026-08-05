@@ -124,6 +124,8 @@ IR用CSVから対象企業のID・主キー・年度・出典・業界・企業�
 
 外資系企業（日本法人と海外親会社が分かれる企業）は [references/foreign-companies.md](references/foreign-companies.md) の3層分離に従う。
 
+`companies.csv` / `company_industries.csv` / `company_relations.csv` / `company_annotations.csv` への行の追加・更新は、CSVを直接編集せず `uv run csv-upsert <table>` を使う（使い方は `docs/data/README.md`）。
+
 **完了条件**: 各主体の `company_id` と `company_relations.csv` の関係が決まっている。付与する業界がすべて既存 `industry_id` である。
 
 ### 5. 台帳を作成する
@@ -178,6 +180,7 @@ Taskを呼ぶ前に、この統括agentが起動対象のうち `done` でない
 
 - 検索結果のスニペット、記憶、概算を根拠にしない。
 - 評価・応募判断・投資判断をCSVへ保存しない。
+- `data/*.csv` をEdit・Writeツールやリダイレクトで直接編集しない。書き込みは `csv-upsert` と既存の正規化CLIだけを使う。
 - 企業・業界・IR出典を削除しない。削除やID変更が必要ならユーザーへ確認する。
 - `industries.csv` へ業界を新規追加しない。既存業界で分類できないときは、追加したい `industry_id`・名称・分類基準・該当企業を提示してユーザーの許可を求め、**承認を得てから**追加する。
 - 既存ページを更新するとき、ユーザーが移行を求めない限りページ全体を機械的に書き換えない。

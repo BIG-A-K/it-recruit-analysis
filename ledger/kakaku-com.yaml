@@ -18,22 +18,132 @@ focus: 両方
 created_at: 2026-08-05
 updated_at: 2026-08-05
 phases:
-  ir: in_progress
+  ir: done
   recruit: done
   segments: done
   article: pending
   verify: pending
 items:
-  - {id: ir-human-capital, phase: ir, store: ir_csv, topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
-  - {id: ir-revenue, phase: ir, store: ir_csv, topic: 売上高 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-operating-profit, phase: ir, store: ir_csv, topic: 営業利益 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-health, phase: ir, store: ir_csv, topic: 自己資本比率・流動資産・流動負債・当座資産, status: pending, value: "", subject: 連結, as_of: "", unit: percent・JPY, source: "", via: "", note: 当座資産の算定内訳をnoteへ}
-  - {id: ir-cash-flow, phase: ir, store: ir_csv, topic: 営業・投資・財務キャッシュフロー 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segment-kakaku-com, phase: ir, store: ir_csv, topic: 価格.com事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segment-tabelog, phase: ir, store: ir_csv, topic: 食べログ事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segment-kyujin-box, phase: ir, store: ir_csv, topic: 求人ボックス事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segment-incubation, phase: ir, store: ir_csv, topic: インキュベーション事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-disclosure-notes, phase: ir, store: ir_csv, topic: 比較上の注記, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csvの平均給与・平均年齢・平均勤続年数はFY2025-FY2026、employee_countはFY2024-FY2026。FY2024の平均3指標は有報で非開示
+    subject: 提出会社単体（平均指標）・連結（従業員数）
+    as_of: FY2024-FY2026
+    unit: JPY / years / persons
+    source: edinet-s100vyj6; edinet-s100ybgn
+    via: edinet-normalize S100VYJ6/S100YBGN
+    note: FY2024平均給与・年齢・勤続は公式法定資料で非開示
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高 3期以上
+    status: done
+    value: metrics.csvのrevenue FY2024=66928000000、FY2025=78435000000、FY2026=94127000000
+    subject: 連結
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100vyj6; edinet-s100ybgn
+    via: edinet-normalize
+    note: ""
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csvのoperating_profit FY2024=25819000000、FY2025=29293000000、FY2026=27243000000
+    subject: 連結
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100vyj6; edinet-s100ybgn
+    via: edinet-normalize
+    note: IFRS営業利益
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csvのequity_ratio・current_assets・current_liabilities・quick_assets各FY2024-FY2026
+    subject: 連結
+    as_of: 2024-03-31〜2026-03-31
+    unit: percent / JPY
+    source: edinet-s100vyj6; edinet-s100ybgn
+    via: edinet-normalize、quick-assetsを構成科目から再計算
+    note: quick_assets=現金及び現金同等物＋営業債権及びその他の債権＋その他の金融資産。FY2024 49952000000、FY2025 64466000000、FY2026 65229000000
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csvのoperating_cf/investing_cf/financing_cf各FY2024-FY2026、計9行
+    subject: 連結
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100vyj6; edinet-s100ybgn
+    via: edinet-normalize
+    note: ""
+  - id: ir-segment-kakaku-com
+    phase: ir
+    store: ir_csv
+    topic: 価格.com事業の年度別売上・利益
+    status: done
+    value: segments.csvの価格.com事業 FY2024-FY2026 3行
+    subject: 連結報告セグメント
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100vyj6; edinet-s100ybgn
+    via: edinet-normalize
+    note: ""
+  - id: ir-segment-tabelog
+    phase: ir
+    store: ir_csv
+    topic: 食べログ事業の年度別売上・利益
+    status: done
+    value: segments.csvの食べログ事業 FY2024-FY2026 3行
+    subject: 連結報告セグメント
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100vyj6; edinet-s100ybgn
+    via: edinet-normalize
+    note: ""
+  - id: ir-segment-kyujin-box
+    phase: ir
+    store: ir_csv
+    topic: 求人ボックス事業の年度別売上・利益
+    status: done
+    value: segments.csvの求人ボックス事業 FY2024-FY2026 3行
+    subject: 連結報告セグメント
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100vyj6; edinet-s100ybgn
+    via: edinet-normalize
+    note: ""
+  - id: ir-segment-incubation
+    phase: ir
+    store: ir_csv
+    topic: インキュベーション事業の年度別売上・利益
+    status: done
+    value: segments.csvのインキュベーション事業 FY2024-FY2026 3行
+    subject: 連結報告セグメント
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100vyj6; edinet-s100ybgn
+    via: edinet-normalize
+    note: FY2026有報で表示区分変更・比較年度も組替え
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 比較上の注記
+    status: done
+    value: company_annotations.csvのKakaku.com注記5行（4追加・1更新）
+    subject: 株式会社カカクコム
+    as_of: 2026-08-05
+    unit: text
+    source: edinet-s100vyj6; edinet-s100ybgn
+    via: csv-upsert company_annotations
+    note: IFRS、人的資本範囲、quick_assets算定、現行報告セグメント名
   - id: recruit-employing-entity
     phase: recruit
     store: mdx

@@ -10,7 +10,7 @@ company_boundary:
   fiscal_year_end: 3月末日
   accounting_standard: JGAAP
   currency: JPY
-  reporting_segments: ライブ配信・スポーツ・ライブコマース等（セグメント再編歴あり）
+  reporting_segments: デジタルエンターテインメント, スポーツ, ライフスタイル, 投資
   company_relations: []
   note: 旧株式会社ミクシィ→2014年に持株会社化、2018年に商号変更。採用主体と開示主体は同一
 fiscal_year: 2026
@@ -18,19 +18,96 @@ focus: 両方
 created_at: 2026-08-05
 updated_at: 2026-08-05
 phases:
-  ir: in_progress
+  ir: done
   recruit: done
   segments: done
-  article: pending
-  verify: pending
+  article: done
+  verify: done
 items:
-  - {id: ir-human-capital, phase: ir, store: ir_csv, topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
-  - {id: ir-revenue, phase: ir, store: ir_csv, topic: 売上高 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-operating-profit, phase: ir, store: ir_csv, topic: 営業利益 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-health, phase: ir, store: ir_csv, topic: 自己資本比率・流動資産・流動負債・当座資産, status: pending, value: "", subject: 連結, as_of: "", unit: percent・JPY, source: "", via: "", note: 当座資産の算定内訳をnoteへ}
-  - {id: ir-cash-flow, phase: ir, store: ir_csv, topic: 営業・投資・財務キャッシュフロー 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segments, phase: ir, store: ir_csv, topic: 各報告セグメントの年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: "セグメント再編歴あり。workerが直近3期の区分を確定"}
-  - {id: ir-disclosure-notes, phase: ir, store: ir_csv, topic: セグメント再編・比較上の注記, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csvの平均3指標とemployee_count各FY2024-FY2026、計12行
+    subject: 平均3指標は提出会社単体、従業員数は連結
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY / years / persons
+    source: edinet-s100tr2t; edinet-s100w37z; edinet-s100ye1d
+    via: edinet-fetch・edinet-normalize
+    note: 各指標3期
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高 3期以上
+    status: done
+    value: metrics.csvのrevenue FY2024-FY2026 3行
+    subject: 連結
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ye1d
+    via: edinet-fetch・edinet-normalize
+    note: Japan GAAP
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csvのoperating_profit FY2024-FY2026 3行
+    subject: 連結
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100w37z; edinet-s100ye1d
+    via: edinet-normalize
+    note: jppfs_cor:OperatingIncome、Japan GAAP
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csvのequity_ratio・current_assets・current_liabilities・quick_assets各FY2024-FY2026、計12行
+    subject: 連結
+    as_of: 2024-03-31〜2026-03-31
+    unit: percent / JPY
+    source: edinet-s100w37z; edinet-s100ye1d
+    via: edinet-normalize
+    note: quick_assetsは現金及び預金＋受取手形及び売掛金＋営業投資有価証券＋有価証券。FY2024 142757000000、FY2025 159856000000、FY2026 162122000000
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csvのoperating_cf・investing_cf・financing_cf各FY2024-FY2026、計9行
+    subject: 連結
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ye1d
+    via: edinet-normalize
+    note: 派生net_cfは保存しない
+  - id: ir-segments
+    phase: ir
+    store: ir_csv
+    topic: 各報告セグメントの年度別売上・利益
+    status: done
+    value: segments.csvの4報告セグメント×3年度、計12行
+    subject: 連結報告セグメント
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100tr2t; edinet-s100w37z; edinet-s100ye1d
+    via: edinet-normalize後に公式XBRL値を確認
+    note: 現行区分はデジタルエンターテインメント、スポーツ、ライフスタイル、投資。利益指標はEBITDA
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: セグメント再編・比較上の注記
+    status: done
+    value: company_annotations.csvに組織区分・会計基準・決算期変更の3注記
+    subject: 株式会社MIXI連結
+    as_of: 2026-03-31
+    unit: ""
+    source: edinet-s100ye1d
+    via: FY2026有価証券報告書の会計基準・セグメント・連結子会社注記
+    note: 投資事業に関する会計区分変更、PointsBet取得後の影響、ラブグラフ等の15ヶ月期間に注意
   - id: recruit-employing-entity
     phase: recruit
     store: mdx
@@ -124,30 +201,42 @@ items:
     subject: 株式会社MIXI
     as_of: 2026-08-05
     unit: ""
-    source: https://mixi.co.jp/about/; https://mixigroup-recruit.mixi.co.jp/about/philosophy/
-    via: 公式理念・採用価値観ページを確認
-    note: 公式表記を保持
+    source: mixi-official-corporate-about; mixi-recruit-corporate
+    via: 公式理念・採用価値観ページを本文へ引用
+    note: 記事へ公式表記を保持
   - id: article-company
     phase: article
     store: mdx
     topic: 会社紹介（設立経緯・規模）
     status: done
-    value: 1999年6月3日設立。前身はFind Job!運営の有限会社イー・マーキュリー、2004年SNS mixi開始、2006年株式会社ミクシィへ商号変更・マザーズ上場。2013年モンスターストライク、2019年チャリ・ロト等子会社化、2022年プライム移行、同年10月株式会社MIXIへ商号変更、2024年mixi2、2025年PointsBet子会社化。本社は東京都渋谷区渋谷スクランブルスクエア36階、連結正社員2,116名（2026年3月末）
+    value: 1999年6月3日設立。前身はFind Job!運営の有限会社イー・マーキュリー、2004年SNS mixi開始、2006年株式会社ミクシィへ商号変更・マザーズ上場。2013年モンスターストライク、2019年チャリ・ロト等子会社化、2022年プライム移行、同年10月株式会社MIXIへ商号変更、2024年mixi2、2025年PointsBet子会社化。本社は東京都渋谷区渋谷スクランブルスクエア36階、連結従業員2,116名（2026年3月末）
     subject: 株式会社MIXI
-    as_of: 2026-03-31（規模）・2026-08-05（確認）
+    as_of: 2026-03-31（規模）
     unit: ""
-    source: https://mixi.co.jp/company/profile/; https://mixi.co.jp/company/history/; https://mixi.co.jp/ir/individual/history/
-    via: 公式会社概要・沿革・IR沿革を確認
+    source: edinet-s100ye1d; mixi-official-corporate-about
+    via: FY2026有報・公式会社概要を本文へ集約
     note: 財務数値はmetrics.csvが正本
   - id: article-links
     phase: article
     store: mdx
     topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
     status: done
-    value: HP https://mixi.co.jp/、IR https://mixi.co.jp/ir/、有報一覧 https://mixi.co.jp/ir/docs/security_reports/、FY2026有報PDF https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YE1D.pdf、採用 https://mixigroup-recruit.mixi.co.jp/、新卒一覧 https://mixigroup-recruit.mixi.co.jp/jobs/?cats=new-graduate
+    value: HP/IR/有報3期（S100YE1D/S100W37Z/S100TR2T）/採用サイトトップ/新卒一覧/FAQ/福利厚生/働き方 をネスト構造で配置
     subject: 株式会社MIXI
     as_of: 2026-08-05
     unit: ""
-    source: https://mixi.co.jp/; https://mixi.co.jp/ir/docs/security_reports/; https://mixigroup-recruit.mixi.co.jp/
-    via: 公式コーポレート・IR・採用サイトを確認
-    note: 有報PDFは公式IR一覧とEDINET提出文書を併記
+    source: mixi-official-ir-securities; mixi-recruit-corporate; mixi-recruit-fresh-faq; mixi-recruit-job-housi-27
+    via: sources.csv へ recruit 系 source_id を新規追記
+    note: 有報は取得した全3期のAPI URLを併記
+  - id: article-segments-and-related
+    phase: article
+    store: mdx
+    topic: 事業内容（セグメント表）と関連企業（子会社表）
+    status: done
+    value: 4報告セグメントの事業内容表（デジタルエンターテインメント/スポーツ/ライフスタイル/投資）と、親会社なし・連結子会社32社・持分法適用関連会社4社の関連企業表を配置。テンプレート外の旧見出し（主な事業領域/事業とサービスの組み合わせ/サービス開発の進め方）を廃止
+    subject: 株式会社MIXI連結（FY2026有報）
+    as_of: 2026-03-31
+    unit: ""
+    source: edinet-s100ye1d
+    via: DescriptionOfBusinessTextBlock/OverviewOfAffiliatedEntitiesTextBlock/NotesSegmentInformationEtc から抽出
+    note: PointsBet取得とラブグラフ決算日変更の2点を:::warnで注記

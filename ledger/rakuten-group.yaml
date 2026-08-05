@@ -6,34 +6,144 @@ company_boundary:
   reporting_segment_company_id: rakuten-group
   legal_name: 楽天グループ株式会社
   securities_code: "4755"
-  edinet_code: ""
+  edinet_code: E05080
   fiscal_year_end: 12月末日
-  accounting_standard: JGAAP
+  accounting_standard: IFRS
   currency: JPY
-  reporting_segments: インターネットサービス, 金融科技（FinTech）, モバイル, その他（施設運営等）
+  reporting_segments: インターネットサービス, フィンテック, モバイル
   company_relations: []
   note: 採用主体と開示主体は同一（楽天グループ株式会社）。楽天銀行・楽天証券・楽天モバイルインフラ等は別上場法人だが、採用は親会社経由が主流。連結範囲に注意
-fiscal_year: 2024
+fiscal_year: 2025
 focus: 両方
 created_at: 2026-08-05
 updated_at: 2026-08-05
 phases:
-  ir: in_progress
+  ir: done
   recruit: in_progress
   segments: in_progress
   article: pending
   verify: pending
 items:
-  - {id: ir-human-capital, phase: ir, store: ir_csv, topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "EDINETコードをworkerが確定"}
-  - {id: ir-revenue, phase: ir, store: ir_csv, topic: 売上収益 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-operating-profit, phase: ir, store: ir_csv, topic: 営業利益 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: "モバイル事業の赤字拡大の歴史あり"}
-  - {id: ir-health, phase: ir, store: ir_csv, topic: 自己資本比率・流動資産・流動負債・当座資産, status: pending, value: "", subject: 連結, as_of: "", unit: percent・JPY, source: "", via: "", note: 当座資産の算定内訳をnoteへ}
-  - {id: ir-cash-flow, phase: ir, store: ir_csv, topic: 営業・投資・財務キャッシュフロー 3期以上, status: pending, value: "", subject: 連結, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segment-internet-services, phase: ir, store: ir_csv, topic: インターネットサービス事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segment-fintech, phase: ir, store: ir_csv, topic: 金融科技事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segment-mobile, phase: ir, store: ir_csv, topic: モバイル事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-segment-others, phase: ir, store: ir_csv, topic: その他事業の年度別売上・利益, status: pending, value: "", subject: 連結報告セグメント, as_of: "", unit: JPY, source: "", via: "", note: ""}
-  - {id: ir-disclosure-notes, phase: ir, store: ir_csv, topic: モバイル基地局売却・会計基準・比較上の注記, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "楽天モバイルインフラ投資法人への基地局売却、楽天銀行・楽天証券の上場等の重要事象"}
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csvの人的資本4指標（2023〜2025年度、12行）
+    subject: 平均3指標は提出会社単体、従業員数は連結
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY / years / persons
+    source: edinet-s100t4x3; edinet-s100vhz5; edinet-s100xtnw
+    via: EDINET CLI、FY2023は過年度取得
+    note: ""
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上収益 3期以上
+    status: done
+    value: metrics.csvのrevenue（2023〜2025年度、3行）
+    subject: 連結
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t4x3; edinet-s100xtnw
+    via: EDINET CLI
+    note: IFRS
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csvのoperating_profit（2023〜2025年度、3行）
+    subject: 連結
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t4x3; edinet-s100xtnw
+    via: EDINET CLI
+    note: IFRS営業利益
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: equity_ratioは3行reported、current_assets/current_liabilities/quick_assetsは各3行not_disclosed
+    subject: 連結
+    as_of: 2023-12-31〜2025-12-31
+    unit: percent / JPY
+    source: edinet-s100t4x3; edinet-s100vhz5; edinet-s100xtnw
+    via: EDINET原本の連結財政状態計算書確認
+    note: IFRS性質別表示のため流動資産・流動負債合計を開示せず、当座資産を推定しない
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csvのoperating_cf・investing_cf・financing_cf（3指標×3年度、9行）
+    subject: 連結
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t4x3; edinet-s100xtnw
+    via: EDINET CLI
+    note: IFRS
+  - id: ir-segment-internet-services
+    phase: ir
+    store: ir_csv
+    topic: インターネットサービス事業の年度別売上・利益
+    status: done
+    value: segments.csvのinternet-services（2023〜2025年度、3行）
+    subject: 連結報告セグメント
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100vhz5; edinet-s100xtnw
+    via: EDINET有報セグメント注記
+    note: セグメント損益はモバイルエコシステム貢献考慮後のNon-GAAP営業利益ベース
+  - id: ir-segment-fintech
+    phase: ir
+    store: ir_csv
+    topic: 金融科技事業の年度別売上・利益
+    status: done
+    value: segments.csvのfintech（2023〜2025年度、3行）
+    subject: 連結報告セグメント
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100vhz5; edinet-s100xtnw
+    via: EDINET有報セグメント注記
+    note: セグメント損益はモバイルエコシステム貢献考慮後のNon-GAAP営業利益ベース
+  - id: ir-segment-mobile
+    phase: ir
+    store: ir_csv
+    topic: モバイル事業の年度別売上・利益
+    status: done
+    value: segments.csvのmobile（2023〜2025年度、3行）
+    subject: 連結報告セグメント
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100vhz5; edinet-s100xtnw
+    via: EDINET有報セグメント注記
+    note: セグメント損益はモバイルエコシステム貢献考慮後のNon-GAAP営業利益ベース
+  - id: ir-segment-others
+    phase: ir
+    store: ir_csv
+    topic: その他事業の年度別売上・利益
+    status: not_disclosed
+    value: その他の報告セグメントはなく、segments.csvにその他行なし
+    subject: 連結報告セグメント
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t4x3; edinet-s100vhz5; edinet-s100xtnw
+    via: FY2023〜FY2025有価証券報告書のセグメント注記
+    note: 3報告セグメントのみ開示。ゼロ行は追加しない
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: モバイル基地局売却・会計基準・比較上の注記
+    status: done
+    value: company_annotations.csvに会計基準・セグメント組替え・基地局売却開示の3注記
+    subject: 連結IR注記
+    as_of: 2023〜2025年度
+    unit: ""
+    source: edinet-s100t4x3; edinet-s100vhz5; edinet-s100xtnw
+    via: EDINET有価証券報告書・公式IR PDF
+    note: IFRS、FY2023セグメント損益の修正再表示、通信設備のセール・アンド・リースバック
   - {id: recruit-employing-entity, phase: recruit, store: mdx, topic: 採用主体・募集年度・確認日・募集ページURL, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "楽天グループ株式会社が採用の正本"}
   - {id: recruit-jobs, phase: recruit, store: mdx, topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "エンジニア・ビジネス等多職種"}
   - {id: recruit-salary, phase: recruit, store: mdx, topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: ""}

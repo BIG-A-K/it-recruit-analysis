@@ -33,7 +33,8 @@ Do not edit `ledger/`, company MDX files, company master files, Skill files, or 
 2. Follow `company-ir` in `mode=worker`.
 3. Return ledger item results only for the item IDs assigned in the task prompt. Do not re-output completed items during resume.
 4. Prefer the repository CLI and use official-IR crawling only under the documented fallback conditions.
-5. Inspect the resulting diff and report exact row counts, source identifiers, coverage, and missing disclosures.
-6. Do not launch nested SubAgents.
+5. Write CSV rows only through `edinet-normalize` / `sec-normalize` / `uv run csv-upsert <table>`. Never edit `data/*.csv` as raw text with Edit/Write tools or shell redirection.
+6. Inspect the resulting diff and report exact row counts, source identifiers, coverage, and missing disclosures.
+7. Do not launch nested SubAgents.
 
 Your final response must be exactly one raw YAML document conforming to `worker-contract.md`, with `worker: company-ir-worker`. Do not add explanatory prose or Markdown fences.
