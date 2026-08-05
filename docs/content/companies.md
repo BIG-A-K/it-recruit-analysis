@@ -22,19 +22,19 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 表示したい位置へ、通常のMarkdownを挿入します。
 
 ```mdx
-<BusinessSegments companyId={frontmatter.companyId} />
-
 <CompanyProse>
 
-## この会社を見るときのポイント
+## サービス例
 
-ここには企業固有の解説を自由に書けます。
+セグメントごとの事業内容や具体的なサービスを説明します。
 
 - 箇条書き
 - [関連ページへのリンク](https://example.com/)
 - Markdownの表
 
 </CompanyProse>
+
+<BusinessSegments companyId={frontmatter.companyId} />
 ```
 
 `CompanyProse`の開始タグ直後と終了タグ直前には空行を入れます。
@@ -46,7 +46,7 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 | `CompanyOverview` | 社名、分類、基本情報 |
 | `CompanyMessage` | 理念・ミッション・企業メッセージ |
 | `EmploymentOverview` | 給与、勤続年数、年齢、勤務地 |
-| `BusinessSegments` | 事業概要、事業セグメント |
+| `BusinessSegments` | 最新年度のセグメント別売上・利益。事業説明は直前のMDX本文へ書く |
 | `RecruitmentInfo` | レガシー採用情報（既存ページ互換用。新規記事には追加しない） |
 | `HealthMetrics` | 流動資産・負債など |
 | `FinancialHistory` | 資産状況・IR推移の表 |
@@ -59,12 +59,13 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
 `data/companies.csv`へ追加した場合は、同じ`company_id`のMDXも作成します。
 `RecruitmentInfo`はレガシーCSV表示用のため、新しい記事では使わず、
 採用情報を`CompanyProse`内のMarkdown本文へ記述します。
+セグメントの説明は`CompanyProse`へ一度だけ書き、その直後に`BusinessSegments`を置きます。
 
 ## データがない企業
 
 コンポーネントは、対象企業に表示できるデータがある場合だけMDXへ記述します。
 非上場企業で法定開示の財務・雇用データがない場合、空欄表示のために
-`EmploymentOverview`、`HealthMetrics`、`FinancialHistory`、
+`EmploymentOverview`、`BusinessSegments`、`HealthMetrics`、`FinancialHistory`、
 `MetricTrends`を置かないでください。
 
 Sakana AIとPreferred Networksでは、採用・事業情報をMarkdown本文で記述し、

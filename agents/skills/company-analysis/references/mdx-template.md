@@ -40,14 +40,14 @@ import CompanySources from "../../components/company/CompanySources.astro";
 ### 新卒
 <!-- 採用主体・確認日・職種別の募集要項表 -->
 
+## サービス例
+<!-- セグメント別のサービス表 -->
+
 </CompanyProse>
 
 <BusinessSegments companyId={frontmatter.companyId} />
 
 <CompanyProse>
-
-## 業務内容
-<!-- セグメント別のサービス表 -->
 
 ## 関連企業
 <!-- 親会社・主な子会社の表 -->
@@ -73,7 +73,8 @@ import CompanySources from "../../components/company/CompanySources.astro";
 | 企業理念 | 本文 | ミッション・ビジョン・スローガンを公式表記のまま引用し、設立経緯と規模を含む会社紹介を2〜3文。引用元URLと確認日を近くに置く |
 | サイトリンク | 本文 `## サイト` | HP、IR、有価証券報告書（**取得した全年度のPDF**）、採用情報、新卒採用をネストした箇条書きで示す |
 | 採用情報・新卒情報 | 本文 `## 採用情報` / `### 新卒` | 採用主体、確認日、職種ごとの勤務地・初任給・固定残業・標準年収の表、選考区分、賞与や超過手当の注記 |
-| 事業内容 | `BusinessSegments` + 本文 `## サービス例` | セグメント別売上はCSV、区分ごとの具体的サービス名は本文の表 |
+| 事業説明 | 本文 `## サービス例` | 報告セグメントごとの事業内容・具体的サービス名を表にし、`BusinessSegments` の直前に置く |
+| セグメント別売上 | `BusinessSegments` | `segments.csv` の最新年度の売上・利益だけを表示し、事業説明を重複させない |
 | 関連企業 | 本文 `## 関連企業` | 親会社・主な子会社を具体名で。事業内容と対応する報告セグメントを併記 |
 | 健全性指標 | `HealthMetrics` | `current_assets`、`current_liabilities`、`quick_assets` を最新期以上 |
 | 資産状況 | `FinancialHistory` | 売上・利益・CF・自己資本比率を3期以上 |
@@ -124,11 +125,11 @@ import CompanySources from "../../components/company/CompanySources.astro";
 但し書き・補足は `:::info`、読者の判断に影響する注意（開示主体と採用主体の違い、会計基準・通貨・連結範囲の差、単純比較できない条件）は `:::warn` に入れる。通常の段落や `####` 見出しで済ませない。
 利用できるディレクティブは `info`、`warning`、`danger` とその別名（`site/src/lib/remark-admonition.mjs`）。未対応名はビルド時に警告になる。
 
-`## サービス例` はセグメント区分を行にし、サービス名を列挙する。過年度資料に基づく記述には、資料の年度と、終了・改称したサービスの注記を `:::info` で添える。
+`## サービス例` はセグメント区分を行にし、サービス名を列挙する。直後に `BusinessSegments` を置き、その後に `## 関連企業` を置く。過年度資料に基づく記述には、資料の年度と、終了・改称したサービスの注記を `:::info` で添える。
 中身のないセル（`| その他 | その他 |`）を残さない。
 
 ## 情報が足りないとき
 
 - 公式採用ページに待遇の記載がない: 表を作らず、確認できた職種区分と選考区分を文章で書き、募集要項の所在（各職種ページ末尾など）を示す。仮の数値を置かない。
-- セグメント開示がない非上場企業: `EmploymentOverview`、`HealthMetrics`、`FinancialHistory`、`MetricTrends` を置かず、事業説明を本文へ書く。
+- セグメント開示がない非上場企業: `EmploymentOverview`、`BusinessSegments`、`HealthMetrics`、`FinancialHistory`、`MetricTrends` を置かず、事業説明を本文へ書く。
 - 親会社・子会社がない: `## 関連企業` を見出しごと省く。空の表を残さない。
