@@ -1,0 +1,104 @@
+---
+name: company-article
+description: 調査台帳とCSVから企業MDX記事（site/src/pages/companies/<company_id>.mdx）を執筆し、検算・テスト・ビルドまで検証する。「企業記事を書いて」「MDXを更新して」「記事を検証して」で使う。
+argument-hint: "company_id [project-root=<path>] [validate=<command>]"
+---
+
+# 企業記事の執筆と検証
+
+調査台帳の `article` / `verify` フェーズを実行する。`ir` / `recruit` / `segments` の完了が前提。
+記事は調査済みの台帳とCSVから書き、執筆しながら新たにWeb調査を始めない。台帳の扱いは [ledgerの規約](../company-analysis/references/ledger.md) に従う。
+
+## 入力
+
+| 引数 | 未指定時 |
+| --- | --- |
+| `company_id` または企業名（必須） | — |
+| `project-root=<path>` | `ledger/` と `site/src/pages/companies/` を持つ現在地、次に `../it-recruit` |
+| `validate=<command>` | 標準検証のみ |
+
+## 事前に読む資料
+
+- `docs/content/companies.md` — MDXの配置とコンポーネント
+- [references/mdx-template.md](references/mdx-template.md) — セクション順・各要素の要件・書式
+- `site/src/pages/companies/ly-corporation.mdx` — **構成と情報密度の実例**（書式の細部は模倣せず、テンプレートを正とする）
+
+## ワークフロー
+
+### 1. 台帳と前提を確認する
+
+`ledger/<company_id>.yaml` を読む。`phases` の `ir` / `recruit` / `segments` に `done` でないものがあれば、不足フェーズを報告して停止する（ユーザーが明示したときだけ続行する）。`phases.article` を `in_progress` にする。
+
+**完了条件**: 前提の判断を報告し、セクションの並び順と埋めるべき要素を列挙できる。
+
+### 2. 本文を書く
+
+パスは `site/src/pages/companies/<company_id>.mdx` に固定する。
+
+- `CompanyProse` とAstroコンポーネントを**交互に配置**する。proseを1ブロックに固め、コンポーネントを末尾へまとめない。
+- テンプレートにない見出しを追加しない。
+- 台帳に記録された公式資料由来の内容だけを書く。**読者への助言（「〜すると理解が深まります」等）、評価、推測を書かない。**
+- IR数値と年度別セグメント表を本文へ転記せず、対応するコンポーネントで表示する。
+- セグメントごとの事業・サービスを `CompanyProse` で説明し、その直後に売上・利益だけを表示する `SegmentRevenue` を置く。`SegmentRevenue` の後に `## 関連企業` を置く。
+- 公式URLと確認日を、該当する記述の近くに置く。
+
+**完了条件**: テンプレートの全セクションが配置され、セグメント説明、`SegmentRevenue`、関連企業がこの順に並び、各セクションに公式資料由来の内容がある。省いたセクションは理由を記録している。
+
+### 3. 記事の充足を確認する
+
+[references/checklist.md](references/checklist.md) の「記事の充足」を1項目ずつ確認する。特に次の3つは既定で抜け落ちる。
+
+- **採用セクション**: 職種×勤務地×待遇の表に1行以上ある。勤務地または待遇が全職種共通なら表の近くに適用範囲とともに書く。公式に記載がない場合だけ、確認できた職種区分と募集要項の所在を文章で書き、その旨を報告する。リンクの羅列と「公式ページで確認してください」で終えない。
+- **事業セクション**: セグメントの説明を本文に一度だけ書き、その直後に `SegmentRevenue` を置く。セグメント別売上が開示されていない企業では `SegmentRevenue` を置かない。
+- **`## 関連企業`**: 親会社・主な子会社を具体名で埋める。存在しない企業では見出しごと省き、報告する。
+
+取得できなかった要素は、空の表や仮の見出しとして残さず、省いて報告する。
+
+**完了条件**: チェックリストの全項目が「満たした」か「省略理由あり」のどちらかになっている。
+
+### 4. 検算する
+
+`phases.verify` を `in_progress` にする。
+IR値の年度・単位・符号・連結単体・会計基準を確認し、比率を元数値から再計算する。
+採用情報の対象年度・採用主体・確認日と、各職種に対応する勤務地を確認する。
+検算項目は [references/checklist.md](references/checklist.md) の「検算」に従う。
+
+**完了条件**: 検算項目をすべて通過している。
+
+### 5. 重複とビルドを確認する
+
+IR用CSVの主キー、`company_id`、`source_id`、MDXパスが一意か確認する。
+採用情報をレガシーCSVへ書いていないこと、`net_cf` などサイトが算出する派生値をCSVへ保存していないことを確認する。
+
+```bash
+uv run pytest
+npm --prefix site run build
+```
+
+`validate` の指定があれば追加実行する。ビルド後に生成ページを開き、空欄の指標タイルと空の棒グラフが残っていないか確かめる。
+
+**完了条件**: テストとビルドが通り、生成ページに空欄・空グラフがない。
+
+### 6. 台帳を確定する
+
+`article` の全行を確定し、`phases.article` と `phases.verify` を `done` にして `updated_at` を更新する。
+
+**完了条件**: 台帳の全フェーズの状態が実態と一致している。
+
+## やらないこと
+
+- 新しいMDXへ `FinancialData` を追加しない（レガシー互換用）。`FinancialHistory` と `MetricTrends` を並べる。
+- 既存ページを更新するとき、ユーザーが移行を求めない限りページ全体を機械的に書き換えない。
+- `yukijya_doh/src/content/recruit/` へ同じ記事を同時生成しない。
+- 空の表・仮の見出しを残さない。
+
+## 出力
+
+- 更新したMDXのパスと、要素ごとの充足状況・省略理由
+- 検算・テスト・ビルドの結果
+- 台帳の更新内容
+
+## 参照リソース
+
+- [references/mdx-template.md](references/mdx-template.md): MDXのセクション順・各要素の要件・棒グラフ用キー・書式。
+- [references/checklist.md](references/checklist.md): 検算と記事の充足のチェックリスト。

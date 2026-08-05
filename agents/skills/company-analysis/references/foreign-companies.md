@@ -40,7 +40,7 @@ uv run --env-file .env sec-fetch <disclosure_company_id> \
   --form 10-K
 ```
 
-検索期間はSKILL.mdフェーズ2の規則で決める。通常は期間内の最新年次報告書だけを処理し、`--all` はユーザーが明示したときだけ追加する。
+検索期間は `company-ir` のワークフロー手順2の規則で決める。通常は期間内の最新年次報告書だけを処理し、`--all` はユーザーが明示したときだけ追加する。
 
 `sec-fetch` は原本を `data/raw/sec/<CIK>/<accession-number>/` に保存し、アクセッション番号を使って主キーupsertする。同じ原本が保存済みでも再ダウンロードせず、正規化とupsertは再実行する。
 

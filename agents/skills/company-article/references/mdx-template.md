@@ -40,7 +40,7 @@ import CompanySources from "../../components/company/CompanySources.astro";
 ### 新卒
 <!-- 採用主体・確認日・職種別の募集要項表 -->
 
-## サービス例
+## 業務内容
 <!-- セグメント別のサービス表 -->
 
 </CompanyProse>
