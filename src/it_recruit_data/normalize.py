@@ -74,6 +74,7 @@ JGAAP_COMPANY_IDS = frozenset(
         "sumitomo-heavy-industries",
         "mitsui-e-and-s",
         "kanadevia",
+        "toto",
     }
 )
 
@@ -403,6 +404,21 @@ QUICK_ASSET_RULES = {
             "jppfs_cor:ShortTermInvestmentSecurities",
         ),
         "JGAAP",
+    ),
+    "toto": QuickAssetRule(
+        (
+            "jppfs_cor:CashAndDeposits",
+            "jppfs_cor:NotesAndAccountsReceivableTradeAndContractAssets",
+        ),
+        "JGAAP",
+    ),
+    "kyocera": QuickAssetRule(
+        (
+            "jpigp_cor:CashAndCashEquivalentsIFRS",
+            "jpigp_cor:TradeAndOtherReceivablesCAIFRS",
+            "jpigp_cor:OtherFinancialAssetsCAIFRS",
+        ),
+        "IFRS",
     ),
 }
 
@@ -1330,6 +1346,56 @@ COMPANY_SEGMENTS = {
             "LifescienceReportableSegmentMember": (
                 "lifescience",
                 "ライフサイエンス",
+            ),
+        },
+    },
+    "toto": {
+        "revenue_element_id": "jpcrp_cor:RevenuesFromExternalCustomers",
+        "profit_element_id": "jppfs_cor:OperatingIncome",
+        "profit_measure": "営業利益",
+        "members": {
+            "JapanHousingEquipmentBusinessReportableSegmentMember": (
+                "japan-housing-equipment",
+                "日本住設事業",
+            ),
+            "AmericasReportableSegmentMember": (
+                "americas",
+                "米州事業",
+            ),
+            "AsiaOceaniaReportableSegmentMember": (
+                "asia-oceania",
+                "アジア・オセアニア事業",
+            ),
+            "EuropeReportableSegmentMember": (
+                "europe",
+                "欧州事業",
+            ),
+            "MainlandChinaBusinessReportableSegmentMember": (
+                "mainland-china",
+                "中国大陸事業",
+            ),
+            "AdvancedCeramicsBusinessReportableSegmentMember": (
+                "ceramics",
+                "セラミック事業",
+            ),
+        },
+    },
+    "kyocera": {
+        "revenue_element_id": "jpigp_cor:SalesToExternalCustomersIFRS",
+        "profit_element_id": "jpigp_cor:SegmentProfitLossIFRS",
+        "profit_measure": "事業利益",
+        "members": {
+            "CoreComponentsBusinessReportableSegmentMember": (
+                "core-components",
+                "コアコンポーネント",
+            ),
+            "ElectronicComponentsBusinessReportableSegmentMember": (
+                "electronic-components",
+                "電子部品",
+            ),
+            "SolutionsBusinessReportableSegmentMember": (
+                "solutions",
+                "ソリューション",
             ),
         },
     },

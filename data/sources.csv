@@ -1,8 +1,8 @@
 source_id,source_type,title,url,document_id,published_at,retrieved_at,issuer
 edinet-s100ydhl,statutory_filing,有価証券報告書－第66期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YDHL,S100YDHL,2026-06-19,2026-07-31,株式会社リクルートホールディングス
-edinet-s100ybxd,statutory_filing,有価証券報告書－第31期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YBXD,S100YBXD,2026-06-18,2026-07-31,ＬＩＮＥヤフー株式会社
+edinet-s100ybxd,statutory_filing,有価証券報告書－第31期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YBXD,S100YBXD,2026-06-18,2026-08-05,ＬＩＮＥヤフー株式会社
 edinet-s100tm4a,statutory_filing,有価証券報告書－第29期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TM4A,S100TM4A,2024-06-17,2026-07-31,ＬＩＮＥヤフー株式会社
-edinet-s100wqdw,statutory_filing,有価証券報告書－第13期(2024/07/01－2025/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100WQDW,S100WQDW,2025-09-24,2026-07-31,株式会社メルカリ
+edinet-s100wqdw,statutory_filing,有価証券報告書－第13期(2024/07/01－2025/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100WQDW,S100WQDW,2025-09-24,2026-08-05,株式会社メルカリ
 edinet-s100xcu9,statutory_filing,有価証券報告書－第28期(2024/10/01－2025/09/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100XCU9,S100XCU9,2025-12-24,2026-07-31,株式会社サイバーエージェント
 edinet-s100yldv,statutory_filing,有価証券報告書－第28期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YLDV,S100YLDV,2026-06-26,2026-08-02,株式会社ディー・エヌ・エー
 edinet-s100vwr9,statutory_filing,有価証券報告書－第37期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VWR9,S100VWR9,2025-06-20,2026-07-31,株式会社ＮＴＴデータグループ
@@ -110,3 +110,10 @@ sumco-official-securities-library,financial_report,有価証券報告書（公�
 resonac-official-securities-library,financial_report,有価証券報告書（公式IRライブラリ）,https://www.resonac.com/jp/ir/library/financial.html,,2026-03-25,2026-08-02,株式会社レゾナック・ホールディングス
 agc-official-securities-library,financial_report,有価証券報告書（公式IRライブラリ）,https://www.agc.com/ir/library/yu_report/index.html,,2026-03-27,2026-08-02,ＡＧＣ株式会社
 stella-chemifa-official-securities-library,financial_report,有価証券報告書（公式IRライブラリ）,https://www.stella-chemifa.co.jp/ir/securities/,,2026-06-26,2026-08-02,ステラケミファ株式会社
+edinet-s100yc72,statutory_filing,有価証券報告書－第160期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YC72,S100YC72,2026-06-16,2026-08-05,ＴＯＴＯ株式会社
+edinet-s100yf47,statutory_filing,有価証券報告書－第72期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YF47,S100YF47,2026-06-19,2026-08-05,京セラ株式会社
+toshiba-financial-2025,financial_report,2025年度決算,https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2025q4.pdf,,2026-05-15,2026-08-05,株式会社東芝
+toshiba-financial-2024,financial_report,2024年度決算,https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2024q4.pdf,,2025-05-15,2026-08-05,株式会社東芝
+toshiba-financial-2023,financial_report,2023年度連結決算,https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2023q4.pdf,,2024-05-16,2026-08-05,株式会社東芝
+toshiba-corporate-profile,corporate,基本データ,https://www.global.toshiba/jp/outline/corporate/profile.html,,,2026-08-05,株式会社東芝
+edinet-s100rx8v,statutory_filing,有価証券報告書－第11期(2022/07/01－2023/06/30),https://api.edinet-fsa.go.jp/api/v2/documents/S100RX8V,S100RX8V,2023-09-28,2026-08-05,株式会社メルカリ

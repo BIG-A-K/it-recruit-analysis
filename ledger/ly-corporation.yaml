@@ -1,0 +1,319 @@
+company_id: ly-corporation
+disclosure_company_id: ly-corporation
+company_boundary:
+  adoption_company_id: ly-corporation
+  disclosure_company_id: ly-corporation
+  reporting_segment_company_id: ly-corporation
+  company_relations: []
+  note: 公式の親会社・子会社一覧は記事へ記録したが、company_relations.csvへは有効開始日を確認できた関係だけを登録する規則により今回の確認日スナップショットからは追加していない
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-05
+updated_at: 2026-08-05
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数
+    status: done
+    value: metrics.csv の average_annual_salary・average_age・average_tenure（2026年度、各1行）と employee_count（2022〜2026年度、5行）
+    subject: LINEヤフー株式会社提出会社単体
+    as_of: 2026-03-31
+    unit: JPY・years・persons
+    source: edinet-s100ybxd
+    via: uv run --env-file .env edinet-fetch ly-corporation --start 2025-07-01 --end 2026-08-05 --interval 0.1
+    note: 平均年間給与・年齢・勤続年数は提出会社単体、従業員数は連結
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上収益 3期以上
+    status: done
+    value: metrics.csv の revenue（2022〜2026年度、5行）
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ybxd
+    via: uv run --env-file .env edinet-fetch ly-corporation --start 2025-07-01 --end 2026-08-05 --interval 0.1
+    note: ""
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csv の operating_profit（2022〜2026年度、5行）
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ybxd
+    via: uv run --env-file .env edinet-fetch ly-corporation --start 2025-07-01 --end 2026-08-05 --interval 0.1
+    note: ""
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csv の equity_ratio（2022〜2026年度）・current_assets・current_liabilities・quick_assets（2023〜2026年度）
+    subject: 連結
+    as_of: 2023-03-31〜2026-03-31
+    unit: percent・JPY
+    source: edinet-s100ybxd; edinet-s100tm4a
+    via: edinet-fetch と2026年3月期有価証券報告書の「流動・非流動の区分」照合
+    note: 2025〜2026年度のcurrent_assets・current_liabilitiesは連結財政状態計算書の12ヶ月以内区分、quick_assetsは同区分から棚卸資産を除外
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csv の operating_cf・investing_cf・financing_cf（2022〜2026年度、各5行）
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ybxd
+    via: uv run --env-file .env edinet-fetch ly-corporation --start 2025-07-01 --end 2026-08-05 --interval 0.1
+    note: ""
+  - id: ir-segment-media
+    phase: ir
+    store: ir_csv
+    topic: メディア事業の年度別売上・利益
+    status: done
+    value: segments.csv の media（2025・2026年度、各1行）
+    subject: 連結報告セグメント
+    as_of: 2025-03-31・2026-03-31
+    unit: JPY
+    source: edinet-s100ybxd
+    via: uv run --env-file .env edinet-fetch ly-corporation --start 2025-07-01 --end 2026-08-05 --interval 0.1
+    note: ""
+  - id: ir-segment-commerce
+    phase: ir
+    store: ir_csv
+    topic: コマース事業の年度別売上・利益
+    status: done
+    value: segments.csv の commerce（2025・2026年度、各1行）
+    subject: 連結報告セグメント
+    as_of: 2025-03-31・2026-03-31
+    unit: JPY
+    source: edinet-s100ybxd
+    via: uv run --env-file .env edinet-fetch ly-corporation --start 2025-07-01 --end 2026-08-05 --interval 0.1
+    note: ""
+  - id: ir-segment-strategy
+    phase: ir
+    store: ir_csv
+    topic: 戦略事業の年度別売上・利益
+    status: done
+    value: segments.csv の strategy（2025・2026年度、各1行）
+    subject: 連結報告セグメント
+    as_of: 2025-03-31・2026-03-31
+    unit: JPY
+    source: edinet-s100ybxd
+    via: uv run --env-file .env edinet-fetch ly-corporation --start 2025-07-01 --end 2026-08-05 --interval 0.1
+    note: ""
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 組織再編・会計基準・比較上の注記
+    status: done
+    value: metrics.csv・segments.csvの注記と2026年3月期有価証券報告書の組織再編記載
+    subject: LINEヤフー株式会社および連結グループ
+    as_of: 2026-03-31
+    unit: ""
+    source: edinet-s100ybxd
+    via: 2026年3月期有価証券報告書「セグメント情報」「売上収益」「企業結合」
+    note: 2026年3月期第3四半期の組織再編に伴いサービスをセグメント間で移管し、前期セグメント情報を修正再表示
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページ
+    status: done
+    value: LINEヤフー株式会社。2027年度新卒採用と新卒・第二新卒特別募集を確認
+    subject: LINEヤフー株式会社
+    as_of: 2026-08-05
+    unit: ""
+    source: https://www.lycorp.co.jp/ja/recruit/newgrads/
+    via: 公式新卒採用トップと職種別募集要項を確認
+    note: 2027年度通常新卒採用のエントリー受付は終了。AI Agent特別募集はTerm4の期限が2026-08-17
+  - id: recruit-engineer
+    phase: recruit
+    store: mdx
+    topic: エンジニア職の仕事内容・応募資格・選考区分・勤務地・待遇
+    status: done
+    value: Software Engineering Specialist（Server-side・Front-end・Client・Data Engineering・Machine Learning）、Infra Engineering Expert（System・Network・Cloud Platform）、Security Engineering Expert。2027年度入社可能者、学歴不問・正社員経験なし。勤務地は紀尾井町本社、オフィスとリモートの併用。選考はエントリー→コーディングテスト→面接→内定。Softwareは基準給与434000円/月（基礎給336044円＋固定時間外97956円）、標準年収6510000円以上。Infra・Securityは基準給与487000円/月（基礎給377377円＋固定時間外109623円）、標準年収7305000円以上
+    subject: エンジニア
+    as_of: 2026-08-05
+    unit: 円/月・円/年
+    source: https://www.lycorp.co.jp/ja/recruit/newgrads/engineer/; https://www.lycorp.co.jp/ja/recruit/newgrads/engineer/jd0001/; https://www.lycorp.co.jp/ja/recruit/newgrads/engineer/jd0002/; https://www.lycorp.co.jp/ja/recruit/newgrads/engineer/jd0003/
+    via: 公式エンジニア募集ページと3コースの募集要項を確認
+    note: 固定時間外手当は35時間相当。35時間超過分は別途支給。賞与は年2回を上限に会社・所属部署の業績を踏まえて支給。通常募集のエントリー受付は終了
+  - id: recruit-ai-agent
+    phase: recruit
+    store: mdx
+    topic: Agent iなどAI Agent開発の新卒・第二新卒特別募集
+    status: done
+    value: Agent iなどAI Agent関連のソフトウェアエンジニア。新卒または就業3年以内の第二新卒、2027年度中（4月または10月）に入社可能な方。初任勤務地は赤坂または紀尾井町、オフィスとリモートの併用。基準給与434000円/月（基礎給336044円＋固定時間外97956円）の例、標準年収6510000円以上の例で、経験・スキルに応じオファー額を設定。選考はエントリー→コーディングテスト→面接→内定
+    subject: ソフトウェアエンジニア
+    as_of: 2026-08-05
+    unit: 円/月・円/年
+    source: https://www.lycorp.co.jp/ja/recruit/additional-27/?page_from=ngtop_bnr
+    via: 公式特別募集ページを確認
+    note: Term4の応募期間は2026-07-27〜2026-08-17午前10時。給与上限なしの記載がある。35時間超過分は別途支給、賞与は年2回を上限に支給
+  - id: recruit-designer
+    phase: recruit
+    store: mdx
+    topic: デザイナー職の仕事内容・応募資格・選考区分・勤務地・待遇
+    status: not_disclosed
+    value: ""
+    subject: デザイナー
+    as_of: 2026-08-05
+    unit: ""
+    source: https://www.lycorp.co.jp/ja/recruit/newgrads/
+    via: 公式新卒採用トップの現行募集職種を確認
+    note: 現行ページの2027年度募集職種はエンジニア、ビジネスコンサルタント、プロダクトプランナーで、デザイナーの新卒募集要項は確認できなかった
+  - id: recruit-business-consultant
+    phase: recruit
+    store: mdx
+    topic: ビジネスコンサルタント職の仕事内容・応募資格・選考区分・勤務地・待遇
+    status: done
+    value: クライアント企業の事業成長を支援するコンサルティングセールス。2027年度入社可能者、学歴・学部・学科不問、高専生・専門学生可、正社員経験なし。勤務地は紀尾井町本社、大阪、福岡で、オフィスとリモートの併用。選考はエントリー→ES・SPI（Web）→複数回面接→内定。基準給与314000円/月（基礎給242459円＋固定時間外71541円）、標準年収4710000円以上
+    subject: ビジネスコンサルタント
+    as_of: 2026-08-05
+    unit: 円/月・円/年
+    source: https://www.lycorp.co.jp/ja/recruit/newgrads/business-consultant/
+    via: 公式ビジネスコンサルタント募集要項を確認
+    note: 固定時間外手当は35時間相当。35時間超過分は別途支給。賞与は年2回を上限に会社・所属部署の業績を踏まえて支給。通常募集のエントリー受付は終了
+  - id: recruit-product-planner
+    phase: recruit
+    store: mdx
+    topic: プロダクトプランナー職の仕事内容・応募資格・選考区分・勤務地・待遇
+    status: done
+    value: ユーザー調査・課題発見、新規機能・サービス企画、要件定義・UI/UX設計、開発ディレクション・プロジェクトマネジメント、AI活用を含むプロダクト企画。2027年度入社可能者、学歴・学部・学科不問、高専生・専門学生可、正社員経験なし。勤務地は紀尾井町本社、オフィスとリモートの併用。選考はエントリー→ES・SPI（Web）→複数回面接→内定。基準給与336000円/月（基礎給259616円＋固定時間外76384円）、標準年収5040000円以上
+    subject: プロダクトプランナー
+    as_of: 2026-08-05
+    unit: 円/月・円/年
+    source: https://www.lycorp.co.jp/ja/recruit/newgrads/product-planner/
+    via: 公式プロダクトプランナー募集要項を確認
+    note: 原則として内定時に中核事業への配属が確約される。固定時間外手当は35時間相当。35時間超過分は別途支給。賞与は年2回を上限に会社・所属部署の業績を踏まえて支給。通常募集のエントリー受付は終了
+  - id: recruit-data-analyst
+    phase: recruit
+    store: mdx
+    topic: データアナリスト職の仕事内容・応募資格・選考区分・勤務地・待遇
+    status: not_disclosed
+    value: ""
+    subject: データアナリスト
+    as_of: 2026-08-05
+    unit: ""
+    source: https://www.lycorp.co.jp/ja/recruit/newgrads/
+    via: 公式新卒採用トップの現行募集職種を確認
+    note: 現行ページの2027年度募集職種にデータアナリストはなく、現行の新卒募集要項は確認できなかった
+  - id: recruit-common-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限・共通手当
+    status: done
+    value: 通常募集は2027年度入社（4月・10月）、エントリー受付終了。通常職種はコアタイムなしフレックス、標準労働時間7時間45分、オフィスとリモートの併用。働く環境ページでは原則週3日以上の所属オフィス出社を基本とし、職種別ページでは出社頻度・ルールは配属組織や業務内容によると記載。Working Style手当11000円/月、通勤費は実費・月15万円上限。転勤・応募期限の通常募集共通条件は明記なし。AI Agent特別募集はTerm4が2026-08-17午前10時締切
+    subject: 新卒採用共通条件
+    as_of: 2026-08-05
+    unit: 時間・円/月・円/月
+    source: https://www.lycorp.co.jp/ja/recruit/workplace/environment/; https://www.lycorp.co.jp/ja/recruit/newgrads/; https://www.lycorp.co.jp/ja/recruit/additional-27/?page_from=ngtop_bnr
+    via: 公式働く環境、新卒採用トップ、AI Agent特別募集ページを確認
+    note: 転勤の有無は確認できなかった。所属オフィスは職種・ポジション・組織体制などを踏まえて決定
+  - id: segments-media
+    phase: segments
+    store: mdx
+    topic: メディア事業のサービス・ブランド・提供内容・運営法人
+    status: done
+    value: 広告商品の企画・販売・掲載、情報掲載サービス、法人向けサービス。公式サービスではYahoo!検索、Yahoo!ニュース、LINE NEWS、Yahoo!リアルタイム検索、LINEオープンチャット、Yahoo!広告、LINEヤフー広告、LINE公式アカウントなどを確認
+    subject: メディア事業
+    as_of: 2026-04-01・2026-03-31
+    unit: ""
+    source: https://www.lycorp.co.jp/ja/service/; edinet-s100ybxd
+    via: 公式サービス一覧と2026年3月期有価証券報告書のセグメント情報・売上収益注記を照合
+    note: 報告セグメント名は「メディア事業」。セグメント利益の定義は営業利益
+  - id: segments-commerce
+    phase: segments
+    store: mdx
+    topic: コマース事業のサービス・ブランド・提供内容・運営法人
+    status: done
+    value: 中小企業や個人向けにインターネットを介して商品販売やサービスの企画・提供。公式サービスではYahoo!ショッピング、Yahoo!オークション、Yahoo!フリマ、Yahoo!トラベル、LINEギフト、LINEブランドカタログなどを確認。グループ会社のZOZO、アスクル、BEENOS、一休、LINE MANなども関連する
+    subject: コマース事業
+    as_of: 2026-04-01・2026-03-31
+    unit: ""
+    source: https://www.lycorp.co.jp/ja/service/; https://www.lycorp.co.jp/ja/company/groupcompanies/; edinet-s100ybxd
+    via: 公式サービス一覧・主なグループ会社・2026年3月期有価証券報告書のセグメント情報を照合
+    note: 報告セグメント名は「コマース事業」。セグメント利益の定義は営業利益
+  - id: segments-strategy
+    phase: segments
+    store: mdx
+    topic: 戦略事業のサービス・ブランド・提供内容・運営法人
+    status: done
+    value: 決済・金融関連サービス。PayPay、PayPayカード、PayPay銀行、PayPay証券、PayPay保険サービス、LINE Bank Taiwan、LINE Payなどを公式ページと有価証券報告書で確認
+    subject: 戦略事業
+    as_of: 2026-04-01・2026-03-31
+    unit: ""
+    source: https://www.lycorp.co.jp/ja/company/; https://www.lycorp.co.jp/ja/company/groupcompanies/; edinet-s100ybxd
+    via: 公式企業情報・主なグループ会社・2026年3月期有価証券報告書のセグメント情報と売上収益注記を照合
+    note: 報告セグメント名は「戦略事業」。セグメント利益の定義は営業利益
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式事業区分とIR報告セグメントの対応・差異
+    status: done
+    value: 公式の事業ポートフォリオは「通信」「メッセンジャー・SNS」「戦略」「コマース」「メディア」の5領域。法定開示の報告セグメントは「メディア事業」「コマース事業」「戦略事業」の3区分で、通信・メッセンジャー・SNSは独立した報告セグメントではなく、サービス・ブランド横断の事業領域として扱われている
+    subject: LINEヤフー株式会社連結グループ
+    as_of: 2026-08-05・2026-03-31
+    unit: ""
+    source: https://www.lycorp.co.jp/ja/company/; https://www.lycorp.co.jp/ja/recruit/workplace/about/; edinet-s100ybxd
+    via: 公式企業情報・採用向け企業紹介・2026年3月期有価証券報告書を照合
+    note: 公式事業領域を法定開示の3セグメントへ独自統合せず、対応関係の差異を維持
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 親会社側はAホールディングスを中心にソフトバンクグループとNAVERとの関係を公式グループ構造で確認。主な子会社はZOZO、アスクル、BEENOS、PayPay、PayPayカード、PayPay銀行、一休、LINE Plus Corporation、LINE Financial Taiwan Limited、LINE Bank Taiwan Limited、LINE MAN CORPORATION PTE. LTD.などを2026年3月期有価証券報告書と公式グループ会社一覧で確認
+    subject: 企業関係
+    as_of: 2026-07-10・2026-03-31
+    unit: ""
+    source: https://www.lycorp.co.jp/ja/company/groupcompanies/; edinet-s100ybxd
+    via: 公式主なグループ会社ページと2026年3月期有価証券報告書の主要な子会社表を照合
+    note: 企業関係CSVの有効開始日は公式資料で開始日を確認できた関係だけを登録する。確認日をvalid_fromへ流用しない
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: 現行ミッションは「WOW Our Users!」。バリューは「スピード10倍」「破壊と創造」「No.1への執念」
+    subject: LINEヤフー株式会社
+    as_of: 2026-08-05
+    unit: ""
+    source: https://www.lycorp.co.jp/ja/company/mission/
+    via: 公式ミッション・バリューページを確認
+    note: 2026年4月からMission & Values ver.2.1。2023年10月発足時の旧ミッションを現行ミッションとして記載しない
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介・設立経緯・規模
+    status: done
+    value: 2023年10月にLINE株式会社・ヤフー株式会社などのグループ内再編を経て発足。主な事業はインターネット広告、eコマース、会員サービスおよびグループ会社の経営管理。1996年1月31日設立、本社は東京都千代田区紀尾井町。公式会社概要では2026年6月末時点で子会社143社、関連会社38社
+    subject: LINEヤフー株式会社
+    as_of: 2026-08-05
+    unit: ""
+    source: https://www.lycorp.co.jp/ja/company/; https://www.lycorp.co.jp/ja/company/overview/; https://www.lycorp.co.jp/ja/company/history/lycorp/
+    via: 公式企業情報・会社概要・沿革を確認
+    note: 現行の会社概要に記載された設立日・事業内容・子会社数・関連会社数を使用
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・取得年度の有価証券報告書・採用・新卒採用リンク
+    status: done
+    value: HP、IR、2022〜2026年3月期の有価証券報告書PDF、採用情報、新卒採用の公式リンクを記事へ掲載
+    subject: LINEヤフー株式会社
+    as_of: 2026-08-05
+    unit: ""
+    source: https://www.lycorp.co.jp/ja/; https://www.lycorp.co.jp/ja/ir.html; https://www.lycorp.co.jp/ja/ir/library/securities.html; https://www.lycorp.co.jp/ja/recruit/; https://www.lycorp.co.jp/ja/recruit/newgrads/
+    via: 公式サイト各ページを確認
+    note: 有価証券報告書PDFは2026年S100YBXD、2025年S100VYGU、2024年S100TM4A、2023年S100QY1D、2022年S100O94Cを掲載

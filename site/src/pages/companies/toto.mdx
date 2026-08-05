@@ -1,0 +1,93 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: toto
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+import CompanySources from "../../components/company/CompanySources.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+TOTO株式会社は1917年創立の住宅設備機器メーカーです。水まわりを中心に、衛生陶器、ウォシュレット、浴槽、ユニットバスルーム、水栓金具、システムキッチン、洗面化粧台、環境建材、福祉機器などを展開し、新領域事業としてセラミックも扱っています。
+
+社是は「愛業至誠」です。TOTOグループ企業理念として「社会の発展に貢献し、世界の人々から信頼される企業を目指します」と掲げ、水まわりを中心とした生活文化の創造、質の高い商品・サービスの提供、資源とエネルギーを大切にする活動、一人ひとりの個性を尊重する職場づくりを示しています。理念と企業概要は[TOTO公式サイト](https://jp.toto.com/company/profile/philosophy/group/)と[企業概要](https://jp.toto.com/company/profile/information/)を2026年8月5日に確認しました。
+
+## サイト
+
+- [TOTO公式サイト](https://jp.toto.com/)
+  - [企業情報](https://jp.toto.com/company/profile/)
+    - [理念体系](https://jp.toto.com/company/profile/philosophy/)
+    - [企業概要](https://jp.toto.com/company/profile/information/)
+  - [投資家・IR情報](https://jp.toto.com/company/ir/)
+    - [有価証券報告書（2026年3月期）](https://api.edinet-fsa.go.jp/api/v2/documents/S100YC72)
+  - [採用情報](https://jp.toto.com/career/)
+    - [新卒採用](https://jp.toto.com/career/graduate/)
+      - [営業・企画職](https://jp.toto.com/career/graduate/sales/sales/)
+      - [技術職](https://jp.toto.com/career/graduate/technology/technology/)
+      - [デザイン職](https://jp.toto.com/career/graduate/design/design/)
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} workplace="本社・工場、支社・営業所など（職種・配属先により異なる）" />
+
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+採用主体はTOTO株式会社です。以下は2027年度入社向けの公式募集要項を2026年8月5日に確認した内容です。
+
+| 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
+| --- | --- | --- | --- | --- | --- |
+| [営業・企画職](https://jp.toto.com/career/graduate/sales/sales/) | 国内営業、事業部の企画、間接部門。企画職は北九州や各工場所在地が主な勤務地 | 修士297,000円、学部・高専専科卒270,000円、高専本科卒235,000円 | 記載なし | 記載なし | 記載なし |
+| [技術職](https://jp.toto.com/career/graduate/technology/technology/) | 研究、商品開発、生産技術、品質保証、知的財産、工務など。地理的勤務地は募集要項に一括記載なし | 修士297,000円、学部・高専専科卒270,000円、高専本科卒235,000円 | 記載なし | 記載なし | 記載なし |
+| [デザイン職](https://jp.toto.com/career/graduate/design/design/) | デザイン本部。地理的勤務地は募集要項に一括記載なし | 修士297,000円、学部・高専専科卒270,000円 | 記載なし | 記載なし | 記載なし |
+
+:::info
+初任給は2025年4月実績の東京勤務の場合です。昇給は年1回、賞与は年2回です。時間外・深夜・休日手当、通勤手当などがあり、標準労働時間は7時間50分です。選考はエントリー、エントリーシート提出・適性検査、面接、最終面接、内々定を基本とし、デザイン職ではポートフォリオ提出があります。
+:::
+
+## サービス例
+
+| 報告セグメント | 製品・サービス例 |
+| --- | --- |
+| 日本住設事業 | 衛生陶器、ウォシュレット、システムトイレ、浴槽、ユニットバスルーム、水栓金具、システムキッチン、洗面化粧台、環境建材、福祉機器、パブリック向け商品 |
+| 米州事業 | 水まわりを中心とする住宅設備機器と関連サービス |
+| アジア・オセアニア事業 | 水まわりを中心とする住宅設備機器と関連サービス |
+| 欧州事業 | 水まわりを中心とする住宅設備機器と関連サービス |
+| 中国大陸事業 | 水まわりを中心とする住宅設備機器と関連サービス |
+| セラミック事業 | ファインセラミックスなどの新領域事業商品 |
+
+住宅設備機器と新領域事業商品の内容は[TOTO企業概要](https://jp.toto.com/company/profile/information/)、商品例は[TOTO商品一覧](https://jp.toto.com/products/)と[ニューマテリアル](https://jp.toto.com/products/tnm/)で確認しました。報告セグメントの名称と年度別実績は有価証券報告書に基づきます。
+
+</CompanyProse>
+
+<SegmentRevenue companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+## 関連企業
+
+| 主な関係会社 | 主な事業内容 | 対応する報告セグメント |
+| --- | --- | --- |
+| セラトレーディング株式会社 | ヨーロッパを中心とする海外輸入の水まわり商品の販売 | セラミック事業以外の住宅設備関連 |
+
+セラトレーディング株式会社は[TOTOニューマテリアル](https://jp.toto.com/products/tnm/)でTOTOのグループカンパニーとして確認しました。
+
+</CompanyProse>
+
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />
+
+<CompanySources companyId={frontmatter.companyId} />
