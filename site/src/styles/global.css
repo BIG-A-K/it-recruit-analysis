@@ -153,6 +153,7 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .company-list .linked-row { grid-template-columns: minmax(200px, 1fr) 1.4fr; }
 .company-list h3 { font-size: 18px; }
 .company-list .legal-name { margin-top: 4px; color: var(--muted); font-size: 12px; }
+.company-list .row-updated { margin-top: 4px; color: var(--subtle); font-size: 12px; }
 .company-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .company-stats dt { color: var(--muted); font-size: 12px; }
 .company-stats dd { margin-top: 4px; font-size: 14px; font-weight: 650; }

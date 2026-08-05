@@ -1,0 +1,147 @@
+---
+export interface SortOption {
+  /** 行の `data-sort-<value>` 属性と対応するキー */
+  value: string;
+  label: string;
+  /** 昇順・降順それぞれで表示する説明文 */
+  asc: string;
+  desc: string;
+  /** この軸を選び直したときに戻す既定の順序 */
+  defaultOrder: "asc" | "desc";
+}
+
+interface Props {
+  /** 対象の一覧に `data-company-list` として同じ値を指定する */
+  controlsId: string;
+  options: SortOption[];
+  initialSort: string;
+}
+
+const { controlsId, options, initialSort } = Astro.props;
+const initialOption =
+  options.find((option) => option.value === initialSort) ?? options[0];
+const initialOrder = initialOption.defaultOrder;
+---
+
+<div class="sort-controls" data-sort-controls={controlsId}>
+  <fieldset style={`--option-count:${options.length}`}>
+    <legend>並び順</legend>
+    <div class="segmented-control">
+      {
+        options.map((option) => (
+          <label>
+            <input
+              type="radio"
+              name={`${controlsId}-sort`}
+              value={option.value}
+              checked={option.value === initialOption.value}
+              data-asc={option.asc}
+              data-desc={option.desc}
+              data-default-order={option.defaultOrder}
+            />
+            {option.label}
+          </label>
+        ))
+      }
+    </div>
+  </fieldset>
+  <fieldset class="order-field" style="--option-count:2">
+    <legend>順序</legend>
+    <div class="segmented-control">
+      <label><input type="radio" name={`${controlsId}-order`} value="asc" checked={initialOrder === "asc"} />昇順</label>
+      <label><input type="radio" name={`${controlsId}-order`} value="desc" checked={initialOrder === "desc"} />降順</label>
+    </div>
+  </fieldset>
+</div>
+<p class="sort-status" data-sort-status={controlsId} aria-live="polite">
+  {initialOrder === "asc" ? initialOption.asc : initialOption.desc}
+</p>
+
+<style>
+  .sort-controls { display: flex; flex-wrap: wrap; gap: 16px; }
+  .sort-controls fieldset {
+    flex: 1 1 calc(var(--option-count) * 92px);
+    max-width: calc(var(--option-count) * 116px);
+    margin: 0; padding: 0; border: 0;
+  }
+  .sort-controls legend { margin-bottom: 6px; padding: 0; color: var(--muted); font-size: 12px; }
+  .sort-controls .segmented-control {
+    grid-template-columns: repeat(var(--option-count), minmax(0, 1fr));
+  }
+  .sort-status { margin: 10px 0 16px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 720px) {
+    .sort-controls fieldset, .sort-controls .order-field { flex-basis: 100%; max-width: none; }
+  }
+</style>
+
+<script>
+  type Order = "asc" | "desc";
+
+  const sortValue = (row: HTMLElement, key: string) => {
+    const raw = row.getAttribute(`data-sort-${key}`);
+    return raw ? Number(raw) : null;
+  };
+
+  for (const controls of document.querySelectorAll<HTMLElement>(
+    "[data-sort-controls]",
+  )) {
+    const id = controls.dataset.sortControls;
+    const list = document.querySelector<HTMLElement>(
+      `[data-company-list="${id}"]`,
+    );
+    const status = document.querySelector<HTMLElement>(
+      `[data-sort-status="${id}"]`,
+    );
+    const sortInputs = controls.querySelectorAll<HTMLInputElement>(
+      `input[name="${id}-sort"]`,
+    );
+    const orderInputs = controls.querySelectorAll<HTMLInputElement>(
+      `input[name="${id}-order"]`,
+    );
+    if (!list) continue;
+
+    const checkedSort = () => [...sortInputs].find((input) => input.checked);
+    const checkedOrder = () =>
+      ([...orderInputs].find((input) => input.checked)?.value ??
+        "asc") as Order;
+
+    const applySort = () => {
+      const sort = checkedSort();
+      const order = checkedOrder();
+      if (!sort) return;
+      const sign = order === "asc" ? 1 : -1;
+      list.dataset.sort = sort.value;
+      if (status) status.textContent = sort.dataset[order] ?? "";
+
+      [...list.children]
+        .filter((child): child is HTMLElement => child instanceof HTMLElement)
+        .sort((a, b) => {
+          const left = sortValue(a, sort.value);
+          const right = sortValue(b, sort.value);
+          const fallback =
+            (sortValue(a, "kana") ?? 0) - (sortValue(b, "kana") ?? 0);
+          // 未公表は「最も小さい値」ではないため、昇順でも降順でも末尾へ送る
+          if (left === null && right === null) return fallback;
+          if (left === null) return 1;
+          if (right === null) return -1;
+          return sign * (left - right) || fallback;
+        })
+        .forEach((row) => list.appendChild(row));
+    };
+
+    for (const input of sortInputs) {
+      input.addEventListener("change", () => {
+        // 指標は大きい順、五十音は先頭からが自然なので、軸を変えたら既定の順序へ戻す
+        const preferred = input.dataset.defaultOrder ?? "asc";
+        for (const orderInput of orderInputs) {
+          orderInput.checked = orderInput.value === preferred;
+        }
+        applySort();
+      });
+    }
+    for (const input of orderInputs) {
+      input.addEventListener("change", applySort);
+    }
+  }
+</script>

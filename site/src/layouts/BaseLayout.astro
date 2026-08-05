@@ -13,7 +13,8 @@ const {
 const fullTitle = title === "情報系の学生のための企業分析サイト" ? title : `${title} | 情報系の学生のための企業分析サイト`;
 const pathname = Astro.url.pathname;
 const isHome = pathname === "/";
-const isIndustry = pathname.startsWith("/industries/") || pathname.startsWith("/companies/");
+const isIndustry = pathname.startsWith("/industries/");
+const isCompany = pathname.startsWith("/companies/");
 const isGuide = pathname.startsWith("/guide/");
 ---
 
@@ -56,6 +57,7 @@ const isGuide = pathname.startsWith("/guide/");
         <nav class="sidebar-nav" aria-label="メインナビゲーション">
           <a class:list={{ active: isHome }} href="/">ホーム</a>
           <a class:list={{ active: isIndustry }} href="/industries/">業界一覧</a>
+          <a class:list={{ active: isCompany }} href="/companies/">企業一覧</a>
           <a class:list={{ active: isGuide }} href="/guide/">分析方法</a>
         </nav>
 

@@ -1,34 +1,218 @@
 ---
+import CompanySortControls from "../../components/CompanySortControls.astro";
+import type { SortOption } from "../../components/CompanySortControls.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   companiesForIndustry,
   industries,
+  metrics,
+  metricsForCompanies,
 } from "../../lib/data";
+import { latestMetric } from "../../lib/format";
+
+// 各企業が公表した最新年度の値を集計する指標
+const aggregateKeys = ["average_annual_salary", "average_tenure"] as const;
+type AggregateKey = (typeof aggregateKeys)[number];
+
+const median = (values: number[]): number | undefined => {
+  if (!values.length) return undefined;
+  const sorted = [...values].sort((a, b) => a - b);
+  const middle = Math.floor(sorted.length / 2);
+  return sorted.length % 2
+    ? sorted[middle]
+    : (sorted[middle - 1] + sorted[middle]) / 2;
+};
+
+const mean = (values: number[]): number | undefined =>
+  values.length
+    ? values.reduce((sum, value) => sum + value, 0) / values.length
+    : undefined;
+
+// 集計値は代表値なので、元値の偽りの精度を見せないよう万円・年で丸める
+const formatSalary = (value: number | undefined) =>
+  value != null
+    ? `${Math.round(value / 10000).toLocaleString("ja-JP")}万円`
+    : "—";
+const formatTenure = (value: number | undefined) =>
+  value != null ? `${value.toFixed(1)}年` : "—";
+
+const collator = new Intl.Collator("ja");
+// 業界に読み仮名がないため、名称の辞書順を五十音順の代理として使う
+const kanaRanks = new Map(
+  [...industries]
+    .sort((a, b) => collator.compare(a.name, b.name))
+    .map((industry, index) => [industry.industry_id, index]),
+);
+
+const rows = industries
+  .map((industry) => {
+    const members = companiesForIndustry(industry.industry_id);
+    const memberMetrics = metricsForCompanies(
+      members.map((company) => company.company_id),
+    );
+    const valuesByKey = Object.fromEntries(
+      aggregateKeys.map((key) => {
+        const values = members
+          .map((company) =>
+            latestMetric(
+              memberMetrics.filter(
+                (metric) => metric.company_id === company.company_id,
+              ),
+              key,
+            ),
+          )
+          .filter((metric): metric is NonNullable<typeof metric> =>
+            Boolean(metric),
+          )
+          .map((metric) => Number(metric.value));
+        return [key, values];
+      }),
+    ) as Record<AggregateKey, number[]>;
+
+    return {
+      industry,
+      kanaRank: kanaRanks.get(industry.industry_id) ?? 0,
+      memberCount: members.length,
+      salary: {
+        mean: mean(valuesByKey.average_annual_salary),
+        median: median(valuesByKey.average_annual_salary),
+        coverage: valuesByKey.average_annual_salary.length,
+      },
+      tenure: {
+        mean: mean(valuesByKey.average_tenure),
+        median: median(valuesByKey.average_tenure),
+        coverage: valuesByKey.average_tenure.length,
+      },
+    };
+  })
+  .sort((a, b) => {
+    // 初期表示は並び替えコントロールの初期状態（平均給与の降順）と揃える
+    const av = a.salary.mean ?? null;
+    const bv = b.salary.mean ?? null;
+    if (av === null && bv === null) return a.kanaRank - b.kanaRank;
+    if (av === null) return 1;
+    if (bv === null) return -1;
+    return bv - av || a.kanaRank - b.kanaRank;
+  });
+
+const reported = metrics.filter((metric) => metric.availability === "reported");
+const metricYears = reported.map((metric) => Number(metric.fiscal_year));
+const latestYear = metricYears.length ? Math.max(...metricYears) : undefined;
+
+const sortOptions: SortOption[] = [
+  {
+    value: "salary",
+    label: "平均給与",
+    asc: "平均年間給与の平均が低い業界順で並べています。",
+    desc: "平均年間給与の平均が高い業界順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "tenure",
+    label: "平均勤続年数",
+    asc: "平均勤続年数の平均が短い業界順で並べています。",
+    desc: "平均勤続年数の平均が長い業界順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "kana",
+    label: "五十音順",
+    asc: "業界名（あ→ん）で並べています。",
+    desc: "業界名の逆（ん→あ）で並べています。",
+    defaultOrder: "asc",
+  },
+];
 ---
 
-<BaseLayout title="業界一覧">
+<BaseLayout
+  title="業界一覧"
+  description="掲載業界の一覧。各業界に属する企業の公表値から、平均年間給与と平均勤続年数の平均・中央値を比較できます。"
+>
   <section>
     <p class="breadcrumb"><a href="/">トップ</a><span>/</span>業界一覧</p>
-    <h1>業界一覧</h1>
-    <p class="lead">分類の基準を確かめ、同じ業界に属する企業の公表値を比較できます。</p>
+    <div class="industry-head">
+      <div>
+        <h1>業界一覧</h1>
+        <p class="lead">
+          各業界に属する企業の公表値を集計し、平均年間給与と平均勤続年数を平均・中央値で比べられます。給与水準や勤続年数の傾向から、業界ごとの大まかな特徴をつかめます。
+        </p>
+      </div>
+      <dl class="facts">
+        <div><dt>掲載業界</dt><dd>{industries.length}</dd></div>
+        <div><dt>最新データ</dt><dd>{latestYear ? `${latestYear}年度` : "—"}</dd></div>
+      </dl>
+    </div>
   </section>
 
-  <section class="industry-rows">
-    {
-      industries.map((industry) => {
-        const related = companiesForIndustry(industry.industry_id);
-        return (
-          <a class="linked-row" href={`/industries/${industry.industry_id}/`}>
+  <section>
+    <div class="section-head"><h2>業界を比べる</h2></div>
+
+    <CompanySortControls
+      controlsId="industries"
+      options={sortOptions}
+      initialSort="salary"
+    />
+
+    <div class="industry-rows" data-company-list="industries" data-sort="salary">
+      {
+        rows.map(({ industry, kanaRank, memberCount, salary, tenure }) => (
+          <a
+            class="linked-row industry-stat-row"
+            href={`/industries/${industry.industry_id}/`}
+            data-sort-kana={kanaRank}
+            data-sort-salary={salary.mean ?? ""}
+            data-sort-tenure={tenure.mean ?? ""}
+          >
             <div>
               <h2>{industry.name}</h2>
               <p>{industry.description || industry.classification_basis}</p>
+              <p class="row-meta">{memberCount}社を掲載</p>
             </div>
-            <div class="chips">
-              {related.map((company) => <span>{company.display_name}</span>)}
-            </div>
+            <dl class="industry-stats">
+              <div>
+                <dt>平均年間給与</dt>
+                <dd class="stat-pair">
+                  <span><small>平均</small>{formatSalary(salary.mean)}</span>
+                  <span><small>中央値</small>{formatSalary(salary.median)}</span>
+                </dd>
+                <p class="stat-coverage">{salary.coverage}/{memberCount}社が公表</p>
+              </div>
+              <div>
+                <dt>平均勤続年数</dt>
+                <dd class="stat-pair">
+                  <span><small>平均</small>{formatTenure(tenure.mean)}</span>
+                  <span><small>中央値</small>{formatTenure(tenure.median)}</span>
+                </dd>
+                <p class="stat-coverage">{tenure.coverage}/{memberCount}社が公表</p>
+              </div>
+            </dl>
           </a>
-        );
-      })
-    }
+        ))
+      }
+    </div>
+    <p class="section-note">
+      平均・中央値は、各企業が有価証券報告書などで公表した最新年度の値を業界ごとに集計したサイト算出値です。公表企業のみを対象とし、値を公表していない企業は分母に含めません。平均年間給与・平均勤続年数は提出会社単体（親会社単体）であることが多く、グループ全体や採用主体の待遇とは一致しない場合があります。平均・中央値のいずれも公表していない業界は、順序によらず末尾に並べています。
+    </p>
   </section>
 </BaseLayout>
+
+<style>
+  .industry-stat-row { grid-template-columns: minmax(220px, 1fr) 1.4fr; }
+  .industry-stat-row .row-meta { margin-top: 8px; color: var(--subtle); font-size: 12px; }
+
+  .industry-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .industry-stats dt { color: var(--muted); font-size: 12px; }
+  .industry-stats .stat-pair { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 6px; }
+  .industry-stats .stat-pair span { display: flex; align-items: baseline; gap: 6px; font-size: 16px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .industry-stats .stat-pair small { color: var(--muted); font-size: 11px; font-weight: 600; }
+  .industry-stats .stat-coverage { margin-top: 6px; color: var(--subtle); font-size: 11px; }
+
+  @media (max-width: 1000px) {
+    .industry-stat-row { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  }
+
+  @media (max-width: 720px) {
+    .industry-stats { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+    .industry-stats .stat-pair { gap: 6px 14px; }
+  }
+</style>

@@ -1,5 +1,7 @@
 ---
 import type { GetStaticPaths } from "astro";
+import CompanySortControls from "../../components/CompanySortControls.astro";
+import type { SortOption } from "../../components/CompanySortControls.astro";
 import MetricExplorer from "../../components/MetricExplorer.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
@@ -8,6 +10,7 @@ import {
   metricsForCompanies,
 } from "../../lib/data";
 import type { Metric } from "../../lib/data";
+import { companyPageUpdatedAt, formatUpdatedAt } from "../../lib/company-pages";
 import { formatValue, latestMetric, metricLabels } from "../../lib/format";
 
 export const getStaticPaths = (() =>
@@ -64,13 +67,23 @@ const metricYears = industryMetrics.map((metric) =>
 );
 const latestYear = metricYears.length ? Math.max(...metricYears) : undefined;
 
+const collator = new Intl.Collator("ja");
+const kanaRanks = new Map(
+  [...baseCompanies]
+    .sort((a, b) => collator.compare(a.name_kana, b.name_kana))
+    .map((company, index) => [company.company_id, index]),
+);
+
 const sortedCompanies = baseCompanies
   .map((company) => {
      const companyMetrics = industryMetrics.filter(
        (metric) => metric.company_id === company.company_id,
      );
+     const updatedAt = companyPageUpdatedAt(company.company_id);
      return {
        company,
+       kanaRank: kanaRanks.get(company.company_id) ?? 0,
+       updatedAt: updatedAt ? formatUpdatedAt(updatedAt) : undefined,
        salary: latestMetric(companyMetrics, "average_annual_salary"),
        netCashFlow: latestMetric(companyMetrics, "net_cf"),
        // 重工各社のように営業利益を開示せず事業利益で開示する企業があるため、
@@ -82,10 +95,52 @@ const sortedCompanies = baseCompanies
      };
   })
   .sort((a, b) => {
-    const av = a.salary ? Number(a.salary.value) : -Infinity;
-    const bv = b.salary ? Number(b.salary.value) : -Infinity;
-    return bv - av;
+    // 初期表示は並び替えコントロールの初期状態（平均給与の降順）と揃える
+    const av = a.salary ? Number(a.salary.value) : null;
+    const bv = b.salary ? Number(b.salary.value) : null;
+    if (av === null && bv === null) return a.kanaRank - b.kanaRank;
+    if (av === null) return 1;
+    if (bv === null) return -1;
+    return bv - av || a.kanaRank - b.kanaRank;
   });
+
+const sortOptions: SortOption[] = [
+  {
+    value: "kana",
+    label: "五十音順",
+    asc: "五十音順（あ→ん）で並べています。",
+    desc: "五十音順の逆（ん→あ）で並べています。",
+    defaultOrder: "asc",
+  },
+  {
+    value: "salary",
+    label: "平均給与",
+    asc: "平均年間給与の低い順で並べています。",
+    desc: "平均年間給与の高い順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "netcf",
+    label: "ネットCF",
+    asc: "ネットCFの小さい順で並べています。",
+    desc: "ネットCFの大きい順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "profit",
+    label: "利益",
+    asc: "各社が表示している営業利益・事業利益の小さい順で並べています。",
+    desc: "各社が表示している営業利益・事業利益の大きい順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "ratio",
+    label: "流動比率",
+    asc: "流動比率の低い順で並べています。",
+    desc: "流動比率の高い順で並べています。",
+    defaultOrder: "desc",
+  },
+];
 ---
 
 <BaseLayout
@@ -124,14 +179,28 @@ const sortedCompanies = baseCompanies
 
   <section>
     <div class="section-head"><h2>この業界の企業</h2></div>
-    <div class="company-list">
+    <CompanySortControls
+      controlsId={`industry-${industry.industry_id}`}
+      options={sortOptions}
+      initialSort="salary"
+    />
+    <div class="company-list" data-company-list={`industry-${industry.industry_id}`}>
       {
-        sortedCompanies.map(({ company, salary, netCashFlow, operatingProfit, currentRatio }) => {
+        sortedCompanies.map(({ company, kanaRank, updatedAt, salary, netCashFlow, operatingProfit, currentRatio }) => {
           return (
-            <a class="linked-row" href={`/companies/${company.company_id}/`}>
+            <a
+              class="linked-row"
+              href={`/companies/${company.company_id}/`}
+              data-sort-kana={kanaRank}
+              data-sort-salary={salary ? salary.value : ""}
+              data-sort-netcf={netCashFlow ? netCashFlow.value : ""}
+              data-sort-profit={operatingProfit ? operatingProfit.value : ""}
+              data-sort-ratio={currentRatio ? currentRatio.value : ""}
+            >
               <div>
                 <h3>{company.display_name}</h3>
                 <p class="legal-name">{company.legal_name}</p>
+                {updatedAt && <p class="row-updated">記事更新 {updatedAt}</p>}
               </div>
               <dl class="company-stats">
                 <div><dt>平均年間給与</dt><dd>{salary ? formatValue(Number(salary.value), salary.unit) : "—"}</dd></div>

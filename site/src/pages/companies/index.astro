@@ -1,0 +1,499 @@
+---
+import CompanySortControls from "../../components/CompanySortControls.astro";
+import type { SortOption } from "../../components/CompanySortControls.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { companies, metricsForCompanies } from "../../lib/data";
+import { companyPageUpdatedAt, formatUpdatedAt } from "../../lib/company-pages";
+import { formatValue, latestMetric } from "../../lib/format";
+
+const companyPages = import.meta.glob("./*.mdx");
+const pageIds = new Set(
+  Object.keys(companyPages).map((path) =>
+    path.replace("./", "").replace(".mdx", ""),
+  ),
+);
+
+const allMetrics = metricsForCompanies(
+  companies.map((company) => company.company_id),
+);
+const metricYears = allMetrics.map((metric) => Number(metric.fiscal_year));
+const latestYear = metricYears.length ? Math.max(...metricYears) : undefined;
+
+const listedKeys = [
+  "average_annual_salary",
+  "average_tenure",
+  "average_age",
+  "employee_count",
+] as const;
+
+const collator = new Intl.Collator("ja");
+const rows = companies
+  .map((company) => {
+    const companyMetrics = allMetrics.filter(
+      (metric) => metric.company_id === company.company_id,
+    );
+    const updatedAt = companyPageUpdatedAt(company.company_id);
+    return {
+      company,
+      hasPage: pageIds.has(company.company_id),
+      updatedAt: updatedAt ? formatUpdatedAt(updatedAt) : undefined,
+      latest: Object.fromEntries(
+        listedKeys.map((key) => [key, latestMetric(companyMetrics, key)]),
+      ) as Record<(typeof listedKeys)[number], ReturnType<typeof latestMetric>>,
+    };
+  })
+  .sort((a, b) => collator.compare(a.company.name_kana, b.company.name_kana));
+
+// 既定の軸を左端に、五十音順を右端に置く
+const sortOptions: SortOption[] = [
+  {
+    value: "salary",
+    label: "平均給与",
+    asc: "平均年間給与の低い順で並べています。",
+    desc: "平均年間給与の高い順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "tenure",
+    label: "平均勤続年数",
+    asc: "平均勤続年数の短い順で並べています。",
+    desc: "平均勤続年数の長い順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "kana",
+    label: "五十音順",
+    asc: "五十音順（あ→ん）で並べています。",
+    desc: "五十音順の逆（ん→あ）で並べています。",
+    defaultOrder: "asc",
+  },
+];
+
+// 従業員数は数百人から数十万人まで広がり、階級を等間隔で切ると1本の棒に潰れるため分布から外す
+const distributionKeys = [
+  {
+    key: "average_annual_salary",
+    label: "平均年間給与",
+    axisTitle: "平均年間給与（万円）",
+    scale: 10000,
+    suffix: "万円",
+    decimals: 0,
+  },
+  {
+    key: "average_tenure",
+    label: "平均勤続年数",
+    axisTitle: "平均勤続年数（年）",
+    scale: 1,
+    suffix: "年",
+    decimals: 1,
+  },
+  {
+    key: "average_age",
+    label: "平均年齢",
+    axisTitle: "平均年齢（歳）",
+    scale: 1,
+    suffix: "歳",
+    decimals: 1,
+  },
+] as const;
+
+const distributionPayload = {
+  totalCompanies: rows.length,
+  metrics: distributionKeys.map((definition) => ({
+    ...definition,
+    points: rows
+      .filter((row) => row.latest[definition.key])
+      .map((row) => ({
+        name: row.company.display_name,
+        value: Number(row.latest[definition.key]!.value),
+      })),
+  })),
+};
+---
+
+<BaseLayout
+  title="企業一覧"
+  description="掲載企業の一覧。五十音順・平均給与順・平均勤続年数順に昇順降順を切り替えて並べ、中央値と最頻値、分布を確認できます。"
+>
+  <section>
+    <p class="breadcrumb"><a href="/">トップ</a><span>/</span>企業一覧</p>
+    <div class="industry-head">
+      <div>
+        <h1>企業一覧</h1>
+        <p class="lead">掲載している全企業を、五十音順・平均給与順・平均勤続年数順に並べ替えて確認できます。代表値と分布から、各社が全体のどのあたりに位置するかも読み取れます。</p>
+      </div>
+      <dl class="facts">
+        <div><dt>掲載企業</dt><dd>{rows.length}社</dd></div>
+        <div><dt>最新データ</dt><dd>{latestYear ? `${latestYear}年度` : "—"}</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="panel distribution-panel" data-distribution>
+    <div class="section-head"><h2>指標の分布と代表値</h2></div>
+
+    <label class="distribution-metric">
+      <span>指標</span>
+      <select data-distribution-metric>
+        {
+          distributionPayload.metrics.map((metric, index) => (
+            <option value={metric.key} selected={index === 0}>{metric.label}</option>
+          ))
+        }
+      </select>
+    </label>
+
+    <dl class="facts facts-boxed distribution-stats" aria-live="polite">
+      <div><dt>中央値</dt><dd data-stat-median>—</dd></div>
+      <div><dt>最頻値</dt><dd data-stat-mode>—</dd></div>
+      <div><dt>平均値</dt><dd data-stat-mean>—</dd></div>
+      <div><dt>集計対象</dt><dd data-stat-coverage>—</dd></div>
+    </dl>
+
+    <div class="chart-area distribution-chart" data-distribution-chart aria-live="polite"></div>
+
+    <p class="chart-note">
+      各社が公表した最新年度の値を等間隔の階級に区切って数えたヒストグラムです。最頻値は最も企業数が多い階級を範囲で示しており、濃い青の棒がその階級にあたります。縦の実線は中央値の位置です。
+    </p>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>企業を探す</h2></div>
+
+    <CompanySortControls controlsId="companies" options={sortOptions} initialSort="kana" />
+
+    <div class="company-list" data-company-list="companies" data-sort="kana">
+      {
+        rows.map(({ company, hasPage, updatedAt, latest }, index) => {
+          const salary = latest.average_annual_salary;
+          const tenure = latest.average_tenure;
+          const age = latest.average_age;
+          const employees = latest.employee_count;
+          const stats = (
+            <dl class="company-stats">
+              <div data-stat="salary"><dt>平均年間給与</dt><dd>{salary ? formatValue(Number(salary.value), salary.unit) : "—"}</dd></div>
+              <div data-stat="tenure"><dt>平均勤続年数</dt><dd>{tenure ? formatValue(Number(tenure.value), tenure.unit, tenure.metric_key) : "—"}</dd></div>
+              <div data-stat="age"><dt>平均年齢</dt><dd>{age ? formatValue(Number(age.value), age.unit, age.metric_key) : "—"}</dd></div>
+              <div data-stat="employees"><dt>従業員数</dt><dd>{employees ? formatValue(Number(employees.value), employees.unit) : "—"}</dd></div>
+            </dl>
+          );
+          const heading = (
+            <div>
+              <h3>{company.display_name}</h3>
+              <p class="legal-name">{hasPage ? company.legal_name : `${company.legal_name}（ページ準備中）`}</p>
+              {hasPage && updatedAt && <p class="row-updated">記事更新 {updatedAt}</p>}
+            </div>
+          );
+          const dataAttributes = {
+            "data-sort-kana": index,
+            "data-sort-salary": salary ? salary.value : "",
+            "data-sort-tenure": tenure ? tenure.value : "",
+          };
+
+          return hasPage ? (
+            <a class="linked-row" href={`/companies/${company.company_id}/`} {...dataAttributes}>
+              {heading}
+              {stats}
+            </a>
+          ) : (
+            <div class="linked-row card-soon" {...dataAttributes}>
+              {heading}
+              {stats}
+            </div>
+          );
+        })
+      }
+    </div>
+    <p class="section-note">
+      平均年間給与・平均勤続年数・平均年齢・従業員数は、有価証券報告書などで各社が公表した最新年度の値です。持株会社では提出会社単体の値であることが多く、グループ全体や採用主体の待遇とは一致しない場合があります。値を公表していない企業は、順序によらず末尾に並べています。
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .distribution-panel { margin-bottom: 34px; }
+  .distribution-metric { display: block; max-width: 260px; margin-bottom: 18px; }
+  .distribution-metric > span { display: block; margin-bottom: 6px; color: var(--muted); font-size: 12px; }
+  .distribution-metric select {
+    width: 100%; height: 38px; padding: 0 10px;
+    color: var(--ink); background: white; border: 1px solid var(--line-dark); border-radius: 6px;
+    font: inherit; font-size: 14px;
+  }
+  :global([data-theme="dark"]) .distribution-metric select {
+    background: #172131;
+  }
+
+  .distribution-stats { margin-bottom: 18px; }
+  .distribution-stats dd { font-size: 19px; font-weight: 700; letter-spacing: -.02em; }
+
+  .distribution-chart { min-height: 0; padding: 18px 16px 12px; }
+
+  /* ヒストグラムはライト/ダークとも単一色相の2段で、濃い側が最頻値階級 */
+  .distribution-panel {
+    --hist-bar: #86b6ef;
+    --hist-bar-strong: #2563eb;
+    --hist-rule: #101828;
+    --hist-axis: #5b6b82;
+    --hist-surface: white;
+  }
+  :global([data-theme="dark"]) .distribution-panel {
+    --hist-bar: #2f6bbf;
+    --hist-bar-strong: #6ba3ff;
+    --hist-rule: #e8edf5;
+    --hist-axis: #a8b3c3;
+    --hist-surface: #172131;
+  }
+
+  .distribution-chart :global(.histogram) { display: block; width: 100%; height: auto; }
+  .distribution-chart :global(.hist-bar) { fill: var(--hist-bar); }
+  .distribution-chart :global(.hist-bar.is-mode) { fill: var(--hist-bar-strong); }
+  .distribution-chart :global(.hist-hit) { fill: transparent; outline: none; }
+  .distribution-chart :global(.hist-bar.is-hovered) { opacity: .78; }
+  .distribution-chart :global(.hist-baseline) { stroke: var(--line-dark); stroke-width: 1; }
+  .distribution-chart :global(.hist-median) { stroke: var(--hist-rule); stroke-width: 2; }
+  /* 中央値の線と重なっても読めるよう、ラベルに背景色のふちどりを敷く */
+  .distribution-chart :global(.hist-count),
+  .distribution-chart :global(.hist-median-label) {
+    paint-order: stroke;
+    stroke: var(--hist-surface);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+  }
+  .distribution-chart :global(.hist-count) { fill: var(--hist-axis); font: 11px sans-serif; }
+  .distribution-chart :global(.hist-count.is-mode) { fill: var(--hist-rule); font-weight: 700; }
+  .distribution-chart :global(.hist-tick) { fill: var(--hist-axis); font: 11px sans-serif; font-variant-numeric: tabular-nums; }
+  .distribution-chart :global(.hist-title) { fill: var(--hist-axis); font: 11px sans-serif; }
+  .distribution-chart :global(.hist-median-label) { fill: var(--hist-rule); font: 700 11px sans-serif; }
+
+  /* モバイルは既存CSSで先頭の指標だけが残るため、並び替え中の指標を先頭へ寄せて表示する */
+  @media (max-width: 720px) {
+    .company-list[data-sort="tenure"] .company-stats > div[data-stat="salary"] {
+      display: none;
+    }
+    .company-list[data-sort="tenure"] .company-stats > div[data-stat="tenure"] {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .distribution-stats > div { flex-basis: 50%; }
+  }
+</style>
+
+
+<script is:inline define:vars={{ distributionPayload }}>
+  (() => {
+    const root = document.querySelector("[data-distribution]");
+    if (!root) return;
+    const chart = root.querySelector("[data-distribution-chart]");
+    const select = root.querySelector("[data-distribution-metric]");
+
+    const escapeHtml = (value) =>
+      String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+
+    const formatScaled = (value, metric) =>
+      `${(value / metric.scale).toLocaleString("ja-JP", {
+        minimumFractionDigits: metric.decimals,
+        maximumFractionDigits: metric.decimals,
+      })}${metric.suffix}`;
+
+    const formatTick = (value, metric) =>
+      (value / metric.scale).toLocaleString("ja-JP", {
+        maximumFractionDigits: 1,
+      });
+
+    const median = (values) => {
+      const sorted = [...values].sort((a, b) => a - b);
+      const middle = Math.floor(sorted.length / 2);
+      return sorted.length % 2
+        ? sorted[middle]
+        : (sorted[middle - 1] + sorted[middle]) / 2;
+    };
+
+    // 目盛りが読める幅に丸めた階級幅。10のべき乗に1/2/2.5/5を掛けた値から選ぶ
+    const niceBinWidth = (range, targetBins) => {
+      if (range <= 0) return 1;
+      const raw = range / targetBins;
+      const magnitude = 10 ** Math.floor(Math.log10(raw));
+      const normalized = raw / magnitude;
+      const step = [1, 2, 2.5, 5, 10].find((candidate) => normalized <= candidate) ?? 10;
+      return step * magnitude;
+    };
+
+    const buildBins = (points) => {
+      const values = points.map((point) => point.value);
+      const min = Math.min(...values);
+      const max = Math.max(...values);
+      const width = niceBinWidth(max - min, 12);
+      const start = Math.floor(min / width) * width;
+      const count = Math.max(Math.ceil((max - start) / width), 1);
+      const bins = Array.from({ length: count }, (_, index) => ({
+        from: start + index * width,
+        to: start + (index + 1) * width,
+        points: [],
+      }));
+      for (const point of points) {
+        const index = Math.min(
+          Math.floor((point.value - start) / width),
+          count - 1,
+        );
+        bins[index].points.push(point);
+      }
+      return bins;
+    };
+
+    const barPath = (x, y, width, height, radius) => {
+      const r = Math.max(Math.min(radius, width / 2, height), 0);
+      const bottom = y + height;
+      return `M${x},${bottom} L${x},${y + r} Q${x},${y} ${x + r},${y} L${x + width - r},${y} Q${x + width},${y} ${x + width},${y + r} L${x + width},${bottom} Z`;
+    };
+
+    const render = (metric) => {
+      if (!metric.points.length) {
+        chart.innerHTML = '<p class="empty-state">分布を描ける公表値がありません。</p>';
+        root.querySelector("[data-stat-median]").textContent = "—";
+        root.querySelector("[data-stat-mode]").textContent = "—";
+        root.querySelector("[data-stat-mean]").textContent = "—";
+        root.querySelector("[data-stat-coverage]").textContent =
+          `0社 / ${distributionPayload.totalCompanies}社`;
+        return;
+      }
+
+      const values = metric.points.map((point) => point.value);
+      const bins = buildBins(metric.points);
+      const maxCount = Math.max(...bins.map((bin) => bin.points.length));
+      const modeIndex = bins.findIndex((bin) => bin.points.length === maxCount);
+      const modeBin = bins[modeIndex];
+      const medianValue = median(values);
+      const meanValue = values.reduce((sum, value) => sum + value, 0) / values.length;
+
+      root.querySelector("[data-stat-median]").textContent = formatScaled(medianValue, metric);
+      root.querySelector("[data-stat-mode]").textContent =
+        `${formatTick(modeBin.from, metric)}〜${formatScaled(modeBin.to, metric)}`;
+      root.querySelector("[data-stat-mean]").textContent = formatScaled(meanValue, metric);
+      root.querySelector("[data-stat-coverage]").textContent =
+        `${metric.points.length}社 / ${distributionPayload.totalCompanies}社`;
+
+      const width = 760;
+      const height = 320;
+      const padLeft = 20;
+      const padRight = 20;
+      const plotTop = 40;
+      const plotBottom = 264;
+      const plotWidth = width - padLeft - padRight;
+      const plotHeight = plotBottom - plotTop;
+      // 最も高い棒の件数ラベルが中央値ラベルとぶつからないよう、棒の上に帯を空ける
+      const labelBand = 18;
+      const barArea = plotHeight - labelBand;
+      const slot = plotWidth / bins.length;
+      const gap = Math.min(3, slot * 0.18);
+      const barWidth = slot - gap;
+      const scaleX = (value) =>
+        padLeft + ((value - bins[0].from) / (bins.at(-1).to - bins[0].from)) * plotWidth;
+
+      const bars = [];
+      const countLabels = [];
+      bins.forEach((bin, index) => {
+        const count = bin.points.length;
+        if (!count) return;
+        const x = padLeft + index * slot + gap / 2;
+        const barHeight = (count / maxCount) * barArea;
+        const y = plotBottom - barHeight;
+        const isMode = index === modeIndex;
+        bars.push(
+          `<path class="hist-bar${isMode ? " is-mode" : ""}" data-bin="${index}" d="${barPath(x, y, barWidth, barHeight, 4)}"/>`,
+        );
+        countLabels.push(
+          `<text class="hist-count${isMode ? " is-mode" : ""}" x="${x + barWidth / 2}" y="${y - 7}" text-anchor="middle">${count}</text>`,
+        );
+      });
+
+      // 棒が細くても掴めるよう、階級の全高を当たり判定にする
+      const hits = bins.map((bin, index) => {
+        const names = bin.points.map((point) => point.name);
+        const shown = names.slice(0, 8).join("、");
+        const rest = names.length > 8 ? `　ほか${names.length - 8}社` : "";
+        return `<rect class="hist-hit" x="${padLeft + index * slot}" y="${plotTop}" width="${slot}" height="${plotHeight}"
+          data-bin="${index}"
+          data-range="${escapeHtml(`${formatTick(bin.from, metric)}〜${formatScaled(bin.to, metric)}`)}"
+          data-count="${bin.points.length}"
+          data-names="${escapeHtml(shown + rest)}" tabindex="0" role="img"
+          aria-label="${escapeHtml(`${formatTick(bin.from, metric)}〜${formatScaled(bin.to, metric)} ${bin.points.length}社`)}"></rect>`;
+      }).join("");
+
+      const tickStep = bins.length > 14 ? 2 : 1;
+      const ticks = bins
+        .map((bin) => bin.from)
+        .concat(bins.at(-1).to)
+        .map((value, index, all) => {
+          if (index % tickStep !== 0 && index !== all.length - 1) return "";
+          return `<text class="hist-tick" x="${scaleX(value)}" y="${plotBottom + 20}" text-anchor="middle">${escapeHtml(formatTick(value, metric))}</text>`;
+        })
+        .join("");
+
+      const medianX = scaleX(medianValue);
+      const medianAnchor =
+        medianX > width - padRight - 70 ? "end" : medianX < padLeft + 70 ? "start" : "middle";
+      const medianLine = `<line class="hist-median" x1="${medianX}" y1="${plotTop}" x2="${medianX}" y2="${plotBottom}"/>`;
+      const medianLabel = `<text class="hist-median-label" x="${medianX}" y="${plotTop - 9}" text-anchor="${medianAnchor}">中央値 ${escapeHtml(formatScaled(medianValue, metric))}</text>`;
+
+      chart.innerHTML = `
+        <svg class="histogram" viewBox="0 0 ${width} ${height}" role="img"
+          aria-label="${escapeHtml(`${metric.label}の分布。${metric.points.length}社を階級ごとに数えたヒストグラム`)}">
+          <line class="hist-baseline" x1="${padLeft}" y1="${plotBottom}" x2="${width - padRight}" y2="${plotBottom}"/>
+          ${bars.join("")}${medianLine}${countLabels.join("")}${medianLabel}${ticks}
+          <text class="hist-title" x="${width - padRight}" y="${height - 8}" text-anchor="end">${escapeHtml(metric.axisTitle)}</text>
+          <text class="hist-title" x="${padLeft}" y="${height - 8}">縦軸は企業数</text>
+          ${hits}
+        </svg>
+        <div class="chart-tooltip" data-chart-tooltip role="status"></div>`;
+
+      const tooltip = chart.querySelector("[data-chart-tooltip]");
+      const showTooltip = (hit, clientX) => {
+        const chartRect = chart.getBoundingClientRect();
+        const hitRect = hit.getBoundingClientRect();
+        tooltip.innerHTML =
+          `<strong>${escapeHtml(hit.dataset.range)}　${escapeHtml(hit.dataset.count)}社</strong>` +
+          (hit.dataset.names ? `<span>${escapeHtml(hit.dataset.names)}</span>` : "");
+        const halfWidth = tooltip.offsetWidth / 2;
+        const relativeX = (clientX ?? hitRect.left + hitRect.width / 2) - chartRect.left;
+        tooltip.style.left = `${Math.min(Math.max(relativeX, halfWidth + 4), chartRect.width - halfWidth - 4)}px`;
+        tooltip.style.top = `${hitRect.top - chartRect.top + 24}px`;
+        tooltip.classList.add("is-visible");
+      };
+      const hideTooltip = () => {
+        tooltip.classList.remove("is-visible");
+        chart.querySelectorAll(".hist-bar.is-hovered").forEach((bar) =>
+          bar.classList.remove("is-hovered"),
+        );
+      };
+
+      chart.querySelectorAll(".hist-hit").forEach((hit) => {
+        // 当たり判定は棒の上に重ねる必要があり兄弟セレクタが使えないため、対応する棒を直接指す
+        const bar = chart.querySelector(`.hist-bar[data-bin="${hit.dataset.bin}"]`);
+        const enter = (clientX) => {
+          bar?.classList.add("is-hovered");
+          showTooltip(hit, clientX);
+        };
+        hit.addEventListener("mouseenter", (event) => enter(event.clientX));
+        hit.addEventListener("mousemove", (event) => enter(event.clientX));
+        hit.addEventListener("mouseleave", hideTooltip);
+        hit.addEventListener("focus", () => enter(undefined));
+        hit.addEventListener("blur", hideTooltip);
+      });
+    };
+
+    const update = () => {
+      const metric =
+        distributionPayload.metrics.find((item) => item.key === select.value) ??
+        distributionPayload.metrics[0];
+      render(metric);
+    };
+
+    select.addEventListener("change", update);
+    update();
+  })();
+</script>
