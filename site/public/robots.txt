@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://recruit.big-a-k.com/sitemap-index.xml

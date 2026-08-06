@@ -33,6 +33,11 @@ const isGuide = pathname.startsWith("/guide/");
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icon.svg" />
     <title>{fullTitle}</title>
+    <script
+      is:inline
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7392061896405683"
+      crossorigin="anonymous"></script>
     <script is:inline>
       (() => {
         const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -84,7 +89,11 @@ const isGuide = pathname.startsWith("/guide/");
           <slot />
         </main>
         <footer class="site-footer wrap">
-          <p>公開資料をもとに作成しています。企業の優劣や、応募・投資の判断を示すものではありません。</p>
+          <p class="site-footer-meta">
+            <span>運営者: 黒田 幸者</span>
+            <a href="mailto:yukijya@big-a-k.com">yukijya@big-a-k.com</a>
+            <a href="/privacy/">プライバシーポリシー・運営者情報</a>
+          </p>
         </footer>
       </div>
     </div>

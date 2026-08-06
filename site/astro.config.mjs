@@ -1,6 +1,9 @@
+import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+import Papa from "papaparse";
 import tailwindcss from "@tailwindcss/vite";
 import { unified } from "@astrojs/markdown-remark";
 import remarkMath from "remark-math";
@@ -32,10 +35,25 @@ function watchDataCsv() {
   };
 }
 
+// is_active=false の企業ページは noindex で配信しているため、sitemap からも外す。
+// 載せたままだと Search Console で「送信された URL が noindex」の警告になる。
+const noindexPaths = new Set(
+  Papa.parse(readFileSync(`${dataDirectory}companies.csv`, "utf8"), {
+    header: true,
+    skipEmptyLines: true,
+  })
+    .data.filter((row) => row.is_active !== "true")
+    .map((row) => `/companies/${row.company_id}/`),
+);
+
 export default defineConfig({
+  site: "https://recruit.big-a-k.com",
   output: "static",
   trailingSlash: "always",
-  integrations: [mdx()],
+  integrations: [
+    mdx(),
+    sitemap({ filter: (page) => !noindexPaths.has(new URL(page).pathname) }),
+  ],
   vite: {
     plugins: [tailwindcss(), watchDataCsv()],
   },
