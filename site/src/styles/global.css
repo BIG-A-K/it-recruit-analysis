@@ -150,6 +150,8 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .industry-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; }
 .classification { margin-top: 18px; padding: 13px 16px; color: #3d5478; background: var(--blue-soft); border: 1px solid #dbe6fb; border-radius: 6px; font-size: 13px; line-height: 1.7; }
 .classification strong { margin-right: 10px; color: #1f4ea8; }
+/* 手書きの業界解説。企業記事と同じ本文組みにそろえる */
+.industry-prose { padding: 32px 40px; }
 
 .company-list { display: grid; gap: 10px; }
 .company-list .linked-row { grid-template-columns: minmax(200px, 1fr) 1.4fr; }
@@ -543,7 +545,7 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
   .company-list .company-stats > div:not(:first-child) { display: none; }
   .company-list .company-stats dd { margin-top: 0; }
   .panel { padding: 20px 16px; }
-  .doc-layout .prose, .company-prose { padding: 22px 18px; }
+  .doc-layout .prose, .company-prose, .industry-prose { padding: 22px 18px; }
    /* 列の多い表はカード内で横スクロールさせ、セル内は 1 行に保つ（モバイルのみ） */
    .prose table { display: block; max-width: 100%; overflow-x: auto; }
    .prose table :is(th, td) { min-width: 3em; padding: 10px 8px; white-space: nowrap; }

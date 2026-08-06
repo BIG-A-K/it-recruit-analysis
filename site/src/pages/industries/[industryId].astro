@@ -1,5 +1,5 @@
 ---
-import type { GetStaticPaths } from "astro";
+import type { GetStaticPaths, MDXInstance } from "astro";
 import CompanySortControls from "../../components/CompanySortControls.astro";
 import type { SortOption } from "../../components/CompanySortControls.astro";
 import MetricExplorer from "../../components/MetricExplorer.astro";
@@ -19,7 +19,17 @@ export const getStaticPaths = (() =>
     props: { industry },
   }))) satisfies GetStaticPaths;
 
+// 手書きの業界解説。`_articles/<industry_id>.mdx` を置いた業界だけ本文が出る。
+// `_` で始まるディレクトリは Astro がページとして扱わないため、ここから
+// 読み込んで業界ページの一部として描画する。
+const articleModules = import.meta.glob<MDXInstance<Record<string, unknown>>>(
+  "./_articles/*.mdx",
+  { eager: true },
+);
+
 const { industry } = Astro.props;
+const IndustryArticle =
+  articleModules[`./_articles/${industry.industry_id}.mdx`]?.Content;
 const baseCompanies = companiesForIndustry(industry.industry_id);
 const relatedMetrics = metricsForCompanies(
   baseCompanies.map((company) => company.company_id),
@@ -160,6 +170,12 @@ const sortOptions: SortOption[] = [
       <strong>分類の基準</strong>{industry.classification_basis}。企業は複数の業界に所属する場合があります。
     </p>
   </section>
+
+  {IndustryArticle && (
+    <section class="panel prose industry-prose">
+      <IndustryArticle />
+    </section>
+  )}
 
   {industryMetrics.length > 0 ? <MetricExplorer
      companies={baseCompanies}
