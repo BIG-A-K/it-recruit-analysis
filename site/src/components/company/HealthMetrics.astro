@@ -1,6 +1,7 @@
 ---
 import { metrics } from "../../lib/data";
 import { formatValue, latestMetric } from "../../lib/format";
+import { guideLink } from "../../lib/glossary";
 
 interface Props {
   companyId: string;
@@ -34,9 +35,23 @@ const quickRatio = quickAssets && currentLiabilities
     <p>{healthYear ? `${healthYear}年度・連結の流動性に関する指標です。` : "流動資産・流動負債を取得できた企業から掲載します。"}</p>
   </div>
   {healthMetrics.length > 0 ? <dl class="health-grid">
-    {currentAssets && <div><dt>流動資産</dt><dd>{formatValue(Number(currentAssets.value), currentAssets.unit)}</dd>{currentRatio !== undefined && <small>流動比率 {currentRatio.toFixed(1)}%</small>}</div>}
-    {currentLiabilities && <div><dt>流動負債</dt><dd>{formatValue(Number(currentLiabilities.value), currentLiabilities.unit)}</dd><small>1年以内に支払期限を迎える負債</small></div>}
-    {quickAssets && <div><dt>当座資産</dt><dd>{formatValue(Number(quickAssets.value), quickAssets.unit)}</dd>{quickRatio !== undefined && <small>当座比率 {quickRatio.toFixed(1)}%</small>}</div>}
+    {currentAssets && <div><dt><a href={guideLink("current_assets")}>流動資産</a></dt><dd>{formatValue(Number(currentAssets.value), currentAssets.unit)}</dd>{currentRatio !== undefined && <small><a href={guideLink("current_ratio")}>流動比率</a> {currentRatio.toFixed(1)}%</small>}</div>}
+    {currentLiabilities && <div><dt><a href={guideLink("current_liabilities")}>流動負債</a></dt><dd>{formatValue(Number(currentLiabilities.value), currentLiabilities.unit)}</dd></div>}
+    {quickAssets && <div><dt><a href={guideLink("quick_assets")}>当座資産</a></dt><dd>{formatValue(Number(quickAssets.value), quickAssets.unit)}</dd>{quickRatio !== undefined && <small><a href={guideLink("quick_ratio")}>当座比率</a> {quickRatio.toFixed(1)}%</small>}</div>}
   </dl> : <div class="empty-inline">この企業の流動性指標は準備中です。</div>}
   {healthMetrics.some((metric) => metric.note) && <p class="section-note">金融事業を含む企業など、資産・負債の構成が一般的な事業会社と異なる場合があります。</p>}
 </section>
+
+<style>
+  /* 指標名から /guide の解説へ送る。数値の邪魔をしないよう色は変えず点線だけ */
+  .health-grid dt a, .health-grid small a {
+    color: inherit;
+    text-decoration: underline dotted var(--line-dark);
+    text-underline-offset: 3px;
+  }
+
+  .health-grid dt a:hover, .health-grid small a:hover {
+    color: var(--ink);
+    text-decoration-style: solid;
+  }
+</style>
