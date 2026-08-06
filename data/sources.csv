@@ -237,3 +237,7 @@ edinet-s100ye2c,statutory_filing,有価証券報告書－第109期(2025/04/01－
 edinet-s100yeta,statutory_filing,有価証券報告書－第119期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YETA,S100YETA,2026-06-19,2026-08-05,パナソニックホールディングス株式会社
 edinet-s100yeoo,statutory_filing,有価証券報告書－第63期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YEOO,S100YEOO,2026-06-22,2026-08-05,東京エレクトロン株式会社
 edinet-s100ykta,statutory_filing,有価証券報告書－第84期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YKTA,S100YKTA,2026-06-26,2026-08-05,株式会社アドバンテスト
+edinet-s100r04v,statutory_filing,有価証券報告書－第43期(2022/04/01－2023/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100R04V,S100R04V,2023-06-22,2026-08-06,日鉄ソリューションズ株式会社
+edinet-s100to3m,statutory_filing,有価証券報告書－第44期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TO3M,S100TO3M,2024-06-20,2026-08-06,日鉄ソリューションズ株式会社
+edinet-s100vy52,statutory_filing,有価証券報告書－第45期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VY52,S100VY52,2025-06-17,2026-08-06,日鉄ソリューションズ株式会社
+edinet-s100yaev,statutory_filing,有価証券報告書－第46期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YAEV,S100YAEV,2026-06-15,2026-08-06,日鉄ソリューションズ株式会社

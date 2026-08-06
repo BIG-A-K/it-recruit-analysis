@@ -1,0 +1,170 @@
+company_id: nittetsu-solutions
+disclosure_company_id: nittetsu-solutions
+company_boundary:
+  adoption_company_id: nittetsu-solutions
+  disclosure_company_id: nittetsu-solutions
+  reporting_segment_company_id: nittetsu-solutions
+  legal_name: 日鉄ソリューションズ株式会社
+  securities_code: "2327"
+  edinet_code: E05304
+  fiscal_year_end: 3月末日
+  accounting_standard: IFRS
+  currency: JPY
+  reporting_segments: 情報サービス（単一報告セグメント）
+  company_relations: []
+  note: >
+    東証プライム上場の独立系SIer。採用主体と開示主体は同一法人。
+    親会社は日本製鉄株式会社（本データセットでは未管理のためcompany_relations.csvへは未登録）。
+    XBRL経営成績サマリはIFRSタクソノミで開示（2023年度以降IFRS適用）。有報の連結財務諸表もIFRS。
+    2024年7月1日付で株式分割（1株→2株）を実施、EPSは遡及修正済み。
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-06
+updated_at: 2026-08-06
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: in_progress
+  verify: pending
+items:
+  - id: ir-financial-history
+    phase: ir
+    store: ir_csv
+    topic: 売上高・営業利益・キャッシュフロー・自己資本比率 3期以上
+    status: done
+    value: metrics.csv 連結IFRS: revenue/operating_profit/operating_cf/investing_cf/financing_cf FY2022-FY2026（各5行）+ equity_ratio FY2021-FY2026（6行）= 計31行
+    subject: 連結
+    as_of: 2021-03-31〜2026-03-31
+    unit: JPY・percent
+    source: edinet-s100yaev; edinet-s100vy52; edinet-s100to3m; edinet-s100r04v
+    via: edinet-fetch --all（4期取得）+ edinet-normalize ×4
+    note: >
+      FY2026売上381,340百万円・営業利益44,242百万円・自己資本比率66.9%は公式値と一致。
+      FY2025投資CF +70,249百万円（正値）は大型投資回収等によるもの。FY2026営業CF -3,409百万円は要注記。
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csv 連結IFRS: current_assets/current_liabilities FY2021-FY2026（各6行）+ quick_assets FY2021-FY2026（6行）= 計18行
+    subject: 連結
+    as_of: 2021-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100yaev; edinet-s100r04v; edinet-s100to3m; edinet-s100vy52
+    via: edinet-fetch + edinet-normalize ×4
+    note: 当座資産は 現金及び預金＋受取債権その他＋その他金融資産（流動）の合計。normalize.pyへQuickAssetRuleを追加（kyoceraと同一IFRS3要素）。
+  - id: ir-segments
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメントの年度別売上・利益
+    status: not_disclosed
+    value: ""
+    subject: 連結報告セグメント
+    as_of: 2026-03-31
+    unit: JPY
+    source: edinet-s100yaev
+    via: edinet-fetch + XBRL検査（InformationServiceReportableSegmentMember）
+    note: >
+      単一報告セグメント「情報サービス（Information Service）」。セグメント注記には設備投資額と従業員数のみ開示され、
+      セグメント別の売上・利益は連結全体と一致するため個別開示なし。segments.csvへの行追加なし。
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数
+    status: done
+    value: metrics.csv: average_annual_salary/average_age/average_tenure（non_consolidated FY2023-FY2026 各4行）+ employee_count（consolidated FY2019-FY2026 8行）= 計20行
+    subject: 提出会社単体（給与・年齢・勤続）・連結（従業員数）
+    as_of: 2019-03-31〜2026-03-31
+    unit: JPY・years・persons
+    source: edinet-s100yaev; edinet-s100r04v; edinet-s100to3m; edinet-s100vy52
+    via: edinet-fetch + edinet-normalize ×4
+    note: >
+      FY2026: 平均年齢39.8歳・平均勤続年数12.6年・平均年間給与9,357千円・連結従業員10,276名。
+      単体従業員数（FY2026=4,102名）はXBRLに開示あるがCLIが連結のみ対象のため未採集。
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 採用主体・新卒職種・待遇・勤務地・選考
+    status: done
+    value: >
+      日鉄ソリューションズ株式会社が新卒採用を直接実施。2027年3月卒対象。
+      募集ページ: https://www.nssol.nipponsteel.com/recruiting/job/requirement/
+      職種は総合職（配属は入社後に決定）で5部門：システムエンジニア・営業・研究開発・ITコンサルタント・経営管理。
+      全学部全学科、文理比は例年理工8割/文科2割。
+      初任給（2027年度予定・月給7.5時間所定労働・残業代別途）: 修士了320,000円・大学卒300,000円。賞与年2回・昇給年1回。
+      諸手当: 通勤交通費・次世代育成支援手当・住宅手当（東京45,000円/名阪25,000円/その他19,000円）・独身寮（入社後3年上限）・持家支援手当。
+      在宅勤務制度・フレックスタイム・短時間勤務制度あり。2024年度実績: リモートワーク比率57.4%・月間平均残業9.0時間・有給取得15.1日。
+      休日: 完全週休2日制（土日）+祝日+年末年始、年間休日126日（2026年度）。
+      非開示: 標準年収モデル・基礎給/固定残業代の内訳・転勤制度・新卒選考プロセス詳細・応募期限・初任配属地。
+    subject: 日鉄ソリューションズ株式会社（新卒採用、2027年3月入社向け）
+    as_of: 2026-08-06
+    unit: JPY・日・percent
+    source: nssol-recruit-requirement; nssol-recruit-faq; nssol-recruit-welfare; nssol-recruit-infographics
+    via: 公式採用サイトの新卒ページ群を直接確認
+    note: >
+      募集要項ページでは全職種を総合職として一括募集。初任配属選択コース・年俸契約型新卒社員制度は名称のみ記載で詳細はお問合せ扱い。
+      28年卒はプレエントリー段階のみ。
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントの事業内容と公式サービス領域の対応
+    status: done
+    value: >
+      会社概要の事業内容はシステムインテグレーション一事業。有報は単一報告セグメント「情報サービス」。
+      公式サイトの事業区分（/ss/）は報告セグメントではなく顧客業種別・技術別の分類。
+      業種別: 製造・消費財/流通/金融/ネット・サービス業/公共・公益/通信。
+      技術・領域別: DX/AI/ローカル5G/データ活用/IoT/モダナイゼーション/アウトソーシング/インソーシング/グローバル。
+      社内組織8ユニット: デジタルソリューション＆コンサルティング本部/産業ソリューション事業本部(PLANETARY)/流通・サービスソリューション事業本部/金融ソリューション事業本部(Enepharos)/ITサービス&エンジニアリング事業本部(M³DaaS@absonne/NSFITOS/NSSEINT)/鉄鋼ソリューション事業本部(日本製鉄グループ向け・全売上の2割弱)/システム研究開発センター/グローバルビジネス支援センター。
+    subject: 連結報告セグメント
+    as_of: 2026-08-06
+    unit: ""
+    source: corporate-overview; ss-top; recruiting-business; ir-securities
+    via: webfetch（corporate/recruiting/IR 各種HTMLページを直接取得）
+    note: 公式事業区分（業種別・技術別）は報告セグメントではなく単一SI事業内の顧客区分・技術区分。
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 主な子会社・関連企業の具体名・事業内容・報告セグメント
+    status: done
+    value: >
+      親会社: 日本製鉄株式会社（東証プライム・鉄鋼）。2012年10月新日鉄住金ソリューションズへ商号変更、2019年4月現商号へ。
+      国内連結子会社: 日鉄ソリューションズ北海道/東日本/中部/関西/九州/沖縄、インフォコム（医療ERP）、サービスアンドテクノロジー（ITインフラ・DC）、ネットワークバリューコンポネンツ（NW・セキュリティ）、NSフィナンシャルマネジメントコンサルティング、金融エンジニアリング・グループ、B-Prost、Act.。
+      合弁: 日鉄日立システムソリューションズ、エヌシーアイ総合システム。
+      海外: 日鉄軟件（上海）、NS Solutions Asia Pacific（シンガポール）、Thai NS Solutions（タイ）、PT. NSSOL SYSTEMS INDONESIA、PT. WCS ABYAKTA NAWASENA、NS Solutions USA（San Mateo）、NS Solutions IT Consulting Europe（英国）。
+    subject: 連結子会社・関連会社・親会社
+    as_of: 2026-08-06
+    unit: ""
+    source: corporate-relation; recruiting-group; corporate-history
+    via: webfetch（corporateサイト・採用サイトのHTMLを直接取得）
+    note: 親会社（日本製鉄）は本データセットではcompany_relations.csvへ未登録。
+  - id: article-company-and-links
+    phase: article
+    store: mdx
+    topic: 企業理念・会社紹介・公式リンク・会計基準
+    status: done
+    value: >
+      企業理念「創造・信頼・成長」。パーパス「ともに未来を考え、社会の新たな可能性をテクノロジーと情熱で切り拓く」。
+      ビジョン「NSSOL 2030ビジョン: Social Value Producer with Digital」。コーポレートメッセージ「ともに、その先の答えを」。
+      設立: 1980年10月1日（日鐵コンピュータシステムとして設立）。2002年10月東証一部上場、2022年4月プライム移行。
+      規模（2026年3月期・連結）: 資本金129億5,276万円・売上3,813億円・従業員10,276名。本社: 東京都港区虎ノ門。
+      会計基準: IFRS（2023年度以降）。2024年7月株式分割（1株→2株）。
+      公式リンク: HP/IR/有報PDF(FY2023-2026 EDINET)/採用/新卒募集要項/統合報告書2025/中期経営計画2025-2027。
+    subject: 日鉄ソリューションズ株式会社
+    as_of: 2026-08-06
+    unit: ""
+    source: corporate-overview; corporate-philosophy; corporate-purpose; corporate-2030vision; corporate-message; corporate-history; ir-securities; ir-report-fy2025
+    via: webfetch（corporate/IR/recruiting 公式HTMLを直接取得）
+    note: 有報PDF年度別一覧はJS描画で取得不可、EDINET docID（S100YAEV等）を正とする。
+  - id: verify-article
+    phase: verify
+    store: mdx
+    topic: MDX構成・セグメント対応・禁止表現・数値境界
+    status: pending
+    value: ""
+    subject: site/src/pages/companies/nittetsu-solutions.mdx
+    as_of: ""
+    unit: ""
+    source: ""
+    via: ""
+    note: ""

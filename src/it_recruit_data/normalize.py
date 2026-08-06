@@ -420,6 +420,14 @@ QUICK_ASSET_RULES = {
         ),
         "IFRS",
     ),
+    "nittetsu-solutions": QuickAssetRule(
+        (
+            "jpigp_cor:CashAndCashEquivalentsIFRS",
+            "jpigp_cor:TradeAndOtherReceivablesCAIFRS",
+            "jpigp_cor:OtherFinancialAssetsCAIFRS",
+        ),
+        "IFRS",
+    ),
 }
 
 
