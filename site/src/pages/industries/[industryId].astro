@@ -95,13 +95,8 @@ const sortedCompanies = baseCompanies
      };
   })
   .sort((a, b) => {
-    // 初期表示は並び替えコントロールの初期状態（平均給与の降順）と揃える
-    const av = a.salary ? Number(a.salary.value) : null;
-    const bv = b.salary ? Number(b.salary.value) : null;
-    if (av === null && bv === null) return a.kanaRank - b.kanaRank;
-    if (av === null) return 1;
-    if (bv === null) return -1;
-    return bv - av || a.kanaRank - b.kanaRank;
+    // 初期表示は並び替えコントロールの初期状態（五十音順）と揃える
+    return a.kanaRank - b.kanaRank;
   });
 
 const sortOptions: SortOption[] = [
@@ -182,7 +177,7 @@ const sortOptions: SortOption[] = [
     <CompanySortControls
       controlsId={`industry-${industry.industry_id}`}
       options={sortOptions}
-      initialSort="salary"
+      initialSort="kana"
     />
     <div class="company-list" data-company-list={`industry-${industry.industry_id}`}>
       {
