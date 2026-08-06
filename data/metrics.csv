@@ -3091,3 +3091,42 @@ nittetsu-solutions,quick_assets,2021,2021-03-31,135816000000,JPY,consolidated,IF
 nittetsu-solutions,quick_assets,2024,2024-03-31,173297000000,JPY,consolidated,IFRS,reported,edinet-s100vy52,算定科目=jpigp_cor:CashAndCashEquivalentsIFRS+jpigp_cor:TradeAndOtherReceivablesCAIFRS+jpigp_cor:OtherFinancialAssetsCAIFRS
 nittetsu-solutions,quick_assets,2025,2025-03-31,265937000000,JPY,consolidated,IFRS,reported,edinet-s100yaev,算定科目=jpigp_cor:CashAndCashEquivalentsIFRS+jpigp_cor:TradeAndOtherReceivablesCAIFRS+jpigp_cor:OtherFinancialAssetsCAIFRS
 nittetsu-solutions,quick_assets,2026,2026-03-31,192259000000,JPY,consolidated,IFRS,reported,edinet-s100yaev,算定科目=jpigp_cor:CashAndCashEquivalentsIFRS+jpigp_cor:TradeAndOtherReceivablesCAIFRS+jpigp_cor:OtherFinancialAssetsCAIFRS
+ibm-japan,revenue,2025,2025-12-31,832100000000,JPY,ibm-japan,,reported,ibm-japan-financial-2025,"公式ページの損益計算書の要旨に売上高8,321億円と掲載。CSVは億円をJPYへ換算。ページは連結範囲と会計基準を明記していない。"
+ibm-japan,operating_profit,2025,2025-12-31,46100000000,JPY,ibm-japan,,reported,ibm-japan-financial-2025,公式ページの損益計算書の要旨に営業利益461億円と掲載。CSVは億円をJPYへ換算。ページは連結範囲と会計基準を明記していない。
+ibm-japan,current_assets,2025,2025-12-31,550200000000,JPY,ibm-japan,,reported,ibm-japan-financial-2025,"公式ページの貸借対照表の要旨に流動資産5,502億円と掲載。CSVは億円をJPYへ換算。ページは連結範囲と会計基準を明記していない。"
+ibm-japan,current_liabilities,2025,2025-12-31,379700000000,JPY,ibm-japan,,reported,ibm-japan-financial-2025,"公式ページの貸借対照表の要旨に流動負債3,797億円と掲載。CSVは億円をJPYへ換算。ページは連結範囲と会計基準を明記していない。"
+ibm-japan,equity_ratio,2025,2025-12-31,,percent,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式ページに自己資本比率の掲載なし。株主資本等と資産合計からの算定は行わない。
+ibm-japan,quick_assets,2025,2025-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式ページに当座資産の掲載なし。構成科目からの算定は行わない。
+ibm-japan,average_annual_salary,2025,2025-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページに平均年間給与の掲載なし。EDINET API提出書類一覧を2025-07-02〜2026-08-06で日本アイ・ビー・エム株式会社に絞り込んだが該当書類なし。推定しない。
+ibm-japan,average_age,2025,2025-12-31,,years,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページに平均年齢の掲載なし。EDINET API提出書類一覧を2025-07-02〜2026-08-06で日本アイ・ビー・エム株式会社に絞り込んだが該当書類なし。推定しない。
+ibm-japan,average_tenure,2025,2025-12-31,,years,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページに平均勤続年数の掲載なし。EDINET API提出書類一覧を2025-07-02〜2026-08-06で日本アイ・ビー・エム株式会社に絞り込んだが該当書類なし。推定しない。
+ibm-japan,employee_count,2025,2025-12-31,,persons,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページに従業員数の掲載なし。EDINET API提出書類一覧を2025-07-02〜2026-08-06で日本アイ・ビー・エム株式会社に絞り込んだが該当書類なし。推定しない。
+ibm-japan,operating_cf,2025,2025-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは貸借対照表・損益計算書の要旨のみで、営業活動によるキャッシュ・フローの掲載なし。EDINET API提出書類一覧を2025-07-02〜2026-08-06で日本アイ・ビー・エム株式会社に絞り込んだが該当書類なし。推定しない。
+ibm-japan,investing_cf,2025,2025-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは貸借対照表・損益計算書の要旨のみで、投資活動によるキャッシュ・フローの掲載なし。EDINET API提出書類一覧を2025-07-02〜2026-08-06で日本アイ・ビー・エム株式会社に絞り込んだが該当書類なし。推定しない。
+ibm-japan,financing_cf,2025,2025-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは貸借対照表・損益計算書の要旨のみで、財務活動によるキャッシュ・フローの掲載なし。EDINET API提出書類一覧を2025-07-02〜2026-08-06で日本アイ・ビー・エム株式会社に絞り込んだが該当書類なし。推定しない。
+ibm-japan,revenue,2023,2023-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは2025年の貸借対照表・損益計算書の要旨のみで、2023年度の売上高を掲載していない。連結範囲・会計基準も明記されていないため推定しない。
+ibm-japan,revenue,2024,2024-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは2025年の貸借対照表・損益計算書の要旨のみで、2024年度の売上高を掲載していない。連結範囲・会計基準も明記されていないため推定しない。
+ibm-japan,operating_profit,2023,2023-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは2025年の貸借対照表・損益計算書の要旨のみで、2023年度の営業利益を掲載していない。連結範囲・会計基準も明記されていないため推定しない。
+ibm-japan,operating_profit,2024,2024-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは2025年の貸借対照表・損益計算書の要旨のみで、2024年度の営業利益を掲載していない。連結範囲・会計基準も明記されていないため推定しない。
+ibm-japan,equity_ratio,2023,2023-12-31,,percent,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは2025年の貸借対照表要旨のみで、2023年度の自己資本比率を掲載していない。連結範囲・会計基準も明記されておらず、算定もしない。
+ibm-japan,equity_ratio,2024,2024-12-31,,percent,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは2025年の貸借対照表要旨のみで、2024年度の自己資本比率を掲載していない。連結範囲・会計基準も明記されておらず、算定もしない。
+ibm-japan,current_assets,2023,2023-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは2025年の貸借対照表要旨のみで、2023年度の流動資産を掲載していない。連結範囲・会計基準も明記されていないため推定しない。
+ibm-japan,current_assets,2024,2024-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは2025年の貸借対照表要旨のみで、2024年度の流動資産を掲載していない。連結範囲・会計基準も明記されていないため推定しない。
+ibm-japan,current_liabilities,2023,2023-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは2025年の貸借対照表要旨のみで、2023年度の流動負債を掲載していない。連結範囲・会計基準も明記されていないため推定しない。
+ibm-japan,current_liabilities,2024,2024-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは2025年の貸借対照表要旨のみで、2024年度の流動負債を掲載していない。連結範囲・会計基準も明記されていないため推定しない。
+ibm-japan,quick_assets,2023,2023-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは2025年の貸借対照表要旨のみで、2023年度の当座資産を掲載していない。構成科目からの算定は行わず、連結範囲・会計基準も不明のままとする。
+ibm-japan,quick_assets,2024,2024-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは2025年の貸借対照表要旨のみで、2024年度の当座資産を掲載していない。構成科目からの算定は行わず、連結範囲・会計基準も不明のままとする。
+ibm-japan,average_annual_salary,2023,2023-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページに平均年間給与の掲載はなく、2023年度の公式資料も確認できない。人的資本の開示範囲、連結範囲、会計基準も明記されていないため推定しない。
+ibm-japan,average_annual_salary,2024,2024-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページに平均年間給与の掲載はなく、2024年度の公式資料も確認できない。人的資本の開示範囲、連結範囲、会計基準も明記されていないため推定しない。
+ibm-japan,average_age,2023,2023-12-31,,years,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページに平均年齢の掲載はなく、2023年度の公式資料も確認できない。人的資本の開示範囲、連結範囲、会計基準も明記されていないため推定しない。
+ibm-japan,average_age,2024,2024-12-31,,years,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページに平均年齢の掲載はなく、2024年度の公式資料も確認できない。人的資本の開示範囲、連結範囲、会計基準も明記されていないため推定しない。
+ibm-japan,average_tenure,2023,2023-12-31,,years,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページに平均勤続年数の掲載はなく、2023年度の公式資料も確認できない。人的資本の開示範囲、連結範囲、会計基準も明記されていないため推定しない。
+ibm-japan,average_tenure,2024,2024-12-31,,years,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページに平均勤続年数の掲載はなく、2024年度の公式資料も確認できない。人的資本の開示範囲、連結範囲、会計基準も明記されていないため推定しない。
+ibm-japan,employee_count,2023,2023-12-31,,persons,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページに従業員数の掲載はなく、2023年度の公式資料も確認できない。人的資本の開示範囲、連結範囲、会計基準も明記されていないため推定しない。
+ibm-japan,employee_count,2024,2024-12-31,,persons,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページに従業員数の掲載はなく、2024年度の公式資料も確認できない。人的資本の開示範囲、連結範囲、会計基準も明記されていないため推定しない。
+ibm-japan,operating_cf,2023,2023-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは貸借対照表・損益計算書の要旨のみで、2023年度の営業活動によるキャッシュ・フローを掲載していない。連結範囲・会計基準も明記されていないため推定しない。
+ibm-japan,operating_cf,2024,2024-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは貸借対照表・損益計算書の要旨のみで、2024年度の営業活動によるキャッシュ・フローを掲載していない。連結範囲・会計基準も明記されていないため推定しない。
+ibm-japan,investing_cf,2023,2023-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは貸借対照表・損益計算書の要旨のみで、2023年度の投資活動によるキャッシュ・フローを掲載していない。連結範囲・会計基準も明記されていないため推定しない。
+ibm-japan,investing_cf,2024,2024-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは貸借対照表・損益計算書の要旨のみで、2024年度の投資活動によるキャッシュ・フローを掲載していない。連結範囲・会計基準も明記されていないため推定しない。
+ibm-japan,financing_cf,2023,2023-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは貸借対照表・損益計算書の要旨のみで、2023年度の財務活動によるキャッシュ・フローを掲載していない。連結範囲・会計基準も明記されていないため推定しない。
+ibm-japan,financing_cf,2024,2024-12-31,,JPY,ibm-japan,,not_disclosed,ibm-japan-financial-2025,公式財務ページは貸借対照表・損益計算書の要旨のみで、2024年度の財務活動によるキャッシュ・フローを掲載していない。連結範囲・会計基準も明記されていないため推定しない。

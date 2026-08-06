@@ -1,0 +1,277 @@
+company_id: ibm-japan
+disclosure_company_id: ibm-japan
+company_boundary:
+  adoption_company_id: ibm-japan
+  disclosure_company_id: ibm-japan
+  reporting_segment_company_id: ibm-japan
+  legal_name: 日本アイ・ビー・エム株式会社
+  securities_code: ""
+  edinet_code: ""
+  fiscal_year_end: 12月31日
+  accounting_standard: 未確認
+  currency: JPY
+  reporting_segments: 非開示（日本IBM公式財務ページで確認できず）
+  company_relations: []
+  note: >
+    日本IBM株式会社を採用主体・開示主体として扱う。公式会社概要では株主をIBM Japan Holdings合同会社（100%）と記載する。
+    IBM Corporationは別company_idを作らず、連結財務数値を日本IBMへ複写しない。日本IBMの公式財務ページに掲載された財務要約を正本候補とし、
+    日本IBM公式財務ページは2025年の貸借対照表・損益計算書要旨のみを掲載し、会計基準・連結範囲・報告セグメントを明記しない。
+    IBM Corporationの連結財務数値・セグメントは日本IBMへ移用しない。日本法人の主な子会社・関連会社はMDX記事内で範囲を注記する。
+fiscal_year: 2025
+focus: 両方
+created_at: 2026-08-06
+updated_at: 2026-08-06
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: in_progress
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: not_disclosed
+    value: metrics.csvの平均年間給与・平均年齢・平均勤続年数・従業員数（2023〜2025年度、12行、全行not_disclosed）
+    subject: 日本アイ・ビー・エム株式会社
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY・years・persons
+    source: ibm-japan-financial-2025
+    via: EDINET検索後、公式財務ページへフォールバック
+    note: 公式財務ページに人的資本情報なし。IBM Corporationの値は使用せず、従業員数も推定しない。
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高 3期以上
+    status: done
+    value: metrics.csvのrevenue（2023〜2025年度、3行。2025年度のみreported）
+    subject: 日本アイ・ビー・エム株式会社
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: ibm-japan-financial-2025
+    via: EDINET検索後、公式財務ページへフォールバック
+    note: 2025年度の売上高8,321億円のみ掲載。2023・2024年度はnot_disclosed。連結範囲・会計基準は推定しない。
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csvのoperating_profit（2023〜2025年度、3行。2025年度のみreported）
+    subject: 日本アイ・ビー・エム株式会社
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: ibm-japan-financial-2025
+    via: EDINET検索後、公式財務ページへフォールバック
+    note: 2025年度の営業利益461億円のみ掲載。2023・2024年度はnot_disclosed。連結範囲・会計基準は推定しない。
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csvのcurrent_assets・current_liabilities・equity_ratio・quick_assets（2023〜2025年度、12行）
+    subject: 日本アイ・ビー・エム株式会社
+    as_of: 2023-12-31〜2025-12-31
+    unit: percent・JPY
+    source: ibm-japan-financial-2025
+    via: EDINET検索後、公式財務ページへフォールバック
+    note: 2025年度の流動資産5,502億円・流動負債3,797億円のみreported。自己資本比率・当座資産・過年度値はnot_disclosed。
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: not_disclosed
+    value: metrics.csvのoperating_cf・investing_cf・financing_cf（2023〜2025年度、9行、全行not_disclosed）
+    subject: 日本アイ・ビー・エム株式会社
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: ibm-japan-financial-2025
+    via: EDINET検索後、公式財務ページへフォールバック
+    note: 公式ページは貸借対照表・損益計算書要旨のみでキャッシュフローを掲載していない。推定しない。
+  - id: ir-segments
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメント名・セグメント別売上・利益
+    status: not_disclosed
+    value: segments.csvの報告セグメント非開示（2023〜2025年度、3行）
+    subject: 日本IBM株式会社
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: ibm-japan-financial-2025
+    via: EDINET検索後、公式財務ページへフォールバック
+    note: 報告セグメント名・セグメント売上・利益の公式開示なし。IBM Corporationのセグメント値は使用しない。
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 組織再編・会計基準変更・比較上の注記
+    status: not_disclosed
+    value: 公式財務ページおよび現行EDINET検索範囲に該当注記なし
+    subject: 日本IBM株式会社
+    as_of: 2026-08-06
+    unit: ""
+    source: ibm-japan-financial-2025
+    via: EDINET検索後、公式財務ページへフォールバック
+    note: 連結範囲・会計基準・組織再編・会計基準変更・過年度比較に関する注記は確認できない。
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・募集ページURL
+    status: done
+    value: >-
+      採用主体は日本アイ・ビー・エム株式会社。対象は2028年度新卒採用で、IBM公式求人ページから2028年IBM Group My Pageへ遷移する。会員規約にも日本アイ・ビー・エム株式会社を運営主体として記載する。
+    subject: 日本アイ・ビー・エム株式会社
+    as_of: 2028年度新卒採用、2026-08-06確認
+    unit: ""
+    source: >-
+      https://www.ibm.com/jp-ja/careers/career-opportunities; https://axol.jp/zw/s/ibm_group_28/entry/agreement; https://www.ibm.com/jp-ja/about
+    via: IBM公式採用ページ、IBM Group My Page会員規約、公式会社情報を確認
+    note: IBM Group My Pageはグループ会社共通だが、今回の対象職種は日本IBMの募集として整理する。IBM Corporationの雇用主体情報は使用しない。
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: |
+      2028年度の確認済み募集職種は7職種。
+      - 戦略コンサルタント：経営・事業・IT/AI戦略の構想策定、経営層への提言、変革推進。東京配属が基本で、東京・大阪・愛知等の事業所、顧客先、サテライトオフィス、自宅等。
+      - デジタルビジネスコンサルタント：生成AI、IoT、ブロックチェーン、クラウド、ERP等を用いた業務・IT変革。勤務地は東京・大阪・愛知等。
+      - ITスペシャリスト（コンサルティング事業本部）：要件定義、設計、構築、保守・運用までのITソリューション提供。勤務地は東京・大阪・愛知等。
+      - ITスペシャリスト（テクノロジー事業本部）：AI・クラウド、データ管理・分析、自動化、ハイブリッドクラウド、IBM製品等の技術サービス。勤務地は東京・千葉等。海外大学卒・秋卒等の2027年既卒者も応募対象。
+      - AIイノベーター：生成AIの構想設計、プロトタイプ開発、モデル評価、システム実装。AIの学習・検証経験およびPython等の開発成果物が必須。勤務地は東京等。
+      - データサイエンティスト：AI・機械学習・数理最適化を用いたデータ分析。機械学習・数理最適化の知識または経験は望ましい。勤務地は東京・大阪・愛知等。
+      - デザイナー：Web・モバイル等のUI/UX、ユーザー調査、プロトタイプ作成。デザイン等の知識・経験およびポートフォリオが必要。勤務地は東京・大阪・愛知等。
+      共通して2028年4月または10月からの国内フルタイム就労、日本語能力、英語能力または習得意思、就業経験不問（一部の経験・成果物要件を除く）。選考はオンライン応募、書類選考、職種に応じたオンライン・コーディング・ビデオ・英語アセスメント、面接、結果連絡。FAQでは同時応募は1職種のみ。職種別の選考日程・期限は公開資料に記載なし。
+    subject: 2028年度新卒採用・現行7職種
+    as_of: 2026-08-06
+    unit: ""
+    source: >-
+      https://www.ibm.com/jp-ja/careers/career-opportunities; https://www.ibm.com/jp-ja/careers/blog/2028-new-graduate-recruiting-positions.html; https://www.ibm.com/jp-ja/careers/application-process; https://www.ibm.com/jp-ja/careers/faq; https://www.ibm.com/downloads/documents/jp-ja/1227c12efab8b261; https://www.ibm.com/downloads/documents/jp-ja/1227c12efab8b265; https://www.ibm.com/downloads/documents/jp-ja/1227c12efab8b263; https://www.ibm.com/downloads/documents/jp-ja/16ddd5a57a3948f7; https://www.ibm.com/downloads/documents/jp-ja/15db805fff4249c9; https://www.ibm.com/downloads/documents/jp-ja/1227c12efab8b25d; https://www.ibm.com/downloads/documents/jp-ja/1227c12efab8b25f
+    via: IBM公式の現行募集ページ、職種紹介ページ、7件の2028年度募集要項、応募プロセス、FAQを確認
+    note: 現行ページにあるインフラストラクチャー・サービス・エンジニアのリンク先は2027年度募集要項のため、2028年度職種には含めない。ソリューションエンジニア、製品開発エンジニア、セールス、研究員は2028年度採用未定。
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・標準年収
+    status: done
+    value: |
+      2028年度募集要項のReference Salary（基準給与年額）は、戦略コンサルタント、デジタルビジネスコンサルタント、ITスペシャリスト（コンサルティング事業本部）、デザイナーが4,902,000円（12等分の本給月額408,500円）、AIイノベーターが7,000,000円（月額583,334円）、データサイエンティストが6,007,200円（月額500,600円）。ITスペシャリスト（テクノロジー事業本部）は4,902,000円で、Global研修修了・Band 6更新後の年収例は6,600,000円。所定労働時間外勤務手当を会社規程により支給する。Growth Driven Profit-sharingは多くの職種で業績連動型賞与・年1回と記載する。
+    subject: 日本アイ・ビー・エム株式会社の2028年度新卒採用職種
+    as_of: 2026-08-06
+    unit: JPY
+    source: >-
+      https://www.ibm.com/downloads/documents/jp-ja/1227c12efab8b261; https://www.ibm.com/downloads/documents/jp-ja/1227c12efab8b265; https://www.ibm.com/downloads/documents/jp-ja/1227c12efab8b263; https://www.ibm.com/downloads/documents/jp-ja/16ddd5a57a3948f7; https://www.ibm.com/downloads/documents/jp-ja/15db805fff4249c9; https://www.ibm.com/downloads/documents/jp-ja/1227c12efab8b25d; https://www.ibm.com/downloads/documents/jp-ja/1227c12efab8b25f
+    via: 各職種のIBM公式募集要項の給与欄を比較確認
+    note: 固定時間外手当の金額・内包、通勤手当・住宅手当等の具体条件は非開示。Reference Salaryを保証年収とは同義に扱わない。6,600,000円は研修・職位更新後の年収例。
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: |
+      7件の2028年度募集要項に共通して標準労働時間は1日7時間36分、標準勤務時間帯は9:00〜17:36、フレックスのコアタイムは10:00〜16:30。職務・業務内容により勤務制度は異なり、裁量勤務制度等の記載もある。勤務地は職種・プロジェクトにより日本IBM事業所、顧客先、サテライトオフィス、自宅。テクノロジー事業本部ITスペシャリストは自宅（リモートワーク可）を明記する。その他は自宅の記載はあるが詳細なリモート制度は非開示。転勤制度・範囲、2028年度の応募締切日は公開資料で確認できない。My Page開設期間（2026年3月30日〜2028年3月末日）は応募締切日ではない。
+    subject: 日本アイ・ビー・エム株式会社の2028年度新卒採用
+    as_of: 2026-08-06
+    unit: ""
+    source: >-
+      https://www.ibm.com/downloads/documents/jp-ja/1227c12efab8b261; https://www.ibm.com/downloads/documents/jp-ja/1227c12efab8b265; https://www.ibm.com/downloads/documents/jp-ja/1227c12efab8b263; https://www.ibm.com/downloads/documents/jp-ja/16ddd5a57a3948f7; https://www.ibm.com/downloads/documents/jp-ja/15db805fff4249c9; https://www.ibm.com/downloads/documents/jp-ja/1227c12efab8b25d; https://www.ibm.com/downloads/documents/jp-ja/1227c12efab8b25f; https://www.ibm.com/jp-ja/careers/application-process; https://www.ibm.com/jp-ja/careers/faq; https://axol.jp/zw/s/ibm_group_28/entry/agreement
+    via: 各職種募集要項、IBM公式応募プロセス、FAQ、IBM Group My Page会員規約を確認
+    note: 公開資料にない締切、転勤、職種別リモート運用は推定していない。
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的サービス・ブランド・提供内容・運営法人
+    status: done
+    value: |
+      日本IBM公式サイトの事業カテゴリは法定報告セグメントではなく、国内向けの事業・サービス分類である。ソフトウェアはAI、生産性向上、データ管理、セキュリティー・ガバナンス、統合・レジリエンス、ハイブリッドインフラ管理を扱い、watsonx Orchestrate、watsonx.data、watsonx.governance、webMethods Hybrid Integration、IBM Concert等を含む。インフラストラクチャーはIBM Z、IBM Power、IBM Cloud Paks、IBM Cloud、ストレージ、ハイブリッドクラウド、アプリケーション・モダナイゼーションを扱う。IBM Consultingはデータ・AI、事業変革、サプライチェーン、財務、クラウド、アプリケーション、BPO、セキュリティーを助言・設計・構築・運用まで支援する。サイバーセキュリティーはX-Force、CyberDefend、脅威管理、GRC、マネージド・セキュリティー等を含む。戦略的パートナーシップ、Red Hatも公式サイト上の分類である。IJDS、ISE、ISOC、IJCC等の運営法人の役割は関連企業項目に分ける。
+    subject: 日本アイ・ビー・エム株式会社
+    as_of: 2026-08-06
+    unit: ""
+    source: >-
+      https://www.ibm.com/jp-ja/about; https://www.ibm.com/jp-ja/software; https://www.ibm.com/jp-ja/solutions/infrastructure-modernization; https://www.ibm.com/jp-ja/consulting; https://www.ibm.com/jp-ja/services/security
+    via: 日本IBM公式の会社概要、ソフトウェア、インフラ、コンサルティング、セキュリティー各ページを確認
+    note: IBM Consulting、watsonx、IBM Cloud、Red Hat等は公式サイト上の事業・ブランド分類であり、IBM Corporationの財務セグメントではない。
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイトの事業区分とIR報告セグメントの対応関係と差異
+    status: not_disclosed
+    value: |
+      日本IBMの報告セグメントは非開示。2023〜2025年度について公式業績ページに報告セグメント名、定義、対象地域、セグメント売上高・利益の掲載はない。ソフトウェア、インフラストラクチャー、IBM Consulting、サイバーセキュリティー、戦略的パートナーシップ、Red Hatは公式サイト上の分類だが、法定報告セグメントとの対応は不明である。
+    subject: 日本アイ・ビー・エム株式会社
+    as_of: 2023-12-31〜2025-12-31、2026-08-06確認
+    unit: ""
+    source: >-
+      https://www.ibm.com/jp-ja/about/financial; https://www.ibm.com/jp-ja/about; https://www.ibm.com/jp-ja/software; https://www.ibm.com/jp-ja/consulting
+    via: 日本IBM公式業績ページと公式事業ページを直接確認
+    note: 公式サイトのカテゴリを独自に法定報告セグメントへ統合しない。IBM Corporationの連結報告セグメントや数値も使用しない。
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: |
+      直接株主はIBM Japan Holdings合同会社（100%）。日本IBM公式一覧の100%子会社はIJCC（IT製品・ソリューションのリース・ファイナンシング）、IJDS（情報システムの企画・設計・開発・保守・運用）、IJS（IBM BigBlue等のスポーツ事業）、ISE（DX・AI・ハイブリッドクラウド・インフラ技術サービス）、ISOC（シェアードサービス・バックオフィス・BPO）。50超〜99%区分にはIJDI、コベルコシステム、MIDS、りそなデジタル・アイ、TLIがあり、20〜50%区分にはCLIS、NTTインテグレーション（旧NI+C）、菱友システムビジネスがある。IJDIはJTB向けシステム、コベルコシステムはSI・ERP・DX、MIDSはみずほ金融システム、りそなデジタル・アイは金融システム、TLIは生命保険システム、CLISは保険・金融システム、NTTインテグレーションはクラウド・ネットワーク・セキュリティー・運用保守、菱友システムビジネスはITサポート・サイバーセキュリティー・保守を扱う。
+    subject: 日本アイ・ビー・エム株式会社の株主・子会社・関連会社
+    as_of: 2026-08-06
+    unit: ""
+    source: >-
+      https://www.ibm.com/jp-ja/about; https://www.ibm.com/jp-ja/about/subsidiaries/ijcc; https://www.ibm.com/jp-ja/about/subsidiaries/ijds; https://www.ibm.com/jp-ja/about/subsidiaries/ijs; https://www.ibm.com/jp-ja/about/subsidiaries/ise; https://www.ibm.com/jp-ja/about/subsidiaries/isoc; https://www.ibm.com/jp-ja/about/subsidiaries/ijdi; https://www.ibm.com/jp-ja/about/subsidiaries/mids; https://www.ibm.com/jp-ja/about/subsidiaries/resona-digital-i; https://www.ibm.com/jp-ja/about/subsidiaries/tli; https://www.kobelcosys.co.jp/company/business.html; https://www.clis.co.jp/company/business_model.html; https://www.niandc.co.jp/company/business/; https://www.ryoyu.co.jp/company/group/
+    via: 日本IBM公式の子会社・関連会社一覧および各社公式会社概要・事業内容ページを確認
+    note: IBM CorporationはMDX内のグローバル・歴史的文脈に限り言及する。子会社・関連会社は日本IBMの報告セグメントではない。NI+Cは現社名NTTインテグレーション株式会社。
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: IBM公式採用サイトのパーパスは「世界をより良くするカタリスト（触媒）になること」。価値観は、すべてのクライアントの成功、会社と社会に意味のあるイノベーション、あらゆる関係における信頼と責任。
+    subject: 日本IBM株式会社・IBMグループ
+    as_of: 2026-08-06
+    unit: ""
+    source: >-
+      https://www.ibm.com/jp-ja/careers/culture; https://www.ibm.com/jp-ja/think/insights/business-conduct-guideline
+    via: IBM公式採用カルチャーおよびビジネス・コンダクト・ガイドラインを確認
+    note: IBMグループの理念表現として記載し、日本IBM単体の独自理念とは断定しない。
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介・設立経緯・規模
+    status: done
+    value: 日本アイ・ビー・エム株式会社は1937年6月17日設立。本社は東京都港区虎ノ門二丁目6番1号、資本金は680億円、事業内容は情報システムに関わる製品・サービスの提供。株主はIBM Japan Holdings合同会社100%。IBM公式サイトの170カ国超・従業員30万人超等はグループ全体の規模情報であり、日本IBM単体の規模として扱わない。IBMの1896年の作表機、1911年のCTR設立、1924年のIBM改称はグローバル歴史としてのみ扱う。
+    subject: 日本アイ・ビー・エム株式会社
+    as_of: 2026-08-06
+    unit: ""
+    source: >-
+      https://www.ibm.com/jp-ja/about; https://www.ibm.com/downloads/documents/jp-ja/115dcc7f0f363739; https://www.ibm.com/history
+    via: 日本IBM公式会社概要、会社経歴書、IBM公式historyページを確認
+    note: IBM Corporationの連結財務数値・財務セグメント・従業員数を日本IBMの数値として扱わない。
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・取得年度の有価証券報告書・採用・新卒採用リンク
+    status: done
+    value: |
+      HP: https://www.ibm.com/jp-ja/。会社概要: https://www.ibm.com/jp-ja/about。IR相当の業績ページ: https://www.ibm.com/jp-ja/about/financial。採用情報: https://www.ibm.com/jp-ja/careers。新卒採用: https://www.ibm.com/jp-ja/careers/career-opportunities。2028年エントリー: https://axol.jp/zw/s/ibm_group_28/entry/。会社経歴書: https://www.ibm.com/downloads/documents/jp-ja/115dcc7f0f363739。日本IBM公式サイトに2023〜2025年度の有価証券報告書PDF掲載はなく、IBM Corporationの10-K等で代用しない。
+    subject: 日本アイ・ビー・エム株式会社
+    as_of: 2026-08-06
+    unit: ""
+    source: >-
+      https://www.ibm.com/jp-ja/; https://www.ibm.com/jp-ja/about; https://www.ibm.com/jp-ja/about/financial; https://www.ibm.com/jp-ja/careers; https://www.ibm.com/jp-ja/careers/career-opportunities; https://www.ibm.com/downloads/documents/jp-ja/115dcc7f0f363739
+    via: 日本IBM公式HP、会社概要、業績、採用、新卒採用ページ
+    note: 2023〜2025年度の有価証券報告書リンクはnot_disclosed。公式採用ページと財務要約ページを正本リンクとする。
+  - id: verify-article
+    phase: verify
+    store: mdx
+    topic: MDX構成・CSV参照・数値境界・テスト・ビルド
+    status: pending
+    value: |
+      IBM固有のMDX構成、公式リンク、採用表、企業境界、法定セグメント非開示注記を確認済み。未上場企業向け規約に合わせ、EmploymentOverview、HealthMetrics、FinancialHistory、MetricTrends、SegmentRevenue、FinancialDataは配置していない。IR数値はCSVの正本へ分離した。
+      IBM固有の除外チェックと、既存失敗2件を除外したpytestは通過。Astro型チェック・ビルドは86ページ生成まで通過。
+    subject: site/src/pages/companies/ibm-japan.mdx
+    as_of: 2026-08-06
+    unit: ""
+    source: site/src/pages/companies/ibm-japan.mdx
+    via: >-
+      uv run rtk pytest -k 'not active_companies_have_mdx_pages and not unlisted_company_pages_omit_unavailable_data_sections';
+      npm --prefix site run build
+    note: >-
+      全体pytestは58 passed、2 failed。失敗は企業マスタにない既存MDX 10件による集合不一致と、既存dmmページのEmploymentOverview残存であり、IBMページは対象外。これらの既存ファイルは変更せず、verifyはin_progressのまま残す。

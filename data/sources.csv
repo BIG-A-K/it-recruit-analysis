@@ -241,3 +241,4 @@ edinet-s100r04v,statutory_filing,有価証券報告書－第43期(2022/04/01－2
 edinet-s100to3m,statutory_filing,有価証券報告書－第44期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TO3M,S100TO3M,2024-06-20,2026-08-06,日鉄ソリューションズ株式会社
 edinet-s100vy52,statutory_filing,有価証券報告書－第45期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VY52,S100VY52,2025-06-17,2026-08-06,日鉄ソリューションズ株式会社
 edinet-s100yaev,statutory_filing,有価証券報告書－第46期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YAEV,S100YAEV,2026-06-15,2026-08-06,日鉄ソリューションズ株式会社
+ibm-japan-financial-2025,financial_report,業績 - 日本 | IBM,https://www.ibm.com/jp-ja/about/financial,,,2026-08-06,日本アイ・ビー・エム株式会社
