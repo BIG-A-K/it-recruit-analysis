@@ -20,6 +20,7 @@ export type MetricWithFx = Metric & {
   fx_rate?: string;
   fx_rate_type?: string;
   fx_rate_id?: string;
+  fx_source_id?: string;
 };
 
 function rateTypeFor(metricKey: string): FxRate["rate_type"] {
@@ -58,6 +59,7 @@ export function withJpyEquivalent(rows: Metric[]): MetricWithFx[] {
       fx_rate: rate.rate,
       fx_rate_type: rate.rate_type,
       fx_rate_id: rate.rate_id,
+      fx_source_id: rate.source_id,
     };
   });
 }

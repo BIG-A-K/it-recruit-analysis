@@ -1,9 +1,9 @@
 ---
-import { type Company, type Metric } from "../lib/data";
+import { sourceById, type Company, type Metric } from "../lib/data";
 import {
-  comparisonExcludedMetricKeys,
   metricDisplayOrder,
   metricLabels,
+  metricNotes,
 } from "../lib/format";
 import { withJpyEquivalent } from "../lib/fx";
 
@@ -16,11 +16,7 @@ interface Props {
 }
 
 const { companies, metrics, explorerId, initialMetricKey, initialView = "line" } = Astro.props;
-const availableKeySet = new Set(
-  metrics
-    .map((metric) => metric.metric_key)
-    .filter((key) => !comparisonExcludedMetricKeys.has(key)),
-);
+const availableKeySet = new Set(metrics.map((metric) => metric.metric_key));
 const availableKeys = [
   ...metricDisplayOrder.filter((key) => availableKeySet.has(key)),
   ...[...availableKeySet].filter((key) => !metricDisplayOrder.includes(key)),
@@ -45,6 +41,27 @@ const cohortCount = new Set(
   ),
 ).size;
 const showUnifyToggle = showStats && cohortCount > 1;
+// 図に出ている数値の根拠を辿れるよう、実際に使われている出典だけをまとめて渡す。
+// 円換算した値については、換算に使った為替相場の出典も対象にする。
+const referencedSourceIds = new Set<string>();
+for (const metric of comparableMetrics) {
+  if (metric.source_id) referencedSourceIds.add(metric.source_id);
+  if (metric.fx_source_id) referencedSourceIds.add(metric.fx_source_id);
+}
+const sourceIndex: Record<
+  string,
+  { title: string; url: string; issuer: string }
+> = {};
+for (const sourceId of referencedSourceIds) {
+  const source = sourceById(sourceId);
+  if (!source) continue;
+  sourceIndex[sourceId] = {
+    title: source.title,
+    url: source.url,
+    issuer: source.issuer,
+  };
+}
+
 const payload = {
   companies: companies.map((company) => ({
     id: company.company_id,
@@ -52,6 +69,8 @@ const payload = {
   })),
   metrics: comparableMetrics,
   labels: metricLabels,
+  notes: metricNotes,
+  sources: sourceIndex,
 };
 ---
 
@@ -88,11 +107,14 @@ const payload = {
         <label><input type="radio" name={`${explorerId}-view`} value="table" checked={initialView === "table"} />表</label>
       </div>
     </fieldset>}
-    {showUnifyToggle && <label class="unify-toggle">
-      <input type="checkbox" data-unify />
-      <span>基準をまたいで横並び</span>
-    </label>}
   </div>
+
+  {showUnifyToggle && (
+    <div class="cohort-alert" data-cohort-alert hidden>
+      <p data-cohort-alert-text></p>
+      <button type="button" class="cohort-alert-button" data-unify-button></button>
+    </div>
+  )}
 
   <div class:list={["explorer-body", { "explorer-body-solo": !showStats }]}>
     <div class="chart-area" data-chart aria-live="polite"></div>
@@ -114,18 +136,25 @@ const payload = {
       ? "年度を指定した場合は同じ年度・単位・対象範囲の公表値を比較します。「最新年度」では企業ごとの最新公表値を比較します。ネットCFは営業CF・投資CF・財務CFの合計です。"
       : "年度ごとの公表値の推移です。ネットCFは営業CF・投資CF・財務CFの合計です。"}
   </p>
+  <p class="chart-note" data-metric-note hidden></p>
   {showUnifyToggle && (
     <p class="chart-warning" data-unify-note hidden>
-      会計基準・連結範囲が異なる値を並べています。厳密な優劣の比較には使えません。外貨建ての値は
-      <a href="/guide/#為替換算">日本銀行公表の為替相場</a>で円換算したサイト算出値で、貸借対照表項目は決算日の相場、
-      それ以外は対象期間の平均相場を使っています。
+      決算の集計ルールが違う数字を、むりやり同じ図に並べています。規模の桁をつかむ用途に留め、
+      わずかな差で優劣を判断しないでください。外貨建ての金額は
+      <a href="/guide/#為替換算">日本銀行が公表する為替相場</a>で円に直したサイトの計算値です。
     </p>
   )}
+  <details class="chart-sources">
+    <summary>この図に使った資料（<span data-sources-count>0</span>件）</summary>
+    <ul data-sources></ul>
+  </details>
 </section>
 
 <script is:inline define:vars={{ payload, explorerId }}>
   const root = document.getElementById(explorerId);
   const colors = ["#2563eb", "#0d9488", "#7c3aed", "#ea8a0b", "#64748b"];
+  // 集計ルールの違いを無視して全社を並べているかどうか
+  let unifyEnabled = false;
 
   const formatValue = (value, unit, metricKey, compact = false) => {
     if (unit === "JPY") {
@@ -351,11 +380,83 @@ const payload = {
     return badges;
   };
 
+  // 既定の表示から漏れている企業を伝え、その場で全社表示へ切り替えられるようにする
+  function updateCohortAlert(candidates, rows, unify) {
+    const alert = root.querySelector("[data-cohort-alert]");
+    if (!alert) return;
+    const text = alert.querySelector("[data-cohort-alert-text]");
+    const button = alert.querySelector("[data-unify-button]");
+
+    if (unify) {
+      alert.hidden = false;
+      text.textContent =
+        "集計ルールの違いを無視して、すべての企業を円に換算して並べています。";
+      button.textContent = "元の表示に戻す";
+      return;
+    }
+
+    const shown = new Set(rows.map((row) => row.company_id));
+    const hidden = [...new Set(candidates.map((row) => row.company_id))]
+      .filter((companyId) => !shown.has(companyId))
+      .map(
+        (companyId) =>
+          payload.companies.find((company) => company.id === companyId)?.name ||
+          companyId,
+      );
+
+    if (!hidden.length) {
+      alert.hidden = true;
+      return;
+    }
+
+    const names = hidden.slice(0, 2).join("、");
+    const rest = hidden.length > 2 ? ` ほか${hidden.length - 2}社` : "";
+    alert.hidden = false;
+    text.textContent =
+      `決算の集計ルールが違うため、${hidden.length}社を同じ図に出せていません（${names}${rest}）。`;
+    button.textContent = "全社を円に換算して並べる";
+  }
+
+  // 図に出ている数値がどの資料に基づくのかを示す
+  function renderSources(rows) {
+    const list = root.querySelector("[data-sources]");
+    const count = root.querySelector("[data-sources-count]");
+    if (!list || !count) return;
+
+    const grouped = new Map();
+    const addSource = (sourceId, label) => {
+      const source = payload.sources[sourceId];
+      if (!source) return;
+      const entry = grouped.get(sourceId) || { source, labels: new Set() };
+      entry.labels.add(label);
+      grouped.set(sourceId, entry);
+    };
+
+    rows.forEach((row) => {
+      const name =
+        payload.companies.find((company) => company.id === row.company_id)
+          ?.name || row.company_id;
+      addSource(row.source_id, `${name} ${row.fiscal_year}年度`);
+      if (row.fx_source_id) addSource(row.fx_source_id, "円換算に使った為替相場");
+    });
+
+    count.textContent = String(grouped.size);
+    list.innerHTML = [...grouped.values()]
+      .map(({ source, labels }) => {
+        const scope = escapeHtml([...labels].join("、"));
+        const title = source.url
+          ? `<a href="${escapeHtml(source.url)}" target="_blank" rel="noopener">${escapeHtml(source.title)}</a>`
+          : escapeHtml(source.title);
+        return `<li><span class="source-scope">${scope}</span>${title}<span class="source-issuer">${escapeHtml(source.issuer)}</span></li>`;
+      })
+      .join("");
+  }
+
   function update() {
     const metricKey = root.querySelector("[data-metric]").value;
     const year = root.querySelector("[data-year]")?.value || "latest";
     const view = root.querySelector('input[type="radio"]:checked')?.value || "line";
-    const unify = root.querySelector("[data-unify]")?.checked || false;
+    const unify = unifyEnabled;
     const candidates = payload.metrics.filter((row) => row.metric_key === metricKey);
 
     let rows;
@@ -395,15 +496,28 @@ const payload = {
     const unifyNote = root.querySelector("[data-unify-note]");
     if (unifyNote) unifyNote.hidden = !unify;
 
+    const metricNote = root.querySelector("[data-metric-note]");
+    const note = payload.notes[metricKey];
+    metricNote.textContent = note || "";
+    metricNote.hidden = !note;
+    updateCohortAlert(candidates, rows, unify);
+
     updateStats(values, unit, metricKey, year);
 
     if (view === "line") renderLine(rows, metricKey);
     if (view === "bar") renderBar(selected, metricKey, year, unify);
     if (view === "table") renderTable(rows, metricKey);
+
+    // 出典は実際に図へ出ている行に合わせる
+    renderSources(view === "bar" ? selected : rows);
   }
 
   root.querySelectorAll("select, input").forEach((input) =>
     input.addEventListener("change", update),
   );
+  root.querySelector("[data-unify-button]")?.addEventListener("click", () => {
+    unifyEnabled = !unifyEnabled;
+    update();
+  });
   update();
 </script>

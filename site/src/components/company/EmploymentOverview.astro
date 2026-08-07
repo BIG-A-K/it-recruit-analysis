@@ -26,7 +26,7 @@ const employees = latestMetric(
 const payGap = latestMetric(companyMetrics, "gender_pay_gap");
 const femaleManagers = latestMetric(companyMetrics, "female_manager_ratio");
 // 育児休業だけで算定する会社と、育児目的休暇を含めて算定する会社があり、
-// 後者のほうが高く出るため見出しを分けて別々に並べる
+// 後者のほうが高く出るため、算定範囲を添えて別々のタイルに並べる
 const childcareLeave = latestMetric(
   companyMetrics,
   "male_childcare_leave_rate",
@@ -69,10 +69,10 @@ const workplace = workplaceOverride || profile?.workplace || "確認中";
     <dl class="employment-grid">
       {payGap && <div class="employment-tile"><dt>男女の賃金の差異</dt><dd>{formatValue(Number(payGap.value), payGap.unit, payGap.metric_key)}</dd><small>男性の賃金を100としたときの女性の水準</small></div>}
       {femaleManagers && <div class="employment-tile"><dt>女性管理職比率</dt><dd>{formatValue(Number(femaleManagers.value), femaleManagers.unit, femaleManagers.metric_key)}</dd></div>}
-      {childcareLeave && <div class="employment-tile"><dt>男性育休取得率</dt><dd>{formatValue(Number(childcareLeave.value), childcareLeave.unit, childcareLeave.metric_key)}</dd><small>育児休業のみで算定</small></div>}
-      {childcareLeaveWithHoliday && <div class="employment-tile"><dt>男性育休等取得率</dt><dd>{formatValue(Number(childcareLeaveWithHoliday.value), childcareLeaveWithHoliday.unit, childcareLeaveWithHoliday.metric_key)}</dd><small>育児目的休暇を含めて算定</small></div>}
+      {childcareLeave && <div class="employment-tile"><dt>男性育休取得率</dt><dd>{formatValue(Number(childcareLeave.value), childcareLeave.unit, childcareLeave.metric_key)}</dd><small>育児目的休暇を含まない</small></div>}
+      {childcareLeaveWithHoliday && <div class="employment-tile"><dt>男性育休取得率</dt><dd>{formatValue(Number(childcareLeaveWithHoliday.value), childcareLeaveWithHoliday.unit, childcareLeaveWithHoliday.metric_key)}</dd><small>育児目的休暇を含む</small></div>}
     </dl>
   </>}
   <p class="section-note">平均値はグループ全体や職種別の給与・働き方を示すものではありません。</p>
-  {hasHumanCapital && <p class="section-note">働き方に関する指標は、2023年3月期から有価証券報告書での開示が義務付けられた項目です。このうち男性育休の取得率は、育児目的休暇を含めるかどうかで算定範囲が変わるため、会社をまたいで単純には比べられません。</p>}
+  {hasHumanCapital && <p class="section-note">働き方に関する指標は、2023年3月期から有価証券報告書での開示が義務付けられた項目です。このうち男性育休の取得率は、育児目的休暇を含めるかどうかで算定範囲が変わるため、業界ページで比べるときも算定範囲ごとに分けて並べています。</p>}
 </section>

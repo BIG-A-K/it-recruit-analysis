@@ -1,6 +1,14 @@
 export const metricLabels: Record<string, string> = {
   average_annual_salary: "平均年間給与",
   net_cf: "ネットCF",
+  // 働き方に関する指標。給与のつぎに気になる項目として、財務指標より前に並べる
+  gender_pay_gap: "男女の賃金の差異",
+  female_manager_ratio: "女性管理職比率",
+  // 男性育休の取得率は、育児休業だけで算定する会社と育児目的休暇を含めて算定する
+  // 会社が混在し、後者のほうが高く出る。算定範囲を混ぜて順位を付けると範囲の違いを
+  // そのまま優劣として読ませてしまうため、指標名にどちらの範囲かを書いて選択肢を分ける。
+  male_childcare_leave_rate: "男性育休取得率（育児目的休暇を含まない）",
+  male_childcare_leave_rate_with_leave: "男性育休取得率（育児目的休暇を含む）",
   operating_profit: "営業利益",
   business_profit: "事業利益",
   average_tenure: "平均勤続年数",
@@ -17,22 +25,17 @@ export const metricLabels: Record<string, string> = {
   total_funding: "累計資金調達額",
   employee_count: "従業員数",
   rd_expenses: "研究開発費",
-  gender_pay_gap: "男女の賃金の差異",
-  female_manager_ratio: "女性管理職比率",
-  male_childcare_leave_rate: "男性育休取得率",
-  male_childcare_leave_rate_with_leave: "男性育休等取得率",
 };
 
 export const metricDisplayOrder = Object.keys(metricLabels);
 
-// 男性育休の取得率は、育児休業だけで算定する会社と育児目的休暇を含めて
-// 算定する会社が混在し、後者のほうが高く出る。横並びで順位を付けると
-// 算定範囲の違いをそのまま優劣として読ませてしまうため比較から外し、
-// 企業ページでのみ算定範囲を明示して載せる。
-export const comparisonExcludedMetricKeys = new Set([
-  "male_childcare_leave_rate",
-  "male_childcare_leave_rate_with_leave",
-]);
+// 選んだときだけ添える、その指標の読み方の注意書き
+export const metricNotes: Record<string, string> = {
+  male_childcare_leave_rate:
+    "育児休業の取得だけで算定した公表値です。育児目的休暇を含めて算定した値とは対象範囲が違うため、同じ図には並べていません。",
+  male_childcare_leave_rate_with_leave:
+    "育児目的休暇を含めて算定した公表値です。育児休業だけで算定した値より高く出るため、そちらとは同じ図に並べていません。",
+};
 
 export function formatValue(
   value: number,
