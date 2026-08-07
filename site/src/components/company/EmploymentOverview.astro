@@ -16,9 +16,36 @@ const companyMetrics = metrics.filter(
 const salary = latestMetric(companyMetrics, "average_annual_salary");
 const tenure = latestMetric(companyMetrics, "average_tenure");
 const age = latestMetric(companyMetrics, "average_age");
-const employmentYear = [salary, tenure, age]
+// 平均給与などと同じ提出会社単体の人数。連結の従業員数とは範囲が違う
+const employees = latestMetric(
+  companyMetrics,
+  "employee_count",
+  "non_consolidated",
+);
+// 2023年3月期から有価証券報告書で開示が義務付けられた人的資本の指標
+const payGap = latestMetric(companyMetrics, "gender_pay_gap");
+const femaleManagers = latestMetric(companyMetrics, "female_manager_ratio");
+// 育児休業だけで算定する会社と、育児目的休暇を含めて算定する会社があり、
+// 後者のほうが高く出るため見出しを分けて別々に並べる
+const childcareLeave = latestMetric(
+  companyMetrics,
+  "male_childcare_leave_rate",
+);
+const childcareLeaveWithHoliday = latestMetric(
+  companyMetrics,
+  "male_childcare_leave_rate_with_leave",
+);
+// 研究開発費だけは連結ベースのため、単体の年度計算には含めない
+const rdExpenses = latestMetric(companyMetrics, "rd_expenses", "consolidated");
+const employmentYear = [salary, tenure, age, employees]
   .filter((row) => row !== undefined)
   .reduce((maximum, row) => Math.max(maximum, Number(row?.fiscal_year)), 0);
+const hasHumanCapital = [
+  payGap,
+  femaleManagers,
+  childcareLeave,
+  childcareLeaveWithHoliday,
+].some((row) => row !== undefined);
 const workplace = workplaceOverride || profile?.workplace || "確認中";
 ---
 
@@ -31,7 +58,21 @@ const workplace = workplaceOverride || profile?.workplace || "確認中";
     <div class="employment-tile featured"><dt>平均年間給与</dt><dd>{salary ? formatValue(Number(salary.value), salary.unit, salary.metric_key) : "—"}</dd><small>賞与・基準外賃金を含む場合があります</small></div>
     <div class="employment-tile"><dt>平均勤続年数</dt><dd>{tenure ? formatValue(Number(tenure.value), tenure.unit, tenure.metric_key) : "—"}</dd></div>
     <div class="employment-tile"><dt>平均年齢</dt><dd>{age ? formatValue(Number(age.value), age.unit, age.metric_key) : "—"}</dd></div>
+    {employees && <div class="employment-tile"><dt>従業員数（単体）</dt><dd>{formatValue(Number(employees.value), employees.unit, employees.metric_key)}</dd><small>上の平均値はこの人数を対象にした数字です</small></div>}
     <div class="employment-tile"><dt>主な勤務地</dt><dd class="text-value">{workplace}</dd></div>
+    {rdExpenses && <div class="employment-tile"><dt>研究開発費</dt><dd>{formatValue(Number(rdExpenses.value), rdExpenses.unit, rdExpenses.metric_key)}</dd><small>{rdExpenses.fiscal_year}年度・連結</small></div>}
   </dl>
+  {hasHumanCapital && <>
+    <div class="section-head">
+      <h3 id="human-capital">働き方に関する指標</h3>
+    </div>
+    <dl class="employment-grid">
+      {payGap && <div class="employment-tile"><dt>男女の賃金の差異</dt><dd>{formatValue(Number(payGap.value), payGap.unit, payGap.metric_key)}</dd><small>男性の賃金を100としたときの女性の水準</small></div>}
+      {femaleManagers && <div class="employment-tile"><dt>女性管理職比率</dt><dd>{formatValue(Number(femaleManagers.value), femaleManagers.unit, femaleManagers.metric_key)}</dd></div>}
+      {childcareLeave && <div class="employment-tile"><dt>男性育休取得率</dt><dd>{formatValue(Number(childcareLeave.value), childcareLeave.unit, childcareLeave.metric_key)}</dd><small>育児休業のみで算定</small></div>}
+      {childcareLeaveWithHoliday && <div class="employment-tile"><dt>男性育休等取得率</dt><dd>{formatValue(Number(childcareLeaveWithHoliday.value), childcareLeaveWithHoliday.unit, childcareLeaveWithHoliday.metric_key)}</dd><small>育児目的休暇を含めて算定</small></div>}
+    </dl>
+  </>}
   <p class="section-note">平均値はグループ全体や職種別の給与・働き方を示すものではありません。</p>
+  {hasHumanCapital && <p class="section-note">働き方に関する指標は、2023年3月期から有価証券報告書での開示が義務付けられた項目です。このうち男性育休の取得率は、育児目的休暇を含めるかどうかで算定範囲が変わるため、会社をまたいで単純には比べられません。</p>}
 </section>

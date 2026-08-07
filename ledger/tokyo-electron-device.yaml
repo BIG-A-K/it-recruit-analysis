@@ -1,0 +1,232 @@
+company_id: tokyo-electron-device
+disclosure_company_id: tokyo-electron-device
+company_boundary:
+  adoption_company_id: tokyo-electron-device
+  disclosure_company_id: tokyo-electron-device
+  reporting_segment_company_id: tokyo-electron-device
+  legal_name: 東京エレクトロンデバイス株式会社
+  securities_code: "2760"
+  edinet_code: "E02955"
+  corporate_number: "4020001009043"
+  website_url: https://www.teldevice.co.jp/
+  fiscal_year_end: 3月31日
+  accounting_standard: JGAAP
+  currency: JPY
+  reporting_segments: 半導体及び電子デバイス事業（EC+PB統合）、コンピュータシステム関連事業（CN）の2区分。segment_profit=経常利益。
+  company_relations:
+    - to_company_id: tokyo-electron
+      relation_type: parent
+      valid_from: 1986-03-03
+      source_id: edinet-s100ybv4
+      note: 東京エレクトロン株式会社（tokyo-electron、証券コード8035）が33.82%出資する主要株主（2026年3月期末、FY2026有報大株主欄）。持分法非適用・連結子会社でなく、支配力基準による親会社。1986年3月3日、東京エレクトロン（株）の出資で当社がテル管理サービス株式会社として設立されたことに由来。
+  note: 独立上場企業（東証プライム）で半導体・電子部品の技術商社。採用主体と開示主体は同一法人。親会社側の「東京エレクトロン株式会社（tokyo-electron）」は半導体製造装置メーカーで別事業ドメイン。指名委員会等設置会社。代表執行役員CEO 徳重敦之（2026年7月1日現在）。本社 東京都渋谷区桜丘町1-1 渋谷サクラステージ。
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-07
+updated_at: 2026-08-07
+phases: {ir: done, recruit: done, segments: done, article: done, verify: done}
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: "metrics.csv の average_annual_salary/average_age/average_tenure 各3行（FY2024-2026）、employee_count 7行（FY2020-2026、consolidated）"
+    subject: non_consolidated（人的指標）／consolidated（employee_count）
+    as_of: 2024-03-31〜2026-03-31（employee_count は2020-03-31〜2026-03-31）
+    unit: JPY・years・persons
+    source: edinet-s100togi, edinet-s100w1ey, edinet-s100ybv4
+    via: EDINET API で S100TOGI/S100W1EY/S100YBV4 を取得し normalize_metrics で抽出。人的指標は有報「事業内容」のCurrentYearのみ（2期比較）のため3期分の有報を処理。
+    note: FY2025の給与はFY2024より低下しているが原資料の通り。EDINETコードE02955はcompanies.csvが空欄のためインライン抽出。
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高または売上収益 3期以上
+    status: done
+    value: "metrics.csv の revenue 5行（FY2022=179,907 / FY2023=240,350 / FY2024=242,888 / FY2025=216,379 / FY2026=203,748、単位百万JPY、consolidated）"
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ybv4（5年経営指標サマリー）
+    via: jpcrp_cor:NetSalesSummaryOfBusinessResults（CurrentYear/Prior1-4Year）をcsv-upsertで書き込み。JGAAP会社だがJGAAP_COMPANY_IDS未登録のためCLIでは抽出されず。
+    note: element_id=jpcrp_cor:NetSalesSummaryOfBusinessResults。会計基準=JGAAP。
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益または事業利益 3期以上
+    status: done
+    value: "metrics.csv の operating_profit 4行（FY2023=14,227 / FY2024=15,428 / FY2025=12,457 / FY2026=10,253、単位百万JPY、consolidated）"
+    subject: 連結
+    as_of: 2023-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100togi（FY2023/2024）, edinet-s100w1ey（FY2025）, edinet-s100ybv4（FY2026）
+    via: jppfs_cor:OperatingIncome（連結損益計算書CurrentYear/Prior1Year）を3期の有報から集約。5年経営指標サマリーに営業利益は含まれず損益計算書から抽出。
+    note: element_id=jppfs_cor:OperatingIncome。JGAAP。
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: "metrics.csv の equity_ratio 5行（FY2022=28.7%〜FY2026=32.6%）、current_assets 4行（FY2023=134,309〜FY2026=150,337百万）、current_liabilities 4行（FY2023=70,595〜FY2026=85,000百万）、quick_assets 4行（FY2023=69,076〜FY2026=65,707百万）"
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: percent・JPY
+    source: edinet-s100ybv4（equity_ratio・current_assets/liabilities）, edinet-s100togi/s100w1ey/s100ybv4（quick_assets算定）
+    via: equity_ratio=jpcrp_cor:EquityToAssetRatioSummaryOfBusinessResults（×100）、current_assets/liabilities=jppfs_cor:CurrentAssets・CurrentLiabilities、quick_assets=csv-upsertでB/S構成科目から算定。
+    note: "当座資産の算定内訳: 現金及び預金(jppfs_cor:CashAndDeposits)+受取手形及び売掛金(jppfs_cor:NotesAndAccountsReceivableTrade及び契約資産、2026年度以降は契約資産を除外)+電子記録債権(jppfs_cor:ElectronicallyRecordedMonetaryClaimsOperatingCA)。短期投資有価証券は存在せず除外、貸倒引当金は受取債権に控除表示のため再控除なし。QUICK_ASSET_RULES未登録のためcsv-upsertで直接書き込み。"
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: "metrics.csv の operating_cf/investing_cf/financing_cf 各5行。FY2026例: operating_cf=15,684 / investing_cf=1,200 / financing_cf=-17,848、単位百万JPY、consolidated"
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100ybv4（5年経営指標サマリー）
+    via: jpcrp_cor:NetCashProvidedByUsedIn{Operating,Investing,Financing}ActivitiesSummaryOfBusinessResults（CurrentYear/Prior1-4Year）をcsv-upsertで書き込み。
+    note: JGAAP。CLIでは抽出されずcsv-upsertで直接書き込み。
+  - id: ir-segments
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメントの年度別売上・利益
+    status: done
+    value: "segments.csv 6行（2セグメント×3期）。semiconductor-electronic-device: FY2024=209,909/10,459, FY2025=179,051/6,149, FY2026=162,543/3,208百万（売上/segment_profit）。computer-system: FY2024=32,978/3,463, FY2025=37,327/5,266, FY2026=41,204/6,542百万。"
+    subject: 連結報告セグメント
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100w1ey（FY2024）, edinet-s100ybv4（FY2025・FY2026）
+    via: セグメント情報のjpcrp_cor:RevenuesFromExternalCustomers+jppfs_cor:OrdinaryIncomeを各セグメントMemberごとに抽出しcsv-upsertで書き込み。COMPANY_SEGMENTS未登録のためnormalize_segmentsは0件、手動抽出。
+    note: "報告セグメントは2つ: semiconductor-electronic-device=半導体及び電子デバイス事業（EC+PB統合。半導体製品、ボード・電子部品、ソフトウェア・サービス販売、PB製品inrevium製造・販売）、computer-system=コンピュータシステム関連事業（ネットワーク・ストレージ・セキュリティ関連製品販売、保守・監視サービス）。profit_measure=経常利益（セグメント利益合計額は連結損益計算書の経常利益と一致する旨の注記あり）。"
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 会計基準変更・組織再編・比較上の注記
+    status: done
+    value: "会計基準変更・組織再編・比較上の注記を確認。詳細はnote参照。"
+    subject: 連結
+    as_of: 2024-04-01〜2026-03-31（当連結会計年度=FY2026）
+    unit: ""
+    source: edinet-s100ybv4
+    via: FY2026有報の注記テキストブロックを精査。
+    note: "【未適用の会計基準】リース会計基準（企業会計基準第34号 2024年9月13日）ほか。2028年3月期の期首より適用予定、影響額は評価中。【表示方法の変更・組替え】(1)連結B/S: 有形固定資産のその他に含めていたリース資産を金額重要性増大で独立掲記。流動負債のその他に含めていた未払法人税等を独立掲記。(2)連結P/L: 営業外収益/費用のその他の受取保証料・保険配当金・支払保証料を独立掲記（10%超）。【連結範囲・組織再編】スミックス（株）を株式取得で子会社化したが総資産・売上高・当期純損益等いずれも軽微として連結範囲から除外。持分法適用関連会社は日本サンテック（株）1社（決算日12月31日）。Fidus Systems Inc.は株式全部売却で関連会社から除外。【会計基準】JGAAP。監査法人=有限責任あずさ監査法人。【主要株主】東京エレクトロン（株）10,598,100株（33.82%）が筆頭、2位 日本マスタートラスト信託銀行（信託口）7.80%、3位 東京エレクトロンデバイス社員持株会5.70%。親会社東京エレクトロンは持分法非適用。"
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: "採用主体は東京エレクトロンデバイス株式会社（単独採用、グループ採用ではない）。公式募集資格は「2026年3月卒業予定者 及び 既卒者（卒業後3年以内）」。新卒募集要項 https://www.teldevice.co.jp/recruit/information/ 、採用トップ https://www.teldevice.co.jp/recruit/ 。"
+    subject: 東京エレクトロンデバイス株式会社（単独）
+    as_of: 2026-08-07
+    unit: ""
+    source: https://www.teldevice.co.jp/recruit/information/
+    via: 公式採用サイト/recruit/と/recruit/information/を取得。
+    note: "募集年度について公式ページは「2026年3月卒業予定者」と記載のまま。確認日が2026-08-07のため27卒向けにまだ更新されていない可能性。外部マイナビ2027掲載あり。記事化時に最新年度の公式更新を再確認すること。"
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: "募集職種は総合職1職種で事業（EC/CN/PB）ごとにコース構成。【営業系】ソリューションセールス（EC: 製品開発課題を聞き取り提案、CN: サーバー・ストレージ・NW製品を企業ITインフラに提案）。【技術系】(1)製品担当エンジニア（半導体電子デバイス・ITソリューションの技術提案・支援）、(2)設計開発エンジニア（PB事業でプライベート商品や受託開発の仕様検討〜回路・ソフト設計・マネジメント、IoT・AIも）。【事務系】企画（人事・総務・財務・営業管理・法務知財・情報システム・広報・物流）。応募資格: 全学部全学科、2026年3月卒業予定者または既卒者（卒業後3年以内）、普通自動車第一種免許を取得または入社までに取得予定。配属: 本社（渋谷区）とエンジニアリングセンター（横浜市都筑区）へ集約配属が多い。選考: 自由応募（マイナビ2027でプレエントリー）。選考フロー: プレエントリー→会社説明会→動画選考（自己PR動画+WEBエントリーシート）→1次面接→2次適性検査→3次面接→最終面接→内定。勤務地: 入社時は本社（東京都渋谷区）とエンジニアリングセンター（神奈川県横浜市都筑区）が主。"
+    subject: 総合職（営業系ソリューションセールス／技術系 製品担当エンジニア・設計開発エンジニア／事務系 企画）
+    as_of: 2026-08-07
+    unit: ""
+    source: https://www.teldevice.co.jp/recruit/information/, https://www.teldevice.co.jp/recruit/job/, https://www.teldevice.co.jp/recruit/faq/
+    via: 公式募集要項・仕事詳細・FAQを取得し照合。
+    note: 募集職種は総合職1職種に集約。仕事内容は事業セグメント（EC: 半導体及び電子デバイス、CN: コンピュータシステム関連、PB: プライベートブランド、管理部門）ごとに案内。
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの給与・賞与・手当・標準年収
+    status: done
+    value: "初任給（総合職・全コース共通、月給）＝基本給＋地域手当（東京・神奈川勤務）の合計額。修士了 300,200円（借上単身者用社宅制度適用なし）／252,200円（同適用の場合）。大卒 285,000円（同社宅制度適用なし）／237,000円（同適用の場合）。諸手当: 地域手当・時間外勤務手当・通勤手当（実費支給）。地域手当は勤務地および社宅制度適用有無により31,000円〜79,000円を毎月支給。昇給: 年1回。賞与: 年2回（6月・12月）。基本給と地域手当の内訳、固定時間外手当、標準年収は非開示。"
+    subject: 総合職（全コース共通）
+    as_of: 2026-08-07
+    unit: JPY
+    source: https://www.teldevice.co.jp/recruit/information/
+    via: 公式募集要項の初任給・諸手当・昇給・賞与欄を取得。仕事詳細・FAQ・制度ページにも給与額の記載なしを確認。
+    note: "公式は初任給を基本給+地域手当の合計額として開示。基本給単独・固定時間外手当・賞与月額・標準年収はnot_disclosed（全ページに記載なし）。借上単身者用社宅制度の適用有無で月額が約4.8万円異なる2本立て表記。"
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: "転勤: 総合職は住居の移転を伴う転勤の可能性あり（FAQ明記）。全国転勤の可能性のある総合職採用社員に限り借上独身者用社宅制度を適用。転勤時は転居費用・住宅補助などサポート制度あり。リモート勤務: 公式募集要項・FAQ・制度・福利厚生のいずれにも記載なし。標準労働時間: 9:00〜17:30（勤務時間は配属先により異なる）。応募期限: 公式募集要項に明示なし。マイナビでプレエントリー受付中、会社説明会は順次開催（渋谷・大阪・オンライン）。休日休暇: 完全週休2日制（土・日）・祝日・年末年始。年次有給休暇は初年度15日（4月入社）、最高20日。リフレッシュ休暇（勤続5年毎に最長1ヶ月）。"
+    subject: 総合職（全コース共通）
+    as_of: 2026-08-07
+    unit: ""
+    source: https://www.teldevice.co.jp/recruit/information/, https://www.teldevice.co.jp/recruit/faq/, https://www.teldevice.co.jp/recruit/benefit/
+    via: 公式募集要項・FAQ・制度福利厚生を取得。リモート勤務は3ページすべてに記載なしを確認。
+    note: "リモート勤務制度（テレワーク・在宅勤務）は公式ページ群に一切記載なしためnot_disclosed扱い（項目全体はdone）。応募期限の明示もなし。"
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとのサービス・製品・運営法人
+    status: done
+    value: "【法定報告セグメント2区分】IR「3つの事業と当社の強み」でPB事業はEC事業に含むと明示。(1)半導体及び電子デバイス事業（EC+PB統合）: ECは海外メーカーの半導体製品・ボード・電子部品・ソフトウェア・サービスの仕入販売と技術サポート。取り扱いメーカー40社以上（Texas Instruments、Infineon、NXP、Intel、Qualcomm、ソシオネクスト、アットマークテクノ、アバールデータ、サイレックス、Lattice、MaxLinear、Everspin、ams-OSRAM、SanDisk、Rochester Electronics、JVCケンウッド、日本電気、ハギワラソリューションズ等）。事業所は本社（渋谷サクラステージ）と全国14拠点。PB（自社ブランドinrevium、2004年6月創業）はFPGA/SoC評価ボード、量産モジュール・IPコア、設計・量産受託（DMS）、画像処理ライブラリ（WIL/FIE/FAST Vision）・画像処理装置（FVシリーズ）、ウェハ欠陥検査装置（RAYSENS: Si/SiC/LT-LN/ガラスウェーハ・マスクブランクス）、フラットパネル検査装置、予知保全（CX-M/CX-D）、ロボティクス（TriMath、めばかり君）。2023年10月に日本エレクトロセンサリデバイス（株）からウェーハ検査装置事業を譲受。専用サイト https://www.inrevium.com/ 。(2)コンピュータシステム関連事業（CN）: 2006年10月に東京エレクトロン（株）からコンピュータ・ネットワーク事業を承継。NW関連・ストレージ関連・セキュリティ関連製品の販売と保守・監視サービス。専用サイト https://cn.teldevice.co.jp/ の取り扱いメーカー30社以上（AWS、Arista、Juniper Apstra、Fortinet、Palo Alto、F5、Netskope、Nutanix、Pure Storage、Rubrik、SentinelOne、Veeam、Okta、NVIDIA、Dell Technologies、Extreme、Infoblox、Thales、Entrust、Wiz、Pentera、Cerebras、Datadog、Semperis、Glean、Exa Enterprise AI等）。SOCサービス（24時間365日）、クラウドインテグレーション、保守サポート。"
+    subject: 連結報告セグメント（tokyo-electron-device）
+    as_of: 2026-08-07（事業構成は2025年3月期実績比・VISION2030対象期間2026年3月期〜2030年3月期）
+    unit: text
+    source: https://www.teldevice.co.jp/ir/business.html, https://www.teldevice.co.jp/ir/action.html, https://www.teldevice.co.jp/semiconductor/, https://cn.teldevice.co.jp/, https://www.inrevium.com/
+    via: 公式IR「3つの事業と当社の強み」、中期経営計画VISION2030、各事業サイトを取得。
+    note: 公式管理区分は3（EC/CN/PB）、法定報告セグメントは2（EC+PB統合/CN）。差異はsegments-mappingに記録。
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式事業区分とIR報告セグメントの対応・差異
+    status: done
+    value: "【公式管理区分3区分】IR「3つの事業と当社の強み」とVISION2030で使用。2025年3月期売上構成比: EC事業82.7% / CN事業17.3% / PB事業6.8%。1.EC事業（半導体及び電子デバイス事業）、2.CN事業（コンピュータシステム関連事業）、3.PB事業（プライベートブランド事業 inrevium）。【法定報告セグメント2区分】有報ベース。公式/ir/business.htmlの明示「セグメント報告区分では、PB事業はEC事業に含まれています」。1.半導体及び電子デバイス事業（EC+PB）、2.コンピュータシステム関連事業（CN）。【差異】PBは戦略上は独立事業だがセグメント報告ではECに統合。MDX記事では管理上3事業（EC/CN/PB）を展開するが有報の報告セグメントは2区分（ECにPBを含む/CN）と併記が必要。VISION2030の売上構成比/営業利益率目標（CN15%/12%、EC75%/7%、PB10%/10%、全体ROE20%以上・営業利益率8%以上・売上高3,000〜3,500億円）は管理区分ベースでありsegments.csvの法定セグメント数値とは一致しない。"
+    subject: 公式管理区分3（EC/CN/PB）↔ 法定報告セグメント2（EC+PB統合/CN）
+    as_of: 2026-08-07
+    unit: text
+    source: https://www.teldevice.co.jp/ir/business.html, https://www.teldevice.co.jp/ir/action.html
+    via: 公式IR「3つの事業と当社の強み」とVISION2030を取得し対応関係を公式テキストから直接引用。
+    note: 法定セグメントの年度別売上・利益数値はsegments.csv（IR worker）が正本。
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: "【親会社】東京エレクトロン株式会社（証券コード8035、company_id=tokyo-electron、半導体製造装置メーカー）。主要株主33.82%。【連結子会社 計6社】国内: 東京エレクトロンデバイス長崎（旧アバール長崎、2017年7月連結子会社化。長崎県諌早市、産業用電子機器の開発・設計・製造・販売、https://www.ngs.teldevice.co.jp/ ）。海外5社: TOKYO ELECTRON DEVICE ASIA PACIFIC LIMITED（旧TED香港、2012年3月改称。香港。深セン・ソウル・台北に代表處）、TOKYO ELECTRON DEVICE (SHANGHAI) LIMITED（2004年1月設立。大連分公司・深セン分公司）、TOKYO ELECTRON DEVICE SINGAPORE PTE. LTD.（2008年1月設立。フィリピン代表處）、TOKYO ELECTRON DEVICE (THAILAND) LIMITED（2015年10月設立、バンコク）、TOKYO ELECTRON DEVICE AMERICA, INC.（2013年9月inrevium AMERICA, Inc.として設立、2019年5月TOKYO ELECTRON DEVICE CN AMERICA, INC.を吸収合併、米国カリフォルニア州Fremont、https://us.teldevice.com/ ）。【関連会社】株式会社ジャンテクノロジー（https://www.jsuntech.co.jp/ ）。【過去の子会社等】パネトロン（株）（2018年7月解散）、株式会社ファースト（2018年7月連結子会社化、2025年1月吸収合併）。【過去の資本提携】Fidus Systems Inc.（カナダ、2014年5月資本提携完了、その後株式全部売却）、株式会社アバールデータ（2016年8月資本提携、アバール長崎を子会社として譲受）。"
+    subject: 親会社 tokyo-electron、連結子会社6社、関連会社1社
+    as_of: 2026-08-07（体制は2026年3月末時点の子会社構成、ファースト吸収合併は2025年1月）
+    unit: text
+    source: https://www.teldevice.co.jp/company/gaiyou.html, https://www.teldevice.co.jp/company/group.html, https://www.teldevice.co.jp/company/nagasaki.html, https://www.teldevice.co.jp/company/enkaku.html
+    via: 公式グループ会社一覧・会社概要・沿革を取得。
+    note: 各子会社の持分比率・議決権・連結/持分法適用の別は公式概要ページから読み取れず。有報「関係会社の状況」が正本。持分法適用関連会社は日本サンテック（株）1社（FY2026有報注記）。
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: "【企業スローガン（HPメインビジュアル）】DRIVING DIGITAL TRANSFORMATION。【HPメインメッセージ】デジタルトランスフォーメーションを実現する製品・サービスを提供し高効率スマート社会の持続的発展に貢献してまいります。【中期経営計画VISION2030（対象期間2026年3月期〜2030年3月期）】MISSION: 当社はITを中心とした先端テクノロジーを通じて、社会課題に向き合い、期待を超える価値を持った情報を提供することで、社会の持続的発展に貢献する。VISION: メーカーと技術商社の力で、持続的な社会課題を解決する。当社グループは「メーカー・カンパニー」と「技術商社カンパニー」の両輪で課題解決を行っていく。【採用サイトメッセージ】挑戦すること。逃げないこと。そして、明日を信じること。【渋谷本社オフィスコンセプト】Meets Innovation。【自己定義】「技術商社機能を持つメーカー」（VISION2025から、VISION2030ではメーカー・カンパニーと技術商社カンパニーの両輪へ強化）。"
+    subject: 東京エレクトロンデバイス株式会社
+    as_of: 2026-08-07（VISION2030は2026年3月期〜2030年3月期対象）
+    unit: text
+    source: https://www.teldevice.co.jp/, https://www.teldevice.co.jp/ir/action.html, https://www.teldevice.co.jp/recruit/
+    via: 公式HPトップ、IR中期経営計画VISION2030、採用サイトトップメッセージを取得。
+    note: ""
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介・設立経緯・規模
+    status: done
+    value: "【正式社名】東京エレクトロンデバイス株式会社（登記上。定款上は「東京エレクトロン デバイス株式会社」、英称TOKYO ELECTRON DEVICE LIMITED、略称TED/東エレデバ）。【上場】東京証券取引所プライム市場（証券コード2760）。2003年3月市場二部上場、2010年12月市場一部指定替え、2022年4月市場区分見直しによりプライム市場へ移行。JPX日経インデックス400・JPX日経中小型株指数構成銘柄。【設立】1986年（昭和61年）3月3日（テル管理サービス株式会社として東京エレクトロン（株）の出資で設立）。1990年9月に現社名へ変更。【創業と沿革】1965年に親会社東京エレクトロン（株）で電子部品（フェアチャイルド社等）の販売を開始したことに始まる。1998年7月に東京エレクトロン（株）から電子部品部門の全事業を営業譲受け。2004年6月に自社ブランド「inrevium」を創業し製造メーカー機能を追加。2006年10月に東京エレクトロン（株）からコンピュータ・ネットワーク事業を承継。これにより現在のEC/CN/PB 3事業体制が完成。【代表者】代表執行役員・CEO 徳重 敦之、代表執行役員副社長 宮本 隆義（2026年7月1日現在）。指名委員会等設置会社。【本社】〒150-6234 東京都渋谷区桜丘町1番1号 渋谷サクラステージ SHIBUYAタワー。【規模（2026年3月期）】連結売上高2,037億4,800万円、連結従業員数1,408名（2026年3月31日現在）。資本金24億9,575万円、決算期3月31日、会計監査人有限責任あずさ監査法人。【事業構造】EC（半導体・電子部品販売）、CN（IT/ネットワークソリューション）、PB（自社ブランドinrevium）の3事業を展開する「技術商社機能を持つメーカー」。取り扱いメーカー約70社、取引顧客2,000社以上。【特徴】親会社東京エレクトロン（株）（証券コード8035）は半導体製造装置メーカー（別法人・別事業ドメイン）。当社は同グループ内で技術商社として独立上場する唯一の企業。"
+    subject: 東京エレクトロンデバイス株式会社
+    as_of: 2026-08-07（財務数値は2026年3月期実績、役員体制は2026年7月1日現在）
+    unit: text
+    source: https://www.teldevice.co.jp/company/gaiyou.html, https://www.teldevice.co.jp/company/enkaku.html, https://www.teldevice.co.jp/company/directors.html, https://www.teldevice.co.jp/
+    via: 公式会社概要・TEDのあゆみ・役員一覧・HPトップを取得（会社情報配下HTMLはShift_JIS配信でUTF-8デコード時に文字化けあり。事業構造・主要数値はUTF-8正常配信ページでも照合済み）。
+    note: ""
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・取得年度の有価証券報告書・採用・新卒採用リンク
+    status: done
+    value: "【公式コーポレートサイト】https://www.teldevice.co.jp/ 【投資家の皆様へIR】https://www.teldevice.co.jp/ir/ 【中期経営計画VISION2030】https://www.teldevice.co.jp/ir/action.html 【有価証券報告書一覧】https://www.teldevice.co.jp/ir/yuuka.html ・第41期（2026年3月期=fiscal_year 2026）有価証券報告書PDF: https://www.teldevice.co.jp/ir/ir_data/yukasyoken/financial_report_FY2026.pdf ・第40期（2025年3月期）: https://www.teldevice.co.jp/ir/ir_data/yukasyoken/financial_report_FY2025.pdf ・第39期（2024年3月期）: https://www.teldevice.co.jp/ir/ir_data/yukasyoken/financial_report39th_all.pdf 【採用共通】https://www.teldevice.co.jp/careers/ 【新卒採用サイト】https://www.teldevice.co.jp/recruit/ （新卒エントリー: https://ted-recruit.snar.jp/jobboard/detail.aspx?id=Rax-OZX6Gd8 ）【半導体ソリューション（EC事業）】https://www.teldevice.co.jp/semiconductor/ 【ITソリューション（CN事業）】https://cn.teldevice.co.jp/ 【プライベートブランド（PB事業inrevium）】https://www.inrevium.com/ 【東京エレクトロンデバイス長崎】https://www.ngs.teldevice.co.jp/ 【TOKYO ELECTRON DEVICE AMERICA】https://us.teldevice.com/ 【親会社 東京エレクトロン（株）】https://www.tel.com/jp/ 。旧想定ドメインted-net.comは当社公式ではない。"
+    subject: 東京エレクトロンデバイス株式会社
+    as_of: 2026-08-07（有報URLは取得年度=fiscal_year 2026=第41期）
+    unit: URLs
+    source: https://www.teldevice.co.jp/ir/yuuka.html, https://www.teldevice.co.jp/, https://www.teldevice.co.jp/recruit/
+    via: 公式有報リスト・HPトップの各事業サイト導線・新卒採用サイトのエントリーボタンを取得。
+    note: ""

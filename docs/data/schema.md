@@ -148,9 +148,18 @@ CSVには物理的な型がないため、本書では各列の論理型を次�
 | `current_liabilities` | 流動負債 | `JPY` | `consolidated` |
 | `quick_assets` | 当座資産。構成科目を `note` に記録する | `JPY` | `consolidated` |
 | `total_funding` | 累計資金調達額。非上場ベンチャーが公式に発表した資金調達の累計。公表値のみ登録し推定値は扱わない | `JPY` | `<company_id>` |
-| `employee_count` | 従業員数。連結・単体の別を `scope` と `note` で明示する | `persons` | `consolidated` または `<company_id>` |
+| `employee_count` | 従業員数。連結・単体の別を `scope` と `note` で明示する | `persons` | `consolidated`、`non_consolidated` または `<company_id>` |
+| `rd_expenses` | 研究開発費。「研究開発活動」に記載された総額を採り、セグメント別の内訳は含めない | `JPY` | `consolidated` |
+| `gender_pay_gap` | 男女の賃金の差異。男性の賃金を100としたときの女性の水準で、全労働者ベースを採る | `percent` | `non_consolidated` |
+| `female_manager_ratio` | 管理職に占める女性労働者の割合 | `percent` | `non_consolidated` |
+| `male_childcare_leave_rate` | 男性労働者の育児休業取得率。育児介護休業法施行規則第71条の4第1号に基づき育児休業のみで算定したもの | `percent` | `non_consolidated` |
+| `male_childcare_leave_rate_with_leave` | 男性労働者の育児休業等取得率。同第2号に基づき育児休業と育児目的休暇を合算して算定したもの | `percent` | `non_consolidated` |
 
 新しい指標は、既存キーの意味を変更せず新しい `metric_key` として追加する。企業固有の類似指標を既存キーへ無理に対応させない。
+
+`gender_pay_gap` から `male_childcare_leave_rate_with_leave` までの人的資本に関する4指標は、2023年3月期以降の有価証券報告書で開示が義務付けられた項目で、いずれも提出会社の指標を採る。連結子会社の指標は会社ごとに別の行として開示され、連結全体の値が存在しないため扱わない。
+
+男性の育児休業取得率は算定範囲が2通りあり、育児目的休暇を含む `male_childcare_leave_rate_with_leave` のほうが高く出る。同一年度に両方を開示する会社があるため別の `metric_key` として持ち、横並びの比較には用いない。
 
 ## `segments.csv`
 
@@ -222,6 +231,34 @@ CSVには物理的な型がないため、本書では各列の論理型を次�
 | `corporate` | 企業公式サイト |
 | `public_data` | 行政機関などの公開データ |
 | `secondary` | 一次情報以外の参考資料 |
+
+## `fx_rates.csv`
+
+外貨建ての指標を円換算して表示するための為替相場を管理する。換算値そのものは
+`metrics.csv` に保存せず、サイト側の算出値として表示時に求める。
+
+主キー: `rate_id`
+
+| 列 | 型 | 必須 | 定義 |
+| --- | --- | --- | --- |
+| `rate_id` | `id` | 必須 | 相場を一意に識別するID |
+| `base_currency` | `enum` | 必須 | 換算元の通貨。`metrics.csv` の `unit` と対応する |
+| `quote_currency` | `enum` | 必須 | 換算先の通貨 |
+| `rate_type` | `enum` | 必須 | 相場の種類 |
+| `period_start` | `date` | 任意 | 平均相場の対象期間の開始日。`closing` では空欄 |
+| `period_end` | `date` | 必須 | 期末日。`metrics.csv` の `period_end` と突き合わせる |
+| `rate` | `decimal` | 必須 | `base_currency` 1単位あたりの `quote_currency` |
+| `source_id` | `id` | 必須 | 相場の出典 |
+| `note` | `string` | 任意 | 相場の定義や算出方法 |
+
+### `rate_type`
+
+会計基準（IAS 21、ASC 830）に合わせ、指標の性質で使い分ける。
+
+| 値 | 意味 | 換算対象 |
+| --- | --- | --- |
+| `closing` | 決算日の相場 | 流動資産、流動負債、当座資産などの貸借対照表項目 |
+| `average` | 対象期間の平均相場 | 売上収益、営業利益、各キャッシュフローなどの損益・期間項目 |
 
 ## 参照整合性
 

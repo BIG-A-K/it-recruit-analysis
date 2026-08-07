@@ -1,0 +1,257 @@
+company_id: fanuc
+disclosure_company_id: fanuc
+company_boundary:
+  adoption_company_id: fanuc
+  disclosure_company_id: fanuc
+  reporting_segment_company_id: fanuc
+  legal_name: ファナック株式会社
+  securities_code: "6954"
+  edinet_code: E01946
+  fiscal_year_end: 3月31日
+  accounting_standard: JGAAP
+  currency: JPY
+  reporting_segments: 単一（商品部門別にFA、ロボット、ロボマシン、サービスを開示）
+  company_relations: []
+  note: 採用主体と開示主体は同一法人。商品部門別の区分は報告セグメントと混同せず、法定開示上の単一セグメントと対応を確認する。
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-07
+updated_at: 2026-08-07
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csvにemployee_count FY2022-FY2026（5行）、average_age・average_tenure・average_annual_salary FY2026（各1行、計8行）
+    subject: 提出会社単体（平均指標）・連結（従業員数）
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY・years・persons
+    source: edinet-s100yg3q
+    via: EDINET CLI、S100YG3Q raw XBRL
+    note: 平均年齢・平均勤続年数・平均年間給与はFY2026のみ開示。従業員数は連結。
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高 3期以上
+    status: done
+    value: metrics.csvのrevenue（FY2022-FY2026、5行）
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100yg3q
+    via: edinet-fetch・edinet-normalize・csv-upsert
+    note: JGAAP、連結。
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csvのoperating_profit（FY2025-FY2026、2行）
+    subject: 連結
+    as_of: 2025-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100yg3q
+    via: raw XBRL確認・csv-upsert
+    note: 最新有報にFY2022-FY2024の営業利益は掲載なし。
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csvにequity_ratio 5行、current_assets・current_liabilities・quick_assets各2行
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: percent・JPY
+    source: edinet-s100yg3q
+    via: edinet-normalize・raw XBRL確認・csv-upsert
+    note: quick_assetsは現金及び預金、受取手形、電子記録債権、売掛金、短期投資有価証券の合計。
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csvのoperating_cf・investing_cf・financing_cf（FY2022-FY2026、各5行、計15行）
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100yg3q
+    via: raw XBRL確認・csv-upsert
+    note: JGAAP、連結。
+  - id: ir-segments
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメントの年度別売上・利益
+    status: not_disclosed
+    value: segments.csvに単一セグメントのnot_disclosed行（FY2025-FY2026、2行）
+    subject: 連結報告セグメント
+    as_of: 2025-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100yg3q
+    via: 有価証券報告書セグメント注記確認・csv-upsert
+    note: 事業セグメントは単一でセグメント別売上・利益を省略。FA・ロボット・ロボマシン・サービスは製品及びサービス別情報であり報告セグメントではない。
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 会計基準変更・組織再編・比較上の注記
+    status: done
+    value: 最新有報の表示方法変更、未適用会計基準、単一セグメント注記を確認
+    subject: ファナック株式会社連結グループ
+    as_of: 2026-03-31
+    unit: text
+    source: edinet-s100yg3q
+    via: S100YG3Q raw XBRL注記確認
+    note: 電子記録債権の独立表示に伴い前期を組替。リース会計基準は2028年3月期適用予定で影響評価中。
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: 採用主体はファナック株式会社。現在の受付は2028年卒プレエントリーで、2027年卒は受付終了。
+    subject: 採用主体・募集年度
+    as_of: 2026-08-07
+    unit: ""
+    source: https://www.fanuc.co.jp/ja/employ/recruit/; https://mypage.3010.i-webs.jp/fanuc2028/
+    via: 公式新卒採用トップと公式マイページを確認
+    note: 新卒採用トップのENTRYリンクは2027年卒ページのままだが、リンク先に2028年卒プレエントリー受付中と表示。
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: |
+      技術系（研究開発、生産技術、国内・海外セールス、IT）、事務系（人事、法務、経理、購買、総務、国内・海外セールス等）、高専本科（サービス、生産技術、国内・海外セールス、研究開発）の3区分・計14職種。職種ごとの仕事内容、学歴区分、推薦・自由応募、勤務地、選考フローを公式募集要項で確認。
+    subject: 技術系・事務系・高専本科の全掲載職種
+    as_of: 2026-08-07
+    unit: 職種・応募資格・勤務地・選考
+    source: https://www.fanuc.co.jp/ja/employ/recruit/recruit/requirements/; https://www.fanuc.co.jp/ja/employ/recruit/recruit/faq/; https://www.fanuc.co.jp/ja/employ/recruit/job/
+    via: 公式募集要項の3区分、職種紹介、FAQを確認
+    note: 配属は総合職採用で、応募時の希望を尊重し専攻・適性を考慮して決定。2028年卒固有の学年要件は公開なし。
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの給与・賞与・手当・標準年収
+    status: done
+    value: 技術系は博士335350円・修士299000円・学部286000円、事務系は修士299000円・学部286000円、高専本科は233350円（月額、2025年度実績）。福利厚生は寮・社宅、保養所、企業内保育所、企業年金基金等。基礎給内訳、固定時間外手当、賞与、標準年収は公開なし。
+    subject: 技術系・事務系・高専本科
+    as_of: 2026-08-07
+    unit: JPY/月
+    source: https://www.fanuc.co.jp/ja/employ/recruit/recruit/requirements/; https://www.fanuc.co.jp/ja/employ/recruit/recruit/welfare/
+    via: 各区分の初任給・福利厚生欄を確認
+    note: 公開額は2025年度実績で、2028年卒向け改定額とは明記されていない。
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: 実働7時間45分、年間休日126日、初年度有給22日。職種別勤務地・海外出向・全国転勤の条件を確認。一般的な常時リモート勤務は公開なし。2027年卒は受付終了、2028年卒の応募締切日は公開なし。
+    subject: 全掲載職種（勤務地・転勤は職種別）
+    as_of: 2026-08-07
+    unit: 時間・日・募集日程
+    source: https://www.fanuc.co.jp/ja/employ/recruit/recruit/requirements/; https://www.fanuc.co.jp/ja/employ/recruit/recruit/welfare/; https://mypage.3010.i-webs.jp/fanuc2028/
+    via: 募集要項全3区分、福利厚生、公式マイページを確認
+    note: 在宅勤務は災害・緊急事態、つわり、治療等の個別事情向け。職種別の常時リモート制度は非開示。
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとのサービス・製品・運営法人
+    status: done
+    value: 法定開示上の報告セグメントは単一。公式商品・サービス区分はFA（CNC・サーボ）、ROBOT、ROBOMACHINE（ROBODRILL・ROBOSHOT・ROBOCUT）、IoT、保守サービス。
+    subject: ファナック株式会社（連結）
+    as_of: 2026-03-31
+    unit: ""
+    source: https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YG3Q.pdf; https://www.fanuc.co.jp/ja/product/index.html; https://www.fanuc.co.jp/ja/service/index.html
+    via: FY2026有報と公式商品・サービスページを確認
+    note: IoTおよび商品区分は法定報告セグメントではない。
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式事業区分とIR報告セグメントの対応・差異
+    status: done
+    value: 公式サイトはFA、ロボット、ロボマシン、IoT、サービスを区分するが、FY2026有報は単一セグメント。商品・サービス区分を独立した法定セグメントへ統合しない。
+    subject: 公式商品区分とFY2026有報
+    as_of: 2026-03-31 / 2026-08-07
+    unit: ""
+    source: https://www.fanuc.co.jp/ja/profile/profile/policies.html; https://www.fanuc.co.jp/ja/product/index.html; https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YG3Q.pdf
+    via: 公式経営方針・商品ナビゲーションと有報を比較
+    note: セグメント別売上・利益の数値はIR CSVの正本。
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: FANUC America、FANUC Europe、BEIJING-FANUC Mechatronics、SHANGHAI-FANUC Robotics、SHANGHAI-FANUC ROBOMACHINE、KOREA FANUC、TAIWAN FANUC、FANUC INDIA等が地域販売・製造・サービスを担う。親会社はない。
+    subject: FANUCグループの主な海外関係会社
+    as_of: 2026-08-07
+    unit: ""
+    source: https://www.fanuc.co.jp/ja/profile/sales/global/america.html; https://www.fanuc.co.jp/ja/profile/sales/global/europe.html; https://www.fanuc.co.jp/ja/profile/sales/global/asia.html
+    via: 公式グローバルネットワーク・関係会社ページを確認
+    note: 公式ページ掲載の主な関係会社であり、所有割合・連結範囲を推定していない。
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: ビジョンは産業オートメーション分野で不断の技術革新により価値を提供し続けること。基本理念は「厳密」と「透明」、スローガンは「one FANUC」と「サービスファースト」。
+    subject: ファナック株式会社
+    as_of: 2026-08-07
+    unit: ""
+    source: https://www.fanuc.co.jp/ja/profile/profile/policies.html; https://www.fanuc.co.jp/ja/profile/principle.html; https://www.fanuc.co.jp/ja/sustainability/general/principle.html
+    via: 公式経営方針・基本理念・サステナビリティ方針を確認
+    note: 公式表記を本文材料とする。
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介・設立経緯・規模
+    status: done
+    value: 1955年のNC開発に始まり、1972年に富士通のNC部門から分離して富士通ファナック株式会社を設立、1982年にファナック株式会社へ社名変更。本社は山梨県南都留郡忍野村。公式沿革・サービスページはCNC累計生産500万台、ロボット累計100万台、世界280以上のサービス拠点等を掲載。
+    subject: ファナック株式会社
+    as_of: 2026-08-07
+    unit: ""
+    source: https://www.fanuc.co.jp/ja/profile/outline.html; https://www.fanuc.co.jp/ja/profile/history/index.html; https://www.fanuc.co.jp/ja/service/index.html
+    via: 公式会社概要・沿革・サービスページを確認
+    note: 規模情報は公式ページ由来で、IR財務数値を複写しない。
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・取得年度の有価証券報告書・採用・新卒採用リンク
+    status: done
+    value: HP、IR、統合報告書、有価証券報告書（2026年3月期・2025年3月期・2024年3月期）、採用情報、新卒採用、募集要項の公式リンクを確認。
+    subject: ファナック株式会社
+    as_of: 2026-08-07
+    unit: ""
+    source: https://www.fanuc.co.jp/ja/; https://www.fanuc.co.jp/ja/ir/; https://www.fanuc.co.jp/ja/ir/securitiesreport/index.html; https://www.fanuc.co.jp/ja/employ/recruit/index.html
+    via: 公式サイトの企業情報・IR・採用ナビゲーションを確認
+    note: 有報PDFは記事作成時に取得対象年度の直リンクを掲載する。
+  - id: article-content
+    phase: article
+    store: mdx
+    topic: 採用情報・事業内容・関連企業の本文材料
+    status: done
+    value: FA、ロボット、ロボマシン、保守サービスの事業説明、海外関係会社、現在の新卒採用サイトを本文材料として確認。IR数値と採用条件の詳細は各正本から記事へ反映する。
+    subject: ファナック株式会社
+    as_of: 2026-08-07
+    unit: ""
+    source: https://www.fanuc.co.jp/ja/product/index.html; https://www.fanuc.co.jp/ja/service/index.html; https://www.fanuc.co.jp/ja/profile/sales/global/index.html; https://www.fanuc.co.jp/ja/employ/recruit/index.html
+    via: 公式商品・サービス・グループネットワーク・新卒採用ページを確認
+    note: 財務数値はmetrics.csv/segments.csv、採用条件はrecruit調査結果を正本とする。
+  - id: verify-article
+    phase: verify
+    store: mdx
+    topic: MDX構成・CSV参照・数値境界・テスト・ビルド
+    status: done
+    value: |
+      fanuc.mdxはテンプレート順のCompanyOverview、CompanyProse、EmploymentOverview、CompanyProse、HealthMetrics、FinancialHistory、MetricTrendsで構成。FinancialDataは未使用。法定報告セグメントは単一で、segments.csvがnot_disclosedのためSegmentRevenueは省略し、商品・サービス区分との差異と省略理由を本文に記録。採用主体・職種・勤務地・初任給・選考区分・待遇、公式出典リンク、財務の連結/単体・JGAAP・3月末の境界を確認。
+    subject: site/src/pages/companies/fanuc.mdx
+    as_of: 2026-08-07
+    unit: ""
+    source: edinet-s100yg3q; https://www.fanuc.co.jp/ja/employ/recruit/recruit/requirements/; https://www.fanuc.co.jp/ja/product/index.html
+    via: uv run pytest; npm --prefix site run build; git diff --check
+    note: |
+      FANUC対象の整合性確認は60 passed。npm --prefix site run buildはastro check 0 errors・0 warnings・0 hints、97ページ生成で成功。生成済みfanucページに空の指標タイル、空の棒グラフ、セグメント売上の空表示はなし。流動比率689.3%、当座比率515.2%、ネットCFの3区分合計を再計算。全体pytestは60 passed・3 failedだが、失敗は既存のtokyo-electron-deviceページ不足、active企業とページ集合の不一致、dmmの未上場コンポーネント規約違反で、fanuc.mdxとは無関係。git diff --checkは成功。

@@ -6,12 +6,16 @@ import MetricExplorer from "../../components/MetricExplorer.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   companiesForIndustry,
+  disclosureCompanyFor,
+  disclosureIdForCompany,
   industries,
   metricsForCompanies,
 } from "../../lib/data";
 import type { Metric } from "../../lib/data";
 import { companyPageUpdatedAt, formatUpdatedAt } from "../../lib/company-pages";
 import { formatValue, latestMetric, metricLabels } from "../../lib/format";
+import { withJpyEquivalent } from "../../lib/fx";
+import type { MetricWithFx } from "../../lib/fx";
 
 export const getStaticPaths = (() =>
   industries.map((industry) => ({
@@ -32,7 +36,7 @@ const IndustryArticle =
   articleModules[`./_articles/${industry.industry_id}.mdx`]?.Content;
 const baseCompanies = companiesForIndustry(industry.industry_id);
 const relatedMetrics = metricsForCompanies(
-  baseCompanies.map((company) => company.company_id),
+  baseCompanies.map((company) => disclosureIdForCompany(company)),
 );
 const metricIdentity = (metric: Metric) =>
   [
@@ -42,8 +46,9 @@ const metricIdentity = (metric: Metric) =>
     metric.accounting_standard,
   ].join("\u0000");
 const currentRatios = baseCompanies.flatMap((company) => {
+  const disclosureId = disclosureIdForCompany(company);
   const companyMetrics = relatedMetrics.filter(
-    (metric) => metric.company_id === company.company_id,
+    (metric) => metric.company_id === disclosureId,
   );
   const assets = new Map(
     companyMetrics
@@ -71,10 +76,39 @@ const currentRatios = baseCompanies.flatMap((company) => {
     }];
   });
 });
-const industryMetrics = [...relatedMetrics, ...currentRatios];
+const industryMetrics = withJpyEquivalent([...relatedMetrics, ...currentRatios]);
 const metricYears = industryMetrics.map((metric) =>
   Number(metric.fiscal_year),
 );
+
+// 一覧は通貨の違う企業が同じ列に並ぶため、表示と並び替えを円換算値に揃える。
+// 換算した場合は公表値をそのまま読めるよう原通貨の額を併記する。
+const comparableCell = (metric: MetricWithFx | undefined) => {
+  if (!metric) return { text: "—", original: undefined, sortValue: "" };
+
+  const reported = formatValue(
+    Number(metric.value),
+    metric.unit,
+    metric.metric_key,
+  );
+  // 為替相場を用意していない年度は換算せず、公表値のまま並び替えの対象から外す
+  if (metric.comparable_value === "") {
+    return { text: reported, original: undefined, sortValue: "" };
+  }
+
+  const converted = metric.comparable_unit !== metric.unit;
+  return {
+    text: converted
+      ? formatValue(
+          Number(metric.comparable_value),
+          metric.comparable_unit,
+          metric.metric_key,
+        )
+      : reported,
+    original: converted ? reported : undefined,
+    sortValue: metric.comparable_value,
+  };
+};
 const latestYear = metricYears.length ? Math.max(...metricYears) : undefined;
 
 const collator = new Intl.Collator("ja");
@@ -86,22 +120,36 @@ const kanaRanks = new Map(
 
 const sortedCompanies = baseCompanies
   .map((company) => {
+     const disclosureId = disclosureIdForCompany(company);
      const companyMetrics = industryMetrics.filter(
-       (metric) => metric.company_id === company.company_id,
+       (metric) => metric.company_id === disclosureId,
      );
      const updatedAt = companyPageUpdatedAt(company.company_id);
+     // 外資系の日本法人のように、採用主体と数値の開示主体が別法人の場合は
+     // どの法人・どの範囲の数値かを行に明示する
+     const discloser = disclosureCompanyFor(company);
      return {
        company,
+       discloser,
+       disclosureLabel: discloser
+         ? discloser.country_code && discloser.country_code !== "JP"
+           ? "グローバル連結"
+           : "持株会社連結"
+         : undefined,
        kanaRank: kanaRanks.get(company.company_id) ?? 0,
        updatedAt: updatedAt ? formatUpdatedAt(updatedAt) : undefined,
-       salary: latestMetric(companyMetrics, "average_annual_salary"),
-       netCashFlow: latestMetric(companyMetrics, "net_cf"),
+       salary: comparableCell(latestMetric(companyMetrics, "average_annual_salary")),
+       netCashFlow: comparableCell(latestMetric(companyMetrics, "net_cf")),
        // 重工各社のように営業利益を開示せず事業利益で開示する企業があるため、
        // 定義の違う値を同じ見出しへまとめず、見出しごと指標に合わせる
-       operatingProfit:
+       profitMetric:
          latestMetric(companyMetrics, "operating_profit") ??
          latestMetric(companyMetrics, "business_profit"),
-       currentRatio: latestMetric(companyMetrics, "current_ratio"),
+       operatingProfit: comparableCell(
+         latestMetric(companyMetrics, "operating_profit") ??
+           latestMetric(companyMetrics, "business_profit"),
+       ),
+       currentRatio: comparableCell(latestMetric(companyMetrics, "current_ratio")),
      };
   })
   .sort((a, b) => {
@@ -178,7 +226,10 @@ const sortOptions: SortOption[] = [
   )}
 
   {industryMetrics.length > 0 ? <MetricExplorer
-     companies={baseCompanies}
+     companies={baseCompanies.map((company) => ({
+       ...company,
+       company_id: disclosureIdForCompany(company),
+     }))}
      metrics={industryMetrics}
      explorerId={`explorer-${industry.industry_id}`}
      initialView="bar"
@@ -197,27 +248,33 @@ const sortOptions: SortOption[] = [
     />
     <div class="company-list" data-company-list={`industry-${industry.industry_id}`}>
       {
-        sortedCompanies.map(({ company, kanaRank, updatedAt, salary, netCashFlow, operatingProfit, currentRatio }) => {
+        sortedCompanies.map(({ company, discloser, disclosureLabel, kanaRank, updatedAt, salary, netCashFlow, profitMetric, operatingProfit, currentRatio }) => {
           return (
             <a
               class="linked-row"
               href={`/companies/${company.company_id}/`}
               data-sort-kana={kanaRank}
-              data-sort-salary={salary ? salary.value : ""}
-              data-sort-netcf={netCashFlow ? netCashFlow.value : ""}
-              data-sort-profit={operatingProfit ? operatingProfit.value : ""}
-              data-sort-ratio={currentRatio ? currentRatio.value : ""}
+              data-sort-salary={salary.sortValue}
+              data-sort-netcf={netCashFlow.sortValue}
+              data-sort-profit={operatingProfit.sortValue}
+              data-sort-ratio={currentRatio.sortValue}
             >
               <div>
                 <h3>{company.display_name}</h3>
                 <p class="legal-name">{company.legal_name}</p>
+                {discloser && (
+                  <p class="disclosure-note">
+                    <em class="cohort-badge">{disclosureLabel}</em>
+                    数値は{discloser.legal_name || discloser.display_name}の開示
+                  </p>
+                )}
                 {updatedAt && <p class="row-updated">記事更新 {updatedAt}</p>}
               </div>
               <dl class="company-stats">
-                <div><dt>平均年間給与</dt><dd>{salary ? formatValue(Number(salary.value), salary.unit) : "—"}</dd></div>
-                <div><dt>ネットCF</dt><dd>{netCashFlow ? formatValue(Number(netCashFlow.value), netCashFlow.unit) : "—"}</dd></div>
-                <div><dt>{operatingProfit ? metricLabels[operatingProfit.metric_key] : "営業利益"}</dt><dd>{operatingProfit ? formatValue(Number(operatingProfit.value), operatingProfit.unit) : "—"}</dd></div>
-                <div><dt>流動比率</dt><dd>{currentRatio ? formatValue(Number(currentRatio.value), currentRatio.unit, currentRatio.metric_key) : "—"}</dd></div>
+                <div><dt>平均年間給与</dt><dd>{salary.text}{salary.original && <small>{salary.original}</small>}</dd></div>
+                <div><dt>ネットCF</dt><dd>{netCashFlow.text}{netCashFlow.original && <small>{netCashFlow.original}</small>}</dd></div>
+                <div><dt>{profitMetric ? metricLabels[profitMetric.metric_key] : "営業利益"}</dt><dd>{operatingProfit.text}{operatingProfit.original && <small>{operatingProfit.original}</small>}</dd></div>
+                <div><dt>流動比率</dt><dd>{currentRatio.text}{currentRatio.original && <small>{currentRatio.original}</small>}</dd></div>
               </dl>
             </a>
           );

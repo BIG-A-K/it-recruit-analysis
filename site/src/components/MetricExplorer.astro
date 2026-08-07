@@ -1,6 +1,11 @@
 ---
 import { type Company, type Metric } from "../lib/data";
-import { metricDisplayOrder, metricLabels } from "../lib/format";
+import {
+  comparisonExcludedMetricKeys,
+  metricDisplayOrder,
+  metricLabels,
+} from "../lib/format";
+import { withJpyEquivalent } from "../lib/fx";
 
 interface Props {
   companies: Company[];
@@ -11,7 +16,11 @@ interface Props {
 }
 
 const { companies, metrics, explorerId, initialMetricKey, initialView = "line" } = Astro.props;
-const availableKeySet = new Set(metrics.map((metric) => metric.metric_key));
+const availableKeySet = new Set(
+  metrics
+    .map((metric) => metric.metric_key)
+    .filter((key) => !comparisonExcludedMetricKeys.has(key)),
+);
 const availableKeys = [
   ...metricDisplayOrder.filter((key) => availableKeySet.has(key)),
   ...[...availableKeySet].filter((key) => !metricDisplayOrder.includes(key)),
@@ -26,12 +35,22 @@ const years = [...new Set(metrics.map((metric) => metric.fiscal_year))].sort(
 );
 // 1社だけのときは平均・中央値を出しても値が同じになるため、統計欄は出さない
 const showStats = companies.length > 1;
+// 既定では単位・対象範囲・会計基準が揃った値だけを比較する。横並び表示に切り替えたときは
+// 外貨建ての値を円換算して同じ図に並べるため、あらかじめ換算値を添えておく。
+const comparableMetrics = withJpyEquivalent(metrics);
+// 会計基準や連結範囲が複数ある業界でだけ、横並びへの切り替えを出す
+const cohortCount = new Set(
+  comparableMetrics.map((metric) =>
+    [metric.unit, metric.scope, metric.accounting_standard].join(" "),
+  ),
+).size;
+const showUnifyToggle = showStats && cohortCount > 1;
 const payload = {
   companies: companies.map((company) => ({
     id: company.company_id,
     name: company.display_name,
   })),
-  metrics,
+  metrics: comparableMetrics,
   labels: metricLabels,
 };
 ---
@@ -69,6 +88,10 @@ const payload = {
         <label><input type="radio" name={`${explorerId}-view`} value="table" checked={initialView === "table"} />表</label>
       </div>
     </fieldset>}
+    {showUnifyToggle && <label class="unify-toggle">
+      <input type="checkbox" data-unify />
+      <span>基準をまたいで横並び</span>
+    </label>}
   </div>
 
   <div class:list={["explorer-body", { "explorer-body-solo": !showStats }]}>
@@ -91,6 +114,13 @@ const payload = {
       ? "年度を指定した場合は同じ年度・単位・対象範囲の公表値を比較します。「最新年度」では企業ごとの最新公表値を比較します。ネットCFは営業CF・投資CF・財務CFの合計です。"
       : "年度ごとの公表値の推移です。ネットCFは営業CF・投資CF・財務CFの合計です。"}
   </p>
+  {showUnifyToggle && (
+    <p class="chart-warning" data-unify-note hidden>
+      会計基準・連結範囲が異なる値を並べています。厳密な優劣の比較には使えません。外貨建ての値は
+      <a href="/guide/#為替換算">日本銀行公表の為替相場</a>で円換算したサイト算出値で、貸借対照表項目は決算日の相場、
+      それ以外は対象期間の平均相場を使っています。
+    </p>
+  )}
 </section>
 
 <script is:inline define:vars={{ payload, explorerId }}>
@@ -253,7 +283,7 @@ const payload = {
     });
   }
 
-  function renderBar(selected, metricKey, year) {
+  function renderBar(selected, metricKey, year, unify) {
     const chart = root.querySelector("[data-chart]");
     if (!selected.length) {
       chart.innerHTML = '<p class="empty-state">この年度のデータはありません。</p>';
@@ -268,7 +298,7 @@ const payload = {
         ${ranked.map((row, index) => {
           const company = payload.companies.find((item) => item.id === row.company_id);
           return `<div class="bar-row">
-            <div class="bar-label"><span>${escapeHtml(company?.name || row.company_id)}</span><strong>${escapeHtml(formatValue(Number(row.value), row.unit, metricKey))}</strong></div>
+            <div class="bar-label"><span>${escapeHtml(company?.name || row.company_id)}${unify ? cohortBadges(row).map((badge) => `<em class="cohort-badge">${escapeHtml(badge)}</em>`).join("") : ""}</span><strong>${escapeHtml(formatValue(Number(row.value), row.unit, metricKey))}</strong></div>
             <div class="bar-track"><div class="bar-fill" style="width:${Math.max(Math.abs(Number(row.value)) / max * 100, 2)}%;background:${colors[index % colors.length]}"></div></div>
           </div>`;
         }).join("")}
@@ -312,36 +342,63 @@ const payload = {
       `集計対象 ${values.length}社 / 掲載 ${payload.companies.length}社`;
   }
 
+  // 会計基準・連結範囲が揃っていない値を並べるときに、その違いを各行へ添える
+  const cohortBadges = (row) => {
+    const badges = [row.accounting_standard || "基準未明示"];
+    if (row.scope === "non_consolidated") badges.push("単体");
+    else if (row.scope !== "consolidated") badges.push("法人単位");
+    if (row.fx_rate) badges.push(`1ドル${row.fx_rate}円で換算`);
+    return badges;
+  };
+
   function update() {
     const metricKey = root.querySelector("[data-metric]").value;
     const year = root.querySelector("[data-year]")?.value || "latest";
     const view = root.querySelector('input[type="radio"]:checked')?.value || "line";
+    const unify = root.querySelector("[data-unify]")?.checked || false;
     const candidates = payload.metrics.filter((row) => row.metric_key === metricKey);
-    const cohorts = new Map();
-    candidates.forEach((row) => {
-      const key = [row.unit, row.scope, row.accounting_standard].join("\u0000");
-      const cohort = cohorts.get(key) || [];
-      cohort.push(row);
-      cohorts.set(key, cohort);
-    });
-    const rows = [...cohorts.entries()]
-      .sort(([keyA, rowsA], [keyB, rowsB]) => {
-        const currentYearDifference = year === "latest"
-          ? latestRows(rowsB).length - latestRows(rowsA).length
-          : rowsB.filter((row) => row.fiscal_year === year).length -
-            rowsA.filter((row) => row.fiscal_year === year).length;
-        return currentYearDifference || rowsB.length - rowsA.length || keyA.localeCompare(keyB);
-      })[0]?.[1] || [];
+
+    let rows;
+    if (unify) {
+      // 単位・対象範囲・会計基準の違いを越えて並べる。為替相場を用意していない年度の
+      // 外貨建ての値は換算できないため、推定で埋めずに対象から外す。
+      rows = candidates
+        .filter((row) => row.comparable_value !== "")
+        .map((row) => ({
+          ...row,
+          value: row.comparable_value,
+          unit: row.comparable_unit,
+        }));
+    } else {
+      const cohorts = new Map();
+      candidates.forEach((row) => {
+        const key = [row.unit, row.scope, row.accounting_standard].join("\u0000");
+        const cohort = cohorts.get(key) || [];
+        cohort.push(row);
+        cohorts.set(key, cohort);
+      });
+      rows = [...cohorts.entries()]
+        .sort(([keyA, rowsA], [keyB, rowsB]) => {
+          const currentYearDifference = year === "latest"
+            ? latestRows(rowsB).length - latestRows(rowsA).length
+            : rowsB.filter((row) => row.fiscal_year === year).length -
+              rowsA.filter((row) => row.fiscal_year === year).length;
+          return currentYearDifference || rowsB.length - rowsA.length || keyA.localeCompare(keyB);
+        })[0]?.[1] || [];
+    }
     const selected = year === "latest"
       ? latestRows(rows)
       : rows.filter((row) => row.fiscal_year === year);
     const values = selected.map((row) => Number(row.value));
     const unit = selected[0]?.unit || rows[0]?.unit || "";
 
+    const unifyNote = root.querySelector("[data-unify-note]");
+    if (unifyNote) unifyNote.hidden = !unify;
+
     updateStats(values, unit, metricKey, year);
 
     if (view === "line") renderLine(rows, metricKey);
-    if (view === "bar") renderBar(selected, metricKey, year);
+    if (view === "bar") renderBar(selected, metricKey, year, unify);
     if (view === "table") renderTable(rows, metricKey);
   }
 

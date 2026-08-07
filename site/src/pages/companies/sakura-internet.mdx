@@ -1,0 +1,86 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: sakura-internet
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+[企業理念](https://www.sakura.ad.jp/corporate/work/)は **「『やりたいこと』を『できる』に変える」**。1996年12月23日の創業以来、クラウドコンピューティングサービスの提供とデータセンター運営を担う。[会社概要](https://www.sakura.ad.jp/corporate/corp/profile)では、1999年8月17日設立、本社を大阪府大阪市北区大深町（グラングリーン大阪 北館 JAM BASE）、資本金112億8,316万円、従業員1,135名（連結・2026年3月末時点）としている。2005年に東京証券取引所マザーズへ上場し、2015年に市場第一部を経て2022年にプライム市場へ移行。証券コードは3778。
+
+## サイト
+
+- [HP](https://www.sakura.ad.jp/corporate/)
+- [IR](https://www.sakura.ad.jp/corporate/ir/library)
+  - [有価証券報告書・内部統制報告書](https://www.sakura.ad.jp/corporate/ir/library/securities)
+    - [第27期（2026年3月期）](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YBG6.pdf)
+    - [第26期（2025年3月期）](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100VW98.pdf)
+    - [第25期（2024年3月期）](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100TQOZ.pdf)
+- [採用情報](https://www.sakura.ad.jp/recruit/)
+  - [新卒採用](https://www.sakura.ad.jp/recruit/graduates/)
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} workplace="大阪本社（大阪市北区）・東京支社（新宿区西新宿）・福岡オフィス・石狩データセンター・SAKURA innobase Okinawa（那覇）" />
+
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+採用主体はさくらインターネット株式会社。[新卒採用募集要項](https://www.sakura.ad.jp/recruit/graduates/)の対象は2027年度新卒（2026年4月〜2027年3月卒業見込み）、および2024年4月〜2026年3月卒業で正社員としての就業経験がない方。応募資格は高専・短大・専門・大学等に在籍または既卒で、専攻・学科は不問。募集コースはエンジニアコースとビジネスコースの2コース制で、ビジネスコースの初期配属はセールス職、サポート職、セールスエンジニア職のいずれか。
+
+| コース | 初任給（月）※1 | 固定時間外手当（月）※2 | 勤務地 |
+| --- | ---: | ---: | --- |
+| [エンジニアコース](https://www.sakura.ad.jp/recruit/graduates/) | 292,557 円〜 | 36,157 円〜 | 東京・大阪・石狩・福岡・沖縄の各拠点（業務上必要に応じて出社）。さぶりこどこでもワーキング可（一部職種を除く） |
+| [ビジネスコース](https://www.sakura.ad.jp/recruit/graduates/) | 292,557 円 | 36,157 円 | セールス職は東京支社。サポート職・セールスエンジニア職は東京支社・大阪本社 |
+
+<p class="section-note"><small>※1 初任給（月給）は固定時間外手当・通勤手当・住宅補助・通信手当を含む。給与は2024年9月末日時点実績。<br />※2 月20時間分のみなし残業手当。月20時間を超過した時間外労働は1分単位で支給し、いずれも初任給に含まれる。</small></p>
+
+給与改定は年2回（4月・10月）、賞与は年2回（6月・12月、2024年度実績）で、人事制度による査定により決定する。所定労働時間は原則9:30〜18:30（実働8時間・休憩1時間）で、始業時刻は10分単位で変更可能（コアタイム12:00〜16:00）。年間休日は125日（2026年度）、入社時に有給休暇20日を付与する。雇用形態は正社員（期間の定めなし、試用期間3か月）。
+
+## 事業内容
+
+[第27期有価証券報告書](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YBG6.pdf)の報告セグメントは「クラウド・インターネットインフラ事業」の単一区分。[事業内容ページ](https://www.sakura.ad.jp/corporate/work/)のサービス分類はクラウド、GPUインフラストラクチャー、AIプラットフォーム、ホスティングサービスの4区分。
+
+| 公式サービス分類 | 主なサービス | 提供内容 |
+| --- | --- | --- |
+| [クラウド](https://cloud.sakura.ad.jp/) | [さくらのクラウド](https://cloud.sakura.ad.jp/) | 国内データセンターから提供するパブリッククラウド。国産企業として初めてガバメントクラウドの提供事業者に採択された |
+| [GPUインフラストラクチャー](https://gpu.sakura.ad.jp/) | [高火力サイト](https://gpu.sakura.ad.jp/) | 生成AIモデルの学習・推論や大規模データ処理向けのGPU計算リソース |
+| [AIプラットフォーム](https://www.sakura.ad.jp/aipf/) | [さくらのAI](https://www.sakura.ad.jp/aipf/) | 国内の安全な環境で生成AIを活用できるプラットフォーム。推論向けAPI等を提供 |
+| [ホスティングサービス](https://www.sakura.ad.jp/services/) | [さくらのレンタルサーバ](https://rs.sakura.ad.jp/)、[さくらのVPS](https://vps.sakura.ad.jp/)、[さくらの専用サーバ PHY](https://server.sakura.ad.jp/) | 個人から企業・学術機関までウェブサイト運営を支えるレンタルサーバー、仮想サーバー、ベアメタルクラウド |
+
+:::info
+公式サイトの4区分はサービス分類であり、法定の報告セグメントは「クラウド・インターネットインフラ事業」の単一区分。単一セグメントのため、有価証券報告書においてセグメントごとの売上・利益の記載は省略される。
+:::
+
+## 関連企業
+
+[主要グループ会社](https://www.sakura.ad.jp/corporate/corp/group)に掲載される8社。
+
+| 名称 | 主な事業内容 |
+| --- | --- |
+| [アイティーエム株式会社](https://www.itmanage.co.jp/) | MCSSP事業（システムマネジメント・クラウド・サイバーセキュリティサービス）、データセンター事業、ネットワークサービス事業 |
+| 櫻花移動電信有限公司 | さくらのセキュアモバイルコネクト向けのコネクティビティおよびライセンスの供給、海外通信事業者との窓口業務 |
+| [ゲヒルン株式会社](https://www.gehirn.co.jp/) | セキュリティコンサルティング、レンタルサーバー、防災・気象情報の解析・配信、Web制作・開発 |
+| [ビットスター株式会社](https://bitstar.jp/) | インターネットサービス事業、サービスインテグレート事業、バーチャルオフィス・シェアオフィス事業 |
+| [プラナスソリューションズ株式会社](https://www.prunus-sol.co.jp/) | ハイパフォーマンスコンピューティング領域を中心としたシステムインテグレーション |
+| [IzumoBASE株式会社](https://www.izumobase.com/) | ストレージソフトウェア製品の開発、研究・コンサルティング |
+| [BBSakura Networks株式会社](https://bbsakura.net/) | 電気通信事業、電気通信設備の賃貸・保守・管理の受託 |
+| [株式会社Tellus](https://corp.tellusxdp.com/) | 情報提供サービス、データビジネスに関するコンサルティング、ソフトウェアの企画・開発 |
+
+</CompanyProse>
+
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />

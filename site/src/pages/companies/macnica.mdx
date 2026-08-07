@@ -1,0 +1,96 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: macnica
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+[パーパス](https://www.macnica.co.jp/company/purpose/)は「変化の先頭に立ち、最先端のその先にある技と知を探索し、未来を描き『今』を創る。」（2022年の創業50周年で制定）。タグラインは「タネまく、マクニカ」、コアバリューは T.E.A.M.S.。設立は1972年10月30日、本社は横浜、連結従業員数は5,261名（2026年3月末、[企業概要](https://www.macnica.co.jp/company/overview/)・マクニカHDグループ全体）。
+
+:::warn
+採用主体は事業会社の[株式会社マクニカ](https://www.macnica.co.jp/)。以下の財務・雇用情報は持株会社[マクニカホールディングス株式会社](https://holdings.macnica.co.jp/)（東証プライム3132）の開示値で、事業会社マクニカ単体の業績ではない。連結財務・セグメントはマクニカHD連結、平均年齢・平均勤続年数・平均年間給与は提出会社であるマクニカHD単体（約42名）の公表値で、連結全体（5,261名）の平均ではなく、平均年間給与は持株会社本体の高水準。
+:::
+
+## サイト
+
+- [HP](https://www.macnica.co.jp/)
+  - [事業紹介](https://www.macnica.co.jp/business/)
+  - [企業概要](https://www.macnica.co.jp/company/overview/)
+  - [パーパス](https://www.macnica.co.jp/company/purpose/)
+- [マクニカHD IR](https://holdings.macnica.co.jp/ir/ja/Top.html)
+  - [有価証券報告書](https://holdings.macnica.co.jp/ir/ja/library/sr.html)
+    - [第11期（2026年3月期）](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YGVR.pdf)
+    - [第10期（2025年3月期）](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100W3D1.pdf)
+    - [第9期（2024年3月期）](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100TSE1.pdf)
+- [採用情報](https://www.macnica.co.jp/recruit/)
+  - [新卒募集要項](https://www.macnica.co.jp/recruit/entry/requirements/)
+  - [採用FAQ](https://www.macnica.co.jp/recruit/info/faq/)
+
+</CompanyProse>
+
+<EmploymentOverview companyId="macnica-holdings" workplace="本社（横浜）。配属により国内外の拠点へ転勤あり" />
+
+<CompanyProse>
+
+## 採用情報
+
+### 新卒
+
+採用主体は株式会社マクニカ（事業会社）。[新卒募集要項](https://www.macnica.co.jp/recruit/entry/requirements/)は2027年4月入社（27卒）のエントリーを終了し、2028年4月入社（28卒）を受け付けている。初任給は2025年4月実績。勤務地は全職種共通で本社（横浜）を中心に配属により国内外の拠点へ転勤あり。
+
+| 職種群 | 初任給（月）※1 |
+| --- | --- |
+| [ビジネスドライブ職](https://www.macnica.co.jp/recruit/entry/requirements/) | 一般職種群: 大学院卒 312,390円／大学卒・高専卒 300,110円 |
+| [エンジニア職](https://www.macnica.co.jp/recruit/entry/requirements/) | 一般職種群に同じ |
+| [コーポレート職](https://www.macnica.co.jp/recruit/entry/requirements/) | 一般職種群に同じ |
+| ビジネスオペレーション職 | 250,380円 |
+
+<p class="section-note"><small>※1 初任給は2025年4月実績。ビジネスドライブ職・エンジニア職・コーポレート職は一般職種群の給与水準で、大学院卒の内訳は基礎給267,000円＋固定時間外手当45,390円。賞与は年2回（6月・12月）、支給額は非開示。所定労働時間は8:45〜17:15（実働7.5時間）、年間休日125日、入社1年目は原則出社。</small></p>
+
+## 事業内容
+
+公式[事業紹介](https://www.macnica.co.jp/business/)は半導体、ネットワーク、セキュリティ、スマートマニュファクチャリング、スマートシティ・モビリティ、AI、DX、サービスロボット、サーキュラーエコノミー、ヘルスケア、CPSセキュリティ、コネクティビティ、コンサルティング、フード・アグリテックの14区分。[第11期有価証券報告書](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YGVR.pdf)の報告セグメントは、半導体・電子デバイスのディストリビューションとITソリューション・サービスの2区分。
+
+| 報告セグメント | 主な事業・製品・サービス |
+| --- | --- |
+| IC・電子デバイスその他事業 | 半導体・電子デバイスのディストリビューション、技術サポート、リファレンスデザイン。プロセッサ（CPU・GPU・FPGA）、メモリ、センサ、電源デバイス、無線通信用IC等。 |
+| サイバーセキュリティ・その他ITソリューション事業 | ネットワーク・セキュリティ機器の販売・構築、AI・DXソリューション、スマートマニュファクチャリング、スマートシティ・モビリティ、サービスロボット、サーキュラーエコノミー、ヘルスケア等のソリューションサービス。 |
+
+:::warn
+FY2026有価証券報告書で報告セグメントを組替え、従来の「ネットワーク事業」を「サイバーセキュリティ・その他ITソリューション事業」へ再分類した。FY2025の比較数値は遡及組替を行っているが、FY2024以前は旧区分（ネットワーク事業）のままであり、区分変更前後の単純な時系列比較はできない。
+:::
+
+</CompanyProse>
+
+<SegmentRevenue companyId="macnica-holdings" />
+
+<CompanyProse>
+
+## 関連企業
+
+[企業概要](https://www.macnica.co.jp/company/overview/)のグループ構成は、親会社に純粋持株会社のマクニカホールディングス株式会社（2015年4月1日の共同株式移転で設立）、事業会社に株式会社マクニカと富士エレクトロニクス、国内SIにマクニカソリューションズ株式会社を置く。海外は台湾・上海・韓国・米州・欧州のMACNICA各社、Cytech系列（香港・シンガポール・タイ）、Galaxy/Anstek（台湾）、NETPOLEON（シンガポール）、iSecurity（台湾）、DHW（ブラジル）、ATD EUROPE（仏・独・英）等を展開し、グローバル33カ国/地域100拠点。
+
+| 区分 | 名称 | 主な事業内容 |
+| --- | --- | --- |
+| 親会社 | マクニカホールディングス株式会社 | 純粋持株会社（東証プライム3132） |
+| グループ事業会社 | 富士エレクトロニクス株式会社 | 半導体・電子部品の販売 |
+| 国内グループ企業 | マクニカソリューションズ株式会社 | SIサービス |
+| 海外グループ企業 | MACNICA各社（台湾・上海・韓国・米州・欧州）、Cytech系列（香港・シンガポール・タイ）、Galaxy/Anstek（台湾）、NETPOLEON（シンガポール）、iSecurity（台湾）、DHW（ブラジル）、ATD EUROPE（仏・独・英）ほか | 半導体・電子デバイス・ITソリューションの地域販売・展開 |
+
+</CompanyProse>
+
+<HealthMetrics companyId="macnica-holdings" />
+
+<FinancialHistory companyId="macnica-holdings" />
+
+<MetricTrends companyId="macnica-holdings" />

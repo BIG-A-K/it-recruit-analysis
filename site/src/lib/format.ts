@@ -16,9 +16,23 @@ export const metricLabels: Record<string, string> = {
   quick_assets: "当座資産",
   total_funding: "累計資金調達額",
   employee_count: "従業員数",
+  rd_expenses: "研究開発費",
+  gender_pay_gap: "男女の賃金の差異",
+  female_manager_ratio: "女性管理職比率",
+  male_childcare_leave_rate: "男性育休取得率",
+  male_childcare_leave_rate_with_leave: "男性育休等取得率",
 };
 
 export const metricDisplayOrder = Object.keys(metricLabels);
+
+// 男性育休の取得率は、育児休業だけで算定する会社と育児目的休暇を含めて
+// 算定する会社が混在し、後者のほうが高く出る。横並びで順位を付けると
+// 算定範囲の違いをそのまま優劣として読ませてしまうため比較から外し、
+// 企業ページでのみ算定範囲を明示して載せる。
+export const comparisonExcludedMetricKeys = new Set([
+  "male_childcare_leave_rate",
+  "male_childcare_leave_rate_with_leave",
+]);
 
 export function formatValue(
   value: number,
@@ -61,18 +75,25 @@ export function formatValue(
   return value.toLocaleString("ja-JP");
 }
 
+// scope を指定すると連結・単体を絞り込む。従業員数のように同じ指標を
+// 連結と単体の両方で持つ場合、指定しないと年度の新しいほうが選ばれる。
 export function latestMetric<
   T extends {
     metric_key: string;
     fiscal_year: string;
     value: string;
     unit: string;
+    scope?: string;
   },
 >(
   rows: T[],
   key: string,
+  scope?: string,
 ): T | undefined {
   return rows
-    .filter((row) => row.metric_key === key)
+    .filter(
+      (row) =>
+        row.metric_key === key && (scope === undefined || row.scope === scope),
+    )
     .sort((a, b) => Number(b.fiscal_year) - Number(a.fiscal_year))[0];
 }

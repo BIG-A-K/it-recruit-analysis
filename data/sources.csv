@@ -242,3 +242,17 @@ edinet-s100to3m,statutory_filing,有価証券報告書－第44期(2023/04/01－2
 edinet-s100vy52,statutory_filing,有価証券報告書－第45期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VY52,S100VY52,2025-06-17,2026-08-06,日鉄ソリューションズ株式会社
 edinet-s100yaev,statutory_filing,有価証券報告書－第46期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YAEV,S100YAEV,2026-06-15,2026-08-06,日鉄ソリューションズ株式会社
 ibm-japan-financial-2025,financial_report,業績 - 日本 | IBM,https://www.ibm.com/jp-ja/about/financial,,,2026-08-06,日本アイ・ビー・エム株式会社
+xserver-official-overview,corporate,会社概要｜エックスサーバー株式会社,https://www.xserver.co.jp/overview.php,,,2026-08-07,エックスサーバー株式会社
+xserver-official-news,corporate,ニュース｜エックスサーバー株式会社,https://www.xserver.co.jp/news.php,,,2026-08-07,エックスサーバー株式会社
+edinet-s100tqoz,statutory_filing,有価証券報告書－第25期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TQOZ,S100TQOZ,2024-06-25,2026-08-07,さくらインターネット株式会社
+edinet-s100vw98,statutory_filing,有価証券報告書－第26期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VW98,S100VW98,2025-06-16,2026-08-07,さくらインターネット株式会社
+edinet-s100ybg6,statutory_filing,有価証券報告書－第27期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YBG6,S100YBG6,2026-06-15,2026-08-07,さくらインターネット株式会社
+edinet-s100ygvr,statutory_filing,有価証券報告書－第11期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YGVR,S100YGVR,2026-06-23,2026-08-07,マクニカホールディングス株式会社
+edinet-s100w3d1,statutory_filing,有価証券報告書－第10期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100W3D1,S100W3D1,2025-06-25,2026-08-07,マクニカホールディングス株式会社
+edinet-s100tse1,statutory_filing,有価証券報告書－第9期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TSE1,S100TSE1,2024-06-26,2026-08-07,マクニカホールディングス株式会社
+sec-0001467373-25-000217,statutory_filing,Form 10-K annual report,https://www.sec.gov/Archives/edgar/data/1467373/000146737325000217/0001467373-25-000217-index.html,0001467373-25-000217,2025-10-10,2026-08-07,Accenture plc
+edinet-s100yg3q,statutory_filing,有価証券報告書－第57期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YG3Q,S100YG3Q,2026-06-22,2026-08-07,ファナック株式会社
+edinet-s100ybv4,statutory_filing,有価証券報告書－第41期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YBV4,S100YBV4,2026-06-16,2026-08-07,東京エレクトロンデバイス株式会社
+edinet-s100w1ey,statutory_filing,有価証券報告書－第40期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100W1EY,S100W1EY,2025-06-23,2026-08-07,東京エレクトロンデバイス株式会社
+edinet-s100togi,statutory_filing,有価証券報告書－第39期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TOGI,S100TOGI,2024-06-20,2026-08-07,東京エレクトロンデバイス株式会社
+boj-fxerm-usdjpy,public_data,時系列統計データ 為替相場（東京インターバンク相場・月次）,https://www.stat-search.boj.or.jp/ssi/mtshtml/fm08_m_1.html,FM08'FXERM06/FM08'FXERM07,2026-08-05,2026-08-07,日本銀行

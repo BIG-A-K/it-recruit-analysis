@@ -1,0 +1,106 @@
+---
+layout: ../../layouts/CompanyLayout.astro
+companyId: fanuc
+---
+
+import CompanyOverview from "../../components/company/CompanyOverview.astro";
+import CompanyProse from "../../components/company/CompanyProse.astro";
+import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
+
+<CompanyOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
+[ファナック株式会社](https://www.fanuc.co.jp/ja/profile/outline.html)は、1955年のNC開発を起点とし、1972年に富士通のNC部門から分離して富士通ファナック株式会社として設立、1982年にファナック株式会社へ社名変更した産業オートメーション企業。
+
+[経営方針](https://www.fanuc.co.jp/ja/profile/profile/policies.html)のビジョンは「産業オートメーション分野で不断の技術革新により価値を提供し続けること」。[基本理念](https://www.fanuc.co.jp/ja/profile/principle.html)は「厳密」と「透明」、スローガンは「one FANUC」。[サステナビリティ方針](https://www.fanuc.co.jp/ja/sustainability/general/principle.html)のスローガンは「サービスファースト」。
+
+[サービス](https://www.fanuc.co.jp/ja/service/index.html)ページはCNC累計生産500万台、ロボット累計生産100万台、世界280以上のサービス拠点を示す。
+
+## サイト
+
+- [FANUC公式サイト](https://www.fanuc.co.jp/ja/)
+  - [会社概要](https://www.fanuc.co.jp/ja/profile/outline.html)
+  - [沿革](https://www.fanuc.co.jp/ja/profile/history/index.html)
+  - [経営方針](https://www.fanuc.co.jp/ja/profile/profile/policies.html)
+- [IR情報](https://www.fanuc.co.jp/ja/ir/)
+  - [有価証券報告書一覧（2024年3月期・2025年3月期・2026年3月期）](https://www.fanuc.co.jp/ja/ir/securitiesreport/index.html)
+    - [2026年3月期（第57期）有価証券報告書](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YG3Q.pdf)
+- [採用情報](https://www.fanuc.co.jp/ja/employ/recruit/index.html)
+  - [新卒採用](https://www.fanuc.co.jp/ja/employ/recruit/)
+    - [募集要項](https://www.fanuc.co.jp/ja/employ/recruit/recruit/requirements/)
+    - [2028年卒プレエントリー](https://mypage.3010.i-webs.jp/fanuc2028/)
+
+:::warn
+財務指標はファナック連結、JGAAP、会計年度末3月31日の日本円で、平均年齢・平均勤続年数・平均年間給与は提出会社単体、従業員数は連結の公表値。[2026年3月期有価証券報告書](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YG3Q.pdf)では電子記録債権の独立表示に伴い前期を組み替えているため、流動資産・当座資産の前期比較には表示方法変更が含まれる。
+:::
+
+</CompanyProse>
+
+<EmploymentOverview
+  companyId={frontmatter.companyId}
+  workplace="本社（山梨県南都留郡忍野村）ほか（初期配属・職種により異なる）"
+/>
+
+<CompanyProse>
+
+## 採用情報
+### 新卒
+
+採用主体はファナック株式会社。現在は[2028年卒プレエントリー](https://mypage.3010.i-webs.jp/fanuc2028/)を受け付けており、2027年卒は受付終了。募集区分は技術系、事務系、高専本科の3区分で、総合職採用。応募時の希望を尊重し、専攻・適性を考慮して配属する。
+
+[公式の職種ページ](https://www.fanuc.co.jp/ja/employ/job/)は職種紹介を、[公式募集要項](https://www.fanuc.co.jp/ja/employ/recruit/recruit/requirements/)は募集条件を示す。
+
+| 職種 | 主な仕事内容 | 勤務地 | 初任給（月額）※1 | 基礎給 | 固定時間外手当 | 標準年収 | 応募・選考区分 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| [技術系](https://www.fanuc.co.jp/ja/employ/recruit/recruit/requirements/) | 研究開発、生産技術、国内・海外セールス、IT | 本社（山梨県南都留郡忍野村）ほか、職種別 | 博士335,350円／修士299,000円／学部286,000円 | 記載なし | 記載なし | 記載なし | 推薦・自由応募 |
+| [事務系](https://www.fanuc.co.jp/ja/employ/recruit/recruit/requirements/) | 人事、法務、経理、購買、総務、国内・海外セールス等 | 本社（山梨県南都留郡忍野村）ほか、職種別 | 修士299,000円／学部286,000円 | 記載なし | 記載なし | 記載なし | 推薦・自由応募 |
+| [高専本科](https://www.fanuc.co.jp/ja/employ/recruit/recruit/requirements/) | サービス、生産技術、国内・海外セールス、研究開発 | 本社（山梨県南都留郡忍野村）ほか、職種別 | 233,350円 | 記載なし | 記載なし | 記載なし | 推薦・自由応募 |
+
+<p class="section-note"><small>※1 初任給は2025年度実績。2028年卒向けの改定額とは明記されていない。基礎給の内訳、固定時間外手当、標準年収は公開なし。</small></p>
+
+勤務地は職種別に定め、海外出向・全国転勤の条件を募集区分ごとに示す。2028年卒固有の学年要件と応募締切日は公開なし。[採用FAQ](https://www.fanuc.co.jp/ja/employ/recruit/recruit/faq/)が示す選考区分は推薦・自由応募。
+
+賞与の金額・回数は公開なし。福利厚生は[募集要項・福利厚生](https://www.fanuc.co.jp/ja/employ/recruit/recruit/welfare/)に記載された寮・社宅、保養所、企業内保育所、企業年金基金等。実働7時間45分、年間休日126日、初年度有給22日。一般的な常時リモート勤務の公開はなく、在宅勤務は災害・緊急事態、つわり、治療等の個別事情向け。
+
+## 事業内容
+
+[2026年3月期有価証券報告書](https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100YG3Q.pdf)の法定開示上の報告セグメントは単一。[商品ページ](https://www.fanuc.co.jp/ja/product/index.html)はFA、ロボット、ロボマシン、IoTを、[サービスページ](https://www.fanuc.co.jp/ja/service/index.html)は保守サービスを商品・サービス区分として示す。
+
+| 報告セグメント | 商品・サービス区分 | 主な製品・サービス |
+| --- | --- | --- |
+| 単一セグメント | [FA](https://www.fanuc.co.jp/ja/product/index.html) | CNC、サーボ |
+| 単一セグメント | [ロボット](https://www.fanuc.co.jp/ja/product/index.html) | ロボット |
+| 単一セグメント | [ロボマシン](https://www.fanuc.co.jp/ja/product/index.html) | ROBODRILL、ROBOSHOT、ROBOCUT |
+| 単一セグメント | [IoT](https://www.fanuc.co.jp/ja/product/index.html) | IoT |
+| 単一セグメント | [保守サービス](https://www.fanuc.co.jp/ja/service/index.html) | 保守サービス |
+
+:::info
+FA、ロボット、ロボマシン、IoT、保守サービスは商品・サービス区分であり、法定の報告セグメントではない。単一セグメントのためセグメント別売上・利益は開示されておらず、セグメント別売上の表示を省略する。
+:::
+
+## 関連企業
+
+[グローバルネットワーク](https://www.fanuc.co.jp/ja/profile/sales/global/index.html)に掲載される主な海外関係会社は地域販売・製造・サービスを担う。親会社はない。
+
+| 区分 | 名称 | 主な役割 | 報告セグメント |
+| --- | --- | --- | --- |
+| 主な海外関係会社 | [FANUC America](https://www.fanuc.co.jp/ja/profile/sales/global/america.html) | 北米地域の販売・製造・サービス | 単一セグメント |
+| 主な海外関係会社 | [FANUC Europe](https://www.fanuc.co.jp/ja/profile/sales/global/europe.html) | 欧州地域の販売・製造・サービス | 単一セグメント |
+| 主な海外関係会社 | [BEIJING-FANUC Mechatronics](https://www.fanuc.co.jp/ja/profile/sales/global/asia.html) | 中国地域の販売・製造・サービス | 単一セグメント |
+| 主な海外関係会社 | [SHANGHAI-FANUC Robotics](https://www.fanuc.co.jp/ja/profile/sales/global/asia.html) | 中国地域の販売・製造・サービス | 単一セグメント |
+| 主な海外関係会社 | [SHANGHAI-FANUC ROBOMACHINE](https://www.fanuc.co.jp/ja/profile/sales/global/asia.html) | 中国地域の販売・製造・サービス | 単一セグメント |
+| 主な海外関係会社 | [KOREA FANUC](https://www.fanuc.co.jp/ja/profile/sales/global/asia.html) | 韓国地域の販売・製造・サービス | 単一セグメント |
+| 主な海外関係会社 | [TAIWAN FANUC](https://www.fanuc.co.jp/ja/profile/sales/global/asia.html) | 台湾地域の販売・製造・サービス | 単一セグメント |
+| 主な海外関係会社 | [FANUC INDIA](https://www.fanuc.co.jp/ja/profile/sales/global/asia.html) | インド地域の販売・製造・サービス | 単一セグメント |
+
+</CompanyProse>
+
+<HealthMetrics companyId={frontmatter.companyId} />
+
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />

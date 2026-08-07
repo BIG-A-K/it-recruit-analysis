@@ -2,9 +2,10 @@
 import CompanySortControls from "../../components/CompanySortControls.astro";
 import type { SortOption } from "../../components/CompanySortControls.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { companies, metricsForCompanies } from "../../lib/data";
+import { companies, disclosureIdForCompany, metricsForCompanies } from "../../lib/data";
 import { companyPageUpdatedAt, formatUpdatedAt } from "../../lib/company-pages";
 import { formatValue, latestMetric } from "../../lib/format";
+import { normalizeForSearch } from "../../lib/search";
 
 const companyPages = import.meta.glob("./*.mdx");
 const pageIds = new Set(
@@ -14,7 +15,7 @@ const pageIds = new Set(
 );
 
 const allMetrics = metricsForCompanies(
-  companies.map((company) => company.company_id),
+  companies.map((company) => disclosureIdForCompany(company)),
 );
 const metricYears = allMetrics.map((metric) => Number(metric.fiscal_year));
 const latestYear = metricYears.length ? Math.max(...metricYears) : undefined;
@@ -29,16 +30,34 @@ const listedKeys = [
 const collator = new Intl.Collator("ja");
 const rows = companies
   .map((company) => {
+    const disclosureId = disclosureIdForCompany(company);
     const companyMetrics = allMetrics.filter(
-      (metric) => metric.company_id === company.company_id,
+      (metric) => metric.company_id === disclosureId,
     );
     const updatedAt = companyPageUpdatedAt(company.company_id);
     return {
       company,
+      // company_id はローマ字表記なので、英字での検索もここで拾える
+      searchKey: [
+        company.display_name,
+        company.name_kana,
+        company.legal_name,
+        company.company_id,
+      ]
+        .map(normalizeForSearch)
+        .join("/"),
       hasPage: pageIds.has(company.company_id),
       updatedAt: updatedAt ? formatUpdatedAt(updatedAt) : undefined,
       latest: Object.fromEntries(
-        listedKeys.map((key) => [key, latestMetric(companyMetrics, key)]),
+        // 従業員数は連結と単体の両方を持つため、一覧では連結に揃える
+        listedKeys.map((key) => [
+          key,
+          latestMetric(
+            companyMetrics,
+            key,
+            key === "employee_count" ? "consolidated" : undefined,
+          ),
+        ]),
       ) as Record<(typeof listedKeys)[number], ReturnType<typeof latestMetric>>,
     };
   })
@@ -160,11 +179,27 @@ const distributionPayload = {
   <section>
     <div class="section-head"><h2>企業を探す</h2></div>
 
+    <div class="company-search">
+      <label>
+        <span>企業名で絞り込む</span>
+        <input
+          type="search"
+          data-company-search="companies"
+          placeholder="社名・よみ・ローマ字（例: 富士通 / ふじつう / fujitsu）"
+          autocomplete="off"
+          enterkeyhint="search"
+        />
+      </label>
+      <p class="search-status" data-search-status="companies" aria-live="polite">
+        {rows.length}社を表示しています。
+      </p>
+    </div>
+
     <CompanySortControls controlsId="companies" options={sortOptions} initialSort="kana" />
 
     <div class="company-list" data-company-list="companies" data-sort="kana">
       {
-        rows.map(({ company, hasPage, updatedAt, latest }, index) => {
+        rows.map(({ company, searchKey, hasPage, updatedAt, latest }, index) => {
           const salary = latest.average_annual_salary;
           const tenure = latest.average_tenure;
           const age = latest.average_age;
@@ -185,6 +220,7 @@ const distributionPayload = {
             </div>
           );
           const dataAttributes = {
+            "data-search-key": searchKey,
             "data-sort-kana": index,
             "data-sort-salary": salary ? salary.value : "",
             "data-sort-tenure": tenure ? tenure.value : "",
@@ -204,6 +240,9 @@ const distributionPayload = {
         })
       }
     </div>
+    <p class="empty-state search-empty" data-search-empty="companies" hidden>
+      該当する企業がありません。
+    </p>
     <p class="section-note">
       平均年間給与・平均勤続年数・平均年齢・従業員数は、有価証券報告書などで各社が公表した最新年度の値です。持株会社では提出会社単体の値であることが多く、グループ全体や採用主体の待遇とは一致しない場合があります。値を公表していない企業は、順序によらず末尾に並べています。
     </p>
@@ -211,6 +250,21 @@ const distributionPayload = {
 </BaseLayout>
 
 <style>
+  .company-search { margin-bottom: 18px; }
+  .company-search > label { display: block; max-width: 420px; }
+  .company-search span { display: block; margin-bottom: 6px; color: var(--muted); font-size: 12px; }
+  .company-search input {
+    width: 100%; height: 38px; padding: 0 12px;
+    color: var(--ink); background: white; border: 1px solid var(--line-dark); border-radius: 6px;
+    font: inherit; font-size: 14px;
+  }
+  .company-search input::placeholder { color: var(--muted); }
+  :global([data-theme="dark"]) .company-search input { background: #172131; }
+  .search-status { margin: 10px 0 0; color: var(--muted); font-size: 13px; }
+  .search-empty { min-height: 120px; }
+  /* .linked-row は grid のため、hidden 属性だけでは隠れない */
+  .company-list > [hidden], .search-empty[hidden] { display: none; }
+
   .distribution-panel { margin-bottom: 34px; }
   .distribution-metric { display: block; max-width: 260px; margin-bottom: 18px; }
   .distribution-metric > span { display: block; margin-bottom: 6px; color: var(--muted); font-size: 12px; }
@@ -496,4 +550,56 @@ const distributionPayload = {
     select.addEventListener("change", update);
     update();
   })();
+</script>
+
+<script>
+  import { normalizeForSearch } from "../../lib/search";
+
+  for (const input of document.querySelectorAll<HTMLInputElement>(
+    "[data-company-search]",
+  )) {
+    const id = input.dataset.companySearch;
+    const list = document.querySelector<HTMLElement>(
+      `[data-company-list="${id}"]`,
+    );
+    const status = document.querySelector<HTMLElement>(
+      `[data-search-status="${id}"]`,
+    );
+    const empty = document.querySelector<HTMLElement>(
+      `[data-search-empty="${id}"]`,
+    );
+    if (!list) continue;
+
+    const rows = [...list.children].filter(
+      (child): child is HTMLElement => child instanceof HTMLElement,
+    );
+
+    const applyFilter = () => {
+      // 正規化で空白が落ちるため、語の分割は正規化の前に済ませる
+      const terms = input.value
+        .trim()
+        .split(/\s+/)
+        .map(normalizeForSearch)
+        .filter(Boolean);
+
+      let shown = 0;
+      for (const row of rows) {
+        const key = row.dataset.searchKey ?? "";
+        const matched = terms.every((term) => key.includes(term));
+        row.hidden = !matched;
+        if (matched) shown += 1;
+      }
+
+      if (empty) empty.hidden = shown > 0;
+      if (status) {
+        status.textContent = terms.length
+          ? `${rows.length}社のうち${shown}社が該当しました。`
+          : `${rows.length}社を表示しています。`;
+      }
+    };
+
+    input.addEventListener("input", applyFilter);
+    // ブラウザが入力値を復元した場合に備え、読み込み直後にも一度合わせる
+    applyFilter();
+  }
 </script>

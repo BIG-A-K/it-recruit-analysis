@@ -238,6 +238,74 @@ METRIC_RULES = (
         Decimal("100"),
         JGAAP_COMPANY_IDS,
     ),
+    # 提出会社単体の従業員数。連結従業員数と要素IDが同じで、
+    # コンテキストの_NonConsolidatedMemberだけが違う。平均年間給与や
+    # 平均年齢が何人を対象にした数字かを示すために連結とは別に持つ。
+    MetricRule(
+        "employee_count",
+        "jpcrp_cor:NumberOfEmployees",
+        "non_consolidated",
+        "",
+        "persons",
+    ),
+    # 以下の人的資本指標は2023年3月期から有価証券報告書で開示が義務付けられた。
+    # いずれも提出会社の指標を採る。連結子会社の指標は会社ごとに
+    # _Row1Member以降へ分かれ、連結全体の値が存在しないため扱わない。
+    # 開示値は0.131のような小数で入るため100倍してpercentへ揃える。
+    MetricRule(
+        "gender_pay_gap",
+        "jpcrp_cor:AllEmployeesDifferencesInWagesBetweenMaleAndFemale"
+        "EmployeesMetricsOfReportingCompany",
+        "non_consolidated",
+        "",
+        "percent",
+        Decimal("100"),
+    ),
+    MetricRule(
+        "female_manager_ratio",
+        "jpcrp_cor:RatioOfFemaleEmployeesInManagerialPositions"
+        "MetricsOfReportingCompany",
+        "non_consolidated",
+        "",
+        "percent",
+        Decimal("100"),
+    ),
+    # 男性育休取得率は育児介護休業法施行規則第71条の4第1号（育児休業のみ）と
+    # 第2号（育児休業と育児目的休暇の合計）で算定範囲が違い、第2号のほうが
+    # 高く出る。同一年度に両方を開示する会社があるため別の指標として扱う。
+    MetricRule(
+        "male_childcare_leave_rate",
+        "jpcrp_cor:AllEmployeesCalculatedBasedOnProvisionsOfArticle714Item1"
+        "OfOrdinanceForEnforcementOfActOnChildcareLeaveCaregiverLeaveAndOther"
+        "MeasuresForTheWelfareOfWorkersCaringForChildrenOrOtherFamilyMembers"
+        "RatioOfMaleEmployeesTakingChildcareLeaveMetricsOfReportingCompany",
+        "non_consolidated",
+        "",
+        "percent",
+        Decimal("100"),
+    ),
+    MetricRule(
+        "male_childcare_leave_rate_with_leave",
+        "jpcrp_cor:AllEmployeesCalculatedBasedOnProvisionsOfArticle714Item2"
+        "OfOrdinanceForEnforcementOfActOnChildcareLeaveCaregiverLeaveAndOther"
+        "MeasuresForTheWelfareOfWorkersCaringForChildrenOrOtherFamilyMembers"
+        "RatioOfMaleEmployeesTakingChildcareLeaveMetricsOfReportingCompany",
+        "non_consolidated",
+        "",
+        "percent",
+        Decimal("100"),
+    ),
+    # 研究開発費は「研究開発活動」の記載から連結ベースの総額を採る。
+    # セグメント別の内訳は同じ要素IDにセグメントメンバー付きの
+    # コンテキストで入るが、is_metric_contextが完全一致で弾く。
+    MetricRule(
+        "rd_expenses",
+        "jpcrp_cor:ResearchAndDevelopmentExpenses"
+        "ResearchAndDevelopmentActivities",
+        "consolidated",
+        "",
+        "JPY",
+    ),
 )
 
 METRIC_LOCAL_NAME_ALIASES = {
@@ -272,6 +340,18 @@ METRIC_LOCAL_NAME_ALIASES = {
     ),
     "ProfitFromBusinessActivitiesSummaryOfBusinessResults": (
         "it_recruit:BusinessProfitLossIFRS"
+    ),
+    # 育児介護休業法ではなく女性活躍推進法に基づいて男性育休取得率を
+    # 算定する会社がある。算定範囲は施行規則第71条の4第1号と同じ
+    # 育児休業のみのため第1号へ寄せる。根拠法令の違いはnoteの
+    # element_idに残る。
+    "AllEmployeesCalculatedBasedOnProvisionsOfActOnPromotionOfWomens"
+    "ActiveEngagementInProfessionalLifeRatioOfMaleEmployeesTakingChildcare"
+    "LeaveMetricsOfReportingCompany": (
+        "jpcrp_cor:AllEmployeesCalculatedBasedOnProvisionsOfArticle714Item1"
+        "OfOrdinanceForEnforcementOfActOnChildcareLeaveCaregiverLeaveAndOther"
+        "MeasuresForTheWelfareOfWorkersCaringForChildrenOrOtherFamilyMembers"
+        "RatioOfMaleEmployeesTakingChildcareLeaveMetricsOfReportingCompany"
     ),
 }
 
@@ -1461,63 +1541,72 @@ def normalize_metrics(
     metrics_path: Path,
 ) -> int:
     rows = read_edinet_rows(find_filing_csv(filing_dir))
-    rules = {rule.element_id: rule for rule in METRIC_RULES}
+    # 連結と単体の従業員数のように、同じ要素IDをコンテキストだけで
+    # 区別する指標があるため、要素IDごとに複数のルールを保持する。
+    rules: dict[str, tuple[MetricRule, ...]] = {}
+    for rule in METRIC_RULES:
+        rules[rule.element_id] = rules.get(rule.element_id, ()) + (rule,)
     latest_year = date.fromisoformat(latest_period_end).year
     records: dict[tuple[str, str, int, str], dict[str, str]] = {}
 
     for source_row in rows:
         element_id = source_row["要素ID"]
-        rule = rules.get(element_id)
-        if rule is None:
+        matched = rules.get(element_id)
+        if matched is None:
             local_name = element_id.rsplit(":", 1)[-1]
             canonical_element_id = METRIC_LOCAL_NAME_ALIASES.get(local_name)
             if canonical_element_id is not None:
-                rule = rules[canonical_element_id]
-        if rule is None:
-            continue
-        if rule.company_ids is not None and company_id not in rule.company_ids:
+                matched = rules[canonical_element_id]
+        if matched is None:
             continue
 
         context_id = source_row["コンテキストID"]
-        if not is_metric_context(context_id, rule.scope):
-            continue
-        fiscal_year = fiscal_year_from_context(context_id, latest_year)
         raw_value = source_row["値"]
+        fiscal_year = fiscal_year_from_context(context_id, latest_year)
         if fiscal_year is None or raw_value in {"", "－", "-"}:
             continue
 
-        value = Decimal(raw_value) * rule.multiplier
-        record = {
-            "company_id": company_id,
-            "metric_key": rule.metric_key,
-            "fiscal_year": str(fiscal_year),
-            "period_end": period_end_for_year(
-                latest_period_end,
+        for rule in matched:
+            if (
+                rule.company_ids is not None
+                and company_id not in rule.company_ids
+            ):
+                continue
+            if not is_metric_context(context_id, rule.scope):
+                continue
+
+            value = Decimal(raw_value) * rule.multiplier
+            record = {
+                "company_id": company_id,
+                "metric_key": rule.metric_key,
+                "fiscal_year": str(fiscal_year),
+                "period_end": period_end_for_year(
+                    latest_period_end,
+                    fiscal_year,
+                ),
+                "value": decimal_text(value),
+                "unit": rule.output_unit,
+                "scope": rule.scope,
+                "accounting_standard": rule.accounting_standard,
+                "availability": "reported",
+                "source_id": source_id,
+                "note": f"element_id={element_id}; context_id={context_id}",
+            }
+            key = (
+                company_id,
+                rule.metric_key,
                 fiscal_year,
-            ),
-            "value": decimal_text(value),
-            "unit": rule.output_unit,
-            "scope": rule.scope,
-            "accounting_standard": rule.accounting_standard,
-            "availability": "reported",
-            "source_id": source_id,
-            "note": f"element_id={element_id}; context_id={context_id}",
-        }
-        key = (
-            company_id,
-            rule.metric_key,
-            fiscal_year,
-            rule.scope,
-        )
-        existing = records.get(key)
-        if existing is not None:
-            if existing["value"] != record["value"]:
-                raise RuntimeError(
-                    "同一指標・年度・範囲で値が競合しています: "
-                    f"{key}: {existing['value']} != {record['value']}"
-                )
-            continue
-        records[key] = record
+                rule.scope,
+            )
+            existing = records.get(key)
+            if existing is not None:
+                if existing["value"] != record["value"]:
+                    raise RuntimeError(
+                        "同一指標・年度・範囲で値が競合しています: "
+                        f"{key}: {existing['value']} != {record['value']}"
+                    )
+                continue
+            records[key] = record
 
     quick_asset_rule = QUICK_ASSET_RULES.get(company_id)
     if quick_asset_rule is not None:

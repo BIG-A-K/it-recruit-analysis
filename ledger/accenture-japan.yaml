@@ -1,0 +1,262 @@
+company_id: accenture-japan
+disclosure_company_id: accenture-plc
+company_boundary:
+  adoption_company_id: accenture-japan
+  disclosure_company_id: accenture-plc
+  reporting_segment_company_id: accenture-plc
+  legal_name: アクセンチュア株式会社
+  disclosure_legal_name: Accenture plc
+  securities_code: ""
+  edinet_code: ""
+  sec_cik: "0001467373"
+  ticker: ACN
+  exchange: NYSE
+  fiscal_year_end: 8月31日
+  accounting_standard: USGAAP
+  currency: USD
+  reporting_segments: Americas; EMEA; Asia Pacific
+  company_relations: []
+  note: 日本の採用主体はアクセンチュア株式会社、財務開示主体はAccenture plc。FY2025 Form 10-KのExhibit 21.1はAccenture Japan Ltdを日本の子会社として列挙するが、関係の有効開始日を開示していないためcompany_relations.csvには行を作らない。親会社の連結財務・報告セグメント・従業員数を日本法人の数値として扱わない。Accentureのサービスブランドと5業界グループは報告セグメントと独自に同一視しない。
+fiscal_year: 2025
+focus: 両方
+created_at: 2026-08-07
+updated_at: 2026-08-07
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: not_disclosed
+    value: metrics.csvの4指標（FY2023-FY2025、計12行）はnot_disclosed
+    subject: Accenture plc連結（日本法人の給与・人的指標とは別）
+    as_of: 2023-08-31〜2025-08-31
+    unit: USD・years・persons
+    source: sec-0001467373-25-000217
+    via: cached SEC Form 10-K replay、search period 2025-01-01〜2026-06-30
+    note: Workforce sectionの約779,000人はFY2025末の概数で、dei:EntityNumberOfEmployeesの正確な事実がないため正規化せず、平均給与・年齢・勤続年数も開示なし。日本法人へ転用しない。
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高または売上収益 3期以上
+    status: done
+    value: metrics.csvのrevenue（FY2023-FY2025、3行）
+    subject: Accenture plc連結
+    as_of: 2023-08-31〜2025-08-31
+    unit: USD
+    source: sec-0001467373-25-000217
+    via: sec-fetch・sec-normalize、search period 2025-01-01〜2026-06-30
+    note: USD・USGAAP・consolidated。原通貨USDで保存し、円換算しない。
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益または事業利益 3期以上
+    status: done
+    value: metrics.csvのoperating_profit（FY2023-FY2025、3行）
+    subject: Accenture plc連結
+    as_of: 2023-08-31〜2025-08-31
+    unit: USD
+    source: sec-0001467373-25-000217
+    via: sec-fetch・sec-normalize、search period 2025-01-01〜2026-06-30
+    note: USD・USGAAP・consolidated。
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: current_assets・current_liabilitiesはFY2024-FY2025の4 reported行、equity_ratio・quick_assetsはFY2024-FY2025の4 not_disclosed行
+    subject: Accenture plc連結
+    as_of: 2024-08-31〜2025-08-31
+    unit: percent・USD
+    source: sec-0001467373-25-000217
+    via: cached SEC Form 10-K replay、csv-upsert、search period 2025-01-01〜2026-06-30
+    note: AssetsCurrentとLiabilitiesCurrentの既存行を確認し重複なし。equity_ratioは算定せず、quick_assetsも構成科目から導出していない。
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csvのoperating_cf・investing_cf・financing_cf（FY2023-FY2025、各3行、計9行）
+    subject: Accenture plc連結
+    as_of: 2023-08-31〜2025-08-31
+    unit: USD
+    source: sec-0001467373-25-000217
+    via: sec-fetch・sec-normalize、search period 2025-01-01〜2026-06-30
+    note: USD・USGAAP・consolidated。派生net_cfは保存しない。
+  - id: ir-segments
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメントの年度別売上・利益
+    status: done
+    value: segments.csvのAmericas・EMEA・Asia Pacific（FY2023-FY2025、各3行、計9行）
+    subject: Accenture plc連結報告セグメント
+    as_of: 2023-08-31〜2025-08-31
+    unit: USD
+    source: sec-0001467373-25-000217
+    via: uv run sec-normalize accenture-plc 0001467373-25-000217、search period 2025-01-01〜2026-06-30
+    note: revenueとOperatingIncomeLossをUSGAAPのStatementBusinessSegmentsAxisから正規化した。公式サービス分類を報告セグメントへ独自集約しない。
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 会計基準変更・組織再編・比較上の注記
+    status: done
+    value: Form 10-Kの提出情報、USGAAP、会計年度末、組織変更の確認は進行済み。共通正規化器拡張後に比較注記を確定。
+    subject: Accenture plc連結
+    as_of: 2025-08-31
+    unit: ""
+    source: sec-0001467373-25-000217
+    via: SEC Form 10-K、search period 2025-01-01〜2026-06-30
+    note: Accenture plcのFY2025は2025-08-31終了。2025-09-01開始のReinvention Services統合はFY2025末後の変更として本文注記する。
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: 採用主体はアクセンチュア株式会社（Accenture Japan Ltd）。2027年卒通常選考は受付終了、2028年卒の公式登録窓口を確認。Accenture plcは日本の採用主体ではない。
+    subject: アクセンチュア株式会社
+    as_of: 2026-08-07
+    unit: ""
+    source: https://www.accenture.com/jp-ja/careers/life-at-accenture/entry-level; https://axol.jp/zw/s/accenture_28/entry_1324320008
+    via: Accenture Japan採用トップ・新卒ページ・公式登録ページを確認
+    note: 日本法人の採用情報のみを正本とし、親会社の財務・グローバル待遇を転用しない。
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: |
+      2027年卒通常選考の公開職種はビジネスコンサルタント、デジタルコンサルタント、ソリューション・エンジニア、データサイエンティスト、AIアーキテクト、クリエイティブ、デザイン、コンテンツデザイン、ディレクター、戦略コンサルタント、マーケティング、オペレーションスペシャリストの12職種。仕事内容と職種別勤務地を公式ページで確認した。応募資格・選考段階・配属の詳細の一部は公式マイページ限定。
+    subject: アクセンチュア株式会社（2027年卒通常選考）
+    as_of: 2026-08-07
+    unit: 職種・応募資格・勤務地・選考
+    source: https://www.accenture.com/jp-ja/careers/life-at-accenture/entry-level; https://job.axol.jp/bx/s/accenture_27/entry/
+    via: 新卒採用ページの全12職種と公式応募入口を確認
+    note: マイページ限定の詳細は推定していない。2028年卒は登録窓口のみ公開。
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの給与・賞与・手当・標準年収
+    status: done
+    value: ビジネスコンサルタント・デジタルコンサルタント・ソリューションエンジニアは標準年収6630000円、基本給年額4800000円（月額400000円）。データサイエンティスト・AIアーキテクト・戦略コンサルタントは標準年収7540000円、基本給年額5509000円（月額459084円）。その他6職種の給与詳細、固定時間外手当の金額は公開なし。
+    subject: アクセンチュア株式会社（日本法人の新卒採用）
+    as_of: 2026-08-07
+    unit: JPY
+    source: https://www.accenture.com/jp-ja/careers/life-at-accenture/entry-level; https://www.accenture.com/jp-ja/careers/explore-careers/area-of-interest/journey-to-accenture; https://www.accenture.com/jp-ja/careers/local/benefits
+    via: 12職種の給与欄、公式FAQ、福利厚生ページを照合
+    note: 標準年収は業績賞与・各種手当を含む理論値。親会社の報酬情報は使用しない。
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: 原則フレックスタイム制（コアタイムなし、標準労働時間9時〜18時、休憩1時間）。職種別勤務地、全国オフィスへの変更範囲、ロケーションフレキシビリティ制度、福利厚生、2027年卒受付終了、応募締切日非開示を確認。
+    subject: アクセンチュア株式会社（正社員共通条件および新卒職種）
+    as_of: 2026-08-07
+    unit: 時間・適用条件
+    source: https://www.accenture.com/jp-ja/careers/support/labor-condition-applications; https://www.accenture.com/jp-ja/careers/local/benefits; https://www.accenture.com/jp-ja/careers/local/regional-offices; https://www.accenture.com/jp-ja/careers/life-at-accenture/entry-level
+    via: 労働条件・福利厚生・ロケーションフレキシビリティ・新卒採用ページを確認
+    note: 職種別の転勤・リモート適用と応募締切日は公開なし。制度の適用は職種・部門・承認条件による。
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとのサービス・製品・運営法人
+    status: done
+    value: Form 10-Kの報告セグメントはAmericas、EMEA、Asia Pacific。各地域でStrategy and Consulting、Technology、Operations、Song、Industry Xを組み合わせて提供し、日本の提供主体はアクセンチュア株式会社。
+    subject: Accenture plcの報告セグメントとアクセンチュア株式会社のサービス
+    as_of: 2025-08-31 / 2026-08-07
+    unit: ""
+    source: sec-0001467373-25-000217; https://www.accenture.com/jp-ja/services; https://www.accenture.com/jp-ja/about/company/japan; https://www.accenture.com/us-en/about/reinvention-services
+    via: FY2025 Form 10-KのItem 1・セグメント注記と公式サービスページを照合
+    note: 2025-09-01からのReinvention Services統合はFY2025末後。サービスブランドを報告セグメントへ独自集約しない。
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式事業区分とIR報告セグメントの対応・差異
+    status: done
+    value: 公式サイトのAI & Data、Cloud、Cybersecurity、Technology Transformation、Managed Services、Marketing & Experience等の能力分類と、Form 10-Kの業界グループ（5区分）は、地理報告セグメント（Americas、EMEA、Asia Pacific）と別軸。5業界グループはセグメント別売上・利益の区分ではない。
+    subject: 公式サービス分類・FY2025業界グループ・報告セグメント
+    as_of: 2025-08-31 / 2026-08-07
+    unit: ""
+    source: sec-0001467373-25-000217; https://www.accenture.com/us-en/services; https://www.accenture.com/us-en/about/reinvention-services
+    via: Form 10-K Item 1・Item 7と公式サービス分類を比較
+    note: 台帳の報告セグメントは3地理区分へ修正済み。
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: |
+      Accenture plcのFY2025 Exhibit 21.1は日本の子会社としてAccenture Japan Ltd、Avanade Japan KK、Cibis Inc.、Cloud Sherpas Japan G.K.、Mackevision Japan Co. Ltd.、Partners in Performance Japan Ltd、Shionogi Business Partner Co.、SI&C Co.、UBS Corporation Japan、Yumemi Inc.等を列挙。AvanadeはMicrosoft技術を中心とするAI・クラウド・業務アプリ・データ変革、Partners in Performanceは資産集約型産業の業績改善を提供する。Accenture Japanの関係開始日は開示されないためrelations行は作成しない。
+    subject: Accenture plcグループ・アクセンチュア株式会社
+    as_of: 2025-08-31 / 2026-08-07
+    unit: ""
+    source: https://www.sec.gov/Archives/edgar/data/1467373/000146737325000217/a831202510-kexhibit211.htm; https://www.sec.gov/Archives/edgar/data/1467373/000146737325000217/acn-20250831.htm; https://www.avanade.com/en/about; https://pip.global/en
+    via: FY2025 Form 10-K・Exhibit 21.1と関連会社公式ページを確認
+    note: Exhibit 21.1は主要子会社一覧で、全社の所有割合・事業内容を網羅しない。ブランドを法人や報告セグメントとして扱わない。
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン
+    status: done
+    value: Purposeは「to deliver on the promise of technology and human ingenuity」。クライアント、社員、株主、パートナー、地域社会への360° Valueと、最高水準の倫理基準を掲げる。
+    subject: Accenture
+    as_of: 2026-08-07
+    unit: ""
+    source: https://www.accenture.com/us-en/about/company-index; https://www.accenture.com/us-en/about/company/business-ethics; https://www.accenture.com/jp-ja/about/company/japan
+    via: 公式グローバルAbout・Code of Business Ethics・日本会社概要を確認
+    note: 「Let there be change」はタグラインとして扱い、Purposeと混同しない。
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介・設立経緯・規模
+    status: done
+    value: 日本法人はアクセンチュア株式会社（Accenture Japan Ltd）、本社は東京都港区赤坂、1995年12月設立。公式プロフィールの日本法人従業員数は約30000人（2026-06-01時点）。グローバルグループは約799000人、52か国・200都市以上、120か国以上の顧客対応。Accenture plcは2009-06-10にアイルランドで設立。
+    subject: アクセンチュア株式会社・Accentureグローバルグループ
+    as_of: 2026-06-01 / 2026-08-07
+    unit: 人・都市・国
+    source: https://www.accenture.com/jp-ja/about/company/japan; https://www.accenture.com/us-en/about/company-index; https://www.sec.gov/Archives/edgar/data/1467373/000146737325000217/acn-20250831.htm
+    via: 日本公式会社概要・グローバルAbout・FY2025 Form 10-Kを確認
+    note: グローバル人数・拠点・顧客数を日本法人単体の数値やIR指標として扱わない。
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・取得年度の有価証券報告書・採用・新卒採用リンク
+    status: done
+    value: 日本会社概要、サービス、採用、新卒採用、求人検索、親会社IR、FY2025 10-K、SEC filing index、Exhibit 21.1、FY2024・FY2023年次報告書の公式リンクを確認。
+    subject: アクセンチュア株式会社・Accenture plc
+    as_of: 2026-08-07
+    unit: ""
+    source: https://www.accenture.com/jp-ja/about/company/japan; https://www.accenture.com/jp-ja/careers; https://www.accenture.com/jp-ja/careers/life-at-accenture/entry-level; https://investor.accenture.com/; https://www.sec.gov/Archives/edgar/data/1467373/000146737325000217/0001467373-25-000217-index.html; https://www.accenture.com/us-en/about/company/annual-report
+    via: 日本公式サイト・親会社IR・SECアーカイブを確認
+    note: 日本法人の採用リンクとAccenture plcのIR/SECリンクを分離して掲載する。
+  - id: article-content
+    phase: article
+    store: mdx
+    topic: 採用情報・事業内容・関連企業の本文材料
+    status: done
+    value: 日本法人はAI・データ、クラウド、サイバーセキュリティ、テクノロジー・トランスフォーメーション、マネージドサービス、戦略、マーケティング等を提供し、グローバル説明ではStrategy and Consulting、Technology、Operations、Song、Industry X、Reinvention Servicesを扱う。日本の新卒採用ページは公式参照先として掲載し、募集条件の詳細はrecruit調査結果を正本とする。
+    subject: アクセンチュア株式会社
+    as_of: 2026-08-07
+    unit: ""
+    source: https://www.accenture.com/jp-ja/services; https://www.accenture.com/jp-ja/about/reinvention-services; https://www.accenture.com/jp-ja/careers/life-at-accenture/entry-level; https://www.sec.gov/Archives/edgar/data/1467373/000146737325000217/a831202510-kexhibit211.htm
+    via: 日本・グローバル公式サービス、採用、SEC Exhibit 21.1を照合
+    note: 採用条件・給与・IR数値・セグメント別数値は各laneの正本から反映する。
+  - id: verify-article
+    phase: verify
+    store: mdx
+    topic: MDX構成・CSV参照・数値境界・テスト・ビルド
+    status: done
+    value: |
+      CompanyOverview（accenture-japan）から採用情報・事業内容・SegmentRevenue（accenture-plc）・関連企業・HealthMetrics/FinancialHistory/MetricTrends（accenture-plc）の順で構成。EmploymentOverviewは日本法人の報告人的指標がないため省略。FinancialDataは未使用。US GAAP・USD・8月31日終了のAccenture plc連結値と、日本法人の採用主体・単体値の境界、3地理報告セグメント、Reinvention ServicesのFY2025後統合、Exhibit 21.1の有効開始日非開示を本文に記録。not_disclosedの指標は本文・空表へ転記せず、コンポーネントのreportedフィルタへ委譲。
+    subject: site/src/pages/companies/accenture-japan.mdx
+    as_of: 2026-08-07
+    unit: structure・text・data
+    source: sec-0001467373-25-000217; https://www.accenture.com/jp-ja/careers/life-at-accenture/entry-level; https://www.accenture.com/us-en/about/company/annual-report
+    via: uv run pytest; npm --prefix site run build; git diff --check
+    note: |
+      Accenture対象の整合性確認は60 passed。npm --prefix site run buildはastro check 0 errors・0 warnings・0 hints、98ページ生成で成功。生成済みaccenture-japanページに空の指標タイル、空の棒グラフ、not_disclosed指標の表示はなし。FY2025流動比率は28,900,689,000 / 20,352,097,000 × 100 = 142.0%。キャッシュフロー3区分合計はFY2023 1,256,472,000 USD、FY2024 -3,994,299,000 USD、FY2025 6,506,415,000 USD。全体pytestは60 passed・3 failedで、失敗は既存のactive企業とページ集合の不一致、およびsite/src/pages/companies/tokyo-electron-device.mdxの欠落に起因する2つの整合性テスト。accenture-japan.mdxとは無関係。git diff --checkは成功。

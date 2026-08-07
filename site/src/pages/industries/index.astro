@@ -4,6 +4,7 @@ import type { SortOption } from "../../components/CompanySortControls.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   companiesForIndustry,
+  disclosureIdForCompany,
   industries,
   metrics,
   metricsForCompanies,
@@ -43,24 +44,29 @@ const kanaRanks = new Map(
     .sort((a, b) => collator.compare(a.name, b.name))
     .map((industry, index) => [industry.industry_id, index]),
 );
+// industries.csv の定義順がサイトトップの並び。作者のおすすめ順として扱う
+const featuredRanks = new Map(
+  industries.map((industry, index) => [industry.industry_id, index]),
+);
 
 const rows = industries
   .map((industry) => {
     const members = companiesForIndustry(industry.industry_id);
     const memberMetrics = metricsForCompanies(
-      members.map((company) => company.company_id),
+      members.map((company) => disclosureIdForCompany(company)),
     );
     const valuesByKey = Object.fromEntries(
       aggregateKeys.map((key) => {
         const values = members
-          .map((company) =>
-            latestMetric(
+          .map((company) => {
+            const disclosureId = disclosureIdForCompany(company);
+            return latestMetric(
               memberMetrics.filter(
-                (metric) => metric.company_id === company.company_id,
+                (metric) => metric.company_id === disclosureId,
               ),
               key,
-            ),
-          )
+            );
+          })
           .filter((metric): metric is NonNullable<typeof metric> =>
             Boolean(metric),
           )
@@ -72,6 +78,7 @@ const rows = industries
     return {
       industry,
       kanaRank: kanaRanks.get(industry.industry_id) ?? 0,
+      featuredRank: featuredRanks.get(industry.industry_id) ?? 0,
       memberCount: members.length,
       salary: {
         mean: mean(valuesByKey.average_annual_salary),
@@ -85,21 +92,21 @@ const rows = industries
       },
     };
   })
-  .sort((a, b) => {
-    // 初期表示は並び替えコントロールの初期状態（平均給与の降順）と揃える
-    const av = a.salary.mean ?? null;
-    const bv = b.salary.mean ?? null;
-    if (av === null && bv === null) return a.kanaRank - b.kanaRank;
-    if (av === null) return 1;
-    if (bv === null) return -1;
-    return bv - av || a.kanaRank - b.kanaRank;
-  });
+  // 初期表示は並び替えコントロールの初期状態（おすすめ順の昇順）と揃える
+  .sort((a, b) => a.featuredRank - b.featuredRank);
 
 const reported = metrics.filter((metric) => metric.availability === "reported");
 const metricYears = reported.map((metric) => Number(metric.fiscal_year));
 const latestYear = metricYears.length ? Math.max(...metricYears) : undefined;
 
 const sortOptions: SortOption[] = [
+  {
+    value: "featured",
+    label: "おすすめ順",
+    asc: "作者のおすすめ順（サイトトップと同じ並び）で並べています。",
+    desc: "作者のおすすめ順の逆で並べています。",
+    defaultOrder: "asc",
+  },
   {
     value: "salary",
     label: "平均給与",
@@ -150,15 +157,16 @@ const sortOptions: SortOption[] = [
     <CompanySortControls
       controlsId="industries"
       options={sortOptions}
-      initialSort="salary"
+      initialSort="featured"
     />
 
-    <div class="industry-rows" data-company-list="industries" data-sort="salary">
+    <div class="industry-rows" data-company-list="industries" data-sort="featured">
       {
-        rows.map(({ industry, kanaRank, memberCount, salary, tenure }) => (
+        rows.map(({ industry, kanaRank, featuredRank, memberCount, salary, tenure }) => (
           <a
             class="linked-row industry-stat-row"
             href={`/industries/${industry.industry_id}/`}
+            data-sort-featured={featuredRank}
             data-sort-kana={kanaRank}
             data-sort-salary={salary.mean ?? ""}
             data-sort-tenure={tenure.mean ?? ""}

@@ -1,0 +1,86 @@
+company_id: sakura-internet
+disclosure_company_id: sakura-internet
+company_boundary:
+  adoption_company_id: sakura-internet
+  disclosure_company_id: sakura-internet
+  reporting_segment_company_id: sakura-internet
+  legal_name: さくらインターネット株式会社
+  securities_code: "3778"
+  edinet_code: E05518
+  fiscal_year_end: 3月末日
+  accounting_standard: JGAAP
+  currency: JPY
+  reporting_segments: クラウド・インターネットインフラ事業（単一セグメント、セグメント別金額は省略）
+  company_relations: ""
+  note: 採用主体と開示主体は同一（さくらインターネット株式会社、東証プライム3778）。決算は3月期、会計基準はJGAAP。報告セグメントは単一の「クラウド・インターネットインフラ事業」でセグメント別売上・利益の開示は省略。
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-07
+updated_at: 2026-08-07
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-data
+    phase: ir
+    store: ir_csv
+    topic: 連結財務・人的資本・セグメントの構造化データ（売上・営業利益・自己資本比率・CF・流動資産負債・人的資本・報告セグメント）
+    status: done
+    value: metrics.csv にFY2024〜2026の3期45行（revenue/operating_profit/operating_cf/investing_cf/financing_cf/equity_ratio/current_assets/current_liabilities/average_annual_salary/average_age/average_tenure/employee_count、employee_countはFY2020〜2026）。segments.csv に単一セグメント3行（金額は省略のため not_disclosed）。quick_assets は当座資産の開示がなく not_disclosed。
+    subject: 連結（average_age/average_tenure/average_annual_salary は提出会社単体）
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY・percent・years・persons
+    source: edinet-s100tqoz; edinet-s100vw98; edinet-s100ybg6
+    via: EDINET文書一覧APIでsecCode=37780からedinet_code=E05518を特定しcompanies.csvを補完。edinet-fetchを各年度の提出日付近の狭期間で3回実行し取得・正規化。
+    note: FY2026は営業損失（-403,654千円）、投資CF -24.6Bはデータセンター増設capex。単一セグメントのためセグメント別売上・利益の開示は省略。edinet-normalizeがsakura-internetをJGAAP_COMPANY_IDSに含まないため一部指標をXBRLからcsv-upsertで補完（改善候補）。
+  - id: recruit-information
+    phase: recruit
+    store: mdx
+    topic: 新卒採用の主体・募集コース・給与・勤務地・選考
+    status: done
+    value: 2コース制（エンジニアコース／ビジネスコース）。初任給（手当込み）292,557円〜、固定時間外手当36,157円（月20時間分、初任給に含む）、賞与年2回（6月/12月）、通勤/住宅/通信手当、リモート「さぶりこどこでもワーキング」。標準労働時間9:30〜18:30（実働8時間）、年間休日125日。
+    subject: さくらインターネット株式会社
+    as_of: 2027年4月入社（27卒・募集締切済）／2028年4月入社（28卒・受付中）。給与は2024年9月末時点／2024年度賞与実績。
+    unit: JPY・拠点・時間
+    source: https://www.sakura.ad.jp/recruit/graduates/
+    via: 公式新卒募集要項と27卒/28卒エントリーページ・FAQをwebfetch
+    note: 基礎給（手当控除後の基本給）・標準年収・選考区分・28卒締切日は公式に記載なく not_disclosed。転居を伴う転勤制度の明示なし。
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの事業内容・主なサービス・ブランド
+    status: done
+    value: 公式サイトの事業区分は4区分（クラウド／GPUインフラストラクチャー／AIプラットフォーム／ホスティングサービス）にデータセンター運営・地方創生・研究所等を補完。法定の報告セグメントは「クラウド・インターネットインフラ事業」の単一セグメント。
+    subject: 連結報告セグメント（単一）
+    as_of: 2026-08-07（公式サイト確認）
+    unit: text
+    source: https://www.sakura.ad.jp/corporate/work; https://www.sakura.ad.jp/corporate/ir/highlight
+    via: 公式事業内容ページと業績ハイライトをwebfetch
+    note: 公式4区分はマーケティング/サービス分類であり、法定報告セグメントとは別。業績ハイライトにセグメント別開示なし。
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 主な子会社・関係会社の具体名・事業内容・報告セグメント
+    status: done
+    value: 主要グループ会社8社（アイティーエム、櫻花移動電信（台湾）、ゲヒルン、ビットスター、プラナスソリューションズ、IzumoBASE、BBSakura Networks、Tellus）。S2iは2023年11月清算結了。
+    subject: 連結子会社・関係会社
+    as_of: 2026-08-07（公式グループ会社ページ確認）
+    unit: text
+    source: https://www.sakura.ad.jp/corporate/corp/group; https://www.sakura.ad.jp/corporate/corp/history
+    via: 公式主要グループ会社ページと沿革をwebfetch
+    note: 各社の報告セグメント帰属は単一事業に含まれる連結子会社として整理。
+  - id: article-company-and-links
+    phase: article
+    store: mdx
+    topic: 理念・会社紹介・公式サイト・IR・採用リンク
+    status: done
+    value: 企業理念「『やりたいこと』を『できる』に変える」。1996年12月創業、1999年8月設立、2005年東証マザーズ上場→2015年一部→2022年プライム移行。資本金112億8,316万円、従業員1,135名（連結・2026年3月末）。有報PDF（2024〜2026年度）の公式URL一式。
+    subject: さくらインターネット株式会社
+    as_of: 2026-08-07
+    unit: text
+    source: https://www.sakura.ad.jp/corporate/corp/profile; https://www.sakura.ad.jp/corporate/corp/focus; https://www.sakura.ad.jp/corporate/ir/library/securities
+    via: 公式企業情報・IRライブラリをwebfetch
+    note: 本文に確認日・調査実況・読者案内を記載しない。

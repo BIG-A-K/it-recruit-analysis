@@ -16,6 +16,7 @@ export type Company = {
   exchange: string;
   country_code: string;
   is_active: string;
+  disclosure_company_id: string;
 };
 
 export type Industry = {
@@ -92,6 +93,19 @@ export type Source = {
   published_at: string;
   retrieved_at: string;
   issuer: string;
+};
+
+export type FxRate = {
+  rate_id: string;
+  base_currency: string;
+  quote_currency: string;
+  // closing は決算日の相場、average は対象期間の平均相場
+  rate_type: "closing" | "average";
+  period_start: string;
+  period_end: string;
+  rate: string;
+  source_id: string;
+  note: string;
 };
 
 const cashFlowKeys = [
@@ -185,6 +199,7 @@ export const metrics = withNetCashFlow(loadCsv<Metric>("metrics.csv"));
 export const segments = loadCsv<Segment>("segments.csv");
 export const companyProfiles = loadCsv<CompanyProfile>("company_profiles.csv");
 export const sources = loadCsv<Source>("sources.csv");
+export const fxRates = loadCsv<FxRate>("fx_rates.csv");
 
 export function companiesForIndustry(industryId: string): Company[] {
   const ids = new Set(
@@ -193,6 +208,34 @@ export function companiesForIndustry(industryId: string): Company[] {
       .map((relation) => relation.company_id),
   );
   return companies.filter((company) => ids.has(company.company_id));
+}
+
+// 採用主体（company_id）と開示主体（disclosure_company_id）が分かれている企業では、
+// メトリクス・セグメントは開示主体の company_id で登録されている。業界ページ・企業一覧などで
+// メトリクスを引くときはこの値を使う。開示主体が未設定の企業は自身の company_id を返す。
+export function disclosureIdForCompany(company: Company): string {
+  return company.disclosure_company_id || company.company_id;
+}
+
+// 採用主体と開示主体が別法人のとき、指標がどの法人のものかを示すために開示主体を返す。
+// 開示主体は掲載対象ではないため is_active を問わず allCompanies から引く。
+export function disclosureCompanyFor(company: Company): Company | undefined {
+  const disclosureId = disclosureIdForCompany(company);
+  if (disclosureId === company.company_id) return undefined;
+  return allCompanies.find(
+    (candidate) => candidate.company_id === disclosureId,
+  );
+}
+
+export function industriesForCompany(companyId: string): Industry[] {
+  return companyIndustries
+    .filter((relation) => relation.company_id === companyId)
+    .map((relation) =>
+      industries.find(
+        (industry) => industry.industry_id === relation.industry_id,
+      ),
+    )
+    .filter((industry): industry is Industry => industry !== undefined);
 }
 
 export function metricsForCompanies(companyIds: string[]): Metric[] {

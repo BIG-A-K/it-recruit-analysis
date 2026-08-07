@@ -1,0 +1,87 @@
+company_id: macnica
+disclosure_company_id: macnica-holdings
+company_boundary:
+  adoption_company_id: macnica
+  disclosure_company_id: macnica-holdings
+  reporting_segment_company_id: macnica-holdings
+  legal_name_adoption: 株式会社マクニカ
+  legal_name_disclosure: マクニカホールディングス株式会社
+  securities_code: "3132"
+  edinet_code: E31167
+  fiscal_year_end: 3月末日
+  accounting_standard: JGAAP
+  currency: JPY
+  reporting_segments: IC・電子デバイス / サイバーセキュリティ・その他ITソリューション（FY2026。FY2025までは「ネットワーク事業」、FY2026有報で組替え再表示）
+  company_relations: マクニカホールディングス株式会社が株式会社マクニカの100%親会社（純粋持株会社）。2015年4月1日の共同株式移転により設立。company_relations.csv に macnica→macnica-holdings(parent), valid_from=2015-04-01 を登録済み。
+  note: 採用主体は事業会社「株式会社マクニカ」（横浜、設立1972年10月30日）、開示主体は持株会社「マクニカホールディングス株式会社」（東証プライム3132、EDINETコードE31167）。決算は3月期、会計基準はJGAAP。2015年4月1日の共同株式移転でマクニカHD設立（マクニカと富士エレクトロニクスを完全子会社化）。metrics/segments は company_id=macnica-holdings で登録し、採用主体 macnica へは親会社の連結数値を複写しない。
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-07
+updated_at: 2026-08-07
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-data
+    phase: ir
+    store: ir_csv
+    topic: マクニカHD連結財務・人的資本・セグメントの構造化データ（売上・営業利益・自己資本比率・CF・流動資産負債・人的資本・報告セグメント）
+    status: done
+    value: metrics.csv に macnica-holdings 連結・提出会社単体で66行（13指標×3〜7期）。segments.csv に8行（2報告セグメント×FY2023-2026）。revenue/operating_profit/CF/equity_ratio はFY2020-2026（operating_profit はFY2023-2026）。quick_assets はFY2024-2026（算定科目=現金預金+受取手形+電子記録債権+売掛金）。
+    subject: 連結（macnica-holdings）。人的資本の平均値は提出会社マクニカHD単体（約42名）。
+    as_of: 2024-03-31〜2026-03-31（指標によりFY2020-2026）
+    unit: JPY・percent・years・persons
+    source: edinet-s100ygvr; edinet-s100w3d1; edinet-s100tse1
+    via: EDINET文書一覧APIでfilerName="マクニカホールディングス"を走査しedinet_code=E31167を特定。edinet-fetchで3期の有報（第9-11期）を取得・正規化。edinet_code/securities_code=3132をcompanies.csvへ補完。
+    note: 人的資本の平均値はマクニカHD単体（約42名）で、事業会社マクニカや連結全体（5,261名）ではない。平均年間給与16,285,818円はHD本体の高水準。記事の:::warningでスコープ差を明記。FY2026報告セグメント変更（ネットワーク事業→サイバーセキュリティ・その他ITソリューション）。edinet-normalizeがmacnica-holdingsを各種設定に含まないため一部をcsv-upsertで補完（改善候補）。
+  - id: recruit-information
+    phase: recruit
+    store: mdx
+    topic: 新卒採用の主体・募集コース・給与・勤務地・選考
+    status: done
+    value: 3職種群（ビジネスドライブ職／エンジニア職／コーポレート職）。初任給（2025年4月実績）は一般職種群で大学院卒312,390円（基礎給267,000円＋固定時間外手当45,390円）、大学卒・高専卒300,110円。ビジネスオペレーション職250,380円。賞与年2回（6月/12月、支給額は非開示）。転勤あり（国内外）、入社1年目は原則出社。勤務時間8:45〜17:15（実働7.5時間）、年間休日125日。
+    subject: 株式会社マクニカ（事業会社・採用主体）
+    as_of: 2027年4月入社（27卒・エントリー終了）／2028年4月入社（28卒・受付中）。給与は2025年4月実績。
+    unit: JPY・拠点・時間
+    source: https://www.macnica.co.jp/recruit/entry/requirements/; https://www.macnica.co.jp/recruit/info/faq/
+    via: 公式採用サイトの募集要項・エントリー・FAQ・働き方をwebfetch
+    note: 賞与の支給金額・標準年収・新卒の具体的選考プロセス・締切日は not_disclosed。2028年卒向け専用募集要項ページは現時点で未公開。
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの事業内容・主なサービス・ブランド
+    status: done
+    value: 公式サイトは14事業区分（半導体／ネットワーク／セキュリティ／スマートマニュファクチャリング／スマートシティ・モビリティ／AI／DX／サービスロボット／サーキュラーエコノミー／ヘルスケア／CPSセキュリティ／コネクティビティ／コンサルティング／フード・アグリテック）。マクニカHD有報の報告セグメントは2区分（IC・電子デバイス／サイバーセキュリティ・その他ITソリューション）。ディストリビューション（半導体・ネットワーク）とソリューション・サービスの二大軸。
+    subject: 連結報告セグメント（macnica-holdings）／公式サイト14事業区分
+    as_of: 2026-03-31（企業概要基準日）
+    unit: text
+    source: https://www.macnica.co.jp/business/; https://www.macnica.co.jp/company/overview/
+    via: 公式事業ページ14区分と企業概要をwebfetch
+    note: 公式14区分はサービス紹介軸、報告セグメントは segments.csv（macnica-holdings）が正本。記事では対応を併記。
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 主な子会社・関係会社の具体名・事業内容・報告セグメント
+    status: done
+    value: 国内はマクニカソリューションズ（SIサービス）。海外は台湾/上海/韓国/米州/欧州のMACNICA各社、Cytech系列（香港/シンガポール/タイ）、Galaxy/Anstek（台湾）、NETPOLEON（シンガポール）、iSecurity（台湾）、DHW（ブラジル）、ATD EUROPE（仏・独・英）等。グローバル33カ国/地域100拠点。
+    subject: 連結子会社・関係会社（マクニカHDグループ）
+    as_of: 2026-03-31
+    unit: text
+    source: https://www.macnica.co.jp/company/overview/; https://www.macnica.co.jp/company/history/
+    via: 公式企業概要の関連会社一覧とヒストリーをwebfetch
+    note: 海外子会社の法人番号・持株比率等の詳細はマクニカHD有報「関係会社の状況」が正本。
+  - id: article-company-and-links
+    phase: article
+    store: mdx
+    topic: 理念・会社紹介・公式サイト・IR・採用リンク
+    status: done
+    value: パーパス「変化の先頭に立ち、最先端のその先にある技と知を探索し、未来を描き『今』を創る。」（2022年50周年で制定）。タグライン「タネまく、マクニカ」（2024年刷新）。コアバリュー「T.E.A.M.S.」。設立1972年、連結売上12,142億円（2025年度）、連結従業員5,261名（2026年3月末）。IR・有報リンクはマクニカHD（holdings.macnica.co.jp）。
+    subject: 株式会社マクニカ（採用主体）／マクニカホールディングス株式会社（開示主体）
+    as_of: 2026-08-07（企業概要の数値は2026/3/31基準・連結売上高は2025年度実績）
+    unit: text
+    source: https://www.macnica.co.jp/company/overview/; https://www.macnica.co.jp/company/purpose/; https://holdings.macnica.co.jp/ir/ja/Top.html
+    via: 公式コーポレートサイトと持株会社IRページをwebfetch
+    note: 本文に確認日・調査実況・読者案内を記載しない。IR数値はマクニカHD連結を参照し、事業会社マクニカ単体の数値ではない旨を:::warningで明示。

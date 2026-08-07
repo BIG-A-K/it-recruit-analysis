@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import io
 import json
+import re
 from dataclasses import dataclass
 from datetime import date
 from decimal import Decimal, InvalidOperation
@@ -22,6 +23,16 @@ XBRLDI_NAMESPACE = "http://xbrl.org/2006/xbrldi"
 XSI_NAMESPACE = "http://www.w3.org/2001/XMLSchema-instance"
 US_GAAP_NAMESPACE_PREFIX = "http://fasb.org/us-gaap/"
 AMAZON_CIK = "0001018724"
+REPORTABLE_SEGMENT_CONCEPTS = {
+    "revenue": frozenset(
+        {
+            "RevenueFromContractWithCustomerExcludingAssessedTax",
+            "Revenues",
+            "SalesRevenueNet",
+        }
+    ),
+    "segment_profit": frozenset({"OperatingIncomeLoss"}),
+}
 
 
 @dataclass(frozen=True)
@@ -445,6 +456,215 @@ def _is_usd_unit(unit: XbrlUnit | None) -> bool:
     )
 
 
+_SEGMENT_WORD_PATTERN = re.compile(
+    r"[A-Z]+(?=[A-Z][a-z]|[0-9]|$)|[A-Z]?[a-z]+|[0-9]+"
+)
+
+
+def _segment_identity(member: str) -> tuple[str, str]:
+    local_name = _local_name(member)
+    stem = local_name
+    for suffix in ("SegmentMember", "Member"):
+        if stem.endswith(suffix):
+            stem = stem[: -len(suffix)]
+            break
+    chunks = re.split(r"[^A-Za-z0-9]+", stem)
+    words = [
+        word
+        for chunk in chunks
+        if chunk
+        for word in _SEGMENT_WORD_PATTERN.findall(chunk)
+    ]
+    if not words:
+        raise SecError(f"XBRL segment member has no usable identity: {member}")
+    return (
+        "-".join(word.lower() for word in words),
+        " ".join(word if word.isupper() else word.capitalize() for word in words),
+    )
+
+
+def _reportable_segment_dimension(context: XbrlContext) -> XbrlDimension | None:
+    segment_dimension: XbrlDimension | None = None
+    consolidation_dimension_seen = False
+    for dimension in context.dimensions:
+        if (
+            _namespace(dimension.axis).startswith(US_GAAP_NAMESPACE_PREFIX)
+            and _local_name(dimension.axis) == "StatementBusinessSegmentsAxis"
+        ):
+            if segment_dimension is not None:
+                return None
+            segment_dimension = dimension
+            continue
+        if (
+            _local_name(dimension.axis) == "ConsolidationItemsAxis"
+            and _local_name(dimension.member) == "OperatingSegmentsMember"
+        ):
+            if consolidation_dimension_seen:
+                return None
+            consolidation_dimension_seen = True
+            continue
+        return None
+    return segment_dimension
+
+
+def select_reportable_segments(
+    instance: XbrlInstance,
+    *,
+    expected_cik: str | None = None,
+) -> list[dict[str, str]]:
+    normalized_cik = normalize_cik(expected_cik) if expected_cik is not None else None
+    records: dict[tuple[str, str], dict[str, Any]] = {}
+    for fact in instance.facts:
+        if not _namespace(fact.concept).startswith(US_GAAP_NAMESPACE_PREFIX):
+            continue
+        field = next(
+            (
+                name
+                for name, concepts in REPORTABLE_SEGMENT_CONCEPTS.items()
+                if _local_name(fact.concept) in concepts
+            ),
+            None,
+        )
+        if field is None or not _is_usd_unit(instance.units.get(fact.unit_ref)):
+            continue
+        context = instance.contexts.get(fact.context_ref)
+        if context is None or not _is_annual_duration(context.start_date, context.end_date):
+            continue
+        dimension = _reportable_segment_dimension(context)
+        if dimension is None:
+            continue
+        if normalized_cik is not None:
+            try:
+                context_cik = normalize_cik(context.entity_identifier)
+            except ValueError as error:
+                raise SecError(
+                    f"Reportable segment XBRL context {context.context_id} has an "
+                    "invalid or missing entity identifier"
+                ) from error
+            if context_cik != normalized_cik:
+                raise SecError(
+                    f"Reportable segment XBRL context {context.context_id} CIK does "
+                    f"not match filing CIK {normalized_cik}"
+                )
+
+        segment_id, segment_name = _segment_identity(dimension.member)
+        fiscal_year = str(date.fromisoformat(context.end_date).year)
+        key = (fiscal_year, segment_id)
+        record = records.setdefault(
+            key,
+            {
+                "fiscal_year": fiscal_year,
+                "segment_id": segment_id,
+                "segment_name": segment_name,
+                "description": "",
+                "revenue": "",
+                "segment_profit": "",
+                "profit_measure": "OperatingIncomeLoss",
+                "currency": "USD",
+                "unit": "USD",
+                "availability": "reported",
+                "period_end": context.end_date,
+                "member": dimension.member,
+                "details": {},
+            },
+        )
+        if record["period_end"] != context.end_date:
+            raise SecError(
+                f"Inconsistent reportable segment periods for {segment_id} "
+                f"FY{fiscal_year}: {record['period_end']} != {context.end_date}"
+            )
+        if record["member"] != dimension.member:
+            raise SecError(
+                f"Distinct XBRL segment members normalize to segment_id {segment_id}"
+            )
+
+        value = _decimal_text(fact.value)
+        existing = record[field]
+        if existing and existing != value:
+            raise SecError(
+                f"Inconsistent reportable segment {field} facts for {segment_id} "
+                f"FY{fiscal_year}: {existing} != {value}"
+            )
+        record[field] = value
+        record["details"][field] = (
+            f"context={context.context_id},"
+            f"concept={format_qname(fact.concept, instance.namespaces)},"
+            f"axis={format_qname(dimension.axis, instance.namespaces)},"
+            f"member={format_qname(dimension.member, instance.namespaces)}"
+        )
+
+    if not records:
+        raise SecError(
+            "Required annual reportable segment facts were not found on "
+            "us-gaap:StatementBusinessSegmentsAxis"
+        )
+    normalized: list[dict[str, str]] = []
+    for key in sorted(records):
+        record = records[key]
+        missing = [field for field in REPORTABLE_SEGMENT_CONCEPTS if not record[field]]
+        if missing:
+            raise SecError(
+                f"Required reportable segment facts are missing for "
+                f"{record['segment_id']} FY{record['fiscal_year']}: "
+                + ", ".join(missing)
+            )
+        details = record.pop("details")
+        period_end = record.pop("period_end")
+        record.pop("member")
+        record["note"] = (
+            f"period_end={period_end}; "
+            f"{details['revenue']}; {details['segment_profit']}"
+        )
+        normalized.append(record)
+    return normalized
+
+
+def normalize_reportable_segments(
+    *,
+    company_id: str,
+    instance_path: Path,
+    source_id: str,
+    segments_path: Path,
+    expected_cik: str | None = None,
+) -> int:
+    records = select_reportable_segments(
+        read_xbrl_instance(instance_path),
+        expected_cik=expected_cik,
+    )
+    output_records = [
+        {"company_id": company_id, **selected, "source_id": source_id}
+        for selected in records
+    ]
+    upsert_rows(
+        segments_path,
+        key_fields=("company_id", "fiscal_year", "segment_id"),
+        fieldnames=SEGMENT_FIELDS,
+        rows=output_records,
+    )
+    return len(records)
+
+
+def _has_reportable_segment_facts(instance: XbrlInstance) -> bool:
+    for fact in instance.facts:
+        if not _namespace(fact.concept).startswith(US_GAAP_NAMESPACE_PREFIX):
+            continue
+        if not any(
+            _local_name(fact.concept) in concepts
+            for concepts in REPORTABLE_SEGMENT_CONCEPTS.values()
+        ):
+            continue
+        if not _is_usd_unit(instance.units.get(fact.unit_ref)):
+            continue
+        context = instance.contexts.get(fact.context_ref)
+        if context is None or not _is_annual_duration(
+            context.start_date, context.end_date
+        ):
+            continue
+        if _reportable_segment_dimension(context) is not None:
+            return True
+    return False
+
+
 def select_aws_segments(
     instance: XbrlInstance,
     *,
@@ -564,6 +784,35 @@ def normalize_aws_segments(
     return len(records)
 
 
+def _load_cached_xbrl_instance(
+    filing_dir: Path,
+    *,
+    primary_document: str,
+    accession_number: str,
+    required: bool = True,
+) -> XbrlInstance | None:
+    index_path = filing_dir / "index.json"
+    if not index_path.exists():
+        if not required:
+            return None
+        raise SecError(f"Cached SEC filing index is missing: {index_path}")
+    try:
+        index_payload = json.loads(index_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as error:
+        raise SecError(f"Cached SEC filing index is invalid: {index_path}") from error
+    if not isinstance(index_payload, dict):
+        raise SecError(f"Cached SEC filing index is invalid: {index_path}")
+    instance_name = find_xbrl_instance_name(index_payload, primary_document)
+    instance_path = filing_dir / instance_name if instance_name else None
+    if instance_path is None or not instance_path.exists():
+        if not required:
+            return None
+        raise SecError(
+            f"Required extracted XBRL instance is missing for {accession_number}"
+        )
+    return read_xbrl_instance(instance_path)
+
+
 def normalize_sec_filing(
     *,
     company_id: str,
@@ -598,26 +847,31 @@ def normalize_sec_filing(
 
     segment_records: list[dict[str, str]] = []
     if filing_cik == AMAZON_CIK:
-        index_path = filing_dir / "index.json"
-        if not index_path.exists():
-            raise SecError(f"Cached SEC filing index is missing: {index_path}")
-        try:
-            index_payload = json.loads(index_path.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError) as error:
-            raise SecError(f"Cached SEC filing index is invalid: {index_path}") from error
-        instance_name = find_xbrl_instance_name(
-            index_payload,
-            filing.primary_document,
+        instance = _load_cached_xbrl_instance(
+            filing_dir,
+            primary_document=filing.primary_document,
+            accession_number=filing.accession_number,
         )
-        instance_path = filing_dir / instance_name if instance_name else None
-        if instance_path is None or not instance_path.exists():
+        if instance is None:
             raise SecError(
                 f"Required extracted XBRL instance is missing for {filing.accession_number}"
             )
         segment_records = select_aws_segments(
-            read_xbrl_instance(instance_path),
+            instance,
             expected_cik=filing_cik,
         )
+    else:
+        instance = _load_cached_xbrl_instance(
+            filing_dir,
+            primary_document=filing.primary_document,
+            accession_number=filing.accession_number,
+            required=False,
+        )
+        if instance is not None and _has_reportable_segment_facts(instance):
+            segment_records = select_reportable_segments(
+                instance,
+                expected_cik=filing_cik,
+            )
 
     output_metrics = [
         {"company_id": company_id, **record, "source_id": source_id}

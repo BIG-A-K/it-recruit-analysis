@@ -1,0 +1,86 @@
+company_id: xserver
+disclosure_company_id: xserver
+company_boundary:
+  adoption_company_id: xserver
+  disclosure_company_id: xserver
+  reporting_segment_company_id: xserver
+  legal_name: エックスサーバー株式会社
+  securities_code: ""
+  edinet_code: ""
+  fiscal_year_end: ""
+  accounting_standard: ""
+  currency: JPY
+  reporting_segments: なし（非上場、法定開示の報告セグメントなし）
+  company_relations: エックスサーバークラウド株式会社、XRegistry株式会社、XSカスタマーサービス株式会社、クラウドセキュア株式会社（いずれもグループ会社）
+  note: 採用主体と開示主体は同一（エックスサーバー株式会社）。非上場のため法定開示（有報）はなく、EDINETコード・証券コードは空欄。決算月・会計基準・報告セグメントは法定開示がないため非開示。グループ採用サイト（xserver.co.jp/recruit/）が採用主体。2025年10月・2026年3月にグループ会社（シンクラウド・ネットオウル・クラウドセキュア）から本体へ事業・サービスを移管済み。
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-07
+updated_at: 2026-08-07
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-data
+    phase: ir
+    store: ir_csv
+    topic: 財務・人的資本データ（非上場のため法定開示なし、任意開示の有無を確認）
+    status: not_disclosed
+    value: metrics.csv に13指標を not_disclosed で登録（revenue/operating_profit/operating_cf/investing_cf/financing_cf/equity_ratio/current_assets/current_liabilities/quick_assets/average_annual_salary/average_age/average_tenure/employee_count、scope=xserver）。値は非公表。
+    subject: エックスサーバー株式会社（連結範囲非開示）
+    as_of: 2026-08-07（確認日。決算期・会計年度は公式非開示）
+    unit: JPY・percent・years・persons
+    source: xserver-official-overview; xserver-official-news
+    via: 非上場のため edinet_code 空欄。edinet-fetch は実行せず公式クロール。会社概要・ニュースページにIR/決算/統合報告書/ファクトブックのリンクなしを確認。
+    note: 証券コード・EDINETコードなし、法定開示（有報）なし。S&P日本SME格付け aaa（5年連続）は数値指標ではないため metrics 対象外。連結範囲も非開示。
+  - id: recruit-information
+    phase: recruit
+    store: mdx
+    topic: 新卒採用の主体・募集コース・給与・勤務地・選考
+    status: done
+    value: 2026-08-07確認時点で新卒募集要項ページ（/recruit/job/{id}/newgrad）はsitemap.xml掲載3件すべてHTTP 404。2027年4月入社向けは公開終了、2028年4月入社向けは未公開。職種カテゴリ4系統（エンジニア/クリエイティブ/ビジネス/コーポレート）、選考フロー（書類→一次→二次→内定）、勤務地（大阪/東京）、転勤原則なし、ハイブリッド勤務、年間休日125日は取得。
+    subject: エックスサーバー株式会社（グループ採用：エックスサーバー／エックスサーバークラウド／XSカスタマーサービスの3社）
+    as_of: 2026-08-07（新卒募集要項は確認時点で非公開）
+    unit: JPY・拠点・時間
+    source: https://www.xserver.co.jp/recruit/
+    via: 公式採用サイトとsitemap.xmlをwebfetch。新卒詳細ページの生死確認と同一ジョブIDでのキャリア/新卒対照実験を実施。
+    note: 新卒の給与（基礎給・固定時間外手当・賞与・標準年収）・応募資格・配属・選考区分・応募期限は not_disclosed。キャリア採用の給与は雇用形態が異なるため新卒に適用せず。求人一覧はJS動的生成で非ブラウザでは取得不可。
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 事業区分・主なサービス・ブランド（レンタルサーバー・VPS・ドメイン等）
+    status: done
+    value: 法定報告セグメントなし。公式サイトの事業区分は4カテゴリ（クラウドインフラ／ドメイン・セキュリティ／クラウドストレージ／WordPress）。主要サービスはエックスサーバー（国内シェアNo.1）、XServerビジネス、XServer VPS、XServerドメイン、XServerドライブ等。2025年10月と2026年3月にグループ会社のサービスを本体へ集約。
+    subject: エックスサーバーグループの事業区分
+    as_of: 2026-08-07
+    unit: text
+    source: https://www.xserver.co.jp/service.php; https://www.xserver.co.jp/overview.php
+    via: 公式サービス一覧・会社概要・ニュースをwebfetch
+    note: 会社概要の法定事業内容はホスティングサービス事業中心の包括記載。セグメント別売上・利益は存在しない。
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: グループ会社の具体名・事業内容
+    status: done
+    value: 現行グループ5社（エックスサーバー／エックスサーバークラウド／XRegistry／XSカスタマーサービス／クラウドセキュア）。うちクラウドセキュアは2026年3月付でサービスを本体へ移管済み（会社は一覧に残存）。事業再編で外れた2社（シンクラウド・ネットオウル）は2025年10月付で全サービスを本体へ移管。
+    subject: エックスサーバーグループ会社
+    as_of: 2026-08-07
+    unit: text
+    source: https://www.xserver.co.jp/companies.php
+    via: 公式グループ会社一覧と各社詳細ページ・事業移管ニュースをwebfetch
+    note: 持株比率・連結範囲は非上場のため非開示。
+  - id: article-company-and-links
+    phase: article
+    store: mdx
+    topic: 理念・会社紹介・公式サイト・採用リンク
+    status: done
+    value: グループ理念「クラウドで未来を創る（Innovate for Japan with Cloud Technology）」「ユーザーアブソリュート（User Absolute）」。設立2004年1月（屋号エックスサーバーは2003年7月）。代表取締役 小林尚希。資本金1億円。レンタルサーバー国内シェアNo.1（W3Techs調べ）、250万以上のサイト運用。非上場のためIR・有報リンクは不要。
+    subject: エックスサーバー株式会社
+    as_of: 2026-08-07
+    unit: text
+    source: https://www.xserver.co.jp/overview.php; https://www.xserver.co.jp/vision.php; https://www.xserver.co.jp/history.php
+    via: 公式会社概要・理念・沿革をwebfetch
+    note: 本文に確認日・調査実況・読者案内を記載しない。
