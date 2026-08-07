@@ -44,9 +44,13 @@ const kanaRanks = new Map(
     .sort((a, b) => collator.compare(a.name, b.name))
     .map((industry, index) => [industry.industry_id, index]),
 );
-// industries.csv の定義順がサイトトップの並び。作者のおすすめ順として扱う
-const featuredRanks = new Map(
-  industries.map((industry, index) => [industry.industry_id, index]),
+// industries.csv の定義順がサイトトップの並び。作者のおすすめ順として扱う。
+// 他の軸と同じく「値が大きいほど上位（降順で先頭）」に揃えるため、定義順を裏返して点数にする
+const featuredScores = new Map(
+  industries.map((industry, index) => [
+    industry.industry_id,
+    industries.length - 1 - index,
+  ]),
 );
 
 const rows = industries
@@ -78,7 +82,7 @@ const rows = industries
     return {
       industry,
       kanaRank: kanaRanks.get(industry.industry_id) ?? 0,
-      featuredRank: featuredRanks.get(industry.industry_id) ?? 0,
+      featuredScore: featuredScores.get(industry.industry_id) ?? 0,
       memberCount: members.length,
       salary: {
         mean: mean(valuesByKey.average_annual_salary),
@@ -92,21 +96,21 @@ const rows = industries
       },
     };
   })
-  // 初期表示は並び替えコントロールの初期状態（おすすめ順の昇順）と揃える
-  .sort((a, b) => a.featuredRank - b.featuredRank);
+  // 初期表示は並び替えコントロールの初期状態（平均給与の降順）と揃える。
+  // 未公表は「最も小さい値」ではないため、並び替えスクリプトと同じく末尾へ送る
+  .sort((a, b) => {
+    const fallback = a.kanaRank - b.kanaRank;
+    if (a.salary.mean == null && b.salary.mean == null) return fallback;
+    if (a.salary.mean == null) return 1;
+    if (b.salary.mean == null) return -1;
+    return b.salary.mean - a.salary.mean || fallback;
+  });
 
 const reported = metrics.filter((metric) => metric.availability === "reported");
 const metricYears = reported.map((metric) => Number(metric.fiscal_year));
 const latestYear = metricYears.length ? Math.max(...metricYears) : undefined;
 
 const sortOptions: SortOption[] = [
-  {
-    value: "featured",
-    label: "おすすめ順",
-    asc: "作者のおすすめ順（やりがいや技術力を重視した場合）で並べています。",
-    desc: "作者のおすすめ順（やりがいや技術力を重視した場合）の逆で並べています。",
-    defaultOrder: "asc",
-  },
   {
     value: "salary",
     label: "平均給与",
@@ -119,6 +123,13 @@ const sortOptions: SortOption[] = [
     label: "平均勤続年数",
     asc: "平均勤続年数の平均が短い業界順で並べています。",
     desc: "平均勤続年数の平均が長い業界順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "featured",
+    label: "おすすめ順",
+    asc: "作者のおすすめ順（やりがいや技術力を重視した場合）の逆で並べています。",
+    desc: "作者のおすすめ順（やりがいや技術力を重視した場合）で並べています。",
     defaultOrder: "desc",
   },
   {
@@ -157,16 +168,16 @@ const sortOptions: SortOption[] = [
     <CompanySortControls
       controlsId="industries"
       options={sortOptions}
-      initialSort="featured"
+      initialSort="salary"
     />
 
-    <div class="industry-rows" data-company-list="industries" data-sort="featured">
+    <div class="industry-rows" data-company-list="industries" data-sort="salary">
       {
-        rows.map(({ industry, kanaRank, featuredRank, memberCount, salary, tenure }) => (
+        rows.map(({ industry, kanaRank, featuredScore, memberCount, salary, tenure }) => (
           <a
             class="linked-row industry-stat-row"
             href={`/industries/${industry.industry_id}/`}
-            data-sort-featured={featuredRank}
+            data-sort-featured={featuredScore}
             data-sort-kana={kanaRank}
             data-sort-salary={salary.mean ?? ""}
             data-sort-tenure={tenure.mean ?? ""}

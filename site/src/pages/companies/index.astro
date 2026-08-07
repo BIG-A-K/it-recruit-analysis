@@ -4,7 +4,7 @@ import type { SortOption } from "../../components/CompanySortControls.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { companies, disclosureIdForCompany, metricsForCompanies } from "../../lib/data";
 import { companyPageUpdatedAt, formatUpdatedAt } from "../../lib/company-pages";
-import { formatValue, latestMetric } from "../../lib/format";
+import { formatValue, latestMetric, metricLabels, metricNotes } from "../../lib/format";
 import { normalizeForSearch } from "../../lib/search";
 
 const companyPages = import.meta.glob("./*.mdx");
@@ -20,12 +20,23 @@ const allMetrics = metricsForCompanies(
 const metricYears = allMetrics.map((metric) => Number(metric.fiscal_year));
 const latestYear = metricYears.length ? Math.max(...metricYears) : undefined;
 
+// 各行のカードに出す指標
 const listedKeys = [
   "average_annual_salary",
   "average_tenure",
   "average_age",
   "employee_count",
 ] as const;
+
+// カードには出さず、分布パネルでだけ選べる働き方の指標
+const humanCapitalKeys = [
+  "gender_pay_gap",
+  "female_manager_ratio",
+  "male_childcare_leave_rate",
+  "male_childcare_leave_rate_with_leave",
+] as const;
+
+const latestKeys = [...listedKeys, ...humanCapitalKeys] as const;
 
 const collator = new Intl.Collator("ja");
 const rows = companies
@@ -50,7 +61,7 @@ const rows = companies
       updatedAt: updatedAt ? formatUpdatedAt(updatedAt) : undefined,
       latest: Object.fromEntries(
         // 従業員数は連結と単体の両方を持つため、一覧では連結に揃える
-        listedKeys.map((key) => [
+        latestKeys.map((key) => [
           key,
           latestMetric(
             companyMetrics,
@@ -58,7 +69,7 @@ const rows = companies
             key === "employee_count" ? "consolidated" : undefined,
           ),
         ]),
-      ) as Record<(typeof listedKeys)[number], ReturnType<typeof latestMetric>>,
+      ) as Record<(typeof latestKeys)[number], ReturnType<typeof latestMetric>>,
     };
   })
   .sort((a, b) => collator.compare(a.company.name_kana, b.company.name_kana));
@@ -80,6 +91,34 @@ const sortOptions: SortOption[] = [
     defaultOrder: "desc",
   },
   {
+    value: "pay-gap",
+    label: "男女の賃金の差異",
+    asc: "男女の賃金の差異が大きい順（男性を100としたときの女性の水準が低い順）で並べています。",
+    desc: "男女の賃金の差異が小さい順（男性を100としたときの女性の水準が高い順）で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "female-managers",
+    label: "女性管理職比率",
+    asc: "女性管理職比率の低い順で並べています。",
+    desc: "女性管理職比率の高い順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "childcare",
+    label: "男性育休取得率（育児目的休暇を含まない）",
+    asc: "男性育休取得率（育児目的休暇を含まない）の低い順で並べています。",
+    desc: "男性育休取得率（育児目的休暇を含まない）の高い順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "childcare-with-leave",
+    label: "男性育休取得率（育児目的休暇を含む）",
+    asc: "男性育休取得率（育児目的休暇を含む）の低い順で並べています。",
+    desc: "男性育休取得率（育児目的休暇を含む）の高い順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
     value: "kana",
     label: "五十音順",
     asc: "五十音順（あ→ん）で並べています。",
@@ -88,11 +127,11 @@ const sortOptions: SortOption[] = [
   },
 ];
 
-// 従業員数は数百人から数十万人まで広がり、階級を等間隔で切ると1本の棒に潰れるため分布から外す
+// 従業員数は数百人から数十万人まで広がり、階級を等間隔で切ると1本の棒に潰れるため分布から外す。
+// 指標名は業界ページの比較と揃えたいので metricLabels から引く
 const distributionKeys = [
   {
     key: "average_annual_salary",
-    label: "平均年間給与",
     axisTitle: "平均年間給与（万円）",
     scale: 10000,
     suffix: "万円",
@@ -100,7 +139,6 @@ const distributionKeys = [
   },
   {
     key: "average_tenure",
-    label: "平均勤続年数",
     axisTitle: "平均勤続年数（年）",
     scale: 1,
     suffix: "年",
@@ -108,10 +146,37 @@ const distributionKeys = [
   },
   {
     key: "average_age",
-    label: "平均年齢",
     axisTitle: "平均年齢（歳）",
     scale: 1,
     suffix: "歳",
+    decimals: 1,
+  },
+  {
+    key: "gender_pay_gap",
+    axisTitle: "男女の賃金の差異（%）",
+    scale: 1,
+    suffix: "%",
+    decimals: 1,
+  },
+  {
+    key: "female_manager_ratio",
+    axisTitle: "女性管理職比率（%）",
+    scale: 1,
+    suffix: "%",
+    decimals: 1,
+  },
+  {
+    key: "male_childcare_leave_rate",
+    axisTitle: "男性育休取得率（育児目的休暇を含まない・%）",
+    scale: 1,
+    suffix: "%",
+    decimals: 1,
+  },
+  {
+    key: "male_childcare_leave_rate_with_leave",
+    axisTitle: "男性育休取得率（育児目的休暇を含む・%）",
+    scale: 1,
+    suffix: "%",
     decimals: 1,
   },
 ] as const;
@@ -120,6 +185,8 @@ const distributionPayload = {
   totalCompanies: rows.length,
   metrics: distributionKeys.map((definition) => ({
     ...definition,
+    label: metricLabels[definition.key] ?? definition.key,
+    note: metricNotes[definition.key] ?? "",
     points: rows
       .filter((row) => row.latest[definition.key])
       .map((row) => ({
@@ -132,14 +199,14 @@ const distributionPayload = {
 
 <BaseLayout
   title="企業一覧"
-  description="掲載企業の一覧。五十音順・平均給与順・平均勤続年数順に昇順降順を切り替えて並べ、中央値と最頻値、分布を確認できます。"
+  description="掲載企業の一覧。給与・勤続年数・働き方の指標について、並べ替えと分布から各社の位置を確認できます。"
 >
   <section>
     <p class="breadcrumb"><a href="/">トップ</a><span>/</span>企業一覧</p>
     <div class="industry-head">
       <div>
         <h1>企業一覧</h1>
-        <p class="lead">掲載している全企業を、五十音順・平均給与順・平均勤続年数順に並べ替えて確認できます。代表値と分布から、各社が全体のどのあたりに位置するかも読み取れます。</p>
+        <p class="lead">このサイトで掲載するすべての企業を定量的に比較できます。</p>
       </div>
       <dl class="facts">
         <div><dt>掲載企業</dt><dd>{rows.length}社</dd></div>
@@ -174,6 +241,8 @@ const distributionPayload = {
     <p class="chart-note">
       各社が公表した最新年度の値を等間隔の階級に区切って数えたヒストグラムです。最頻値は最も企業数が多い階級を範囲で示しており、濃い青の棒がその階級にあたります。縦の実線は中央値の位置です。
     </p>
+    <p class="chart-note" data-distribution-note hidden></p>
+    <p class="chart-note" data-distribution-outlier-note hidden></p>
   </section>
 
   <section>
@@ -204,12 +273,25 @@ const distributionPayload = {
           const tenure = latest.average_tenure;
           const age = latest.average_age;
           const employees = latest.employee_count;
+          // 働き方の指標は、その軸で並べているときだけ従業員数と入れ替えて出す
+          const humanCapitalStats = [
+            { stat: "pay-gap", metric: latest.gender_pay_gap, label: "男女の賃金の差異", note: "男性を100とした水準" },
+            { stat: "female-managers", metric: latest.female_manager_ratio, label: "女性管理職比率" },
+            { stat: "childcare", metric: latest.male_childcare_leave_rate, label: "男性育休取得率", note: "育児目的休暇を含まない" },
+            { stat: "childcare-with-leave", metric: latest.male_childcare_leave_rate_with_leave, label: "男性育休取得率", note: "育児目的休暇を含む" },
+          ];
           const stats = (
             <dl class="company-stats">
               <div data-stat="salary"><dt>平均年間給与</dt><dd>{salary ? formatValue(Number(salary.value), salary.unit) : "—"}</dd></div>
               <div data-stat="tenure"><dt>平均勤続年数</dt><dd>{tenure ? formatValue(Number(tenure.value), tenure.unit, tenure.metric_key) : "—"}</dd></div>
               <div data-stat="age"><dt>平均年齢</dt><dd>{age ? formatValue(Number(age.value), age.unit, age.metric_key) : "—"}</dd></div>
               <div data-stat="employees"><dt>従業員数</dt><dd>{employees ? formatValue(Number(employees.value), employees.unit) : "—"}</dd></div>
+              {humanCapitalStats.map(({ stat, metric, label, note }) => (
+                <div data-stat={stat} data-stat-optional>
+                  <dt>{label}</dt>
+                  <dd>{metric ? formatValue(Number(metric.value), metric.unit, metric.metric_key) : "—"}{note && <small>{note}</small>}</dd>
+                </div>
+              ))}
             </dl>
           );
           const heading = (
@@ -224,6 +306,12 @@ const distributionPayload = {
             "data-sort-kana": index,
             "data-sort-salary": salary ? salary.value : "",
             "data-sort-tenure": tenure ? tenure.value : "",
+            ...Object.fromEntries(
+              humanCapitalStats.map(({ stat, metric }) => [
+                `data-sort-${stat}`,
+                metric ? metric.value : "",
+              ]),
+            ),
           };
 
           return hasPage ? (
@@ -265,8 +353,22 @@ const distributionPayload = {
   /* .linked-row は grid のため、hidden 属性だけでは隠れない */
   .company-list > [hidden], .search-empty[hidden] { display: none; }
 
+  /* 働き方の指標は、その軸で並べているときだけ従業員数と入れ替えて出し、カードを4列に保つ */
+  .company-stats > [data-stat-optional] { display: none; }
+  .company-list:is(
+    [data-sort="pay-gap"], [data-sort="female-managers"],
+    [data-sort="childcare"], [data-sort="childcare-with-leave"]
+  ) .company-stats > [data-stat="employees"] { display: none; }
+  .company-list[data-sort="pay-gap"] .company-stats > [data-stat="pay-gap"],
+  .company-list[data-sort="female-managers"] .company-stats > [data-stat="female-managers"],
+  .company-list[data-sort="childcare"] .company-stats > [data-stat="childcare"],
+  .company-list[data-sort="childcare-with-leave"] .company-stats > [data-stat="childcare-with-leave"] {
+    display: block;
+  }
+
   .distribution-panel { margin-bottom: 34px; }
-  .distribution-metric { display: block; max-width: 260px; margin-bottom: 18px; }
+  /* 「男性育休取得率（育児目的休暇を含まない）」が閉じた状態でも読める幅 */
+  .distribution-metric { display: block; max-width: 340px; margin-bottom: 18px; }
   .distribution-metric > span { display: block; margin-bottom: 6px; color: var(--muted); font-size: 12px; }
   .distribution-metric select {
     width: 100%; height: 38px; padding: 0 10px;
@@ -321,14 +423,23 @@ const distributionPayload = {
 
   /* モバイルは既存CSSで先頭の指標だけが残るため、並び替え中の指標を先頭へ寄せて表示する */
   @media (max-width: 720px) {
-    .company-list[data-sort="tenure"] .company-stats > div[data-stat="salary"] {
+    .company-list:is(
+      [data-sort="tenure"], [data-sort="pay-gap"], [data-sort="female-managers"],
+      [data-sort="childcare"], [data-sort="childcare-with-leave"]
+    ) .company-stats > div[data-stat="salary"] {
       display: none;
     }
-    .company-list[data-sort="tenure"] .company-stats > div[data-stat="tenure"] {
+    .company-list[data-sort="tenure"] .company-stats > div[data-stat="tenure"],
+    .company-list[data-sort="pay-gap"] .company-stats > [data-stat="pay-gap"],
+    .company-list[data-sort="female-managers"] .company-stats > [data-stat="female-managers"],
+    .company-list[data-sort="childcare"] .company-stats > [data-stat="childcare"],
+    .company-list[data-sort="childcare-with-leave"] .company-stats > [data-stat="childcare-with-leave"] {
       display: flex;
       align-items: baseline;
       gap: 8px;
     }
+    /* 1行に収めるため、算定範囲の補足は畳む */
+    .company-list .company-stats dd small { display: none; }
     .distribution-stats > div { flex-basis: 50%; }
   }
 </style>
@@ -377,6 +488,47 @@ const distributionPayload = {
       return step * magnitude;
     };
 
+    // 階級のうちどれだけが空なら、上側の極端な値に横軸を引き延ばされていると見なすか。
+    // 男性育休取得率のように300%台の公表値があると、残りの企業が数本の棒に潰れてしまう
+    const overflowEmptyRatio = 1 / 3;
+
+    // 箱ひげ図と同じ Q3 + 1.5×IQR。極端な値そのものを外れ値として切り出す
+    const upperFence = (values) => {
+      const sorted = [...values].sort((a, b) => a - b);
+      const quantile = (ratio) => {
+        const position = (sorted.length - 1) * ratio;
+        const lower = Math.floor(position);
+        const upper = Math.ceil(position);
+        return lower === upper
+          ? sorted[lower]
+          : sorted[lower] + (sorted[upper] - sorted[lower]) * (position - lower);
+      };
+      const first = quantile(0.25);
+      const third = quantile(0.75);
+      return third + 1.5 * (third - first);
+    };
+
+    const fillBins = (points, start, width, count, hasOverflow) => {
+      const bins = Array.from(
+        { length: count + (hasOverflow ? 1 : 0) },
+        (_, index) => ({
+          from: start + index * width,
+          to: start + (index + 1) * width,
+          // 最上位の階級だけは上限を持たず、これを超える値をすべて受け止める
+          overflow: hasOverflow && index === count,
+          points: [],
+        }),
+      );
+      for (const point of points) {
+        const index = Math.min(
+          Math.floor((point.value - start) / width),
+          bins.length - 1,
+        );
+        bins[index].points.push(point);
+      }
+      return bins;
+    };
+
     const buildBins = (points) => {
       const values = points.map((point) => point.value);
       const min = Math.min(...values);
@@ -384,26 +536,41 @@ const distributionPayload = {
       const width = niceBinWidth(max - min, 12);
       const start = Math.floor(min / width) * width;
       const count = Math.max(Math.ceil((max - start) / width), 1);
-      const bins = Array.from({ length: count }, (_, index) => ({
-        from: start + index * width,
-        to: start + (index + 1) * width,
-        points: [],
-      }));
-      for (const point of points) {
-        const index = Math.min(
-          Math.floor((point.value - start) / width),
-          count - 1,
-        );
-        bins[index].points.push(point);
-      }
-      return bins;
+      const evenBins = fillBins(points, start, width, count, false);
+
+      const emptyRatio =
+        evenBins.filter((bin) => !bin.points.length).length / evenBins.length;
+      if (emptyRatio <= overflowEmptyRatio) return evenBins;
+
+      const fence = upperFence(values);
+      const inner = values.filter((value) => value <= fence);
+      if (!inner.length || inner.length === values.length) return evenBins;
+
+      const innerMax = Math.max(...inner);
+      const innerWidth = niceBinWidth(innerMax - min, 12);
+      // 外れ値をまとめても階級が細かくならないなら、素直な等間隔のままにする
+      if (innerWidth >= width) return evenBins;
+
+      const innerStart = Math.floor(min / innerWidth) * innerWidth;
+      const innerCount = Math.max(
+        Math.floor((innerMax - innerStart) / innerWidth) + 1,
+        1,
+      );
+      return fillBins(points, innerStart, innerWidth, innerCount, true);
     };
+
+    const formatBinRange = (bin, metric) =>
+      bin.overflow
+        ? `${formatScaled(bin.from, metric)}以上`
+        : `${formatTick(bin.from, metric)}〜${formatScaled(bin.to, metric)}`;
 
     const barPath = (x, y, width, height, radius) => {
       const r = Math.max(Math.min(radius, width / 2, height), 0);
       const bottom = y + height;
       return `M${x},${bottom} L${x},${y + r} Q${x},${y} ${x + r},${y} L${x + width - r},${y} Q${x + width},${y} ${x + width},${y + r} L${x + width},${bottom} Z`;
     };
+
+    const outlierNote = root.querySelector("[data-distribution-outlier-note]");
 
     const render = (metric) => {
       if (!metric.points.length) {
@@ -413,11 +580,18 @@ const distributionPayload = {
         root.querySelector("[data-stat-mean]").textContent = "—";
         root.querySelector("[data-stat-coverage]").textContent =
           `0社 / ${distributionPayload.totalCompanies}社`;
+        outlierNote.hidden = true;
         return;
       }
 
       const values = metric.points.map((point) => point.value);
       const bins = buildBins(metric.points);
+      const overflowBin = bins.at(-1).overflow ? bins.at(-1) : undefined;
+      outlierNote.textContent = overflowBin
+        ? `右端は${formatScaled(overflowBin.from, metric)}以上の${overflowBin.points.length}社をまとめた階級です。この範囲まで等間隔で刻むと、残りの企業が数本の棒に潰れて分布を読めなくなるためです。`
+        : "";
+      outlierNote.hidden = !overflowBin;
+
       const maxCount = Math.max(...bins.map((bin) => bin.points.length));
       const modeIndex = bins.findIndex((bin) => bin.points.length === maxCount);
       const modeBin = bins[modeIndex];
@@ -425,8 +599,7 @@ const distributionPayload = {
       const meanValue = values.reduce((sum, value) => sum + value, 0) / values.length;
 
       root.querySelector("[data-stat-median]").textContent = formatScaled(medianValue, metric);
-      root.querySelector("[data-stat-mode]").textContent =
-        `${formatTick(modeBin.from, metric)}〜${formatScaled(modeBin.to, metric)}`;
+      root.querySelector("[data-stat-mode]").textContent = formatBinRange(modeBin, metric);
       root.querySelector("[data-stat-mean]").textContent = formatScaled(meanValue, metric);
       root.querySelector("[data-stat-coverage]").textContent =
         `${metric.points.length}社 / ${distributionPayload.totalCompanies}社`;
@@ -470,18 +643,20 @@ const distributionPayload = {
         const names = bin.points.map((point) => point.name);
         const shown = names.slice(0, 8).join("、");
         const rest = names.length > 8 ? `　ほか${names.length - 8}社` : "";
+        const range = formatBinRange(bin, metric);
         return `<rect class="hist-hit" x="${padLeft + index * slot}" y="${plotTop}" width="${slot}" height="${plotHeight}"
           data-bin="${index}"
-          data-range="${escapeHtml(`${formatTick(bin.from, metric)}〜${formatScaled(bin.to, metric)}`)}"
+          data-range="${escapeHtml(range)}"
           data-count="${bin.points.length}"
           data-names="${escapeHtml(shown + rest)}" tabindex="0" role="img"
-          aria-label="${escapeHtml(`${formatTick(bin.from, metric)}〜${formatScaled(bin.to, metric)} ${bin.points.length}社`)}"></rect>`;
+          aria-label="${escapeHtml(`${range} ${bin.points.length}社`)}"></rect>`;
       }).join("");
 
       const tickStep = bins.length > 14 ? 2 : 1;
-      const ticks = bins
-        .map((bin) => bin.from)
-        .concat(bins.at(-1).to)
+      const tickValues = bins.map((bin) => bin.from);
+      // 最上位が「◯◯以上」の階級のときは、右端に目盛りを置くと上限があるように見える
+      if (!overflowBin) tickValues.push(bins.at(-1).to);
+      const ticks = tickValues
         .map((value, index, all) => {
           if (index % tickStep !== 0 && index !== all.length - 1) return "";
           return `<text class="hist-tick" x="${scaleX(value)}" y="${plotBottom + 20}" text-anchor="middle">${escapeHtml(formatTick(value, metric))}</text>`;
@@ -540,10 +715,14 @@ const distributionPayload = {
       });
     };
 
+    const note = root.querySelector("[data-distribution-note]");
+
     const update = () => {
       const metric =
         distributionPayload.metrics.find((item) => item.key === select.value) ??
         distributionPayload.metrics[0];
+      note.textContent = metric.note;
+      note.hidden = !metric.note;
       render(metric);
     };
 

@@ -107,14 +107,11 @@ const payload = {
         <label><input type="radio" name={`${explorerId}-view`} value="table" checked={initialView === "table"} />表</label>
       </div>
     </fieldset>}
+    {showUnifyToggle && <label class="unify-toggle" data-unify-field hidden>
+      <input type="checkbox" data-unify />
+      <span data-unify-label></span>
+    </label>}
   </div>
-
-  {showUnifyToggle && (
-    <div class="cohort-alert" data-cohort-alert hidden>
-      <p data-cohort-alert-text></p>
-      <button type="button" class="cohort-alert-button" data-unify-button></button>
-    </div>
-  )}
 
   <div class:list={["explorer-body", { "explorer-body-solo": !showStats }]}>
     <div class="chart-area" data-chart aria-live="polite"></div>
@@ -139,8 +136,8 @@ const payload = {
   <p class="chart-note" data-metric-note hidden></p>
   {showUnifyToggle && (
     <p class="chart-warning" data-unify-note hidden>
-      決算の集計ルールが違う数字を、むりやり同じ図に並べています。規模の桁をつかむ用途に留め、
-      わずかな差で優劣を判断しないでください。外貨建ての金額は
+      集計ルールの異なる数字を同じ図に並べています。規模の桁をつかむ目的で読み、わずかな差で優劣を
+      判断しないでください。外貨建ての金額は
       <a href="/guide/#為替換算">日本銀行が公表する為替相場</a>で円に直したサイトの計算値です。
     </p>
   )}
@@ -153,8 +150,6 @@ const payload = {
 <script is:inline define:vars={{ payload, explorerId }}>
   const root = document.getElementById(explorerId);
   const colors = ["#2563eb", "#0d9488", "#7c3aed", "#ea8a0b", "#64748b"];
-  // 集計ルールの違いを無視して全社を並べているかどうか
-  let unifyEnabled = false;
 
   const formatValue = (value, unit, metricKey, compact = false) => {
     if (unit === "JPY") {
@@ -380,41 +375,48 @@ const payload = {
     return badges;
   };
 
-  // 既定の表示から漏れている企業を伝え、その場で全社表示へ切り替えられるようにする
-  function updateCohortAlert(candidates, rows, unify) {
-    const alert = root.querySelector("[data-cohort-alert]");
-    if (!alert) return;
-    const text = alert.querySelector("[data-cohort-alert-text]");
-    const button = alert.querySelector("[data-unify-button]");
+  // 既定の表示で選ぶコホート。単位・対象範囲・会計基準が揃った行のうち最も社数の多いもの
+  function strictRows(candidates, year) {
+    const cohorts = new Map();
+    candidates.forEach((row) => {
+      const key = JSON.stringify([row.unit, row.scope, row.accounting_standard]);
+      const cohort = cohorts.get(key) || [];
+      cohort.push(row);
+      cohorts.set(key, cohort);
+    });
+    return [...cohorts.entries()]
+      .sort(([keyA, rowsA], [keyB, rowsB]) => {
+        const currentYearDifference = year === "latest"
+          ? latestRows(rowsB).length - latestRows(rowsA).length
+          : rowsB.filter((row) => row.fiscal_year === year).length -
+            rowsA.filter((row) => row.fiscal_year === year).length;
+        return currentYearDifference || rowsB.length - rowsA.length || keyA.localeCompare(keyB);
+      })[0]?.[1] || [];
+  }
 
-    if (unify) {
-      alert.hidden = false;
-      text.textContent =
-        "集計ルールの違いを無視して、すべての企業を円に換算して並べています。";
-      button.textContent = "元の表示に戻す";
+  // 既定の表示から漏れる企業がある指標でだけ、その社数を添えて切り替えを出す
+  function updateUnifyToggle(candidates, strict) {
+    const field = root.querySelector("[data-unify-field]");
+    if (!field) return;
+
+    const shown = new Set(strict.map((row) => row.company_id));
+    const hiddenCount = new Set(
+      candidates
+        .map((row) => row.company_id)
+        .filter((companyId) => !shown.has(companyId)),
+    ).size;
+
+    // 漏れる企業がない指標では切り替えても顔ぶれが変わらないため、選択ごと隠す
+    if (!hiddenCount) {
+      field.hidden = true;
+      const input = field.querySelector("[data-unify]");
+      if (input) input.checked = false;
       return;
     }
 
-    const shown = new Set(rows.map((row) => row.company_id));
-    const hidden = [...new Set(candidates.map((row) => row.company_id))]
-      .filter((companyId) => !shown.has(companyId))
-      .map(
-        (companyId) =>
-          payload.companies.find((company) => company.id === companyId)?.name ||
-          companyId,
-      );
-
-    if (!hidden.length) {
-      alert.hidden = true;
-      return;
-    }
-
-    const names = hidden.slice(0, 2).join("、");
-    const rest = hidden.length > 2 ? ` ほか${hidden.length - 2}社` : "";
-    alert.hidden = false;
-    text.textContent =
-      `決算の集計ルールが違うため、${hidden.length}社を同じ図に出せていません（${names}${rest}）。`;
-    button.textContent = "全社を円に換算して並べる";
+    field.hidden = false;
+    const label = field.querySelector("[data-unify-label]");
+    if (label) label.textContent = `集計ルールの異なる${hiddenCount}社を表示する`;
   }
 
   // 図に出ている数値がどの資料に基づくのかを示す
@@ -456,37 +458,22 @@ const payload = {
     const metricKey = root.querySelector("[data-metric]").value;
     const year = root.querySelector("[data-year]")?.value || "latest";
     const view = root.querySelector('input[type="radio"]:checked')?.value || "line";
-    const unify = unifyEnabled;
     const candidates = payload.metrics.filter((row) => row.metric_key === metricKey);
+    const strict = strictRows(candidates, year);
+    updateUnifyToggle(candidates, strict);
 
-    let rows;
-    if (unify) {
-      // 単位・対象範囲・会計基準の違いを越えて並べる。為替相場を用意していない年度の
-      // 外貨建ての値は換算できないため、推定で埋めずに対象から外す。
-      rows = candidates
-        .filter((row) => row.comparable_value !== "")
-        .map((row) => ({
-          ...row,
-          value: row.comparable_value,
-          unit: row.comparable_unit,
-        }));
-    } else {
-      const cohorts = new Map();
-      candidates.forEach((row) => {
-        const key = [row.unit, row.scope, row.accounting_standard].join("\u0000");
-        const cohort = cohorts.get(key) || [];
-        cohort.push(row);
-        cohorts.set(key, cohort);
-      });
-      rows = [...cohorts.entries()]
-        .sort(([keyA, rowsA], [keyB, rowsB]) => {
-          const currentYearDifference = year === "latest"
-            ? latestRows(rowsB).length - latestRows(rowsA).length
-            : rowsB.filter((row) => row.fiscal_year === year).length -
-              rowsA.filter((row) => row.fiscal_year === year).length;
-          return currentYearDifference || rowsB.length - rowsA.length || keyA.localeCompare(keyB);
-        })[0]?.[1] || [];
-    }
+    // 単位・対象範囲・会計基準の違いを越えて並べる。為替相場を用意していない年度の
+    // 外貨建ての値は換算できないため、推定で埋めずに対象から外す。
+    const unify = root.querySelector("[data-unify]")?.checked || false;
+    const rows = unify
+      ? candidates
+          .filter((row) => row.comparable_value !== "")
+          .map((row) => ({
+            ...row,
+            value: row.comparable_value,
+            unit: row.comparable_unit,
+          }))
+      : strict;
     const selected = year === "latest"
       ? latestRows(rows)
       : rows.filter((row) => row.fiscal_year === year);
@@ -500,7 +487,6 @@ const payload = {
     const note = payload.notes[metricKey];
     metricNote.textContent = note || "";
     metricNote.hidden = !note;
-    updateCohortAlert(candidates, rows, unify);
 
     updateStats(values, unit, metricKey, year);
 
@@ -515,9 +501,5 @@ const payload = {
   root.querySelectorAll("select, input").forEach((input) =>
     input.addEventListener("change", update),
   );
-  root.querySelector("[data-unify-button]")?.addEventListener("click", () => {
-    unifyEnabled = !unifyEnabled;
-    update();
-  });
   update();
 </script>

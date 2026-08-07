@@ -21,9 +21,29 @@ const { controlsId, options, initialSort } = Astro.props;
 const initialOption =
   options.find((option) => option.value === initialSort) ?? options[0];
 const initialOrder = initialOption.defaultOrder;
+// 軸が増えるとセグメントの1つ分が狭くなり、モバイルでラベルが潰れて読めなくなる
+const useSelect = options.length >= 6;
 ---
 
 <div class="sort-controls" data-sort-controls={controlsId}>
+  {useSelect ? (
+    <label class="sort-select">
+      <span>並び順</span>
+      <select data-sort-select>
+        {options.map((option) => (
+          <option
+            value={option.value}
+            selected={option.value === initialOption.value}
+            data-asc={option.asc}
+            data-desc={option.desc}
+            data-default-order={option.defaultOrder}
+          >
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </label>
+  ) : (
   <fieldset style={`--option-count:${options.length}`}>
     <legend>並び順</legend>
     <div class="segmented-control">
@@ -45,6 +65,7 @@ const initialOrder = initialOption.defaultOrder;
       }
     </div>
   </fieldset>
+  )}
   <fieldset class="order-field" style="--option-count:2">
     <legend>順序</legend>
     <div class="segmented-control">
@@ -70,8 +91,18 @@ const initialOrder = initialOption.defaultOrder;
   }
   .sort-status { margin: 10px 0 16px; color: var(--muted); font-size: 13px; }
 
+  /* 軸が多いときの並び順セレクト。指標名が長いので順序の選択より広く取る */
+  .sort-select { flex: 1 1 320px; max-width: 380px; }
+  .sort-select > span { display: block; margin-bottom: 6px; color: var(--muted); font-size: 12px; }
+  .sort-select select {
+    width: 100%; height: 38px; padding: 0 10px;
+    color: var(--ink); background: white; border: 1px solid var(--line-dark); border-radius: 6px;
+    font: inherit; font-size: 14px;
+  }
+  :global([data-theme="dark"]) .sort-select select { background: #172131; }
+
   @media (max-width: 720px) {
-    .sort-controls fieldset, .sort-controls .order-field { flex-basis: 100%; max-width: none; }
+    .sort-controls fieldset, .sort-controls .order-field, .sort-select { flex-basis: 100%; max-width: none; }
   }
 </style>
 
@@ -96,12 +127,20 @@ const initialOrder = initialOption.defaultOrder;
     const sortInputs = controls.querySelectorAll<HTMLInputElement>(
       `input[name="${id}-sort"]`,
     );
+    // 軸が多いページではラジオではなくセレクトで出している
+    const sortSelect = controls.querySelector<HTMLSelectElement>(
+      "[data-sort-select]",
+    );
     const orderInputs = controls.querySelectorAll<HTMLInputElement>(
       `input[name="${id}-order"]`,
     );
     if (!list) continue;
 
-    const checkedSort = () => [...sortInputs].find((input) => input.checked);
+    // option 要素もラジオと同じく value と data 属性を持つため、以降は同じ扱いでよい
+    const checkedSort = (): HTMLInputElement | HTMLOptionElement | undefined =>
+      sortSelect
+        ? sortSelect.selectedOptions[0]
+        : [...sortInputs].find((input) => input.checked);
     const checkedOrder = () =>
       ([...orderInputs].find((input) => input.checked)?.value ??
         "asc") as Order;
@@ -130,15 +169,18 @@ const initialOrder = initialOption.defaultOrder;
         .forEach((row) => list.appendChild(row));
     };
 
+    // 指標は大きい順、五十音は先頭からが自然なので、軸を変えたら既定の順序へ戻す
+    const resetOrder = (sort: HTMLInputElement | HTMLOptionElement | undefined) => {
+      const preferred = sort?.dataset.defaultOrder ?? "asc";
+      for (const orderInput of orderInputs) {
+        orderInput.checked = orderInput.value === preferred;
+      }
+      applySort();
+    };
+
+    sortSelect?.addEventListener("change", () => resetOrder(checkedSort()));
     for (const input of sortInputs) {
-      input.addEventListener("change", () => {
-        // 指標は大きい順、五十音は先頭からが自然なので、軸を変えたら既定の順序へ戻す
-        const preferred = input.dataset.defaultOrder ?? "asc";
-        for (const orderInput of orderInputs) {
-          orderInput.checked = orderInput.value === preferred;
-        }
-        applySort();
-      });
+      input.addEventListener("change", () => resetOrder(input));
     }
     for (const input of orderInputs) {
       input.addEventListener("change", applySort);

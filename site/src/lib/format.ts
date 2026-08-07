@@ -29,12 +29,21 @@ export const metricLabels: Record<string, string> = {
 
 export const metricDisplayOrder = Object.keys(metricLabels);
 
+// 分母は当該年度に配偶者が出産した男性の数で、前年度に生まれた子の育休取得者が
+// 分子に入ると100%を超える。実データにも300%台があり、説明なしでは誤記に見える
+const childcareLeaveRateNote =
+  "取得と配偶者の出産が別の年度にまたがると、取得率が100%を超えることがあります。";
+
 // 選んだときだけ添える、その指標の読み方の注意書き
 export const metricNotes: Record<string, string> = {
+  gender_pay_gap:
+    "男性の賃金を100としたときの女性の水準です。値が小さいほど差が大きく、職種や役職の構成の違いも含んだ全労働者の平均のため、同じ仕事での賃金差を示すものではありません。",
+  female_manager_ratio:
+    "どこからを管理職と数えるかは会社ごとの定義によります。",
   male_childcare_leave_rate:
-    "育児休業の取得だけで算定した公表値です。育児目的休暇を含めて算定した値とは対象範囲が違うため、同じ図には並べていません。",
+    `育児休業の取得だけで算定した公表値です。育児目的休暇を含めて算定した値とは対象範囲が違うため、同じ図には並べていません。${childcareLeaveRateNote}`,
   male_childcare_leave_rate_with_leave:
-    "育児目的休暇を含めて算定した公表値です。育児休業だけで算定した値より高く出るため、そちらとは同じ図に並べていません。",
+    `育児目的休暇を含めて算定した公表値です。育児休業だけで算定した値より高く出るため、そちらとは同じ図に並べていません。${childcareLeaveRateNote}`,
 };
 
 export function formatValue(
