@@ -5,14 +5,22 @@ interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  ogType?: "website" | "article";
 }
 
+const SITE_NAME = "情報系の学生のための企業分析サイト";
+
 const {
-  title = "情報系の学生のための企業分析サイト",
+  title = SITE_NAME,
   description = "IT業界の企業を、給与・財務・事業構成の公表値で比較できる就活向けサイト",
   noindex = false,
+  ogType = "website",
 } = Astro.props;
-const fullTitle = title === "情報系の学生のための企業分析サイト" ? title : `${title} | 情報系の学生のための企業分析サイト`;
+const fullTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
+// SNS のリンクプレビューは絶対 URL しか解決しないため、canonical と OGP 画像は
+// astro.config.mjs の site を基準に絶対化する。
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL("/ogp.png", Astro.site);
 const pathname = Astro.url.pathname;
 const isHome = pathname === "/";
 const isIndustry = pathname.startsWith("/industries/");
@@ -30,9 +38,25 @@ const isGuide = pathname.startsWith("/guide/");
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icon.svg" />
     <title>{fullTitle}</title>
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={SITE_NAME} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <script
       is:inline
       async

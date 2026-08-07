@@ -49,7 +49,12 @@ const toc = [
 }));
 ---
 
-<BaseLayout title={title} description={description} noindex={!isActive}>
+<BaseLayout
+  title={title}
+  description={description}
+  noindex={!isActive}
+  ogType="article"
+>
   <div class="company-layout">
     <article class="company-article">
       <slot />
