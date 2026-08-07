@@ -272,3 +272,28 @@ R2_BUCKET_NAME=it-recruit
 - `data/raw/` のEDINET原本は再取得できるため既定では対象外です。含める場合は `--include-raw`
 - ローカルから削除したCSVをR2からも消す場合は `--delete`。先に `--dry-run --delete` で対象を確認してください
 - `--` 以降はそのまま `aws s3 sync` へ渡ります（例: `./scripts/sync-r2.sh -- --exclude "metrics.csv"`）
+
+## ライセンス
+
+このリポジトリは、仕組み（コード・スキル）と掲載物（記事・データ）で別のライセンスを適用します。
+著作権者は 幸者堂 (yukijya_doh) です。
+
+| 区分 | 対象 | ライセンス |
+| --- | --- | --- |
+| コード・スキル | `src/`、`tests/`、`scripts/`、`agents/`、`docs/`、`site/` のソースコードと設定（`site/src/components/`、`site/src/layouts/`、`site/src/lib/`、`site/src/styles/`、`astro.config.mjs`、`wrangler.json`、`pyproject.toml`、`package.json` など）、本 `README.md` | [MIT](LICENSE) |
+| サイト掲載コンテンツ | `site/src/pages/` 配下の記事・解説文（`companies/*.mdx`、`industries/`、`guide.md`、`privacy.md`、各ページの散文）、`ledger/`、`data/` のCSV、`site/public/` の画像 | [CC BY-NC-ND 4.0](LICENSE-CONTENT) |
+
+`site/src/pages/` 配下のファイルは、ページを組み立てるコード部分（フロントマター、`import`、コンポーネント呼び出し）はMIT、日本語で書かれた記述・解説文はCC BY-NC-ND 4.0として扱います。
+
+### つまり
+
+- **できること**: 企業分析スキル（`agents/skills/`）やEDINET・SEC取得CLI（`src/`）、サイトのコンポーネントを、自分のプロジェクトへコピー・改変・再配布する。商用利用も可
+- **できないこと**: 企業記事や解説文をそのまま転載して別サイトを作る、記事を書き換えて公開する、コンテンツを営利目的で利用する
+
+記事の引用や、非営利での出典明示つきの転載は歓迎します。営利目的での利用や改変版の公開を希望する場合は個別にご相談ください。
+
+### データの出典
+
+`data/` のCSVに含まれる財務・採用の数値は、EDINET（金融庁）、SEC EDGAR、各社公式開示に由来する事実です。事実そのものに本プロジェクトは権利を主張しません。CC BY-NC-ND 4.0が及ぶのは、収集・選択・分類・注記・構成といった編集上の表現部分です。原資料を利用する場合は各提供元の利用条件を確認してください。
+
+企業名、ロゴ、サービス名は各権利者に帰属します。本リポジトリのライセンスは、それらの商標の使用を許諾するものではありません。

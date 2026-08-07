@@ -2,6 +2,7 @@
   "name": "it-recruit-site",
   "version": "0.1.0",
   "private": true,
+  "license": "SEE LICENSE IN ../README.md",
   "type": "module",
   "scripts": {
     "dev": "astro dev",

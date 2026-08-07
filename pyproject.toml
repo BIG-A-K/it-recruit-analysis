@@ -3,6 +3,8 @@ name = "it-recruit-data"
 version = "0.1.0"
 description = "EDINET・SECから企業データを取得し、サイト用CSVへ変換する"
 requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE"]
 dependencies = [
     "requests>=2.32.0",
 ]

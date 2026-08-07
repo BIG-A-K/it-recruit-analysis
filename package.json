@@ -2,6 +2,7 @@
   "name": "it-recruit",
   "version": "0.1.0",
   "private": true,
+  "license": "SEE LICENSE IN README.md",
   "scripts": {
     "build": "npm --prefix site run build"
   }
