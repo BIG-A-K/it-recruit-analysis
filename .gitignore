@@ -11,6 +11,7 @@ data/raw/
 site/node_modules/
 site/dist/
 site/.astro/
+site/.wrangler/
 
 # Sub-agent用の一時ワークツリー
 agents/worktrees/

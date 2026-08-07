@@ -130,6 +130,14 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .card-count { display: block; color: var(--muted); font-size: 13px; }
 .card-soon { opacity: .7; background: transparent; border-style: dashed; }
 
+/* ---------- 404 ---------- */
+
+.error-code { color: var(--subtle); font: 700 15px/1 ui-monospace, monospace; letter-spacing: .18em; }
+.error-code + h1 { margin-top: 12px; }
+/* .hero .button の margin-top はボタンが横並びだと片方だけに乗るため、行ごと下げる */
+.error-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.error-actions .button { margin-top: 0; }
+
 .steps { display: grid; gap: 14px; }
 .steps li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; }
 .steps li > span { color: var(--blue); font-size: 13px; font-weight: 700; }

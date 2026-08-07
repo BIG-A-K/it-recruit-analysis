@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { companies, industries } from "../lib/data";
+
+const destinations = [
+  {
+    href: "/industries/",
+    title: "業界一覧",
+    count: `${industries.length}業界`,
+    description:
+      "半導体・SIer・ゲームなど、IT業界の区分ごとに事業内容と代表的な企業をまとめています。",
+  },
+  {
+    href: "/companies/",
+    title: "企業一覧",
+    count: `${companies.length}社`,
+    description:
+      "掲載企業を一覧から検索できます。給与・財務・事業構成の指標で並べ替えもできます。",
+  },
+  {
+    href: "/guide/",
+    title: "分析方法",
+    count: "ガイド",
+    description:
+      "有価証券報告書の読み方や、当座比率・営業利益といった指標の意味を解説しています。",
+  },
+];
+---
+
+<BaseLayout
+  title="ページが見つかりません"
+  description="お探しのページは見つかりませんでした。業界一覧や企業一覧からお探しください。"
+  noindex
+>
+  <section class="hero">
+    <p class="error-code">404</p>
+    <h1>ページが見つかりません</h1>
+    <p class="lead">
+      URLが変更されたか、削除された可能性があります。お探しの企業や業界は、下のリンクから探せます。
+    </p>
+    <div class="error-actions">
+      <a class="button button-primary" href="/">ホームへ戻る</a>
+      <a class="button button-outline" href="/companies/">企業一覧を見る</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>ここから探す</h2></div>
+    <div class="industry-grid">
+      {
+        destinations.map((destination) => (
+          <a class="card" href={destination.href}>
+            <h3>{destination.title}</h3>
+            <span class="card-count">{destination.count}</span>
+            <p>{destination.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
