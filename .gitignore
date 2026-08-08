@@ -4,6 +4,7 @@ __pycache__/
 .pytest_cache/
 *.pyc
 gomi/
+.tmp/
 # EDINET・SECから再取得できる原本
 data/raw/
 
