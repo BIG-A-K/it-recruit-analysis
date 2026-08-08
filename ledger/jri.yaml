@@ -42,6 +42,18 @@ items:
     source: jri-corporate-profile（従業員数）/ jri-koukoku-2026-24（非開示確認）
     via: EDINET 18ヶ月スキャン→該当なし→公式IRクロール（会社概要と決算公告PDF）
     note: 従業員数6,324名は会社概要ページから。平均年間給与・平均年齢・平均勤続年数は有報義務開示項目だが非上場のため非開示。決算公告にも記載なし
+  - id: ir-human-capital-hr-data-2023
+    phase: ir
+    store: ir_csv
+    topic: 公式「人材データ詳細」の人的資本・働き方指標（2021年3月末〜2023年3月末）
+    status: done
+    value: metrics.csv の employee_count・female_manager_ratio・average_age・average_tenure・male_childcare_leave_rate（FY2021〜FY2023、各3行、計15行）
+    subject: 株式会社日本総合研究所（関連会社を除く在籍者）
+    as_of: 2021-03-31〜2023-03-31
+    unit: persons・years・percent
+    source: jri-hr-data-2023
+    via: ユーザー指定の公式PDFを原本画像・抽出テキストで照合し、csv-upsertで登録
+    note: scopeはnon_consolidated。従業員数は在籍出向者を含み、受入出向者・執行役員・顧問・嘱託・パート・スタッフ・派遣職員・海外現地採用者・関連会社を除く。男性育休取得率は育児目的休暇を含むか・算定式・対象人数の明示なし。採用・離職・残業・有休・健康経営の定義外指標はMDXへ反映する
   - id: ir-revenue
     phase: ir
     store: ir_csv
@@ -198,6 +210,18 @@ items:
     source: https://www.jri.co.jp/company/profile/ ／company/group/ ／company/base/ ／company/history/ ／smfg.co.jp/company/group/
     via: 公式「会社概要」「日本総研グループ」「海外拠点」「沿革」、SMFGグループ体制ページ
     note: 会社概要ページの株主欄はSMFGを直記(三井住友銀行経由ではない)。日本総研ホールディングスは2026年4月で解散し日本総研が存続会社
+  - id: article-hr-data-2023
+    phase: article
+    store: mdx
+    topic: 公式「人材データ詳細」の採用・働き方・健康経営指標
+    status: done
+    value: 従業員の性別内訳・障がい者雇用率（2021年3月末〜2023年3月末）、新卒採用者数・3年後離職率、キャリア採用、残業・有休・育休、健康経営指標（2020〜2022年度）をMDXへ反映。CSV定義済みの5指標はEmploymentOverviewで表示
+    subject: 株式会社日本総合研究所（関連会社を除く在籍者）
+    as_of: 2021-03-31〜2023-03-31
+    unit: persons・years・percent・hours・days・points
+    source: jri-hr-data-2023
+    via: ユーザー指定の公式PDFを原本画像・抽出テキストで照合
+    note: PDFに公開日の明示なし。PDF作成メタデータは2023-06-14。男性育休取得率は育児目的休暇を含むか・算定式・対象人数の明示なし。高ストレス者比率は2022年度に判定基準変更。JRI対象のデータ整合性テストと非上場企業表示テスト、Astroチェック・ビルドは成功。全体pytestは63件成功、非アクティブ企業11社のMDX残存による既存の集合不一致1件のみ失敗
   - id: article-mission
     phase: article
     store: mdx

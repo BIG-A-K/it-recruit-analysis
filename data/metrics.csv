@@ -4496,3 +4496,22 @@ broadband-tower,quick_assets,2022,2022-12-31,8695472000,JPY,consolidated,JGAAP,r
 broadband-tower,quick_assets,2023,2023-12-31,8077870000,JPY,consolidated,JGAAP,reported,edinet-s100v1my,当座資産は有報に非開示のため、連結BSの開示科目から算定。内訳: CashAndDeposits=6157259000+AccountsReceivableTrade=1920611000; 受取手形・短期投資・有価証券は連結BSに計上なし
 broadband-tower,quick_assets,2024,2024-12-31,9333143000,JPY,consolidated,JGAAP,reported,edinet-s100wzgb,当座資産は有報に非開示のため、連結BSの開示科目から算定。内訳: CashAndDeposits=7595914000+AccountsReceivableTrade=1737229000; 受取手形・短期投資・有価証券は連結BSに計上なし
 broadband-tower,quick_assets,2025,2025-12-31,9008191000,JPY,consolidated,JGAAP,reported,edinet-s100wzgb,当座資産は有報に非開示のため、連結BSの開示科目から算定。内訳: CashAndDeposits=6975461000+AccountsReceivableTrade=2032730000; 受取手形・短期投資・有価証券は連結BSに計上なし
+at-tokyo,average_tenure,2025,2026-03-31,7.2,years,non_consolidated,,reported,attokyo-mynavi-2027,マイナビ2027の働き方データ「平均勤続勤務年数」2025年度。有価証券報告書の提出がないため算定基準日・対象範囲の明示はない
+at-tokyo,employee_count,2025,2026-03-31,412,persons,non_consolidated,,reported,attokyo-mynavi-2027,マイナビ2027の会社データ「従業員 412名(2026年3月末)」。臨時従業員の取扱いと連結・単体の別は明示なし。連結子会社の公表がないため単体として扱う
+at-tokyo,male_childcare_leave_rate,2025,2026-03-31,87.5,percent,non_consolidated,,reported,attokyo-mynavi-2027,マイナビ2027の働き方データ「前年度の育児休業取得率（男女別）」2025年度。男性は対象者8名中7名が取得。女性は対象者2名中2名取得で100%。育児目的休暇との合算の有無は明示なし
+at-tokyo,revenue,2024,2025-03-31,43600000000,JPY,non_consolidated,JGAAP,reported,attokyo-mynavi-2027,マイナビ2027の会社データ「売上高 436億円(2024年度)」。億円単位の概数で、有価証券報告書・決算公告による裏付けはない。連結・単体の別は明示なし
+jri,employee_count,2021,2021-03-31,2571,persons,non_consolidated,,reported,jri-hr-data-2023,在籍者数。在籍出向者を含み、受入出向者、執行役員、顧問、嘱託、パート・スタッフ、派遣職員、海外現地採用者、関連会社を除く
+jri,employee_count,2022,2022-03-31,2640,persons,non_consolidated,,reported,jri-hr-data-2023,在籍者数。在籍出向者を含み、受入出向者、執行役員、顧問、嘱託、パート・スタッフ、派遣職員、海外現地採用者、関連会社を除く
+jri,employee_count,2023,2023-03-31,2777,persons,non_consolidated,,reported,jri-hr-data-2023,在籍者数。在籍出向者を含み、受入出向者、執行役員、顧問、嘱託、パート・スタッフ、派遣職員、海外現地採用者、関連会社を除く
+jri,female_manager_ratio,2021,2021-03-31,11.5,percent,non_consolidated,,reported,jri-hr-data-2023,資料上の名称は「女性管理職比率」。管理職の定義・対象人数の明示なし
+jri,female_manager_ratio,2022,2022-03-31,12.7,percent,non_consolidated,,reported,jri-hr-data-2023,資料上の名称は「女性管理職比率」。管理職の定義・対象人数の明示なし
+jri,female_manager_ratio,2023,2023-03-31,14.3,percent,non_consolidated,,reported,jri-hr-data-2023,資料上の名称は「女性管理職比率」。管理職の定義・対象人数の明示なし
+jri,average_age,2021,2021-03-31,41.1,years,non_consolidated,,reported,jri-hr-data-2023,資料の「平均年齢」合計
+jri,average_age,2022,2022-03-31,41.0,years,non_consolidated,,reported,jri-hr-data-2023,資料の「平均年齢」合計
+jri,average_age,2023,2023-03-31,40.6,years,non_consolidated,,reported,jri-hr-data-2023,資料の「平均年齢」合計
+jri,average_tenure,2021,2021-03-31,13.1,years,non_consolidated,,reported,jri-hr-data-2023,資料の「平均勤続年数」合計
+jri,average_tenure,2022,2022-03-31,13.1,years,non_consolidated,,reported,jri-hr-data-2023,資料の「平均勤続年数」合計
+jri,average_tenure,2023,2023-03-31,12.8,years,non_consolidated,,reported,jri-hr-data-2023,資料の「平均勤続年数」合計
+jri,male_childcare_leave_rate,2021,2021-03-31,46.9,percent,non_consolidated,,reported,jri-hr-data-2023,資料上の名称は「男性の育児休業取得率」。育児目的休暇を含むか・算定式・対象人数の明示なし
+jri,male_childcare_leave_rate,2022,2022-03-31,49.3,percent,non_consolidated,,reported,jri-hr-data-2023,資料上の名称は「男性の育児休業取得率」。育児目的休暇を含むか・算定式・対象人数の明示なし
+jri,male_childcare_leave_rate,2023,2023-03-31,42.6,percent,non_consolidated,,reported,jri-hr-data-2023,資料上の名称は「男性の育児休業取得率」。育児目的休暇を含むか・算定式・対象人数の明示なし

@@ -12,7 +12,7 @@ company_boundary:
   currency: JPY
   reporting_segments: なし（非上場・有報提出なし。実態はデータセンター事業の単一）
   company_relations: []
-  note: 非上場。株主3社=セコム・東京電力パワーグリッド・インテック（持株比率は非開示、セコムが筆頭と推定）。採用主体=開示主体=同一。公式URLは https://www.attokyo.co.jp/（ハイフンなし、.co.jp）。有報提出なし、決算公告も公式に公開されず。財務数値は外部非開示、ESGデータ2024(FY2024)のみ人的資本3指標を公表
+  note: 非上場。株主3社=セコム・東京電力パワーグリッド・インテック（持株比率は非開示、セコムが筆頭と推定）。採用主体=開示主体=同一。公式URLは https://www.attokyo.co.jp/（ハイフンなし、.co.jp）。有報提出なし、決算公告も公式に公開されず。数値の公表は限定的で、ESGデータ2024(FY2024)の人的資本3指標と、同社がマイナビ2027へ登録した会社データ・働き方データ(売上高436億円/2024年度、従業員412名/2026年3月末、平均勤続年数7.2年ほかFY2025実績)のみ
 fiscal_year: 2024
 focus: 両方
 created_at: 2026-08-08
@@ -29,25 +29,25 @@ items:
     store: ir_csv
     topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
     status: done
-    value: metrics.csv employee_count/gender_pay_gap/female_manager_ratio（FY2024、3行）。従業員数387人・ジェンダー間賃金差異76.45%・上級管理職女性比5.90%。平均年齢・平均勤続年数・平均年間給与は非開示
+    value: metrics.csv 計7行。FY2024（attokyo-esg-data-2024）= employee_count 387人・gender_pay_gap 76.45%・female_manager_ratio 5.90%。FY2025（attokyo-mynavi-2027）= employee_count 412人（2026年3月末）・average_tenure 7.2年・male_childcare_leave_rate 87.5%（対象者8名中7名、女性は2名中2名で100%）。平均年齢・平均年間給与は非開示
     subject: 単体（就業人員）
-    as_of: 2024-04-01〜2025-03-31（FY2024末日）
-    unit: persons・percent
-    source: attokyo-esg-data-2024（ESGデータ2024）+ attokyo-corporate（会社概要）
-    via: 非上場・EDINET提出0件。公式サイト403のため Internet Archive で ESG_Data_attokyo_2024.pdf を取得
-    note: ESGデータはFY2024のみ公表のため3期以上の充足不可。平均年齢・平均勤続年数・平均年間給与は有報がないため非開示
+    as_of: FY2024=2025-03-31（ESGデータ）/ FY2025=2026-03-31（マイナビ2027）
+    unit: persons・percent・years
+    source: attokyo-esg-data-2024（ESGデータ2024）+ attokyo-mynavi-2027（マイナビ2027 会社データ・働き方データ）+ attokyo-corporate（会社概要）
+    via: 非上場・EDINET提出0件。公式サイト403のため Internet Archive で ESG_Data_attokyo_2024.pdf を取得。マイナビ2027は job.mynavi.jp/27/pc/search/corp109928/outline.html を直接取得
+    note: ESGデータはFY2024のみ、マイナビはFY2025のみの公表で3期以上の充足不可。平均年齢・平均年間給与は有報がないため非開示。マイナビ掲載値は連結・単体の別および臨時従業員の取扱いが明示されていない。CSV未登録のマイナビ数値=月平均所定外労働時間17.2時間・平均有給休暇取得日数15.6日（いずれもFY2025、対応するmetric_keyなし）
   - id: ir-revenue
     phase: ir
     store: ir_csv
     topic: 売上高 3期以上
-    status: not_disclosed
-    value: ""
-    subject: 連結
-    as_of: ""
+    status: done
+    value: metrics.csv revenue FY2024 = 43,600,000,000 JPY（436億円、2024年度）。1期分のみ
+    subject: 単体（連結・単体の別は明示なし。連結子会社の公表がないため単体扱い）
+    as_of: 2025-03-31（FY2024末日）
     unit: JPY
-    source: attokyo-corporate
-    via: 非上場・EDINET提出0件。公式サイトに財務数値の記載なし。/ir/index.html は404。決算公告・電子公告ページなし。セコム電子公告に子会社アット東京の開示を含まない
-    note: 親会社セコム等の有報の数値は原則3により使用せず
+    source: attokyo-mynavi-2027（マイナビ2027 会社データ）
+    via: 非上場・EDINET提出0件。公式サイトに財務数値の記載なし。/ir/index.html は404。決算公告・電子公告ページなし。セコム電子公告に子会社アット東京の開示を含まない。マイナビ2027の会社データ欄に同社登録の売上高が1期分のみ掲載
+    note: 親会社セコム等の有報の数値は原則3により使用せず。マイナビ掲載値は億円単位の概数で、有価証券報告書・決算公告による裏付けがない。1期分のみのため3期以上の充足不可
   - id: ir-operating-profit
     phase: ir
     store: ir_csv
@@ -149,13 +149,25 @@ items:
     store: mdx
     topic: 転勤・リモート勤務・標準労働時間・応募期限
     status: done
-    value: 勤務体系=フレックスタイム制(適用は所属ごとに異なる)。技術系・情報系は統合監視室でのシフト勤務(日勤＋当直)含む。リモート=テレワーク制度あり(会社貸与PC、全社員にiPhone貸与、適用は所属ごとに異なる)。転勤=公式ページに転勤制度の有無の明示なし。拠点は本社豊洲＋全国8エリアのセンター。休日=年間休日124日(土日祝のほか夏季休暇6〜10月に3日・年末年始5日・バースデー休暇・創立記念日5/1)。有給=入社初年度から20日付与・繰越可、平均取得14.4日。育児=出産休暇・育児休暇(女性取得率100%・男性取得者あり)・育児時短(小3まで)。福利厚生=SECOMグループ団体保険・独身寮(新卒で遠距離通勤の場合)・社内サークル補助
+    value: 勤務体系=フレックスタイム制(適用は所属ごとに異なる)。技術系・情報系は統合監視室でのシフト勤務(日勤＋当直)含む。リモート=テレワーク制度あり(会社貸与PC、全社員にiPhone貸与、適用は所属ごとに異なる)。転勤=公式ページに転勤制度の有無の明示なし。拠点は本社豊洲＋全国8エリアのセンター。休日=年間休日124日(土日祝のほか夏季休暇6〜10月に3日・年末年始5日・バースデー休暇・創立記念日5/1)。有給=入社初年度から20日付与・繰越可、公式採用サイトの平均取得14.4日／マイナビ2027のFY2025実績15.6日。残業=マイナビ2027のFY2025で月平均所定外労働時間17.2時間。育児=出産休暇・育児休暇(FY2025取得率 男性87.5%＝対象8名中7名・女性100%＝対象2名中2名)・育児時短(小3まで)。福利厚生=SECOMグループ団体保険・独身寮(新卒で遠距離通勤の場合)・社内サークル補助
     subject: 新卒3コース共通
     as_of: 2026-08-08
     unit: 日・時間
-    source: https://www.attokyo.co.jp/recruit/workstyle.html ／recruit/day.html ／recruit/shinsotsu.html
-    via: Internet Archive キャプチャ
-    note: "not_disclosed: 標準労働時間・所定労働時間の数値、転勤制度の有無、応募締切日"
+    source: https://www.attokyo.co.jp/recruit/workstyle.html ／recruit/day.html ／recruit/shinsotsu.html ／ attokyo-mynavi-2027
+    via: Internet Archive キャプチャ。働き方データはマイナビ2027を直接取得
+    note: "not_disclosed: 標準労働時間・所定労働時間の数値、転勤制度の有無、応募締切日。有給取得日数は公式採用サイト(14.4日)とマイナビ2027(FY2025 15.6日)で基準年度が異なるため両方を併記"
+  - id: recruit-hiring-record
+    phase: recruit
+    store: mdx
+    topic: 新卒採用実績（人数・男女別・離職者数・定着率）
+    status: done
+    value: 採用実績(人数)=2026年22名(予定)・2025年13名・2024年14名・2023年8名。男女別=2025年 男8/女5、2024年 男8/女6、2023年 男7/女1。過去3年の離職者数・定着率=2025年 0名/100%、2024年 0名/100%、2023年 1名/87.5%。2015年頃から新卒採用を実施し在籍率約80%(約80名/100名)。採用実績校は大学院15校・大学70校超・高専7校を掲載
+    subject: 新卒（採用主体=株式会社アット東京）
+    as_of: 2026-08-08
+    unit: 名・percent
+    source: attokyo-mynavi-2027
+    via: job.mynavi.jp/27/pc/search/corp109928/outline.html を直接取得
+    note: 公式採用ページには採用実績・定着率の記載なし。マイナビ2027の掲載のみ。2026年は採用予定人数のため離職者数・定着率の掲載なし。採用実績校はMDXには未掲載（分量のためマイナビを参照）
   - id: segments-services
     phase: segments
     store: mdx
@@ -191,7 +203,7 @@ items:
     unit: ""
     source: https://www.attokyo.co.jp/company/outline.html
     via: Wayback Machineキャッシュ
-    note: 持株比率は公式会社概要に記載なし。セコムの過半数保有等は公式サイトで確認できず
+    note: 持株比率は公式会社概要に記載なし。過半数保有かは確認できないが、マイナビ2027の沿革に「2012年10月 筆頭株主がセコム(株)に異動」とあり、筆頭株主がセコムであることは同社登録情報で裏付けられる
   - id: article-mission
     phase: article
     store: mdx
@@ -209,13 +221,13 @@ items:
     store: mdx
     topic: 会社紹介（設立経緯・規模）
     status: done
-    value: 正式社名=株式会社アット東京(AT TOKYO Corporation)。設立=2000年6月26日(営業開始:2000年9月)。本社=東京都江東区豊洲5-6-36 豊洲プライムスクエア3階(TEL 03-6372-3000)。資本金=133億7850万円。事業内容=情報通信システムを一括して集中管理するデータセンター事業(届出電気通信事業者)。代表取締役社長=泉田達也。規模の指標=国内13か所のデータセンター、CC1総床面積14万平米。認証=ISMS・SOC2 TYPEⅡ(一部サービス)・プライバシーマーク・PCI DSS。従業員数387名(2024年、ESGデータ2024)。設立経緯=公式会社概要・ご挨拶に詳細記載なし
+    value: 正式社名=株式会社アット東京(AT TOKYO Corporation)。設立=2000年6月26日(営業開始:2000年9月)。本社=東京都江東区豊洲5-6-36 豊洲プライムスクエア3階(TEL 03-6372-3000)。資本金=133億7850万円。事業内容=情報通信システムを一括して集中管理するデータセンター事業(届出電気通信事業者)。代表取締役社長=泉田達也。規模の指標=国内13か所のデータセンター、CC1総床面積14万平米。認証=ISMS・SOC2 TYPEⅡ(一部サービス)・プライバシーマーク・PCI DSS。従業員数387名(FY2024、ESGデータ2024)→412名(2026年3月末、マイナビ2027)。売上高436億円(2024年度、マイナビ2027)。設立経緯=公式会社概要・ご挨拶に詳細記載なし
     subject: 株式会社アット東京（単体）
-    as_of: 2025-06-12
-    unit: 資本金=JPY・設立=日付・従業員数=persons
-    source: https://www.attokyo.co.jp/company/outline.html ／company/message.html ／file/ESG_Data_attokyo_2024.pdf
-    via: Wayback Machineキャッシュ
-    note: 設立経緯(東京電力・パワードコム由来、2012年セコム子会社化等)は公式サイトに記載なく第三者情報で補完せず
+    as_of: 2025-06-12（会社概要）/ 2026-08-08（マイナビ2027）
+    unit: 資本金=JPY・設立=日付・従業員数=persons・売上高=JPY
+    source: https://www.attokyo.co.jp/company/outline.html ／company/message.html ／file/ESG_Data_attokyo_2024.pdf ／ attokyo-mynavi-2027
+    via: Wayback Machineキャッシュ。従業員数412名・売上高はマイナビ2027を直接取得
+    note: 設立経緯(東京電力・パワードコム由来等)は公式サイトに記載なく第三者情報で補完せず。マイナビ2027の沿革には「2012年10月 筆頭株主がセコム(株)に異動」の記載があり、同社登録情報として筆頭株主がセコムであることを確認できる（持株比率は依然非開示）
   - id: article-links
     phase: article
     store: mdx
