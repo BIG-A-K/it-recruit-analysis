@@ -294,10 +294,32 @@ def test_unlisted_company_pages_omit_unavailable_data_sections() -> None:
         row["company_id"]
         for row in read_rows("segments.csv")
     }
+    employment_keys = {
+        "average_annual_salary",
+        "average_age",
+        "average_tenure",
+        "employee_count",
+        "female_manager_ratio",
+        "gender_pay_gap",
+        "male_childcare_leave_rate",
+        "male_childcare_leave_rate_with_leave",
+        "rd_expenses",
+    }
+    employment_by_company = {
+        row["company_id"]
+        for row in read_rows("metrics.csv")
+        if row["availability"] == "reported"
+        and row["metric_key"] in employment_keys
+    }
 
     for company_id in unlisted_company_ids:
         page = (COMPANY_PAGE_DIR / f"{company_id}.mdx").read_text(encoding="utf-8")
         for component in unavailable_components:
+            if (
+                component == "EmploymentOverview"
+                and company_id in employment_by_company
+            ):
+                continue
             assert f"<{component} companyId={{frontmatter.companyId}}" not in page, (
                 company_id,
                 component,
