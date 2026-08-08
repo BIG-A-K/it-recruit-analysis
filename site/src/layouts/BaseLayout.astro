@@ -26,6 +26,7 @@ const isHome = pathname === "/";
 const isIndustry = pathname.startsWith("/industries/");
 const isCompany = pathname.startsWith("/companies/");
 const isGuide = pathname.startsWith("/guide/");
+const isContact = pathname.startsWith("/contact/");
 ---
 
 <!doctype html>
@@ -91,6 +92,7 @@ const isGuide = pathname.startsWith("/guide/");
           <a class:list={{ active: isIndustry }} href="/industries/">業界一覧</a>
           <a class:list={{ active: isCompany }} href="/companies/">企業一覧</a>
           <a class:list={{ active: isGuide }} href="/guide/">分析方法</a>
+          <a class:list={{ active: isContact }} href="/contact/">お問い合わせ</a>
         </nav>
 
         <div class="sidebar-footer">
@@ -115,7 +117,7 @@ const isGuide = pathname.startsWith("/guide/");
         <footer class="site-footer wrap">
           <p class="site-footer-meta">
             <span>運営者: 黒田 幸者</span>
-            <a href="mailto:yukijya@big-a-k.com">yukijya@big-a-k.com</a>
+            <a href="/contact/">お問い合わせ</a>
             <a href="/privacy/">プライバシーポリシー・運営者情報</a>
           </p>
           <p class="site-footer-copyright">© 2026 @yukijya kuroda All Rights Reserved.</p>

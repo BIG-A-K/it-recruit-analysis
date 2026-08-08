@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const email = "yukijya@big-a-k.com";
+const formUrl = "https://forms.gle/sp4hVBMhgZSXemLT8";
+---
+
+<BaseLayout
+  title="お問い合わせ"
+  description="掲載内容へのご意見・訂正依頼・掲載希望など、当サイトへのお問い合わせ方法をご案内します。"
+>
+  <section>
+    <p class="breadcrumb"><a href="/">トップ</a><span>/</span>お問い合わせ</p>
+    <div class="doc-head">
+      <h1>お問い合わせ</h1>
+      <p class="lead">
+        掲載内容へのご質問やご意見、訂正・削除のご依頼、取り上げてほしい企業や業界のご提案などがあれば、お気軽にご連絡ください。
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>お問い合わせ方法</h2>
+      <p>返信には数日かかる場合があります。</p>
+    </div>
+    <div class="contact-methods">
+      <article class="panel contact-method">
+        <span class="contact-label">EMAIL</span>
+        <h3>メール</h3>
+        <p>メールソフトから直接お問い合わせいただけます。</p>
+        <a class="button button-outline" href={`mailto:${email}`}>{email}</a>
+      </article>
+
+      <article class="panel contact-method contact-method-featured">
+        <span class="contact-label">FORM</span>
+        <h3>Googleフォーム</h3>
+        <p>必要事項を入力して送信してください。Googleフォームが別のタブで開きます。</p>
+        <a
+          class="button button-primary"
+          href={formUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >フォームを開く</a>
+      </article>
+
+      <article class="panel contact-method">
+        <span class="contact-label">X / TWITTER</span>
+        <h3>X</h3>
+        <p>XのDMからもお問い合わせいただけます。</p>
+        <a
+          class="contact-text-link"
+          href="https://x.com/BIG_A_K"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Xで問い合わせる</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel contact-notes">
+    <div>
+      <h2>ご連絡いただく際のお願い</h2>
+      <p>
+        掲載内容の訂正をご依頼の場合は、対象ページのURLと、根拠となる公式情報のURLを添えていただけると確認がスムーズです。
+      </p>
+    </div>
+    <div>
+      <h3>返信できない場合があります</h3>
+      <ul>
+        <li>営業・勧誘を目的とするもの</li>
+        <li>スパムまたは不審な内容を含むもの</li>
+        <li>個別のプログラムのエラーやデバッグに関するもの</li>
+        <li>その他、不適切と判断したもの</li>
+      </ul>
+    </div>
+    <p class="contact-privacy">
+      お預かりする情報の取り扱いについては、<a href="/privacy/">プライバシーポリシー</a>をご確認ください。
+    </p>
+  </section>
+</BaseLayout>
