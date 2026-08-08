@@ -256,3 +256,26 @@ edinet-s100ybv4,statutory_filing,有価証券報告書－第41期(2025/04/01－2
 edinet-s100w1ey,statutory_filing,有価証券報告書－第40期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100W1EY,S100W1EY,2025-06-23,2026-08-07,東京エレクトロンデバイス株式会社
 edinet-s100togi,statutory_filing,有価証券報告書－第39期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TOGI,S100TOGI,2024-06-20,2026-08-07,東京エレクトロンデバイス株式会社
 boj-fxerm-usdjpy,public_data,時系列統計データ 為替相場（東京インターバンク相場・月次）,https://www.stat-search.boj.or.jp/ssi/mtshtml/fm08_m_1.html,FM08'FXERM06/FM08'FXERM07,2026-08-05,2026-08-07,日本銀行
+edinet-s100r42i,statutory_filing,有価証券報告書,https://api.edinet-fsa.go.jp/api/v2/documents/S100R42I,S100R42I,2023-06-29,2026-08-08,日本通信株式会社
+edinet-s100tu71,statutory_filing,有価証券報告書,https://api.edinet-fsa.go.jp/api/v2/documents/S100TU71,S100TU71,2024-06-27,2026-08-08,日本通信株式会社
+edinet-s100w51c,statutory_filing,有価証券報告書,https://api.edinet-fsa.go.jp/api/v2/documents/S100W51C,S100W51C,2025-06-26,2026-08-08,日本通信株式会社
+jri-koukoku-2026-24,statutory_filing,第24期決算公告（2026年3月期）貸借対照表・損益計算書,https://www.jri.co.jp/file/pdf/company/koukoku/2026_24.pdf,jri-koukoku-2026-24,2026-06-29,2026-08-08,株式会社日本総合研究所
+jri-koukoku-2025-23,statutory_filing,第23期決算公告（2025年3月期）貸借対照表・損益計算書,https://www.jri.co.jp/file/pdf/company/koukoku/2025_23.pdf,jri-koukoku-2025-23,2025-06-30,2026-08-08,株式会社日本総合研究所
+jri-koukoku-2024-22,statutory_filing,第22期決算公告（2024年3月期）貸借対照表・損益計算書,https://www.jri.co.jp/file/pdf/company/koukoku/2024_22.pdf,jri-koukoku-2024-22,2024-06-28,2026-08-08,株式会社日本総合研究所
+jri-koukoku-2023-21,statutory_filing,第21期決算公告（2023年3月期）貸借対照表・損益計算書,https://www.jri.co.jp/file/pdf/company/koukoku/2023_21.pdf,jri-koukoku-2023-21,2023-06-30,2026-08-08,株式会社日本総合研究所
+jri-koukoku-2022-20,statutory_filing,第20期決算公告（2022年3月期）貸借対照表・損益計算書,https://www.jri.co.jp/file/pdf/company/koukoku/2022_20.pdf,jri-koukoku-2022-20,2022-06-30,2026-08-08,株式会社日本総合研究所
+jri-corporate-profile,corporate,会社概要（従業員数・資本金・株主）,https://www.jri.co.jp/company/profile/,,,2026-08-08,株式会社日本総合研究所
+jri-koukoku-merger-2026-0106,statutory_filing,合併公告（2026年1月6日）,https://www.jri.co.jp/file/pdf/company/koukoku/20260106.pdf,jri-koukoku-20260106,2026-01-06,2026-08-08,株式会社日本総合研究所
+jri-koukoku-merger-2025-0722,statutory_filing,合併公告（2025年7月22日）,https://www.jri.co.jp/file/pdf/company/koukoku/20250722.pdf,jri-koukoku-20250722,2025-07-22,2026-08-08,株式会社日本総合研究所
+edinet-s100tsij,statutory_filing,有価証券報告書－第88期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100TSIJ,S100TSIJ,2024-06-27,2026-08-08,株式会社村田製作所
+edinet-s100w2zr,statutory_filing,有価証券報告書－第89期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100W2ZR,S100W2ZR,2025-06-24,2026-08-08,株式会社村田製作所
+edinet-s100yhpy,statutory_filing,有価証券報告書－第90期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YHPY,S100YHPY,2026-06-24,2026-08-08,株式会社村田製作所
+edinet-s100vouj,statutory_filing,訂正有価証券報告書－第50期(2024/01/01－2024/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VOUJ,S100VOUJ,2025-04-30,2026-08-08,株式会社電通総研
+edinet-s100t3af,statutory_filing,有価証券報告書－第49期(2023/01/01－2023/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100T3AF,S100T3AF,2024-03-22,2026-08-08,株式会社電通総研
+edinet-s100vfhi,statutory_filing,有価証券報告書－第50期(2024/01/01－2024/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100VFHI,S100VFHI,2025-03-24,2026-08-08,株式会社電通総研
+edinet-s100xrjk,statutory_filing,有価証券報告書－第51期(2025/01/01－2025/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100XRJK,S100XRJK,2026-03-18,2026-08-08,株式会社電通総研
+attokyo-esg-data-2024,financial_report,アット東京 ESGデータ2024（環境編・社会/ガバナンス編）,https://www.attokyo.co.jp/file/ESG_Data_attokyo_2024.pdf,,2025-06-30,2026-08-08,株式会社アット東京
+attokyo-corporate,corporate,会社概要（公式サイト）,https://www.attokyo.co.jp/company/outline.html,,,2026-08-08,株式会社アット東京
+edinet-s100t22a,statutory_filing,有価証券報告書－第25期(2023/01/01－2023/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100T22A,S100T22A,2024-03-19,2026-08-08,株式会社ブロードバンドタワー
+edinet-s100v1my,statutory_filing,有価証券報告書－第26期(2024/01/01－2024/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100V1MY,S100V1MY,2025-03-19,2026-08-08,株式会社ブロードバンドタワー
+edinet-s100wzgb,statutory_filing,有価証券報告書－第47期(2025/01/01－2025/12/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100WZGB,S100WZGB,2026-03-19,2026-08-08,株式会社ブロードバンドタワー

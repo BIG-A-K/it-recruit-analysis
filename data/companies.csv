@@ -82,3 +82,11 @@ fanuc,FANUC,ふぁなっく,ファナック株式会社,6954,,https://www.fanuc.
 accenture-japan,アクセンチュア,あくせんちゅあ,アクセンチュア株式会社,,,https://www.accenture.com/jp-ja/,,,,,JP,true,accenture-plc
 accenture-plc,Accenture plc,あくせんちゅあ,Accenture plc,,,https://www.accenture.com/,,0001467373,ACN,NYSE,IE,false,
 tokyo-electron-device,東京エレクトロンデバイス,とうきょうえれくとろんでばいす,東京エレクトロンデバイス株式会社,2760,4020001009043,https://www.teldevice.co.jp/,E02955,,,東証プライム,JP,true,
+murata-manufacturing,村田製作所,むらたせいさくしょ,株式会社村田製作所,6981,,https://www.murata.com/ja-jp/,E01914,,,,JP,true,
+dentsu-soken,電通総研,でんつうそうけん,電通総研株式会社,4812,,https://www.dentsusoken.com/,E05147,,,,JP,true,
+japan-communications,日本通信,にほんつうしん,日本通信株式会社,9424,,https://www.j-com.co.jp/,E04473,,,,JP,true,
+jri,日本総研,にほんそうけん,株式会社日本総合研究所,,,https://www.jri.co.jp/,,,,,JP,true,
+at-tokyo,アット東京,あっととうきょう,株式会社アット東京,,,https://www.attokyo.co.jp/,,,,,JP,true,
+broadband-tower,ブロードバンドタワー,ぶろーどばんどたわー,株式会社ブロードバンドタワー,3776,,https://www.bbtower.co.jp/,E05494,,,,JP,true,
+dentsu-group,電通グループ,でんつうぐるーぷ,株式会社電通グループ,,,https://www.group.dentsu.com/,,,,,JP,false,
+smfg,SMFG,えすえむえふじー,株式会社三井住友フィナンシャルグループ,,,https://www.smfg.co.jp/,,,,,JP,false,

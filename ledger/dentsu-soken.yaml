@@ -1,0 +1,236 @@
+company_id: dentsu-soken
+disclosure_company_id: dentsu-soken
+company_boundary:
+  adoption_company_id: dentsu-soken
+  disclosure_company_id: dentsu-soken
+  reporting_segment_company_id: dentsu-soken
+  legal_name: 電通総研株式会社
+  securities_code: "4812"
+  edinet_code: E05147
+  fiscal_year_end: 12月31日
+  accounting_standard: JGAAP
+  currency: JPY
+  reporting_segments: コミュニケーションIT・製造ソリューション・金融ソリューション・ビジネスソリューションの4セグメント
+  company_relations:
+    - from_company_id: dentsu-soken
+      to_company_id: dentsu-group
+      relation_type: parent
+      valid_from: 2025-12-31
+      source_id: edinet-s100xrjk
+      note: 2025年12月31日時点で株式会社電通グループが発行済株式の61.8%を保有
+  note: 2024年1月1日付で株式会社電通国際情報サービス(ISID)から電通総研株式会社へ商号変更（任務指示の2023年10月は誤り）。同日子会社2社(アイティアイディ・ISIDビジネスコンサルティング)を吸収合併。電通グループ(61.8%保有)。採用主体=開示主体
+fiscal_year: 2025
+focus: 両方
+created_at: 2026-08-08
+updated_at: 2026-08-08
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csv の average_age/average_tenure/average_annual_salary(non_consolidated, 2023-2025 各3行) + employee_count(consolidated/non_consolidated 各7行=2019-2025)
+    subject: 単体（人的資本4指標）+ 連結・単体（従業員数）
+    as_of: 2023-12-31〜2025-12-31
+    unit: years・JPY・persons
+    source: edinet-s100xrjk(51期)・edinet-s100vfhi(50期)・edinet-s100t3af(49期)
+    via: uv run edinet-normalize dentsu-soken S100XRJK/S100VFHI/S100T3AF --period-end 2025/2024/2023-12-31
+    note: 会計基準=JGAAP。決算期は12月末日
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高 3期以上
+    status: done
+    value: metrics.csv の revenue（consolidated, 2023-2025, 3行）。FY2023=142,608M / FY2024=152,642M / FY2025=164,865M
+    subject: 連結
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100xrjk
+    via: 業績ハイライト jpcrp_cor:NetSalesSummaryOfBusinessResults。edinet-normalizeはJGAAP_COMPANY_IDS未登録のためcsv-upsertで補完
+    note: ""
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csv の operating_profit（consolidated, 2023-2025, 3行）。FY2023=21,028M / FY2024=21,039M / FY2025=22,888M
+    subject: 連結
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t3af(FY2023)・edinet-s100xrjk(FY2024/2025)
+    via: jppfs_cor:OperatingIncome。業績ハイライトに営業利益はなく損益計算書から
+    note: ""
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csv の equity_ratio(3行)・current_assets(4行=2022-2025)・current_liabilities(4行)・quick_assets(3行)。equity_ratio: FY2023=62.2% / FY2024=61.9% / FY2025=60.7%
+    subject: 連結
+    as_of: 2022-12-31〜2025-12-31
+    unit: percent・JPY
+    source: edinet-s100xrjk・edinet-s100vfhi・edinet-s100t3af
+    via: equity_ratio=jpcrp_cor:EquityToAssetRatioSummaryOfBusinessResults(100倍)。current_assets/liabilities=jppfs_cor(edinet-normalize自動)。quick_assets=現金及び預金+受取手形、売掛金及び契約資産
+    note: 当座資産の算定内訳=CashAndDeposits + NotesAndAccountsReceivableTradeAndContractAssets。短期投資有価証券なし。預け金DepositsPaidは流動資産だが営業預け金性格で当座資産から除外
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csv の operating_cf/investing_cf/financing_cf（consolidated, 2023-2025 各3行, 計9行）。FY2025 operating=19,064M / investing=-2,956M / financing=-8,552M
+    subject: 連結
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100xrjk
+    via: 業績ハイライト jpcrp_cor:NetCashProvidedByUsedIn{Operating,Investing,Financing}ActivitiesSummaryOfBusinessResults
+    note: ""
+  - id: ir-segment
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメント（コミュニケーションIT・製造・金融・ビジネス）の年度別売上・利益
+    status: done
+    value: segments.csv 12行（4報告セグメント × 3年度）。segment_id=communications-it, manufacturing-solutions, financial-solutions, business-solutions
+    subject: 連結報告セグメント
+    as_of: 2023-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t3af(FY2023)・edinet-s100xrjk(FY2024/2025)
+    via: csv-upsert。normalize.pyのCOMPANY_SEGMENTSに未登録のため手動補完
+    note: profit_measure=営業利益。セグメント利益合計と連結営業利益にはFY2023 -2百万円、FY2024 -2百万円、FY2025 0百万円の差異あり
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 組織再編・会計基準変更・比較上の注記
+    status: done
+    value: 商号変更=2024年1月1日付で「株式会社電通国際情報サービス」から「電通総研株式会社」へ変更。同日子会社2社(アイティアイディ・ISIDビジネスコンサルティング)を吸収合併、コンサルティング機能強化。Two Pillares GmbHが関連会社から連結子会社へ。アイエスアイディ・フェアネスを吸収合併で消滅(いずれもFY2023)。会計基準=JGAAPで一貫、IFRS変更なし
+    subject: 連結
+    as_of: 2023-12-31〜2025-12-31
+    unit: ""
+    source: edinet-s100t3af・edinet-s100xrjk
+    via: 有報のTextBlock要素
+    note: MDXの ::::warning 用材料
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: 採用主体=電通総研株式会社(DENTSU SOKEN INC.)。募集年度=2027年卒(2027年3月までに四年制大学/大学院卒業見込、2027年4月入社)。確認日2026-08-08。新卒募集ページ https://www.dentsusoken.com/saiyo/application/。マイページ(エントリー) https://mypage.3010.i-webs.jp/ds2028/
+    subject: 電通総研株式会社（採用主体=開示主体）
+    as_of: "2026-08-08"
+    unit: ""
+    source: https://www.dentsusoken.com/saiyo/application/
+    via: 公式新卒採用サイト(saiyo)募集要項
+    note: 募集要項は2027年卒基準。採用トップNEWS(2026.4.1)は2028年向けマイページオープンを告知。移行期で要項未更新の可能性
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: 募集職種3分類(募集要項)。(1)技術職(ITコンサルタント、システムエンジニア、プロジェクトマネージャー、データサイエンティスト等)。(2)営業職(ソリューション営業、アカウント営業)。(3)スタッフ職。応募資格=2027年3月までに四年制大学/大学院卒業or見込、2027年4月入社可能、指定日程で全選考参加可能。既卒可、留学生積極採用、同シーズン重複応募不可(1人1回)。全学部全学科全専攻。募集人数130〜150名程度。配属=入社後新入社員研修中にヒアリングし職務適性で総合決定(職種別採用ではなく入社後決定)。選考フロー=画像公開、テキスト詳細なし。勤務地=品川本社/中部支社(名古屋)/豊田支社/関西支社(大阪)/広島支社。新入社員研修は東京、研修後ほとんど東京だが大阪/愛知/広島の可能性あり
+    subject: 新卒一括採用（入社後配属決定）。技術職/営業職/スタッフ職
+    as_of: "2026-08-08（募集要項は2027年卒基準）"
+    unit: ""
+    source: https://www.dentsusoken.com/saiyo/application/
+    via: 公式募集要項・職種役割紹介・採用FAQ・会社概要
+    note: 募集要項は3職種(技術/営業/スタッフ)、職種紹介ページ(/saiyo/job/)は2職種(技術/営業)。新卒は職種別採用ではなく入社後研修中に配属決定のため職種別個別の対応表は公式に存在しない
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
+    status: done
+    value: 初任給(2025年度実績、全職種共通) 院了300,000円(院了手当20,000円含む)・学部卒280,000円。昇給年1回・賞与年2回(金額開示なし)。諸手当=在宅勤務等補助手当(月5,000円)・通勤手当・時間外勤務手当・新卒住宅補助(実家が通勤圏外の新入社員、入社後3年間・月4万円、初期/引越費用も会社負担)・こども手当(子1人月25,000円・23歳未満)・院了手当(月20,000円・専門職昇格後3年間まで)・単身赴任手当(月50,000円)・前払い退職金・確定拠出年金。新入社員はフレックスタイム制適用(コアタイムなし)
+    subject: 新卒全職種共通（院了/学部卒のみ区分、職種別給与ではない）
+    as_of: 2025年度実績(初任給)／確認2026-08-08
+    unit: JPY
+    source: https://www.dentsusoken.com/saiyo/application/
+    via: 公式募集要項(初任給/賞与/諸手当)と制度福利厚生ページ(/saiyo/benefits/)
+    note: "not_disclosed: 基礎給(固定時間外手当含まない純粋基本給)の単独金額、固定時間外手当(みなし残業代)の有無/金額、標準年収(モデル年収)。時間外勤務手当は実労働に対する別支給。新卒は裁量労働制でなくフレックスのため固定時間外手当は想定されないが公式明示なし"
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: リモート勤務=テレワーク勤務制度あり(会社が認めた業務で原則自宅または会社指定のテレワークオフィス、全社員対象)。標準労働時間=9:30〜17:30(昼休み1時間含む)・所定労働7時間/日・コアタイムなしのフレックスタイム制(入社後〜6年目前後)・入社7年目前後以降は裁量労働制。深夜残業禁止(22時以降原則禁止)・休日出勤禁止(土日祝)・毎週水曜早帰り(今日はここまDay)。転勤=5拠点展開かつ単身赴任手当(月5万円)を設けるが転勤の有無/要件/頻度の明示記載は公式にない
+    subject: 新卒全職種共通
+    as_of: "2026-08-08"
+    unit: ""
+    source: https://www.dentsusoken.com/saiyo/application/
+    via: 公式募集要項・制度福利厚生・採用FAQ・コーポレート福利厚生
+    note: "not_disclosed: 応募期限(エントリー締切)。募集要項・採用FAQに明示の応募期限/締切日なし。転勤は5拠点展開と単身赴任手当から可能性示唆されるが公式明示なし"
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的サービス名・ブランド名・提供内容
+    status: done
+    value: 報告セグメント4区分(日本会計基準・連結)。【1.金融ソリューション】BANK・R、D-NEXUS、Lamp/Lampオンラインレンディング版、GNX、FMConverge、Stream-R、iCollex、iConnectStation、joinsure、xAiLiS、M5、CLOUDiS/IaaS。【2.ビジネスソリューション】会計/経営管理系=Ci\*X Financials/Expense/Workflow/Journalizer、STRAVIS、CCH Tagetik、Oracle EPM/Hyperion、SAP S/4HANA。人事/HCM系=POSITIVE(約3,000社導入)、HUMAnalytics、STAFFBRAIN、CAREERSHIP、お金のシェルパ。【3.製造ソリューション】iQUAVIS、i-SPiDM、MADe、CALC、Nozomi Guardian(OTサイバーセキュリティ)、CFP算定・削減コンサルティング。【4.コミュニケーションIT】minnect申請管理/AIアシスト、CIVILIOS(都市OS)、LINEコールPlus、DendroBium(CDP)、Treasure Data、Hightouch、iPLAss Enterprise Edition(ローコード開発)
+    subject: 連結
+    as_of: 2026-08-08確認
+    unit: ""
+    source: https://www.dentsusoken.com/ir/financial/segment.html ／systemintegration/ ／solution/
+    via: 公式コーポレート／IRページ
+    note: 報告セグメントは法定開示。製品ブランド名は公式機能ページ/ソリューション一覧から
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイト事業区分とIR報告セグメントの対応と差異
+    status: done
+    value: 公式サイトの事業区分(3機能)とIR報告セグメント(4セグメント)は軸が異なり1:1対応しない。【公式3機能=職能別】シンクタンク・コンサルティング・システムインテグレーション。【IR4セグメント=市場別】金融ソリューション・ビジネスソリューション・製造ソリューション・コミュニケーションIT。システムインテグレーション機能ページ内に4領域が列挙され報告セグメントとほぼ一致。シンクタンク・コンサルティングは独立した報告セグメントではなく4セグメントを横断する機能。顧客業種別売上構成(金融21%・製造41%・サービス公共28%・流通他10%、2025年12月期)は報告セグメントではなく顧客業種別開示
+    subject: ""
+    as_of: 2026-08-08確認
+    unit: ""
+    source: https://www.dentsusoken.com/dentsusoken/overview/ ／ir/financial/segment.html ／about/data/
+    via: 公式ページの事業区分とIRセグメント定義を比較
+    note: 公式3機能とIR4セグメントは職能別/市場別で軸が異なる
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 親会社=株式会社電通グループ(Dentsu Group Inc.)が発行済株式の61.8%(120,777千株)を保有(2025/12/31)。電通グループは広告・コミュニケーション主軸の持ち株会社、当社はグループ内でITソリューションを担う。【主な子会社(国内)】電通総研テクノロジー、エステック、ミツエーリンクス、HIYOKU Technologies、電通総研アシスト、電通総研ブライト。【主な子会社(海外)】DENTSU SOKEN UK(英)・USA(米)・HONG KONG(香港)、電通総研(上海)信息諮詢(中国)、DENTSU SOKEN SINGAPORE・(THAILAND)、PT. DENTSU SOKEN INDONESIA、Two Pillars GmbH(独)。【関連会社】クウジット、スマートホールディングス、FINOLAB、ACSiON
+    subject: 連結
+    as_of: 2025-12-31（株主状況）／グループ会社一覧は2026-04-01現在
+    unit: ""
+    source: https://www.dentsusoken.com/about/group/ ／ir/stocks/stock-info.html
+    via: 公式グループ会社一覧・株式情報ページ
+    note: 各子会社の個別事業内容は公式グループ一覧に住所・外部URLのみ記載
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン（公式表記）
+    status: done
+    value: 【ミッション】誠実を旨とし、テクノロジーの可能性を切り拓く挑戦者として、顧客、生活者、社会の進化と共存に寄与する。【ビジョン(スローガン)】HUMANOLOGY for the future — 人とテクノロジーで、その先をつくる。【行動指針AHEAD】Agile(まずやってみる)・Humor(人間魅力で超える)・Explore(切り拓く)・Ambitious(夢を持つ)・Dialogue(互いに語り尽くす)。【長期経営ビジョン】Vision 2030。【中期経営計画】社会進化実装 2027
+    subject: 公式表記
+    as_of: 2026-08-08確認
+    unit: ""
+    source: https://www.dentsusoken.com/dentsusoken/philosophy/ ／overview/
+    via: 公式理念ページ・IR方針ページ
+    note: 理念ページで電通グループの企業理念・行動憲章も参照
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: done
+    value: 正式商号=電通総研株式会社(英名DENTSU SOKEN INC.)。公式会社概要ページは「株式会社電通総研」と表記(表記揺れ、有報正式商号は電通総研株式会社)。設立1975年12月11日。旧社名=株式会社電通国際情報サービス(ISID)、2023年10月1日付で電通総研株式会社へ商号変更発表(有報では2024年1月1日付変更)。代表取締役社長 岩本浩久。本社=東京都港区港南2-17-1(関西・中部・豊田・広島の各支社)。資本金81億8,050万円。連結従業員数4,618名(2025年12月末、女性比率27.7%)。単体年間離職率3.5%(2025年12月期)。顧客社数約2,500社。連結売上高164,865百万円・営業利益率13.9%(2025年12月期)。2025年に創業50周年
+    subject: 連結+単体
+    as_of: 2025年12月末／2026-08-08確認
+    unit: ""
+    source: https://www.dentsusoken.com/about/company/ ／about/data/ ／dentsusoken/history/
+    via: 公式会社概要・データページ
+    note: 連結従業員数4,618名。単体従業員数は会社概要に明示なく、連結売上は参考値(正本はmetrics.csv)
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
+    status: done
+    value: 公式HP https://www.dentsusoken.com/。IRトップ https://www.dentsusoken.com/ir/。有報一覧 https://www.dentsusoken.com/ir/library/securities.html。決算短信・説明資料 https://www.dentsusoken.com/ir/library/results.html。セグメント情報 https://www.dentsusoken.com/ir/financial/segment.html。業績ハイライト https://www.dentsusoken.com/ir/financial/highlight.html。フィナンシャルデータブック https://www.dentsusoken.com/ir/library/databook.html。採用情報 https://www.dentsusoken.com/recruit/。新卒採用 https://www.dentsusoken.com/saiyo/。キャリア採用 https://www.career.dentsusoken.com/。会社概要 https://www.dentsusoken.com/about/company/。グループ会社一覧 https://www.dentsusoken.com/about/group/
+    subject: 正規公式URL
+    as_of: 2026-08-08確認
+    unit: ""
+    source: 公式サイト各ページ
+    via: webfetchで200/内容確認済み
+    note: 有報の直近3年度PDF個別URLはirpocket JSウィジェットで動的描画されHTMLから直接取得不可。EDINET原本識別子(source_id)はIR workerがedinet-fetchで担当。本件は公式有報一覧ページURLのみ

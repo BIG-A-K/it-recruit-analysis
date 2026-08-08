@@ -1,3 +1,5 @@
 from_company_id,to_company_id,relation_type,valid_from,valid_to,source_id,note
 macnica,macnica-holdings,parent,2015-04-01,,edinet-s100ygvr,2015年4月1日の共同株式移転によりマクニカホールディングス設立、株式会社マクニカを100%子会社化（富士エレクトロニクスと同時）。マクニカHD FY2026有報（S100YGVR）で確認。
 tokyo-electron-device,tokyo-electron,parent,1986-03-03,,edinet-s100ybv4,東京エレクトロン株式会社が33.82%出資する主要株主（2026年3月期末時点、FY2026有報大株主欄）。持分法非適用・連結子会社ではない独立上場企業に対する支配力基準による親会社。1986年3月3日、東京エレクトロン（株）の出資で当社がテル管理サービス株式会社として設立されたことに由来。
+dentsu-soken,dentsu-group,parent,2025-12-31,,edinet-s100xrjk,2025年12月31日時点で株式会社電通グループが発行済株式の61.8%を保有。電通総研の親会社として記録。
+jri,smfg,parent,2026-04-01,,jri-corporate-profile,2026年4月のグループ内再編後も、会社概要で株式会社三井住友フィナンシャルグループの直接100%子会社と記載。

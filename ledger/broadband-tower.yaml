@@ -1,0 +1,230 @@
+company_id: broadband-tower
+disclosure_company_id: broadband-tower
+company_boundary:
+  adoption_company_id: broadband-tower
+  disclosure_company_id: broadband-tower
+  reporting_segment_company_id: broadband-tower
+  legal_name: 株式会社ブロードバンドタワー
+  securities_code: "3776"
+  edinet_code: E05494
+  fiscal_year_end: 12月31日
+  accounting_standard: JGAAP（連結・個別とも日本基準）
+  currency: JPY
+  reporting_segments: コンピュータプラットフォーム事業（データセンター事業）・メディアソリューション事業の2セグメント
+  company_relations: []
+  note: 東京証券取引所スタンダード市場上場。採用主体=開示主体=同一。公式URL https://www.bbtower.co.jp/。設立時商号「グローバルセンター・ジャパン株式会社」、2002年4月に現商号へ変更。親会社=インターネット総合研究所（持分法適用関連会社17.88%）。第27期(FY2025)で会計方針変更、第26期(FY2024)数値は遡及適用後の値に組替え。代表 藤原洋
+fiscal_year: 2025
+focus: 両方
+created_at: 2026-08-08
+updated_at: 2026-08-08
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csv average_annual_salary/average_age/average_tenure（non_consolidated, FY2023/2024/2025 の3期6行）+ employee_count（連結/単体 FY2019-FY2025 の7期14行）。FY2023=平均年齢40歳・勤続9年・給与6,438千円・単体154名・連結249名。FY2025=平均年齢41.1歳・勤続11年・給与6,351千円・単体133名・連結218名
+    subject: 提出会社単体（employee_count は連結+単体）
+    as_of: 2023-12-31〜2025-12-31（employee_count は 2019-12-31〜2025-12-31）
+    unit: JPY・years・persons
+    source: edinet-s100t22a / edinet-s100v1my / edinet-s100wzgb
+    via: uv run edinet-normalize broadband-tower <doc_id> × 3期
+    note: XBRL標準要素のため edinet-normalize が直接抽出
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高 3期以上
+    status: done
+    value: metrics.csv revenue（consolidated）FY2021/2022/2023/2024/2025 の5行。FY2023=13,243,707 / FY2024=13,423,481 / FY2025=15,289,750 千円
+    subject: 連結
+    as_of: 2021-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100wzgb
+    via: JGAAP_COMPANY_IDS未登録のためXBRLから手動抽出し csv-upsert
+    note: 連結経営指標等サマリーの連結数値
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csv operating_profit（consolidated）FY2022/2023/2024/2025 の4行。FY2023=△84,687 / FY2024=668,306 / FY2025=811,080 千円
+    subject: 連結
+    as_of: 2022-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t22a(FY2022) / edinet-s100v1my(FY2023) / edinet-s100wzgb(FY2024/FY2025)
+    via: 3期の連結損益計算書 jppfs_cor:OperatingIncome を横断し最新doc優先で結合して csv-upsert
+    note: 会社は連結経営指標等サマリーに営業利益を開示せず。FY2022/2023は赤字（△361,734 / △84,687）
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csv 連結 equity_ratio FY2021-FY2025（5行、38.9→45.7%）・current_assets FY2022-FY2025（4行）・current_liabilities FY2022-FY2025（4行）・quick_assets FY2022-FY2025（4行）
+    subject: 連結
+    as_of: 2021-12-31〜2025-12-31
+    unit: percent・JPY
+    source: edinet-s100wzgb（equity_ratio, quick_assets）/ edinet-normalize（current_assets/liabilities）
+    via: equity_ratio は連結経営指標等テキストから直接読み取り。quick_assets は連結BSの CashAndDeposits+AccountsReceivableTrade から算定
+    note: quick_assets 算定内訳(FY2025)=現金及び預金6,975,461+売掛金2,032,730=9,008,191 千円
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csv 連結 operating_cf/investing_cf/financing_cf とも FY2021-FY2025 の5行ずつ（計15行）。FY2025=営業1,339,541/投資△1,795,769/財務△654,224 千円
+    subject: 連結
+    as_of: 2021-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100wzgb
+    via: CFサマリー要素から直接抽出し csv-upsert
+    note: 連結経営指標等サマリーの連結CF
+  - id: ir-segment
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメント（コンピュータプラットフォーム・メディアソリューション）の年度別売上・利益
+    status: done
+    value: segments.csv 2報告セグメント × FY2022/2023/2024/2025 の8行。computer-platform（コンピュータプラットフォーム事業=データセンター事業）・media-solution（メディアソリューション事業）。FY2025連結売上計=コンピュータ11,878,243+メディア3,356,403=15,234,846 千円
+    subject: 連結報告セグメント
+    as_of: 2022-12-31〜2025-12-31
+    unit: JPY
+    source: edinet-s100t22a(FY2022) / edinet-s100v1my(FY2023) / edinet-s100wzgb(FY2024/FY2025)
+    via: XBRLの jpcrp_cor:RevenuesFromExternalCustomers と jppfs_cor:OperatingIncome をセグメントメンバーコンテキストで抽出し csv-upsert
+    note: セグメント利益は営業利益。セグメント合計(当期974,190)と連結営業利益(811,080)の差163,109千円は調整項目
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 組織再編・会計基準変更・比較上の注記
+    status: done
+    value: (1)会計方針の変更=第27期(FY2025)で会計方針変更を実施、第26期(FY2024)数値は遡及適用後の値に組替え。(2)商号変更来歴=設立時(2000/2)商号「グローバルセンター・ジャパン株式会社」、2002年4月に現商号へ。(3)収益認識基準=第24期(FY2021)期首から企業会計基準第29号を適用
+    subject: 連結
+    as_of: 2025-12-31基準
+    unit: ""
+    source: edinet-s100wzgb
+    via: S100WZGBの沿革・連結経営指標等テキストブロック
+    note: docDescriptionの「第47期」は誤記、本文の「第27期」(FY2025)が正
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: 採用主体=株式会社ブロードバンドタワー。新卒スペシャルサイトは"BBTower Group RECRUITING INFORMATION"（BBTower+ジャパンケーブルキャストのグループ合同募集）、JOBページで「01.BroadBand Tower（2027年3月卒業予定）」「02.Japan CableCast」に明示分割。CableCastは「2027年卒は募集しておりません」と公式明記。よって2027年度新卒の雇用主はブロードバンドタワーのみ。募集年度=2027年度（2027年3月卒業予定）。確認日2026-08-08。採用トップ https://www.bbtower.co.jp/employment/、新卒スペシャルサイト https://www.bbtower.co.jp/employment/freshers/recruit/、JOB https://www.bbtower.co.jp/employment/freshers/recruit/job/、エントリーフォーム https://www.bbtower.co.jp/employment/freshers/recruit/entry/
+    subject: 採用主体=株式会社ブロードバンドタワー（CableCastは2027卒募集なし）
+    as_of: "2026-08-08"
+    unit: ""
+    source: https://www.bbtower.co.jp/employment/ ／employment/freshers/recruit/job/
+    via: 公式採用トップ → 新卒スペシャルサイト → JOBページ
+    note: CableCast（ジャパンケーブルキャスト）は別法人。BBTower台帳ではBBTower分のみ記録
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: 募集職種・人数=技術職2名・営業職1名（予定）。仕事内容=【雇入直後】新人研修受講、社会人に必要な知識の習得（研修期間中は人事総務グループ所属）。【変更の範囲】会社の定める業務（配置転換等により変更の場合あり）。応募資格=2027年3月卒業予定の方。配属=入社直後は人事総務グループ（新人研修）、その後会社の定める業務。選考=書類選考→会社説明会→人事面接（技術職志望者は筆記試験・専門テスト）→面接3回→内定。提出書類=履歴書・成績証明書・卒業見込証明書。勤務地=【雇入直後】本社（東京都千代田区内幸町2-1-6 日比谷パークフロント9階）、【変更の範囲】会社の定める場所
+    subject: 雇用主 株式会社ブロードバンドタワー／対象2027年3月卒／技術職2名・営業職1名
+    as_of: 2027年度（2027年3月卒）／確認2026-08-08
+    unit: 名・職種
+    source: https://www.bbtower.co.jp/employment/freshers/recruit/job/
+    via: JOBページの「01.BroadBand Tower」セクション
+    note: 職種は大区分（技術職／営業職）のみ。技術職は筆記試験（専門テスト）あり
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
+    status: done
+    value: 基準給与（月額給与）=270,000円。基礎給（基本給）=215,280円/月。固定時間外手当（みなし残業代）=54,720円/月（30時間相当額）※超過分は別途支給。基本年俸額=3,240,000円。賞与=なし。昇給=年1回（人事評価による）。諸手当=通勤手当（オフィス出社日数に応じて実費、1ヶ月合計5万円限度）・各種社会保険完備・確定給付年金・財形預金・従業員持株会・慶弔見見金・健康診断・健保契約保養施設・表彰制度・研修・OJT・オンライン学習(Schoo)。試用期間3ヶ月（労働条件の変更なし）
+    subject: 雇用主 株式会社ブロードバンドタワー／2027年3月卒・技術職・営業職共通
+    as_of: 2027年度新卒／確認2026-08-08
+    unit: JPY
+    source: https://www.bbtower.co.jp/employment/freshers/recruit/job/
+    via: JOBページの「給与」欄から原文どおり抽出
+    note: 公式に「賞与:なし」と明記。固定時間外手当は30時間分を月額給与に含み、超過分は別途全額支給。標準年収は「基本年俸額3,240,000円」のみ公表
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: 標準労働時間=平日9:00〜17:30（休憩12:00〜13:00、実働7.5時間）。時差出勤制度あり。リモート勤務=テレワーク勤務可能（ABW・Activity Based Workplace導入、HIBIYA PARKFRONT・TELECOM CENTER BUILDING両拠点の自由席レイアウト）。時間外労働=あり（月20時間〜30時間程度、全社平均月16時間）。転勤（配置転換）=あり。雇入直後の勤務地=本社（東京都千代田区内幸町2-1-6 日比谷パークフロント9階）、「変更の範囲=会社の定める場所（配置転換等により変更の場合あり）」。休日=完全週休二日制・年末年始休暇（年間休日128日・2026年度）。休暇=年次有給休暇11日（入社時より付与）・夏季休暇3日間・特別休暇。受動喫煙防止措置=屋内禁煙（屋内喫煙可能場所あり）
+    subject: 雇用主 株式会社ブロードバンドタワー／2027年3月卒・技術職・営業職共通
+    as_of: 2027年度新卒／確認2026-08-08
+    unit: ""
+    source: https://www.bbtower.co.jp/employment/freshers/recruit/job/ ／employment/
+    via: JOBページの「勤務地」「勤務時間」「休日」「休暇」「受動喫煙防止」欄と採用トップ
+    note: "not_disclosed: 応募期限（締切日）は公式開示なし。採用トップに「2027年度の応募申込みはエントリーフォームより受付中」とのみ記載"
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的サービス名・ブランド名・提供内容
+    status: done
+    value: 【コンピュータプラットフォーム事業（＝データセンター事業、FY2025連結売上11,878,243千円）】公式『事業内容』ページはData Center/Cloud/Storage/Otherに大別。Data Center=コロケーション・ネットワークサービスを6拠点（新大手町サイト・第1サイト千代田区・第3サイト目黒区・第5サイト江東区・西梅田サイト大阪福島区・石狩再エネデータセンター石狩市2026年秋開業予定）。Cloud=c9 Flexサービス(V/D/P/Nシリーズ、ISO/IEC 27017取得)・AWS・Azureハイブリッド。Storage=Dell Technologies PowerScale(Isilon)・Unity・Scality RING（Dell Titaniumパートナー）。Other=テクノロジーファンド(GiTV)・情報セキュリティ(ティエスエスリンク)・エネルギー・AI・IoT。公式『製品・サービス』は8区分（データセンター/クラウド/ストレージ/データマネジメント(Superna・DataDobi・Alog・CloudAny)/ネットワーク(dc.connect NeX)/セキュリティ/MSP監視運用(Monitoring Service Plus)/取扱製品一覧）。閉域網dc.connect NeXでIOWN APN・JPDC All-Photonics Connect接続サービス。【メディアソリューション事業（FY2025連結売上3,356,403千円）】連結子会社ジャパンケーブルキャスト(JCC)がCATV事業者向けにCS放送（有料多チャンネル）配信プラットフォーム『JC-HITS』・地域情報データ放波『JC-data』・次世代端末系サービス『cottio』を提供
+    subject: 連結報告セグメント2本
+    as_of: 2026-08-08確認
+    unit: ""
+    source: https://www.bbtower.co.jp/corporate/field/ ／product-service/ ／corporate/groupcompany/
+    via: WebFetchで公式『事業内容』『製品・サービス』『グループ企業』ページ
+    note: セグメント名称・金額は台帳 ir-segment 行（EDINET E05494 S100WZGB）に依拠
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイト事業区分とIR報告セグメントの対応と差異
+    status: done
+    value: 公式『事業内容』ページの区分はIR報告セグメント2本と完全一致。『コンピュータプラットフォーム事業』＝同IRセグメント（事業内容ページの注記で「データセンター事業をコアとした各種サービス」）『メディアソリューション事業』＝同IRセグメント（JCCのCATV向け映像配信プラットフォーム）。差異3点=(1)公式『製品・サービス』トップメニューは技術領域別の8区分（データセンター/クラウド/ストレージ/データマネジメント/ネットワーク/セキュリティ/MSP監視運用/取扱製品一覧）で、これらは全て『コンピュータプラットフォーム事業』に包含（1対多関係）。(2)メディアソリューション事業は『製品・サービス』メニューに掲載されず、JCCの活動として『事業内容』『グループ企業』ページでのみ言及。(3)公式『事業内容』の『Other』欄にエネルギー・AI・IoT・GiTV・ティエスエスリンクを併記するが独立セグメントではなく補足的領域
+    subject: 公式区分↔IR報告セグメント対応表
+    as_of: 2026-08-08
+    unit: ""
+    source: https://www.bbtower.co.jp/corporate/field/ ／product-service/
+    via: WebFetchで公式2メニューの区分体系を比較
+    note: 対応不能な区分なし。公式サイト上で的事業区分と法定セグメントのズレは発生していない
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 親会社等=株式会社インターネット総合研究所（持分法適用関連会社、当社持分17.88%）。2002年3月に同社の子会社化、2005年11月に『その他の関係会社』へ移行。【連結子会社】会社概要（2026年7月3日現在）に『子会社5社』と明記。うち公式『グループ企業』ページ掲載は3社=(1)ジャパンケーブルキャスト株式会社(JCC、https://www.cablecast.co.jp/)=CATV事業者向けCS多チャンネル配信プラットフォーム(JC-HITS/JC-data/cottio)、2017年10月子会社化。(2)株式会社ティエスエスリンク(https://www.tsslk.jp/)=情報漏洩対策ソフトウェアの開発・提供、2019年1月完全子会社化。(3)GiTV株式会社(https://www.gitv.vc/)=特化型ベンチャーキャピタル、2016年2月当社設立。【持分法適用関連会社】沖縄ケーブルネットワーク（2022年10月に連結子会社から移行）、モバイル・インターネットキャピタル（2021年12月に持分法適用関連会社化）。【非連結化来歴】エーアイスクエア（2023年11月に持分法適用範囲外へ）、IoTスクエア（2019年1月全株式譲渡で連結除外）
+    subject: 連結
+    as_of: 2026-08-08（会社概要は2026年7月3日現在）
+    unit: ""
+    source: https://www.bbtower.co.jp/corporate/ ／corporate/groupcompany/ ／ir/document/report/
+    via: WebFetchで『会社概要・沿革』『グループ企業』ページ
+    note: 子会社5社のうち残り2社は公式『グループ企業』ページに非公開。有報注記の直接確認が必要
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン（公式表記）
+    status: done
+    value: 【経営理念】『自然環境と調和した人間社会の発展に貢献する』。続けて『人間社会と自然環境からできるだけ有用な情報を集め、かつ、人間社会と自然環境にできるだけ有用な情報を発信する仕組みを提供することによって、自然環境と調和した人間社会の発展に貢献していきます。』。【社外スローガン等】全ページ共通ヘッダーコピー『「5G」時代を牽引するブロードバンドタワー』。『私たちについて』ページの自定位『DX センターカンパニー』。代表藤原洋のトップメッセージで『社会を支えるデジタルインフラ企業』『設備運用の効率化や省エネルギー化への取り組みを通じて環境負荷の低減』を掲げる
+    subject: 公式
+    as_of: 2026-08-08
+    unit: ""
+    source: https://www.bbtower.co.jp/corporate/ ／about/ ／ir/strategy/message/
+    via: WebFetchで『会社概要』『私たちについて』『トップメッセージ』
+    note: ""
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: done
+    value: 正式法人名=株式会社ブロードバンドタワー BroadBand Tower, Inc.（証券コード3776 東証スタンダード）。設立経緯=2000年2月9日、インターネット黎明期に『日本初の専業型インターネット・データセンター事業者』として設立（設立時商号『グローバルセンター・ジャパン株式会社』、2002年4月に現商号へ）。社名は『ブロードバンド・ネットワーク上の東京タワーになろう』に由来。2002年3月にインターネット総合研究所の子会社化、2005年8月大阪証券取引所ヘラクレス上場、2022年4月東証スタンダードへ移行。本社=東京都千代田区内幸町2-1-6 日比谷パークフロント9F。資本金=3,492百万円。連結正社員数=210名（2026年6月30日現在）。連結従業員数218名・単体133名（2025年12月31日現在、FY2019=連結249/単体154→FY2025=連結218/単体133へ減少）。代表=藤原 洋（代表取締役 会長兼社長 CEO）。決算期=12月。子会社5社。認証=DX認定(2021年11月)・STAR認証ゴールド(2015年11月・国内初)・c9 Flex V/NシリーズでISO/IEC 27017(2024年10月)・Dell Technologies Titaniumパートナー
+    subject: 連結+単体
+    as_of: 2026-08-08（会社概要は2026年7月3日現在）
+    unit: ""
+    source: https://www.bbtower.co.jp/corporate/ ／about/
+    via: WebFetchで『会社概要・沿革』『私たちについて』
+    note: 第27期(FY2025)で会計方針変更、FY2024数値は遡及適用後の値に組替え
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
+    status: done
+    value: HP https://www.bbtower.co.jp/。IR https://www.bbtower.co.jp/ir/。有報一覧 https://www.bbtower.co.jp/ir/document/report/。有報PDF直近3年度=2025年12月期 https://www.bbtower.co.jp/ir/pdf/report/report_2025_4.pdf／2024年12月期 https://www.bbtower.co.jp/ir/pdf/report/report_2024_4.pdf／2023年12月期 https://www.bbtower.co.jp/ir/pdf/report/report_2023_4.pdf。採用情報 https://www.bbtower.co.jp/employment/。新卒採用 https://www.bbtower.co.jp/employment/freshers/recruit/。エントリーフォーム https://www.bbtower.co.jp/employment/freshers/recruit/entry/
+    subject: 公式
+    as_of: 2026-08-08
+    unit: ""
+    source: https://www.bbtower.co.jp/ir/document/report/ ／employment/
+    via: WebFetchで有報一覧ページと採用トップページ
+    note: ""

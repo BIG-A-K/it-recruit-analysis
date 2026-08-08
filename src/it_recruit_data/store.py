@@ -20,6 +20,7 @@ COMPANY_FIELDS = (
     "exchange",
     "country_code",
     "is_active",
+    "disclosure_company_id",
 )
 
 SOURCE_FIELDS = (

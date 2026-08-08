@@ -1,0 +1,230 @@
+company_id: japan-communications
+disclosure_company_id: japan-communications
+company_boundary:
+  adoption_company_id: japan-communications
+  disclosure_company_id: japan-communications
+  reporting_segment_company_id: japan-communications
+  legal_name: 日本通信株式会社
+  securities_code: "9424"
+  edinet_code: E04473
+  fiscal_year_end: 3月31日
+  accounting_standard: JGAAP
+  currency: JPY
+  reporting_segments: FY2022〜2024は「日本事業」「海外事業」の2セグメント。FY2025より単一セグメント（モバイル通信サービス及びモバイル・ソリューション）に変更
+  company_relations: []
+  note: 純MVNO事業者（b-mobile・日本通信SIM等）。採用主体=開示主体。公式コーポレートは https://www.j-com.co.jp/ （jci.co.jpは接続不可）。従業員300名以下のため人的資本多様性指標の公表義務対象外
+fiscal_year: 2025
+focus: 両方
+created_at: 2026-08-08
+updated_at: 2026-08-08
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csv employee_count(14行:連結FY2019〜2025+単体FY2019〜2025)・average_age/average_tenure/average_annual_salary(各3行:FY2023〜2025)
+    subject: 単体（平均値）+ 連結・単体（従業員数）
+    as_of: 2023-03-31〜2025-03-31
+    unit: JPY・years・persons
+    source: edinet-s100r42i / edinet-s100tu71 / edinet-s100w51c
+    via: edinet-normalize 3件 + csv-upsert でsources登録
+    note: 人的資本多様性指標(gender_pay_gap/female_manager_ratio/male_childcare_leave_rate)は公表義務対象外(従業員300名以下)。有報に省略記載あり
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高 3期以上
+    status: done
+    value: metrics.csv revenue(7行:FY2019〜2025)
+    subject: 連結
+    as_of: 2019-03-31〜2025-03-31
+    unit: JPY
+    source: edinet-s100r42i(FY2019) / edinet-s100tu71(FY2020) / edinet-s100w51c(FY2021〜2025)
+    via: edinet-normalizeはJGAAP_COMPANY_IDS未登録のため未取得。XBRLから手動抽出しcsv-upsertで7行追加
+    note: JGAAP。jpcrp_cor:NetSalesSummaryOfBusinessResults
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csv operating_profit(4行:FY2022〜2025)
+    subject: 連結
+    as_of: 2022-03-31〜2025-03-31
+    unit: JPY
+    source: edinet-s100r42i(FY2022) / edinet-s100tu71(FY2023) / edinet-s100w51c(FY2024〜2025)
+    via: XBRLから手動抽出しcsv-upsert
+    note: JGAAP。jppfs_cor:OperatingIncome。有報サマリは2年分のみ開示のためFY2019〜2021は対象書類なし
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csv equity_ratio(7行:FY2019〜2025)・current_assets(4行:FY2022〜2025)・current_liabilities(4行)・quick_assets(4行)
+    subject: 連結
+    as_of: 2019-03-31〜2025-03-31
+    unit: percent・JPY
+    source: edinet-s100r42i / edinet-s100tu71 / edinet-s100w51c
+    via: current_assets/liabilitiesはedinet-normalize。equity_ratio/quick_assetsは手動csv-upsert
+    note: 当座資産の算定内訳=CashAndDeposits+AccountsReceivableTrade（JGAAP構成に準拠、direct開示なし）
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csv operating_cf(7行)・investing_cf(7行)・financing_cf(7行)、各FY2019〜2025
+    subject: 連結
+    as_of: 2019-03-31〜2025-03-31
+    unit: JPY
+    source: edinet-s100r42i(FY2019) / edinet-s100tu71(FY2020) / edinet-s100w51c(FY2021〜2025)
+    via: XBRLから手動抽出しcsv-upsertで21行追加
+    note: JGAAP。jpcrp_cor:NetCashProvidedByUsedIn{Operating|Investing|Financing}ActivitiesSummaryOfBusinessResults
+  - id: ir-segment
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメント（日本事業・海外事業、FY2025より単一）の年度別売上・利益
+    status: done
+    value: segments.csv 7行。FY2022〜2024はJapan/Foreign各2行(reported)、FY2025は単一セグメント1行(not_applicable)
+    subject: 連結報告セグメント
+    as_of: 2022-03-31〜2025-03-31
+    unit: JPY
+    source: edinet-s100r42i(FY2022) / edinet-s100tu71(FY2023〜2024) / edinet-s100w51c(FY2025)
+    via: COMPANY_SEGMENTS未登録のためXBRLから手動抽出しcsv-upsert
+    note: FY2022〜2024は「日本事業」「海外事業」の2セグメント。FY2025より「モバイル通信サービス及びモバイル・ソリューション」単一セグメントに変更し詳細開示省略
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 組織再編・会計基準変更・比較上の注記
+    status: done
+    value: 報告セグメント変更(FY2025より2区分→単一)。後発事象:連結子会社my FinTechへのDES(2025/4/17)、譲渡制限付株式報酬新株発行(2025/6/25取締役会決議)。未適用会計基準:新リース会計基準(企業会計基準第34号)
+    subject: 連結
+    as_of: 2025-03-31
+    unit: ""
+    source: edinet-s100w51c
+    via: 有報テキストブロックから抽出
+    note: MDXの :::warning 用材料
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: 採用主体=日本通信株式会社（採用主体=開示主体）。2027年度新卒採用を2026年4月1日付で開始。コーポレート採用TOP https://www.j-com.co.jp/recruit/index.html。新卒専用サイト https://www.rct.j-com.co.jp/。募集要項 https://www.rct.j-com.co.jp/recruitment。エントリーはマイナビ2027経由
+    subject: japan-communications（日本通信株式会社）
+    as_of: 2026-08-08（募集年度:2027年度新卒／開始:2026-04-01）
+    unit: ""
+    source: https://www.rct.j-com.co.jp/recruitment
+    via: 公式コーポレートサイトと新卒サイト
+    note: 実効コーポレートドメインは www.j-com.co.jp（jci.co.jpは接続不可）
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: 職種別コース募集ではなく拠点別募集。【本社採用】企画開発業務・技術系業務・営業系業務・管理系業務・顧客サポート業務等。【大阪採用】技術系業務等。【群馬採用】技術系業務・管理系業務・顧客サポート業務・物流業務等。【沖縄採用】顧客サポート業務・物流業務等。応募資格=2027年3月に大学・大学院・高専・短大・専門学校を卒業・修了見込、既卒者も可。選考フロー=マイナビエントリー→会社説明会(本社対面orオンライン)→書類選考(履歴書・成績証明書)→1次面接→SPI→2次面接→最終面接→内定。勤務地=本社(東京都港区虎ノ門)、大阪(大阪市北区大深町)、群馬(北群馬郡吉岡町大久保)、沖縄(浦添市牧港)、米国子会社(コロラド州イングルウッド)。正社員(試用期間6ヶ月)、期間の定めなし
+    subject: 拠点別（本社・大阪・群馬・沖縄の4採用区分）
+    as_of: 2026-08-08
+    unit: ""
+    source: https://www.rct.j-com.co.jp/recruitment
+    via: 公式新卒サイトの募集要項
+    note: 職種別ではなく拠点別。業務内容は「等」と記載され完全固定ではない。米国子会社への配属は募集要項に明記
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
+    status: done
+    value: 初任給(月額・学歴別のみ、拠点差なし) 大学・高専・短大・専門学校卒=265,000円、大学院修了(修士以上)=277,500円。賞与=制度なし。諸手当=通勤交通費(月50,000円まで)、残業手当(2025年度月平均所定外労働時間7.76時間)。昇給=社内規定による(本人の技能・経験・職務遂行能力を主体に各人別に決定)
+    subject: 全拠点共通（学歴別のみ）
+    as_of: 2026-08-08（残業実績は2025年度）
+    unit: JPY
+    source: https://www.rct.j-com.co.jp/recruitment
+    via: 公式新卒サイトの募集要項
+    note: "not_disclosed: 基礎給(基本給)と固定時間外手当の内訳(初任給は月額総額のみ、残業手当は実労働連動の変動制)、標準年収モデル。賞与制度なし"
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: 標準労働時間=9:00〜18:00(休憩60分)、変形労働時間制(業務により勤務時間異なる場合あり)。転勤=事業領域拡大に伴う新規拠点設立時には転勤の可能性あり。休日=週休2日制(土日合計10日の月は10日間、うるう年以外の2月は8日間、その他月9日間)、祝日は原則出勤(年7日は休日)、年次有給休暇(初年度10日・最大20日、2025年度平均取得14.5日)、有給外に年4日(四半期ごと1日)の休暇付与、年間休日121日。福利厚生=財形貯蓄・健康診断・従業員持株会・関東ITソフトウェア健康保険組合の保養施設。制度=育児休暇・介護休暇・看護休暇・短縮勤務正社員制度・えるぼし認定3つ星・定年65歳
+    subject: 全拠点共通
+    as_of: 2026-08-08（休日・有給実績は2025/2026年度）
+    unit: ""
+    source: https://www.rct.j-com.co.jp/recruitment
+    via: 公式新卒サイトの募集要項
+    note: "not_disclosed: リモート勤務・テレワーク制度の公式記載なし(オフィス出社前提)。応募期限(締切日)の公式記載なし(マイナビ2027で受付中)"
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的サービス名・ブランド名・提供内容
+    status: done
+    value: 公式 会社概要の『事業内容』は2区分。(1)MVNO事業=個人及び法人顧客向けモバイル通信サービス。具体ブランド=日本通信SIM(https://www.nihontsushin.com/)、b-mobile(https://www.bmobile.ne.jp/、990ジャストフィットSIM X、190Pad SIM X、プリペイドSIM等、世界初のMVNOブランド)、法人向けモバイルソリューションMSP。(2)イネイブラー事業=MVNO事業者パートナーへのモバイル通信サービス提供、MVNO・SIer・メーカー・金融機関等へのモバイルソリューション提供(無線専用線/閉域SIM間通信、2モジュールルーター、PCI DSS認定・クレジットカード非保持化等)。有事報的事業構成として三本柱戦略(SIM事業/FPoS事業/ローカル4G/5G事業)。FPoS=スマホ用デジタルID(子会社my FinTechが運用)。2026年11月24日サービス開始予定の『ネオキャリア』(2026-07-28ブランド名称・ロゴ発表)
+    subject: 連結
+    as_of: 2026-08-08確認
+    unit: ""
+    source: https://www.j-com.co.jp/corp/corp.html ／corp/business.html ／corp/message.html ／bmobile.ne.jp ／nihontsushin.com ／news/2611.html
+    via: 公式コーポレートサイト・ブランドサイト・ニュースリリース
+    note: jci.co.jpではなく実コーポレートは www.j-com.co.jp
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイト事業区分とIR報告セグメントの対応と差異
+    status: done
+    value: 公式サイト上の事業区分は複数表記が併存。(a)会社概要corp.htmlの法定『事業内容』は2区分=MVNO事業・イネイブラー事業。(b)事業概要business.htmlは三本柱戦略=SIM事業・FPoS事業・ローカル4G/5G事業(中長期戦略の柱で法定事業区分とは別軸)。(c)ブランド構成=日本通信SIM/b-mobile/法人MSP/ネオキャリア(2026-11-24予定)。IR報告セグメントはFY2022〜2024「日本事業」「海外事業」の2セグメント、FY2025より単一セグメント（モバイル通信サービス及びモバイル・ソリューション）
+    subject: 連結
+    as_of: 2026-08-08確認
+    unit: ""
+    source: https://www.j-com.co.jp/corp/corp.html ／corp/business.html
+    via: 公式 corp/business ページ
+    note: 法定セグメントの最終確認は ir-segment 担当(IR worker)が実施済み
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 親会社=なし(東証プライム上場、証券コード9424、上場会社自身が連結親会社)。連結子会社6社=【国内】my FinTech株式会社(インターネット取引認証プラットフォーム、FPoS)、セキュアID株式会社(サブSIM・関連ソリューションの開発販売)、コントゥアー・ネットワークス・ジャパン株式会社(ネットワーク・セキュリティソリューション)、クルーシステム株式会社(電気通信事業オペレーション業務受託)。【米国(コロラド州)】JCI US Inc.(MVNO・MVNE技術の研究開発、米国MVNOブランドContour Networks)。【欧州(アイルランド)】JCI Europe Communications Limited(欧州MVNO事業)。持分法適用関連会社=H.I.S.Mobile株式会社。代表=代表取締役社長兼CEO 福田尚久、代表取締役会長(創業者) 三田聖二
+    subject: 連結
+    as_of: 2026-08-08確認（大株主は2026-03-31時点）
+    unit: ""
+    source: https://www.j-com.co.jp/corp/corp.html
+    via: 公式 会社概要ページのグループ会社欄
+    note: 親会社欄は空欄(親会社なし)。H.I.S.Mobileは持分法適用関連会社
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン（公式表記）
+    status: done
+    value: 使命=『安全・安心にデータを運ぶ(通信する)』(mission.html)、『安全・安心にビットを運ぶ』(社長メッセージ)。創業精神=新しいモバイルサービスが創出される環境の整備に一翼を担うこと、新しいビジネスモデルを具現するモデル企業として自ら実例をつくること(1996年5月 三田聖二により創業)。スローガン/戦略根底=『他社に負けないコストリーダーシップを取り続ける』(社長メッセージ)
+    subject: 日本通信株式会社
+    as_of: 2026-08-08確認（社長メッセージは2025-11-06更新）
+    unit: ""
+    source: https://www.j-com.co.jp/corp/mission.html ／corp/business.html ／corp/message.html
+    via: 公式 使命ページ・事業概要・社長メッセージ
+    note: ミッション以外の目的・ビジョン等の独立ページは見当たらず
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: done
+    value: 社名=日本通信株式会社(英文名Japan Communications Inc.、略称JCI)。設立=1996年5月24日。創業者=三田聖二(現 代表取締役会長)、現CEO 福田尚久(代表取締役社長兼CEO)。資本金=673,348,988円(2026-07-31)。発行済株式総数=167,728,739株(2026-07-31)。従業員数=190名(2026-03-31、連結子会社・臨時従業員含む)。上場=東京証券取引所プライム市場(2022年4月4日移行、証券コード9424)。本社=東京都港区虎ノ門4-1-28 虎ノ門タワーズオフィス。会計年度=3月期(直近第30期2026年3月期)。設立経緯=通信業界の規制緩和環境整備とMVNO事業モデルのモデル企業として創業、世界で最初にMVNO事業を提唱・実現、格安SIM分野のパイオニア
+    subject: 日本通信株式会社（連結）
+    as_of: 2026-08-08確認（資本金・発行済株式は2026-07-31、従業員数は2026-03-31）
+    unit: 円・株・人
+    source: https://www.j-com.co.jp/corp/corp.html ／corp/introduction.html ／ir/index.html
+    via: 公式 会社概要・早わかりページ・IRニュース
+    note: 単体従業員数は会社概要に記載なく連結190名のみ。単体値はir-human-capital(IR worker)が有報で取得済み
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
+    status: done
+    value: HP(公式コーポレート)=https://www.j-com.co.jp/。IRトップ=https://www.j-com.co.jp/ir/index.html。有報一覧=https://www.j-com.co.jp/ir/report.html。有報PDF(直近3年度)=第30期2026年3月期 https://www.j-com.co.jp/ir/pdf/yuho_2026_q4.pdf、第29期2025年3月期 https://www.j-com.co.jp/ir/pdf/yuho_2025_q4.pdf、第28期2024年3月期 https://www.j-com.co.jp/ir/pdf/yuho_2024_q4.pdf (訂正報告書2024-07-05提出 https://www.j-com.co.jp/ir/pdf/yuho_2024_q4_20240705.pdf)。決算短信一覧=https://www.j-com.co.jp/ir/settlement.html。採用(総合)=https://www.j-com.co.jp/recruit/index.html。新卒採用(専用サイト)=https://www.rct.j-com.co.jp/。キャリア採用=https://www.j-com.co.jp/recruit/career.html
+    subject: 日本通信株式会社
+    as_of: 2026-08-08確認
+    unit: ""
+    source: https://www.j-com.co.jp/ ／ir/ ／ir/report.html ／ir/settlement.html ／recruit/index.html
+    via: 公式サイトのフッタ・グローバルメニュー・IR/採用の各一覧ページ
+    note: 新卒採用は専用ドメイン rct.j-com.co.jp へ遷移

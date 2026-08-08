@@ -1,0 +1,236 @@
+company_id: jri
+disclosure_company_id: jri
+company_boundary:
+  adoption_company_id: jri
+  disclosure_company_id: jri
+  reporting_segment_company_id: jri
+  legal_name: 株式会社日本総合研究所
+  securities_code: ""
+  edinet_code: ""
+  fiscal_year_end: 3月31日
+  accounting_standard: JGAAP（単体決算公告のみ。連結財務諸表の外部開示なし）
+  currency: JPY
+  reporting_segments: なし（非上場・SMFG100%子会社で有報提出義務なし、法定報告セグメント存在せず）
+  company_relations:
+    - from_company_id: jri
+      to_company_id: smfg
+      relation_type: parent
+      valid_from: 2026-04-01
+      source_id: jri-corporate-profile
+      note: 2026年4月のグループ内再編後もSMFGの直接100%子会社
+  note: SMFG(三井住友フィナンシャルグループ)の直接100%子会社。野村総研(NRI)とは別法人。非上場で有報提出義務なし。決算公告(単体BS/PL)のみ外部開示。連結財務・CF計算書・セグメント情報は外部非開示。2026年4月に日本総研ホールディングスを吸収合併し資本金100億→101億円
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-08
+updated_at: 2026-08-08
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csv employee_count (jri scope, FY2026, 1行=reported)。average_annual_salary/average_age/average_tenure は FY2026 not_disclosed
+    subject: jri（単体、連結・単体の区分は公式になし）
+    as_of: 2026-04-30（従業員数）
+    unit: persons・JPY・years
+    source: jri-corporate-profile（従業員数）/ jri-koukoku-2026-24（非開示確認）
+    via: EDINET 18ヶ月スキャン→該当なし→公式IRクロール（会社概要と決算公告PDF）
+    note: 従業員数6,324名は会社概要ページから。平均年間給与・平均年齢・平均勤続年数は有報義務開示項目だが非上場のため非開示。決算公告にも記載なし
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高 3期以上
+    status: done
+    value: metrics.csv の revenue（non_consolidated, FY2022〜FY2026, 5行=reported）。consolidated は FY2026 not_disclosed。単体売上高5期=214,372→219,707→249,678→299,447→329,247 百万円
+    subject: 単体（連結は非開示）
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: jri-koukoku-2026-24 / 2025-23 / 2024-22 / 2023-21 / 2022-20
+    via: EDINET 18ヶ月スキャン→有報なし→公式 電子公告 決算公告PDF の単体損益計算書から csv-upsert
+    note: 連結財務諸表は外部開示されない
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csv の operating_profit（non_consolidated, FY2022〜FY2026, 5行=reported）。consolidated は FY2026 not_disclosed。単体営業利益5期=4,553→4,008→2,742→2,893→1,205 百万円
+    subject: 単体（連結は非開示）
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY
+    source: jri-koukoku-2026-24 他4期
+    via: 公式 電子公告 決算公告PDF の単体損益計算書から csv-upsert
+    note: FY2026は特別利益に抱合せ株式消滅差益6,642百万円(子会社合併)を計上し経常利益・当期純利益が押し上がるが営業利益自体は低位
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csv の current_assets/current_liabilities（non_consolidated, FY2022〜FY2026, 各5行=reported）。consolidated は FY2026 not_disclosed。quick_assets・equity_ratio は non_consolidated FY2026 not_disclosed
+    subject: 単体（連結は非開示）
+    as_of: 2022-03-31〜2026-03-31
+    unit: JPY・percent
+    source: jri-koukoku-2026-24 他4期
+    via: 公式 電子公告 決算公告PDF の単体貸借対照表から csv-upsert
+    note: 当座資産は決算公告に明示科目なし。自己資本比率も明示開示なし（純資産合計・負債純資産合計は開示されるが派生値の保存は見送り）
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: not_disclosed
+    value: ""
+    subject: 単体・連結ともに開示なし
+    as_of: 2026-03-31
+    unit: JPY
+    source: jri-koukoku-2026-24
+    via: 公式 電子公告 決算公告PDFを確認。貸借対照表・損益計算書のみでCF計算書の外部開示なし
+    note: operating_cf/investing_cf/financing_cf の3指標すべて non_consolidated FY2026 で not_disclosed。非上場で有報提出がないためCF開示源が存在しない
+  - id: ir-segment
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメントの年度別売上・利益
+    status: not_disclosed
+    value: ""
+    subject: 連結報告セグメント（開示なし）
+    as_of: 2026-03-31
+    unit: JPY
+    source: jri-koukoku-2026-24
+    via: 公式 電子公告 決算公告PDFを確認。セグメント情報の記載なし。segments.csvへのjri行は追加せず
+    note: 非上場。決算公告は単体BS/PLのみでセグメント開示なし。公式サイトの事業区分（調査部・創発戦略センター・リサーチ・コンサルティング部門・先端技術ラボ・ITソリューション）は報告セグメントではなく内部組織区分
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 組織再編・会計基準変更・比較上の注記
+    status: done
+    value: 組織再編=2025/7/22合併公告(日本総研情報サービスを吸収合併・解散)、2026/1/6合併公告(日興システムソリューションズ・日本総研ホールディングスがグループ内再編で解散)。会計基準=JGAAP(日本基準・単体)。比較上の注記=FY2026単体PL特別利益6,646百万円(うち抱合せ株式消滅差益6,642百万円=子会社合併)、FY2024特別利益1,249百万円/特別損失661百万円(事業所移転損失・投資有価証券評価損)
+    subject: ""
+    as_of: 2022-03-31〜2026-03-31
+    unit: ""
+    source: jri-koukoku-merger-2025-0722 / jri-koukoku-merger-2026-0106 / jri-koukoku-2026-24 / jri-koukoku-2024-22
+    via: 公式 電子公告ページと各決算公告PDFの特別損益を確認
+    note: 親会社はSMFG直接。JRI本体は単体決算のため連結範囲変更の注記は該当しないが、グループ内再編で子会社3社が解散
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: 採用主体=株式会社日本総合研究所(The Japan Research Institute, Limited)。採用主体=開示主体(同一)。募集年度=2027卒(2027年3月末卒業見込、既卒3年以内=2024年3月以降卒業も新卒枠で応募可)。確認日2026-08-08。新卒採用トップ https://www.jri-career.com/、募集要項 https://www.jri-career.com/newgraduates/recruit/requirements.html、選考ステップ https://www.jri-career.com/newgraduates/recruit/schedule.html、FAQ https://www.jri-career.com/newgraduates/recruit/faq.html。コーポレート採用情報トップ https://www.jri.co.jp/recruit/
+    subject: 株式会社日本総合研究所（採用主体=開示主体）
+    as_of: 2026-08-08
+    unit: ""
+    source: https://www.jri-career.com/newgraduates/recruit/requirements.html ／https://www.jri.co.jp/recruit/
+    via: 公式コーポレートサイトと新卒採用サイト
+    note: 募集要項ページのタイトルは『2027卒』、選考ステップ・FAQページは旧年度『2026卒』のままだが内容は2027卒が現行
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: 職種4つ(全職種併願可能)。【ITソリューション・400名程度】金融ITに関わる戦略立案、システム企画・開発・運用、プロジェクト管理、DX推進。5コース併願可=システム開発オープン・システム運用オープン・先端技術分野配属・サイバーセキュリティ分野配属・データサイエンス分野配属。【コンサルティング/インキュベーション・30名程度】企業・官公庁への戦略コンサルティング、先進的ビジネスモデル開発。【リサーチ(エコノミスト)・若干名】経済調査・政策提言。【本社スタッフ・若干名】本社部門の企画/運営。3コース併願不可=本社オープン(入社後配属決定)・法務配属・財務管理配属。応募資格=専門・短大・高専・大学学部・修士・博士を2027年3月末までに卒業見込、2024年3月以降卒業の既卒3年以内可、文理不問・国籍不問・外国人留学生応募可。選考=STEP1プレエントリー→STEP2正式エントリー(ES)→STEP3書類選考/適性検査→STEP4面接(人事・志望フィールド社員)→内定。勤務地=東京・大阪・神奈川・海外拠点(ニューヨーク・ロンドン・上海・シンガポール・フィリピン)、勤務地選択不可
+    subject: 全4職種（ITソリューション／コンサルティング・インキュベーション／リサーチ・エコノミスト／本社スタッフ）
+    as_of: 2026-08-08
+    unit: ""
+    source: https://www.jri-career.com/newgraduates/recruit/requirements.html ／schedule.html ／faq.html
+    via: 公式新卒採用サイトの募集要項・選考ステップ・FAQ
+    note: 2026年4月に日興システムソリューションズとのグループ内再編、2025年10月に日本総研情報サービスとの合併を公表
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
+    status: done
+    value: 初任給(月給・全職種共通、学歴別、職種別差額なし) 博士了=金額個別決定、修士了=328,000円、学部卒・専門4年卒=302,000円、専門3年卒=286,000円、専門2年・短大・高専卒=276,000円。賞与=年2回(6月・12月)。給与改定=年1回(7月)。諸手当=ワークスタイル手当・裁量労働手当・時間外勤務手当・深夜勤務割増手当・休日振替手当・通勤交通費。住宅補助(契約社宅制度、当社規定による)
+    subject: 全職種共通（職種別給与差額なし）
+    as_of: 2026-08-08
+    unit: JPY
+    source: https://www.jri-career.com/newgraduates/recruit/requirements.html
+    via: 公式募集要項
+    note: "not_disclosed: 基礎給と固定時間外手当の分離内訳、標準年収"
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: 標準労働時間=9:00〜17:30(標準7時間30分)、フレックスタイム制あり。リモート勤務=働き方ページで『テレワーク対象を育児・介護者から全社員に拡大』『フレックス勤務制度』『時短勤務制度(育児介護)』を公表(ただし募集要項ページには労働条件として明示なく、働き方改革の取り組み紹介としての記載)。休日=完全週休2日制土日・祝日・年末年始5日・年次有給20日
+    subject: 全職種共通
+    as_of: 2026-08-08
+    unit: ""
+    source: https://www.jri-career.com/newgraduates/recruit/requirements.html ／faq.html ／career_workstyle.html
+    via: 公式募集要項・FAQ・働き方ページ
+    note: "not_disclosed: 転勤の有無(FAQで勤務地は選べない、海外拠点含むことのみ記載)、応募期限(明示的締切日なし、2027卒マイページ登録受付中)"
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的サービス名・ブランド名・提供内容
+    status: done
+    value: 公式「事業内容」は5部門体制(法定報告セグメントではなく内部組織区分)。(1)調査部(RESEARCH)=シンクタンク機能。内外経済の調査分析・政策提言。マクロ経済予測、金利・為替・原油相場展望、リサーチ・アイ/フォーカス/レポート/ビューポイント、JRIレビュー、RIM環太平洋ビジネス情報、日本経済展望、関西景気動向。(2)創発戦略センター(INCUBATION)=「ThinkからDOまで一貫」するDo Tank。研究会・コンソーシアム、モデル事業・新会社立ち上げ。(3)リサーチ・コンサルティング部門(CONSULTING)=官民連携・経営・事業変革コンサルティング。業務別12領域、産業別13領域。(4)先端技術ラボ(ADVANCED TECHNOLOGY)=AI・量子技術・xR/メタバース・ブロックチェーン/Web3.0・ニューロテックの調査・検証・応用研究。「20%ルール」。(5)ITソリューション(IT SOLUTION)=SMBCグループ基幹業務システム開発・運用。具体ブランド=SMBCダイレクト・i-Deal(SMBC外国為替予約)・Vpass(三井住友カード)・日興イージートレード(SMBC日興証券)・Best Partner Series/BPDirect(投信窓販、500以上の金融機関導入)・PiTaPa全国相互利用・バーゼルⅢ流動性規制対応・グローバルプーリングシステム
+    subject: 連結
+    as_of: 2026-08-08確認
+    unit: ""
+    source: https://www.jri.co.jp/company/business/ ／business/research/ ／business/incubation/ ／business/consulting/ ／business/advtechlab/ ／business/system/ ／business/system/solution
+    via: 公式コーポレートサイト「事業内容」5部門ページ
+    note: 公式の事業区分は組織区分であり法定の報告セグメントではない。野村総研(NRI)とは別法人
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイト事業区分とIR報告セグメントの対応と差異
+    status: not_disclosed
+    value: 法定開示の報告セグメントなし。日本総研は非上場・SMFG100%子会社で有報提出義務を負わず、EDINET提出も公式IRページも存在しない。公式の有事業区分は5部門(調査部・創発戦略センター・リサーチ・コンサルティング部門・先端技術ラボ・ITソリューション)で、事業機能としては「シンクタンク・コンサルティング・ITソリューション」の3本柱
+    subject: 連結
+    as_of: 2026-08-08確認
+    unit: ""
+    source: https://www.jri.co.jp/company/profile/ ／company/koukoku/
+    via: 公式コーポレート・SMFGグループ体制ページ、公式IRページ不存在(/ir/は404)の確認
+    note: SMFG連結財務における報告セグメントは親会社SMFG基準であり日本総研の事業区分とは別物
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 親会社=株式会社三井住友フィナンシャルグループ(SMFG)が直接100%子会社(中間持株会社を挟まず)。【日本総研グループ(国内子会社)】株式会社インテリジェントテクノロジー(1985年1月設立・資本金1億円、金融系システム開発・AI/DX)、株式会社JSOL(2006年7月設立・資本金50億円、IT戦略コンサルから構築・運用保守まで)。【海外現地法人】JRI Europe, Ltd.(ロンドン・1989年7月・£1,200,000、SMBC欧州拠点システム開発保守)、日綜(上海)信息系統有限公司(2006年1月・$1,500,000、SMBC中国拠点システム開発保守)。JRI America, Inc.(ニューヨーク・1985年2月)はSMBC Americas Holdings 100%子会社(日本総研の直接子会社ではない)。【海外拠点(支社)】シリコンバレー事務所・シンガポール支社・フィリピン支社(2024年5月開設)。【最近の再編】2024/04 日本総研ホールディングス設立、2025/10 日本総研情報サービスを吸収合併、2026/01 日興システムソリューションズおよび日本総研ホールディングスを合併(HDは解散)、2026/04 日本総研を存続会社とする再編完了・資本金100億→101億円
+    subject: 連結
+    as_of: 2026-08-08確認
+    unit: ""
+    source: https://www.jri.co.jp/company/profile/ ／company/group/ ／company/base/ ／company/history/ ／smfg.co.jp/company/group/
+    via: 公式「会社概要」「日本総研グループ」「海外拠点」「沿革」、SMFGグループ体制ページ
+    note: 会社概要ページの株主欄はSMFGを直記(三井住友銀行経由ではない)。日本総研ホールディングスは2026年4月で解散し日本総研が存続会社
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン（公式表記）
+    status: done
+    value: 【経営理念】「知識エンジニアリング」活動によるお客様価値共創。対外指針=お客様満足の最大化を喜びとする。行動指針=「変化」と「多様性」を友とする。組織指針=「強い個人の集団」を目指す。【ブランドメッセージ】「未来を問い　今を動かす」／「いま、挑むべき課題は何か？ 解決策を導き、提言する。そして、実装までやりきる。」。【基本理念】「新たな顧客価値の共創」。【リサーチ・コンサルティング部門スローガン】「自律協生社会の実現」
+    subject: 単体
+    as_of: 2026-08-08確認
+    unit: ""
+    source: https://www.jri.co.jp/company/profile/ ／brand/ ／company/ ／purpose/about/
+    via: 公式「会社概要」「ブランド」「会社情報」「JRI STORIES」ページ
+    note: ""
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: done
+    value: 正式社名=株式会社日本総合研究所(The Japan Research Institute, Limited)。設立=1969年2月20日、株式会社住友銀行から分離独立し『日本情報サービス株式会社』として設立(資本金1億円)。1989年12月に『株式会社日本総合研究所』に社名変更。資本金=101億円(2026年4月グループ内再編で100億→101億円)。従業員数=6,324名(2026年4月末現在、連結/単体の区別は公式明示なし)。株主=SMFG(直接100%)。決算期=3月末日(直近第24期2026年3月期)。本社=東京本社(品川区東五反田2-18-1 大崎フォレストビルディング)・大阪本社(大阪市西区土佐堀2-2-4)。代表取締役社長 内川淳。非上場。設立以来の合併履歴=1995年住友ビジネスコンサルティング合併、2000年日本総研システムソリューション合併、2001年さくら総研調査部統合、2001年SMBCコンサルティングコンサル部門統合、2003年SMBCシステム関連機能統合、2025年日本総研情報サービス合併、2026年日本総研ホールディングス合併
+    subject: 連結+単体
+    as_of: 2026-08-08確認（従業員数は2026年4月末時点）
+    unit: 円・人
+    source: https://www.jri.co.jp/company/profile/ ／company/history/ ／company/koukoku/
+    via: 公式「会社概要」「沿革」「電子公告」ページ
+    note: 従業員6,324名は公式が連結/単体を明示せず
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
+    status: done
+    value: HP https://www.jri.co.jp/。会社情報 https://www.jri.co.jp/company/。会社概要 https://www.jri.co.jp/company/profile/。事業内容 https://www.jri.co.jp/company/business/。日本総研グループ https://www.jri.co.jp/company/group/。ブランド https://www.jri.co.jp/brand/。法定開示(電子公告・決算公告) https://www.jri.co.jp/company/koukoku/。採用情報 https://www.jri.co.jp/recruit/。新卒採用 https://www.jri-career.com/。キャリア採用 https://www.jri-career.com/career。親会社SMFG https://www.smfg.co.jp/。【IRページ・有報PDF】存在せず(非上場・SMFG100%子会社で提出義務なし)。決算公告PDF(第22〜24期)が代替資料(例: /file/pdf/company/koukoku/2026_24.pdf)
+    subject: 単体
+    as_of: 2026-08-08確認
+    unit: ""
+    source: https://www.jri.co.jp/ ／sitemap/ ／company/koukoku/
+    via: 公式サイトトップ・サイトマップ・フッタ、/ir/は404確認
+    note: 直近3年度の有報PDFリンクは非上場のため該当なし

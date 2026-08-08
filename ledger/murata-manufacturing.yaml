@@ -1,0 +1,230 @@
+company_id: murata-manufacturing
+disclosure_company_id: murata-manufacturing
+company_boundary:
+  adoption_company_id: murata-manufacturing
+  disclosure_company_id: murata-manufacturing
+  reporting_segment_company_id: murata-manufacturing
+  legal_name: 株式会社村田製作所
+  securities_code: "6981"
+  edinet_code: E01914
+  fiscal_year_end: 3月末日
+  accounting_standard: IFRS（連結。指定国際会計基準特定会社、IFRS移行日2022-04-01=FY2023〜）
+  currency: JPY
+  reporting_segments: 部品（IR開示名:コンポーネント）・モジュール（同:デバイス・モジュール）＋その他
+  company_relations: []
+  note: 採用主体と開示主体は同一。連結子会社83社（国内30・海外53）。電子部品メーカー。FY2022以前は旧基準のため時系列比較注意
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-08
+updated_at: 2026-08-08
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: done
+    value: metrics.csv の average_annual_salary・average_age・average_tenure（non_consolidated, 2024〜2026 各3行）＋ employee_count（consolidated/non_consolidated 各7期, 2020〜2026）
+    subject: 単体（人的資本4指標）/ 連結+単体（従業員数）
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY・years・persons
+    source: edinet-s100tsij, edinet-s100w2zr, edinet-s100yhpy
+    via: edinet-normalize S100TSIJ/S100W2ZR/S100YHPY（EDINET code E01914）
+    note: 人的資本4指標は non_consolidated。従業員数は連結+単体
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高 3期以上
+    status: done
+    value: metrics.csv の revenue（consolidated, 2023〜2026 4期）
+    subject: 連結
+    as_of: 2023-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100tsij, edinet-s100w2zr, edinet-s100yhpy
+    via: edinet-normalize（RevenueIFRSSummaryOfBusinessResults）
+    note: 連結は IFRS
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: done
+    value: metrics.csv の operating_profit（consolidated, 2023〜2026 4期）
+    subject: 連結
+    as_of: 2023-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100tsij, edinet-s100w2zr, edinet-s100yhpy
+    via: edinet-normalize（OperatingProfitLossIFRS）
+    note: 連結は IFRS
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: done
+    value: metrics.csv の equity_ratio・current_assets・current_liabilities（consolidated, 2022〜2026 各5期）＋ quick_assets（consolidated, 2024〜2026 3期）
+    subject: 連結
+    as_of: 2022-03-31〜2026-03-31
+    unit: percent・JPY
+    source: edinet-s100tsij, edinet-s100w2zr, edinet-s100yhpy
+    via: edinet-normalize ＋ csv-upsert（quick_assets）
+    note: 当座資産は直接開示なし。連結B/Sから 現金及び現金同等物＋営業債権＋その他の金融資産(流動) で算定（IFRS会社の既存慣行）
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csv の operating_cf・investing_cf・financing_cf（consolidated, 2023〜2026 各4期）
+    subject: 連結
+    as_of: 2023-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100tsij, edinet-s100w2zr, edinet-s100yhpy
+    via: edinet-normalize
+    note: 連結は IFRS
+  - id: ir-segment
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメント（コンポーネント・デバイス・モジュール）の年度別売上・利益
+    status: done
+    value: segments.csv の components・devices-and-modules, 2024〜2026 各3期×2=6行
+    subject: 連結報告セグメント
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: edinet-s100tsij, edinet-s100w2zr, edinet-s100yhpy
+    via: csv-upsert（XBRL: RevenueFromExternalCustomersIFRS / OperatingProfitLossIFRS）
+    note: 報告セグメントは法定「部品」「モジュール」（IR開示名:コンポーネント／デバイス・モジュール）＋その他。revenue=外部顧客への売上収益, segment_profit=営業利益(IFRS)
+  - id: ir-disclosure-notes
+    phase: ir
+    store: ir_csv
+    topic: 組織再編・会計基準変更・比較上の注記
+    status: done
+    value: 連結財務諸表は IFRS適用（指定国際会計基準特定会社）。IFRS移行日 2022-04-01（FY2023〜）。報告セグメント3分類。FY2026にマイクロ一次電池事業の吸収分割と新設完全子会社株式譲渡（2026-03-01）を実施
+    subject: 連結
+    as_of: 2026-03-31
+    unit: ""
+    source: edinet-s100tsij, edinet-s100yhpy
+    via: FY2026 有報テキストブロック
+    note: FY2022以前は旧基準のため時系列比較注意。FY2024〜2026は全てIFRSで比較可能。FY2026はマイクロ一次電池事業の組織再編を含む
+  - id: recruit-employing-entity
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: done
+    value: 採用主体=株式会社村田製作所。募集年度=2027年度新卒（2027年3月/9月入社）。2028年度エントリーも受付中
+    subject: 採用主体=開示主体（株式会社村田製作所）
+    as_of: 確認日2026-08-08／募集年度2027
+    unit: ""
+    source: https://recruit.murata.com/ja-jp/freshers/managerial/outline/
+    via: 公式採用トップ → 新卒採用 → 総合職／一般職 募集要項
+    note: 新卒採用トップ https://recruit.murata.com/ja-jp/freshers/。連絡先=人材開発部採用課（京都府長岡京市）
+  - id: recruit-jobs
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: 新卒は「総合職」「一般職」の2区分。【総合職・技術系(200〜220名)】材料・プロセス開発・設計、商品開発・設計、SW・シミュレーション、生産技術、IE、製造技術・管理、品質保証、解析評価、情報システム・DX、SCM、企画、セールスエンジニア、営業、環境経営企画、工場建設、知的財産など。【総合職・事務系(30〜50名)】総務、人事、経理・財務、企画、法務、知的財産、広報、情報システム、営業、調達、生産管理、SCM、IE、製造監督、環境経営企画、防災・安全衛生管理など。【一般職】事務アシスタント、営業アシスタント、技術アシスタント（電子部品の試作・評価・測定、CAD設計補助）。滋賀地区は高専本科向けに生産技術・設備保全系も募集
+    subject: 総合職（技術系・事務系）／一般職（京都・関東・滋賀地区）
+    as_of: 2027年採用版／確認2026-08-08
+    unit: ""
+    source: https://recruit.murata.com/ja-jp/freshers/managerial/outline/ ／general/outline/
+    via: 公式採用トップ → 各コース募集要項
+    note: 応募資格【総合職】2027年3月/9月に高専専攻科・大学・大学院を卒業・修了見込（卒後3年以内も可）。【一般職】2027年3月に大学・短大卒業見込（同3年以内）。配属/選考【技術系】学校推薦と自由応募の2経路。フロー=説明会→SPI・WEB ES・書類→プレマッチング(AI面接)→ファイナルマッチング(対面)→内々定。勤務地【総合職】京都・東京・滋賀・神奈川・国内・海外各事業所・グループ会社。【一般職】京都地区(本社/長岡・大阪ロジスティクス)、関東地区(東京支社・横浜・みなとみらい)、滋賀地区(野洲・八日市・守山)
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
+    status: done
+    value: 初任給(2026年4月時点)【総合職(技術系・事務系共通)】高専専攻科卒・学部卒=月額295,000円、修士了=316,000円、博士了=352,500円。【一般職】大学卒=239,500円、短大卒=223,000円。昇給年1回(4月)・賞与年2回(6月・12月)。諸手当【総合職】通勤・超過勤務・育児介護・賃貸住宅補助等。【一般職】通勤・超過勤務・育児介護。試用期間3か月(待遇変動なし)
+    subject: 総合職（技術系・事務系共通）／一般職、学歴別
+    as_of: 初任給2026年4月時点／確認2026-08-08
+    unit: JPY（月額）
+    source: https://recruit.murata.com/ja-jp/freshers/managerial/outline/ ／general/outline/
+    via: 公式採用トップ → 募集要項・待遇
+    note: "not_disclosed: 基礎給・固定時間外手当の内訳区分、標準年収(モデル年収)。公式が開示するのは初任給・昇給・賞与・諸手当のみ。残業代は実働に応じて支給"
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: done
+    value: 転勤【総合職】国内・海外の関係会社含め転勤あり。会社都合転勤者には寮・社宅提供。【一般職】基本的に転居を伴う異動なし。リモート: テレワーク制度あり(全日フル/部分両方可、短時間勤務・フレックス併用可、ハイブリッド型で月度出社率概ね50%以上)。標準労働時間 8:30〜17:00 or 9:00〜17:30(実働7h45m)、一部フレックス(コア11:00〜15:00)・裁量労働制あり。応募期限(2027年卒): 技術系学校推薦=第1回2026/3/13・第2回4/7・第3回5/11。技術系自由応募=第1回3/13・第2回5/25。事務系=WEB ES 3/16、SPI・書類3/23。一般職京都=WEB ES 4/16、SPI・書類4/21。一般職関東=5/10 23:59。一般職滋賀=第1回3/24・第2回3/31
+    subject: 総合職と一般職で異なる
+    as_of: 確認2026-08-08／2027年卒選考締切
+    unit: ""
+    source: https://recruit.murata.com/ja-jp/freshers/managerial/outline/ ／technology_process/ ／business_process/ ／general/process/ ／faq/ ／culture/welfare/
+    via: 公式採用トップ → 募集要項・選考プロセス・FAQ・福利厚生
+    note: 10月入社も可能。年間休日123日(うるう年124日)、年次有給21〜23日付与
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的サービス名・ブランド名・提供内容・運営法人
+    status: done
+    value: 連結。法定報告セグメントは「部品」「モジュール」の2つ（第90期有報ベース）。【コンポーネント(=部品)】(1)コンデンサ: 積層セラミックコンデンサ(MLCC)。モバイル・家電・IoT・自動車・医療・宇宙。シェア約40%、自動車で約50%。(2)インダクタ・EMIフィルタ: インダクタ、ノイズ対策/EMI除去フィルタ、TVSダイオード。【デバイス・モジュール(=モジュール)】(3)高周波・通信: 高周波デバイス、通信モジュール(Wi-Fi/BT)、SAW/弾性波デバイス、RFスイッチ、フェーズシフタ、アンテナ、樹脂多層基板。(4)エナジー・パワー: バッテリ、電源(DC-DC)、住宅用All-in-One蓄電池、efinnos。(5)機能デバイス: センサ、サーミスタ、抵抗器、タイミングデバイス、光学、ブザー、マイクロメカトロ、RFID、コネクタ、Ionissimo。【その他】アルミ板材等(2026/3期 152億円、0.8%)。運営=株式会社村田製作所ほか連結子会社
+    subject: 連結
+    as_of: 2026-03-31（第90期）
+    unit: ""
+    source: https://www.murata.com/ja-jp/ir/financial/segment ／https://corporate.murata.com/ja-jp/company/business/capacitor
+    via: webfetch corporate.murata.com / www.murata.com 公式ページ群
+    note: 公式5事業分類は法定「部品」「モジュール」の内訳表示。セグメント別売上の数値はsegments.csvが正本
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイト事業区分とIR報告セグメントの対応と差異
+    status: done
+    value: IR報告セグメント「部品」=公式「コンポーネント」(コンデンサ＋インダクタ・EMIフィルタの小計)。「モジュール」=公式「デバイス・モジュール」(高周波・通信＋エナジー・パワー＋機能デバイスの小計)。その他(アルミ板材等)は法定セグメント帰属外として単独表示。IRページでは法定2セグメントを「コンポーネント」「デバイス・モジュール」の呼称で開示しさらに5分類内訳を併記。2022年3月期以前は「製品別売上高」(コンデンサ・圧電製品・その他コンポーネント・モジュール)の分類で2023年3月期に変更済み。2026/3期構成比: コンポーネント63.3%(11,597億円)・デバイス・モジュール35.9%(6,560億円)・その他0.8%(152億円)・合計18,309億円
+    subject: 連結
+    as_of: 2026-03-31
+    unit: 億円・%
+    source: https://www.murata.com/ja-jp/ir/financial/segment
+    via: webfetch セグメント別売上高ページ
+    note: 2023年3月期以降の開示区分
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 親会社・主な子会社と各社の事業内容
+    status: done
+    value: 親会社=なし(東証プライム上場、証券コード6981)。連結子会社83社(国内30・海外53)。【国内主な事業子会社(電子部品製造)】福井村田製作所、出雲村田製作所、富山村田製作所、小松村田製作所、金沢村田製作所、仙台村田製作所、岡山村田製作所、金津村田製作所、鯖江村田製作所、ハクイ村田製作所、アズミ村田製作所、小諸村田製作所、ワクラ村田製作所、登米村田製作所、大垣村田製作所、穴水村田製作所、岩手村田製作所、埼玉村田製作所(R&D)、伊勢村田製作所、東北村田製作所、村田指月FCソリューションズ。【国内その他】ムラタソフトウェア、村田土地建物、ムラタ栄興、ムラタコスモス、コトノバ、ピエクレックス(圧電繊維)、ミライセス(3D触覚・HMI)。【米国】Murata Electronics North America(地域本社・営業)、pSemi Corporation(RF半導体)、Murata Power Solutions(電源モジュール)、Murata Vios(医療用モニタ)、Eta Wireless(RF)、Resonant(RFフィルタ設計)。【欧州】Murata Electronics Europe B.V.(オランダ・地域本社)、Murata Electronics Oy(フィンランド・R&D/工場)、Murata Integrated Passive Solutions SAS(フランス Caen)、Murata ID Solutions S.r.l.(イタリア・RFID)。中国・東南アジア・南アジアにも生産・販売拠点多数
+    subject: 連結
+    as_of: 2026-03-31
+    unit: 社
+    source: https://corporate.murata.com/ja-jp/company/factsandfigures ／affiliated_japan ／affiliated_usa ／affiliated_europe
+    via: webfetch 関係会社一覧ページ(国内・米・欧州)
+    note: 中国・東南アジア・南アジアの社名一覧は該当ページ参照
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン（公式表記）
+    status: done
+    value: 【社是】(1954年、創業者 村田昭 制定、現行も変更なし)「技術を錬磨し、科学的管理を実践し、独自の製品を供給し、文化の発展に貢献し、信用の蓄積につとめ、会社の発展と協力者の共栄をはかり、これをよろこび感謝するひとびととともに運営する」。【スローガン】「Innovator in Electronics」(1994年 創業50周年に制定)。【経営における価値観】CS(Customer Satisfaction)とES(Employee Satisfaction)
+    subject: 公式表記
+    as_of: 確認2026-08-08（社是1954年、スローガン1994年制定）
+    unit: ""
+    source: https://corporate.murata.com/ja-jp/company/brand/philosophy
+    via: webfetch 経営理念（社是）ページ
+    note: ""
+  - id: article-company
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: done
+    value: 商号=株式会社村田製作所(Murata Manufacturing Co., Ltd.)。創業1944年10月(京都)。設立1950年12月23日。代表取締役社長 中島規巨。本社=京都府長岡京市東神足1-10-1。事業=ファンクショナルセラミックスベースの電子デバイスの研究開発・生産・販売。資本金694億44百万円。売上収益 連結1,830,856百万円／個別1,163,240百万円。従業員数 連結74,302名(国内35,375/海外38,927)・個別11,174名。グループ企業83社(国内30/海外53)。発行済株式1,963,001千株。東証プライム・証券コード6981。設立経緯=1944年10月京都で村田昭が創業、1950年12月株式会社へ改組
+    subject: 連結+単体
+    as_of: 2026-03-31
+    unit: 円・人・社・株
+    source: https://corporate.murata.com/ja-jp/company/factsandfigures
+    via: webfetch 会社概要ページ
+    note: 平均年間給与・平均年齢・平均勤続年数は ir-human-capital 担当
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: HP・IR・有価証券報告書PDF・採用・新卒採用リンク
+    status: done
+    value: 製品HP https://www.murata.com/ja-jp/。コーポレート https://corporate.murata.com/ja-jp/。IR https://corporate.murata.com/ja-jp/ir。有報一覧 https://www.murata.com/ja-jp/ir/library/financial。第90期有報(2025年度) https://www.murata.com/-/media/corporate/about/newsroom/news/irnews/irnews/2026/0624/murata90gorep.ashx (公表2026-06-24)。第89期(2024年度) https://www.murata.com/-/media/corporate/about/newsroom/news/irnews/irnews/2025/0624/murata89gorep.ashx (2025-06-24)。第88期(2023年度) https://www.murata.com/-/media/corporate/about/newsroom/news/irnews/irnews/2024/0627b/murata88gorep.ashx (2024-06-27)。採用 https://recruit.murata.com/ja-jp/。新卒採用 https://recruit.murata.com/ja-jp/freshers/。高専卒 https://recruit.murata.com/ja-jp/kosen/。セグメント別売上 https://www.murata.com/ja-jp/ir/financial/segment
+    subject: 正規公式URL
+    as_of: 確認2026-08-08
+    unit: ""
+    source: https://www.murata.com/ja-jp/ir/library/financial ／recruit.murata.com ／corporate.murata.com
+    via: webfetch IRライブラリ／採用トップ／コーポレートトップ
+    note: 直近3年度(第88-90期)の有報PDF URL
