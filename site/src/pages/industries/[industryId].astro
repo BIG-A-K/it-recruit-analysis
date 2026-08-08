@@ -12,7 +12,11 @@ import {
   metricsForCompanies,
 } from "../../lib/data";
 import type { Metric } from "../../lib/data";
-import { companyPageUpdatedAt, formatUpdatedAt } from "../../lib/company-pages";
+import {
+  companyPageAddedAt,
+  companyPageUpdatedAt,
+  formatUpdatedAt,
+} from "../../lib/company-pages";
 import { formatValue, latestMetric, metricLabels } from "../../lib/format";
 import { withJpyEquivalent } from "../../lib/fx";
 import type { MetricWithFx } from "../../lib/fx";
@@ -118,6 +122,29 @@ const kanaRanks = new Map(
     .map((company, index) => [company.company_id, index]),
 );
 
+interface HumanCapitalStat {
+  /** 行の `data-sort-<stat>` と `data-stat` に使うキー */
+  stat: string;
+  key: string;
+  label: string;
+  /** 算定範囲など、値だけでは読み違えるものへの補足 */
+  note?: string;
+  scope?: string;
+}
+
+// カードには常時出さず、その軸で並べているときだけ流動比率と入れ替えて出す指標。
+// 企業一覧（/companies/）と同じ組み合わせ・同じ表示規則に揃える
+const humanCapitalStats: HumanCapitalStat[] = [
+  { stat: "tenure", key: "average_tenure", label: "平均勤続年数" },
+  { stat: "age", key: "average_age", label: "平均年齢" },
+  // 連結と単体の両方を持つ企業があるため、横並びでは連結に揃える
+  { stat: "employees", key: "employee_count", label: "従業員数", scope: "consolidated" },
+  { stat: "pay-gap", key: "gender_pay_gap", label: "男女の賃金の差異", note: "男性を100とした水準" },
+  { stat: "female-managers", key: "female_manager_ratio", label: "女性管理職比率" },
+  { stat: "childcare", key: "male_childcare_leave_rate", label: "男性育休取得率", note: "育児目的休暇を含まない" },
+  { stat: "childcare-with-leave", key: "male_childcare_leave_rate_with_leave", label: "男性育休取得率", note: "育児目的休暇を含む" },
+];
+
 const sortedCompanies = baseCompanies
   .map((company) => {
      const disclosureId = disclosureIdForCompany(company);
@@ -125,6 +152,7 @@ const sortedCompanies = baseCompanies
        (metric) => metric.company_id === disclosureId,
      );
      const updatedAt = companyPageUpdatedAt(company.company_id);
+     const addedAt = companyPageAddedAt(company.company_id);
      // 外資系の日本法人のように、採用主体と数値の開示主体が別法人の場合は
      // どの法人・どの範囲の数値かを行に明示する
      const discloser = disclosureCompanyFor(company);
@@ -137,6 +165,7 @@ const sortedCompanies = baseCompanies
            : "持株会社連結"
          : undefined,
        kanaRank: kanaRanks.get(company.company_id) ?? 0,
+       addedAt: addedAt ? Date.parse(addedAt) : undefined,
        updatedAt: updatedAt ? formatUpdatedAt(updatedAt) : undefined,
        salary: comparableCell(latestMetric(companyMetrics, "average_annual_salary")),
        netCashFlow: comparableCell(latestMetric(companyMetrics, "net_cf")),
@@ -150,6 +179,14 @@ const sortedCompanies = baseCompanies
            latestMetric(companyMetrics, "business_profit"),
        ),
        currentRatio: comparableCell(latestMetric(companyMetrics, "current_ratio")),
+       humanCapital: Object.fromEntries(
+         humanCapitalStats.map((definition) => [
+           definition.stat,
+           comparableCell(
+             latestMetric(companyMetrics, definition.key, definition.scope),
+           ),
+         ]),
+       ) as Record<string, ReturnType<typeof comparableCell>>,
      };
   })
   .sort((a, b) => {
@@ -166,10 +203,66 @@ const sortOptions: SortOption[] = [
     defaultOrder: "asc",
   },
   {
+    value: "added",
+    label: "追加日時",
+    asc: "記事の追加日時が古い順で並べています。",
+    desc: "記事の追加日時が新しい順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
     value: "salary",
     label: "平均給与",
     asc: "平均年間給与の低い順で並べています。",
     desc: "平均年間給与の高い順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "tenure",
+    label: "平均勤続年数",
+    asc: "平均勤続年数の短い順で並べています。",
+    desc: "平均勤続年数の長い順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "age",
+    label: "平均年齢",
+    asc: "平均年齢の低い順で並べています。",
+    desc: "平均年齢の高い順で並べています。",
+    defaultOrder: "asc",
+  },
+  {
+    value: "employees",
+    label: "従業員数",
+    asc: "従業員数の少ない順で並べています。",
+    desc: "従業員数の多い順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "pay-gap",
+    label: "男女の賃金の差異",
+    asc: "男女の賃金の差異が大きい順（男性を100としたときの女性の水準が低い順）で並べています。",
+    desc: "男女の賃金の差異が小さい順（男性を100としたときの女性の水準が高い順）で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "female-managers",
+    label: "女性管理職比率",
+    asc: "女性管理職比率の低い順で並べています。",
+    desc: "女性管理職比率の高い順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "childcare",
+    label: "男性育休取得率（育児目的休暇を含まない）",
+    asc: "男性育休取得率（育児目的休暇を含まない）の低い順で並べています。",
+    desc: "男性育休取得率（育児目的休暇を含まない）の高い順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "childcare-with-leave",
+    label: "男性育休取得率（育児目的休暇を含む）",
+    asc: "男性育休取得率（育児目的休暇を含む）の低い順で並べています。",
+    desc: "男性育休取得率（育児目的休暇を含む）の高い順で並べています。",
     defaultOrder: "desc",
   },
   {
@@ -246,18 +339,25 @@ const sortOptions: SortOption[] = [
       options={sortOptions}
       initialSort="kana"
     />
-    <div class="company-list" data-company-list={`industry-${industry.industry_id}`}>
+    <div class="company-list" data-company-list={`industry-${industry.industry_id}`} data-sort="kana">
       {
-        sortedCompanies.map(({ company, discloser, disclosureLabel, kanaRank, updatedAt, salary, netCashFlow, profitMetric, operatingProfit, currentRatio }) => {
+        sortedCompanies.map(({ company, discloser, disclosureLabel, kanaRank, addedAt, updatedAt, salary, netCashFlow, profitMetric, operatingProfit, currentRatio, humanCapital }) => {
           return (
             <a
               class="linked-row"
               href={`/companies/${company.company_id}/`}
               data-sort-kana={kanaRank}
+              data-sort-added={addedAt ?? ""}
               data-sort-salary={salary.sortValue}
               data-sort-netcf={netCashFlow.sortValue}
               data-sort-profit={operatingProfit.sortValue}
               data-sort-ratio={currentRatio.sortValue}
+              {...Object.fromEntries(
+                humanCapitalStats.map(({ stat }) => [
+                  `data-sort-${stat}`,
+                  humanCapital[stat].sortValue,
+                ]),
+              )}
             >
               <div>
                 <h3>{company.display_name}</h3>
@@ -271,15 +371,74 @@ const sortOptions: SortOption[] = [
                 {updatedAt && <p class="row-updated">記事更新 {updatedAt}</p>}
               </div>
               <dl class="company-stats">
-                <div><dt>平均年間給与</dt><dd>{salary.text}{salary.original && <small>{salary.original}</small>}</dd></div>
-                <div><dt>ネットCF</dt><dd>{netCashFlow.text}{netCashFlow.original && <small>{netCashFlow.original}</small>}</dd></div>
-                <div><dt>{profitMetric ? metricLabels[profitMetric.metric_key] : "営業利益"}</dt><dd>{operatingProfit.text}{operatingProfit.original && <small>{operatingProfit.original}</small>}</dd></div>
-                <div><dt>流動比率</dt><dd>{currentRatio.text}{currentRatio.original && <small>{currentRatio.original}</small>}</dd></div>
+                <div data-stat="salary"><dt>平均年間給与</dt><dd>{salary.text}{salary.original && <small>{salary.original}</small>}</dd></div>
+                <div data-stat="netcf"><dt>ネットCF</dt><dd>{netCashFlow.text}{netCashFlow.original && <small>{netCashFlow.original}</small>}</dd></div>
+                <div data-stat="profit"><dt>{profitMetric ? metricLabels[profitMetric.metric_key] : "営業利益"}</dt><dd>{operatingProfit.text}{operatingProfit.original && <small>{operatingProfit.original}</small>}</dd></div>
+                <div data-stat="ratio"><dt>流動比率</dt><dd>{currentRatio.text}{currentRatio.original && <small>{currentRatio.original}</small>}</dd></div>
+                {humanCapitalStats.map(({ stat, label, note }) => (
+                  <div data-stat={stat} data-stat-optional>
+                    <dt>{label}</dt>
+                    <dd>{humanCapital[stat].text}{note && <small>{note}</small>}</dd>
+                  </div>
+                ))}
               </dl>
             </a>
           );
         })
       }
     </div>
+    <p class="section-note">
+      平均勤続年数・平均年齢・従業員数・男女の賃金の差異・女性管理職比率・男性育休取得率は、その軸で並べているあいだだけ流動比率と入れ替えてカードに出しています。値を公表していない企業は、順序によらず末尾に並べています。
+    </p>
   </section>
 </BaseLayout>
+
+<style>
+  /* 働き方の指標は、その軸で並べているときだけ流動比率と入れ替えて出し、カードを4列に保つ */
+  .company-stats > [data-stat-optional] { display: none; }
+  .company-list:is(
+    [data-sort="tenure"], [data-sort="age"], [data-sort="employees"],
+    [data-sort="pay-gap"], [data-sort="female-managers"],
+    [data-sort="childcare"], [data-sort="childcare-with-leave"]
+  ) .company-stats > [data-stat="ratio"] { display: none; }
+  .company-list[data-sort="tenure"] .company-stats > [data-stat="tenure"],
+  .company-list[data-sort="age"] .company-stats > [data-stat="age"],
+  .company-list[data-sort="employees"] .company-stats > [data-stat="employees"],
+  .company-list[data-sort="pay-gap"] .company-stats > [data-stat="pay-gap"],
+  .company-list[data-sort="female-managers"] .company-stats > [data-stat="female-managers"],
+  .company-list[data-sort="childcare"] .company-stats > [data-stat="childcare"],
+  .company-list[data-sort="childcare-with-leave"] .company-stats > [data-stat="childcare-with-leave"] {
+    display: block;
+  }
+
+  /* モバイルは既存CSSで先頭の指標だけが残るため、並び替え中の指標を先頭へ寄せて表示する */
+  @media (max-width: 720px) {
+    .company-list:is(
+      [data-sort="tenure"], [data-sort="age"], [data-sort="employees"],
+      [data-sort="pay-gap"], [data-sort="female-managers"],
+      [data-sort="childcare"], [data-sort="childcare-with-leave"]
+    ) .company-stats > [data-stat="salary"] {
+      display: none;
+    }
+    .company-list[data-sort="tenure"] .company-stats > [data-stat="tenure"],
+    .company-list[data-sort="age"] .company-stats > [data-stat="age"],
+    .company-list[data-sort="employees"] .company-stats > [data-stat="employees"],
+    .company-list[data-sort="pay-gap"] .company-stats > [data-stat="pay-gap"],
+    .company-list[data-sort="female-managers"] .company-stats > [data-stat="female-managers"],
+    .company-list[data-sort="childcare"] .company-stats > [data-stat="childcare"],
+    .company-list[data-sort="childcare-with-leave"] .company-stats > [data-stat="childcare-with-leave"] {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    /* 1行に収めるため、算定範囲の補足は畳む。
+       財務の軸で並べているあいだは原通貨の併記を残したいので、働き方の軸だけに絞る */
+    .company-list:is(
+      [data-sort="tenure"], [data-sort="age"], [data-sort="employees"],
+      [data-sort="pay-gap"], [data-sort="female-managers"],
+      [data-sort="childcare"], [data-sort="childcare-with-leave"]
+    ) .company-stats dd small {
+      display: none;
+    }
+  }
+</style>

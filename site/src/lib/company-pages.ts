@@ -63,6 +63,31 @@ function lastCommitDates(): Map<string, string> {
   return dates;
 }
 
+function firstCommitDates(): Map<string, string> {
+  const dates = new Map<string, string>();
+  const output = runGit(repositoryRoot, [
+    "log",
+    "--diff-filter=A",
+    "--format=@%cI",
+    "--name-only",
+    "--",
+    pageDirectory,
+  ]);
+  if (!output) return dates;
+
+  let committedAt = "";
+  for (const line of output.split("\n")) {
+    if (line.startsWith("@")) {
+      committedAt = line.slice(1);
+      continue;
+    }
+    const match = line.match(/companies\/([^/]+)\.mdx$/);
+    // 再追加された記事でも、履歴上で最初に追加された日時を残す
+    if (match) dates.set(match[1], committedAt);
+  }
+  return dates;
+}
+
 function locallyModifiedPages(): Set<string> {
   const modified = new Set<string>();
   const output = runGit(repositoryRoot, [
@@ -91,7 +116,13 @@ function fileModifiedAt(companyId: string): string | undefined {
 }
 
 const committedDates = lastCommitDates();
+const firstCommittedDates = firstCommitDates();
 const modifiedPages = locallyModifiedPages();
+
+/** 企業記事が最初に追加された日時を返す。 */
+export function companyPageAddedAt(companyId: string): string | undefined {
+  return firstCommittedDates.get(companyId) ?? fileModifiedAt(companyId);
+}
 
 /**
  * 企業記事の最終更新日を返す。クローン直後はファイルの更新時刻が

@@ -3,7 +3,11 @@ import CompanySortControls from "../../components/CompanySortControls.astro";
 import type { SortOption } from "../../components/CompanySortControls.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { companies, disclosureIdForCompany, metricsForCompanies } from "../../lib/data";
-import { companyPageUpdatedAt, formatUpdatedAt } from "../../lib/company-pages";
+import {
+  companyPageAddedAt,
+  companyPageUpdatedAt,
+  formatUpdatedAt,
+} from "../../lib/company-pages";
 import { formatValue, latestMetric, metricLabels, metricNotes } from "../../lib/format";
 import { normalizeForSearch } from "../../lib/search";
 
@@ -46,6 +50,7 @@ const rows = companies
       (metric) => metric.company_id === disclosureId,
     );
     const updatedAt = companyPageUpdatedAt(company.company_id);
+    const addedAt = companyPageAddedAt(company.company_id);
     return {
       company,
       // company_id はローマ字表記なので、英字での検索もここで拾える
@@ -58,6 +63,7 @@ const rows = companies
         .map(normalizeForSearch)
         .join("/"),
       hasPage: pageIds.has(company.company_id),
+      addedAt: addedAt ? Date.parse(addedAt) : undefined,
       updatedAt: updatedAt ? formatUpdatedAt(updatedAt) : undefined,
       latest: Object.fromEntries(
         // 従業員数は連結と単体の両方を持つため、一覧では連結に揃える
@@ -116,6 +122,13 @@ const sortOptions: SortOption[] = [
     label: "男性育休取得率（育児目的休暇を含む）",
     asc: "男性育休取得率（育児目的休暇を含む）の低い順で並べています。",
     desc: "男性育休取得率（育児目的休暇を含む）の高い順で並べています。",
+    defaultOrder: "desc",
+  },
+  {
+    value: "added",
+    label: "追加日時",
+    asc: "記事の追加日時が古い順で並べています。",
+    desc: "記事の追加日時が新しい順で並べています。",
     defaultOrder: "desc",
   },
   {
@@ -268,7 +281,7 @@ const distributionPayload = {
 
     <div class="company-list" data-company-list="companies" data-sort="kana">
       {
-        rows.map(({ company, searchKey, hasPage, updatedAt, latest }, index) => {
+        rows.map(({ company, searchKey, hasPage, addedAt, updatedAt, latest }, index) => {
           const salary = latest.average_annual_salary;
           const tenure = latest.average_tenure;
           const age = latest.average_age;
@@ -304,6 +317,7 @@ const distributionPayload = {
           const dataAttributes = {
             "data-search-key": searchKey,
             "data-sort-kana": index,
+            "data-sort-added": addedAt ?? "",
             "data-sort-salary": salary ? salary.value : "",
             "data-sort-tenure": tenure ? tenure.value : "",
             ...Object.fromEntries(
