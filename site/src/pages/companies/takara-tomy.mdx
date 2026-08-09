@@ -6,6 +6,7 @@ companyId: takara-tomy
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialHistory from "../../components/company/FinancialHistory.astro";
 import MetricTrends from "../../components/company/MetricTrends.astro";
@@ -65,6 +66,8 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 地域をまたいで展開する商品ブランドがあるため、表の製品例は各報告セグメントの売上内訳を示すものではない。[タカラトミーグループの事業](https://www.takaratomy.co.jp/company/recruit/business/)は地域展開と年齢層拡大の具体例を、[商品情報](https://www.takaratomy.co.jp/products/)はブランド・ジャンル別の商品を示す。
 
 </CompanyProse>
+
+<SegmentRevenue companyId={frontmatter.companyId} />
 
 <CompanyProse>
 

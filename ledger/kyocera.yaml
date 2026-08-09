@@ -8,7 +8,7 @@ company_boundary:
   securities_code: "6971"
   edinet_code: E01182
   fiscal_year_end: 3月末日
-  accounting_standard: JGAAP
+  accounting_standard: IFRS
   currency: JPY
   reporting_segments: コアコンポーネント・電子部品・ソリューション
   company_relations: []

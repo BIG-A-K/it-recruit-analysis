@@ -6,6 +6,7 @@ companyId: aws-japan
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
+import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialHistory from "../../components/company/FinancialHistory.astro";
 import MetricTrends from "../../components/company/MetricTrends.astro";
 
@@ -14,7 +15,7 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 <CompanyProse>
 
 :::error
-アマゾン ウェブ サービス ジャパン合同会社は非上場で、有価証券報告書による法定開示はありません。財務の開示主体は Amazon.com, Inc. で法人が異なり、このページの財務データはすべて Amazon.com, Inc. の連結業績です。日本法人単体の業績、平均年間給与、平均年齢、平均勤続年数、従業員数は公表されていません。
+アマゾン ウェブ サービス ジャパン合同会社は非上場で、有価証券報告書による法定開示はない。財務の開示主体は Amazon.com, Inc. で法人が異なり、このページの財務データはすべて Amazon.com, Inc. の連結業績である。日本法人単体の業績、平均年間給与、平均年齢、平均勤続年数、従業員数はこのページの財務データに含めない。
 :::
 
 [AWS](https://aws.amazon.com/jp/)は2006年にサービスを開始したクラウドプラットフォーム。スタートアップ、企業、非営利団体、政府・自治体などへ、コンピューティング、ストレージ、データベース、AIなどの基盤を提供する。
@@ -39,19 +40,17 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 
 採用主体はアマゾン ウェブ サービス ジャパン合同会社。
 
-| 職種 | 募集対象 |
+| 職種 | 募集対象年度・選考区分 |
 | --- | --- |
-| [営業](https://aws.amazon.com/jp/careers/newgraduate/commercialsales/) | 新卒採用ページの応募予定職種 |
-| [サポートエンジニアリング](https://aws.amazon.com/jp/careers/newgraduate/supportengineering/) | クラウドサポートエンジニア |
+| [営業](https://aws.amazon.com/jp/careers/newgraduate/commercialsales/) | 新卒採用ページの応募予定職種。対象年度の明記なし |
+| [サポートエンジニアリング](https://aws.amazon.com/jp/careers/newgraduate/supportengineering/) | 新卒採用のクラウドサポートエンジニア。対象年度の明記なし |
 | [ソリューションアーキテクト](https://aws.amazon.com/jp/careers/newgraduate/solutionsarchitect/) | 2027年卒本選考 |
 | [プロフェッショナルサービス](https://aws.amazon.com/jp/careers/newgraduate/Proserve/) | 2028年卒インターン |
 | [データセンター](https://aws.amazon.com/jp/careers/newgraduate/datacenter/) | 2027年卒向けの施設・ITインフラ職 |
 
-新卒採用ページに初任給・固定残業・標準年収の記載はない。金額を含む条件は各職種のAmazon Jobs募集要項に置かれる。
+新卒採用ページに初任給・固定残業・標準年収の記載はない。給与や勤務条件は表の各職種ページに紐づくAmazon Jobs募集要項に掲載される。
 
 データセンター部門の職種は2種。DCEO（Data Center Engineering Operations）は電気・機械設備、DCO（Data Center Operations）はサーバー・ネットワーク機器を運用する。DCOの領域はキャパシティ・インストール、障害対応、機器の廃止。
-
-### 選考・働き方
 
 [採用プロセス](https://aws.amazon.com/jp/careers/recruiting/)の標準的な流れは、書類選考、一次面接、最終面接、内定。応募から内定までの目安は1〜1.5か月で、面接ではAmazonのLeadership Principlesに基づく行動事例を問う。
 
@@ -90,6 +89,8 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 :::
 
 </CompanyProse>
+
+<HealthMetrics companyId="amazon-com" />
 
 <FinancialHistory companyId="amazon-com" />
 

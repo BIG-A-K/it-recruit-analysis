@@ -57,6 +57,12 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 | インダクタ・通信用デバイス | インダクタ、FBARフィルター、SAWフィルター |
 | モジュール・センサー | 回路モジュール、センサー |
 
+</CompanyProse>
+
+<SegmentRevenue companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
 ## 関連企業
 
 | 主な関係会社 | 役割 |
@@ -64,8 +70,6 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 | 太陽誘電モバイルテクノロジー株式会社、Taiyo Yuden (U.S.A.) Inc. | 電子部品の開発・製造・販売 |
 
 </CompanyProse>
-
-<SegmentRevenue companyId={frontmatter.companyId} />
 
 <HealthMetrics companyId={frontmatter.companyId} />
 

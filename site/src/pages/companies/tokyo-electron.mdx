@@ -59,6 +59,12 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 | エッチング・洗浄 | エッチング装置、洗浄装置、レーザ剥離装置 |
 | プローバ・FPD | デバイスプローバ、フラットパネルディスプレイ製造装置 |
 
+</CompanyProse>
+
+<SegmentRevenue companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
 ## 関連企業
 
 | 主な関係会社 | 役割 |
@@ -67,8 +73,6 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 | 東京エレクトロン宮城株式会社、東京エレクトロン九州株式会社、東京エレクトロンFE株式会社 | 半導体製造装置の製造・サービス |
 
 </CompanyProse>
-
-<SegmentRevenue companyId={frontmatter.companyId} />
 
 <HealthMetrics companyId={frontmatter.companyId} />
 

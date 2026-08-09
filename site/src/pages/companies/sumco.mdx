@@ -57,6 +57,12 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 | シリコンウェーハ | 半導体用シリコンウェーハ、単結晶シリコン、ウェーハ加工 |
 | 特殊加工ウェーハ | エピタキシャルウェーハなどの高付加価値製品 |
 
+</CompanyProse>
+
+<SegmentRevenue companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
 ## 関連企業
 
 | 主な関係会社 | 役割 |
@@ -64,8 +70,6 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 | SUMCO TECHXIV株式会社、SUMCO Phoenix Corporation | シリコンウェーハの製造・加工 |
 
 </CompanyProse>
-
-<SegmentRevenue companyId={frontmatter.companyId} />
 
 <HealthMetrics companyId={frontmatter.companyId} />
 

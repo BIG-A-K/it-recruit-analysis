@@ -57,6 +57,12 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 | FPD検査装置 | FPDフォトマスク欠陥検査装置 |
 | その他 | ハイブリッドレーザーマイクロスコープなどの計測機器 |
 
+</CompanyProse>
+
+<SegmentRevenue companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
 ## 関連企業
 
 | 主な関係会社 | 役割 |
@@ -64,8 +70,6 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 | Lasertec USA, Inc.、Lasertec Korea Corporation | 海外販売・顧客サポート |
 
 </CompanyProse>
-
-<SegmentRevenue companyId={frontmatter.companyId} />
 
 <HealthMetrics companyId={frontmatter.companyId} />
 

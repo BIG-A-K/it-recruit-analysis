@@ -57,6 +57,12 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 | 精密加工ツール | ダイシングブレード、グラインディングホイールなどのダイヤモンド工具 |
 | アプリケーション | 加工方法の検証、加工ソリューション |
 
+</CompanyProse>
+
+<SegmentRevenue companyId={frontmatter.companyId} />
+
+<CompanyProse>
+
 ## 関連企業
 
 | 主な関係会社 | 役割 |
@@ -64,8 +70,6 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
 | DISCO HI-TEC AMERICA, INC.、DISCO HI-TEC EUROPE GmbH | 精密加工装置・ツールの海外販売、サービス |
 
 </CompanyProse>
-
-<SegmentRevenue companyId={frontmatter.companyId} />
 
 <HealthMetrics companyId={frontmatter.companyId} />
 
