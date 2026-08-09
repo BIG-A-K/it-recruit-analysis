@@ -5,17 +5,27 @@ companyId: toshiba
 
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
+import FinancialHistory from "../../components/company/FinancialHistory.astro";
+import MetricTrends from "../../components/company/MetricTrends.astro";
 
 <CompanyOverview companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
-株式会社東芝は1875年創業の総合電機メーカー。エネルギーソリューション、デジタルインフラソリューション、デバイス＆テクノロジーの3つのビジネスセグメントと、リテール＆プリンティングソリューションで製品・サービスを提供する。
+[株式会社東芝](https://www.global.toshiba/jp/outline/corporate/profile.html)は1875年7月創業。
+[田中製造所と白熱舎を源流](https://www.global.toshiba/jp/outline/corporate/history/chronology.html)とし、1939年に東京芝浦電気株式会社、1984年に株式会社東芝へ商号を変更した。
+[エネルギー、社会インフラ、電子デバイス](https://www.global.toshiba/jp/outline/corporate/business.html)を主な事業とする。
+[2026年3月31日現在の連結従業員数](https://www.global.toshiba/jp/outline/corporate/profile.html)は94,051人。
 
-[東芝グループ経営理念](https://www.global.toshiba/jp/outline/corporate/philosophy.html)は「人と、地球の、明日のために。」、存在意義は「新しい未来を始動させる。」。価値観は「誠実であり続ける」「変革への情熱を抱く」「未来を思い描く」「ともに生み出す」の4項目。会社概要は[基本データ](https://www.global.toshiba/jp/outline/corporate/profile.html)に掲げる。
+[東芝グループ理念体系](https://www.global.toshiba/jp/outline/corporate/philosophy.html)の経営理念は「人と、地球の、明日のために。」。
+存在意義は「新しい未来を始動させる。」。
+価値観は「誠実であり続ける」「変革への情熱を抱く」「未来を思い描く」「ともに生み出す」の4項目。
 
 :::warn
-東芝株式は2023年12月20日に上場廃止となっています。EDINETの指定期間には対象となる有価証券報告書がなく、財務数値は東芝公式IRの2023年度、2024年度、2025年度決算資料を出典としてCSVへ登録しています。サイトの非上場企業方針により、財務推移・健全性・雇用指標の構造化コンポーネントは表示していません。
+[TBJH株式会社による公開買付けと株式併合を経て、東芝株式は2023年12月20日に上場廃止](https://www.global.toshiba/jp/ir/corporate/tender-offer.html)となった。
+[2025年度の連結実績](https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2025q4.pdf)は、2026年5月15日公表時点の監査完了前の数値である。
+このページの財務表示における2024〜2026年度は3月期末年で、東芝資料の2023〜2025年度に対応する。
+数値は米国会計基準による東芝グループ連結の12か月累計。
 :::
 
 ## サイト
@@ -27,6 +37,8 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
     - [事業領域](https://www.global.toshiba/jp/outline/corporate/business.html)
     - [関係会社情報](https://www.global.toshiba/jp/outline/corporate/companies.html)
   - [財務情報](https://www.global.toshiba/jp/ir/corporate.html)
+    - [財務・業績](https://www.global.toshiba/jp/ir/corporate/finance.html)
+    - [有価証券報告書等](https://www.global.toshiba/jp/ir/corporate/library/securities-report.html)
     - [2025年度決算](https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2025q4.pdf)
     - [2024年度決算](https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2024q4.pdf)
     - [2023年度連結決算](https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2023q4.pdf)
@@ -35,51 +47,66 @@ import CompanyProse from "../../components/company/CompanyProse.astro";
       - [採用基本情報](https://www.global.toshiba/jp/recruit/corporate/newgraduates/information/base.html)
       - [技術系職種](https://www.global.toshiba/jp/recruit/corporate/newgraduates/occupation/technology.html)
       - [事務系職種](https://www.global.toshiba/jp/recruit/corporate/newgraduates/occupation/officework.html)
-
-</CompanyProse>
-
-<CompanyProse>
+      - [エントリー](https://www.global.toshiba/jp/recruit/corporate/newgraduates/entry.html)
 
 ## 採用情報
 ### 新卒
 
-採用主体は株式会社東芝。以下は2027年卒向けの公式新卒採用情報の内容。
+採用主体は株式会社東芝。
+[2027年3月卒向け新卒採用](https://www.global.toshiba/jp/recruit/corporate/newgraduates.html)は2026年3月2日にエントリーを開始した。
+個別の募集部門、募集終了状況、月ごとの応募期限は登録制マイページで開示される。
 
-| 職種 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
-| --- | --- | --- | --- | --- | --- |
-| [技術系職種](https://www.global.toshiba/jp/recruit/corporate/newgraduates/occupation/technology.html) | 川崎、横浜、府中、姫路、能美、柏崎、全国の支社・事業所など（配属先により異なる） | 学士287,000円、修士312,000円、博士361,500円 | 記載なし | 記載なし | 記載なし |
-| [事務系職種](https://www.global.toshiba/jp/recruit/corporate/newgraduates/occupation/officework.html) | 川崎、横浜、府中、全国の支社・事業所など（配属先により異なる） | 学士287,000円、修士312,000円、博士361,500円 | 記載なし | 記載なし | 記載なし |
+| 職種区分 | 主な職種 | 応募方式 | 勤務地※1 | 初任給※2 |
+| --- | --- | --- | --- | --- |
+| [技術系職種](https://www.global.toshiba/jp/recruit/corporate/newgraduates/occupation/technology.html) | 研究開発、開発設計、生産技術、システムエンジニア（顧客向けシステムの設計と導入）、セールスエンジニア（技術提案）、フィールドエンジニア（工事計画と施工管理）、プラントエンジニア（発電設備と社会インフラの設計、施工管理、試運転）、品質管理、知的財産、情報システム（社内SE） | 学校推薦または自由応募 | 共通条件 | 共通条件 |
+| [事務系職種](https://www.global.toshiba/jp/recruit/corporate/newgraduates/occupation/officework.html) | 営業・事業企画、生産企画・管理、調達、財務・経理、人事・総務、法務、知的財産 | 自由応募 | 共通条件 | 共通条件 |
+
+<p class="section-note">
+<small>
+※1 勤務地は株式会社東芝と東芝デバイス＆ストレージ株式会社の共通情報。
+主な勤務地は本社、総合研究所、小向、府中、京浜、浜川崎、横浜、分倍河原、姫路、加賀、柏崎と全国の支社。
+株式会社東芝の職種別配属先は公開ページで非開示。
+<br />
+※2 公開中の2026年度初任給は学部卒287,000円、修士卒312,000円、博士卒361,500円。
+2027年入社者の確定額、基礎給、固定時間外手当、標準年収は公開ページで非開示。
+</small>
+</p>
 
 :::info
-昇給は年1回、賞与は年2回です。住宅補助、通勤費、次世代育成手当などがあり、標準労働時間は7時間45分、フレックスタイム制度があります。技術系職種は学校推薦または自由応募、事務系職種はエントリーシート・適性検査・書類選考・面接を基本とします。東芝グループの2社は応募システムを共同利用しますが、応募から選考・内定は各社ごとに行われます。
+[採用基本情報](https://www.global.toshiba/jp/recruit/corporate/newgraduates/information/base.html)では、昇給は年1回、賞与は年2回。
+住宅費補助、通勤手当、次世代育成手当があり、本社の標準労働時間は7時間45分。
+株式会社東芝と東芝デバイス＆ストレージ株式会社は[応募システム](https://www.global.toshiba/jp/recruit/corporate/newgraduates/entry.html)を共同利用する。
+選考と内定は各社が個別に行う。
 :::
 
 ## 事業内容
 
-| 公式事業領域 | 製品・サービス例 |
+| 公式事業領域 | 製品とサービスの例 |
 | --- | --- |
-| エネルギーソリューション | 原子力・火力・再生可能エネルギーの発電、送変電・配電、蓄電池・水素などのエネルギーシステム |
-| デジタルインフラソリューション | 水、レーダー、鉄道、電力などの公共インフラ、IoT・AIを活用した社会システム、デジタルソリューション |
-| デバイス＆テクノロジー | 自動車・産業用半導体、データセンター向けHDD、半導体製造装置、デバイス・部品・材料 |
-| リテール＆プリンティングソリューション | POSシステム、複合機、プリンティング関連の製品・サービス |
+| エネルギーソリューション | 原子力、火力、水力、再生可能エネルギーの発電システム、送変電、水素エネルギーシステム |
+| デジタルインフラソリューション | 上下水道、道路、防災、鉄道、エレベーター、照明、蓄電池、官公庁や製造業向け情報システム |
+| デバイス＆テクノロジー | 自動車や産業機器向け半導体、データ保存用ハードディスクドライブ（HDD）、半導体製造装置、印刷用ヘッド |
+| リテール＆プリンティングソリューション | 販売時点情報管理（POS）を含む店舗システム、複合機、商品識別システム |
 
-事業領域の区分は[東芝の事業領域](https://www.global.toshiba/jp/outline/corporate/business.html)、新卒向けの製品・仕事内容は[事業を知る](https://www.global.toshiba/jp/recruit/corporate/newgraduates/business/business.html)による。東芝公式サイトの事業領域と決算資料の説明単位は同一ではないため、以下は公式サイトの区分に従う。
-
-</CompanyProse>
-
-<CompanyProse>
+[現行の事業領域](https://www.global.toshiba/jp/outline/corporate/business.html)は、2025年11月に導入した3つの事業区分とリテール＆プリンティングソリューションで構成される。
+[統合報告書2025](https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/library/annual-report/pdf/ar2025/tir2025_a3_05.pdf)が示す旧7区分とは名称と粒度が異なる。
+[2025年度決算](https://www.global.toshiba/content/dam/toshiba/jp/ir/corporate/finance/pdf/tpr2025q4.pdf)では、現行区分別の売上と利益を開示していない。
 
 ## 関連企業
 
-東芝公式サイトの「主な連結子会社」のうち、事業内容と公式サイトを持つ企業は次のとおり。
+[主な連結子会社](https://www.global.toshiba/jp/outline/corporate/companies.html)と現行事業領域の対応は次のとおり。
 
-| 主な関係会社 | 主な事業内容 |
-| --- | --- |
-| [東芝プラントシステム株式会社](https://www.toshiba-tpsc.co.jp/) | プラントシステム |
-| [東芝エレベータ株式会社](https://www.toshiba-elevator.co.jp/elv/index_j.html) | エレベーター |
-| [東芝ライテック株式会社](https://www.tlt.co.jp/tlt/) | 照明 |
-| [東芝デバイス&ストレージ株式会社](https://toshiba.semicon-storage.com/jp/top.html) | 半導体・ストレージ関連製品 |
-| [株式会社ニューフレアテクノロジー](https://www.nuflare.co.jp/) | 半導体製造装置 |
-| [東芝テック株式会社](https://www.toshibatec.co.jp/) | リテール・プリンティング関連機器 |
+| 関係 | 会社 | 主な事業 | 現行事業領域 |
+| --- | --- | --- | --- |
+| 連結子会社 | [東芝プラントシステム株式会社](https://www.toshiba-tpsc.co.jp/) | 発電設備、社会インフラ、産業設備の設計、施工、保守 | エネルギーソリューション |
+| 連結子会社 | [東芝エレベータ株式会社](https://www.toshiba-elevator.co.jp/elv/index_j.html) | エレベーター、エスカレーター、ビル設備 | デジタルインフラソリューション |
+| 連結子会社 | [東芝ライテック株式会社](https://www.tlt.co.jp/tlt/) | 照明、電設資材、航空灯火 | デジタルインフラソリューション |
+| 連結子会社 | [東芝デバイス＆ストレージ株式会社](https://toshiba.semicon-storage.com/jp/top.html) | 半導体、HDD | デバイス＆テクノロジー |
+| 連結子会社 | [株式会社ニューフレアテクノロジー](https://www.nuflare.co.jp/) | 半導体製造装置 | デバイス＆テクノロジー |
+| 連結子会社 | [東芝テック株式会社](https://www.toshibatec.co.jp/) | POSを含む店舗システム、複合機、商品識別システム | リテール＆プリンティングソリューション |
 
 </CompanyProse>
+
+<FinancialHistory companyId={frontmatter.companyId} />
+
+<MetricTrends companyId={frontmatter.companyId} />

@@ -311,6 +311,24 @@ def test_unlisted_company_pages_omit_unavailable_data_sections() -> None:
         if row["availability"] == "reported"
         and row["metric_key"] in employment_keys
     }
+    financial_keys = {
+        "revenue",
+        "operating_profit",
+        "business_profit",
+        "operating_cf",
+        "investing_cf",
+        "financing_cf",
+        "equity_ratio",
+        "current_assets",
+        "current_liabilities",
+        "quick_assets",
+    }
+    financial_by_company = {
+        row["company_id"]
+        for row in read_rows("metrics.csv")
+        if row["availability"] == "reported"
+        and row["metric_key"] in financial_keys
+    }
 
     for company_id in unlisted_company_ids:
         page = (COMPANY_PAGE_DIR / f"{company_id}.mdx").read_text(encoding="utf-8")
@@ -318,6 +336,11 @@ def test_unlisted_company_pages_omit_unavailable_data_sections() -> None:
             if (
                 component == "EmploymentOverview"
                 and company_id in employment_by_company
+            ):
+                continue
+            if (
+                component in {"FinancialHistory", "MetricTrends"}
+                and company_id in financial_by_company
             ):
                 continue
             assert f"<{component} companyId={{frontmatter.companyId}}" not in page, (

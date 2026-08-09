@@ -1,0 +1,205 @@
+company_id: toshiba
+disclosure_company_id: toshiba
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-09
+updated_at: 2026-08-09
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+items:
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数
+    status: done
+    value: metrics.csv の employee_count（2026年度、1行）
+    subject: 東芝グループ連結
+    as_of: 2026-03-31
+    unit: persons
+    source: toshiba-corporate-profile
+    via: 公式基本データと上場廃止後の開示資料を確認
+    note: 連結従業員数94,051人。平均年間給与・平均年齢・平均勤続年数・単体従業員数は確認資料で非開示。
+  - id: ir-revenue-profit
+    phase: ir
+    store: ir_csv
+    topic: 売上高・営業利益 3期以上
+    status: done
+    value: metrics.csv の revenue・operating_profit（2024〜2026年度、各3行）
+    subject: 東芝グループ連結
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: toshiba-financial-2023; toshiba-financial-2024; toshiba-financial-2025
+    via: 公式IRの年度決算PDFを取得して既存CSV行と照合
+    note: 米国会計基準・連結12か月累計。2025年度値は2026年5月15日時点で監査完了前。
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産
+    status: not_disclosed
+    value: metrics.csv の連結 equity_ratio・current_assets・current_liabilities・quick_assets は0行
+    subject: 東芝グループ連結
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY; percent
+    source: 2023〜2025年度決算、統合報告書2025、2024〜2026年決算公告
+    via: 公式IRの決算資料・統合報告書・決算公告を確認
+    note: 上場廃止後の年度決算資料には連結貸借対照表がない。決算公告は株式会社東芝単体のため連結値の代替にしない。
+  - id: ir-cash-flow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務キャッシュフロー 3期以上
+    status: done
+    value: metrics.csv の operating_cf・investing_cf（2024〜2026年度、各3行）
+    subject: 東芝グループ連結
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: toshiba-financial-2023; toshiba-financial-2024; toshiba-financial-2025
+    via: 公式IRの年度決算PDFを取得して既存CSV行と照合
+    note: 財務CFは確認した年度決算資料・統合報告書・決算公告で非開示。2025年度投資CFは制限付預金・親会社への貸付の影響を除く定義。
+  - id: ir-segments
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメント別売上・利益
+    status: not_disclosed
+    value: segments.csv の対象行は0行
+    subject: 東芝グループ連結
+    as_of: 2025-11-01〜2026-08-07
+    unit: JPY
+    source: 統合報告書2025; 2026年度第1四半期決算
+    via: 公式IR資料で区分名と区分別数値の有無を確認
+    note: 現行4領域の名称は開示されるが、2025年度の区分別売上・利益は非開示。推定値や名称だけのCSV行は追加しない。
+  - id: ir-comparison-notes
+    phase: ir
+    store: ir_csv
+    topic: 上場廃止・開示範囲・監査状況・比較上の注記
+    status: done
+    value: 上場廃止後の開示範囲・監査状態・組織再編・事業区分変更を確認
+    subject: 株式会社東芝
+    as_of: 2023-12-20〜2026-08-09
+    unit: ""
+    source: 東芝公式IRの財務・業績、有価証券報告書等、電子公告、統合報告書
+    via: 公式IR資料を横断確認
+    note: 2023年12月20日上場廃止。2025年度連結実績は監査完了前。2025年11月のビジネスセグメント制導入と2025・2026年の吸収合併により旧区分との単純比較に注意。
+  - id: recruit-overview
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・募集状態・募集ページ
+    status: done
+    value: 2027年3月卒採用は2026年3月2日にエントリー開始。技術系10職種・事務系7職種を公開。
+    subject: 株式会社東芝・2027年3月卒向け新卒採用
+    as_of: 2026-08-09
+    unit: ""
+    source: https://www.global.toshiba/jp/recruit/corporate/newgraduates.html
+    via: 公式採用トップ、採用基本情報、エントリー、マイページを確認
+    note: 個別募集ポジション、月ごとの締切、募集終了状況は登録制マイページ限定。
+  - id: recruit-technology
+    phase: recruit
+    store: mdx
+    topic: 技術系職種の仕事内容・応募資格・選考区分・勤務地・待遇
+    status: done
+    value: 研究開発、開発設計、生産技術、システムエンジニア、セールスエンジニア、フィールドエンジニア、プラントエンジニア、品質管理、知的財産、情報システム（社内SE）の10職種。学校推薦・自由応募。勤務地と待遇は共通情報のみ公開。
+    subject: 株式会社東芝・2027年卒技術系10職種
+    as_of: 2026-08-09
+    unit: ""
+    source: https://www.global.toshiba/jp/recruit/corporate/newgraduates/occupation/technology.html
+    via: 技術系全職種、採用基本情報、FAQを確認
+    note: 職種別勤務地、個別応募期限、選択可能な募集部門は公開ページで非開示。
+  - id: recruit-office
+    phase: recruit
+    store: mdx
+    topic: 事務系職種の仕事内容・応募資格・選考区分・勤務地・待遇
+    status: done
+    value: 営業・事業企画、生産企画・管理、調達、財務・経理、人事・総務、法務、知的財産の7職種。自由応募のみ。
+    subject: 株式会社東芝・2027年卒事務系7職種
+    as_of: 2026-08-09
+    unit: ""
+    source: https://www.global.toshiba/jp/recruit/corporate/newgraduates/occupation/officework.html
+    via: 事務系全職種、採用基本情報、FAQを確認
+    note: 職種別勤務地、個別応募期限、選択可能な募集部門は公開ページで非開示。
+  - id: recruit-common-conditions
+    phase: recruit
+    store: mdx
+    topic: 共通給与・賞与・手当・労働時間・転勤・応募期限・共同応募システム
+    status: done
+    value: 2026年度初任給は学部卒287,000円、修士卒312,000円、博士卒361,500円。賞与年2回、昇給年1回、標準労働時間7時間45分。
+    subject: 株式会社東芝・2027年卒技術系／事務系共通条件
+    as_of: 2026-08-09
+    unit: JPY/月、時間、回/年
+    source: 採用基本情報、勤務制度、FAQ、2027年卒AXOL会員規約
+    via: 公式採用ページと公式導線先の会員規約を確認
+    note: 2027年入社者の確定給与、基準給与・基礎給・固定時間外手当・標準年収、地理的転勤条件、固定応募期限は非開示。現行共同採用は株式会社東芝と東芝デバイス＆ストレージ株式会社。
+  - id: segments-business
+    phase: segments
+    store: mdx
+    topic: 公式事業領域ごとの具体的な製品・サービス
+    status: done
+    value: エネルギー、デジタルインフラ、デバイス＆テクノロジーの3ビジネスセグメントとリテール＆プリンティング。
+    subject: 東芝グループ
+    as_of: 2026-08-09
+    unit: ""
+    source: https://www.global.toshiba/jp/outline/corporate/business.html
+    via: 公式事業領域トップと全下位領域を確認
+    note: デジタルインフラはインフラ、デジタル、ビル、バッテリーの4領域を内包。
+  - id: segments-mapping
+    phase: segments
+    store: mdx
+    topic: 公式事業領域と決算資料の報告区分の対応
+    status: done
+    value: 現行4領域と統合報告書2025の旧7区分の対応を確認
+    subject: 東芝グループ連結
+    as_of: 2023-03-31〜2026-08-09
+    unit: ""
+    source: 第184期有価証券報告書; 統合報告書2025; 現行事業領域; 2025年度決算
+    via: 旧法定開示区分と現行公式サイト区分を照合
+    note: 現行4領域を旧7報告セグメントと同一名称・同一粒度として扱わない。
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 主な連結子会社・関係方向・事業・報告区分
+    status: done
+    value: 現行の主な連結子会社6社と各社の事業領域を確認
+    subject: 東芝グループ
+    as_of: 2026-04
+    unit: ""
+    source: https://www.global.toshiba/jp/outline/corporate/companies.html
+    via: 現行関係会社一覧と各事業領域ページを照合
+    note: 東芝プラントシステム、東芝エレベータ、東芝ライテック、東芝デバイス＆ストレージ、ニューフレアテクノロジー、東芝テック。旧3事業会社は吸収合併済み。
+  - id: article-philosophy
+    phase: article
+    store: mdx
+    topic: 理念・存在意義・価値観
+    status: done
+    value: 経営理念「人と、地球の、明日のために。」、存在意義「新しい未来を始動させる。」、4つの価値観
+    subject: 東芝グループ
+    as_of: 2026-08-09
+    unit: ""
+    source: https://www.global.toshiba/jp/outline/corporate/philosophy.html
+    via: 公式理念体系を確認
+    note: 公式表記の句読点と語順を維持する。
+  - id: article-profile
+    phase: article
+    store: mdx
+    topic: 設立経緯・規模・会社紹介
+    status: done
+    value: 1875年創業。田中製造所と白熱舎を源流とし、1939年に東京芝浦電気、1984年に株式会社東芝へ商号変更。
+    subject: 株式会社東芝
+    as_of: 2026-03-31
+    unit: ""
+    source: 公式基本データ、沿革、IRトップ、第184期有価証券報告書
+    via: 公式会社情報と開示資料を照合
+    note: 連結従業員数94,051人。2023年12月20日上場廃止。
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: 公式HP・IR・決算資料・採用・新卒採用リンク
+    status: done
+    value: 公式HP、会社概要、財務・業績、有価証券報告書等、3期の決算、採用、新卒採用のURLを確認
+    subject: 株式会社東芝
+    as_of: 2026-08-09
+    unit: ""
+    source: 東芝公式サイト、公式IR、公式採用サイト
+    via: 公式サイトのナビゲーションと年度別掲載資料を確認
+    note: 取得済み決算は2023年度、2024年度、2025年度。
