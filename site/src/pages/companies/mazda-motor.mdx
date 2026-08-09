@@ -6,6 +6,7 @@ companyId: mazda-motor
 import CompanyOverview from "../../components/company/CompanyOverview.astro";
 import CompanyProse from "../../components/company/CompanyProse.astro";
 import EmploymentOverview from "../../components/company/EmploymentOverview.astro";
+import SegmentRevenue from "../../components/company/SegmentRevenue.astro";
 import HealthMetrics from "../../components/company/HealthMetrics.astro";
 import FinancialHistory from "../../components/company/FinancialHistory.astro";
 import MetricTrends from "../../components/company/MetricTrends.astro";
@@ -30,27 +31,47 @@ import MetricTrends from "../../components/company/MetricTrends.astro";
   - [IR情報](https://www.mazda.com/ja/investors/)
     - [業績・財務情報](https://www.mazda.com/ja/investors/financial/data/)
     - [有価証券報告書等](https://www.mazda.com/ja/investors/library/s-report/)
+      - [第159期有価証券報告書（2025年3月期）](https://contents.xj-storage.jp/xcontents/AS07797a/409f4bfc/2e2c/4da0/9c8d/b4c209b708ea/20251128185026715s.pdf)
+      - [第160期有価証券報告書（2026年3月期）](https://contents.xj-storage.jp/xcontents/AS07797a/5b841ae0/1d80/49dc/90d9/cea1b6880b35/S100YDZ1.pdf)
   - [採用情報](https://www.mazda.com/ja/careers/)
     - [新卒採用 事務職・技術職](https://www.mazda.com/ja/careers/newgraduate-1/)
     - [新卒採用 生産技能職](https://www.mazda.com/ja/careers/newgraduate-2/)
+
+</CompanyProse>
+
+<EmploymentOverview companyId={frontmatter.companyId} />
+
+<CompanyProse>
 
 ## 採用情報
 
 ### 新卒
 
-採用主体はマツダ株式会社。新卒採用は事務系、技術・IT系、デザイン系、生産技能職に分かれる。車両の設計・研究開発に加え、デザイン、生産技術、調達、品質、IT、営業などが商品体験を構成する。
+採用主体はマツダ株式会社。2027年4月入社の新卒採用は総合職（IT・SE系、技術系、事務系）と生産技能系に分かれる。事務系は経営企画、調達、生産管理・物流、営業、財務、法務、人事などを扱う。技術系は先行研究、商品企画、統合制御システム開発、パワートレイン開発、車両開発、生産技術、製造、品質保証、デジタル・IT、アフターサービス、知的財産などを扱う。
+
+| 職種区分 | 勤務地 | 基準給与（月） | 基礎給（月） | 固定時間外手当（月） | 標準年収 |
+| --- | --- | --- | --- | --- | --- |
+| 事務系・技術系 | 広島、東京、横浜など。初期配属は広島本社または防府工場 | 2026年4月入社実績：博士294,500円、修士273,000円、学士251,000円、高専卒（専攻）251,000円・（本科）211,400円、短大卒・専修卒（2年）205,400円 | 記載なし | 記載なし | 記載なし |
+| 生産技能系 | 公式ページに記載なし | 2027年4月入社分は未定 | 記載なし | 記載なし | 記載なし |
+
+:::info
+2026年4月入社実績の初任給は、2027年4月入社分について未定と募集要項に記載されている。研究・開発領域の勤務時間は9:00〜17:45、生産・物流領域は8:15〜17:00で、全領域にコアタイムなしのスーパーフレックス勤務制度がある。
+:::
 
 ## 事業内容
 
-| 事業区分 | 事業内容・製品例 |
-| --- | --- |
-| 自動車関連事業 | 乗用車・トラック・自動車部品の製造・販売、メンテナンスなど |
+[マツダの会社概要](https://www.mazda.com/ja/about/outline/)は主な事業内容を「乗用車の製造、乗用車・トラックの販売など」としている。製品・サービス区分は自動車関連事業の単一区分だが、有価証券報告書の報告セグメントは地域別の日本、北米、欧州、その他の地域である。
 
-[マツダの会社概要](https://www.mazda.com/ja/about/outline/)は主な事業内容を「乗用車の製造、乗用車・トラックの販売など」としている。有価証券報告書上の製品・サービス区分も自動車関連事業の単一区分であり、売上・利益は地域別の報告セグメントでのみ開示されるため、地域別のセグメント売上グラフは掲載していない。
+| 報告セグメント | 事業内容・製品例 |
+| --- | --- |
+| 日本 | 自動車関連事業。乗用車・トラック・自動車部品の製造・販売、メンテナンスなど |
+| 北米 | 自動車関連事業。車両・部品の製造・販売、メンテナンスなど |
+| 欧州 | 自動車関連事業。車両・部品の製造・販売、メンテナンスなど |
+| その他の地域 | 自動車関連事業。車両・部品の製造・販売、メンテナンスなど |
 
 </CompanyProse>
 
-<EmploymentOverview companyId={frontmatter.companyId} />
+<SegmentRevenue companyId={frontmatter.companyId} />
 
 <CompanyProse>
 
