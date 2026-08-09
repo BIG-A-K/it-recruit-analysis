@@ -36,8 +36,12 @@ const articleModules = import.meta.glob<MDXInstance<Record<string, unknown>>>(
 );
 
 const { industry } = Astro.props;
-const IndustryArticle =
-  articleModules[`./_articles/${industry.industry_id}.mdx`]?.Content;
+const articleModule = articleModules[`./_articles/${industry.industry_id}.mdx`];
+const IndustryArticle = articleModule?.Content;
+// 解説が長い業界では見出しをたどれるようにする。h2 と h3 の id は rehype-slug が振る。
+const articleToc = (articleModule?.getHeadings?.() ?? []).filter(
+  (heading) => heading.depth === 2 || heading.depth === 3,
+);
 const baseCompanies = companiesForIndustry(industry.industry_id);
 const relatedMetrics = metricsForCompanies(
   baseCompanies.map((company) => disclosureIdForCompany(company)),
@@ -313,12 +317,27 @@ const sortOptions: SortOption[] = [
   </section>
 
   {IndustryArticle && (
-    <section class="panel prose industry-prose">
-      <IndustryArticle />
-    </section>
+    <div class="industry-layout">
+      <section class="panel prose industry-prose">
+        <IndustryArticle />
+      </section>
+      {articleToc.length > 0 && (
+        <aside class="doc-toc" aria-label="目次">
+          <span>目次</span>
+          <nav>
+            {articleToc.map((heading) => (
+              <a class={`toc-d${heading.depth}`} href={`#${heading.slug}`}>
+                {heading.text}
+              </a>
+            ))}
+          </nav>
+        </aside>
+      )}
+    </div>
   )}
 
-  {industryMetrics.length > 0 ? <MetricExplorer
+  {/* 中央省庁のように掲載企業を持たない業界では、比較と一覧を出さず解説だけを見せる。 */}
+  {baseCompanies.length > 0 && (industryMetrics.length > 0 ? <MetricExplorer
      companies={baseCompanies.map((company) => ({
        ...company,
        company_id: disclosureIdForCompany(company),
@@ -329,10 +348,10 @@ const sortOptions: SortOption[] = [
    /> : <section>
     <div class="section-head"><h2>指標を切り替えて比較する</h2></div>
      <div class="empty-inline">この業界の企業は非上場などにより財務指標の公表がなく、横断比較はできません。各社の採用情報や事業内容は企業詳細ページをご確認ください。</div>
-   </section>}
+   </section>)}
   {currentRatios.length > 0 && <p class="section-note">流動比率は、同じ年度・対象範囲・会計基準の流動資産を流動負債で割って100を掛けたサイト算出値です。</p>}
 
-  <section>
+  {baseCompanies.length > 0 && <section>
     <div class="section-head"><h2>この業界の企業</h2></div>
     <CompanySortControls
       controlsId={`industry-${industry.industry_id}`}
@@ -390,7 +409,7 @@ const sortOptions: SortOption[] = [
     <p class="section-note">
       平均勤続年数・平均年齢・従業員数・男女の賃金の差異・女性管理職比率・男性育休取得率は、その軸で並べているあいだだけ流動比率と入れ替えてカードに出しています。値を公表していない企業は、順序によらず末尾に並べています。
     </p>
-  </section>
+  </section>}
 </BaseLayout>
 
 <style>

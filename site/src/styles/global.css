@@ -209,6 +209,11 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
 .company-article { min-width: 0; }
 .company-article :is(h2, h3) { scroll-margin-top: 20px; }
 
+/* 業界の解説にも同じ組みで目次を添える */
+.industry-layout { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 14px; align-items: start; }
+.industry-prose { min-width: 0; }
+.industry-prose :is(h2, h3) { scroll-margin-top: 20px; }
+
 .company-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; }
 .company-message-section .company-message { margin: 0; }
 .company-head p { margin-top: 6px; color: var(--muted); font-size: 14px; }
@@ -554,6 +559,7 @@ a.card:hover, .linked-row:hover { border-color: #b6c6e3; box-shadow: 0 6px 18px 
   .explorer-controls, .explorer-body { grid-template-columns: minmax(0, 1fr); }
   .doc-layout { grid-template-columns: minmax(0, 1fr); }
   .company-layout { grid-template-columns: minmax(0, 1fr); }
+  .industry-layout { grid-template-columns: minmax(0, 1fr); }
   .doc-toc { position: static; order: -1; max-height: none; }
   /* 縦並びだと 9 項目が画面を占めるので、記事上部ではチップとして折り返す */
   .company-toc nav { display: flex; flex-wrap: wrap; gap: 8px; }

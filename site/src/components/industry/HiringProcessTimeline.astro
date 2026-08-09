@@ -1,0 +1,271 @@
+---
+/**
+ * 総合職試験（春）の受験申込から採用までを、実施主体ごとに分けて示す。
+ *
+ * 人事院が担うのは最終合格者発表までで、そこから先は各府省庁の選考になる。
+ * 日程は年度ごとに変わるため、人事院が公表する受験案内と官庁訪問ガイドの
+ * 改定に合わせて中身を書き換える。
+ */
+
+interface Cool {
+  label: string;
+  when: string;
+  note: string;
+}
+
+interface Step {
+  when: string;
+  title: string;
+  /** 日付だけでは伝わらない条件や補足 */
+  note?: string;
+  /** 節目として強調するもの */
+  point?: boolean;
+  /** 官庁訪問のクール制 */
+  cools?: Cool[];
+}
+
+interface Phase {
+  actor: string;
+  summary: string;
+  steps: Step[];
+}
+
+const phases: Phase[] = [
+  {
+    actor: "人事院",
+    summary: "人事院による採用試験の実施。これを突破しないと官庁訪問に進めない",
+    steps: [
+      { when: "2月2日〜24日", title: "受験申込" },
+      { when: "3月15日", title: "第1次試験(マーク式)", note: "基礎能力試験と専門試験" },
+      { when: "3月30日", title: "第1次試験の合格発表" },
+      { when: "4月12日", title: "第2次試験(記述式)", note: "専門科目の問題が出題" },
+      {
+        when: "4月20日〜5月15日",
+        title: "第2次試験（人物試験）",
+        note: "大卒程度試験（教養区分を除く）",
+      },
+      {
+        when: "5月7日〜15日",
+        title: "第2次試験（政策課題討議試験・人物試験）",
+        note: "院卒者試験",
+      },
+      {
+        when: "5月29日 16:00",
+        title: "最終合格者発表",
+        note: "合格後5年間（教養区分は7年間）は官庁訪問を受けることが可能",
+        point: true,
+      },
+    ],
+  },
+  {
+    actor: "官庁訪問",
+    summary: "志願する省庁による選考",
+    steps: [
+      {
+        when: "6月1日 9:00",
+        title: "官庁訪問の事前予約開始",
+        note: "6月9日 17:00まで。予約は1日1省庁に限られる",
+      },
+      {
+        when: "6月10日 8:00",
+        title: "官庁訪問の開始",
+        cools: [
+          { label: "第1クール", when: "6月10日〜12日", note: "3日間。同一省庁への訪問は3日に1回" },
+          { label: "第2クール", when: "6月15日〜17日", note: "3日間。同一省庁への訪問は3日に1回" },
+          { label: "第3クール", when: "6月18日〜19日", note: "2日間。同一省庁への訪問は2日に1回。初日は任意の省庁へ訪問できる" },
+          { label: "第4クール", when: "6月22日", note: "1日間。任意の省庁へ訪問できる" },
+        ],
+        note: "官庁訪問の拘束時間は志望する省庁によって変わる。五大省庁と呼ばれる財務省、外務省、経済産業省、警察庁、総務省は極めて長い時間拘束される"
+      },
+      {
+        when: "6月22日 15:00",
+        title: "内々定の解禁",
+        note: "メールで改めて通知されるが、第四クール終了時に口頭で言われる場合がほとんど",
+        point: true,
+      },
+      { when: "10月1日以降", title: "内定" },
+      { when: "翌年4月1日", title: "採用" },
+    ],
+  },
+];
+---
+
+<figure class="hiring-timeline">
+  {phases.map((phase) => (
+    <div class="phase">
+      <p class="phase-actor">
+        <span class="phase-name">{phase.actor}</span>
+        <small>{phase.summary}</small>
+      </p>
+      <ol>
+        {phase.steps.map((step) => (
+          <li class:list={[step.point && "is-point"]}>
+            <span class="tl-when">{step.when}</span>
+            <span class="tl-body">
+              <span class="tl-title">{step.title}</span>
+              {step.note && <small class="tl-note">{step.note}</small>}
+              {step.cools && (
+                <ul class="tl-cools">
+                  {step.cools.map((cool) => (
+                    <li>
+                      <span class="cool-label">{cool.label}</span>
+                      <span class="cool-when">{cool.when}</span>
+                      <small class="cool-note">{cool.note}</small>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  ))}
+  <figcaption>
+    2026年度の総合職春試験（教養区分を除く）を受けて2027年4月に採用される場合の日程です。
+    <br>
+    教養区分は第2次試験の内容と日程が異なります。
+  </figcaption>
+</figure>
+
+<style>
+  .hiring-timeline {
+    margin: 1.5rem 0;
+  }
+
+  .phase + .phase {
+    margin-top: 1.25rem;
+  }
+
+  .phase-actor {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin: 0 0 0.35rem;
+  }
+
+  .phase-name {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .phase-actor small {
+    color: var(--muted);
+    font-size: 0.8125rem;
+  }
+
+  .hiring-timeline ol {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 1.25rem;
+    border-left: 2px solid var(--line-dark);
+  }
+
+  .hiring-timeline ol > li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 8.5rem 1fr;
+    gap: 0 1rem;
+    padding: 0.4rem 0;
+    align-items: baseline;
+  }
+
+  /* 縦線の上に節目を打つ。線の太さの分だけ左へずらして中心を合わせる。 */
+  .hiring-timeline ol > li::before {
+    content: "";
+    position: absolute;
+    left: calc(-1.25rem - 6px);
+    top: 0.85rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--line-dark);
+  }
+
+  .hiring-timeline .is-point::before {
+    background: var(--blue);
+    border-color: var(--blue);
+  }
+
+  .tl-when {
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .tl-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .tl-title {
+    font-weight: 600;
+  }
+
+  .is-point .tl-title {
+    color: var(--blue);
+  }
+
+  .tl-note {
+    color: var(--muted);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+
+  .tl-cools {
+    list-style: none;
+    margin: 0.5rem 0 0.25rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--blue-soft);
+  }
+
+  .tl-cools li {
+    display: grid;
+    grid-template-columns: 5rem 7rem 1fr;
+    gap: 0 0.75rem;
+    padding: 0.15rem 0;
+    align-items: baseline;
+    font-size: 0.8125rem;
+  }
+
+  .cool-label {
+    font-weight: 600;
+  }
+
+  .cool-when {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cool-note {
+    color: var(--muted);
+  }
+
+  .hiring-timeline figcaption {
+    margin-top: 0.75rem;
+    color: var(--muted);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 40rem) {
+    .hiring-timeline ol > li {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
+    }
+
+    .tl-cools li {
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding: 0.35rem 0;
+    }
+
+    .tl-cools li + li {
+      border-top: 1px solid var(--line);
+    }
+  }
+</style>
