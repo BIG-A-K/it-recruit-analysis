@@ -3,18 +3,18 @@ disclosure_company_id: atla
 fiscal_year: 2027
 focus: 就活
 created_at: 2026-08-12
-updated_at: 2026-08-12
-phases: { ir: done, recruit: in_progress, segments: in_progress, article: pending, verify: pending }
+updated_at: 2026-08-13
+phases: { ir: done, recruit: done, segments: done, article: done, verify: done }
 items:
   - { id: ir-corporate-disclosure, phase: ir, store: ir_csv, topic: 企業IR・有価証券報告書, status: not_disclosed, value: 行政機関のため企業IRは非該当, subject: 防衛装備庁, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/atla/soubichou_gaiyou.html, via: 防衛装備庁公式概要, note: 防衛省の外局であり企業IRは適用されない。 }
-  - { id: recruit-overview, phase: recruit, store: mdx, topic: 採用主体・募集年度・募集状態・新卒区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-location, phase: recruit, store: mdx, topic: 研究所・試験場を含む勤務地・転勤・勤務形態, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 基準給与・基礎給・手当・賞与・年収, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・休日・応募期限, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-services, phase: segments, store: mdx, topic: 主要業務・研究所と具体的研究分野, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-mapping, phase: segments, store: mdx, topic: 行政組織・研究分野と企業セグメントの差異, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-related-companies, phase: segments, store: mdx, topic: 防衛省との行政組織上の関係, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-mission, phase: article, store: mdx, topic: 任務・理念, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-company, phase: article, store: mdx, topic: 設置経緯・組織規模・所在地, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒・行政開示リンク, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
+  - { id: recruit-overview, phase: recruit, store: mdx, topic: 採用主体・募集年度・募集状態・新卒区分, status: done, value: 2027年度の研究職総合職・一般職と行政職一般職。官庁訪問終了, subject: 防衛装備庁, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/atla/saiyou.html, via: 防衛装備庁採用情報, note: "" }
+  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: done, value: 研究開発・事業管理・調達等の行政事務, subject: 防衛装備庁, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/atla/saiyou/index.html, via: 研究職採用情報, note: "" }
+  - { id: recruit-location, phase: recruit, store: mdx, topic: 研究所・試験場を含む勤務地, status: done, value: 市ヶ谷本庁、5研究所、北海道・青森県・岐阜県の3試験場, subject: 防衛装備庁, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/atla/org/shozai.html, via: 研究所・試験場所在地, note: 支所は記事で省略。 }
+  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 初任給・手当・賞与・年収, status: done, value: 本庁研究職月給250040～386400円、超過勤務別途、賞与4.65か月。標準年収非開示, subject: 防衛装備庁, as_of: 2026-01-01, unit: 円/月, source: https://www.mod.go.jp/atla/saiyou/saiyo_joho/boshuyoko_sogo.html, via: 研究職募集要項, note: 地域手当・本府省業務調整手当込み、内訳非開示。行政職には適用しない。 }
+  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・募集状態, status: done, value: 研究職は1日7時間45分。2027年度官庁訪問終了, subject: 防衛装備庁, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/atla/saiyou/index.html, via: 研究職採用情報, note: 行政職の勤務条件は非開示。 }
+  - { id: segments-services, phase: segments, store: mdx, topic: 主要業務・研究所と具体的研究分野, status: done, value: 人工知能・サイバー・通信、革新的・先端技術、装備品の事業管理, subject: 防衛装備庁, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/atla/soshiki.html, via: 防衛装備庁組織, note: "" }
+  - { id: segments-mapping, phase: segments, store: mdx, topic: 行政組織・研究分野と企業セグメントの差異, status: done, value: 行政機関のため企業セグメント非該当, subject: 防衛装備庁, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/atla/soubichou_gaiyou.html, via: 防衛装備庁概要, note: "" }
+  - { id: segments-related-companies, phase: segments, store: mdx, topic: 防衛省との行政組織上の関係, status: done, value: 防衛省の外局, subject: 防衛装備庁, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/atla/soubichou_gaiyou.html, via: 防衛装備庁概要, note: 親会社・子会社ではない。 }
+  - { id: article-mission, phase: article, store: mdx, topic: 任務, status: done, value: 装備品の研究開発・調達・ライフサイクルを通じた事業管理, subject: 防衛装備庁, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/atla/soubichou_gaiyou.html, via: 防衛装備庁概要, note: "" }
+  - { id: article-company, phase: article, store: mdx, topic: 設置経緯・組織規模・所在地, status: done, value: 2015年10月1日発足。5研究所・3試験場、本庁は市ヶ谷, subject: 防衛装備庁, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/atla/soshiki.html, via: 防衛装備庁組織, note: "" }
+  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒リンク, status: done, value: 公式・概要・組織・研究職・行政職を記事に掲載, subject: 防衛装備庁, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/atla/, via: 防衛装備庁公式サイト, note: 企業IRリンクは非該当。 }

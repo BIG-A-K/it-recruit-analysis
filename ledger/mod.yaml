@@ -3,18 +3,18 @@ disclosure_company_id: mod
 fiscal_year: 2027
 focus: 就活
 created_at: 2026-08-12
-updated_at: 2026-08-12
-phases: { ir: done, recruit: in_progress, segments: in_progress, article: pending, verify: pending }
+updated_at: 2026-08-13
+phases: { ir: done, recruit: done, segments: done, article: done, verify: done }
 items:
   - { id: ir-corporate-disclosure, phase: ir, store: ir_csv, topic: 企業IR・有価証券報告書, status: not_disclosed, value: 行政機関のため企業IRは非該当, subject: 防衛省, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/j/profile/index.html, via: 防衛省公式組織案内, note: 中央省庁であり企業IRは適用されない。 }
-  - { id: recruit-overview, phase: recruit, store: mdx, topic: 文官の採用主体・募集年度・募集状態・新卒区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-location, phase: recruit, store: mdx, topic: 採用機関別勤務地・転勤・勤務形態, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 基準給与・基礎給・手当・賞与・年収, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・休日・応募期限, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-services, phase: segments, store: mdx, topic: 文官の主要業務と具体的サービス, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-mapping, phase: segments, store: mdx, topic: 文官・自衛官・行政組織と企業セグメントの差異, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-related-companies, phase: segments, store: mdx, topic: 防衛装備庁等との行政組織上の関係, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-mission, phase: article, store: mdx, topic: 任務・理念, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-company, phase: article, store: mdx, topic: 設置経緯・組織規模・所在地, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒・行政開示リンク, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
+  - { id: recruit-overview, phase: recruit, store: mdx, topic: 事務官・技官等の採用主体・募集年度・募集状態・新卒区分, status: done, value: 2027年度の総合職研究職と一般職。官庁訪問終了, subject: 防衛省, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/j/saiyou/index.html, via: 防衛省採用情報, note: 自衛官採用は記事対象外。 }
+  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: done, value: 能力分析系・情報系・デジタル電気電子一般職, subject: 防衛省, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/j/saiyou/sougou_research/index.html, via: 防衛省採用情報, note: "" }
+  - { id: recruit-location, phase: recruit, store: mdx, topic: 採用機関別勤務地・転勤・勤務形態, status: done, value: 情報系は主に市ヶ谷、能力分析系は各自衛隊機関、一般職は採用機関に応じ全国, subject: 防衛省, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/j/saiyou/ippan_senmon/shokai/index.html, via: 採用予定機関紹介, note: "" }
+  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 給与制度・手当・賞与・年収, status: done, value: 国家公務員給与制度、超過勤務別途、賞与4.65か月。職種別初任給・標準年収は非開示, subject: 防衛省, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/j/saiyou/index.html, via: 防衛省採用情報, note: 防衛装備庁の研究職給与を適用しない。 }
+  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・募集状態, status: done, value: 1日7時間45分。2027年度官庁訪問終了, subject: 防衛省, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/j/saiyou/index.html, via: 防衛省採用情報, note: "" }
+  - { id: segments-services, phase: segments, store: mdx, topic: 事務官・技官等の主要業務, status: done, value: サイバー・情報システム防護、信号分析、能力分析, subject: 防衛省, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/j/saiyou/sougou_research/index.html, via: 防衛省採用情報, note: "" }
+  - { id: segments-mapping, phase: segments, store: mdx, topic: 事務官・技官等・自衛官・企業セグメントの差異, status: done, value: 行政機関のため企業セグメント非該当。記事は事務官・技官等に限定, subject: 防衛省, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/j/profile/mod_sdf/index.html, via: 防衛組織, note: 自衛官採用は対象外。 }
+  - { id: segments-related-companies, phase: segments, store: mdx, topic: 防衛装備庁との行政組織上の関係, status: done, value: 防衛装備庁は防衛省の外局, subject: 防衛省, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/atla/soubichou_gaiyou.html, via: 防衛装備庁概要, note: 親会社・子会社ではない。 }
+  - { id: article-mission, phase: article, store: mdx, topic: 任務・理念, status: done, value: わが国の平和と独立を守り、国の安全を保つ。, subject: 防衛省, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/j/profile/index.html, via: 防衛省組織案内, note: "" }
+  - { id: article-company, phase: article, store: mdx, topic: 設置経緯・所在地, status: done, value: 前身は1954年発足、2007年に省移行。市ヶ谷地区, subject: 防衛省, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/j/profile/index.html, via: 防衛省組織案内, note: "" }
+  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒リンク, status: done, value: 公式・組織・採用経路を記事に掲載, subject: 防衛省, as_of: 2026-08-12, unit: "", source: https://www.mod.go.jp/, via: 防衛省公式サイト, note: 企業IRリンクは非該当。 }

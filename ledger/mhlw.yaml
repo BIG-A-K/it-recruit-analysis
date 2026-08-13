@@ -3,18 +3,18 @@ disclosure_company_id: mhlw
 fiscal_year: 2027
 focus: 就活
 created_at: 2026-08-12
-updated_at: 2026-08-12
-phases: { ir: done, recruit: in_progress, segments: in_progress, article: pending, verify: pending }
+updated_at: 2026-08-13
+phases: { ir: done, recruit: done, segments: done, article: done, verify: done }
 items:
   - { id: ir-corporate-disclosure, phase: ir, store: ir_csv, topic: 企業IR・有価証券報告書, status: not_disclosed, value: 行政機関のため企業IRは非該当, subject: 厚生労働省, as_of: 2026-08-12, unit: "", source: https://elaws.e-gov.go.jp/document?lawid=411AC0000000097, via: 厚生労働省設置法, note: 中央省庁であり企業IRは適用されない。 }
-  - { id: recruit-overview, phase: recruit, store: mdx, topic: 採用主体・募集年度・募集状態・新卒区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-location, phase: recruit, store: mdx, topic: 職種別勤務地・転勤・勤務形態, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 基準給与・基礎給・手当・賞与・年収, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・休日・応募期限, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-services, phase: segments, store: mdx, topic: 主要業務と具体的サービス, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-mapping, phase: segments, store: mdx, topic: 政策・組織区分と企業セグメントの差異, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-related-companies, phase: segments, store: mdx, topic: 地方支分部局・所管法人, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-mission, phase: article, store: mdx, topic: 任務・理念・スローガン, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-company, phase: article, store: mdx, topic: 設置経緯・組織規模・所在地, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒・行政開示リンク, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
+  - { id: recruit-overview, phase: recruit, store: mdx, topic: 採用主体・募集年度・募集状態・新卒区分, status: done, value: 2027年度の総合職と一般職IT系区分, subject: 厚生労働省, as_of: 2026-08-12, unit: "", source: https://www.mhlw.go.jp/kouseiroudoushou/saiyou/, via: 公式採用情報, note: "" }
+  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: done, value: 総合職数理・デジタル系と一般職デジタル・電気・電子, subject: 厚生労働省, as_of: 2026-08-12, unit: "", source: https://www.mhlw.go.jp/stf/kouseiroudoushou/saiyou/suuri.html, via: 職種別採用情報, note: "" }
+  - { id: recruit-location, phase: recruit, store: mdx, topic: 職種別勤務地・転勤・勤務形態, status: done, value: 初任地は東京都内の本省、転勤・遠隔勤務は記載なし, subject: 厚生労働省, as_of: 2026-08-12, unit: "", source: https://www.mhlw.go.jp/general/saiyo/kokka2/kokka2-kousei/den-jouhou.html, via: 一般職採用情報, note: "" }
+  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 基準給与・基礎給・手当・賞与・年収, status: done, value: 給与法適用、職種別金額・賞与額・標準年収は記載なし, subject: 厚生労働省, as_of: 2026-08-12, unit: "", source: https://www.mhlw.go.jp/kouseiroudoushou/saiyou/, via: 公式採用情報, note: 時間外勤務手当は別途対象、固定残業制度の記載なし。 }
+  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・休日・応募期限, status: done, value: 1日7時間45分、一般職本省・年金分野は受付中, subject: 厚生労働省, as_of: 2026-08-12, unit: "", source: https://www.mhlw.go.jp/general/saiyo/kokka2/kokka2-kousei/den-jouhou.html, via: 一般職採用情報, note: 総合職官庁訪問は終了。 }
+  - { id: segments-services, phase: segments, store: mdx, topic: 主要業務と具体的サービス, status: done, value: 医療DX、統計・将来推計、情報システム, subject: 厚生労働省, as_of: 2026-08-12, unit: "", source: https://www.mhlw.go.jp/stf/iryoudx.html, via: 医療DX情報, note: "" }
+  - { id: segments-mapping, phase: segments, store: mdx, topic: 政策・組織区分と企業セグメントの差異, status: done, value: 行政機能で整理し企業セグメントは非該当, subject: 厚生労働省, as_of: 2026-08-12, unit: "", source: https://www.mhlw.go.jp/kouseiroudoushou/shigoto/, via: 主な仕事, note: "" }
+  - { id: segments-related-companies, phase: segments, store: mdx, topic: 地方支分部局・所管法人, status: done, value: 地方厚生局・支局8、都道府県労働局47、関連企業は非該当, subject: 厚生労働省, as_of: 2026-08-12, unit: "", source: https://www.mhlw.go.jp/kouseiroudoushou/shigoto/, via: 組織案内, note: 関連企業見出しは省略。 }
+  - { id: article-mission, phase: article, store: mdx, topic: 任務・理念・スローガン, status: done, value: 設置法上の任務と「ひと、くらし、みらいのために」, subject: 厚生労働省, as_of: 2026-08-12, unit: "", source: https://elaws.e-gov.go.jp/document?lawid=411AC0000000097, via: 厚生労働省設置法, note: "" }
+  - { id: article-company, phase: article, store: mdx, topic: 設置経緯・組織規模・所在地, status: done, value: 2001年発足・内部13部局・地方機関・霞が関, subject: 厚生労働省, as_of: 2026-08-12, unit: "", source: https://www.mhlw.go.jp/kouseiroudoushou/shigoto/, via: 組織案内, note: "" }
+  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒・行政開示リンク, status: done, value: 公式・組織・採用・業務リンクを掲載, subject: 厚生労働省, as_of: 2026-08-12, unit: "", source: https://www.mhlw.go.jp/, via: 公式サイト, note: "" }

@@ -4,17 +4,17 @@ fiscal_year: 2027
 focus: 就活
 created_at: 2026-08-12
 updated_at: 2026-08-12
-phases: { ir: done, recruit: in_progress, segments: in_progress, article: pending, verify: pending }
+phases: { ir: done, recruit: done, segments: done, article: done, verify: done }
 items:
   - { id: ir-corporate-disclosure, phase: ir, store: ir_csv, topic: 企業IR・有価証券報告書, status: not_disclosed, value: 行政機関のため企業IRは非該当, subject: 警察庁, as_of: 2026-08-12, unit: "", source: https://www.npa.go.jp/about/overview/sikumi.html, via: 警察のしくみ, note: 国の行政機関であり企業IRは適用されない。 }
-  - { id: recruit-overview, phase: recruit, store: mdx, topic: 採用主体・募集年度・募集状態・新卒区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-location, phase: recruit, store: mdx, topic: 職種別勤務地・転勤・勤務形態, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 基準給与・基礎給・手当・賞与・年収, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・休日・応募期限, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-services, phase: segments, store: mdx, topic: 主要業務と具体的サービス, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-mapping, phase: segments, store: mdx, topic: 警察庁と都道府県警察・企業セグメントの差異, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-related-companies, phase: segments, store: mdx, topic: 附属機関・地方機関・所管法人, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-mission, phase: article, store: mdx, topic: 任務・理念, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-company, phase: article, store: mdx, topic: 設置経緯・組織規模・所在地, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒・行政開示リンク, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
+  - { id: recruit-overview, phase: recruit, store: mdx, topic: 採用主体・募集年度・募集状態・新卒区分, status: done, value: 2027年度のデジタル・サイバー・地方技術採用を整理, subject: 警察庁, as_of: 2026-08-12, unit: "", source: https://www.npa.go.jp/about/recruitment/index.html, via: 公式採用情報, note: 都道府県警察は別採用。 }
+  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: done, value: 一般職試験経路と情報処理技術者資格選考、情報システム・技術解析業務, subject: 警察庁, as_of: 2026-08-12, unit: "", source: https://www.npa.go.jp/about/recruitment/kubun_ippansyokudigital.html, via: デジタル採用情報, note: IT関連3経路だけを掲載。 }
+  - { id: recruit-location, phase: recruit, store: mdx, topic: 職種別勤務地・転勤・勤務形態, status: done, value: 本庁・関東管区警察局・地方機関の採用区分と勤務地を区別, subject: 警察庁, as_of: 2026-08-12, unit: "", source: https://www.npa.go.jp/about/recruitment/kubun_senkocybertiho.html, via: 地方機関採用情報, note: 本庁採用と地方採用を混同しない。 }
+  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 基準給与・基礎給・手当・賞与・年収, status: done, value: 基礎額232000円、本庁287000円以上、地域手当0～20%、賞与約4.65か月, subject: 警察庁, as_of: 2026-08-12, unit: 円, source: https://www.npa.go.jp/about/recruitment/kubun_senkocyberhontyo.html, via: サイバー採用情報, note: 時間外手当は別途、年収は非開示。 }
+  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・休日・応募期限, status: done, value: 1日7時間45分、本庁2経路は受付終了、地方は九州を除き継続, subject: 警察庁, as_of: 2026-08-12, unit: 時間, source: https://www.npa.go.jp/about/recruitment/kubun_senkocybertiho.html, via: 地方機関採用情報, note: 2027年度の募集状態。 }
+  - { id: segments-services, phase: segments, store: mdx, topic: 主要業務と具体的サービス, status: done, value: 情報システム・サイバー警察・デジタルフォレンジック・警察情報通信・科学捜査, subject: 警察庁, as_of: 2026-08-12, unit: "", source: https://www.npa.go.jp/bureau/cyber/what-we-do/about.html, via: サイバー警察局業務案内, note: デジタルフォレンジックを本文で定義。 }
+  - { id: segments-mapping, phase: segments, store: mdx, topic: 警察庁と都道府県警察・企業セグメントの差異, status: done, value: 企業セグメントは非該当、法定所掌に限る指導監督と日常警察活動を区別, subject: 警察庁, as_of: 2026-08-12, unit: "", source: https://www.npa.go.jp/about/overview/sikumi.html, via: 警察のしくみ, note: 都道府県警察は日常活動と地方採用を担当。 }
+  - { id: segments-related-companies, phase: segments, store: mdx, topic: 附属機関・地方機関・所管法人, status: done, value: 関連企業は非該当、3附属機関と地方機関を組織として記載, subject: 警察庁, as_of: 2026-08-12, unit: "", source: https://www.npa.go.jp/about/overview/sikumi.html, via: 警察のしくみ, note: 関連企業見出しは置かない。 }
+  - { id: article-mission, phase: article, store: mdx, topic: 任務・理念, status: done, value: 生命・身体・財産の保護と公共の安全・秩序の維持, subject: 警察庁, as_of: 2026-08-12, unit: "", source: https://www.npa.go.jp/about/overview/sikumi.html, via: 警察のしくみ, note: 警察法上の任務と位置付けを記載。 }
+  - { id: article-company, phase: article, store: mdx, topic: 設置経緯・組織規模・所在地, status: done, value: 国家公安委員会管理下、長官官房・5局・3部・3附属機関・地方機関、霞が関2-1-2, subject: 警察庁, as_of: 2026-08-12, unit: "", source: https://www.npa.go.jp/about/overview/sikumi.html, via: 警察のしくみ, note: 組織と所在地を簡潔に記載。 }
+  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒・行政開示リンク, status: done, value: 公式・組織・予算決算・IT関連採用リンク, subject: 警察庁, as_of: 2026-08-12, unit: "", source: https://www.npa.go.jp/, via: 公式サイト, note: 公式URLのみ掲載。 }

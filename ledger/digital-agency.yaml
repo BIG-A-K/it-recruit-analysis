@@ -6,10 +6,10 @@ created_at: 2026-08-12
 updated_at: 2026-08-12
 phases:
   ir: done
-  recruit: in_progress
-  segments: in_progress
-  article: pending
-  verify: pending
+  recruit: done
+  segments: done
+  article: done
+  verify: done
 items:
   - &ir_na
     id: ir-corporate-disclosure
@@ -24,14 +24,14 @@ items:
     source: https://laws.e-gov.go.jp/law/503AC0000000036
     via: デジタル庁設置法
     note: 内閣に置かれる行政機関であり、企業の財務・人的資本・報告セグメント開示は適用されない。
-  - { id: recruit-overview, phase: recruit, store: mdx, topic: 採用主体・募集年度・募集状態・新卒区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-location, phase: recruit, store: mdx, topic: 職種別勤務地・転勤・勤務形態, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 基準給与・基礎給・手当・賞与・年収, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・休日・応募期限, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-services, phase: segments, store: mdx, topic: 主要業務と具体的サービス, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-mapping, phase: segments, store: mdx, topic: 行政組織・政策区分と企業セグメントの差異, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-related-companies, phase: segments, store: mdx, topic: 所管法人・関連行政機関, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-mission, phase: article, store: mdx, topic: 理念・ミッション・スローガン, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-company, phase: article, store: mdx, topic: 設置経緯・組織規模・所在地, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒・行政開示リンク, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
+  - { id: recruit-overview, phase: recruit, store: mdx, topic: 採用主体・募集年度・募集状態・新卒区分, status: done, value: 2027年採用、総合職・一般職、2026年度の大学卒業相当以上の官庁訪問は終了, subject: デジタル庁新卒採用, as_of: 2026-08-12, unit: "", source: https://www.digital.go.jp/recruitment/newgraduates, via: 公式新卒採用ページ, note: 一般職高卒者の2026年度採用情報は未掲載。 }
+  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: done, value: 総合職は政策企画、一般職は政策実行。全試験区分を対象とし、デジタル事務官として採用, subject: 新卒職員, as_of: 2026-08-12, unit: "", source: https://www.digital.go.jp/recruitment/newgraduates, via: 公式新卒採用ページ, note: 院卒者・大卒程度・高卒者の経路を記事に記載。 }
+  - { id: recruit-location, phase: recruit, store: mdx, topic: 職種別勤務地・転勤・勤務形態, status: done, value: 採用後の勤務地・転勤・リモート勤務条件は未記載, subject: 新卒職員, as_of: 2026-08-12, unit: "", source: https://www.digital.go.jp/recruitment/newgraduates, via: 公式新卒採用ページ, note: 庁所在地は東京都千代田区紀尾井町。 }
+  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 基準給与・基礎給・手当・賞与・年収, status: done, value: 月額240360円から306720円、超過勤務手当別途、賞与年2回, subject: 2026年4月1日東京都特別区内勤務の初任給例, as_of: 2026-08-12, unit: 円/月, source: https://www.jinji.go.jp/seisaku/kankoku.html, via: 人事院給与資料, note: 給与内訳・賞与額・標準年収は公式新卒採用ページに記載なし。 }
+  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・休日・応募期限, status: done, value: 1日7時間45分、2026年度の総合職・一般職大卒程度の官庁訪問は終了, subject: 新卒職員, as_of: 2026-08-12, unit: "", source: https://www.digital.go.jp/recruitment/newgraduates, via: 公式新卒採用ページ, note: 高卒者向けの現行日程は未掲載。 }
+  - { id: segments-services, phase: segments, store: mdx, topic: 主要業務と具体的サービス, status: done, value: 政策、本人確認・認証、マイナポータル、GビズID、ガバメントクラウド、政府情報システム, subject: デジタル庁の主要業務, as_of: 2026-08-12, unit: "", source: https://www.digital.go.jp/policies, via: 公式政策一覧, note: ガバメントクラウドの簡潔な定義を記事に記載。 }
+  - { id: segments-mapping, phase: segments, store: mdx, topic: 行政組織・政策区分と企業セグメントの差異, status: done, value: 4グループと専門人材ユニット、企業の報告セグメントは非該当, subject: デジタル庁の組織, as_of: 2026-08-12, unit: "", source: https://www.digital.go.jp/about/organization, via: 組織・ミッション, note: 企業向けセグメントコンポーネントは使用しない。 }
+  - { id: segments-related-companies, phase: segments, store: mdx, topic: 所管法人・関連行政機関, status: done, value: 地方公共団体情報システム機構・国立印刷局・情報処理推進機構, subject: デジタル庁の所管法人, as_of: 2026-08-12, unit: "", source: https://www.digital.go.jp/about/agency, via: 公式所管法人一覧, note: 親会社・子会社ではないため関連企業見出しは設けない。 }
+  - { id: article-mission, phase: article, store: mdx, topic: 理念・ミッション・スローガン, status: done, value: 誰一人取り残されない、人に優しいデジタル化を。, subject: デジタル庁, as_of: 2026-08-12, unit: "", source: https://www.digital.go.jp/about/organization, via: 組織・ミッション, note: 公式表記を記事冒頭に記載。 }
+  - { id: article-company, phase: article, store: mdx, topic: 設置経緯・組織規模・所在地, status: done, value: 2021年9月1日発足、4グループと専門人材ユニット、東京都千代田区紀尾井町, subject: デジタル庁, as_of: 2026-08-12, unit: "", source: https://www.digital.go.jp/about/organization, via: 組織・ミッション, note: 設立・規模・所在地を簡潔に記載。 }
+  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒・行政開示リンク, status: done, value: 公式・組織・行政予算決算・採用・新卒・人事院, subject: サイト一覧, as_of: 2026-08-12, unit: "", source: https://www.digital.go.jp/, via: 公式サイト, note: 企業IRリンクの代わりに行政開示を掲載。 }

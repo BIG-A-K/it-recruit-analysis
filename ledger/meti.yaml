@@ -4,17 +4,17 @@ fiscal_year: 2027
 focus: 就活
 created_at: 2026-08-12
 updated_at: 2026-08-12
-phases: { ir: done, recruit: in_progress, segments: in_progress, article: pending, verify: pending }
+phases: { ir: done, recruit: done, segments: done, article: done, verify: done }
 items:
   - { id: ir-corporate-disclosure, phase: ir, store: ir_csv, topic: 企業IR・有価証券報告書, status: not_disclosed, value: 行政機関のため企業IRは非該当, subject: 経済産業省, as_of: 2026-08-12, unit: "", source: https://www.meti.go.jp/intro/data/a220001j.html, via: 経済産業省設置法・組織案内, note: 中央省庁であり企業IRは適用されない。 }
-  - { id: recruit-overview, phase: recruit, store: mdx, topic: 採用主体・募集年度・募集状態・新卒区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-location, phase: recruit, store: mdx, topic: 職種別勤務地・転勤・勤務形態, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 基準給与・基礎給・手当・賞与・年収, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・休日・応募期限, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-services, phase: segments, store: mdx, topic: 主要業務と具体的政策・サービス, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-mapping, phase: segments, store: mdx, topic: 行政組織・政策区分と企業セグメントの差異, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-related-companies, phase: segments, store: mdx, topic: 外局・所管法人, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-mission, phase: article, store: mdx, topic: 任務・理念・スローガン, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-company, phase: article, store: mdx, topic: 設置経緯・組織規模・所在地, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒・行政開示リンク, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
+  - { id: recruit-overview, phase: recruit, store: mdx, topic: 採用主体・募集年度・募集状態・新卒区分, status: done, value: 2027年4月採用、総合職・一般職、2026年度の大学卒業相当以上の官庁訪問は終了, subject: 経済産業省新卒採用, as_of: 2026-08-12, unit: "", source: https://www.meti.go.jp/information/recruit/index.html, via: 公式新卒採用情報, note: 一般職高卒者向けの2026年度採用ページは未公開。 }
+  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: done, value: 総合職は政策企画・立案、一般職は政策実行, subject: 新卒職員, as_of: 2026-08-12, unit: "", source: https://www.meti.go.jp/information/recruit/index.html, via: 公式新卒採用情報, note: 院卒者・大卒程度・高卒者の経路を記事に記載。 }
+  - { id: recruit-location, phase: recruit, store: mdx, topic: 職種別勤務地・転勤・勤務形態, status: done, value: 官庁訪問は東京本省、初任地の本省勤務は保証されず転勤あり, subject: 新卒職員, as_of: 2026-08-12, unit: "", source: https://www.meti.go.jp/information/recruit/kanchohomon/kanchohomon_sogo_index.html, via: 総合職官庁訪問, note: 転勤の地域・頻度などは公式新卒採用ページに記載なし。 }
+  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 基準給与・基礎給・手当・賞与・年収, status: done, value: 本省月額249560円から317520円、超過勤務手当別途、賞与4.65か月, subject: 2026年本省勤務の初任給例, as_of: 2026-08-12, unit: 円/月, source: https://www.jinji.go.jp/seisaku/kankoku.html, via: 人事院給与資料, note: 基本給・地域手当・本府省業務調整手当の内訳を記事に記載。標準年収は未記載。 }
+  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・休日・応募期限, status: done, value: 1日7時間45分、2026年度の総合職・一般職大卒程度の官庁訪問は終了, subject: 新卒職員, as_of: 2026-08-12, unit: "", source: https://www.meti.go.jp/information/recruit/index.html, via: 公式新卒採用情報, note: 高卒者向けの現行日程は未公開。 }
+  - { id: segments-services, phase: segments, store: mdx, topic: 主要業務と具体的政策・サービス, status: done, value: GENIAC、サイバーセキュリティ制度、半導体・情報産業政策、行政デジタルサービス, subject: 商務情報政策局のIT関連業務, as_of: 2026-08-12, unit: "", source: https://www.meti.go.jp/policy/mono_info_service/joho/index.html, via: 公式情報政策ページ, note: GENIACは経済産業省とNEDOによる生成AI開発・利活用支援。 }
+  - { id: segments-mapping, phase: segments, store: mdx, topic: 行政組織・政策区分と企業セグメントの差異, status: done, value: IT関連業務は商務情報政策局が担当し、企業の報告セグメントは非該当, subject: 経済産業省の組織, as_of: 2026-08-12, unit: "", source: https://www.meti.go.jp/intro/data/a220001j.html, via: 各部署の業務, note: 企業向けセグメントコンポーネントは使用しない。 }
+  - { id: segments-related-companies, phase: segments, store: mdx, topic: 外局・所管法人, status: done, value: 資源エネルギー庁・特許庁・中小企業庁、GENIACはNEDOと実施, subject: 関連行政機関, as_of: 2026-08-12, unit: "", source: https://www.meti.go.jp/intro/data/a220001j.html, via: 各部署の業務, note: 親会社・子会社ではないため関連企業見出しは設けない。 }
+  - { id: article-mission, phase: article, store: mdx, topic: 任務・理念・スローガン, status: done, value: 未来に誇れる日本をつくる。Build Our Future, subject: 経済産業省, as_of: 2026-08-12, unit: "", source: https://www.meti.go.jp/information/recruit/index.html, via: Mission・Vision・Values, note: 公式表記を記事冒頭に記載。 }
+  - { id: article-company, phase: article, store: mdx, topic: 設置経緯・組織規模・所在地, status: done, value: 2001年改称、2026年度定員8068人、東京都千代田区霞が関, subject: 経済産業省, as_of: 2026-08-12, unit: "", source: https://www.meti.go.jp/main/yosan/yosan_fy2026/pdf/05.pdf, via: 令和8年度主な機構・定員, note: 改称・規模・所在地を簡潔に記載。 }
+  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒・行政開示リンク, status: done, value: 公式・組織・ミッション・行政予算開示・採用・新卒・人事院, subject: サイト一覧, as_of: 2026-08-12, unit: "", source: https://www.meti.go.jp/, via: 公式サイト, note: 企業IRリンクの代わりに行政開示を掲載。 }

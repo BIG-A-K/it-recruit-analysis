@@ -3,18 +3,18 @@ disclosure_company_id: jpo
 fiscal_year: 2027
 focus: 就活
 created_at: 2026-08-12
-updated_at: 2026-08-12
-phases: { ir: done, recruit: in_progress, segments: in_progress, article: pending, verify: pending }
+updated_at: 2026-08-13
+phases: { ir: done, recruit: done, segments: done, article: done, verify: done }
 items:
   - { id: ir-corporate-disclosure, phase: ir, store: ir_csv, topic: 企業IR・有価証券報告書, status: not_disclosed, value: 行政機関のため企業IRは非該当, subject: 特許庁, as_of: 2026-08-12, unit: "", source: https://www.meti.go.jp/intro/data/a220001j.html, via: 経済産業省の組織案内, note: 経済産業省の外局であり企業IRは適用されない。 }
-  - { id: recruit-overview, phase: recruit, store: mdx, topic: 採用主体・募集年度・募集状態・新卒区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-location, phase: recruit, store: mdx, topic: 職種別勤務地・転勤・勤務形態, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 基準給与・基礎給・手当・賞与・年収, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・休日・応募期限, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-services, phase: segments, store: mdx, topic: 主要業務と具体的サービス, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-mapping, phase: segments, store: mdx, topic: 行政機能・組織と企業セグメントの差異, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-related-companies, phase: segments, store: mdx, topic: 経済産業省との行政組織上の関係, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-mission, phase: article, store: mdx, topic: ミッション・ビジョン・バリュー, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-company, phase: article, store: mdx, topic: 位置付け・組織規模・所在地, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒・行政開示リンク, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
+  - { id: recruit-overview, phase: recruit, store: mdx, topic: 採用主体・募集年度・募集状態・新卒区分, status: done, value: 2027年度の4職種と受付状況, subject: 特許庁, as_of: 2026-08-13, unit: "", source: https://www.jpo.go.jp/news/saiyo/kokka/index.html, via: 公式採用情報, note: "" }
+  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: done, value: 特許は総合職技術系、意匠は独自試験、商標・事務は一般職, subject: 特許庁, as_of: 2026-08-13, unit: "", source: https://www.jpo.go.jp/news/saiyo/kokka/index.html, via: 公式採用情報, note: "" }
+  - { id: recruit-location, phase: recruit, store: mdx, topic: 職種別勤務地・転勤・勤務形態, status: done, value: 意匠・商標・事務の職種別記載なし, subject: 特許庁, as_of: 2026-08-13, unit: "", source: https://www.jpo.go.jp/news/saiyo/kokka/index.html, via: 各職種採用ページ, note: "" }
+  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 基準給与・基礎給・手当・賞与・年収, status: done, value: 特許審査官のみ月額3区分と賞与約4.65か月分、時間外手当・標準年収は記載なし, subject: 特許審査官, as_of: 2026-04-01, unit: 円, source: https://www.jpo.go.jp/news/saiyo/kokka/tokkyo/saiyo-info/index.html, via: 特許審査官採用情報, note: 他職種へ適用しない。 }
+  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・休日・応募期限, status: done, value: 特許審査官のみ1日7時間45分、他職種は記載なし, subject: 特許庁, as_of: 2026-08-13, unit: "", source: https://www.jpo.go.jp/news/saiyo/kokka/tokkyo/saiyo-info/index.html, via: 特許審査官採用情報, note: "" }
+  - { id: segments-services, phase: segments, store: mdx, topic: 主要業務と具体的サービス, status: done, value: 審査、制度・情報、審判・異議, subject: 特許庁, as_of: 2026-08-13, unit: "", source: https://www.jpo.go.jp/introduction/soshiki/yakuwari.html, via: 特許庁の役割, note: "" }
+  - { id: segments-mapping, phase: segments, store: mdx, topic: 行政機能・組織と企業セグメントの差異, status: done, value: 行政機能で整理し企業セグメントは非該当, subject: 特許庁, as_of: 2026-08-13, unit: "", source: https://www.jpo.go.jp/introduction/soshiki/yakuwari.html, via: 特許庁の役割, note: "" }
+  - { id: segments-related-companies, phase: segments, store: mdx, topic: 経済産業省との行政組織上の関係, status: done, value: 経済産業省の外局、関連企業は非該当, subject: 特許庁, as_of: 2026-08-13, unit: "", source: https://www.meti.go.jp/intro/data/a220001j.html, via: 経済産業省組織案内, note: 関連企業見出しは省略。 }
+  - { id: article-mission, phase: article, store: mdx, topic: ミッション・ビジョン・バリュー, status: done, value: 「知」が尊重され創造力を発揮したくなる社会の実現, subject: 特許庁, as_of: 2026-08-13, unit: "", source: https://www.jpo.go.jp/introduction/soshiki/yakuwari.html, via: 特許庁の役割, note: "" }
+  - { id: article-company, phase: article, store: mdx, topic: 位置付け・組織規模・所在地, status: done, value: 経済産業省外局・7部・霞が関, subject: 特許庁, as_of: 2026-08-13, unit: "", source: https://www.jpo.go.jp/introduction/soshiki/sosikizu.html, via: 組織図, note: "" }
+  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒・行政開示リンク, status: done, value: 公式・組織・採用リンクを掲載, subject: 特許庁, as_of: 2026-08-13, unit: "", source: https://www.jpo.go.jp/, via: 公式サイト, note: "" }

@@ -4,17 +4,17 @@ fiscal_year: 2027
 focus: 就活
 created_at: 2026-08-12
 updated_at: 2026-08-12
-phases: { ir: done, recruit: in_progress, segments: in_progress, article: pending, verify: pending }
+phases: { ir: done, recruit: done, segments: done, article: done, verify: done }
 items:
   - { id: ir-corporate-disclosure, phase: ir, store: ir_csv, topic: 企業IR・有価証券報告書, status: not_disclosed, value: 行政機関のため企業IRは非該当, subject: 総務省, as_of: 2026-08-12, unit: "", source: https://www.soumu.go.jp/english/about_mic.html, via: 公式組織案内, note: 中央省庁であり企業IRは適用されない。 }
-  - { id: recruit-overview, phase: recruit, store: mdx, topic: 採用主体・募集年度・募集状態・新卒区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-location, phase: recruit, store: mdx, topic: 職種別勤務地・転勤・勤務形態, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 基準給与・基礎給・手当・賞与・年収, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・休日・応募期限, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-services, phase: segments, store: mdx, topic: 主要業務と具体的サービス, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-mapping, phase: segments, store: mdx, topic: 行政組織・政策区分と企業セグメントの差異, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: segments-related-companies, phase: segments, store: mdx, topic: 外局・所管法人, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-mission, phase: article, store: mdx, topic: 任務・理念・スローガン, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-company, phase: article, store: mdx, topic: 設置経緯・組織規模・所在地, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
-  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒・行政開示リンク, status: pending, value: "", subject: "", as_of: "", unit: "", source: "", via: "", note: "" }
+  - { id: recruit-overview, phase: recruit, store: mdx, topic: 採用主体・募集年度・募集状態・新卒区分, status: done, value: 2027年度の本省4区分と統計局を整理, subject: 総務省, as_of: 2026-08-12, unit: "", source: https://www.soumu.go.jp/menu_syokai/saiyou/index.html, via: 公式採用情報, note: 消防庁と地方総合通信局は別採用。 }
+  - { id: recruit-roles, phase: recruit, store: mdx, topic: 職種・仕事内容・応募資格・選考区分, status: done, value: 国家公務員試験後の官庁訪問と情報通信行政・統計業務, subject: 総務省, as_of: 2026-08-12, unit: "", source: https://www.soumu.go.jp/menu_syokai/saiyou/isougou.html, via: 情報通信行政採用, note: ICTとe-Statを本文で定義。 }
+  - { id: recruit-location, phase: recruit, store: mdx, topic: 職種別勤務地・転勤・勤務形態, status: done, value: 本省は東京・統計局は新宿・地方総合通信局は地域別採用, subject: 総務省, as_of: 2026-08-12, unit: "", source: https://www.soumu.go.jp/menu_syokai/saiyou/02kanbo01_03000208.html, via: 地方機関採用案内, note: 採用主体と勤務地を区別。 }
+  - { id: recruit-compensation, phase: recruit, store: mdx, topic: 基準給与・基礎給・手当・賞与・年収, status: done, value: 本省初任給例317520円・301200円・287600円、賞与4.65か月, subject: 総務省, as_of: 2026-08-12, unit: 円, source: https://www.soumu.go.jp/menu_syokai/saiyou/index.html, via: 公式採用情報, note: 月額例のみ掲載し年収は非開示。 }
+  - { id: recruit-workstyle, phase: recruit, store: mdx, topic: 労働時間・休日・応募期限, status: done, value: 1日7時間45分、一般職技術系は7月27日から採用者決定まで訪問継続, subject: 総務省, as_of: 2026-08-12, unit: 時間, source: https://www.soumu.go.jp/menu_syokai/saiyou/i2syu.html, via: 一般職技術系採用, note: 他の掲載区分は官庁訪問終了。 }
+  - { id: segments-services, phase: segments, store: mdx, topic: 主要業務と具体的サービス, status: done, value: 情報通信・統計・サイバーセキュリティの行政業務, subject: 総務省, as_of: 2026-08-12, unit: "", source: https://www.soumu.go.jp/menu_sosiki/annai/soshiki/index.html, via: 組織案内, note: 現行組織名で整理。 }
+  - { id: segments-mapping, phase: segments, store: mdx, topic: 行政組織・政策区分と企業セグメントの差異, status: done, value: 企業セグメントは非該当、行政組織別の所掌を掲載, subject: 総務省, as_of: 2026-08-12, unit: "", source: https://www.soumu.go.jp/menu_sosiki/annai/soshiki/index.html, via: 組織案内, note: 行政予算と行政開示を使用。 }
+  - { id: segments-related-companies, phase: segments, store: mdx, topic: 外局・所管法人, status: done, value: 関連企業は非該当、消防庁は別採用主体, subject: 総務省, as_of: 2026-08-12, unit: "", source: https://www.fdma.go.jp/about/saiyo/saiyo002.html, via: 消防庁採用情報, note: 関連企業見出しは置かない。 }
+  - { id: article-mission, phase: article, store: mdx, topic: 任務・理念・スローガン, status: done, value: くらしの中に総務省, subject: 総務省, as_of: 2026-08-12, unit: "", source: https://www.soumu.go.jp/, via: 公式サイト, note: 行政制度・地方自治・情報通信・統計を記載。 }
+  - { id: article-company, phase: article, store: mdx, topic: 設置経緯・組織規模・所在地, status: done, value: 2001年発足、東京都千代田区霞が関2-1-2, subject: 総務省, as_of: 2026-08-12, unit: "", source: https://www.soumu.go.jp/menu_sosiki/annai/soshiki/index.html, via: 組織案内, note: 現行の情報通信関係組織を列挙。 }
+  - { id: article-links, phase: article, store: mdx, topic: 公式・採用・新卒・行政開示リンク, status: done, value: 公式・組織・予算・採用・統計局リンク, subject: 総務省, as_of: 2026-08-12, unit: "", source: https://www.soumu.go.jp/, via: 公式サイト, note: 公式URLのみ掲載。 }
