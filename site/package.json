@@ -17,7 +17,7 @@
     "@astrojs/sitemap": "^3.7.3",
     "@tailwindcss/vite": "^4.3.3",
     "@types/papaparse": "^5.5.2",
-    "astro": "^7.1.6",
+    "astro": "^7.2.1",
     "katex": "^0.16.11",
     "papaparse": "^5.5.4",
     "rehype-katex": "^7.0.0",
