@@ -8,26 +8,27 @@ company_boundary:
   securities_code: "9468"
   edinet_code: E30731
   fiscal_year_end: 3月31日（KADOKAWA連結）
-  accounting_standard: 日本基準（KADOKAWA有報）
+  accounting_standard: 日本基準（JGAAP・KADOKAWA有報）
   currency: JPY
-  reporting_segments: KADOKAWAの法定報告セグメント（IR workerが有報で確定）
+  reporting_segments: 出版・IP創出／アニメ・実写映像／ゲーム／Webサービス／教育・EdTech＋その他（2024〜2026の3期で不変、KADOKAWA有報）
   company_relations:
     - from: dwango
       to: kadokawa
       relation: parent
-      status: 予約（KADOKAWA有報の主要な子会社記載をsource_idとして関係行を作る）
+      status: 登録済み（company_relations.csv、valid_from=2014-10-01、source=edinet-s100ygf5）
   note: |
-    ドワンゴは非上場で自身の法定開示がない。EDINET提出書類スキャン（2025年・2026年の有報提出期、2025-05-20〜2025-07-20 および 2026-05-20〜2026-07-20 の営業日全部）で株式会社ドワンゴの提出書類は0件、株式会社KADOKAWA（E30731）の有報のみを確認（2026-06-23提出 S100YGF5 第12期 2026/3期、2025-06-25提出 S100W3PV 第11期 2025/3期）。
+    ドワンゴは非上場で自身の法定開示がない。EDINET提出書類スキャン（2025年・2026年の有報提出期、営業日計88日）で株式会社ドワンゴの提出書類は0件、株式会社KADOKAWA（E30731）の有報のみ（2026-06-23提出 S100YGF5 第12期、2025-06-25提出 S100W3PV、2024-07-31提出 S100U4MI）。
     ユーザー承認（2026-08-15）により開示主体をKADOKAWAとする（AWSジャパン→Amazon.comと同じ親会社開示パターン）。KADOKAWA連結の数値はcompany_id=kadokawaでCSVへ保存し、ドワンゴへ複写しない。
-    KADOKAWA・ドワンゴの資本関係（2014年10月の経営統合以降、KADOKAWAがドワンゴの親会社）の有効開始日はKADOKAWA有報の沿革・主要な子会社記載で確認してからcompany_relations.csvへ反映する。
+    KADOKAWA有報（S100YGF5）沿革: 2014年10月 株式移転により共同持株会社㈱KADOKAWA・DWANGO設立→ドワンゴが子会社に。2019年7月 旧㈱KADOKAWA全事業を吸収分割承継し商号を㈱KADOKAWAに変更。関係会社の状況: ドワンゴは議決権100.0%の連結子会社、連結売上高に占める割合が10%超のため主要な損益情報を開示（売上高48,981百万円・経常利益6,703百万円・当期純利益6,542百万円・純資産25,729百万円・総資産61,815百万円、2026年3月期）。この数値はドワンゴ単体に近い法定開示値として記事に使える。
+    2025年4月1日付で㈱ドワンゴを存続会社とし㈱ブックウォーカー・㈱KADOKAWA Connectedを吸収合併（ドワンゴグループ内再編）。
 fiscal_year: 2026
 focus: 両方
 created_at: 2026-08-15
 updated_at: 2026-08-15
 phases:
-  ir: in_progress
-  recruit: in_progress
-  segments: in_progress
+  ir: done
+  recruit: done
+  segments: done
   article: pending
   verify: pending
 items:
@@ -35,215 +36,242 @@ items:
     phase: ir
     store: ir_csv
     topic: ドワンゴ単体の法定開示（有価証券報告書等）の有無
-    status: pending
-    value: ""
+    status: not_disclosed
+    value: 株式会社ドワンゴ単体のEDINET提出書類は0件（全書類種別を含む）
     subject: 株式会社ドワンゴ単体
     as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: EDINET API v2 documents.json で2025年・2026年の有報提出期（2025-05-20〜2025-07-20、2026-05-20〜2026-07-20）を走査。統括agent実施分では株式会社ドワンゴの提出0件
-    note: ""
+    source: EDINET API v2 documents.json（https://api.edinet-fsa.go.jp/api/v2/documents.json）
+    via: type=2 で 2025-05-20〜2025-07-20（営業日44日）と 2026-05-20〜2026-07-20（営業日44日）を1日1リクエストで取得し filerName「ドワンゴ」を検索。両期間とも0件（統括agent・IR workerの独立走査で一致）
+    note: 非上場・EDINETコードなし。開示主体は親会社の株式会社KADOKAWA（E30731、東証プライム9468）
   - id: ir-human-capital
     phase: ir
     store: ir_csv
     topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
-    status: pending
-    value: ""
-    subject: KADOKAWA連結（開示主体kadokawa）
+    status: done
+    value: metrics.csv の kadokawa 行: average_annual_salary / average_age / average_tenure 各2024〜2026の3行、employee_count 連結・単体各2020〜2026（計14行）、gender_pay_gap / female_manager_ratio 各2024〜2026
+    subject: KADOKAWA連結・提出会社（開示主体kadokawa。ドワンゴ単体の値ではない）
     as_of: 2024-03-31〜2026-03-31
-    unit: ""
-    source: ""
-    via: ""
-    note: ドワンゴ単体の人的資本は法定開示なし。開示があれば採用情報・プレスキット側（recruit/article）で確認
+    unit: JPY / years / persons / percent
+    source: edinet-s100u4mi（2024）・edinet-s100w3pv（2025）・edinet-s100ygf5（2026）
+    via: edinet-fetch 3件（2026-01-01〜2026-08-15、2025-06-01〜2025-07-15、2024-06-01〜2024-07-31）。人的資本指標は各年の有報に当期分のみ記載のため3期分の有報を取得
+    note: 平均給与8,715千円・平均年齢41.6歳・平均勤続年数4.8年（2026、いずれもKADOKAWA提出会社単体）。ドワンゴ単体の人的資本は法定開示なし
   - id: ir-revenue
     phase: ir
     store: ir_csv
     topic: 売上高 3期以上
-    status: pending
-    value: ""
-    subject: KADOKAWA連結（開示主体kadokawa）
+    status: done
+    value: metrics.csv の kadokawa revenue 2024〜2026の3行（258,109 / 277,915 / 282,908 百万円、連結・JGAAP）
+    subject: KADOKAWA連結
     as_of: 2024-03-31〜2026-03-31
     unit: JPY
-    source: ""
-    via: ""
+    source: edinet-s100ygf5（経営指標等サマリー Prior2/Prior1/CurrentYearDuration）
+    via: edinet-fetch後に csv-upsert で補完（CLIのJGAAP経営指標ルールのwhitelistにkadokawa未登録のため、同一書類のXBRLから抽出）
     note: ""
   - id: ir-operating-profit
     phase: ir
     store: ir_csv
     topic: 営業利益 3期以上
-    status: pending
-    value: ""
-    subject: KADOKAWA連結（開示主体kadokawa）
+    status: done
+    value: metrics.csv の kadokawa operating_profit 2024〜2026の3行（18,454 / 16,651 / 8,102 百万円、連結・JGAAP）
+    subject: KADOKAWA連結
     as_of: 2024-03-31〜2026-03-31
     unit: JPY
-    source: ""
-    via: ""
-    note: ""
+    source: edinet-s100ygf5（2025/2026）・edinet-s100w3pv（2024、連結損益計算書 jppfs_cor:OperatingIncome）
+    via: edinet-fetch後に csv-upsert で補完（経営指標サマリーに営業利益の記載なし）
+    note: 2026年3月期は営業利益が約半減（アニメ・実写映像セグメントがのれん償却等で損失）
   - id: ir-health
     phase: ir
     store: ir_csv
     topic: 自己資本比率・流動資産・流動負債・当座資産 3期以上
-    status: pending
-    value: ""
-    subject: KADOKAWA連結（開示主体kadokawa）
+    status: done
+    value: metrics.csv の kadokawa 行: equity_ratio 2024〜2026（56.0 / 60.9 / 62.0%）、current_assets・current_liabilities 2023〜2026、quick_assets 2024〜2026
+    subject: KADOKAWA連結
     as_of: 2024-03-31〜2026-03-31
-    unit: ""
-    source: ""
-    via: ""
-    note: 当座資産の算定内訳はnoteへ残す
+    unit: percent / JPY
+    source: edinet-s100ygf5・edinet-s100w3pv・edinet-s100u4mi
+    via: current_assets/current_liabilities は edinet-fetch、equity_ratio・quick_assets は csv-upsert で補完
+    note: 当座資産は有報への掲記なし。quick_assets は現金及び預金＋受取手形＋売掛金＋有価証券の合算（内訳は各行のnoteに百万円で記録。2024年は有価証券が「－」表示のため0円扱い）
   - id: ir-cashflow
     phase: ir
     store: ir_csv
     topic: 営業・投資・財務CF 3期以上
-    status: pending
-    value: ""
-    subject: KADOKAWA連結（開示主体kadokawa）
+    status: done
+    value: metrics.csv の kadokawa 行: operating_cf / investing_cf / financing_cf 各2024〜2026の計9行（営業8,298/13,841/3,424、投資3,494/△8,440/△21,042、財務△65,800/44,117/△22,425 百万円）
+    subject: KADOKAWA連結
     as_of: 2024-03-31〜2026-03-31
     unit: JPY
-    source: ""
-    via: ""
+    source: edinet-s100ygf5（経営指標等サマリー Prior2/Prior1/CurrentYearDuration）
+    via: edinet-fetch後に csv-upsert で補完
     note: ""
   - id: ir-segments
     phase: ir
     store: ir_csv
     topic: 報告セグメント名・セグメント別売上・利益
-    status: pending
-    value: ""
-    subject: KADOKAWA連結（開示主体kadokawa）
-    as_of: 2026-03-31
+    status: done
+    value: segments.csv の kadokawa 行18行（2024〜2026×6区分）。報告セグメントは出版・IP創出／アニメ・実写映像／ゲーム／Webサービス／教育・EdTechの5つ＋その他
+    subject: KADOKAWA連結
+    as_of: 2024-03-31〜2026-03-31
     unit: JPY
-    source: ""
-    via: ""
-    note: KADOKAWAの公表セグメント名・区分をそのまま使う。ドワンゴが所属するセグメントを特定して記事の材料にする
+    source: edinet-s100u4mi・edinet-s100w3pv・edinet-s100ygf5
+    via: csv-upsert（CLIのCOMPANY_SEGMENTSにkadokawa設定なしのため同一書類のXBRLから外部顧客への売上高とセグメント営業利益を抽出）
+    note: revenue=外部顧客への売上高、segment_profit=営業利益ベース。ドワンゴは関係会社表で「出版・IP創出／Webサービス／教育・EdTech／その他」にまたがる会社として記載され、ニコニコ等を含むWebサービス事業の主要運営主体。Webサービスの外部売上は2024:21,140→2025:17,719→2026:20,196百万円
   - id: ir-notes
     phase: ir
     store: ir_csv
     topic: 組織再編・会計基準変更・比較上の注記
-    status: pending
-    value: ""
-    subject: KADOKAWA連結（開示主体kadokawa）
+    status: done
+    value: 組織再編・沿革・比較上の注記をnoteに確定。比較不能期間は特定されず（JGAAP継続・5セグメント体制は3期で不変）
+    subject: KADOKAWA連結
     as_of: 2024〜2026年度
     unit: ""
-    source: ""
-    via: ""
-    note: KADOKAWAドワンゴ間の組織再編・社名変更（KADOKAWA・DWAGO Holdings→KADOKAWA等）で比較不能期間があれば特定する
+    source: edinet-s100ygf5（沿革・関係会社の状況・経理の状況）・edinet-s100u4mi・edinet-s100w3pv
+    via: S100YGF5のXBRLテキストブロック（CompanyHistoryTextBlock・OverviewOfAffiliatedEntitiesTextBlock・ChangesInScopeOfConsolidationTextBlock等）を抽出・確認
+    note: |
+      【沿革】2014年10月 株式移転により共同持株会社㈱KADOKAWA・DWANGO設立→ドワンゴが子会社に。2019年7月 商号を㈱KADOKAWAに変更（現法人）。
+      【主要な子会社】ドワンゴは議決権100.0%の連結子会社、連結売上高比10%超のため主要な損益情報を開示（2026年3月期: 売上高48,981百万円・経常利益6,703百万円・当期純利益6,542百万円・純資産25,729百万円・総資産61,815百万円）。2025年4月1日 ドワンゴが㈱ブックウォーカー・㈱KADOKAWA Connectedを吸収合併。
+      【連結範囲変更】KADOKAWAクリエイターズ新設・Edizioni BD（2025-05-23）・SOZO（2025-11-14）を新規連結、角川アーキテクチャ清算・カスタムキャスト売却で連結除外。貸借対照表の表示方法変更（ソフトウエア仮勘定・長期貸付金の独立掲記、前期組替え、影響軽微）。リース会計基準（IFRS16型）を2028年3月期から適用予定。会計基準変更なし。
   - id: recruit-overview
     phase: recruit
     store: mdx
     topic: 採用主体・募集年度・確認日・募集ページURL
-    status: pending
-    value: ""
+    status: done
+    value: 採用主体=株式会社ドワンゴ（新卒・正社員、採用サイトは「KADOKAWAグループ dwango Recruit」）。最新は2027年度新卒（27卒）3職種: エンジニア職（2025-10-01エントリー受付開始）、ビジネス職・デザイナー職（2025-12-01開始）。2026-08-15確認時点で全3職種とも「受付終了」。2028年度募集は未公開。新卒ページ= https://recruit.dwango.co.jp/new-graduate/ 、エントリー= https://dwango.snar.jp/index.aspx?id=rUW28aa31J4 。中途は hrmos.co/pages/dwango で常時実施
     subject: 株式会社ドワンゴ（新卒採用）
-    as_of: ""
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: https://recruit.dwango.co.jp/
-    note: ""
+    source: https://recruit.dwango.co.jp/new-graduate/（2026-08-15確認）/ https://dwango.snar.jp/index.aspx?id=rUW28aa31J4（2026-08-15確認）
+    via: https://recruit.dwango.co.jp/ → 新卒採用 → エントリーサイト一覧（HTMLで全職種の受付状態を確認）
+    note: エンジニア短期・長期インターンは2026-04-27付で受付中、夏のオープンカンパニーは2026-07-13付で予約受付中（新卒本募集ではない）。FAQは全職種共通で「既卒【2025年3月〜2026年9月卒業/修了(予定)】もエントリー可能」
   - id: recruit-job-roles
     phase: recruit
     store: mdx
     topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
-    status: pending
-    value: ""
-    subject: 株式会社ドワンゴ（新卒採用の各職種）
-    as_of: ""
+    status: done
+    value: >-
+      【エンジニア職（27卒、snar.jp詳細ページ）】仕事内容=サービス/プラットフォーム開発、Web/スマホアプリ開発、機能最適化、社内業務システムの設計・開発・運用。応募資格=2027年3月31日までに4年制大学・短大・大学院・高専・専門・高校を卒業/修了予定の方（2025年3月以降既卒も可）。配属・選考区分=エントリーシート提出時に①ニコニコ事業開発（FE/BE/iOS/Android）②教育事業開発（+機械学習・データ基盤/SRE、ZEN Study・N/S/R高等学校・ZEN大学関連）③電子書籍事業開発（BOOK☆WALKER・ニコニコ漫画・カドコミ・読書メーター・dマガジン・dブック等）④技術の力でKADOKAWAグループを支える領域（クラウド/配信基盤/データ分析/機械学習）の4領域から選択、併願・応募後変更不可、①〜③は配属職種の確約なし、VRサービス開発は現在実施なし。勤務地=東京都。【デザイナー職】UI・UXデザイン、プロモーション/Webデザイン、グラフィックデザイン等。勤務地=東京都。【ビジネス職】リレーションセールス/マーケティング・プロモーション/Webディレクター/プロデューサー/電子書籍サービス運営・企画/コンテンツ制作/電子書籍取次/バックオフィス、ES提出時に希望コースを選択。勤務地=東京都。【選考（全職種共通）】プレエントリー→ES提出→書類選考（全員に結果通知）→適性検査+面接（複数回、エンジニア職は3回予定）→内々定。原則Web面接、1入社年度あたり1職種1回のみ、職種併願可、配属は会社が決定（グループ会社含む）
+    subject: 株式会社ドワンゴ（新卒採用の各職種: エンジニア職/デザイナー職/ビジネス職）
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: ""
-    note: ""
+    source: https://dwango.snar.jp/jobboard/detail.aspx?id=RVjiuZBIVL2uNJuBxKV3kQ（2026-08-15確認）/ https://dwango.snar.jp/index.aspx?id=rUW28aa31J4 / https://recruit.dwango.co.jp/new-graduate/ / recruit.dwango.co.jp の各職種紹介ページ
+    via: 新卒採用ページ → snar.jpエントリー一覧（HTML解析）→ エンジニア職詳細ページ・各職種紹介ページ
+    note: ビジネス職・デザイナー職の詳細募集要項（コース区分全文・給与・対象者等）はsnar.jp一覧からpostback遷移する先にあり、エントリーなしには取得不可
   - id: recruit-salary
     phase: recruit
     store: mdx
     topic: 基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
-    status: pending
-    value: ""
-    subject: 株式会社ドワンゴ（新卒採用）
-    as_of: ""
+    status: done
+    value: >-
+      【エンジニア職（27卒、snar.jp詳細ページ）】基本給（予定）=スペシャリスト枠は経歴・能力で個別判断（最終面接後にオファー面談）、大学院卒・ポスドク=月給300,000円、大卒・高専専攻科卒=280,000円、高卒・専門卒・高専卒・短大卒=260,000円。理論年収=例: 大学院卒 月給300,000円×16か月=4,800,000円（夏冬賞与それぞれ基本給2か月分込み、初年度は初回夏季賞与なし、賞与は個人評価・会社業績により変動）。賞与=年2回（6月・12月）。査定=年2回（4月・10月）。諸手当=テレワーク/在宅勤務手当、通勤手当（定期代または実費相当、テレワーク対象者は原則なし）、社員寮（希望かつ基準満たす場合、新卒のみ2年間入居可）。保険=健康・雇用・労災、厚生年金+確定拠出年金、財形貯蓄・社員持株制度あり。【全社員共通（働く環境ページ）】テレワーク手当=月額20,000円、サブスク手当=一律3,000円/月、資格取得手当、育児手当（未就学児は保育料半額上限月50,000円、小学生は月3,000円/人）
+    subject: 株式会社ドワンゴ新卒（給与・賞与はエンジニア職募集要項、共通手当は全社員）
+    as_of: 2026-08-15
     unit: 円
-    source: ""
-    via: ""
-    note: ""
+    source: https://dwango.snar.jp/jobboard/detail.aspx?id=RVjiuZBIVL2uNJuBxKV3kQ（2026-08-15確認）/ https://recruit.dwango.co.jp/environment/
+    via: エンジニア職エントリー詳細ページの待遇欄、働く環境ページの各種手当欄
+    note: ビジネス職・デザイナー職の給与額は公開ページに掲載なし。「標準年収」の公式表記は「理論年収」。固定時間外手当（固定残業手当）・基礎給の内訳記載なし
   - id: recruit-conditions
     phase: recruit
     store: mdx
     topic: 転勤・リモート勤務・標準労働時間・応募期限
-    status: pending
-    value: ""
-    subject: 株式会社ドワンゴ（新卒採用）
-    as_of: ""
+    status: done
+    value: >-
+      勤務地=3職種とも東京都（歌舞伎座タワー、東銀座駅直結）。転勤=転勤制度に関する明示記載なし（配属は会社が決定、FA制度によりKADOKAWAグループ内異動を自己申請可能）。リモート=多くの社員がテレワーク勤務、社内規定あり要事前申請/承認、原則国内から、歌舞伎座タワーから100キロ以遠での勤務は要事前申請/承認（エンジニア職募集要項）。標準労働時間=フレックスタイム制（標準労働時間8時間・コアタイム有）または裁量労働制（1日8時間のみなし）、入社後一定期間はフレックスタイム制。休日休暇=完全週休2日制（土・日）・祝日・年末年始・年次有給・特別休暇・リフレッシュ休暇。応募期限=2026-08-15時点で全3職種ともエントリー受付終了（個別締切日は不公表。受付開始=エンジニア職2025-10-01、ビジネス職/デザイナー職2025-12-01）。次回（28年度）募集の日程は未公表
+    subject: 株式会社ドワンゴ（新卒採用3職種共通）
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: ""
-    note: ""
+    source: https://dwango.snar.jp/jobboard/detail.aspx?id=RVjiuZBIVL2uNJuBxKV3kQ / https://dwango.snar.jp/index.aspx?id=rUW28aa31J4 / https://recruit.dwango.co.jp/environment/ / https://recruit.dwango.co.jp/new-graduate/
+    via: エントリー一覧（HTML受付状態確認）・エンジニア職詳細ページ・働く環境ページ・新卒採用ページFAQ
+    note: エンジニア職詳細ページ本文に受付中の文言が残存するが受付状態表示は「受付終了」であり、2026-08-15時点は受付終了と判断。転勤の有無は確認した公式ページに明示なし
   - id: segments-services
     phase: segments
     store: mdx
     topic: 事業区分ごとの具体的なサービス名・ブランド名・提供内容・運営法人
-    status: pending
-    value: ""
+    status: done
+    value: |
+      公式サイトの事業案内は8区分（https://dwango.co.jp/business/）。(1) ウェブサービス: ニコニコ（動画・生放送）、バーチャルキャスト（VR、子会社㈱バーチャルキャスト運営）、sheeta、ドワンゴジェイピー、animelo mix、ドワンゴジェイピーストア、大相撲公式アプリ。(2) クリエイターサポート: ボカロP・踊り手・歌い手・絵師等への音楽原盤・出版、エージェント、キャスティング。(3) イベント: ニコニコ超会議（2012年開始・17万人来場）、超歌舞伎、ニコニコ町会議、池袋ハロウィンコスプレフェス、The VOCALOID Collection、アニメロサマーライブ（2005年開始）、超声優祭、Splatoon甲子園、VTuberFesJapan。(4) 教育サービス: 学校法人角川ドワンゴ学園のN/S/R高等学校（コンテンツ制作・サービス開発）、学習アプリZEN Study、子会社㈱バンタン、ZEN Travel。(5) ゲーム: ＃コンパス（NHN PlayArtと共同開発・運営）、子会社㈱スパイク・チュンソフト（ダンガンロンパ/風来のシレン等）。(6) 電子書籍関連サービス: BOOK☆WALKER（2025年4月の㈱ブックウォーカー吸収合併によりドワンゴ直轄、170万点以上）、ニコニコ漫画、読書メーター、dマガジン・dブックのシステム開発・運用、カドコミ・コロナEXの開発・運用。(7) 電子書籍取次事業: 出版社と電子書籍ストア間の流通、国内50以上の取次先+海外直接取次（KADOKAWAグループ運営の北米・台湾ストア、Amazon、Google Play等）。(8) 技術・開発: Dwango Media Village（機械学習研究開発）、KADOKAWAグループ向けWebメディア開発・エンタープライズシステム構築、EUC、データエンジニアリング、ハイブリッドクラウド、QRouton。
+      ニコニコ・イベント・モバイル配信・電子書籍・技術開発はドワンゴ直轄、バーチャルキャスト・バンタン・スパイク・チュンソフトは子会社が運営主体。
     subject: 株式会社ドワンゴ
-    as_of: ""
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: https://dwango.co.jp/business/
-    note: 公式サイトの事業区分（ウェブサービス/クリエイターサポート/イベント/教育/ゲーム/電子書籍関連/電子書籍取次/技術・開発）
+    source: https://dwango.co.jp/business/ および全8事業ページ（2026-08-15確認）
+    via: https://dwango.co.jp/business/ から全8事業ページを直接取得
+    note: BOOK☆WALKERは2025年4月の㈱ブックウォーカー吸収合併以降ドワンゴ運営（会社案内沿革に記載）
   - id: segments-official-vs-ir
     phase: segments
     store: mdx
     topic: 公式サイトの事業区分とKADOKAWAのIR報告セグメントの対応関係と差異
-    status: pending
-    value: ""
+    status: done
+    value: |
+      ドワンゴは非上場で自身の報告セグメントなし。KADOKAWAの報告セグメント（有報で確定: 出版・IP創出／アニメ・実写映像／ゲーム／Webサービス／教育・EdTech＋その他）との対応:
+      - ウェブサービス、クリエイターサポート、イベント、電子書籍関連サービス、電子書籍取次事業、技術・開発 → Webサービス（KADOKAWAグループポータルのWebサービスページに「主なグループ会社 株式会社ドワンゴ」としてニコニコ・イベント・BOOK☆WALKER等が明記）
+      - 教育サービス（バンタン、ZEN Study等） → 教育・EdTech
+      - ゲーム（スパイク・チュンソフト、#コンパス） → ゲーム
+      差異: ドワンゴ公式8区分はサービス提供形態別の顧客向け分類で、KADOKAWAの法定報告セグメントとは粒度・体系が異なる。ドワンゴの事業の大半はKADOKAWAの「Webサービス」セグメントに相当するが、教育とゲームは別区分にまたがる（KADOKAWA有報の関係会社表でもドワンゴは「出版・IP創出／Webサービス／教育・EdTech／その他」にまたがる会社として記載）。
     subject: ドワンゴ公式事業区分 vs KADOKAWA報告セグメント
-    as_of: ""
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: ""
-    note: ドワンゴがKADOKAWAのどの報告セグメントに相当するか
+    source: https://group.kadokawa.co.jp/business/webservice.html、https://group.kadokawa.co.jp/business/（6区分）、https://dwango.co.jp/business/（8区分）、KADOKAWA有報S100YGF5関係会社の状況
+    via: KADOKAWAグループポータル事業紹介・IR各ページとドワンゴ事業案内・有報関係会社表の突合（2026-08-15確認）
+    note: セグメント別売上の数値は ir-segments（segments.csv）が正本。Webサービスの外部売上は2024:21,140→2025:17,719→2026:20,196百万円
   - id: segments-related
     phase: segments
     store: mdx
     topic: 関連企業（親会社・主な子会社と各社の事業内容）
-    status: pending
-    value: ""
+    status: done
+    value: |
+      親会社: 株式会社KADOKAWA（2014年10月1日設立の経営統合持株会社、設立当時KADOKAWA・DWANGO、2019年7月に現商号、資本金656億円、代表執行役社長CEO 夏野剛）。ドワンゴ会社案内「親会社 株式会社KADOKAWA」、KADOKAWA有報で議決権100.0%の連結子会社。
+      主な子会社（ドワンゴ会社案内「子会社」、2026-08-15確認）: ㈱バンタン（教育・実践スクール、約20万人卒業生）、㈱スパイク・チュンソフト（ゲーム企画・開発・販売、海外子会社Spike Chunsoft, Inc.あり）、㈱バーチャルキャスト（2018年7月設立、VRシステム「バーチャルキャスト」開発・運営、2025年10月㈱LOGIC&MAGICを吸収合併）、㈱GeeXPlus（海外展開支援）、㈱PUBLUS（電子書籍取次）。
+      組織再編: 2025年4月 ドワンゴが㈱ブックウォーカー（旧角川モバイル2005年〜）および㈱KADOKAWA Connectedを吸収合併。ブックウォーカーは2021年10月にも㈱トリスタを吸収合併していた。
+      ピクシブとの合弁（ドワンゴ・ピクシブ株式会社）: ドワンゴ・ピクシブ両社の現在の公式資料（会社案内・沿革・プレスリリース2020〜2026年分）に記載がなく確認できず。ピクシブとの現在の公式な共同企画は「ネット流行語100」（ピクシブ百科事典×ニコニコ大百科、2020年12月〜毎年）のみ。
     subject: KADOKAWAグループ内のドワンゴとその子会社・関連会社
-    as_of: ""
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: https://group.kadokawa.co.jp/company/group.html および https://dwango.co.jp/company/
-    note: ピクシブとの関係（過去のドワンゴ・ピクシブ株式会社合同会社等）が公式資料で確認できるかも調べる
+    source: https://dwango.co.jp/company/（親会社・子会社・沿革）、https://group.kadokawa.co.jp/company/group.html、https://group.kadokawa.co.jp/company/outline.html、https://corp.virtualcast.jp/about/、https://www.pixiv.co.jp/company/
+    via: ドワンゴ会社案内・KADOKAWAグループ会社一覧・バーチャルキャスト企業サイト・ピクシブ企業サイトの直接取得（2026-08-15）
+    note: バンタン・スパイク・チュンソフト・バーチャルキャスト・PUBLUS・GeeXPlusはKADOKAWAの主な連結子会社としても掲載
   - id: article-philosophy
     phase: article
     store: mdx
     topic: 理念・ミッション・スローガン（公式表記）
-    status: pending
-    value: ""
+    status: done
+    value: |
+      独立した理念ページはなく、代表挨拶（夏野剛、https://dwango.co.jp/company/）内の公式表記が理念に相当。
+      ミッション: 「ネットとリアル、デジタルとコミュニティ、最新テクノロジーと人間らしさ、一見相反するこれらのものを融合していくのがドワンゴのミッションです。」
+      価値観: 「世界の誰もが想像していなかったサービスを創り続ける。そして多くのクリエイターとユーザーをリアルでもネットでもつなげていく。そこにドワンゴの価値があります。」
+      ニコニコの提供価値（事業案内ウェブサービス）: 「世の中にない遊び場」を提供し続ける。
     subject: 株式会社ドワンゴ
-    as_of: ""
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: ""
-    note: ""
+    source: https://dwango.co.jp/company/（代表挨拶・夏野剛）、https://dwango.co.jp/business/web/
+    via: ドワンゴ公式サイト会社案内ページの直接取得
+    note: 独立した理念ページ・スローガン一覧ページは公式サイトに存在しないことを確認済み
   - id: article-company-intro
     phase: article
     store: mdx
     topic: 会社紹介（設立経緯・規模）
-    status: pending
-    value: ""
+    status: done
+    value: |
+      会社概要（公式値、2026-08-15確認）: 正式名称 株式会社ドワンゴ／代表者 代表取締役社長 夏野剛／設立 1997年8月／資本金 1億円／本社 〒104-0061 東京都中央区銀座4-12-15 歌舞伎座タワー／事業内容 ネットワークエンタテインメントコンテンツ及びシステムの企画、開発、運用、サポート、コンサルティング。
+      沿革の要点: 1997年8月設立（ネットワークゲームのシステム企画・開発等）。1999年11月「ドワンゴかもね」、2001年6月着メロ「16メロミックス（現dwango.jp）」で着メロ最大手級に。2003年7月東証マザーズ上場、2004年9月東証一部へ。2006年12月ニコニコ動画開始。2012年4月ニコニコ超会議初開催。2014年10月KADOKAWAと経営統合で上場廃止・グループ入り。2016年4月N高等学校開校・N予備校開始。2018年4月バーチャルキャスト開始。2025年4月ブックウォーカー・KADOKAWA Connectedを吸収合併。
+      規模: ドワンゴ単体の従業員数は会社案内に記載なし。参考値: KADOKAWA有報の主要子会社損益情報（2026年3月期: 売上高48,981百万円・当期純利益6,542百万円・総資産61,815百万円）、KADOKAWAグループ全体の従業員数9,290名（2026年3月末）。
     subject: 株式会社ドワンゴ
-    as_of: ""
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: https://dwango.co.jp/company/
-    note: 従業員数・設立年・資本金等、会社概要の公式値
+    source: https://dwango.co.jp/company/（会社概要・沿革・代表挨拶）、https://group.kadokawa.co.jp/kadokawa_numbers/、KADOKAWA有報S100YGF5
+    via: ドワンゴ会社案内とKADOKAWAグループポータル・有報の直接取得
+    note: ドワンゴ単体の従業員数は非開示。KADOKAWAグループ従業員数は記事では「グループ全体の参考値」と明示して使うこと
   - id: article-links
     phase: article
     store: mdx
     topic: 公式リンク（HP・IR・採用・新卒採用）
-    status: pending
-    value: ""
+    status: done
+    value: |
+      公式リンク一覧（2026-08-15時点、全て生存確認済み）:
+      ドワンゴ コーポレートサイト https://dwango.co.jp/ ／会社案内 https://dwango.co.jp/company/ ／事業案内 https://dwango.co.jp/business/ ／ドワンゴIR情報（電子公告・2014年以前の旧IR資料） https://dwango.co.jp/ir/ ／新卒採用 https://recruit.dwango.co.jp/ ／KADOKAWAグループポータル https://group.kadokawa.co.jp/ ／KADOKAWA IR情報 https://group.kadokawa.co.jp/ir/ ／KADOKAWA IRライブラリ（決算短信・説明資料・有報バックナンバー） https://group.kadokawa.co.jp/ir/library/ ／KADOKAWAグループ会社一覧 https://group.kadokawa.co.jp/company/group.html
+      ドワンゴ自身は非上場で有価証券報告書PDFを持たないため、開示資料はKADOKAWAのIRライブラリ（有報 https://group.kadokawa.co.jp/ir/library/securities_report.html）へリンクする。
     subject: 株式会社ドワンゴ / KADOKAWA
-    as_of: ""
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: ""
-    note: ドワンゴに有報PDFはないため、開示はKADOKAWAのIRライブラリへリンクする
+    source: 各URLへの直接アクセス確認（2026-08-15）
+    via: ドワンゴ公式サイト・KADOKAWAグループポータルのナビゲーションと実URL確認
+    note: 記事のIRリンク先はKADOKAWA IRライブラリで統一

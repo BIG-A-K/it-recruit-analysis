@@ -4640,3 +4640,24 @@ kadokawa,gender_pay_gap,2024,2024-03-31,72.7,percent,non_consolidated,,reported,
 kadokawa,rd_expenses,2024,2024-03-31,348000000,JPY,consolidated,,reported,edinet-s100u4mi,element_id=jpcrp_cor:ResearchAndDevelopmentExpensesResearchAndDevelopmentActivities; context_id=CurrentYearDuration
 kadokawa,current_assets,2023,2023-03-31,263968000000,JPY,consolidated,,reported,edinet-s100u4mi,element_id=jppfs_cor:CurrentAssets; context_id=Prior1YearInstant
 kadokawa,current_liabilities,2023,2023-03-31,128918000000,JPY,consolidated,,reported,edinet-s100u4mi,element_id=jppfs_cor:CurrentLiabilities; context_id=Prior1YearInstant
+kadokawa,revenue,2024,2024-03-31,258109000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jpcrp_cor:NetSalesSummaryOfBusinessResults; context_id=Prior2YearDuration
+kadokawa,revenue,2025,2025-03-31,277915000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jpcrp_cor:NetSalesSummaryOfBusinessResults; context_id=Prior1YearDuration
+kadokawa,revenue,2026,2026-03-31,282908000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jpcrp_cor:NetSalesSummaryOfBusinessResults; context_id=CurrentYearDuration
+kadokawa,operating_profit,2024,2024-03-31,18454000000,JPY,consolidated,JGAAP,reported,edinet-s100w3pv,element_id=jppfs_cor:OperatingIncome; context_id=Prior1YearDuration
+kadokawa,operating_profit,2025,2025-03-31,16651000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jppfs_cor:OperatingIncome; context_id=Prior1YearDuration
+kadokawa,operating_profit,2026,2026-03-31,8102000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jppfs_cor:OperatingIncome; context_id=CurrentYearDuration
+kadokawa,equity_ratio,2024,2024-03-31,56,percent,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jpcrp_cor:EquityToAssetRatioSummaryOfBusinessResults; context_id=Prior2YearInstant; 開示値0.560を100倍
+kadokawa,equity_ratio,2025,2025-03-31,60.9,percent,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jpcrp_cor:EquityToAssetRatioSummaryOfBusinessResults; context_id=Prior1YearInstant; 開示値0.609を100倍
+kadokawa,equity_ratio,2026,2026-03-31,62,percent,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jpcrp_cor:EquityToAssetRatioSummaryOfBusinessResults; context_id=CurrentYearInstant; 開示値0.620を100倍
+kadokawa,operating_cf,2024,2024-03-31,8298000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jpcrp_cor:NetCashProvidedByUsedInOperatingActivitiesSummaryOfBusinessResults; context_id=Prior2YearDuration
+kadokawa,operating_cf,2025,2025-03-31,13841000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jpcrp_cor:NetCashProvidedByUsedInOperatingActivitiesSummaryOfBusinessResults; context_id=Prior1YearDuration
+kadokawa,operating_cf,2026,2026-03-31,3424000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jpcrp_cor:NetCashProvidedByUsedInOperatingActivitiesSummaryOfBusinessResults; context_id=CurrentYearDuration
+kadokawa,investing_cf,2024,2024-03-31,3494000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jpcrp_cor:NetCashProvidedByUsedInInvestingActivitiesSummaryOfBusinessResults; context_id=Prior2YearDuration
+kadokawa,investing_cf,2025,2025-03-31,-8440000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jpcrp_cor:NetCashProvidedByUsedInInvestingActivitiesSummaryOfBusinessResults; context_id=Prior1YearDuration
+kadokawa,investing_cf,2026,2026-03-31,-21042000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jpcrp_cor:NetCashProvidedByUsedInInvestingActivitiesSummaryOfBusinessResults; context_id=CurrentYearDuration
+kadokawa,financing_cf,2024,2024-03-31,-65800000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jpcrp_cor:NetCashProvidedByUsedInFinancingActivitiesSummaryOfBusinessResults; context_id=Prior2YearDuration
+kadokawa,financing_cf,2025,2025-03-31,44117000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jpcrp_cor:NetCashProvidedByUsedInFinancingActivitiesSummaryOfBusinessResults; context_id=Prior1YearDuration
+kadokawa,financing_cf,2026,2026-03-31,-22425000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,element_id=jpcrp_cor:NetCashProvidedByUsedInFinancingActivitiesSummaryOfBusinessResults; context_id=CurrentYearDuration
+kadokawa,quick_assets,2024,2024-03-31,167763000000,JPY,consolidated,JGAAP,reported,edinet-s100w3pv,当座資産の掲記なし。連結貸借対照表の現金及び預金105351＋受取手形1414＋売掛金60998＋有価証券0（「－」表示）百万円の合算（jppfs_cor:CashAndDeposits等、Prior1YearInstant）
+kadokawa,quick_assets,2025,2025-03-31,215887000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,当座資産の掲記なし。連結貸借対照表の現金及び預金145494＋受取手形1785＋売掛金67800＋有価証券808百万円の合算（jppfs_cor:CashAndDeposits等、Prior1YearInstant）
+kadokawa,quick_assets,2026,2026-03-31,194457000000,JPY,consolidated,JGAAP,reported,edinet-s100ygf5,当座資産の掲記なし。連結貸借対照表の現金及び預金116001＋受取手形1632＋売掛金75995＋有価証券829百万円の合算（jppfs_cor:CashAndDeposits等、CurrentYearInstant）

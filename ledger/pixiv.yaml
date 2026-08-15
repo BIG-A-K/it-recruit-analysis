@@ -7,23 +7,24 @@ company_boundary:
   legal_name: ピクシブ株式会社（採用主体）
   securities_code: ""
   edinet_code: ""
-  fiscal_year_end: 未確認（法定開示なし）
+  fiscal_year_end: 非公表（法定開示なし。metrics の period_end=2026-04-30 は公式社員データの算出時点に統一した代用基準日）
   accounting_standard: ""
   currency: JPY
   reporting_segments: なし（非上場のため法定報告セグメントが存在しない）
   company_relations: []
   note: |
-    ピクシブ株式会社は非上場で自身の法定開示がない。EDINET提出書類スキャン（2025年・2026年の有報提出期、2025-05-20〜2025-07-20 および 2026-05-20〜2026-07-20 の営業日全部）でピクシブ株式会社の提出書類は0件。DMMパターン（開示主体なし）で進め、IR項目は公式サイト・プレスキットで確認できる範囲に限る。
+    ピクシブ株式会社は非上場で自身の法定開示がない。EDINET提出書類スキャン（2025年・2026年の有報提出期、営業日計88日）でピクシブ株式会社の提出書類は0件。DMMパターン（開示主体なし）で進め、IR項目は公式サイト・プレスキットで確認できる範囲に限る。
     ユーザー指示（2026-08-15）により業界は既存 game（ゲーム・エンターテインメント）を付与。
-    過去にドワンゴとの合弁（ドワンゴ・ピクシブ株式会社）の沿革が公式資料で確認できる場合は記事材料とする。
+    過去のドワンゴ・ピクシブ株式会社（合弁）の沿革は、ピクシブ公式サイト（会社概要・プレスリリース一覧2020〜2026年分）とドワンゴ公式サイト（会社案内・沿革・子会社一覧）のいずれにも記載がなく公式一次情報で確認できなかったため記事に書かない。確認できた現在の公式な関係は「ネット流行語100」の共同開催（2020年12月〜毎年）のみ。
+    台帳初期noteの「ファンコミ（旧fanbox?）」は誤りで公式名称は「pixivFANBOX」、「poipiku」はPipa.jp Ltd.の運営でピクシブ株式会社のサービスではない（2026-08-15確認、事業情報ページに掲載なし）。
 fiscal_year: 2026
 focus: 両方
 created_at: 2026-08-15
 updated_at: 2026-08-15
 phases:
-  ir: in_progress
-  recruit: in_progress
-  segments: in_progress
+  ir: done
+  recruit: done
+  segments: done
   article: pending
   verify: pending
 items:
@@ -31,203 +32,246 @@ items:
     phase: ir
     store: ir_csv
     topic: ピクシブ単体の法定開示（有価証券報告書等）の有無
-    status: pending
-    value: ""
+    status: done
+    value: ピクシブ株式会社のEDINET提出書類0件（非上場・開示主体なし、DMMパターン確定）
     subject: ピクシブ株式会社単体
     as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: EDINET API v2 documents.json で2025年・2026年の有報提出期（2025-05-20〜2025-07-20、2026-05-20〜2026-07-20）を走査。統括agent実施分ではピクシブ株式会社の提出0件
+    source: EDINET API v2 documents.json
+    via: companies.csvのedinet_codeが空のためedinet-fetch/edinet-normalizeは不実行（EDINET対象外）。独自確認としてEDINET API v2 documents.json(type=2)を2025年・2026年の有報提出期（営業日44+44日分）で取得しfilerName「ピクシブ」を検索した結果0件。統括agentの走査結果と一致
     note: ""
   - id: ir-human-capital
     phase: ir
     store: ir_csv
     topic: 平均年間給与・平均年齢・平均勤続年数・従業員数
-    status: pending
-    value: ""
+    status: not_disclosed
+    value: metrics.csv に pixiv/2026/scope=pixiv で4行（employee_count=unavailable、average_age=unavailable、average_tenure=not_disclosed、average_annual_salary=not_disclosed、値はすべて空欄）
     subject: ピクシブ株式会社
-    as_of: ""
-    unit: ""
-    source: ""
-    via: https://www.pixiv.co.jp/company/（会社概要）、https://www.pixiv.co.jp/data/（社員データ）、プレスキット
-    note: 法定開示がないため、公式サイトに掲載がある項目だけ取得。対象法人・基準日が特定できない値は登録しない
+    as_of: 2026-04-30
+    unit: persons / years / JPY
+    source: pixiv-official-employee-data（https://www.pixiv.co.jp/data/）、pixiv-business-guide-202607
+    via: 公式サイト4ページ（会社概要・社員データ・数字で見るpixiv・プレスキット）とプレスキット経由のビジネスガイド2026年度版PDF（2026年7月Ver・日本語/英語両版）を取得し全文検索
+    note: 正社員数・平均年齢は社員データページのチャート画像でのみ公表（同ページ注記「2026年4月に算出」）。alt属性にも数値なし。画像からテキスト値を確認できず unavailable として値を未登録。平均勤続年数・平均年間給与は統計項目・記載自体が存在しないため not_disclosed
   - id: ir-revenue
     phase: ir
     store: ir_csv
     topic: 売上高
-    status: pending
-    value: ""
+    status: not_disclosed
+    value: metrics.csv に pixiv/revenue/2026/scope=pixiv の not_disclosed 行1行
     subject: ピクシブ株式会社
-    as_of: ""
+    as_of: 2026-04-30
     unit: JPY
-    source: ""
-    via: ""
-    note: 非上場。監査済財務の公表がなければnot_disclosed
+    source: pixiv-business-guide-202607
+    via: 会社概要・社員データ・数字で見るpixiv・ビジネスガイド2026年度版（2026年7月Ver）を確認。売上高の記載なし
+    note: 非上場で法定開示なし・監査済財務の公表なし。決算期非公表のため基準日を公式社員データの算出時点（2026年4月）に統一
   - id: ir-operating-profit
     phase: ir
     store: ir_csv
     topic: 営業利益
-    status: pending
-    value: ""
+    status: not_disclosed
+    value: metrics.csv に pixiv/operating_profit/2026/scope=pixiv の not_disclosed 行1行
     subject: ピクシブ株式会社
-    as_of: ""
+    as_of: 2026-04-30
     unit: JPY
-    source: ""
-    via: ""
-    note: ""
+    source: pixiv-business-guide-202607
+    via: 上記4公式資料で営業利益の記載を確認なし
+    note: 監査済財務の公表なし
   - id: ir-health
     phase: ir
     store: ir_csv
     topic: 自己資本比率・流動資産・流動負債・当座資産
-    status: pending
-    value: ""
+    status: not_disclosed
+    value: metrics.csv に equity_ratio・current_assets・current_liabilities・quick_assets の各 not_disclosed 行4行（pixiv/2026/scope=pixiv）
     subject: ピクシブ株式会社
-    as_of: ""
-    unit: ""
-    source: ""
-    via: ""
-    note: ""
+    as_of: 2026-04-30
+    unit: percent / JPY
+    source: pixiv-business-guide-202607
+    via: 上記4公式資料で貸借対照表関連の記載を確認なし
+    note: 貸借対照表自体が公表されていない
   - id: ir-cashflow
     phase: ir
     store: ir_csv
     topic: 営業・投資・財務CF
-    status: pending
-    value: ""
+    status: not_disclosed
+    value: metrics.csv に operating_cf・investing_cf・financing_cf の各 not_disclosed 行3行（pixiv/2026/scope=pixiv）
     subject: ピクシブ株式会社
-    as_of: ""
+    as_of: 2026-04-30
     unit: JPY
-    source: ""
-    via: ""
+    source: pixiv-business-guide-202607
+    via: 上記4公式資料でキャッシュ・フロー計算書の公表を確認なし
     note: ""
   - id: ir-notes
     phase: ir
     store: ir_csv
     topic: 組織再編・会計基準変更・比較上の注記
-    status: pending
-    value: ""
+    status: done
+    value: 組織再編・会計基準変更に関する公式開示なし。比較上の注記（非上場・財務非公表・社員統計は画像公表・決算期非公表）をmetrics各rowのnoteへ記録済み
     subject: ピクシブ株式会社
-    as_of: ""
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: ""
-    note: ドワンゴ・ピクシブ合同会社の合弁解消・ピクシブへの統合等、公式資料で確認できる範囲
+    source: pixiv-official-company-overview、pixiv-business-guide-202607、公式プレスリリースアーカイブ（https://www.pixiv.co.jp/archive/category/プレスリリース）
+    via: 会社概要・ビジネスガイド両版・プレスリリース一覧（2025-05〜2026-08分）を確認。組織再編・会計基準変更の発表なし
+    note: 過去のドワンゴ・ピクシブ株式会社に係る沿革は今回確認した公式ページ範囲では言及なし（segments-related参照）
   - id: recruit-overview
     phase: recruit
     store: mdx
     topic: 採用主体・募集年度・確認日・募集ページURL
-    status: pending
-    value: ""
+    status: done
+    value: |
+      採用主体はピクシブ株式会社（非上場・開示主体なし）。新卒採用トップ https://www.pixiv.co.jp/new-graduates/ に【27年度】と【28年度】の新卒募集要項が併記（2026-08-15確認）。最新は28年度で、エンジニア職・ビジネス職・プロダクトデザイナー職の3職種すべて「詳細を見る」として応募受付中。27年度はエンジニア職・プロダクトデザイナー職が引き続き公開中、ビジネス職は「募集終了」。各職種の詳細は公式サイトから直接リンクされるHRMOS上のピクシブ株式会社公式求人票で確認。28年度: エンジニア職=hrmos.co/pages/pixiv/jobs/22012028、ビジネス職=jobs/22022028、プロダクトデザイナー職=jobs/22032028。27年度: エンジニア職=jobs/2077291346542534670、プロダクトデザイナー職=jobs/2077291346542534677。
     subject: ピクシブ株式会社（新卒採用）
-    as_of: ""
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: https://www.pixiv.co.jp/new-graduates/
-    note: ""
+    source: https://www.pixiv.co.jp/new-graduates/（2026-08-15確認）
+    via: 公式新卒採用トップおよび公式コーポレートサイトから各職種のHRMOS公式求人票へ直接確認
+    note: 27年度・28年度の両方が公開中のため、最新年度（28年度）を優先しつつ両年度の要項を記録
   - id: recruit-job-roles
     phase: recruit
     store: mdx
     topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
-    status: pending
-    value: ""
-    subject: ピクシブ株式会社（新卒採用の各職種）
-    as_of: ""
+    status: done
+    value: |
+      【28年度新卒（最新年度）】3職種とも正社員・試用期間3ヶ月。応募要件は全職種共通で「卒業後3年以内の方（就業経験不問）」。
+      (1) エンジニア職（jobs/22012028）: 新規事業開発、新機能提案・既存機能の改善・高速化、実装後の運営まで。区分はフロントエンド／バックエンド／インフラ／スマホアプリ／基盤（配信技術・認証認可基盤・決済基盤・広告開発）／データ／機械学習／3D・xR・Unity／デザインシステム／セキュリティ＋オープン募集。
+      (2) ビジネス職（jobs/22022028）: サービスの企画・運営、ユーザー獲得、プロモーション、開発ディレクション。区分はプロダクトマネージャー／プランナー／アライアンス企画／出版社企画／アカウントプランナー（広告提案営業）／海外グロース戦略。
+      (3) プロダクトデザイナー職（jobs/22032028）: プロダクト開発初期からの参画、UXリサーチ、デザインシステムを活用したUI設計、プロトタイピングと改善。必須スキルはアプリまたはウェブプロダクトのUX/UIデザイン経験（プロアマ不問）。
+      【選考フロー】エンジニア職: 書類選考→一次面接→二次面接→選考インターン（平日5日間、日給16,000円支給）→最終面接（役員）→内定。ビジネス職・プロダクトデザイナー職: 書類選考→一次面接→（ビジネス職のみ二次面接）→選考インターン→最終面接（役員）→内定。
+      【勤務地】全職種共通: 東京都渋谷区千駄ヶ谷4-23-5-6F（東京オフィス）。会社情報には福岡オフィス（福岡市博多区中洲4-6-12 プラート中洲6F）も記載。
+      【27年度】エンジニア職・プロダクトデザイナー職は28年度と同一内容で確認。27年度ビジネス職は募集終了。
+    subject: ピクシブ株式会社（28年度エンジニア職・ビジネス職・プロダクトデザイナー職、27年度エンジニア職・プロダクトデザイナー職）
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: ""
-    note: ""
+    source: https://hrmos.co/pages/pixiv/jobs/22012028、jobs/22022028、jobs/22032028、jobs/2077291346542534670、jobs/2077291346542534677（各2026-08-15確認）
+    via: 新卒採用トップの各職種「詳細を見る」リンク先（ピクシブ株式会社のHRMOS公式求人票）を直接取得
+    note: 職種内の詳細区分（エンジニア13区分、ビジネス6区分）は求人票1枚にまとめて掲載。給与・勤務地等は職種単位で共通
   - id: recruit-salary
     phase: recruit
     store: mdx
     topic: 基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
-    status: pending
-    value: ""
-    subject: ピクシブ株式会社（新卒採用）
-    as_of: ""
+    status: done
+    value: |
+      【28年度・27年度とも同一水準】
+      エンジニア職: 月給370,000円〜（内訳: 基本給258,000円〜＋時間外勤務手当（月45時間分）及び深夜割増相当分（月45時間分）112,000円〜）。別途対象者に賞与／住宅手当を支給。格別のスキル・経験がある場合は相談に応じる。
+      ビジネス職・プロダクトデザイナー職: 月給340,000円〜（内訳: 基本給236,000円〜＋時間外勤務手当（月45時間分）及び深夜割増相当分（月45時間分）104,000円〜）。別途対象者に賞与／住宅手当を支給。
+      【評価制度（全職種共通）】昇給 年2回（1月・7月）、賞与 年1回（10月）※年により異なる。
+      【諸手当（全職種共通）】交通費支給、住宅手当（32歳まで。会社から1.2km圏内50,000円/月、配偶者がいる場合はさらに50,000円/月）、子ども手当（扶養家族の子ども1人につき20,000円/月）、書籍購入制度（5,000円/月）、希望PC購入制度、コンディショニングケア制度、フリードリンク制度、育児・介護休業制度。
+      【標準年収】求人票の給与見出しは「年収」だが数値は月給表記のみで、年収のモデル数値・標準年収の明示はなし。
+    subject: ピクシブ株式会社（新卒採用: エンジニア職／ビジネス職・プロダクトデザイナー職）
+    as_of: 2026-08-15
     unit: 円
-    source: ""
-    via: ""
-    note: ""
+    source: https://hrmos.co/pages/pixiv/jobs/22012028、jobs/22022028、jobs/22032028（各2026-08-15確認）
+    via: 各職種HRMOS公式求人票の「給与」「評価制度」「福利厚生」欄
+    note: 固定時間外手当は「時間外勤務手当（月45時間分）及び深夜割増相当分（月45時間分）」として月給に含む形式
   - id: recruit-conditions
     phase: recruit
     store: mdx
     topic: 転勤・リモート勤務・標準労働時間・応募期限
-    status: pending
-    value: ""
-    subject: ピクシブ株式会社（新卒採用）
-    as_of: ""
+    status: done
+    value: |
+      【労働時間（全職種共通）】フレックスタイム制（標準労働時間1日8時間）、コアタイム10:00〜15:00、フレキシブルタイム7:00〜10:00／15:00〜21:00。
+      【転勤・勤務地変更・リモート】勤務地は東京都渋谷区千駄ヶ谷4-23-5-6F。変更の範囲は「当社拠点全般、ならびに自宅」と明記（当社拠点全般=東京・福岡オフィスへの配属変更の可能性、自宅=在宅勤務を含む）。フルリモート可否の個別規定は公式ページに記載なし。
+      【休日】完全週休2日制（土曜・日曜）、祝日、年次有給休暇（初年度10日以上）、慶弔休暇、夏季休暇、年末年始休暇、積立休暇。
+      【雇用形態・試用期間】正社員、試用期間3ヶ月。【加入保険】雇用・労災・厚生年金・健康保険。
+      【応募期限】新卒採用トップページおよび全職種のHRMOS公式求人票のいずれにも応募期限・締切日の記載なし（全職種「応募する」ボタンが有効）。
+    subject: ピクシブ株式会社（新卒採用: 全職種共通）
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: ""
-    note: ""
+    source: https://hrmos.co/pages/pixiv/jobs/22012028、jobs/22022028、jobs/22032028（各2026-08-15確認）
+    via: 各職種HRMOS公式求人票の「勤務時間」「勤務地」「休日」欄および新卒採用トップページ
+    note: 応募期限のみ公式ページに記載なし（2026-08-15時点で新卒トップ・HRMOS求人票5件すべて確認済み）
   - id: segments-services
     phase: segments
     store: mdx
     topic: 事業区分ごとの具体的なサービス名・ブランド名・提供内容・運営法人
-    status: pending
-    value: ""
+    status: done
+    value: |
+      公式サイト「事業情報」（https://www.pixiv.co.jp/service/）は3区分（インターネットサービス事業／クリエイタープラットフォーム／コンテンツプラットフォーム）の下に個別プロダクトを掲載。運営はすべてピクシブ株式会社（プレスリリース冒頭の「ピクシブ株式会社が運営する～」表記で確認）。
+      主なサービス: pixiv（イラスト・マンガ・小説の投稿コミュニティ、2007年開始、累計登録ユーザー1億人=2023年12月自社調べ、ビジネスガイド2026年度版では約1億2500万人、作品総数1.7億超）、pixivコミック（作品10,600以上が無料、参加出版社12社）、pixivFANBOX（ファンによるクリエイター支援、累計支援金総額約990億円）、BOOTH（創作マーケットプレイス、月間アクティブユーザー約900万人）、pixivFACTORY（グッズ・同人誌のオンデマンド制作）、pixiv Sketch、pixivision（創作系メディア）、sensei（イラスト講座）、ピクシブ百科事典、ImageFlux（さくらインターネットと共同開発の画像変換配信クラウド）、VRoid Studio（3Dキャラクターメイカー、累計約728万DL）、VRoid Hub、Palcy（講談社と共同で企画・運営・開発するマンガアプリ）、pixivコミックインディーズ、pixiv ads（セルフサーブ型運用型広告）、pixivcoban（プリペイド電子マネー）、Pastela（タブレット向けペイントツール）、FANBOXプリント（コンビニ印刷、印刷代金の30%をクリエイターに還元）、VEAT（アバター ダンス動画アプリ）。
+      終了済み: pixiv PAY（2020年12月終了）、ピクシブ文芸（2021年4月終了）、pixiv WAEN GALLERY（TWIN PLANETとの共同運営、2019年2月〜2024年11月）。
     subject: ピクシブ株式会社
-    as_of: ""
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: https://www.pixiv.co.jp/service/
-    note: pixiv、ファンコミ（旧fanbox?）、BOOTH、pixivコミック、poipiku等の公式サービス一覧
+    source: https://www.pixiv.co.jp/service/（2026-08-15確認）、https://www.pixiv.co.jp/news/press-kit/（ビジネスガイド2026年度版）、https://poipiku.com/
+    via: 公式コーポレートサイトの事業情報・プレスキット・プレスリリース（2020〜2026年分）を直接取得して公式表記を確認
+    note: "poipikuはPipa.jp Ltd.の運営でピクシブ株式会社のサービスではない（Company Info確認）。ファンコミという名称は公式に存在せず、公式名称はpixivFANBOX"
   - id: segments-official-vs-ir
     phase: segments
     store: mdx
     topic: 公式サイトの事業区分と報告セグメントの対応（法定報告セグメントなしの確認）
-    status: pending
-    value: ""
+    status: done
+    value: |
+      ピクシブ株式会社は非上場で法定開示がなく、法定報告セグメントは存在しない（EDINET提出書類スキャンで0件）。公式サイトの事業区分とIR報告セグメントの対応表は作成不能であり、記事の事業区分は公式サイトの3区分（インターネットサービス事業／クリエイタープラットフォーム／コンテンツプラットフォーム）をそのまま使う。各プロダクトがどの区分に属するかはページ上で明示的に紐づいていないため独自の割り当てはしない。
+      数値開示はプロダクト単位の任意開示（ビジネスガイド2026年度版: pixiv累計登録ユーザー約1億2500万人、BOOTH月間アクティブユーザー約900万人、pixivFANBOX累計支援金総額約990億円、VRoid Studio累計約728万DL）に限られ、財務・セグメント別売上の開示はない。
     subject: ピクシブ株式会社
-    as_of: ""
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: ""
-    note: 非上場のため法定報告セグメントなし。公式の事業区分・サービス分類を記事の区分として使う
+    source: https://www.pixiv.co.jp/service/、https://www.pixiv.co.jp/pixiv_data/、https://www.pixiv.co.jp/news/press-kit/
+    via: 公式サイト3ページの直接取得とEDINET提出0件の確認結果
+    note: 非上場のため法定報告セグメントなし。プロダクト単位の任意開示数値のみが存在することを記事の:::warn等で明示できる
   - id: segments-related
     phase: segments
     store: mdx
     topic: 関連企業（親会社・出資関係・提携先と各社の事業内容）
-    status: pending
-    value: ""
+    status: done
+    value: |
+      【現在の公式ページで確認できる提携・関連関係】
+      - 株式会社講談社: マンガアプリ「Palcy」を共同で企画・運営・開発。講談社はpixivコミックの参加出版社でもある。
+      - 株式会社ドワンゴ: ピクシブ百科事典（ピクシブ運営）とニコニコ大百科（ドワンゴ運営）のアクセス数に基づく「ネット流行語100」を共同開催（2020年12月〜毎年の表彰プレスリリースで確認できる継続的な共同企画）。
+      - 株式会社ツインプラネット（TWIN PLANET）: ギャラリー「pixiv WAEN GALLERY」を2019年2月〜2024年11月に共同運営。
+      - さくらインターネット: 画像変換配信クラウド「ImageFlux」を共同開発。
+      【親会社・子会社】公式会社概要ページに親会社・子会社の記載は存在せず、資本関係は公式資料で確認できなかった（company_relations.csv の関係行は作らない）。
+      【過去のドワンゴ・ピクシブ株式会社（合弁）】両社公式ページで記載を確認できず、公式一次情報で確認できないため記事に書かない。
     subject: ピクシブ株式会社とその関連会社
-    as_of: ""
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: https://www.pixiv.co.jp/company/
-    note: 講談社との共同運営（マンガアプリ）や過去のドワンゴ・ピクシブ株式会社など、公式資料で確認できるものだけ
+    source: https://www.pixiv.co.jp/service/、https://www.pixiv.co.jp/company/、https://www.pixiv.co.jp/archive（2020・2021・2025・2026年分）、https://dwango.co.jp/company/
+    via: ピクシブ公式プレスリリース一覧とドワンゴ公式会社案内を直接取得し、提携先・沿革・子会社記載の有無を確認
+    note: 確認できた提携関係（講談社・ドワンゴ・TWIN PLANET・さくらインターネット）のみ記事材料とする
   - id: article-philosophy
     phase: article
     store: mdx
     topic: 理念・ミッション・スローガン（公式表記）
-    status: pending
-    value: ""
+    status: done
+    value: |
+      企業理念ページ（https://www.pixiv.co.jp/philosophy/）の公式表記。
+      リード文: 「創作活動の楽しさを加速させ、拡げ、未来へつなげていくために ピクシブは以下のミッション、ビジョン、バリューを掲げています。」
+      Mission: 「創作活動を、もっと楽しくする。」
+      Vision: 「感動と衝動を、次の何かへ。」
+      Values: 「Respect creativity（創ることへのリスペクトを。）」「Entertain（遊び心で楽しませよう。）」「Keep an open mind（多様な好きを受け容れよう。）」「Pave the way（創作文化の未来に貢献し続けよう。）」
+      コーポレートトップのメインビジュアルにも「創作活動を、もっと楽しくする。」が使われている。
     subject: ピクシブ株式会社
-    as_of: ""
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: https://www.pixiv.co.jp/philosophy/
+    source: https://www.pixiv.co.jp/philosophy/（2026-08-15確認）
+    via: 公式企業理念ページとコーポレートトップページの直接取得
     note: ""
   - id: article-company-intro
     phase: article
     store: mdx
     topic: 会社紹介（設立経緯・規模）
-    status: pending
-    value: ""
+    status: done
+    value: |
+      【会社概要（公式 /company/）】商号: ピクシブ株式会社／英語表記: pixiv Inc.／設立: 2005年7月25日／代表取締役CEO: 丹羽康弘／東京オフィス: 〒151-0051 東京都渋谷区千駄ヶ谷4-23-5／福岡オフィス: 〒810-0801 福岡県福岡市博多区中洲4-6-12 プラート中洲6F。
+      【設立経緯・規模（公式 /pixiv_data/）】2007年にサービス「pixiv」を開始、総登録ユーザー数1億人達成（2023年12月自社調べ）、作品総数1.7億超（2026年6月自社調べ）。ビジネスガイド2026年度版ではpixiv累計登録ユーザー約1億2500万人。
+      【従業員数】会社概要ページに記載なし。社員データページは正社員数・平均年齢等を画像で掲載しておりテキストとしての数値は取得不可（「2026年4月算出」の注記のみ）。
     subject: ピクシブ株式会社
-    as_of: ""
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: https://www.pixiv.co.jp/company/ および https://www.pixiv.co.jp/pixiv_data/
-    note: 従業員数・設立年・本社等、会社概要と数字で見るpixivの公式値
+    source: https://www.pixiv.co.jp/company/、https://www.pixiv.co.jp/pixiv_data/、https://www.pixiv.co.jp/news/press-kit/、https://www.pixiv.co.jp/data/
+    via: 公式の会社概要・数字で見るpixiv・プレスキット・社員データの4ページを直接取得
+    note: 過去の代表は國枝信吾（2020〜2021年のプレスリリース冒頭表記）、現在は丹羽康弘（2025年〜2026年の表記）
   - id: article-links
     phase: article
     store: mdx
     topic: 公式リンク（HP・採用・新卒採用）
-    status: pending
-    value: ""
+    status: done
+    value: |
+      公式リンク一覧（2026-08-15確認、全てアクセス可能）:
+      コーポレートサイト https://www.pixiv.co.jp/ ／会社概要 https://www.pixiv.co.jp/company/ ／企業理念 https://www.pixiv.co.jp/philosophy/ ／事業情報 https://www.pixiv.co.jp/service/ ／数字で見るpixiv https://www.pixiv.co.jp/pixiv_data/ ／プレスリリース一覧 https://www.pixiv.co.jp/archive ／プレスキット https://www.pixiv.co.jp/news/press-kit/ ／新卒採用 https://www.pixiv.co.jp/new-graduates/ ／中途採用 https://www.pixiv.co.jp/mid-career/ ／インターン・アルバイト https://www.pixiv.co.jp/interns/ ／社内ブログ（pixiv inside） https://inside.pixiv.blog/
+      非上場のため有価証券報告書PDF・IRライブラリへのリンクは存在しない。
     subject: ピクシブ株式会社
-    as_of: ""
+    as_of: 2026-08-15
     unit: ""
-    source: ""
-    via: ""
-    note: 非上場のため有報PDF・IRライブラリへのリンクなし
+    source: https://www.pixiv.co.jp/ のグローバルナビゲーション（2026-08-15確認）
+    via: コーポレートサイト各ページ取得時に共通ナビゲーションのリンク先を確認
+    note: 非上場のため有報・IRリンクなし
