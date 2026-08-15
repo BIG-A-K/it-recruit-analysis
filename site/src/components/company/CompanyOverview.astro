@@ -71,7 +71,7 @@ const disclosureCompany = allCompanies.find(
     {company.ticker && <div><dt>ティッカー</dt><dd>{company.exchange ? `${company.exchange}: ` : ""}{company.ticker}</dd></div>}
     {company.sec_cik && <div><dt>SEC CIK</dt><dd>{company.sec_cik}</dd></div>}
     {disclosureCompany && <div><dt>関連開示主体</dt><dd>{disclosureCompany.display_name}</dd></div>}
-    {employeeCount && <div><dt>従業員数</dt><dd>{formatValue(Number(employeeCount.value), employeeCount.unit, "employee_count")}</dd></div>}
+    {employeeCount && <div><dt>従業員数（連結・{employeeCount.fiscal_year}年度）</dt><dd>{formatValue(Number(employeeCount.value), employeeCount.unit, "employee_count")}</dd></div>}
     {totalFunding && <div><dt>累計資金調達額</dt><dd>{formatValue(Number(totalFunding.value), totalFunding.unit, "total_funding")}<small>非上場ベンチャーの公式発表値</small></dd></div>}
   </dl>
 </section>

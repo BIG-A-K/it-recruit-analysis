@@ -5,9 +5,14 @@ import { formatValue, latestMetric } from "../../lib/format";
 interface Props {
   companyId: string;
   workplace?: string;
+  workplaceSourceUrl?: string;
 }
 
-const { companyId, workplace: workplaceOverride } = Astro.props;
+const {
+  companyId,
+  workplace: workplaceOverride,
+  workplaceSourceUrl,
+} = Astro.props;
 const profile = profileForCompany(companyId);
 const companyMetrics = metrics.filter(
   (metric) =>
@@ -64,7 +69,7 @@ const workplace = workplaceOverride || profile?.workplace || "確認中";
     {tenure && <div class="employment-tile"><dt>平均勤続年数</dt><dd>{formatValue(Number(tenure.value), tenure.unit, tenure.metric_key)}</dd></div>}
     {age && <div class="employment-tile"><dt>平均年齢</dt><dd>{formatValue(Number(age.value), age.unit, age.metric_key)}</dd></div>}
     {employees && <div class="employment-tile"><dt>従業員数（単体）</dt><dd>{formatValue(Number(employees.value), employees.unit, employees.metric_key)}</dd>{(tenure || age) && <small>上の平均値はこの人数を対象にした数字です</small>}</div>}
-    <div class="employment-tile"><dt>主な勤務地</dt><dd class="text-value">{workplace}</dd></div>
+    <div class="employment-tile"><dt>主な勤務地</dt><dd class="text-value">{workplace}</dd>{workplaceSourceUrl && <small><a href={workplaceSourceUrl} target="_blank" rel="noreferrer">勤務地の出典</a></small>}</div>
     {rdExpenses && <div class="employment-tile"><dt>研究開発費</dt><dd>{formatValue(Number(rdExpenses.value), rdExpenses.unit, rdExpenses.metric_key)}</dd><small>{rdExpenses.fiscal_year}年度・連結</small></div>}
   </dl>
   {hasHumanCapital && <>

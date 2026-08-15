@@ -1,0 +1,338 @@
+company_id: baycurrent
+disclosure_company_id: baycurrent
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-15
+updated_at: 2026-08-15
+phases:
+  ir: done
+  recruit: done
+  segments: done
+  article: done
+  verify: done
+boundary:
+  legal_name: 株式会社ベイカレント（旧・ベイカレント・コンサルティング株式会社）
+  edinet_code: E32549
+  securities_code: "6532"
+  fiscal_year_end: 2月末
+  accounting_standard: 連結はIFRS（第11期・2025年2月期から適用）、提出会社単体はJGAAP
+  currency: JPY
+  group_structure: 2024年9月1日の吸収分割で持株会社体制へ移行。株式会社ベイカレント（開示・採用主体）の下に株式会社ベイカレント・コンサルティング（コンサルティング事業）と株式会社ベイカレント・テクノロジー（ITサービス事業）の100%子会社2社。子会社は個別のcompany_idを付与しない。
+  note: 最新の有価証券報告書は第12期2026年2月期 S100Y69G（2026-05-26提出）。S100YD6N（2026-06-17提出）は臨時報告書。上場は2016年9月マザーズ→2018年12月東証一部→2022年4月プライム移行。
+items:
+  - id: ir-salary
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与 3期以上（提出会社）
+    status: done
+    value: metrics.csv の average_annual_salary（2024〜2026年度、3行、non_consolidated）
+    subject: 提出会社
+    as_of: 2024-02-29〜2026-02-28
+    unit: JPY
+    source: edinet-s100ti4b / edinet-s100vtpa / edinet-s100y69g
+    via: edinet-fetch + edinet-normalize、2024年2月期分は data/raw/edinet/S100TI4B 原本から csv-upsert で補完
+    note: 2025年2月期以降は持株会社（株式会社ベイカレント）提出会社ベース
+  - id: ir-age
+    phase: ir
+    store: ir_csv
+    topic: 平均年齢 3期以上（提出会社）
+    status: done
+    value: metrics.csv の average_age（2024〜2026年度、3行、non_consolidated）
+    subject: 提出会社
+    as_of: 2024-02-29〜2026-02-28
+    unit: years
+    source: edinet-s100ti4b / edinet-s100vtpa / edinet-s100y69g
+    via: edinet-fetch + edinet-normalize、2024年2月期分は csv-upsert で補完
+    note: ""
+  - id: ir-tenure
+    phase: ir
+    store: ir_csv
+    topic: 平均勤続年数 3期以上（提出会社）
+    status: done
+    value: metrics.csv の average_tenure（2024〜2026年度、3行、non_consolidated）
+    subject: 提出会社
+    as_of: 2024-02-29〜2026-02-28
+    unit: years
+    source: edinet-s100ti4b / edinet-s100vtpa / edinet-s100y69g
+    via: edinet-fetch + edinet-normalize、2024年2月期分は csv-upsert で補完
+    note: 有報の注記通り旧株式会社ベイカレント・コンサルティングでの勤続年数を引き継ぎ算出
+  - id: ir-employees
+    phase: ir
+    store: ir_csv
+    topic: 従業員数 3期以上（連結・単体）
+    status: done
+    value: metrics.csv の employee_count（2021〜2026年度、consolidated 6行 + non_consolidated 6行の計12行）
+    subject: 連結・提出会社
+    as_of: 2021-02-28〜2026-02-28
+    unit: persons
+    source: edinet-s100vtpa / edinet-s100y69g
+    via: edinet-fetch + edinet-normalize
+    note: 単体は2024年2月期4,321名（旧・事業会社ベース）→2025年2月期593名（持株会社ベース）→2026年2月期866名。連結は2026年2月期6,788名
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高 3期以上（連結）
+    status: done
+    value: metrics.csv の revenue（2021〜2026年度、6行、consolidated）
+    subject: 連結
+    as_of: 2021-02-28〜2026-02-28
+    unit: JPY
+    source: edinet-s100vtpa / edinet-s100y69g
+    via: edinet-fetch + edinet-normalize
+    note: 連結財務諸表はIFRS適用
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上（連結）
+    status: done
+    value: metrics.csv の operating_profit（2024〜2026年度、3行、consolidated）
+    subject: 連結
+    as_of: 2024-02-28〜2026-02-28
+    unit: JPY
+    source: edinet-s100vtpa / edinet-s100y69g
+    via: edinet-fetch + edinet-normalize
+    note: ""
+  - id: ir-equity-ratio
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率 3期以上（連結）
+    status: done
+    value: metrics.csv の equity_ratio（2021〜2026年度、6行、consolidated）
+    subject: 連結
+    as_of: 2021-02-28〜2026-02-28
+    unit: percent
+    source: edinet-s100vtpa / edinet-s100y69g
+    via: edinet-fetch + edinet-normalize
+    note: ""
+  - id: ir-current-assets
+    phase: ir
+    store: ir_csv
+    topic: 流動資産 3期以上（連結）
+    status: done
+    value: metrics.csv の current_assets（2024〜2026年度、3行、consolidated）
+    subject: 連結
+    as_of: 2024-02-28〜2026-02-28
+    unit: JPY
+    source: edinet-s100vtpa / edinet-s100y69g
+    via: edinet-fetch + edinet-normalize
+    note: ""
+  - id: ir-current-liabilities
+    phase: ir
+    store: ir_csv
+    topic: 流動負債 3期以上（連結）
+    status: done
+    value: metrics.csv の current_liabilities（2024〜2026年度、3行、consolidated）
+    subject: 連結
+    as_of: 2024-02-28〜2026-02-28
+    unit: JPY
+    source: edinet-s100vtpa / edinet-s100y69g
+    via: edinet-fetch + edinet-normalize
+    note: ""
+  - id: ir-quick-assets
+    phase: ir
+    store: ir_csv
+    topic: 当座資産 3期以上（連結、算定内訳をnoteへ）
+    status: done
+    value: metrics.csv の quick_assets（2024〜2026年度、3行、consolidated）。2024年=63,342,000,000 / 2025年=87,680,000,000 / 2026年=113,668,000,000
+    subject: 連結
+    as_of: 2024-02-28〜2026-02-28
+    unit: JPY
+    source: edinet-s100vtpa / edinet-s100y69g
+    via: 連結財政状態計算書（IFRS）から当座資産=流動資産−棚卸資産（仕掛品）で算定し csv-upsert で登録
+    note: 算定内訳は各rowのnoteに記録（現金及び現金同等物+売掛金及びその他の債権+その他の金融資産+その他の流動資産）。その他の流動資産の内訳開示はなし
+  - id: ir-operating-cf
+    phase: ir
+    store: ir_csv
+    topic: 営業キャッシュフロー 3期以上（連結）
+    status: done
+    value: metrics.csv の operating_cf（2021〜2026年度、6行、consolidated）
+    subject: 連結
+    as_of: 2021-02-28〜2026-02-28
+    unit: JPY
+    source: edinet-s100vtpa / edinet-s100y69g
+    via: edinet-fetch + edinet-normalize
+    note: ""
+  - id: ir-investing-cf
+    phase: ir
+    store: ir_csv
+    topic: 投資キャッシュフロー 3期以上（連結）
+    status: done
+    value: metrics.csv の investing_cf（2021〜2026年度、6行、consolidated）
+    subject: 連結
+    as_of: 2021-02-28〜2026-02-28
+    unit: JPY
+    source: edinet-s100vtpa / edinet-s100y69g
+    via: edinet-fetch + edinet-normalize
+    note: ""
+  - id: ir-financing-cf
+    phase: ir
+    store: ir_csv
+    topic: 財務キャッシュフロー 3期以上（連結）
+    status: done
+    value: metrics.csv の financing_cf（2021〜2026年度、6行、consolidated）
+    subject: 連結
+    as_of: 2021-02-28〜2026-02-28
+    unit: JPY
+    source: edinet-s100vtpa / edinet-s100y69g
+    via: edinet-fetch + edinet-normalize
+    note: ""
+  - id: ir-segment-names
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメント名 3期以上
+    status: done
+    value: segments.csv に2024〜2026年度の3行を登録。全期で「コンサルティング事業」の単一セグメント
+    subject: 連結
+    as_of: 2024-02-29〜2026-02-28
+    unit: ""
+    source: edinet-s100ti4b / edinet-s100vtpa / edinet-s100y69g
+    via: 有報のセグメント情報注記（単一セグメントの旨）を確認し csv-upsert で登録
+    note: segment_id=consulting、availability=not_disclosed
+  - id: ir-segment-profit
+    phase: ir
+    store: ir_csv
+    topic: セグメント別売上・利益 3期以上
+    status: not_disclosed
+    value: ""
+    subject: 連結
+    as_of: 2024-02-29〜2026-02-28
+    unit: JPY
+    source: edinet-s100y69g
+    via: 有報「６．事業セグメント」注記を確認
+    note: 単一セグメント（コンサルティング事業）のため、各年2月期の有価証券報告書でセグメントごとの売上・利益の記載を省略している。製品・サービス別の売上収益は「売上収益」注記にあるが報告セグメント別ではないため保存していない
+  - id: ir-notes
+    phase: ir
+    store: ir_csv
+    topic: 組織再編・社名変更・会計基準変更など比較上の注記
+    status: done
+    value: 2024-09-01付の吸収分割（会社分割）により持株会社体制へ移行し、商号を株式会社ベイカレント・コンサルティングから株式会社ベイカレントに変更。承継会社2社がのちの株式会社ベイカレント・コンサルティング（コンサルティング事業）と株式会社ベイカレント・テクノロジー（ITサービス事業）。連結財務諸表はIFRS（第11期2025年2月期から適用）、提出会社単体財務諸表は日本基準
+    subject: 連結・提出会社
+    as_of: 2024-09-01
+    unit: ""
+    source: edinet-s100y69g（沿革・企業結合等注記）
+    via: 有報のCompanyHistoryTextBlock・NotesBusinessCombinationsConsolidatedFinancialStatementsIFRSTextBlock を確認
+    note: 比較上の注意: 提出会社単体の従業員数・平均給与等は2024年2月期（事業会社4,321名）と2025年2月期以降（持株会社593名→866名）で主体が異なる。平均勤続年数は旧会社からの通算。この注記は記事MDXのwarningに使用
+  - id: recruit-overview
+    phase: recruit
+    store: mdx
+    topic: 採用主体、募集年度、確認日、募集ページURL
+    status: done
+    value: 採用主体は株式会社ベイカレント。公式エントリーシステム（27卒=job.axol.jp/bx/s/baycurrent_27/entry/）の会員規約・個人情報取扱主体が株式会社ベイカレント（新卒採用グループ）であることを公式ページ経由で確認。募集年度は2027年卒・2028年卒の両方を公募中（新卒トップ https://www.baycurrent.co.jp/careers/newgraduate/ から両年度ページへリンク）。2027年卒は本選考エントリー受付中、2028年卒はサマーインターン選考・夏期本選考のエントリー受付中（採用トップ新着情報）。確認日2026-08-15
+    subject: 採用主体
+    as_of: "2026-08-15"
+    unit: ""
+    source: https://www.baycurrent.co.jp/careers/newgraduate/ ; https://www.baycurrent.co.jp/careers/newgraduate/newgraduate27/ ; https://www.baycurrent.co.jp/careers/newgraduate/newgraduate28/ ; https://www.baycurrent.co.jp/careers/ ; https://job.axol.jp/bx/s/baycurrent_27/entry/
+    via: 公式新卒募集ページを起点に各年度ページ・採用トップ・公式エントリーシステムを直接確認
+    note: 雇用契約の相手方たる採用主体を募集要項本文は明記しない。2028年卒エントリー先 e2r.jp はログインフォームのみで主体の記載を確認できず
+  - id: recruit-job-content
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: 2027年卒・2028年卒とも3職種で同一（2028年卒は3職種目の見出しのみビジネスサポート職）。(1)コンサルタント職＝リーディングカンパニーの経営課題を戦略・業務・デジタル等あらゆる領域で、戦略立案から企画・実行支援まで総合的に支援。(2)システムコンサルタント職＝経営課題をITで解決、システム開発の様々なフェーズ・領域のプロジェクトに参画。(3)コンサルタントサポート職＝コンサルタントのプロジェクトチームまたは本社セールス・リクルーティングチームでプロジェクト推進を支援。全職種正社員（期間の定めなし）。応募資格・配属・勤務地は募集要項に記載なし
+    subject: 新卒採用（2027年卒・2028年卒、3職種）
+    as_of: "2026-08-15"
+    unit: ""
+    source: https://www.baycurrent.co.jp/careers/newgraduate/newgraduate27/ ; https://www.baycurrent.co.jp/careers/newgraduate/newgraduate28/ ; https://www.baycurrent.co.jp/careers/ ; https://www.baycurrent.co.jp/aboutus/office/
+    via: 両年度の新卒募集要項ページの職種別掲載内容を全件確認＋採用トップ・オフィスページ
+    note: 募集要項の掲載項目は職種・雇用形態・給与・就業時間・休日・休暇・福利厚生・キャリアサポート制度のみ。参考: 公式オフィスページに東京（麻布台ヒルズ森JPタワー）・関西（グラングリーン大阪パークタワー）・東海（大名古屋ビルヂング）の3拠点を掲載（新卒勤務地への言及なし）。採用パンフレットPDFは5MB超で取得不能とし根拠不使用
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 基準給与、基礎給、固定時間外手当、賞与、諸手当、標準年収
+    status: done
+    value: 2027年卒・2028年卒とも同一。コンサルタント職は想定年収6,000,000円（年2回・夏期6月/冬期12月の賞与を含む）。システムコンサルタント職は想定年収5,000,000円（同賞与込み）。コンサルタントサポート職は月給300,000円・賞与年2回。基準給与・基礎給・固定時間外手当・諸手当・サポート職の標準年収は募集要項に記載なし
+    subject: 新卒採用（2027年卒・2028年卒、3職種）
+    as_of: "2026-08-15"
+    unit: JPY
+    source: https://www.baycurrent.co.jp/careers/newgraduate/newgraduate27/ ; https://www.baycurrent.co.jp/careers/newgraduate/newgraduate28/
+    via: 両年度の職種別募集要項の給与欄を直接確認
+    note: 給与形態が職種で異なる（コンサルタント系=想定年収、サポート系=月給）。賞与支給額・昇給は非開示
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤、リモート勤務、標準労働時間、応募期限
+    status: done
+    value: 標準労働時間＝標準労働時間制（始業9:00〜終業18:00、標準労働時間8時間）、全職種で2027年卒・2028年卒共通。休日＝土曜・日曜・祝日。休暇・休職＝夏期休暇、年末年始休暇、年次有給休暇、代休、シックリーブ、特別休暇、慶弔休暇、介護休暇、子の看護休暇、生理休暇、産前産後休業、育児休業、介護休業、私傷病休職。転勤＝記載なし。リモート勤務＝記載なし。応募期限＝記載なし（両年度ともエントリー受付中の表示のみで締切日なし）。勤務地＝記載なし（新卒募集要項に勤務地欄なし）
+    subject: 2027年卒・2028年卒の全職種共通
+    as_of: "2026-08-15"
+    unit: 時間
+    source: https://www.baycurrent.co.jp/careers/newgraduate/newgraduate27/ ; https://www.baycurrent.co.jp/careers/newgraduate/newgraduate28/ ; https://www.baycurrent.co.jp/careers/newgraduate/ ; https://www.baycurrent.co.jp/aboutus/office/ ; https://www.baycurrent.co.jp/careers/welfare-benefits/
+    via: 年度別募集要項・採用トップ・オフィス・福利厚生の各公式ページを確認（2026-08-15）
+    note: 転勤・リモート勤務・応募期限・勤務地の記載なしは、新卒募集要項（両年度の全職種分）、新卒採用トップ、オフィスページ、福利厚生ページの範囲で確認。福利厚生ページに時短勤務制度・定年後嘱託再雇用の記載はあるが転勤・リモート制度の記載なし
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的なサービス名・提供内容・運営法人
+    status: done
+    value: 報告セグメントは「コンサルティング事業」の単一セグメント（有報S100Y69Gに「コンサルティング事業の単一セグメントであるため、セグメント別の記載をしておりません」と明記、3箇所で一致）。提供内容は戦略・デジタル・オペレーションなど幅広いテーマを支援する総合コンサルティングファームで、全社戦略・事業戦略の立案からデジタル技術を活用したビジネスオペレーションの検討・実行支援まで（ニュートラルな立場、横断型の柔軟な組織、特定企業・系列グループ非所属が特徴）。公式サイトのサービス分野は23区分（ERP／AI／トランスフォーメーション／サステナビリティ・GX／経営戦略＆コーポレートファイナンス／カスタマーエクスペリエンス／デジタルテクノロジー／データアナリティクス／テクノロジーイノベーション／グローバルビジネス／マーケティング＆セールス／M&A／サプライチェーン＆オペレーション／インテリジェント・オートメーション／人材・組織／コストマネジメント／エンジニアリング＆マニュファクチャリング／クラウド／デジタルコマース／インフラストラクチャ／セキュリティ／マネージドサービス）。運営法人：2024年9月1日の持株会社体制移行後は、株式会社ベイカレント・コンサルティング（コンサルティング事業、「経営、オペレーション、ITに関するコンサルティング、および実行支援」）と株式会社ベイカレント・テクノロジー（ITサービス事業、「システムコンサルティング、およびシステムインテグレーション」）の2事業会社が担う（いずれも100%所有の特定子会社）
+    subject: 連結（コンサルティング事業単一セグメント）
+    as_of: 2026-02-28時点の有報記載（確認日 2026-08-15）
+    unit: ""
+    source: 有価証券報告書第12期 S100Y69G（2026-05-26提出、EDINET E32549）提出本文＋https://www.baycurrent.co.jp/industry-service/ ・https://www.baycurrent.co.jp/aboutus/overview/
+    via: EDINET API v2 documents/S100Y69G?type=2 の本文テキスト抽出＋公式サイト確認
+    note: 中期経営計画（2024-04-12公表）は2025年2月期〜2029年2月期で年率約20%成長、2029年2月期に売上収益2,500億円・EBITDAマージン30〜40%を目標。2026年2月期実績は売上収益148,332百万円・EBITDAマージン35.1%。数値の正本はmetrics.csv
+  - id: segments-site-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイトの産業・サービス区分とIR報告セグメントの対応関係と差異
+    status: done
+    value: 公式サイトの事業区分は「産業17区分（ハイテク、メディア・エンターテインメント、通信、モビリティ、ヘルスケア、消費財・小売・流通、産業機械、銀行・決済、キャピタルマーケット、保険、エネルギー、素材・化学・プラント、交通・物流、デベロッパー、パブリック、総合商社、航空・宇宙・防衛）×サービス23区分」のマトリクスで、コンサルティング領域の提示・事例紹介単位。IRの報告セグメントは「コンサルティング事業」単一で、サイトの全産業×全サービスは単一セグメントに包含され、サイト区分をセグメント別売上に分解する開示は存在しない。IRサイトの財務・業績ページはIFRS／日本基準の2タブ構成（連結=IFRS、提出会社単体=日本基準に対応）
+    subject: 連結
+    as_of: 確認日 2026-08-15
+    unit: ""
+    source: https://www.baycurrent.co.jp/industry-service/ ＋有価証券報告書第12期 S100Y69G 第1部 3.【事業の内容】・5.【従業員の状況】注2＋https://www.baycurrent.co.jp/ir/financial/
+    via: 公式サイトHTMLの直接確認とEDINET有報本文突合
+    note: サイトの産業・サービス区分は集計値を伴わない紹介区分
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 関連企業（子会社ベイカレント・コンサルティング／ベイカレント・テクノロジー等の事業内容、社名変更・グループ再編の経緯）
+    status: done
+    value: グループ構成（2026年2月期有報時点）: 持株会社株式会社ベイカレント（開示・採用主体）の下に連結子会社2社。(1)株式会社ベイカレント・コンサルティング（東京都港区、資本金200百万円、コンサルティング事業、議決権100.0%、特定子会社、代表取締役社長 則武譲二）— 売上高147,111百万円・経常利益49,734百万円（有報関係会社欄）。(2)株式会社ベイカレント・テクノロジー（東京都港区、資本金200百万円、ITサービス事業、議決権100.0%、特定子会社、代表取締役社長 工藤大助）。親会社・関連会社はなく、有報提出会社は当社のみ。経緯: (a)実質的存続会社の旧株式会社ベイカレント・コンサルティングは1998年3月に有限会社ピーシーワークスとして設立（神奈川県藤沢市）、2000年6月株式会社へ組織変更、2006年12月株式会社ベイカレント・コンサルティングへ商号変更。(b)現法人は2014年4月18日、MBOのファンド出資受皿としてバイロン・ホールディングス株式会社設立、2014年6月6日に旧ベイカレント・コンサルティングの全株式を取得し完全子会社化、2014年10月1日に旧社を吸収合併して営業活動を全面継承し株式会社ベイカレント・コンサルティングに商号変更。(c)2016年9月東証マザーズ上場、2018年12月東証一部へ市場変更、2022年4月プライム市場へ移行、2024年1月本社を麻布台へ移転。(d)2024年2月分割準備会社A/B設立、2024年4月17日取締役会で吸収分割契約を承認、2024年5月28日定時株主総会で承認可決、2024年9月1日付で吸収分割を実施し持株会社体制へ移行、当社は株式会社ベイカレントに商号変更、分割準備会社Aは株式会社ベイカレント・コンサルティング、Bは株式会社ベイカレント・テクノロジーに商号変更
+    subject: 連結
+    as_of: 2026-02-28時点（沿革は有報記載、確認日 2026-08-15）
+    unit: ""
+    source: 有価証券報告書第12期 S100Y69G 第1部 2.【沿革】・4.【関係会社の状況】・連結財務諸表注記7＋https://www.baycurrent.co.jp/aboutus/overview/
+    via: EDINET API v2 documents/S100Y69G?type=2 本文テキスト抽出
+    note: 第11期（2025年2月期）から連結財務諸表をIFRSで作成開始（第8〜10期は提出会社単体指標の表示、単体財務諸表は日本基準のまま）
+  - id: article-mission
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン（公式表記）
+    status: done
+    value: 経営指針ページの公式表記: 「Purpose パーパス Beyond the Edge − 変化の一番先に立ち、次への扉をともに開く。」「Vision ビジョン: あらゆる業界のリーディングカンパニーの成長に最も貢献している／付加価値を誰よりも追求している／未来を担う人材が集結している」「Values 価値観: 現状維持は衰退を意味する／既成概念にとらわれない／公明正大、真摯な姿勢」「Code 行動規範: Value＝限られた時間で成果を出す、Initiative＝主体的に考えて動く、Fair-Minded＝何事も謙虚に受け入れる、Integrity＝誠実に行動し、人格を常に磨く、Aspiration＝向上心を持ち、限界を突破していく」。有報の経営方針でもパーパスとビジョン3項目が再掲され、日本発の総合コンサルティングファームとしてリーディングカンパニーの課題解決による持続的発展への貢献をミッションと記載
+    subject: グループ全体
+    as_of: 確認日 2026-08-15
+    unit: ""
+    source: https://www.baycurrent.co.jp/aboutus/principles/ ＋有価証券報告書第12期 S100Y69G 第2部 1.【経営方針】
+    via: 公式ページ直接確認（有報で公式表記と同一であることを照合）
+    note: ""
+  - id: article-overview
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: done
+    value: 会社概要（公式サイト、2026-08-15確認）: 株式会社ベイカレント（英訳名 BayCurrent, Inc.、有報では Baycurrent, Inc.）。資本金282百万円、連結売上高1,483億円（2026年2月期）、連結従業員数7,551名（2026年4月時点）、代表取締役会長兼社長 阿部義之、決算期2月、主要取引銀行 三井住友銀行、本店 東京都港区麻布台1-3-1 麻布台ヒルズ森JPタワー。有報による規模（2026-02-28現在）: 連結従業員数6,788名（単体866名）、連結発行済株式総数155,411,410株、東証プライム上場。設立経緯: 実質的存続会社（1998年3月設立の有限会社ピーシーワークス→2006年12月ベイカレント・コンサルティングへ商号変更）を2014年のMBO・吸収合併で承継（現法人は2014年4月18日バイロン・ホールディングス設立、2014年10月1日に旧社を吸収合併し株式会社ベイカレント・コンサルティングへ商号変更）、2016年9月マザーズ上場、2018年12月東証一部、2022年4月プライム移行、2024年9月1日に持株会社化し株式会社ベイカレントへ商号変更
+    subject: 株式会社ベイカレント（連結グループ）
+    as_of: 公式概要は2026年4月時点の従業員数を含む（確認日 2026-08-15）
+    unit: ""
+    source: https://www.baycurrent.co.jp/aboutus/overview/ ＋有価証券報告書第12期 S100Y69G（表紙・沿革・従業員状況）
+    via: 公式ページと有報本文の突合
+    note: 連結売上高1,483億円（概要ページ）と有報連結売上収益148,332百万円は同値の丸め表記
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: 公式リンク（HP、IR、有価証券報告書PDF全年度、採用情報、新卒採用）
+    status: done
+    value: 公式リンク一覧: 公式HP https://www.baycurrent.co.jp/ ／IRトップ https://www.baycurrent.co.jp/ir/ ／財務・業績（IFRS/日本基準タブ） https://www.baycurrent.co.jp/ir/financial/ ／採用情報 https://www.baycurrent.co.jp/careers/ ／新卒採用募集要項 https://www.baycurrent.co.jp/careers/newgraduate/ ／経営指針 https://www.baycurrent.co.jp/aboutus/principles/ ／会社概要 https://www.baycurrent.co.jp/aboutus/overview/ ／ニュースリリース https://www.baycurrent.co.jp/aboutus/newsrelease/ （いずれも2026-08-15確認）。有価証券報告書（第3期〜第12期の10通し、EDINET E32549・書類IDと提出日確認済み）: 第3期2017年2月期 S100AC3L（2017-05-31提出）／第4期2018年2月期 S100D1X1（2018-05-31）／第5期2019年2月期 S100FUUL（2019-05-30）／第6期2020年2月期 S100IOF2（2020-05-28）／第7期2021年2月期 S100LE04（2021-05-31）／第8期2022年2月期 S100NXKY（2022-05-30）／第9期2023年2月期 S100Q8UT（2023-05-29）／第10期2024年2月期 S100TI4B（2024-05-29）／第11期2025年2月期 S100VTPA（2025-05-28）／第12期2026年2月期 S100Y69G（2026-05-26）。PDF取得URLはEDINET API形式（要APIキー）のため、記事では書類ID＋提出日を記載しEDINET閲覧サイトまたは取得CLIでの再取得を示す
+    subject: 株式会社ベイカレント
+    as_of: 確認日 2026-08-15
+    unit: ""
+    source: EDINET API v2 documents.json（提出日単位の書類一覧でE32549の有報10通しを特定）＋公式サイト各ページ
+    via: EDINET API v2 を日付指定で照会し filerName=株式会社ベイカレント（・コンサルティング）の docTypeCode=120 を抽出
+    note: 有報PDFのURLはEDINET API形式（要APIキー）のみ機械検証でき、公式IRサイト（eir-partsウィジェット）に静的な有報PDF直リンクは存在しない。記事では repo 習慣に従い disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/<docID>.pdf 形式を使用
+article_notes:
+  - SegmentRevenue は非掲載。単一セグメントでセグメント別売上・利益が有報に記載されないため（checklist「セグメント別売上が非開示ならコンポーネントを省く」）
+  - 採用表は職種×仕事内容×給与。勤務地・応募資格・転勤・リモート・応募期限は公式募集要項に記載なしのため文章で明記
+  - 事前テスト失敗 test_active_companies_have_mdx_pages は非アクティブ企業10社の残存MDXによる既存問題で本事案と無関係

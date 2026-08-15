@@ -306,3 +306,6 @@ mod-saiyo-research,corporate,防衛省 総合職(研究職)採用情報,https://
 mod-yosan-r8,public_data,防衛力抜本的強化の進捗と予算-令和8年度予算の概要-,https://www.mod.go.jp/j/budget/yosan_gaiyo/fy2026/yosan_20260408.pdf,,2026-04-08,2026-08-12,防衛省
 atla-boshuyoko-kenkyu,corporate,防衛装備庁 研究職 募集要項,https://www.mod.go.jp/atla/saiyou/saiyo_joho/boshuyoko_sogo.html,,,2026-08-12,防衛装備庁
 atla-kanbu-r8,public_data,防衛装備庁主要幹部名簿(令和8年8月7日現在),https://www.mod.go.jp/atla/soshiki/kanbulist_r080807.pdf,,2026-08-07,2026-08-12,防衛装備庁
+edinet-s100ti4b,statutory_filing,有価証券報告書－第10期(2023/03/01－2024/02/29),https://api.edinet-fsa.go.jp/api/v2/documents/S100TI4B,S100TI4B,2024-05-29,2026-08-15,株式会社ベイカレント・コンサルティング
+edinet-s100vtpa,statutory_filing,有価証券報告書－第11期(2024/03/01－2025/02/28),https://api.edinet-fsa.go.jp/api/v2/documents/S100VTPA,S100VTPA,2025-05-28,2026-08-15,株式会社ベイカレント
+edinet-s100y69g,statutory_filing,有価証券報告書－第12期(2025/03/01－2026/02/28),https://api.edinet-fsa.go.jp/api/v2/documents/S100Y69G,S100Y69G,2026-05-26,2026-08-15,株式会社ベイカレント
