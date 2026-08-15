@@ -309,3 +309,10 @@ atla-kanbu-r8,public_data,防衛装備庁主要幹部名簿(令和8年8月7日�
 edinet-s100ti4b,statutory_filing,有価証券報告書－第10期(2023/03/01－2024/02/29),https://api.edinet-fsa.go.jp/api/v2/documents/S100TI4B,S100TI4B,2024-05-29,2026-08-15,株式会社ベイカレント・コンサルティング
 edinet-s100vtpa,statutory_filing,有価証券報告書－第11期(2024/03/01－2025/02/28),https://api.edinet-fsa.go.jp/api/v2/documents/S100VTPA,S100VTPA,2025-05-28,2026-08-15,株式会社ベイカレント
 edinet-s100y69g,statutory_filing,有価証券報告書－第12期(2025/03/01－2026/02/28),https://api.edinet-fsa.go.jp/api/v2/documents/S100Y69G,S100Y69G,2026-05-26,2026-08-15,株式会社ベイカレント
+edinet-s100ygf5,statutory_filing,有価証券報告書－第12期(2025/04/01－2026/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100YGF5,S100YGF5,2026-06-23,2026-08-15,株式会社ＫＡＤＯＫＡＷＡ
+pixiv-official-company-overview,corporate,会社概要｜ピクシブ株式会社,https://www.pixiv.co.jp/company/,,,2026-08-15,ピクシブ株式会社
+pixiv-official-employee-data,corporate,社員データ｜ピクシブ株式会社,https://www.pixiv.co.jp/data/,,,2026-08-15,ピクシブ株式会社
+pixiv-official-figures,corporate,データで見るpixiv｜ピクシブ株式会社,https://www.pixiv.co.jp/pixiv_data/,,,2026-08-15,ピクシブ株式会社
+pixiv-business-guide-202607,financial_report,pixiv Business Guide 2026年7月Ver（メディア向け企業資料・ビジネスガイド2026年度版）,https://pixiv1.box.com/s/l5eg2kicvyan6rgmqkpdy26f5d6doyd8,,,2026-08-15,ピクシブ株式会社
+edinet-s100w3pv,statutory_filing,有価証券報告書－第11期(2024/04/01－2025/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100W3PV,S100W3PV,2025-06-25,2026-08-15,株式会社ＫＡＤＯＫＡＷＡ
+edinet-s100u4mi,statutory_filing,有価証券報告書－第10期(2023/04/01－2024/03/31),https://api.edinet-fsa.go.jp/api/v2/documents/S100U4MI,S100U4MI,2024-07-31,2026-08-15,株式会社ＫＡＤＯＫＡＷＡ

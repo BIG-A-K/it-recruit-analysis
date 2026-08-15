@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// guide/ 直下の .md を自動収集する。記事を追加するだけで一覧に並ぶ。
+// frontmatter の order（任意）で並び順を制御でき、未指定はファイル名順。
+const modules = import.meta.glob("./*.md", { eager: true });
+
+const articles = Object.entries(modules)
+  .map(([path, module]) => {
+    const frontmatter = (module as any).frontmatter ?? {};
+    return {
+      href: `/guide/${path.replace(/^\.\//, "").replace(/\.md$/, "")}/`,
+      title: frontmatter.title ?? path,
+      description: frontmatter.description ?? "",
+      order: typeof frontmatter.order === "number" ? frontmatter.order : Infinity,
+      file: path,
+    };
+  })
+  .sort((a, b) => a.order - b.order || a.file.localeCompare(b.file));
+---
+
+<BaseLayout
+  title="分析方法"
+  description="就職活動の進め方と企業分析の方法を、記事ごとにまとめています。"
+>
+  <section class="hero">
+    <h1>分析方法</h1>
+    <p class="lead">
+      私自身、就職活動で企業分析をする中で、初めて知ることがたくさんありました。
+      ここでは、そのときに勉強して役に立ったことを、これから企業分析を始める学生に向けてまとめています。
+    </p>
+    <p class="lead">
+      ここではこのサイトで使う指標や私や私周辺の実際の体験談を元とした就活の進め方などをまとめています。参考になれば幸いです。
+    </p>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>記事一覧</h2></div>
+    <div class="industry-grid">
+      {
+        articles.map((article) => (
+          <a class="card" href={article.href}>
+            <h3>{article.title}</h3>
+            <p>{article.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

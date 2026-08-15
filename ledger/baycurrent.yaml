@@ -235,7 +235,7 @@ items:
     unit: ""
     source: https://www.baycurrent.co.jp/careers/newgraduate/newgraduate27/ ; https://www.baycurrent.co.jp/careers/newgraduate/newgraduate28/ ; https://www.baycurrent.co.jp/careers/ ; https://www.baycurrent.co.jp/aboutus/office/
     via: 両年度の新卒募集要項ページの職種別掲載内容を全件確認＋採用トップ・オフィスページ
-    note: 募集要項の掲載項目は職種・雇用形態・給与・就業時間・休日・休暇・福利厚生・キャリアサポート制度のみ。参考: 公式オフィスページに東京（麻布台ヒルズ森JPタワー）・関西（グラングリーン大阪パークタワー）・東海（大名古屋ビルヂング）の3拠点を掲載（新卒勤務地への言及なし）。採用パンフレットPDFは5MB超で取得不能とし根拠不使用
+    note: 募集要項の掲載項目は職種・雇用形態・給与・就業時間・休日・休暇・福利厚生・キャリアサポート制度のみ。参考: 東京（麻布台ヒルズ森JPタワー）・関西（グラングリーン大阪パークタワー）・東海（大名古屋ビルヂング）の3拠点を掲載（新卒勤務地への言及なし）
   - id: recruit-salary
     phase: recruit
     store: mdx

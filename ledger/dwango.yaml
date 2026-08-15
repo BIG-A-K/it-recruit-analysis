@@ -1,0 +1,249 @@
+company_id: dwango
+disclosure_company_id: kadokawa
+company_boundary:
+  adoption_company_id: dwango
+  disclosure_company_id: kadokawa
+  reporting_segment_company_id: kadokawa
+  legal_name: 株式会社ドワンゴ（採用主体） / 株式会社KADOKAWA（開示主体・東証プライム9468）
+  securities_code: "9468"
+  edinet_code: E30731
+  fiscal_year_end: 3月31日（KADOKAWA連結）
+  accounting_standard: 日本基準（KADOKAWA有報）
+  currency: JPY
+  reporting_segments: KADOKAWAの法定報告セグメント（IR workerが有報で確定）
+  company_relations:
+    - from: dwango
+      to: kadokawa
+      relation: parent
+      status: 予約（KADOKAWA有報の主要な子会社記載をsource_idとして関係行を作る）
+  note: |
+    ドワンゴは非上場で自身の法定開示がない。EDINET提出書類スキャン（2025年・2026年の有報提出期、2025-05-20〜2025-07-20 および 2026-05-20〜2026-07-20 の営業日全部）で株式会社ドワンゴの提出書類は0件、株式会社KADOKAWA（E30731）の有報のみを確認（2026-06-23提出 S100YGF5 第12期 2026/3期、2025-06-25提出 S100W3PV 第11期 2025/3期）。
+    ユーザー承認（2026-08-15）により開示主体をKADOKAWAとする（AWSジャパン→Amazon.comと同じ親会社開示パターン）。KADOKAWA連結の数値はcompany_id=kadokawaでCSVへ保存し、ドワンゴへ複写しない。
+    KADOKAWA・ドワンゴの資本関係（2014年10月の経営統合以降、KADOKAWAがドワンゴの親会社）の有効開始日はKADOKAWA有報の沿革・主要な子会社記載で確認してからcompany_relations.csvへ反映する。
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-15
+updated_at: 2026-08-15
+phases:
+  ir: in_progress
+  recruit: in_progress
+  segments: in_progress
+  article: pending
+  verify: pending
+items:
+  - id: ir-dwango-own-disclosure
+    phase: ir
+    store: ir_csv
+    topic: ドワンゴ単体の法定開示（有価証券報告書等）の有無
+    status: pending
+    value: ""
+    subject: 株式会社ドワンゴ単体
+    as_of: 2026-08-15
+    unit: ""
+    source: ""
+    via: EDINET API v2 documents.json で2025年・2026年の有報提出期（2025-05-20〜2025-07-20、2026-05-20〜2026-07-20）を走査。統括agent実施分では株式会社ドワンゴの提出0件
+    note: ""
+  - id: ir-human-capital
+    phase: ir
+    store: ir_csv
+    topic: 平均年間給与・平均年齢・平均勤続年数・従業員数 3期以上
+    status: pending
+    value: ""
+    subject: KADOKAWA連結（開示主体kadokawa）
+    as_of: 2024-03-31〜2026-03-31
+    unit: ""
+    source: ""
+    via: ""
+    note: ドワンゴ単体の人的資本は法定開示なし。開示があれば採用情報・プレスキット側（recruit/article）で確認
+  - id: ir-revenue
+    phase: ir
+    store: ir_csv
+    topic: 売上高 3期以上
+    status: pending
+    value: ""
+    subject: KADOKAWA連結（開示主体kadokawa）
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: ""
+    via: ""
+    note: ""
+  - id: ir-operating-profit
+    phase: ir
+    store: ir_csv
+    topic: 営業利益 3期以上
+    status: pending
+    value: ""
+    subject: KADOKAWA連結（開示主体kadokawa）
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: ""
+    via: ""
+    note: ""
+  - id: ir-health
+    phase: ir
+    store: ir_csv
+    topic: 自己資本比率・流動資産・流動負債・当座資産 3期以上
+    status: pending
+    value: ""
+    subject: KADOKAWA連結（開示主体kadokawa）
+    as_of: 2024-03-31〜2026-03-31
+    unit: ""
+    source: ""
+    via: ""
+    note: 当座資産の算定内訳はnoteへ残す
+  - id: ir-cashflow
+    phase: ir
+    store: ir_csv
+    topic: 営業・投資・財務CF 3期以上
+    status: pending
+    value: ""
+    subject: KADOKAWA連結（開示主体kadokawa）
+    as_of: 2024-03-31〜2026-03-31
+    unit: JPY
+    source: ""
+    via: ""
+    note: ""
+  - id: ir-segments
+    phase: ir
+    store: ir_csv
+    topic: 報告セグメント名・セグメント別売上・利益
+    status: pending
+    value: ""
+    subject: KADOKAWA連結（開示主体kadokawa）
+    as_of: 2026-03-31
+    unit: JPY
+    source: ""
+    via: ""
+    note: KADOKAWAの公表セグメント名・区分をそのまま使う。ドワンゴが所属するセグメントを特定して記事の材料にする
+  - id: ir-notes
+    phase: ir
+    store: ir_csv
+    topic: 組織再編・会計基準変更・比較上の注記
+    status: pending
+    value: ""
+    subject: KADOKAWA連結（開示主体kadokawa）
+    as_of: 2024〜2026年度
+    unit: ""
+    source: ""
+    via: ""
+    note: KADOKAWAドワンゴ間の組織再編・社名変更（KADOKAWA・DWAGO Holdings→KADOKAWA等）で比較不能期間があれば特定する
+  - id: recruit-overview
+    phase: recruit
+    store: mdx
+    topic: 採用主体・募集年度・確認日・募集ページURL
+    status: pending
+    value: ""
+    subject: 株式会社ドワンゴ（新卒採用）
+    as_of: ""
+    unit: ""
+    source: ""
+    via: https://recruit.dwango.co.jp/
+    note: ""
+  - id: recruit-job-roles
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: pending
+    value: ""
+    subject: 株式会社ドワンゴ（新卒採用の各職種）
+    as_of: ""
+    unit: ""
+    source: ""
+    via: ""
+    note: ""
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 基準給与・基礎給・固定時間外手当・賞与・諸手当・標準年収
+    status: pending
+    value: ""
+    subject: 株式会社ドワンゴ（新卒採用）
+    as_of: ""
+    unit: 円
+    source: ""
+    via: ""
+    note: ""
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤・リモート勤務・標準労働時間・応募期限
+    status: pending
+    value: ""
+    subject: 株式会社ドワンゴ（新卒採用）
+    as_of: ""
+    unit: ""
+    source: ""
+    via: ""
+    note: ""
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 事業区分ごとの具体的なサービス名・ブランド名・提供内容・運営法人
+    status: pending
+    value: ""
+    subject: 株式会社ドワンゴ
+    as_of: ""
+    unit: ""
+    source: ""
+    via: https://dwango.co.jp/business/
+    note: 公式サイトの事業区分（ウェブサービス/クリエイターサポート/イベント/教育/ゲーム/電子書籍関連/電子書籍取次/技術・開発）
+  - id: segments-official-vs-ir
+    phase: segments
+    store: mdx
+    topic: 公式サイトの事業区分とKADOKAWAのIR報告セグメントの対応関係と差異
+    status: pending
+    value: ""
+    subject: ドワンゴ公式事業区分 vs KADOKAWA報告セグメント
+    as_of: ""
+    unit: ""
+    source: ""
+    via: ""
+    note: ドワンゴがKADOKAWAのどの報告セグメントに相当するか
+  - id: segments-related
+    phase: segments
+    store: mdx
+    topic: 関連企業（親会社・主な子会社と各社の事業内容）
+    status: pending
+    value: ""
+    subject: KADOKAWAグループ内のドワンゴとその子会社・関連会社
+    as_of: ""
+    unit: ""
+    source: ""
+    via: https://group.kadokawa.co.jp/company/group.html および https://dwango.co.jp/company/
+    note: ピクシブとの関係（過去のドワンゴ・ピクシブ株式会社合同会社等）が公式資料で確認できるかも調べる
+  - id: article-philosophy
+    phase: article
+    store: mdx
+    topic: 理念・ミッション・スローガン（公式表記）
+    status: pending
+    value: ""
+    subject: 株式会社ドワンゴ
+    as_of: ""
+    unit: ""
+    source: ""
+    via: ""
+    note: ""
+  - id: article-company-intro
+    phase: article
+    store: mdx
+    topic: 会社紹介（設立経緯・規模）
+    status: pending
+    value: ""
+    subject: 株式会社ドワンゴ
+    as_of: ""
+    unit: ""
+    source: ""
+    via: https://dwango.co.jp/company/
+    note: 従業員数・設立年・資本金等、会社概要の公式値
+  - id: article-links
+    phase: article
+    store: mdx
+    topic: 公式リンク（HP・IR・採用・新卒採用）
+    status: pending
+    value: ""
+    subject: 株式会社ドワンゴ / KADOKAWA
+    as_of: ""
+    unit: ""
+    source: ""
+    via: ""
+    note: ドワンゴに有報PDFはないため、開示はKADOKAWAのIRライブラリへリンクする

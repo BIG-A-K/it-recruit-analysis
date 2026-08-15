@@ -1,7 +1,7 @@
-const GUIDE_PATH = "/guide/";
+const GUIDE_PATH = "/guide/company-analysis/";
 
-// 指標から /guide の解説へ送るための対応表。解説の本文は guide.md が持ち、
-// ここでは見出しへのアンカーだけを管理する。guide.md の見出しを変えたらここも直す。
+// 指標から企業分析記事の解説へ送るための対応表。解説の本文は company-analysis.md が持ち、
+// ここでは見出しへのアンカーだけを管理する。company-analysis.md の見出しを変えたらここも直す。
 const guideAnchors: Record<string, string> = {
   operating_profit: "営業利益と事業利益",
   business_profit: "営業利益と事業利益",

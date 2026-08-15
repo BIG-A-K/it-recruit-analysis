@@ -1,0 +1,109 @@
+company_id: honda-motor
+disclosure_company_id: honda-motor
+fiscal_year: 2026
+focus: 両方
+created_at: 2026-08-15
+updated_at: 2026-08-15
+phases:
+  ir: pending
+  recruit: done
+  segments: done
+  article: pending
+  verify: pending
+items:
+  - id: recruit-overview
+    phase: recruit
+    store: mdx
+    topic: 採用主体、募集年度、確認日、募集ページURL
+    status: done
+    value: 本田技研工業・本田技術研究所・ホンダ・レーシング・ホンダアクセスの4社が合同で新卒採用を実施（募集要項の「募集会社」欄）。エントリーコースは大卒・院卒・高専卒（専攻科）、高専卒（本科）・専修/専門学校卒、外国人留学生、デザイン系（global.honda/jp/jobs/design/ 別サイト）。マイページは27卒・28卒両方を開設。確認日2026-08-15
+    subject: 採用主体4社（Hondaグループ）
+    as_of: "2026-08-15"
+    unit: ""
+    source: https://www.honda-recruit.jp/information/recruiting/index.html ; https://www.honda-recruit.jp/information/recruitinginformation/index.html ; https://www.honda-recruit.jp/information/tech/index.html
+    via: Honda新卒採用サイトの募集要項・採用情報トップを直接確認
+    note: 個別の雇用契約の相手方たる採用主体は募集要項に明記されず「4社が合同で採用活動」とのみ記載
+  - id: recruit-job-content
+    phase: recruit
+    store: mdx
+    topic: 職種ごとの仕事内容・応募資格・配属・選考区分・勤務地
+    status: done
+    value: 大卒等コースは技術系と事務系（文理不問）に分かれ、各系に職種別採用コース（初期配属先の職種・領域が予め決定）とポテンシャル採用コース（内定後の配属面談で決定、職種別との併願可）。技術系職種別は20職種（二輪・PP ICE/電動・電装/制御・コネクテッド、四輪完成車、次世代エネルギーPU/リソースサーキュレーション、次世代電動モビリティ・エネルギーサービス、バッテリー、パワエレ、半導体、コネクテッド、モビリティ知能化/AI、ロボティクス、先進安全・知能化、四輪電子制御PT/車両統合制御/電動UX、四輪電子制御プラットフォーム、材料、空・宇宙、ビジネスデータサイエンス、生産技術、DX・IT）。事務系職種別は7職種（セールス・マーケティング、生産管理・物流、購買・部品調達、人事、知的財産・法務、経理・財務、DX・IT事務系）。高専本科等コースは4領域（二輪・PP研究開発=朝霞、四輪研究開発=栃木/埼玉/東京/三重、二輪・PP生産領域=熊本/静岡細江、四輪生産領域=寄居小川/静岡/三重）で学校推薦のみ。初期配属地は応募コースページに職種別で記載（配属日までの組織変更で変更可能性の注記あり）。応募資格は4年制大学・大学院・高専専攻科を2026年4月〜2027年3月卒業見込み、または2023年4月〜2026年3月卒業の既卒（国内外を問わず勤務可能）
+    subject: 新卒採用（大卒等コース技術系20職種・事務系7職種＋高専本科等コース4領域）
+    as_of: "2026-08-15"
+    unit: ""
+    source: https://www.honda-recruit.jp/information/recruiting/index.html ; https://www.honda-recruit.jp/information/job/index.html ; https://www.honda-recruit.jp/information/tech/index.html
+    via: 募集要項・応募コースページの全職種分を掲載内容で確認
+    note: 高専（専攻科）は技術系職のみ募集。博士号取得見込みは中途採用を推奨との注記あり
+  - id: recruit-salary
+    phase: recruit
+    store: mdx
+    topic: 基準給与、基礎給、固定時間外手当、賞与、諸手当、標準年収
+    status: done
+    value: 初任給=技術系職種別・事務系（職種別/ポテンシャル）とも2025年度実績で学部/高専専攻科卒270,000円・修士了295,700円。技術系ポテンシャル採用コースのみ2023年度実績で学部卒251,000円・修士了275,900円。高専卒（本科）236,500円・専修/専門学校卒「高度専門士」270,000円（2025年度実績）。賞与=年2回（6月・12月）、2025年度実績6.9か月。給与改定=年1回（6月）。諸手当=時間外勤務手当、住宅手当、育児・介護手当、通勤手当、食事補助（事務系）ほか。基準給与・基礎給・固定時間外手当・標準年収は募集要項に記載なし
+    subject: 新卒採用全コース
+    as_of: "2026-08-15"
+    unit: JPY
+    source: https://www.honda-recruit.jp/information/recruiting/index.html ; https://www.honda-recruit.jp/information/tech/index.html
+    via: 各コース募集要項の給与・賞与欄を確認
+    note: 技術系ポテンシャルコースのみ実績年度が古い（2023年度）点に注意
+  - id: recruit-conditions
+    phase: recruit
+    store: mdx
+    topic: 転勤、リモート勤務、標準労働時間、応募期限
+    status: done
+    value: 勤務時間=8時間（時間帯は勤務地により異なる）、事業所/職場によりフレックスタイム制適用。休日休暇=週休2日制（会社カレンダーによる）、5月・8月の連休、年末年始休暇など年間休日121日、年次有給休暇、特別休暇。保険=雇用/労災/健康/厚生年金。福利厚生=互助会、特別見舞金、財形貯蓄、住宅共済金、育児介護支援、退職年金、独身寮、保養所、グラウンド・体育館等スポーツ施設。応募資格に「国内外を問わず勤務可能な方」とあり（海外勤務あり・転勤ありを示唆するが明文の転勤規定なし）。リモート勤務の記載なし。応募期限の記載なし
+    subject: 新卒採用全コース共通
+    as_of: "2026-08-15"
+    unit: 時間
+    source: https://www.honda-recruit.jp/information/recruiting/index.html ; https://www.honda-recruit.jp/information/tech/index.html
+    via: 各コース募集要項の勤務時間・休日休暇・保険・福利厚生欄を確認
+    note: 転勤・リモート・応募期限は募集要項・採用サイト範囲で記載なし
+  - id: recruit-work-location
+    phase: recruit
+    store: mdx
+    topic: 勤務場所（国内事業所の一覧）
+    status: done
+    value: 勤務場所ページに国内7地区の事業所一覧。北海道地区=PG鷹栖（テストコース）、栃木地区=先進技術研究所・先進パワーユニット・エネルギー研究所・HRD Sakura・ものづくりセンター（四輪量産）・ホンダアクセス栃木・パワートレインユニット製造部、埼玉地区=埼玉製作所（狭山/寄居/小川）・ホンダアクセス本社・和光ビル（本社機能）・ものづくりセンター（二輪R&D）・先進技術研究所・ライフクリエーションセンター・デザインセンター、東京地区=虎ノ門(本社)ビル・先進技術研究所、浜松地区=トランスミッション製造部・船外機工場・ライフクリエーションセンター、鈴鹿地区=鈴鹿製作所・トランスミッション製造部（鈴鹿）・ものづくりセンター鈴鹿（軽四輪開発）、熊本地区=熊本製作所・ものづくりセンター熊本（二輪R&D）
+    subject: 新卒採用（国内事業所）
+    as_of: "2026-08-15"
+    unit: ""
+    source: https://www.honda-recruit.jp/about/location.html
+    via: 新卒採用サイトの勤務場所ページを直接確認
+    note: 記事では EmploymentOverview の workplace 属性に国内7地区の要約を記載（事業所一覧の長文は本文に書かない規約）
+  - id: segments-services
+    phase: segments
+    store: mdx
+    topic: 報告セグメントごとの具体的なサービス名・提供内容
+    status: done
+    value: 公式事業紹介は5区分。クルマ=1963年開始、世界で年間約500万台販売。バイク=原点事業、累計4億台以上。パワープロダクツ=汎用エンジン、耕うん機、発電機、除雪機、芝刈機、ポンプ、船外機など50カ国以上、ポータブルバッテリーや新サービスで領域拡大。マリン=1964年に4ストローク船外機市場へ参入。その他事業=航空事業、水素事業（80年代からの燃料電池技術）、モバイルパワーパック事業、モビリティサービス。有報の報告セグメントは二輪・四輪・金融サービス・パワープロダクツその他の4区分
+    subject: 連結
+    as_of: 確認日 2026-08-15
+    unit: ""
+    source: https://global.honda/jp/businesses/ ; https://global.honda/jp/otherbusinesses/ ; 有価証券報告書第102期 S100YDD9
+    via: 企業情報サイトの事業・その他事業ページを直接確認
+    note: ""
+  - id: segments-site-mapping
+    phase: segments
+    store: mdx
+    topic: 公式サイトの事業区分とIR報告セグメントの対応関係と差異
+    status: done
+    value: 公式サイトの5区分（クルマ・バイク・パワープロダクツ・マリン・その他事業）と有報の報告セグメント4区分（二輪・四輪・金融サービス・パワープロダクツその他）は区分数も並びも異なる。サイトのマリンは報告上はパワープロダクツ・その他事業に含まれ、サイトのその他事業（航空・水素・モバイルパワーパック・モビリティサービス）も同一セグメントに包含。金融サービスはサイトの事業紹介に独立掲載なし
+    subject: 連結
+    as_of: 確認日 2026-08-15
+    unit: ""
+    source: https://global.honda/jp/businesses/ ; 有価証券報告書第102期 S100YDD9
+    via: 事業紹介ページと有報セグメント注記の突合
+    note: 記事本文に両区分の違いを明記済み
+  - id: segments-related-companies
+    phase: segments
+    store: mdx
+    topic: 関連企業（親会社・主な子会社と各社の事業内容）
+    status: done
+    value: 有報第102期に関係会社346社（連結子会社282社、持分法適用64社）。主な子会社=株式会社本田技術研究所（二輪・四輪・PPの研究開発）、株式会社ホンダファイナンス（車両販売金融）、American Honda Motor Co., Inc.（北米統括）、Honda Development and Manufacturing of America, LLC（四輪R&D・生産）、Honda Canada Inc.（カナダ生産・販売）。親会社なし。新卒採用の募集会社は本田技研工業・本田技術研究所・ホンダ・レーシング・ホンダアクセスの4社
+    subject: 連結
+    as_of: 有報第102期（2026年3月期）
+    unit: ""
+    source: 有価証券報告書第102期 S100YDD9
+    via: 記事の関連企業表として既存記載を有報と突合
+    note: 記事の関連企業セクションと整合
